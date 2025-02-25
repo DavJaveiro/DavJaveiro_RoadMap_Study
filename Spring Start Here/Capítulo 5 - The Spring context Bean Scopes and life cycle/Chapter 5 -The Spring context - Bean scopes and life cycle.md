@@ -225,4 +225,60 @@ Singleton é um padrão de projeto (design pattern) que garante que uma classe t
 No Spring, os beans são singleton por padrão, ou seja, o framework já implementa o padrão Singleton automaticamente para nós. Logo, quando injetamos um bean, ele continua sendo a mesma instância em todos os locais da nossa aplicação.
 
 ---
-Na maioria dos casos, o Spring cria todos os singleton beans quando inicializa o contexto - este é o comportamento padrão do Spring. 
+Na maioria dos casos, o Spring cria todos os singleton beans quando inicializa o contexto - este é o comportamento padrão do Spring. Utilizamos apenas esse comportamento padrão, que também é chamado de instância ávida *eager instantiation*. Nesta seção, discutimos uma abordagem diferente do framework, a instância tardia *lazy instantiation*, e comparamos essas duas abordagens. Com a instância tardia, o Spring não cria as instâncias singleton ao criar o contexto. Em vez disso, ele cria cada instância na primeira vez que alguém se refere ao bean. 
+
+In our initial scenario, we only need a bean to test the default (eager) initialization. I'll keep tha namings we've been using, and i'll name this class *CommentService*. You make this class a bean, either using the @Bean *annotation approach* or *stereotype annotation*, as I've done in the next code snippet. But either way, make sure to add an output to the console in the class constructor. 
+
+[[Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/src/main/java/org/example/sqch5ex3/comment/services/CommentService.java|CommentService]]
+
+If we use a stereotype annotation, don't forget too add the *@ComponentScan annotation* in the configuration class. The configuration class in the next cod snippet example:
+[[Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/src/main/java/org/example/configuration/ProjectConfig.java|ProjectConfig]]
+
+In the Main class, we only instantiate the Spring context. A critical aspect to observe is that no one uses the *CommentService* bean. However, Spring will create and store the instance in the context. We know that Spring creates the instance because we'll see the output from the *CommentService* bean class's constructor when running the app. The next code snippet presents the Main class:
+```java
+public class Main {
+	public static void main(String[] args) {
+		var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
+	}
+}
+```
+The up snippet code creates the Spring context, but it doesn't use the *CommentService* bean anywhere.
+
+Even if the app doesn't use the bean anywhere, when running the app you'll fin the following output in the console:
+*CommentService instance created!*
+
+Ok! Now change the example (project ex4) by adding the *@Lazy* annotation above the class (for stereotype annotations approach) or above the @Bean method (for the @Bean method approach). You'll observe the output no longer appears in the console when running the app because we instructed Spring to create the bean only when someone uses it. And, in our example, nobody uses the *CommentService* bean. 
+
+```java
+@Service
+@Lazy
+public class CommentService {
+	public CommentService() {
+		System.out.println("CommentService instance created!");
+	}
+}
+```
+
+The *@Lazy* annotation tells Spring that it needs to create the bean only when someone refers to  the bean for the first time. 
+
+Change the Main class and add a reference to the CommentService bean, as presented in the next code snippet:
+```java
+public class Main {
+	public static void main(String[] args) {
+		var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
+
+		System.out.prinln("Before retrieving the CommentService");
+		var service = c.getBean(CommentService.class);
+		System.out.println("After retrieving the CommentService");
+	}
+}
+```
+
+But, when should you use eager instantiation and when should you use lazy? In most cases, it's more comfortable to let the framework create all the instances at the beginning when the context is instantiated (eager); this way, when one instance delegates to another, the second bean already exists in any situation.
+
+In a lazy instantiation, the framework has to first check if the instance exist and eventually create it if it doesn't, so from the performance point of view, it's better to have the instances in the context already (eager) because it spares some checks the framework needs to do when one bean delegates to another. Another advantage of eager instantiation is when something is wrong and the framework cannot create a bean. With lazy instantiation, someone would observe the issue only when the app is already executing and it reaches the point that the bean needs to be created.  
+
+But lazy instantiation is not all evil. Some time ago, i worked on a vast monolithic application. This app was installed in different locations where it was used in various scopes by its clients. In most cases, a specific client didn't use a big part of the functionality, so instantiating the beans together with de Spring context unnecessarily occupied a lot of memory. For that app, the developers designed most of the beans to be lazily instantiated so that app would create only the necessary instances.
+
+The author advice is to go with the default, which is an eager instantiation. This approach generelly brings more benefits. If you find yourself in a situation like the one I presented with the monolithic app, first see if you can do something about the app's design. For example, in my story, it would have been better if the app had been design in a modular way or as microservices.  Such an architecture would have helped the developers deploy only what specific clients needed, and then making the instantiation of the beans lazy wouldn't have been necessary. But in the real world, not everything is possible due to other factors like cost or time. If you cannot treat the real cause of the problem, you can sometimes treat at least some of the symptoms.
+
