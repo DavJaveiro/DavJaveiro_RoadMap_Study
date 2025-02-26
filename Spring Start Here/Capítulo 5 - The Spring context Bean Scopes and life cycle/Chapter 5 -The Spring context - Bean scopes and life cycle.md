@@ -282,3 +282,147 @@ But lazy instantiation is not all evil. Some time ago, i worked on a vast monoli
 
 The author advice is to go with the default, which is an eager instantiation. This approach generelly brings more benefits. If you find yourself in a situation like the one I presented with the monolithic app, first see if you can do something about the app's design. For example, in my story, it would have been better if the app had been design in a modular way or as microservices.  Such an architecture would have helped the developers deploy only what specific clients needed, and then making the instantiation of the beans lazy wouldn't have been necessary. But in the real world, not everything is possible due to other factors like cost or time. If you cannot treat the real cause of the problem, you can sometimes treat at least some of the symptoms.
 
+## 5.2.1 How prototype beans work
+Toda vez que solicitamos uma referência a um bean de escopo prototype, o Spring cria uma nova instância do objeto. Para beans protótipo, o Spring não cria e gerencia uma instância de objeto diretamente. O framework gerencia o tipo do objeto e cria uma nova instância toda vez que alguém solicita uma referência ao bean. 
+
+Na figura 5.6, o Bean é representado como uma planta de café (toda vez que solicitamos um bean, recebe uma nova instância). Ainda usamos o termo *bean*, mas a analogia com a planta de café ajuda a compreender e memorizar rapidamente o comportamento do Spring para beans *prototype*.
+
+Como mostrado na figura 5.6, precisamos usar uma nova anotação chamada *@Scope* para alterar o escopo do bean. Quando criamos o bean usando a abordagem com a anotação *@Bean*, a anotação *@Scope* deve ser utilizada junto com *@Bean* no método que declara o bean. Já ao declarar o bean com anotações de estereótipo, devemos usar a anotação *@Scope* juntamente com a anotação de estereótipo na classe que declara o bean.
+
+Com beans *prototype*, não há mais problemas de concorrência, pois cada thread que solicita o bean recebe uma instância diferente. Portanto, definir beans *prorotype* mutáveis não é um problema.
+![[Chapter 5 -The Spring context - Bean scopes and life cycle-1.png]]
+
+```java
+@Configuration
+public class ProjectConfig {
+	@Bean
+	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+	public CommentService commentService() {
+		return new CommentService();
+	}
+}
+```
+
+Spring creates a bean and adds it to its context. Spring uses the type of the bean to create new instances each time they are requested, using the *@Bean* annotation. 
+
+```java
+public class Main {
+	public static void main(String[] args) {
+		var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
+
+		var cs1 = c.getBean("commentService", CommentService.class);
+		var cs2 = c.getBean("commentService", CommentService.class);
+
+		boolean b1 = cs1 == cs2;
+		System.out.println(b1); // this line always prints "false";
+	}
+}
+```
+
+Spring creates a new isntance every time the getBean() method is called. The variables cs1 and cs2 always contains references to two different instances.
+
+**Declaring Prototype-Scoped Beans with @Bean**
+To enforce our discussion, let's write a project "sq-ch5-ex5" and prove Spring's behavior for managing prototype beans. We create a bean named *CommentService* and declare it as prototype to prove we get a new instance every time we request that bean. The next code snippet presents the *CommentServices* class:
+```java
+public class CommentService {
+
+}
+```
+[[Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex5/src/main/java/org/example/sqch5ex3/comment/services/CommentService.java|CommentService]]
+
+[[Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex5/src/main/java/org/example/configuration/ProjectConfig.java|ProjectConfig]]
+
+To prove that every time we request the bean we get a new instance, we create a Main class and request the beans twice from the context. We observe that the references we get are different. You find the definition of the *Main* class in the following listing.
+
+[[Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex5/target/classes/org/example/sqch5ex3/main.class|main]]
+
+When you run the app, you'll see it always displays "false" in the console. This output proves that the two instances received when calling the *getBean()* method are different.
+
+---
+A diferença principal entre um *bean* com escopo *prototype* e um *singleton* no Spring está no ciclo de vida e no número de instâncias criadas.
+
+## 🔹 **Singleton (Padrão do Spring)**
+```java
+@Bean
+public CommentService commentService() {
+	return new CommentService();
+}
+```
+- O que acontece?
+	- O spring cria apenas UMA instância do *CommentService* e a reutiliza sempre que alguém solicita esse bean com *getBean()*;
+	- Todos que pediram *CommentService* receberão a mesma instância;
+	```java
+	var cs1 = c.getBean("commentService", CommentService.class);
+	var cs2 = c.getBean("commentService", CommentService.class);
+	```
+	- Como o Spring cria apenas uma instância única desse bean, cs1 e cs2 são o mesmo objeto na memória.
+
+
+🔹 **Prototype (`@Scope(BeanDefinition.SCOPE_PROTOTYPE)`)**
+```java
+@Bean
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+public CommentService commentService() {
+	return new CommentService();
+}
+```
+- O que acontece?
+	- O spring cria uma nova instância do *CommentService* toda vez que alguém solicita esse *bean* com *getBean()*;
+	- Cada solicitação gera um objeto diferente.
+```java
+	var cs1 = c.getBean("commentService", CommentService.class);
+	var cs2 = c.getBean("commentService", CommentService.class);
+```
+- Como cada getBean cria uma nova instância, cs1 e cs2 são objetos diferentes na memória.
+
+
+
+
+
+
+
+
+
+---
+**Declaring Prototype-Scoped Beans using Stereotype Annotations**
+Let's also create a project "sq-ch5-ex6" to observe the behavior for auto-wiring prototype-scoped beans. We'll define a *CommentRepositoty* prototype bean, and we inject the bean using *@Autowired* in two other service beans. We'll  observe that each service bean has a reference to a different instance of CommentRepository. This scenario is similar to the example we used in section 5.1 for singleton-scoped beans, but now the *CommentRepository* bean is prototype. The figure above describes the relationships between the beans.
+![[Chapter 5 -The Spring context - Bean scopes and life cycle-2.png]]
+
+The next code snippet gives definition of the *CommentRepository* class. Observe the *@Scope* annotation used over the class to change the scope of the bean to prototype:
+```java
+@Repository
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+public class CommentRepository {
+	
+}
+```
+
+The two service class request an instance of type *CommentRepository* using the *@Autowired* annotation. The next code snippet presents the *CommentService* class:
+```java
+@Service
+public class CommentService {
+
+	@Autowired
+	private CommentRepository commentRepository;
+
+	public CommentRepository getCommentRepository() {
+		return commentRepository;
+	}
+}
+```
+
+In the previous code snippet, the *UserService* class algo request an instance of the CommentRepository bean. In the configuration class, we need to use the *@ComponentScan* annotation to tell Spring where to fin the classes annotated with stereotype annotations:
+```java
+@Configuration
+@ComponentScan(basePackages = {"services", "repositories"})
+public class ProjectConfig {
+	
+}
+```
+
+---
+
+### 5.2.2 Prototype Beans in real-world scenarios
+So far we've discussed how Spring manages ptototype beans by focusing on the behavior. In this section, we focus more on the use cases and where you should (deve) use prototype-scoped beans in production apps. Just as we did (assim como fizemos) with singleton  in section 5.1.2, we'll consider the discussed characteristics and analyze which scenarios prototype beans are good for and where *should (deve)* you *avoid them (evitar eles)* (by using singleton beans). 
+
+You won't find prototype beans as *often (frequentemente)* as you'll find singleton beans. But there is a good pattern you can use to decide if a bean should be prototype. 
