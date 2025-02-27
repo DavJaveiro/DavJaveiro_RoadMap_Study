@@ -87,3 +87,13 @@ Quando o método não é interceptado por aspectos, alguém chama o método *pub
 Quando nós definimos um aspect para o método, alguém fará chamada através do proxy fornecido pelo Spring. O proxy aplica a lógica de aspect que então delegará a chamada para o método atual.
 
 ## 6.2 Implementing aspects with Spring AOP
+In this section, you'll learn the most relevant aspect syntaxes used in real-world examples. We'll consider a scenario and implement its requirements with aspects. At the end of this section, you'll be able to apply syntaxes to solve the most frequent problems in real-world scenarios.
+
+Suponha que tenhamos uma **aplicação** que implementa múltiplos **casos de uso** em suas classes de serviço. Algumas novas regulamentações exigem que seu aplicativo armazene o tempo de início e término de cada execução de caso de uso. Em sua equipe, você decidiu assumir a responsabilidade de implementar uma funcionalidade para registrar todos os eventos onde um caso de uso começa e termina. Na seção 6.2.3, aprenderemos como usar **anotações** para marcar métodos que deseja interceptar para um propósito específico. Os desenvolvedores frequentemente usam anotações para marcar o método que um #aspect precisa interceptar. Muitas funcionalidades no Spring usam anotações. 
+
+### 6.2.1 Implementing a simple aspect
+Nesta seção, discutiremos a implementação de um *aspect* simples para resolver nosso cenário. Criamos um novo projeto e definimos uma classe de serviço contendo um método que usaremos para testar nossa implementação e comprovar que o *aspect* definido funciona conforme o esperado.
+
+O projeto será chamado de "s1-ch6-ex1".
+Além da dependência *spring-context*, também vamos precisar da dependência *spring-aspects* para este exemplo.
+
