@@ -282,6 +282,10 @@ But lazy instantiation is not all evil. Some time ago, i worked on a vast monoli
 
 The author advice is to go with the default, which is an eager instantiation. This approach generelly brings more benefits. If you find yourself in a situation like the one I presented with the monolithic app, first see if you can do something about the app's design. For example, in my story, it would have been better if the app had been design in a modular way or as microservices.  Such an architecture would have helped the developers deploy only what specific clients needed, and then making the instantiation of the beans lazy wouldn't have been necessary. But in the real world, not everything is possible due to other factors like cost or time. If you cannot treat the real cause of the problem, you can sometimes treat at least some of the symptoms.
 
+## 5.2 Using the prototype bean scope
+In this section, we discuss the second bean scope Spring offers: prototype. In some cases, which we'll analyzè in this section, you'd go with prototype-scoped beans *instead (em vez de)* of singleton. 
+- We'll discuss the framework's behavior for beans declared as prototype in section 5.2.1 You'll then learn how to change the bean's scope to prototype, and we'll try it with a couple of examples. 
+- Finally, in section 5.2.2, we'll discuss real-world situations you need to know when using the prototype scope.
 ## 5.2.1 How prototype beans work
 Toda vez que solicitamos uma referência a um bean de escopo prototype, o Spring cria uma nova instância do objeto. Para beans protótipo, o Spring não cria e gerencia uma instância de objeto diretamente. O framework gerencia o tipo do objeto e cria uma nova instância toda vez que alguém solicita uma referência ao bean. 
 
@@ -425,4 +429,41 @@ public class ProjectConfig {
 ### 5.2.2 Prototype Beans in real-world scenarios
 So far we've discussed how Spring manages ptototype beans by focusing on the behavior. In this section, we focus more on the use cases and where you should (deve) use prototype-scoped beans in production apps. Just as we did (assim como fizemos) with singleton  in section 5.1.2, we'll consider the discussed characteristics and analyze which scenarios prototype beans are good for and where *should (deve)* you *avoid them (evitar eles)* (by using singleton beans). 
 
-You won't find prototype beans as *often (frequentemente)* as you'll find singleton beans. But there is a good pattern you can use to decide if a bean should be prototype. 
+You won't find prototype beans as *often (frequentemente)* as you'll find singleton beans. But there is a good pattern you can use to decide if a bean should be prototype. Mas existe um bom padrão que pode usar para decidir se um bean deve ser do tipo *prototype*. Lembre-se de que beans singleton não são muito compatíveis com objetos mutáveis. Imagine que projetemos um objeto chamado *CommentProcessor*, responsável por processar e validar comentários. Um serviço utiliza o objeto *CommentProcessor* para implementar um caso de uso. No entanto, o objeto *CommentProcessor* armazena o comentário a ser processado como um atributo, e seus métodos alteram esse atributo (figura 5.9):
+![[Chapter 5 -The Spring context - Bean scopes and life cycle-3.png]]
+
+The **service class** uses a mutable object to implement the logic of a use case. 
+
+## 1. Por que criar um pacote *processor*?
+- Separação de responsabilidades: o pacote *processor* pode ser dedicado a classes que realizam processamento específico, como validação, transformação ou manipulação de dados. Isso mantém o código organizado e alinhado com o princípio de **responsabilidade única**.
+- **Facilidade de localização:** ao criar um pacote específico para processadores, fica mais fácil encontrar classes relacionada ao processamento de dados, como *CommentProcessor*.
+
+The code above shows the implementation of the CommentProcessor bean:
+[[CommentProcessor.java]]
+```java
+public void processComment() {
+	// changing the comment attribute
+}
+
+public void validateComment() {
+	// validating and changing the comment attribute
+}
+```
+These two methods alter the value of Comment attribute.
+
+The code above presents this services that uses the *CommentProcessor* class to implement a use case. The service method creates an instance of *CommentProcessor* using the class's constructor and then ueses the instance in the method's logic:
+
+
+---
+## Summary
+- No Spring, o escopo dos beans define como o framework gerencia as instâncias dos objetos.
+- O Spring oferece dois escopos principais para beans: *singleton* e *prototype*. 
+- No escopo #Singleton, o Spring gerencia diretamente as instâncias no seu contexto. <span style="background:#d4b106">Cada instância possui um nome único, e ao referenciá-lo, sempre se obtém essa mesma instância.</span> <span style="background:#b1ffff">O escopo #Singleton é o padrão do Spring.</span>
+- No escopo #Prototype, o Spring considera apenas o tipo do objeto. Cada tipo possui um nome único associado a ele. <span style="background:#d4b106">O Spring cria uma instância desse tipo sempre que o bean for referenciado.</span>
+
+- É possível configurar o Spring para instanciar um bean #singleton de forma antecipada #eager quando o contexto é inicializado, ou sob demanda #lazy na primeira vez que o bean for referenciado. Por padrão, os beans são instanciados #eagerly.
+
+- Na maioria das aplicações, utilizamos **beans singleton**. Como qualquer referência ao mesmo nome retorna a mesma instância, múltiplas threads podem acessá-la simultaneamente. Por isso, é recomendável que a instância seja *imutável*. No entanto, se houver necessidade de modificar atributos do bean, a responsabilidade pela **sincronização de threads** recai sobre o desenvolvedor.
+
+- Se for necessário um **objeto mutável**, o uso do escopo #prototype pode ser uma boa opção.
+
