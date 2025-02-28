@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "72b399e3095bcfd7",
+        "id": "df47ffb1e7d01fc2",
         "type": "tabs",
         "children": [
           {
-            "id": "ec90a0d72a45c6d1",
+            "id": "94bb4ab18626d92c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Capítulo 6 - Using aspects with Spring AOP"
+              "title": "New tab"
             }
           }
         ]
@@ -44,7 +40,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Explorador de arquivos"
+              "title": "Files"
             }
           },
           {
@@ -61,7 +57,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Procurar"
+              "title": "Search"
             }
           },
           {
@@ -80,17 +76,15 @@
             "state": {
               "type": "runjs-codelist-view",
               "state": {},
-              "icon": "js-dark-icon",
-              "title": "RunJS Codelist"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 484.01216888427734,
-    "collapsed": true
+    "width": 484.01216888427734
   },
   "right": {
     "id": "80c3d83199a5dd81",
@@ -183,6 +177,16 @@
             "state": {
               "type": "planner-timeline",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "77858298fadc1699",
+            "type": "leaf",
+            "state": {
+              "type": "planner-timeline",
+              "state": {},
               "icon": "calendar-with-checkmark",
               "title": "Timeline"
             }
@@ -196,13 +200,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Abrir a troca rápida": false,
-      "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
-      "daily-notes:Abrir a nota de hoje": false,
-      "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
-      "audio-recorder:Começar/parar a gravação de áudio": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -213,8 +217,20 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "ec90a0d72a45c6d1",
+  "active": "94bb4ab18626d92c",
   "lastOpenFiles": [
+    "Chapter 13 - Abstract Classes and Interfaces.png",
+    "Compilação vs Transpilação.md",
+    "README.md",
+    "Nota Análise Comparativa de programação funcional e programação orientada a objeto.md",
+    "Spring Security With JWT for REST API.png",
+    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
+    "Sem título 2.md",
+    "Sem título 1.md",
+    "Sem título.md",
+    "Exerc Prompt.md",
+    "Fila Genérica.md",
+    "E.md",
     "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-2.png",
     "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-1.png",
     "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP.png",
@@ -223,7 +239,6 @@
     "Capítulo 6 - Using aspects with Spring AOP-2.png",
     "Capítulo 6 - Using aspects with Spring AOP-1.png",
     "Capítulo 6 - Using aspects with Spring AOP.png",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md",
     "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor/CommentProcessor.java",
@@ -241,7 +256,6 @@
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/target/classes/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21 - Copia/HELP.md",
-    "Chapter 5 -The Spring context - Bean scopes and life cycle.png",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21/target/classes/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21/target/classes/target/classes/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21/HELP.md",
@@ -249,18 +263,8 @@
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex2/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1 1/HELP.md",
-    "The Spring context - Bean scopes and life cycle-2.png",
     "Inglês Tarik Becker/Seção 3 - Intensivo de 15 dias/Cronograma.md",
     "Spring Start Here/Capítulo 4 - The Spring Context - Using Abstractions/Capítulo 4 - The Spring Context - Using Abstractions.md",
-    "CND.md",
-    "Spring Start Here/Capítulo 3 - The Spring context - Wiring beans/Capítulo 3 - The Spring Context - Wiring Beans.md",
-    "Spring Start Here/Capítulo 3 - The Spring Context - Wiring Beans/Capítulo 3 - The Spring Context - Wiring Beans.md",
-    "Spring Start Here/Capítulo 2 - The Spring context - Defining beans/The Spring Context - Defining beans.md",
-    "Modern Java In Action/Capítulo 3 - Lambda Expressions/Desafios/📝 DESAFIOS SOBRE METHOD REFERENCES.md",
-    "Como ser um programador melhor/Capítulo 2 - Mantendo as aparências.md",
-    "Sem título 2.md",
-    "Como ser um programador melhor/Capítulo 1 - Importar-se com o código.md",
-    "Spring Start Here/Capítulo 2 - The Spring context - Defining beans/gsws_ap_b_ex1/HELP.md",
     "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }
