@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "df47ffb1e7d01fc2",
+        "id": "7025002cb2858919",
         "type": "tabs",
         "children": [
           {
-            "id": "94bb4ab18626d92c",
+            "id": "6f414fb6eefa619b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Capítulo 7 - Understanding Spring Boot and Spring MVC"
             }
           }
         ]
@@ -40,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Aspect",
+                "query": "lazy",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -57,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Procurar"
             }
           },
           {
@@ -80,11 +84,13 @@
               "title": "Plugin no longer active"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 484.01216888427734
+    "width": 484.01216888427734,
+    "collapsed": true
   },
   "right": {
     "id": "80c3d83199a5dd81",
@@ -200,13 +206,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -217,40 +223,41 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "94bb4ab18626d92c",
+  "active": "6f414fb6eefa619b",
   "lastOpenFiles": [
+    "Artigos/Paradigmas/Artigo 1/Análise Comparativa de programação funcional e programação orientada a objeto.md",
+    "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
+    "Capítulo 7 - Understanding Spring Boot and Spring MVC.png",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Sem título",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC",
+    "Spring Start Here/PART 2",
+    "Spring Start Here/PART 1",
     "Chapter 13 - Abstract Classes and Interfaces.png",
     "Compilação vs Transpilação.md",
     "README.md",
     "Nota Análise Comparativa de programação funcional e programação orientada a objeto.md",
     "Spring Security With JWT for REST API.png",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
     "Sem título 2.md",
     "Sem título 1.md",
     "Sem título.md",
     "Exerc Prompt.md",
     "Fila Genérica.md",
     "E.md",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-2.png",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-1.png",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP.png",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/imagens",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-2.png",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-1.png",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP.png",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens",
     "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/Nova pasta",
     "Capítulo 6 - Using aspects with Spring AOP-2.png",
     "Capítulo 6 - Using aspects with Spring AOP-1.png",
     "Capítulo 6 - Using aspects with Spring AOP.png",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor/CommentProcessor.java",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP",
+    "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor/CommentProcessor.java",
+    "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/sq-ch5-ex1.iml",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/user/service/UserService.java",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/services/CommentService.java",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/repository/CommentRepository.java",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/user/service",
     "Chapter 5 -The Spring context - Bean scopes and life cycle-3.png",
-    "Chapter 5 -The Spring context - Bean scopes and life cycle-2.png",
-    "Chapter 5 -The Spring context - Bean scopes and life cycle-1.png",
     "Inglês Tarik Becker/Seção 3 - Intensivo de 15 dias/Dia 4 - Fluency Jam - A música perfeita para avançar.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/target/classes/target/classes/target/classes/target/classes/target/classes/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/target/classes/HELP.md",
@@ -264,7 +271,6 @@
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1 1/HELP.md",
     "Inglês Tarik Becker/Seção 3 - Intensivo de 15 dias/Cronograma.md",
-    "Spring Start Here/Capítulo 4 - The Spring Context - Using Abstractions/Capítulo 4 - The Spring Context - Using Abstractions.md",
     "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }

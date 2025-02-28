@@ -243,7 +243,7 @@ Vamos analisar um exemplo de como lambdas, junto com a parametrização de compo
 
 Um padrão recorrente no processamento de recursos (por exemplo, ao lidar com arquivos ou banco de dados) é abrir um recurso, realizar algum processamento nele e, em seguida, fechar o recurso. As fases de configuração *setup* e limpeza *cleanup* são sempre semelhantes e envolvem o código principal que realiza o processamento. Isso é chamado de #execute-around-pattern, como ilustrado na figura 3.2.
 
-![[Capítulo 3 - Lambda Expressions.png]]
+![[Modern Java In Action/Capítulo 3 - Lambda Expressions/imagens/Capítulo 3 - Lambda Expressions.png]]
 
 No código a seguir, as linhas destacadas mostram o código repetitivo *boilerplate* necessário para ler uma linha de um arquivo (observe também que usamos a instrução try-with-resources do Java 7), que já simplifica o código, pois não é necessário fechar o recurso explicitamente:
 ```java
@@ -860,7 +860,7 @@ List<String> str = Arrays.asList("a", "b", "A", "B");
 str.sort((s1, s2) -> s1.compareToIgnoreCase(s2));
 ```
 
-![[Capítulo 3 - Lambda Expressions.png]]
+![[Modern Java In Action/Capítulo 3 - Lambda Expressions/imagens/Capítulo 3 - Lambda Expressions.png]]
 
 A expressão lambda possui uma assinatura compatível com o descritor de função do *Comparator*. Usando as regras descritas, podemos utilizar referência  de método para reescrever a expressão:
 ```java
