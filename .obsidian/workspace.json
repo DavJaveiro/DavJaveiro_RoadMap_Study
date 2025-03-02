@@ -13,6 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC"
+            }
+          },
+          {
+            "id": "6d7e52cc0f0dbe63",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
                 "mode": "source",
                 "source": false
@@ -21,7 +35,8 @@
               "title": "Capítulo 7 - Understanding Spring Boot and Spring MVC"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -84,8 +99,7 @@
               "title": "Plugin no longer active"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -223,54 +237,53 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6f414fb6eefa619b",
+  "active": "6d7e52cc0f0dbe63",
   "lastOpenFiles": [
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
+    "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-3.png",
+    "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-2.png",
+    "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-1.png",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main/resources/templates/home.html",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main/resources/templates",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main/resources",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/org/example/sqch8ex1/controller/MainController.class",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/org/example/sqch8ex1/controller",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/templates/home.html",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/templates",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/HELP.md",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/HELP.md",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md",
+    "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.png",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
+    "Capítulo 7 - Understanding Spring Boot and Spring MVC-4.png",
+    "Capítulo 7 - Understanding Spring Boot and Spring MVC-3.png",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md",
+    "Spring Start Here/PART 1/Capítulo 2 - The Spring context - Defining beans/The Spring Context - Defining beans.md",
+    "Capítulo 7 - Understanding Spring Boot and Spring MVC-2.png",
+    "Capítulo 7 - Understanding Spring Boot and Spring MVC-1.png",
     "Artigos/Paradigmas/Artigo 1/Análise Comparativa de programação funcional e programação orientada a objeto.md",
     "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Capítulo 7 - Understanding Spring Boot and Spring MVC.png",
     "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Sem título",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC",
-    "Spring Start Here/PART 2",
-    "Spring Start Here/PART 1",
     "Chapter 13 - Abstract Classes and Interfaces.png",
     "Compilação vs Transpilação.md",
     "README.md",
     "Nota Análise Comparativa de programação funcional e programação orientada a objeto.md",
-    "Spring Security With JWT for REST API.png",
     "Sem título 2.md",
     "Sem título 1.md",
     "Sem título.md",
     "Exerc Prompt.md",
     "Fila Genérica.md",
     "E.md",
-    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-2.png",
-    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP-1.png",
-    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens/Capítulo 6 - Using aspects with Spring AOP.png",
-    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/imagens",
-    "Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/Nova pasta",
-    "Capítulo 6 - Using aspects with Spring AOP-2.png",
-    "Capítulo 6 - Using aspects with Spring AOP-1.png",
-    "Capítulo 6 - Using aspects with Spring AOP.png",
-    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP",
-    "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor/CommentProcessor.java",
-    "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/src/main/java/org/example/sqch5ex3/comment/processor",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex6/sq-ch5-ex1.iml",
-    "Chapter 5 -The Spring context - Bean scopes and life cycle-3.png",
     "Inglês Tarik Becker/Seção 3 - Intensivo de 15 dias/Dia 4 - Fluency Jam - A música perfeita para avançar.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/target/classes/target/classes/target/classes/target/classes/target/classes/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/target/classes/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex3/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21 - Copia/HELP.md",
     "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21/target/classes/HELP.md",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21/target/classes/target/classes/HELP.md",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex21/HELP.md",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1 - Copia/HELP.md",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex2/HELP.md",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1/HELP.md",
-    "Spring Start Here/Capítulo 5 - The Spring context Bean Scopes and life cycle/sq-ch5-ex1 1/HELP.md",
-    "Inglês Tarik Becker/Seção 3 - Intensivo de 15 dias/Cronograma.md",
     "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }

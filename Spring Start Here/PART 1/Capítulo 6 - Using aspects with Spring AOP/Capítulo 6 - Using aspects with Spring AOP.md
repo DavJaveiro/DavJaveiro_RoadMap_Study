@@ -95,5 +95,76 @@ Suponha que tenhamos uma **aplicação** que implementa múltiplos **casos de us
 Nesta seção, discutiremos a implementação de um *aspect* simples para resolver nosso cenário. Criamos um novo projeto e definimos uma classe de serviço contendo um método que usaremos para testar nossa implementação e comprovar que o *aspect* definido funciona conforme o esperado.
 
 O projeto será chamado de "s1-ch6-ex1".
-Além da dependência *spring-context*, também vamos precisar da dependência *spring-aspects* para este exemplo.
+Além da dependência *spring-context*, também vamos precisar da dependência *spring-aspects* para este exemplo. In addition to the *spring-context* dependency, for this example we also need the *spring-aspects* dependency. Make sure to update your pom.xml file and add the needed dependencies. We need this dependency to implement the aspects.
 
+To make our example shorter and allow you to focus on the syntax related to aspects, we'll only consider one service object name *CommentService* and a use case it defines name *publishComment(Comment comment)*. This method, defined in the CommentService class, receives a parameter of type Comment. Comment is a model class and is presented in the next code snippet: [[Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/sq-ch6-ex1/src/main/java/org/example/sqch5ex3/comment/model/Comment.java|Comment]]
+```java
+public class Comment {
+	private String text;
+	private String author;
+
+	// Omitted getters and setters
+}
+```
+
+**NOTE:** Remember from chapter 4 that a model class is a class that models the data processed by the app. In our case, the *Comment* class describes a comment with its attributes: text and author. A service class implements use cases of an app. In chapter 4, we discussed more of these responsibilities, and we used them in examples.
+
+In listing 6.1, you find the definition of the *CommentService* class. We annotate the *CommentService* class with the *@Service* stereotype annotation <span style="background:#b1ffff">to make it a bean in the Spring Context</span>. The *CommentService* class defines the *publishComment(Comment comment)* method, representing our scenario's use case.
+
+You also observe in this example that instead of using *System.out*, I used an object of type *Logger* to write massages in the console. In real-world apps, you don't use System.out. You'll generally use a logging framework that offers you more flexibility in customizing the logging features and standardizing the logging messages. Some good options for a logging framework are as follows:
+- Log4j (https://logging.apache.org/log4j/2.x/)
+- Logback (http://logback.qos.ch/)
+-  Java Logging API, which comes with the JDK (http://mng.bz/v4Xq)
+
+The logging frameworks are compatible with any Java app, whether (independentemente) it's using Spring or not. As they are not related to Spring, I haven't use them in our examples to avoid distracting you. But we are far enough now with Spring that we can start to use these additional frameworks in our examples to familiarize you with syntaxes closer to production-ready apps.
+
+```java
+@Service
+public class CommentService {
+	private Logger logger = Logger.getLogger(CommentService.class.getName());
+
+	public void publishComment(Comment comment) {
+		logger.info("Publishing comment: " + comment.getText());
+	}
+
+}
+```
+
+[[Spring Start Here/Capítulo 6 - Using aspects with Spring AOP/sq-ch6-ex1/src/main/java/org/example/sqch5ex3/comment/services/CommentService.java|CommentService]]
+
+In this example, I use the JDK logging capabilities to avoid adding other dependencies to our project. Ao declarar um objeto logger, precisamos fornecer um nome como parâmetro. Esse nome aparece nos logs e facilita a identificação da origem das mensagens de log. Frequentemente, usamos o nome da classe, como fizemos neste exemplo:
+*CommentService.class.getName()*.
+
+---
+O #Logger é uma classe fornecida pelo *Java Logging API* (parte do JDK) que permite registrar mensagens de log em diferentes níveis, como #INFO, #WARNING, #SEVERE, etc. Essas mensagens são úteis para monitorar o comportamento do sistema, depurar problemas ou rastrear durante a execução do programa.
+
+```java
+private Logger logger = Logger.getLogger(CommentService.class.getName());
+```
+- O método estático *Logger.getLogger(String name)* cria ou obtém uma instância de *Logger* com o nome especificado. Esse nome é usado para identificar a origem das mensagens de log. Ele aparecerá nos logs gerados, permitindo que saibamos de onde veio cada mensagem.
+* *CommentService.class.getName()* - retorna o nome totalmente qualificado da classe *CommentService* (por exemplo, com.example.myapp.service.CommentService). Usar o nome da classe como parâmetro é uma prática comum porque:
+	* Facilita identificar a origem dos lgos;
+	* É consistente e evita erros ao digitar manualmente o nome da classe.
+
+
+**Por que usar o nome da classe como parâmetro?**
+Quando usamos o nome da classe como parâmetro, os logs gerados incluirão esse nome. Isso ajudar a rastrear a origem das mensagens de log, especialmente em projetos grandes com muitas classes.
+Por exemplo, suponhamos que tenhamos dois serviços:
+- *CommentService*
+- *UserService*
+Se ambos registrarem mensagens de log, o nome da classe aparecerá nos logs, permitindo que a gente distinga facilmente quais mensagens foram geradas por qual serviço.
+
+Exemplo de log:
+INFO: CommentService - Comentário publicado com sucesso.
+INFO: UserService - Usuário registrado com sucesso.
+
+---
+
+Let's write the Main class that the *publishComment()* method in the service class and observe the current behavior, as shown in the following listing.
+```java
+public class main { 
+	public static void main(Strig[] args) {
+		var c = new AnnotationConfigApplicationContext(ProjectConfig.class)
+	}
+}
+```
