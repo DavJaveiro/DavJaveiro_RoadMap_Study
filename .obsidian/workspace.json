@@ -35,8 +35,7 @@
               "title": "Capítulo 7 - Understanding Spring Boot and Spring MVC"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -237,27 +236,29 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6d7e52cc0f0dbe63",
+  "active": "6f414fb6eefa619b",
   "lastOpenFiles": [
+    "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-4.png",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
+    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/org/example/sqch8ex1/controller/MainController.class",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/org/example/sqch8ex1/controller",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/classes/application.properties",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/maven-status",
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/classes/target/classes",
     "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-3.png",
     "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-2.png",
     "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-1.png",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main/resources/templates/home.html",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main/resources/templates",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main/resources",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src/main",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/src",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/org/example/sqch8ex1/controller/MainController.class",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/org/example/sqch8ex1/controller",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/templates/home.html",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/templates",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/HELP.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/HELP.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md",
     "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.png",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Capítulo 7 - Understanding Spring Boot and Spring MVC-4.png",
     "Capítulo 7 - Understanding Spring Boot and Spring MVC-3.png",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md",
@@ -267,7 +268,6 @@
     "Artigos/Paradigmas/Artigo 1/Análise Comparativa de programação funcional e programação orientada a objeto.md",
     "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md",
     "Capítulo 7 - Understanding Spring Boot and Spring MVC.png",
-    "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
     "Chapter 13 - Abstract Classes and Interfaces.png",
     "Compilação vs Transpilação.md",
     "README.md",

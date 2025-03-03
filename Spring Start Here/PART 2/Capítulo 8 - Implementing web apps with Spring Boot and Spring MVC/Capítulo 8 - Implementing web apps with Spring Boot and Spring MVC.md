@@ -182,7 +182,114 @@ http://example.com/products<span style="background:#d4b106">?brand=honda&price=7
 
 ![[Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-3.png]]
 
-1. The client sends the color through an HTTP request parameter;
-2. 
+
+```java
+public cclass MainController {
+	@RequestMapping("/home")
+	public String home(
+		@RequestParam String color, Model page) {
+			page.addAttribute("username", "Katy");
+			page.addAttribute("color", color);
+			return "home.html";
+		}
+	)
+}
+```
+Você pode adicionar um novo parâmetro ao controller para obter este parâmetro também. O próximo trecho de código mostra essa alteração. 
+```java
+@Controller
+public class MainController {
+	@RequestMapping("/home")
+	public String home(
+			@RequestParam(required = false) String name,
+			@RequestParam(required = false) String color,
+			Model page) {
+		page.addAttribute("username", name);
+		page.addAttribute("color", color);
+		return "home.html";
+		}
+		
+		)
+}
+```
+
+*http://localhost:8080/home?color=blue&name=Jane*
+
+? - The request parameter query starts here.
 
 
+<font color="#fbd5b5">color</font> - this is the key (or name) of the request parameters;
+<font color="#fbd5b5">blue</font> - This is request parameter's value.
+
+**name** - this is the key (or name) of the request parameters;
+**Jane** - this is request parameter's value.
+
+*@RequestParam(required = false)* -> isto indica que o parâmetro é **opcional**. Por padrão, quando usamos o *@RequestParam*, o Spring exige que o parâmetro esteja presente na requisição. Se ele não for passado, ocorrerá um erro *404 Bad Request*. No entanto, ao definir *required = false*, o Spring não exigirá esse parâmetro, e ele poderá ser **omitido** sem causar erro.
+
+
+**NOTA:** Por padrão, um parâmetro de requisição *@RequestParam* é obrigatório. Se o cliente não fornecer um valor para ele, o servidor retornará uma resposta com o status HTTP 400 Bad Request.
+Se desejar que o parâmetro seja opcional, você deve definir explicitamente isso na anotação, usando o atributo *required = false*.
+
+### 8.1.3 Using path variables to send data from client to server
+São partes variáveis do caminho da URL, usados para identificar recursos específicos. São comumente utilizados em APis RESTful. Portanto, os valores das variáveis são diretamente inseridos na **URL do caminho** (path):
+http://localhost:8080/home/blue
+
+Não identificamos mais o valor com uma **chave** como faz nos #request-parameters. Em vez disso, o valor é extraído diretamente de uma posição específica na URL do caminho *path*.
+
+No servidor, esse valor é recuperado da URL com base na posição exata em que foi definido. É possível ter mais de um **path variable**, mas, geralmente, é melhor evitar o uso de mais de dois. Se houver mais de dois valores como **path variables**, a URL pode se tornar difícil de ler.
+
+Por isso, prefiro utilizar **request parameters** quando há mais de dois valores, conforme discutido na seção 8.2.1.
+
+Além disso, **path variables** não devem ser usadas para valores opcionais. Recomendamos o seu uso  apenas para parâmetros obrigatórios. Se houver valores opcionais a serem enviados na requisição HTTP, o ideal é usar **request parameters**, conforme discutido na seção 8.2.1.
+
+A Tabela 8.1 compara as abordagens de **request parameters** e **path variables**..
+
+**Request parameters**
+- Can be used with optional values;
+- It is recommended that you avoid a large number os parameters. If you need to use more than three, i recommend you use the request body, as you'll learn in chapter 10. Avoid sending more than three query parameters for readability;
+- Some developers <span style="background:#affad1">consider the query expression more difficult to read than the path expression</span>.
+
+**Path Variables**
+- Should not be used with optional values;
+- Always avoid sending more than three path variables. It's even better if you keep a maximum of two.
+- Easier to read than a query expression. For a publicly exposed website, it's also easier for search engines (e.g., Google) to index the pages. This advantage might make the website easier to find through a search engine.
+
+Quando a página que estamos criando depende de apenas um ou dois valores essenciais para o resultado final, é melhor colocá-los diretamente no *path variables*. Isso torna a requisição mais legível, a URL mais fácil de encontrar ao adicioná-lo aos favoritos no navegador e também melhora a indexação por mecanismos de busca (caso isso seja relevante para sua aplicação).
+
+Para referenciar uma **path variable** em uma ação do **controller**, basta atribuir um nome a ela e adicioná-la à **URL** dentro de **chaves({})**. Em seguida, usamos a anotação *@PathVariable* para associar o parâmetro do método no **controller** ao valor extraído da URL.
+
+```java
+@Controller
+public class MainController {
+	@RequestMapping("/home/{color}")
+	public String home(
+		@PathVariable String color, 
+		Model page) {
+			page.addAttribute("username", "katy");
+			page.addAttribute("color", color);
+			return "home.html";
+		}
+	)
+}
+```
+Marcamos o parâmetro onde nós queremos obter o valor da path variable com a annotation *@PathVariable*. O nome do parâmetro deve ser o mesmo do nome da variável no path.
+
+![[Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-4.png]]
+
+- The {color} path variable represents the value provided in the path;
+- The action method's parameter with the name of the path variable, annotated with @PathVariable, gets the value from the path.
+
+## 8.2 Using the GET and POST HTTP methods
+Nesta seção, discutiremos os métodos HTTP e como o cliente os utiliza para indicar a ação que deseja realizar sobre um recurso - seja **criação**, **alteração**, **recuperação** ou **exclusão**.
+
+Uma requisição HTTP é identificada por um **caminho (path)** e um **verbo (método HTTP)**. Até agora, mencionamos apenas o caminho e, sem perceber, utilizamos o método HTTP GET. Esse método serve para indicar que o cliente deseja apenas recuperar dados, sem modificá-los nos servidor.
+
+No entanto, uma aplicação precisa fazer mais do que apenas buscar informações. Ela também precisar **modificar**, **adicionar e excluir dados**, exigindo o uso de outros métodos HTTP.
+
+**NOTA:** Tome cuidado! Podemos usar um método HTTP de forma diferente do seu propósito original, mas isso está errado.
+
+Por exemplo, tecnicamente é possível usar um **HTTP GET** para implementar uma funcionalidade que altere os dados, mas sessa é uma **péssima prática**.
+
+Nunca devemos utilizar um método HTTP para algo diferente da sua finalidade original.
+
+Até agora, utilizamos o **caminho da requisição** para direcionar a chamada a uma ação específica do controlador. No entanto, em cenários mais complexos, é possível **atribuir o mesmo caminho a múltiplas ações** dentro do controlador, desde que cada uma utilize um método HTTP diferente.
