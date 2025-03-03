@@ -374,3 +374,22 @@ Vamos modificar o *controller* e adicionar uma ação para permitir a adição d
 Se não definir um método, por padrão, *@RequestMapping* usará **HTTP GET**.
 
 No entanto, como tanto o caminho *path* quanto o método HTTP são essenciais para qualquer chamada HTTP, queremos sempre confirmar ambos. Por essa razão, os desenvolvedores geralmente usam anotações específicas para cada método HTTP em vez de *@RequestMapping*. 
+
+Tanto o path quanto o método HTTP são essenciais para qualquer chamada HTTP. 
+
+*@GetMapping* maps the HTTP GET request with a specific path to the controller's action.
+
+*@PostMapping* maps the HTTP Post request with a specific path to the controller's action. For apps, you'll often find developers using *@GetMapping* to map a #GET request to an action, *@PostMapping* for a request using HTTP POST, and so on. We'll also change our example to use these dedicated annotations for HTTP methods. The following listing presents the controller class's full content, including the changes on the mapping annotations for the actions.
+
+[[ProductController.java]]
+
+We can also change the view to allow the user to call the controller's HTTP Post action and add a product to the list. We'll use an HTML form to make this HTTP request. The following listing presents the changes we need to make on the products.html page (our view) to add the HTML form. The result of the page designed with listing 8.12 is shown in figure 8.11.
+
+In our example, i used the *@RequestParameter* annotation, which you learned in section 8.2.1. I used this annotation here to make it clear how the client sends the data.
+
+Mas, às vezes, o Spring permite que você omita código. Por exemplo, poderíamos usar um *Product* como parâmetro diretamente na ação do controller, como apresentado na listagem 8.13. Como os nomes dos parâmetros da requisição são os mesmo que os atributos da classe *Product*, o Spring sabe como associá-los e cria automaticamente o objeto. 
+
+Para alguém que já conhece o Spring, isso é excelente, pois evita a necessidade de escrever várias linhas de código. No entanto, iniciantes podem ficar confusos com todos esses detalhes.
+
+Digamos que encontremos um exemplo em um artigo que use essa sintaxe. Pode não estar claro de onde vem a insância de *Product*. Se estamos começando a aprender Springg e se depararmos com essa situação, meu conselho é estar ciente de que o Spring tende a oferecer várias sintaxes para ocultar o máximo de código possível. Sempre que encontrar uma sintaxe que não compreende claramente em um exemplo ou artigo, tente buscar detalhes na especificação do framework.
+

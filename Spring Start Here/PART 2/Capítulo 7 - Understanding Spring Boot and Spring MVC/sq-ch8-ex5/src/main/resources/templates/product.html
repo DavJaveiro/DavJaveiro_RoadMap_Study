@@ -7,7 +7,6 @@
 <body>
     <h1>Products</h1>
     <h2>View Products</h2>
-
     <table>
         <tr>
             <th>Product Name</th>
@@ -18,5 +17,13 @@
             <td th:text="${p.price}"></td>
         </tr>
     </table>
+
+    <h2>Add a product</h2>
+    <form action="/products" method="post">
+        Name: <input type="text" name="name"><br />
+
+        Price: <input type="number" name="price"<br />
+        <button type="submit">Add Product</button>
+    </form>
 </body>
 </html>
