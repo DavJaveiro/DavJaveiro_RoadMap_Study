@@ -34,13 +34,13 @@ Se você conhece o *Singleton pattern*, o funcionamento no Spring pode parecer e
 
 Logo, o Singleton Pattern é um design pattern que garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Isso é particularmente útil em situações onde a criação de múltiplas instâncias de uma classe seria ineficiente ou desnecessária. 
 
-Por padrão, todos os beans no Spring são singleton. Ou seja, uma única instância do bean é criada e compartilhada em todo o contêiner Spring.
+Por padrão, <span style="background:#d4b106">todos os beans no Spring são singleton</span>. Ou seja, uma única instância do bean é criada e compartilhada em todo o contêiner Spring.
 
 Uma única instância significa menos uso de recurso de memória.
 Simplicidade na configuração e gerenciamento de beans.
 Garante que todas as solicitações ao bean compartilhem a mesma instância, mantendo consistência. 
 
-Portanto, o padrão garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Isso significa que, para uma classe específica que segue o padrão Singleton, haverá apenas uma instância dessa classe em toda a aplicação. O nome *singleton* reflete justamente a esse conceito de **único**.
+Portanto, <span style="background:#d4b106">o padrão garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância</span>. Isso significa que, para uma classe específica que segue o padrão Singleton, haverá apenas uma instância dessa classe em toda a aplicação. O nome *singleton* reflete justamente a esse conceito de **único**.
 
 Podemos ter várias classes diferentes implementando o padrão Singleton na mesma aplicação. Por exemplo, podemos ter um bean de configuração, um de conexão com o banco de dados... cada um desses beans seria único dentro do seu próprio contexto.
 

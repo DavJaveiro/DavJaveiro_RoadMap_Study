@@ -293,3 +293,84 @@ Por exemplo, tecnicamente é possível usar um **HTTP GET** para implementar uma
 Nunca devemos utilizar um método HTTP para algo diferente da sua finalidade original.
 
 Até agora, utilizamos o **caminho da requisição** para direcionar a chamada a uma ação específica do controlador. No entanto, em cenários mais complexos, é possível **atribuir o mesmo caminho a múltiplas ações** dentro do controlador, desde que cada uma utilize um método HTTP diferente.
+
+O método HTTP é definido por um **verbo** e representa a intenção do cliente.
+
+Se a requisição do cliente **apenas recupera dados**, implementamos o endpoint usando **HTTP GET**. No entanto, se a requisição **modifica dados no servidor**, utilizamos outros verbos para deixar a intenção do cliente mais clara.
+
+**HTTP methdos**
+#GET - A solicitação do cliente apenas retorna dados;
+#POST - A solicitação do cliente envia novos dados para serem adicionados no servidor;
+#PUT - a solicitação do cliente modifica um dado registrado no servidor;
+#PATCH - A solicitação do cliente modifica um dado registrado no servidor de forma parcial;
+#DELETE - A requisição do cliente deleta um dado do lado do servidor.
+
+Embora seja uma boa prática a **substituição completo** de um registro #PUT ou da modificação parcial #Patch em aplicações em produção, essa distinção nem sempre é seguida.
+
+Now let's implement an example that uses more than just HTTP GET. The scenario is the following: we have to create an app that stores a list of products. Each product has a name and a price. The web app displays a list of all products and allows the user to add one more product through an HTML form.
+
+Observe the two use cases described by the scenario. The user needs to do the following:
+- View all products in the list; here, we'll continue using HTTP Get;
+- Add products to the list; here, we'll use HTTP Post.
+
+
+In the project, we create a Product class to describe a product with its name and price attributes. The *Product* class is a model class, as we discussed in chapter 5, so we'll create it in package name "model". 
+
+Em Java, uma classe model (ou modelo) é uma classe que representa uma <span style="background:#d4b106">entidade do domínio da aplicação</span>. Ela geralmente contém atributos que mapeiam os dados dessa entidade e pode incluir métodos para manipulação desses dados. 
+
+Na arquitetura MVC, a classe model faz parte do model, que é responsável por lidar com a lógica de negócios e o acesso a dados.
+
+[[Product.java]]
+
+Now that we have a way to represent a product, let's create the list where the apps stores the products. The web app will display the product in this list on a web page, and in this list the usar can add more products. We will implement the two use cases (<span style="background:#d4b106">getting the list of products to display and adding a new product</span>) as method in a service class. Let's create a new service class name ProductService in a package name "service".
+
+The next listing presents the service class, which instantiates a list and defines two methods for adding a new product and getting it.
+
+**NOTE:** This design is a simplification to allow you to focus on the discussion of the HTTP methods. Lembre-se que, por padrão, o escopo de um *Spring bean* é #singleton, como discutimos no capítulo 5, e uma aplicação web implica múltiplas *threads* (uma para cada requisição). Modificar uma lista definida como atributo do bean pode causar condições de concorrência (race conditions) em um cenário real, onde vários clientes adicionam produtos simultaneamente.
+
+Por enquanto, manteremos essa simplificação, pois, nos próximos capítulos, substituiremos a lista por um banco de dados, eliminando esse problema. No entanto, tenha em mente que essa é uma abordagem inadequada e, como discutimos no capítulo 5, não devemos utilizar algo semelhante em uma aplicação pronta para produção, Singleton Beans não são thread-safe.
+
+O termo #thread-safe refere-se a um comportamento de um programa ou de um recurso que pode ser acessado simultaneamente por múltiplas threads (linhas de execução) sem causar comportamentos inesperados, erros ou corrupção de dados.
+
+Quando um código ou recurso é #thread-safe, significa que várias threads podem operar esse recurso ou código ao mesmo tempo sem que isso afete negativamente o estado interno ou cause condições de corrida(race conditions) ou outros exemplos de concorrência.
+
+Um código é considerado #thread-safe quando ele garante que, independentemente de quantas threads acessam ou modificam o recurso simultaneamente, o sistema permanece em um estado consistente, sem erros ou falhas. Isso pode ser alcançado através de diversas técnicas, como #synchronization, #locks, #atomic-operations, entre outras.
+
+No capítulo 12, discutiremos fontes de dados; usaremos um banco de dados para armazenar os dados de forma mais próxima do que uma aplicação de produção realmente funciona. Mas, por enquanto, é melhor focar no assunto discutido, **métodos HTTP**, e construir nossos exemplos de forma progressiva.
+
+Um *controller* chamará os *use cases* implementados pelo service. O **controller** recebe os dados sobre um novo produto do cliente e os adiciona à lista ao chamar o *service*, além de obter a lista de produtos e enviá-la para a *view*. Primeiramente, vamos criar uma classe *ProductController* em um pacote chamado *controllers* e permitir que esse *controller* injete o *bean do service*. O trecho de código a seguir mostra a definição do controller:
+[[ProductController.java]]
+
+Aqui, nós usamos DI através do parâmetro construtor da classe controller para obter o serviço bean através do Spring context.
+
+Agora, expomos o primeiro *user case*. Exibir a lista de produtos em uma página. Essa funcionalidade deve ser simples. Usamos um parâmetro *Model* para enviar os dados do *controller* para a *view*, como aprendemos na seção 8.1. O trecho de código a seguir apresenta a implementação para a ação do controller.
+
+**Short explanation**
+O #Model no Spring MVC é uma ferramenta poderosa para passar dados do controller para a view, garantindo que as informações necessárias para a interface do usuário sejam disponibilizadas de forma simples e organizada.
+Em uma aplicação real e em produção, o Model é amplamente utilizado em aplicações **Spring MVC** ou **Spring Boot** para passar dados do #controller para a #view. Ele é uma parte essencial do padrão **MVC (Model-View-Controller)**, que é uma das abordagens mais comuns para organizar a lógica de uma aplicação web.
+
+Para exibir os produtos na *view*, definimos a página *products.html* na pasta "resources/templates" do projeto, como aprendemos na seção 8.1. O trecho a seguir mostra o conteúdo do arquivo *products.html*, que recebe a lista de produtos enviada pelo *controller* e a exibe em uma tabela HTML.
+
+[[product.html]]
+
+![[Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-5.png]]
+
+A figura 8.10 apresenta o fluxo para chamar o caminho */products* com HTTP GET no diagrama do Spring MVC:
+1. The client sends an HTTP request for the */products* path;
+2. The dispatcher servlet uses the handler mapping to find the controller's action to call for the */products* path;
+3. The dispatcher servlet calls the controller's action;
+4. The controller request the product list from the service and sends it to be rendered with the view;
+5. The view is rendered into an HTTP response;
+6. The HTTP response is sent back to the client.
+
+Mas ainda precisamos implementar o segundo caso de uso antes de testar a funcionalidade da aplicação;
+
+Se não tivermos uma opção para adicionar um produto à lista, veremos nada além de uma tabela vazia;
+
+Vamos modificar o *controller* e adicionar uma ação para permitir a adição de um produto à lista de produtos.
+
+*@RequestMapping(path = "/products", method = RequestMethod.POST)* - usamos o atributo #method da anotação *@RequestMapping* para especificar o método HTTP.
+
+Se não definir um método, por padrão, *@RequestMapping* usará **HTTP GET**.
+
+No entanto, como tanto o caminho *path* quanto o método HTTP são essenciais para qualquer chamada HTTP, queremos sempre confirmar ambos. Por essa razão, os desenvolvedores geralmente usam anotações específicas para cada método HTTP em vez de *@RequestMapping*. 
