@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "7025002cb2858919",
+        "id": "ac9aab0230d2696c",
         "type": "tabs",
         "children": [
           {
-            "id": "6f414fb6eefa619b",
+            "id": "cadffd8c5f6804f8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
+                "file": "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC"
-            }
-          },
-          {
-            "id": "6d7e52cc0f0dbe63",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Capítulo 7 - Understanding Spring Boot and Spring MVC"
+              "title": "Capítulo 9 - Using the Spring web scopes"
             }
           }
         ]
@@ -67,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "lazy",
+                "query": "tag:#Prototype",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +84,8 @@
               "title": "Plugin no longer active"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -236,22 +223,27 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6f414fb6eefa619b",
+  "active": "cadffd8c5f6804f8",
   "lastOpenFiles": [
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/src/main/java/org/example/main/product/controllers/ProductController.java~",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/org/example/main/product/controllers/ProductController.class",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/org/example/main/product/controllers",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/src/main/resources/templates/product.html",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/src/main/resources/templates",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/src/main/resources/application.properties",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/src/main/resources",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/src/main",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/templates/product.html",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/src",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/target/classes/target/classes/target/classes/templates",
-    "Excalidraw/Drawing 2025-03-03 16.08.46.excalidraw.md",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main/login/controller/LoginController.class",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main/login/controller",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main/SqCh9Ex1Application.class",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main/login/model/LoginProcessor.class",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main/login/model",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main/login",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example/main",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org/example",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/classes/org",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/generated-sources/annotations",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/target/generated-sources",
+    "Capítulo 9 - Using the Spring web scopes-2.png",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/HELP.md",
+    "Capítulo 9 - Using the Spring web scopes-1.png",
+    "Capítulo 9 - Using the Spring web scopes.png",
+    "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
+    "Excalidraw/Drawing 2025-03-03 16.08.46.excalidraw.md",
     "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC-5.png",
     "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch8-ex5/HELP.md",
@@ -268,11 +260,8 @@
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md",
     "Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.png",
     "Capítulo 7 - Understanding Spring Boot and Spring MVC-4.png",
-    "Capítulo 7 - Understanding Spring Boot and Spring MVC-3.png",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md",
     "Spring Start Here/PART 1/Capítulo 2 - The Spring context - Defining beans/The Spring Context - Defining beans.md",
-    "Capítulo 7 - Understanding Spring Boot and Spring MVC-2.png",
-    "Capítulo 7 - Understanding Spring Boot and Spring MVC-1.png",
     "Artigos/Paradigmas/Artigo 1/Análise Comparativa de programação funcional e programação orientada a objeto.md",
     "Compilação vs Transpilação.md",
     "README.md",
@@ -282,8 +271,6 @@
     "Sem título.md",
     "Exerc Prompt.md",
     "Fila Genérica.md",
-    "E.md",
-    "Inglês Tarik Becker/Seção 3 - Intensivo de 15 dias/Dia 4 - Fluency Jam - A música perfeita para avançar.md",
     "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }

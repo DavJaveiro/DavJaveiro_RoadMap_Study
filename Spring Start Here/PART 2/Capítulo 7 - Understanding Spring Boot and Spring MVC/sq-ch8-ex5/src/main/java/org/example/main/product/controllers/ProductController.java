@@ -15,11 +15,12 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String viewProducts(Model model) {
-        var products = productService.findAllProducts();
-        model.addAttribute("products", products);
-        return "product.html";
+    public String viewAllProducts(Model model) {
+        var p = productService.findAllProducts();
+        model.addAttribute("products", p);
+        return "products.html";
     }
+
 
     @PostMapping("/products")
     public String addProduct(@RequestParam String name, @RequestParam double price, Model model)
@@ -41,8 +42,6 @@ public class ProductController {
         model.addAttribute("products", products);
         return "products.html";
     }*/
-
-
 
 
 

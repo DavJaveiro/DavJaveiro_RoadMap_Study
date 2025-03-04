@@ -393,3 +393,20 @@ Para alguém que já conhece o Spring, isso é excelente, pois evita a necessida
 
 Digamos que encontremos um exemplo em um artigo que use essa sintaxe. Pode não estar claro de onde vem a insância de *Product*. Se estamos começando a aprender Springg e se depararmos com essa situação, meu conselho é estar ciente de que o Spring tende a oferecer várias sintaxes para ocultar o máximo de código possível. Sempre que encontrar uma sintaxe que não compreende claramente em um exemplo ou artigo, tente buscar detalhes na especificação do framework.
 
+## *Summary*
+- As aplicações web de hoje possuem páginas dinâmicas (também chamadas de views dinâmicas). Uma página dinâmica pode exibir conteúdos diferentes para requisições diferentes.
+- Para saber o que exibir, uma view dinâmica recebe os dados variáveis do **controller**;
+- Uma maneira fácil de implementar páginas dinâmicas em aplicações Spring é usando um **template engine** como o *Thymeleaf*.
+- Um **template engine** é uma dependência que permite que sua aplicação obtenha facilmente os dados enviados pelo *controller* e os exiba na view.
+- O cliente pode enviar dados para o servidor por meio de parâmetros de requisição ou variáveis de caminho. A ação de um *controller* recebe os dados enviados pelo cliente em parâmetros anotados com *@RequestParam* ou *@PathVariable*.
+- Um parâmetro de requisição pode ser opcional;
+- Você deve usar variáveis de caminho apenas para dados obrigatórios que o cliente precisa enviar. 
+
+- Um **caminho (path)** e um **método HTTP** identificam uma **requisição HTTP**. O método HTTP é representado por um **verbo** que define a intenção do cliente.
+	Os principais métodos HTTP que você encontrará em aplicações em produção são: **GET, POST, PUT, PATCH e DELETE**.
+	- **GET** → Indica que o cliente deseja **recuperar dados** sem modificar nada no backend.
+	- **POST** → Indica que o cliente deseja **adicionar novos dados** no servidor.
+	- **PUT** → Indica que o cliente deseja **alterar completamente** um registro no backend.
+	- **PATCH** → Indica que o cliente deseja **modificar parcialmente** um registro no backend.
+	- **DELETE** → Indica que o cliente deseja **remover um dado** do backend.
+
