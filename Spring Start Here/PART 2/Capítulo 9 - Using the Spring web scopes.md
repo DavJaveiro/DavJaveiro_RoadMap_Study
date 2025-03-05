@@ -128,4 +128,65 @@ Por exemplo, quando um usuário acessa a aplicação, o Tomcat cria uma sessão 
 
 Se você estiver utilizando o Spring, por exemplo, pode configurar beans de escopo de sessão com a anotação `@Scope("session")` para aproveitar a sessão gerenciada pelo Tomcat e integrar o gerenciamento de estado de sessão com o ciclo de vida dos beans no Spring.
 
+## 9.2 Using the session scope in a Spring web app
+Nesta seção, discutimos os *session-scoped beans*. Quando acessamos um aplicativo web e fazemos login, espera poder navegar pelas páginas desse aplicativo enquanto ele ainda se lembra que você está autenticado. Um *session-scoped bean* é um objeto gerenciado pelo Spring, para o qual o Spring cria uma instância e a vincula à HTTP Session. Essa instância pode ser reutilizada para o mesmo cliente enquanto nossa HTTP permanecer ativa. Os dados armazenados nos atributos do *session-scoped bean* ficam disponíveis para todas as requisições do cliente ao longo de uma *HTTP session*.
+
+Essa abordagem permite armazenar informações sobre as ações dos usuários enquanto eles navegam pelas páginas do nosso aplicativo.
+
+![[Capítulo 9 - Using the Spring web scopes-3.png]]
+
+O #Session-scope bean é criado pelo Spring e vinculado à *HTTP Session*, permitindo que os dados do usuário sejam mantidos durante toda a sessão. Já o #Request-scope bean é criado para cada requisição e descartado após sua conclusão.
+
+![[Capítulo 9 - Using the Spring web scopes-4.png]]
+**Request-scoped beans** - para cada requisição, o Spring cria uma instância do bean diferente.
+
+
+**Session-scoped beans** - 
+![[Capítulo 9 - Using the Spring web scopes-5.png]]
+- Durante a mesma *HTTP Session*, duas requisições diferentes do mesmo cliente recebem a mesma instância do bean.
+
+Alguns recursos que podem ser implementados com *session-scoped beans* incluem:
+- **Login** - mantém os detalhes do usuário autenticado enquanto ele navega pelo aplicativo e faz várias requisições;
+- **Carrinho de compras online** - armazena os produtos adicionados pelo usuário enquanto ele explora diferentes páginas do aplicativo.
+
+Aqui está a tabela com os principais aspectos dos _session-scoped beans_:
+
+|**Fato**|**Consequência**|**A Considerar**|**Evitar**|
+|---|---|---|---|
+|Os _session-scoped beans_ permanecem ativos durante toda a _HTTP session_.|Têm um ciclo de vida mais longo e são menos frequentemente coletados pelo _garbage collector_ do que os _request-scoped beans_.|Os dados armazenados nesses _beans_ permanecem disponíveis por mais tempo.|Armazenar grandes volumes de dados na sessão, pois pode impactar o desempenho. Nunca armazenar informações sensíveis (senhas, chaves privadas etc.).|
+|Múltiplas requisições podem compartilhar a mesma instância do _session-scoped bean_.|Se um mesmo cliente fizer requisições concorrentes que alteram os dados do _bean_, podem ocorrer problemas de concorrência, como _race conditions_.|Se esse cenário for possível, pode ser necessário usar técnicas de sincronização.|Depender da sincronização como solução primária. O ideal é evitar esse tipo de concorrência sempre que possível.|
+|Os _session-scoped beans_ permitem compartilhar dados entre requisições, armazenando-os no servidor.|A lógica implementada pode tornar as requisições dependentes umas das outras.|Manter o estado na memória do aplicativo pode criar dependência do cliente com uma instância específica do sistema.|Tornar as requisições dependentes entre si. Avalie armazenar os dados em um banco de dados para manter a independência das requisições.|
+
+Continuamos usando um *session-scoped* bean para que o aplicativo reconheça que um usuário fez login e o identifique como autenticado enquanto ele acessa diferentes páginas. Dessa forma, o exemplo ensina todos os detalhes relevantes para trabalhar com aplicações em produção.
+
+Vamos modificar a aplicação implementada na seção 9.1 para exibir uma página acessível apenas para usuários autenticados. Após o login, o aplicativo redireciona o usuário para esta página, que exibe uma mensagem de boas-vindas com seu nome de usuário e a opção de logout por meio de um link.
+
+Esses são os passos necessários para implementar essa mudança:
+1. Criar um *session-scoped* bean para armazenar os detalhes do usuário autenticado;
+2. Criar a página que só pode ser acessada após o login;
+3. Garantir que a página criada no passo 2 não possa ser acessada sem autenticação;
+4. Redirecionar o usuário para a página principal após um login bem-sucedido.
+
+Felizmente, criar um *session-scoped* bean no Spring é simples, basta usar a anotação *@SessionScope* na classe do bean. Vamos criar uma nova classe. *LoggedUserManagementService*, e torná-la *Session-scoped*, conforme apresentado na lista a seguir:
+```java
+@Sesssion
+@SessionScope
+public class LoggedUserManagementService {
+	private String username;
+
+	// Omitted getters and setters
+}
+```
+
+- We add the @Service stereotype annotation to instruct Spring to manage this class as a bean in its context;
+- We use the @SessionScope annotation to change the scope of the bean to session.
+
+Sempre que um usuário faz login com sucesso, armazenamos o nome dele no *atributo* *username*. Auto-wiremos o *bean* *LoggedUserManagementService* na classe *LoginProcessor*, que implementamos na seção 9.1 para cuidar da lógica de autenticação.
+
+Observe que o bean *LoginProcessor* permanece com escopo de requisição, continuamos utilizando o Spring para criar essa instância para cada requisição de login, precisamos apenas dos valores dos atributos username e password durante a requisição para executar a lógica de autenticação.
+
+Como o bean *LoggedUserManagementService* tem escopo de sessão, o valor do username estará agora acessível por toda a sessão HTTP. Podemos usar esse valor para saber se alguém está logado e quem é. Não precisamos nos preocupar com o caso em que múltiplos usuários estão logados; o framework da aplicação garante que cada requisição HTTP seja vinculada à sessão correta. A figura abaixo descreve visualmente o fluxo de login.
+
+
+![[Capítulo 9 - Using the Spring web scopes-6.png]]
 
