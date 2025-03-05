@@ -190,3 +190,44 @@ Como o bean *LoggedUserManagementService* tem escopo de sessão, o valor do user
 
 ![[Capítulo 9 - Using the Spring web scopes-6.png]]
 
+- Are the credentials valid? *Yes*, Stores the username in the session-scoped bean. Redirect to the main page.
+
+Agora criamos uma nova página e garantimos que um usuário possa acessá-la somente se ele já tiver feito login. Definimos um novo controlador (que chamaremos de MainController) para a nova página. Definiremos uma ação e a mapearemos para o caminho */main*. Para garantir que um usuário possar acessar esta caminho somente se ele tiver feito login, verificaremos se o bean *LoggedUserManagementService* armazena algum nome de usuário. Se não armazenar, redirecionamos o usuário para a página de loging. Para redirecionar o usuário para outra página, a ação do controller precisa retornar a string *redirect*: seguida pelo caminho para o qual a ação deseja redirecionar o usuário. 
+
+*Is the username already in the session-scoped bean? Is equivalent with Did the user already log in?*
+
+Permitir que o usuário também faça logout é fácil. Só precisarmos definir o nome de usuário no bean de sessão *LoggedUserManagementService* como *null*. Vamos criar um link de logout na página e também adicionar o nome de usuário logado na mensagem de boas-vindas. A listagem a seguir mostra as alterações na página *main.html* que define nossa visualização. 
+
+[[main.html]]
+We add a link on the page that sets an HTTP request parameter name "logout". When the controller gets this parameter, it will erase the value of the username from the session.
+
+Essas alterações na página main.html também assumem algumas mudanças no controller para que a funcionalidade esteja completa. 
+
+[[Spring Start Here/codes/sq-ch9-ex2/src/main/java/org/example/main/login/controller/MainController.java|MainController]]
+
+To complete the app, we'd to change the *LoginController* to redirect users to the main page once they authenticate. To achieve this result, we need to change the *LoginController* action, as presented in the following listing.
+
+## 9.3 Using the application scope in a Spring web app
+Nesta seção, discutiremos o escopo da aplicação. Quero mencionar sua existência, torná-lo consciente de como ele funciona e enfatizar que é melhor não usá-lo em um aplicativo de produção. Todas as solicitações dos clientes compartilham um bean com escopo de aplicação.
+
+O escopo da aplicação é semelhante ao funcionamento de um singleton. A diferença é que não podemos ter mais instâncias do mesmo tipo no contexto e que 
+sempre usamos as solicitações HTTP como ponto de referência ao discutir o ciclo de vida dos escopos da web (incluindo o escopo da aplicação). Enfrentamos os mesmos problemas de concorrência discutidos no capítulo 5 para os beans singleton em relação aos beans com escopo de aplicação: é melhor ter atributos imutáveis para os beans singleton. O mesmo conselho é aplicável a um bean com escopo de aplicação. Mas, se você tornar os atributos imutáveis, então pode usar diretamente um bean singleton.
+
+Geralmente, recomendo que os desenvolvedores evitem usar **beans com escopo de aplicação.** É melhor utilizar diretamente uma **camada de persistência**, como um banco de dados (que aprenderemos no **capítulo 11**).
+
+Sempre é melhor ver um exemplo para compreender o caso. Vamos modificar o aplicativo em que trabalhamos neste capítulo e adicionar uma funcionalidade que **conte as tentativas de login.** Você encontrará este exemplo no projeto "sq-ch9-ex3".
+
+![[Capítulo 9 - Using the Spring web scopes-7.png]]
+
+O bean *LoginCountService* é um bean com escopo de aplicação. Existe apenas uma instância desse tipo no contexto do Spring. Qualquer requisição de qualquer cliente usa essa mesma instância. 
+
+Como precisamos contar as tentativas de login de todos os usuários, armazenaremos essa contagem em um bean com escopo de aplicação.
+
+Vamos criar um bean *LoginCountService* com escopo de 
+
+[[LoginCountService.java]]
+- The *@ApplicationScope* annotation changes the scope of this bean to the application scope.
+
+O *LoginProcessor* pode então injetar automaticamente esse bean e chamar o método *increment()* para cada nova tentativa de login.
+
+A última coisa que precisamos fazer é exibir esse valor. Como aprendemos nos exemplos anteriores, é possível usar um parâmetro *Model* na ação do controller para enviar o valor de contagem par aa view. Em seguida, usamos o thymeleaf para exibir esse valor na interface. 
