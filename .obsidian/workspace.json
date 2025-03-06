@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -205,13 +205,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -224,20 +224,23 @@
   },
   "active": "3a6d41125f11719b",
   "lastOpenFiles": [
-    "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
+    "Spring Start Here/codes/sq-ch10-ex3/src/main/java/org/example/main/dto/Country.java~",
+    "Spring Start Here/codes/sq-ch10-ex3/src/main/java/org/example/main/dto/Country.java",
+    "Spring Start Here/codes/sq-ch10-ex3/src/main/java/org/example/main/dto",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org/example/main/SqCh10Ex1Application.class",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org/example/main/controller/HelloController.class",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org/example/main/controller/HelloControllerRest.class",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org/example/main/controller",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org/example/main",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org/example",
+    "Spring Start Here/codes/sq-ch10-ex3/target/classes/org",
+    "Spring Start Here/codes/sq-ch10-ex3/src/main/java/org/example/main/controller/HelloControllerRest.java",
+    "RoadMap do DavJaveiro/RoadMap.md",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
     "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
+    "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
     "Capítulo 10 - Implementing REST services-1.png",
     "Capítulo 10 - Implementing REST services.png",
-    "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/SqCh9Ex1Application.class",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/controller/MainController.class",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/model/LoginProcessor.class",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/service/LoggedUserManagementService.class",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/service/LoginCountService.class",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/controller/LoginController.class",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/model",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/service",
-    "Spring Start Here/codes/sq-ch9-ex3/target/classes/org/example/main/login/controller",
     "Capítulo 9 - Using the Spring web scopes-7.png",
     "Capítulo 9 - Using the Spring web scopes-6.png",
     "Capítulo 9 - Using the Spring web scopes-5.png",
@@ -267,8 +270,6 @@
     "Nota Análise Comparativa de programação funcional e programação orientada a objeto.md",
     "Sem título 2.md",
     "Sem título 1.md",
-    "Sem título.md",
-    "Exerc Prompt.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas"
+    "Sem título.md"
   ]
 }
