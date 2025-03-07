@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Explorador de arquivos"
+              "title": "Files"
             }
           },
           {
@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 484.01216888427734
+    "width": 484.01216888427734,
+    "collapsed": true
   },
   "right": {
     "id": "80c3d83199a5dd81",
@@ -204,13 +205,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Abrir a troca rápida": false,
-      "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
-      "daily-notes:Abrir a nota de hoje": false,
-      "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
-      "audio-recorder:Começar/parar a gravação de áudio": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -221,19 +222,20 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "d8ace1bd3e1185b2",
+  "active": "3a6d41125f11719b",
   "lastOpenFiles": [
-    "Spring Start Here/codes/sq-ch11-ex1",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/model/Payment.java",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/controller/PaymentController.java",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/SqCh11Ex1Application.java",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/model",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/services",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/exception",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/controller",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/error",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main",
-    "Spring Start Here/codes/sq-ch11-payment/src/main/resources/templates/main.html",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example/main/model/Payment.class",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example/main/controller/PaymentController.class",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example/main/SqCh11Ex1Application.class",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example/main/model",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example/main/controller",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example/main",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org/example",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/org",
+    "Spring Start Here/codes/sq-ch11-payment/target/generated-sources/annotations",
+    "Spring Start Here/codes/sq-ch11-payment/target/generated-sources",
+    "Spring Start Here/codes/sq-ch11-payment/target/classes/application.properties",
+    "Capítulo 11 - Consuming REST endpoints-3.png",
     "Modern API Development with SPring 6 and Spring Boot 3/Part 1 - Restful Web Service Fundamentals/Capítulo 4/Capítulo 4 - Writing Business Logic for APIs.md",
     "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
     "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
@@ -249,7 +251,6 @@
     "Capítulo 10 - Implementing REST services.png",
     "Capítulo 9 - Using the Spring web scopes-7.png",
     "Capítulo 9 - Using the Spring web scopes-6.png",
-    "Capítulo 9 - Using the Spring web scopes-5.png",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/HELP.md",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",

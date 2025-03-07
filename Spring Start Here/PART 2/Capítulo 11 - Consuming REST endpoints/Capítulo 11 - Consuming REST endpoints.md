@@ -85,4 +85,53 @@ With #OpenFeigm, as you'll find out in the example we write in this section, you
 
 Para ensinar como o #OpenFeign funciona, criaremos o projeto *sq-ch11-ex1* e implementaremos um aplicativo que usa o OpenFeign para chamar o endpoint exposto pelo aplicativo sq-c11-payments.
 
+Definiremos uma interface onde declaramos os métodos que consomem endpoints REST. A única coisa que precisamos fazer é anotar esses métodos para definir o caminho, o método HTTP e, eventualmente, parâmetros, cabeçalhos e o corpo da solicitação.
 
+O interessante é que não precisamos implementar os métodos nós mesmos. Definimos os métodos da interface com base nas anotações, e o Spring sabe como implementá-los.
+
+![[Capítulo 11 - Consuming REST endpoints-3.png]]
+
+- Para implementar a chamada ao endpoint REST usando o OpenFeign, precisamos apenas definir uma interface e usar anotações para instruir o OpenFeign sobre como implementar essa interface.
+- OpenFeign implementa a interface fornecida e define um bean da implementação no Spring context.
+
+**O que acontece no diagrama?**
+1. O cliente faz uma requisição HTTP POST para */payment*;
+	A requisição chega ao *PaymentsController*, que tem um método anotado com *@PostMapping("/payment")*
+
+2. O *PaymentController* usa *PaymentsProxy*
+	O *controller* não chama diretamente o serviço externo.
+	Ele delega a chamada para uma interface chamada *PaymentsProxy*
+
+3. O OpenFeign implementa automaticamente o PaymentsProxy
+	A interface *PaymentsProxy* define um contrato (método *createPayment()*), mas não tem implementação.
+	 O OpenFeign cria uma implementação dessa interface de forma automática.
+
+4. **O OpenFeign chama o serviço de pagamento externo.**
+	- A implementação gerada faz a requisição HTTP para o endpoint `/payment` do **Payment Service**.
+	- Isso acontece de forma transparente, sem que você precise implementar um `RestTemplate` ou `WebClient` manualmente
+
+5. **O resultado retorna para o Controller e depois para o cliente.**
+	- A resposta da requisição ao serviço de pagamento externo volta pela interface **PaymentsProxy**.
+	- O **PaymentsController** recebe o resultado e devolve a resposta ao cliente que fez a requisição inicial.
+
+Assim que tivermos nossa dependência configurada, podemos criar a interface de proxy (conforme apresentado na figura 11.5). Na terminologia do OpenFeign, também chamamos essa interface de *client OpenFeign*. O OpenFeign implementa essa interface, então não precisamos em escrever o código que chama o endpoint. Só precisamos usar algumas anotações específicas para informar ao OpenFeign como enviar a solicitação. A listagem a seguir mostra como é simples:
+
+A primeira coisa a fazer é anotar a interface com a anotação *@FeignClient* para informar ao OpenFeign que ele deve fornecer uma implementação para esse contrato. Precisamos atribuir um nome ao proxy usando o atributo *name* da annotação *@FeignClient*, que o OpenFeign utiliza internamente. O nome identifica exclusivamente o cliente em seu aplicativo. A anotação *@FeignClient* também é onde especificamos o URI base da solicitação. Podemos definir o URI base como uma string usando o atributo URL da anotação *@FeignClient*.
+
+[[PaymentsProxy.java]]
+
+**NOTA:** certifique-se de sempre armazenar URLs e outros detalhes que possam variar de um ambiente para outro nos arquivos de propriedades e nunca os codifique diretamente no aplicativo.
+
+Cada método que declaramos na interface representa uma chamada a um endpoint REST. 
+
+Usamos as mesmas anotações que aprendemos no capítulo 10 para as ações do controller que expõem endpoints REST:
+- Para especificar o caminho e o método HTTP: @GetMapping, @PostMapping, @PutMapping e assim por diante...
+- Para especificar um cabeçalho da solicitação: *@RequestHeader*;
+- Para especificar o corpo da requisição da solicitação: *@RequestBody*.
+
+Acho esse aspecto de reutilizar as anotações muito benéfico. Aqui, com "reutilizar as anotações", quero dizer que o OpenFeign usa as mesmas anotações que utilizamos ao definir os endpoints. Não precisamos aprender algo específico para o OpenFeign Basta usar as mesmas anotações que são usadas para expor endpoints REST nas classes controllers do Spring MVC.
+
+O OpenFeign precisa saber onde encontrar as interfaces que definem os contratos dos clientes. Usamos a anotação @EnableFeignClients em uma classe de configuração para habilitar a funcionalidade do OpenFeign e informar ao OpenFeign onde procurar pelos contratos dos clientes.
+
+[[Spring Start Here/codes/sq-ch11-openfeign/src/main/java/org/example/main/config/ProjectConfig.java|ProjectConfig]]
+Agora podemos injetar o client OpenFeign por meio da interface que definimos na listagem 11.2. Assim que habilitamos o OpenFeign, ele sabe como implementar as interfaces anotadas com *@FeignClient*. No capítulo 5, discutimos que o Spring é inteligente o suficiente para fornecer uma instância de bean do seu contexto quando usamos uma abstração, e é exatamente isso que fizamos aqui. A listagem a seguir mostra a classe de controller que injeta o FeignClient:
