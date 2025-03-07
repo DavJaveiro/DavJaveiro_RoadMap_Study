@@ -95,7 +95,139 @@ Reserve alguns minutos para revisar o apêndice C e relembrar os detalhes sobre 
 Nesta seção, discutimos o envio de instâncias de objetos no corpo da resposta. A única coisa que precisamos fazer para enviar um objeto ao cliente em uma resposta é fazer com que a ação do controlador retorne esse objeto. No exemplo "sq-ch10-ex3", definimos um objeto de modelo chamado *Country* com os atributos *name* (representando o nome do país) e *population* (representando o número de milhões de pessoas localizadas naquele pais.). Implementamos uma ação do controller para retornar uma instância do tipo *Country*. 
 A listagem a seguir mostra a classe que define o objeto *Country*. Quando usamos um objeto (como *Country*) para modelar os dados transferidos entre dois aplicativos, chamamos esse objeto de **objeto de transferência de dados (DTO, Data Transfer Object)**. Podemos dizer que *Country* é nosso DTO, cujas instâncias são retornadas pelo endpoint REST que implementamos no corpo da resposta HTTP.
 [[Country.java]]
+
 Para simplificar a criação de uma instância de *Country*, definimos um factory method que recebe o nome e a população. Esse método retorna uma instância de *Country* com os valores fornecidos definidos.
 
 
+**Método de Fábrica Estático (Static Factory Method)**
+- O método *of* em nosso código é um exemplo de **método de fábrica estático**.
+- Ele encapsula a lógica de criação de um objeto (**Country**) em um único método.
+- É útil quando a criação do objeto é simples e direta, como no nosso exemplo. 
+- Não permite a customização passo a passo do objeto (ao contrário do Builder).
 
+O código acima é um **método de fábrica estático**, não um Builder. Se precisarmos de mais flexibilidade na criação de objetos, especialmente com muitos parâmetros opcionais, o padrão *Builder* será mais adequado. 
+
+[[CountryController.java]]
+
+- *@RestController* - marcando a classe como um controller REST para adicionar um bean no contexto do Spring e também informar ao dispatcher servlet que não deve procurar uma view quando este método retornar.
+
+![[Capítulo 10 - Implementing REST services-2.png]]
+O Spring usa a biblioteca #Jackson (que já vem no pacote spring-boot-starter-web) para converter o objeto em JSON automaticamente.
+
+O que acontece quando chamamos o endpoint? Como o objeto apareceria no HTTP response body? Por padrão, o Spring cria uma representação em string do objeto e o formata como JSON. JSON é uma maneira simples de formatar strings como pares atributo-valor ou chave-valor. 
+
+Também podemos enviar instâncias de coleções de objetos no response body. O próximo trecho de código mostra que adicionamos um método que retorna uma List de objetos Country.
+
+Usar #JSON é a forma mais comum de representar objetos ao trabalhar com REST endpoints. Embora não estejamos limitado a usar JSON como representação de objetos, provavelmente nunca veremos outro desenvolvedor utilizando outra coisa.
+
+O #Spring oferece a possibilidade de utilizar outras formas para formatar o **response body** (como XML ou YAML), caso queiramos, conectado um *custom converteer* para os nossos objetos.
+
+### 10.3.2 Setting the response status and headers
+Nesta seção, discutimos a configuração do **response status** e dos **response headers**. Às vezes, é mais conveniente enviar parte dos dados nos **response headers**.
+
+O **response status** também é um sinalizador essencial na resposta HTTP, usado para indicar o resultado da requisição.
+
+Por padrão, o Spring define alguns HTTP status, como:
+- **200 OK** → Se nenhuma exceção foi lançada no servidor durante o processamento da requisição.
+-  **404 Not Found** → Se o recurso solicitado não existir.
+- **400 Bad Request** → Se parte da requisição não pôde ser correspondida com a forma esperada pelo servidor.
+- **500 Internal Server Error** → Se uma exceção foi lançada no servidor por qualquer motivo durante o processamento da requisição. Normalmente, nesse tipo de erro, o cliente não pode fazer nada, e espera-se que alguém resolva o problema no **backend**.
+
+No entanto, em alguns casos, os requisitos exigem que configuremos um *status personalizado*. Como fazer isso?
+
+A maneira mais fácil e comum de **customizar** a HTTP response é usando a classe **ResponseEntity**. Essa classe, fornecida pelo **Spring**, permite especificar o **response body**, o status e os headers na HTTP response.
+
+O exemplo **"sq-ch10-ex4"** demonstra o uso da classe **ResponseEntity**.
+
+No exemplo, uma ação do controller retorna uma instância de **ResponseEntity** em vez de definir diretamente o objeto no **response body**.
+- a classe ResponseEntity permite definir:
+	- O valor do response body;
+	- O response status;
+	- Os response headers.
+
+```java
+@RestController
+public class CountryController {
+
+
+	public ResponseEntity<Country> france() {
+		Country c = Country.of("France", 67);
+		return ResponseEntity
+				.status(HttpStatus.ACCEPTED)
+				.header("continent", "Europe")
+				.header("capital", "Paris")
+				.header("favorite_food", "cheese and wine")
+				.body(c);
+	}
+}
+```
+
+Após enviar a requisição usando o Postman, podemos verificar quue o HTTP response status foi alterado para 202 Accepted. Na aba Headers da HTTP response no Postman, também encontramos os três custom response haders que foram adicionados.
+
+## 10.3.3 Managin exceptions at the endpoint level
+É essencial considerar o que acontece se a ação do controller lançar uma exceção. Em muitos casos, usamos exceções para sinalizar situações específicas, algumas dessas relacionadas à lógica de negócios. Suponha que criemos um endpoint que o cliente chama para realizar um pagamento. Se o usuário não tiver dinheiro o suficiente em sua conta, o aplicativo pode representar essa situação lançando uma exceção. Nesse caso, provavelmente precisamos definir alguns detalhes na HTTP Response para informar ao cliente sobre a situação específica que ocorreu.
+
+Uma das maneiras de gerenciar exceções é capturá-las na ação do controller e usar a classe *ResponseEntity*, como aprendemos, para enviar uma configuração diferente da resposta quando a exceção ocorrer.
+
+Começaremos demonstrando essa abordagem com um exemplo. Em seguida, mostrarei uma abordagem alternativa que prefiro, usando uma classe REST controller advice: um aspecto que intercepta uma chamada de endpoint quando ela lança uma exceção, e, neste caso, podemos especificar uma lógica personalizada a ser executada para essa exceção específica.
+
+Para o nosso cenário, definimos uma exceção personalizada chamada **NotEnoguhMoneyException**, e o aplicativo lançará essa exceção quando não puder realizar o pagamento porque o cliente não tem dinheiro o suficiente em sua conta. O próximo trecho de código mostra a classe que define a exceção:
+
+[[NotEnoughMoneyException.java]]
+
+Também implementamos uma classe de serviço que define o caso de uso. Para o nosso teste, lançamos essa exceção diretamente. Em um cenário real, os serviço implementaria a lógica complexa para processar o pagamento. O próximo trecho de código mostra a classe de serviço que usamos para o nosso teste:
+```java
+@Service
+public class PaymentService {
+	public PaymentDetails processPayment() {
+		throw new NotEnoughMoneyException();
+	}
+}
+```
+
+PaymentDetails, o tipo de retorno do método ProcessPayment(), é simplesmente uma classe de modelo que descreve o corpo da resposta que esperamos que a ação do controller retorne para um pagamento bem-sucedido. 
+
+Quando o aplicativo encontra uma exceção, ele usa outra classe de modelo chamado ErrorDetails para informar o cliente sobre a situação. A classe *ErrorDetails* também é simples e define apenas a mensagem de erro como um atributo. O próximo trecho de código apresenta a classe de modelo ErroDetails:
+
+[[ErrorDetails.java]]
+
+Como o controller poderia decidir qual objeto enviar de volta, dependendo de como o fluxo foi executado? 
+
+- Quando não há exceção (o aplicativo conclui o pagamento com sucesso), queremos retornar uma resposta HTTP com o status "Accepted" e do tipo *PaymentDetails*. 
+
+- Por outro lado, se o aplicativo encontrar uma exceção durante o fluxo de execução, a ação do controller retornará uma resposta HTTP com o status "400 Bad Request" e uma instância de *ErrorDetails* contendo uma mensagem que descreve o problema. 
+
+Essa abordagem é boa, e frequentemente encontraremos desenvolvedores usando-a para gerenciar os casos de exceção. No entanto, em um aplicativo mais complexo, é mais conveniente separar a responsabilidade do gerenciamento de exceções. Primeiro, às vezes a mesma exceção precisa ser gerenciada para vários endpoints e, como já imaginamos, não queremos introduzir código duplicado. 
+- Segundo, é mais prático saber que encontramos a lógica de exceção toda em um único lugar quando precisa entender como um caso específica funciona. Por essas razões, preferimos usar um *controller advice* no REST, um aspecto que intercepta exceção lançadas pelas ações dos controllers e aplica uma lógica personalizada que definimos de acordo com a exceção interceptada.
+
+![[Capítulo 10 - Implementing REST services-3.png]]
+
+- The service class implements the business logic that might throw exceptions.
+- The controller calls the service use case but only treats the happy flow (where the service method didn't throw an exception).
+
+Vamos implementar a mudança em um exemplo novo sq-ch10-ex6.
+
+[[Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/controller/PaymentController.java|PaymentController]]
+Agora, com Controller modificado, criaremos uma classe separada chamada *ExceptionControllerAdvice* que implementa o que acontece se a ação do controller lançar uma *NotEnoguhMoneyException*. A classe *ExceptionControllerAdvice* é um *Controller advice* do REST. Para marcá-la como um *controller advice*, usamos a anotação *@RestControllerAdvice*. O método que a classe define também é chamado de **exception handler**. Você especifica quais exceções acionam um método do **controller advice** usando a anotação *@ExceptionHandler* acima do método. A listagem a seguir mostra a definição da classe *ExceptionControllerAdvice* e o método **exception handler** que implementa a lógica associada à exceção **NotEnoughMoneyException**.
+
+[[ExceptionControllerAdvice.java]]
+
+- Usamos a anotação *@RestControllerAdvice* para marcar a classe como um Rest Controller Advice.
+- Nós usamos a anotação *@ExceptionHandler* para associar uma exceção com lógica do método implementando.
+
+**NOTA:** em aplicações de produção, às vezes é necessário enviar informações sobre a exceção que ocorreu, da ação do controller para o **advice**. Nesse caso, podemos adicionar um parâmetro ao método **exception handlker** do advice do tipo da exceção tratada. O Spring é inteligente o suficiente para passar a referência da exceção do controller para o método exception handler do advice. 
+
+## 10.4 Using a request body to get data from the client
+Nesta seção, discutimos como obter dados do cliente no corpo da requisição HTTP. No capítulo 8, você aprendeu que pode enviar dados na requisição HTTP usando parâmetros de requisição (**request parameters**) e variáveis de caminho (**path variables**). Como os endpoints REST dependem do mesmo mecanismo do Spring MVC, nada muda em relação às sintaxes que você aprendeu no capítulo 8 sobre o envio de dados em parâmetros de requisição e variáveis de caminho. Você pode usar as mesmas anotações e implementar os endpoints REST da mesma forma que implementaria as ações do controlador para suas páginas web.
+
+No entanto, não discutimos algo essencial: a requisição HTTP possui um corpo (**request body**), e você pode usá-lo para enviar dados do cliente para o servidor. O corpo da requisição HTTP é frequentemente usado com endpoints REST. Como também mencionado no apêndice C, quando você precisa enviar uma quantidade maior de dados (minha recomendação é qualquer coisa que ultrapasse 50 a 100 caracteres), você usa o corpo da requisição.
+
+Para usar o corpo da requisição (request body),só precisamos anotar o parâmetro da ação do controller com *@RequestBody*. Por padrão, o Spring assume que usamos JSON para representar o parâmetro anotado e tentará decodificar a string JSON em uma instância do tipo do nosso parâmetro. Caso o Spring não consigo decodificar a string formatada em JSON para esse tipo, o aplicativo envia uma resposta com status "400 Bad Request". 
+
+ No projeto "sq-ch10-ex7", implementamos um exemplo simples de uso do corpo da requisição. O controlador define uma ação mapeada para o caminho `/payment` com o método HTTP POST e espera receber um corpo da requisição do tipo `PaymentDetails`. O controlador imprime o valor do objeto `PaymentDetails` no console do servidor e envia o mesmo objeto no corpo da resposta de volta para o cliente.
+
+[[Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/controller/PaymentController.java|PaymentController]]
+- We get the payment details from the HTTP request body.
+- We log the amount of the payment in the server's console.
+- We send back the payment details object in the HTTP response.
+REVISAR LOGGER 
