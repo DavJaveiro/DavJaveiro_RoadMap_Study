@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
+                "file": "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 10 - Implementing REST services"
+              "title": "Capítulo 11 - Consuming REST endpoints"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "path:\"Spring Start Here/codes/\" ",
+                "query": "Flyway",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Procurar"
             }
           },
           {
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 484.01216888427734,
-    "collapsed": true
+    "width": 484.01216888427734
   },
   "right": {
     "id": "80c3d83199a5dd81",
@@ -205,13 +204,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -222,33 +221,35 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "3a6d41125f11719b",
+  "active": "d8ace1bd3e1185b2",
   "lastOpenFiles": [
-    "Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/controller/ExceptionControllerAdvice.java",
-    "Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/exception/NotEnoughMoneyException.java",
-    "Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/model/PaymentDetails.java",
-    "Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/services/PaymentService.java",
-    "Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/error/ErrorDetails.java",
-    "Spring Start Here/codes/sq-ch10-ex6/src/main/java/org/example/main/controller/PaymentController.java",
-    "Spring Start Here/codes/sq-ch10-ex6/target/classes/org/example/main/model/PaymentDetails.class",
-    "Spring Start Here/codes/sq-ch10-ex6/target/classes/org/example/main/services/PaymentService.class",
-    "Spring Start Here/codes/sq-ch10-ex6/target/classes/org/example/main/exception/NotEnoughMoneyException.class",
-    "Spring Start Here/codes/sq-ch10-ex6/target/classes/org/example/main/controller/PaymentController.class",
-    "Spring Start Here/codes/sq-ch10-ex6/target/classes/org/example/main/error/ErrorDetails.class",
+    "Spring Start Here/codes/sq-ch11-ex1",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/model/Payment.java",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/controller/PaymentController.java",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/SqCh11Ex1Application.java",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/model",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/services",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/exception",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/controller",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main/error",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/java/org/example/main",
+    "Spring Start Here/codes/sq-ch11-payment/src/main/resources/templates/main.html",
+    "Modern API Development with SPring 6 and Spring Boot 3/Part 1 - Restful Web Service Fundamentals/Capítulo 4/Capítulo 4 - Writing Business Logic for APIs.md",
+    "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
+    "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
+    "Capítulo 11 - Consuming REST endpoints-2.png",
+    "Capítulo 11 - Consuming REST endpoints-1.png",
+    "Capítulo 11 - Consuming REST endpoints.png",
     "Capítulo 10 - Implementing REST services-3.png",
     "Capítulo 10 - Implementing REST services-2.png",
     "RoadMap do DavJaveiro/RoadMap.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
     "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
     "Capítulo 10 - Implementing REST services-1.png",
     "Capítulo 10 - Implementing REST services.png",
     "Capítulo 9 - Using the Spring web scopes-7.png",
     "Capítulo 9 - Using the Spring web scopes-6.png",
     "Capítulo 9 - Using the Spring web scopes-5.png",
-    "Capítulo 9 - Using the Spring web scopes-4.png",
-    "Capítulo 9 - Using the Spring web scopes-3.png",
-    "Capítulo 9 - Using the Spring web scopes-2.png",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/HELP.md",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
@@ -268,8 +269,6 @@
     "Compilação vs Transpilação.md",
     "README.md",
     "Nota Análise Comparativa de programação funcional e programação orientada a objeto.md",
-    "Sem título 2.md",
-    "Sem título 1.md",
-    "Sem título.md"
+    "Sem título 2.md"
   ]
 }
