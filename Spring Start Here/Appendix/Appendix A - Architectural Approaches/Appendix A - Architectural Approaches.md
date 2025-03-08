@@ -60,3 +60,40 @@ O **SOA** também tem a vantagem de isolar melhor as responsabilidaades: agora s
 As funcionalidades ainda precisam ser comunicar para implementar o fluxo da lógica de negócios. Anteriormente, com uma abordagem monolítica, elas faziam parte da mesma aplicação, o que tornava simples conectar duas funcionalidades por meio de uma chamada de método. No entanto, agora que temos processos diferentes, essa <span style="background:#d4b106">comunicação se torna mais complexa</span>. 
 
 As funcionalidades agora precisam ser comunicar via rede. Um dos princípios essenciais que você precisa ter em mente é que <span style="background:#d4b106">a rede não é totalmente confiável.</span> Muitos caem na armadilha de esquecer de considerar o que acontece se, em algum momento, a comunicação entre dois componentes falhar. Infelizmente, ao contrário da abordagem monolítica, qualquer chamada entre dois componentes pode falhar em algum ponto em uma arquitetura SOA. Dependendo da aplicação, os desenvolvedores utilizam diferentes técnicas ou padrões para resolver esse problema, como repetição de chamadas, **circuit breakers** ou o uso de **caches**. 
+
+Um segundo aspecto a considerar é que existem diversas opções para estabelecer comunicação entre os serviços. Podemos utilizar serviçõs REST, GraphQL, SOAP, gRPC, *message brokers JMS*, Kafka e assim por diante. Qual é a melhor abordagem? Claro, em qualquer cenário, uma ou mais dessas abordagens podem ser adequadas. É possível encontrar longos debates e discussões em diversos livros sobre como escolher a solução mais apropriada para cenários típicos.
+
+Portanto, em uma **arquitetura orientada a serviços (SOA - Service-Oriented Architecture)** ou em arquiteturas modernas como #microsserviços, os módulos são implementados como **serviços independentes**, cada um rodando em sua própria aplicação ou processo. Esses serviços são projetados para serem autossuficientes e podem ser implantados separadamente. A comunicação entre eles ocorre por meio de **interfaces bem definidas**, geralmente usando protocolos de rede, como HTTP, mensagens assíncronas, ou outros mecanismos de integração.
+
+
+### A 2.2 Complexity added to the security of the system
+A divisão de funcionalidades em serviços separados traz muitos benefícios, como escalabilidade e modularidade, mas também aumenta a complexidade das configurações de segurança. Para proteger os dados transmitidos entre os serviços, devemos:
+1. **Criptografar** informações sensiveis;
+2. Garantir a **integridade** dos dados usando assinaturas digitais ou hashes;
+3. Implementar **autenticação e autorizaçao** robustas;
+4. Proteger contra ataques comuns, como MitM e DoS.
+
+![[Appendix A - Architectural Approaches-3.png]]
+
+Se os detalhes do cartão de crédito não estiverem **criptografados**, eles podem ser interceptados e roubados durante a transmissão pela rede. Isso ocorre porque as informações trafegam em texto simples (plaintext), tornando-as vulneráveis a ataques.
+
+
+## A.2.3 Complexity added for the data persistence
+Na maioria dos casos, um aplicativo precisa de uma maneira de armazenar dados. Os bancos de dados são uma forma popular de implementar persistência em aplicativos. Com uma abordagem monolítica, o aplicativo tinha um único banco de dados para armazenar os dados, como apresentado na figura A.9. Chamamos isso de arquitetura three-tier architecture, pois consiste em três camadas: o cliente, o backend e o banco de dados usado para persistência. 
+![[Appendix A - Architectural Approaches-4.png]]
+
+Com a SOA, agora temos múltiplos serviços que precisam armazenar dados. E com mais serviços, também temos mais opções de design. Devemos usar apenas um banco de dados compartilhado por todos os serviços? Ou devemos ter um banco de dados para cada serviço? A figura A.10 visualiza essas opções. 
+![[Appendix A - Architectural Approaches-5.png]]
+A maioria acredita que compartilhar um banco de dados é uma má prática. Com base na minha própria experiência ao dividir um monólito em vários serviços, posso dizer que ter um banco de dados compartilhado pode se tornar um pesadelo de implantação. No entanto, ter banco de dados individuais para cada serviço também traz dificuldades. Como veremos quando formos discutir transações, é muito mais fácil garantir consistência de dados com um único banco de dados. Quando há vários bancos de dados independentes, é desafiador garantir que os dados permaneçam consistentes entre todos eles.
+
+## A.2.4 Complexity added in the deployment of the system
+Talvez o desafio mais fácil de perceber seja que estamos adicionando muita complexidade à implantação do sistema. Agora também mais serviços, e, como aprendemos em parágrafos anteriores, pode haver múltiplos bancos de dados também. Quando consideramos, além disso, que garantir a segurança do sistema adicionará ainda mais configurações, fica claro o quanto a implantação do sistema se torna mais complexa.
+
+Por que um monólito tem uma conotação negativa?
+Podemos perceber que as arquiteturas SOA não são necessariamente fáceis, então pode se perguntar por que a arquitetura monolítica tende a ser associada a algo negativo. A realidade é que, para alguns sistemas, um monólito faz mais sentido do que uma arquitetura SOA.
+
+Pode parecer estranho olhar para trás, para a época em que esses princípios e práticas não existiam, e às vezes até vejo desenvolvedores culparem aqueles que começaram a implementação de sistemas antigos quando surgem problemas. Mas a verdade é que não é culpa das pessoas que usaram as ferramentas e práticas que todos consideravam as melhores naquela época.
+
+Hoje, muitos desenvolvedores associam código bagunçado e mal escrito ao conceito de monólito. No entanto, aplicativos monolíticos podem ser modulares e seu código pode ser limpo, assim como aplicativos orientados a serviços podem ser bagunçados e mal projetados.
+
+## A.3 From microservices to serverless
