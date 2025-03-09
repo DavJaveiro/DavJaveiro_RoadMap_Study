@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -205,13 +205,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -224,6 +224,9 @@
   },
   "active": "a77ac1d5ef489ce4",
   "lastOpenFiles": [
+    "Capítulo 12 - Using Data Sources in Spring Apps-3.png",
+    "Capítulo 12 - Using Data Sources in Spring Apps-2.png",
+    "Capítulo 12 - Using Data Sources in Spring Apps-1.png",
     "Capítulo 12 - Using Data Sources in Spring Apps.png",
     "OCA Java SE 8/Capítulo 1 - Java Basics/Capítulo 1 - Java Basics.md",
     "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Capítulo 12 - Using Data Sources in Spring Apps.md",
@@ -240,12 +243,9 @@
     "Appendix A - Architectural Approaches-4.png",
     "Appendix A - Architectural Approaches-3.png",
     "Appendix A - Architectural Approaches-2.png",
-    "Appendix A - Architectural Approaches-1.png",
-    "Appendix A - Architectural Approaches.png",
     "Spring Start Here/Appendix/Appendix A - Architectural Approaches",
     "Spring Start Here/Appendix",
     "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
-    "Capítulo 11 - Consuming REST endpoints-7.png",
     "Spring Start Here/codes/sq-ch11-webclient/src/main/java/org/example/main/proxy/PaymentsProxy.java",
     "Spring Start Here/codes/sq-ch11-webclient/src/main/java/org/example/main/model/Payment.java",
     "Spring Start Here/codes/sq-ch11-webclient/src/main/java/org/example/main/controller/PaymentsController.java",
