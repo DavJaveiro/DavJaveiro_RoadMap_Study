@@ -97,3 +97,22 @@ Pode parecer estranho olhar para trás, para a época em que esses princípios e
 Hoje, muitos desenvolvedores associam código bagunçado e mal escrito ao conceito de monólito. No entanto, aplicativos monolíticos podem ser modulares e seu código pode ser limpo, assim como aplicativos orientados a serviços podem ser bagunçados e mal projetados.
 
 ## A.3 From microservices to serverless
+Nesta seção, discutiremos os #microsserviços. Os #microsserviços são uma implementação específica da #SOA (Service-Oriented Architecture). Um microservice geralmente é projetado com uma única responsabilidade e possui sua própria capacidade de persistência de dados (não compartilha banco de dados).
+
+Com o tempo, a forma como implantamos aplicações mudou. A arquitetura de software não está relacionada apenas à funcionalidade da aplicação. Um arquiteto de software sábio sabe adaptar a arquitetura do sistema tanto à maneira como as equipes trabalham no sistema quanto à forma como o sistema é implantado. Podemos ter ouvido falar sobre o movimento **DevOps**, que aborda tanto como implantamos o software quanto como trabalhamos no desenvolvimento de software. Hoje, implantamos aplicações na nuvem usando máquinas virtuais ou ambientes containerizados, e essas abordagens geralmente implicam a necessidade de tornar as aplicações menores.
+
+Claro, essa evolução trouxe outra incerteza: **quão pequeno um serviço deve ser?** Muitos debateram essa questão em livros, artigos e discussões.
+
+A minimização dos serviços foi tão longe que hoje podemos implementar uma funcionalidade simples com apenas algumas linhas de código e implantá-la em um ambiente. Um evento, como uma requisição HTTP, um temporizador ou uma mensagem, dispara essa funcionalidade e a faz executar. Chamamos essas pequenas implementações de **funções serverless**. O termo, sem servidor não implica que a função não seja executada em um servidor. Porém, como tudo relacionado à infraestrutura é abstraído e oculto, e nos concentramos apenas no código que implementa sua lógica e nos eventos que a acionam, parece que nenhum servidor existe. 
+
+**A.4 Leitura complementar**  
+A arquitetura de software e sua evolução é um tema fantástico e complexo. Não acredito que algum dia haverá livros suficientes para abordar completamente este assunto. Incluí esta discussão no livro para ajudá-lo a entender as referências que farei a esses conceitos. Ainda assim, você pode querer se aprofundar mais nesses temas, então aqui está uma lista de livros da minha estante. Os livros estão na ordem em que recomendo que você os leia.
+
+1. **Microservices in Action**, de Morgan Bruce e Paulo A. Pereira (Manning, 2018), é um excelente livro para começar quando se está aprendendo sobre microservices. No livro, você encontrará todos os tópicos fundamentais sobre microservices discutidos com exemplos úteis.
+2. **Microservices Patterns**, de Chris Richardson (Manning, 2018), é um livro que recomendo que você leia após estudar profundamente **Microservices in Action**. O autor apresenta uma abordagem pragmática sobre como desenvolver aplicativos prontos para produção utilizando microservices.
+
+3. **Spring Microservices in Action**, de John Carnell e Illary Huaylupo Sánchez (Manning, 2020), ajuda você a entender melhor como aplicar o framework **Spring** para construir microservices.
+
+4. **Microservices Security in Action**, de Prabath Siriwardena e Nuwan Dias (Manning, 2020), detalha o que significa aplicar segurança em uma arquitetura de microservices. A segurança é um aspecto crucial de qualquer sistema, e você sempre precisa considerá-la desde as etapas iniciais do processo de desenvolvimento. O livro explica a segurança desde os fundamentos, e lê-lo proporcionará uma compreensão mais clara dos aspectos que você precisa ter em mente ao lidar com a segurança em microservices.
+
+5. **Monolith to Microservices**, de Sam Newman (O’Reilly Media, 2020), trata de padrões para transformar uma arquitetura monolítica em microservices. O livro também discute se você realmente precisa usar microservices e como tomar essa decisão.
