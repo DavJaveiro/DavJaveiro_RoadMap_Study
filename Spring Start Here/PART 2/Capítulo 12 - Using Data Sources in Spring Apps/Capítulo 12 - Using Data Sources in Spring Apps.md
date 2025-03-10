@@ -89,6 +89,8 @@ Para os exemplos deste livro, parto do pressuposto de que já conhecemos os conc
 
 Para a parte de JDBC, recomendo o capítulo 21 do livro _OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_ de Jeanne Boyarsky e Scott Selikoff (Sybex, 2020).
 
+
+
 Para uma revisão de SQL, recomendo o livro _Learning SQL, 3ª edição_ , de Alan Beaulieu (O’Reilly Media, 2020).
 
 Os requisitos para o aplicativo que vamos implementar são simples. Desenvolveremos um serviço backend que expõe dois endpoints. Os clientes chamam um endpoint para adicionar um novo registro na tabela purchase e um segundo endpoint para obter todos os registros da tabela purchase.
