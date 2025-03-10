@@ -198,3 +198,107 @@ class Phone {
 Como as variáveis *model*, *company* e *weight* são usadas para armazenar o estado de um objeto (também chamado de #instância), elas são chamadas de **variáveis de instância** ou **atributos de instância**. Cada objeto possui sua própria cópia de variáveis de instância. Se alteramos o valor de uma variável de instância para um objeto, o valor da mesma variável de instância não será alterado para outro objeto.
 
 As variáveis de instância são definidas dentro de uma classe, <span style="background:#d4b106">mas fora de todos os métodos da classe</span>.
+
+Uma única cópia de uma variável de classe ou variável estática é compartilhada por todos por todos os objetos de uma classe. As variáveis estáticas são abordadas na seção 1.5.3, com uma discussão detalhada sobre o modificador não acessível *static*.
+
+**Methods**
+Os métodos makeCall e receiveCall são chamados de **métodos de instância**, que geralmente são usados para manipular as variáveis de instância. 
+
+Um método de classe ou método estático pode ser usado para manipular as variáveis estáticas, conforme discutido em detalhes na seção 1.5.3.
+
+**Constructors**
+A classe **Phone** no exemplo anterior define um único construtor. Um construtor de classe<span style="background:#d4b106"> é usado para criar e inicializar os objetos de uma classe</span>. Uma classe pode definir múltiplos construtores que aceitam diferentes conjuntos de parâmetros de método.
+
+## 1.1.2 Structure and components of a Java source code file
+Um arquivo de código fonte Java é usado para definir entidades Java, como uma **classe**, **interface**, enum e anotação.
+
+**NOTA:** as anotações Java não estão no exame e, portanto, não serão discutidas neste livro.
+
+Todo o seu código Java deve ser definido em arquivos de código-fonte Java (arquivo de texto cujos nomes terminam com *.java*). O exame aborda os seguintes aspectos da estrutura de um arquivo de código-fonte Java:
+- Definição de uma classe e uma interface em um arquivo de código-fonte Java;
+- Definição de classes ou interfaces únicas ou múltiplas no mesmo arquivo de código-fonte Java;
+- Aplicação de declarações *import* e *package* para todas as classes em um arquivo de código-fonte Java.
+
+Já abordamos a estrutura detalhada e a definição de classes na seção 1.1.1. Vamos começar com a definição de uma #interface.
+
+**Definition Of An Interface in a Java Source Code File**
+Uma #interface específica um contrato para que as classes o implementem. Podemos comparar a implementação de uma interface à assinatura de um contrato. Uma interface é um agrupamento de métodos e constantes relacionados.  Antes do Java 8, os métodos de uma interface eram implicitamente abstratos. Mas a partir da versão 8 do Java, os métodos em uma interface podem definir uma implementação padrão (default implementation). Com o Java 8, as interfaces também podem definir métodos estáticos.
+
+Os métodos eram chamados de **abstratos**, porque:
+1. **Não tinham corpo (implementação)**: 
+	- Eles só tinham a assinatura do método (nome, parâmetros e tipo de retorno), mas não tinham nenhum código dentro deles.
+	- Exemplo: public interface Veiculo {
+			void acelerar(); // Método abstrato (sem corpo)
+		}
+
+2. **As classes que implementavam a interface eram obrigadas a fornecer a implementação:**
+- Qualquer classe que implementasse essa interface precisava implementar todos os métodos declarados nela.
+- Exemplo: 
+```java
+public class Carro implements Veiculo {
+	@Override
+	public void acelerar() {
+		System.out.println("Carro acelerando...");
+	}
+
+	@Override
+	public void frear() {
+		System.out.println("Carro freando...");
+	}
+}
+```
+
+3. **Por que "implicitamente abstratos"?**
+- Os métodos não precisavam ser explicitamente marcados como #abstract porque, por definição, todos os métodos em uma interface já eram abstratos. O compilador tratava isso automaticamente.
+
+Aqui está um exemplo rápido para compreendermos a essência das interfaces. Não importa qual marca de televisão cada um de nós tenha, todas as televisões fornecem funcionalidades comuns, como mudar de canal e ajustar o volume. Podemos comparar os controles de um televisor a uma **interface** e o design do televisor a uma **classe** que implementa essa interface de controles.
+
+Vamos definir esta interface:
+```java
+interface Controls {
+	void changeChannel (int channelNumber);
+	void increaseVolume();
+	void decreaseVolume();
+}
+```
+A definição de uma interface começa com a palavra-chave #interface. Lembre-se, o Java é sensível a maiúsculas e minúsculas, então não podemos usar a palavra chave #Interface com maiúscula.
+
+**Definition of Single And Multiple Classes in A Single Java Source Code File**
+Podemos definir uma única classe ou interface em um arquivo de código-fonte Java ou várias dessas entidades. Vamos começar com um exemplo simples: um arquivo de código-fonte Java chamado *SingleClass.java* que define uma única classe *SingleClass*:
+
+```java
+class SingleClass {
+	//.. we are not detailing this part
+}
+```
+
+Here's am example of a Java source code file, Multiple.java, that defines multiple interfaces:
+```java
+interface Printable {
+	//.. we are not detailing this part
+}
+interface Movable {
+	//.. we ara not detailing this part
+}
+```
+
+Também podemos definir uma combinação de classes e interfaces no mesmo arquivo de código-fonte Java. Aqui está um exemplo:
+```java
+interface Printable {
+    //.. não estamos detalhando esta parte
+}
+class MyClass {
+    //.. não estamos detalhando esta parte
+}
+interface Movable {
+    //.. não estamos detalhando esta parte
+}
+class Car {
+    //.. não estamos detalhando esta parte
+}
+```
+
+Não é necessário uma ordem específica para definir várias classes ou interfaces em um único arquivo de código-fonte Java.
+
+**Dica de Prova:** As classes e interfaces podem ser definidas em qualquer ordem de ocorrência em um arquivo de código-fonte Java.
+
