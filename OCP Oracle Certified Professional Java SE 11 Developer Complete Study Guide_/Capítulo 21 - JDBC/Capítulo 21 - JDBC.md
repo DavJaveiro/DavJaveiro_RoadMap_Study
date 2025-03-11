@@ -176,3 +176,106 @@ Após essas alterações, o Derby será configurado automaticamente quando você
 7. **Opcionalmente, defina variáveis permanentemente** através das configurações de variáveis do sistema.
 
 
+
+---
+
+## Escrevendo Instruções SQL Básicas
+A coisa mais importante que precisamos saber sobre SQL para o exame é que existem quatro tipos de instruções para trabalhar com os dados em tabelas. Elas são conhecidas como CRUD (Create, Read, Update, Delete). As palavras-chave do SQL não correspondem diretamente ao acrônimo CRUD, mas estão relacionadas aos mesmos conceitos. 
+
+Isso é tudo. Não precisamos determinar se as instruções SQL estão corretas. Não é necessário identificar erros de sintaxe em instruções SQL. Não precisamos escrever instruções SQL. Percebe um padrão?
+
+Ao contrário do Java, as palavras-chave não são sensíveis a maiúsculas e minúsculas. Isso significa que #select, #SELECT e #Select são equivalentes. Muitas pessoas usam letras maiúsculas para as palavras-chave do banco de dados, de modo que elas se destaquem. Também é prática comum usar *snake case* (sublinhados para separar "palavras") nos nomes de colunas. Seguiremos essas convenções. 
+
+Assim como os tipos primitivos do Java, o SQL possui vários tipos de dados. A maioria deles é autoexplicativa, como o #INTEGER. Há também o #DECIMAL, que funciona de forma semelhante ao #double no Java. O mais peculiar é o #VARCHAR, que significa *caractere viável* e é semelhante a uma String no Java. A parte *variãvel* significa que o banco de dados deve usar apenas o espaço necessário para armazenar o valor.
+
+Agora é hora de escrever algum código. A Instrução INSERt geralmente é usada para criar uma nova linha em uma tabela; aqui está um exemplo:
+```sql
+INSERT INTO exhibits VALUES (3, 'African Elephant', 7.9);
+```
+
+Se houver duas linhas na tabela antes de este comando, e após rodá-lo com sucesso, haverá três linhas após a execução. 
+
+A instrução INSERT lista os valores que desejamos inserir. Por padrão, ela usa a mesma ordem em que as colunas foram definidas, logo, se não especificarmos explicitamente os nomes das colunas, o banco de dados assume que os valores fornecidos na cláusula #VALUES estão na mesma ordem em que as colunas foram definidas na tabela. 
+
+Dados do tipo string são delimitados por 'aspas' simples.
+
+
+## Introducing the Interfaces of JDBC
+Para o exame, precisamos conhecer cinco interfaces-chave do JDBC. Essas interfaces são declaradas no JDK. Isso é semelhante a todas as outras interfaces e classes que já vimos no livro.
+
+No caso do JDBC, as classes concretas vêm do JDBC Driver. Cada banco de dados possui um JAR diferente com essas classes. Por exemplo:
+- o JAR do PostgreSQL tem um nome como postgresql-9.4-1201.jdbc4.jar
+- O JAR do MySQL tem um nome como mysql-connector-java-5.1.36.ja
+
+Esse JAR do driver contém uma implementação dessas interfaces-chave, além de várias outras interfaces. O ponto principal é que as implementações fornecidas sabem como se comunicar com um banco de dados. Existem também diferentes tipos de drivers; 
+
+A Figura 21.2 mostra as cinco interfaces-chave que precisamos conhecer. Ela também indica que a implementação é fornecida por um JAR de driver imaginário chamado Foo. Eles astutamente incluem um nome Foo em todas as classes.
+
+**JDBC Interfaces e Implementações**
+Driver - FooDriver
+Connection - FooConnection
+PreparedStatement - FooPreparedStatement
+CallableStatement - FooCallableStatement
+ResultSet - FooResultSet
+
+Não informamos os nomes das classes de implementação em nenhum banco de dados real. O ponto principal é que não precisamos saber. Com o JDBC, usamos apenas as interfaces no nosso código e nunca as classes de implementação diretamente.
+
+O que essas cinco interfaces fazem? Em um nível muito alto, temos o seguinte:
+#Driver - estabelece uma conexão com o banco de dados;
+#Connection - envia comandos para o banco de dados;
+#PreparedStatement - executa uma consulta SQL;
+#CallableStatement - executa comandos armazenados no banco de dados (como procedures);
+#ResultSet: lê os resultados de uma consulta. 
+
+Todas as interfaces de banco de dados estão no pacote java.sql, então frequentemente omitiremos as importações.
+
+No próximo exemplo, mostraremos como o código JDBC se parece de ponta a ponta. 
+
+## Conectando-se a um Banco de Dados
+O primeiro passo para fazer qualquer coisa com um banco de dados é se conectar a ele. Primeiro, mostraremos como construir a URL JDBC. Em seguida, mostraremos como usá-la para obter uma Connection com o banco de dados.
+
+---
+## Construindo uma URL JDBC
+Para acessar um banco de dados, precisamos conhecer as informações sobre ele. 
+
+Ao contrário das URLs da web, uma URL JDBC possui uma variedade de formatos. No entanto, todos eles têm três partes em comum, conforme mostrado na figura 21.3. A primeira parte é sempre a mesma: protocolo jdbc
+2. subprotocolo, que é o nome do banco de dados, como Derby, mysql ou postgres;
+3. subnome, que segue um formato específico do banco de dados.
+Os dois-pontos : separam as três partes
+
+jdbc:postgres://localhost:5432/zoo
+
+O subnome geralmente contém informações sobre o banco de dados, como a localização e/ou o nome do banco. A sintaxe varia dependendo do banco de dados. 
+
+## Obtendo uma Conexão de Banco de Dados
+Existem duas maneiras principais de obter uma #Connection:
+1. #DriverManager
+2. #DataSource.
+
+O #DriverManager é o que é coberto no exame. Não utilize #DriverManager em código em produção. Um #DataSource possuí mais recursos do que um #DriverManager. Por exemplo, o #DataSource pode gerenciar um pool de conexões ou <span style="background:#d4b106">armazenar as informações de conexão do banco de dados</span> fora da aplicação. 
+
+#Connection - é a interface usada para a manutenção e monitoramento de status de uma sessão de banco de dados. Ela também fornece controle de acesso a dados por meio do uso de bloqueios transacionais (*transaction locking*).
+
+---
+**Usando um DataSource**
+Em aplicações reais, devemos utilizar um DataSource em vez de DriverManager para obter uma **Connection**. Uma razão para isso é que não há motivo para que precisemos conhecer a senha do banco de dados. É muito melhor se a equipe de banco de dados ou outra equipe puder configurar um data source que possamos referenciar.
+
+A interface **DataSource**, foi introduzida na API de Extensão Padrão JDBC 2.0, é uma forma mais eficiente de conectar-se a uma fonte de dados para realizar ações de manipulação de dados. No JDBC, uma fonte de dados é uma classe que implementa a interface javax.sql.DataSource para conectar-se a um ou mais bancos de dados desejados. O método #getConnection() é sempre usado para configurar essa conexão. 
+
+Um objeto DataSource geralmente é registrado em um serviço de nomes JNDI (Java Naming and Directory Interface). Isso significa que uma aplicação pode recuperar um objeto DataSource pelo nome no serviço 
+
+---
+
+A classe DriverManager está no JDK, pois é uma API que acompanha o Java. Ela utiliza o padrão de projeto #factory, o que significa que chamamos um método estático para obter uma **Connection**, em vez de chamar um construtor diretamente. O padrão factory implica que implica que podemos obter qualquer implementação da interface ao chamar o método.
+
+Para obter uma conexão com o banco de dados, escrevemos o seguinte:
+```java
+import java.sql.*;
+public class TestConnect {
+    public static void main(String[] args) throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:derby:zoo");
+        System.out.println(conn);
+    }
+}
+```
+

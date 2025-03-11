@@ -98,3 +98,17 @@ Os requisitos para o aplicativo que vamos implementar são simples. Desenvolvere
 Ao trabalhar com um banco de dados, implementamos todas as funcionalidades relacionadas à camada de persistência em classes que, por convenção, chamamos de repository. 
 
 **Nota:** um repository é uma classe responsável por trabalhar com o banco de dados.
+
+Para demonstrar como o JdbcTemplate é usado, implementaremos um exemplo. Seguiremos estas etapas:
+1. Criar uma conexão com o DBMS;
+2. Codificar a lógica do repositório;
+3. Chamar os métodos do repositório em métodos que implementam as ações dos enpoints REST.
+
+Para este aplicativo, temos uma tabela *purchase* em um banco de dados. Essa tabela armazena detalhe sobre os produtos comprados em uma loja online e o preço. 
+
+As colunas desta tabela são as seguintes:
+- #id - um valor único autoincrementado que também assume a responsabilidade de chave primária da tabela;
+- #product - o nome do product comprado;
+- #price - o preço da compra.
+
+This book's examples don't

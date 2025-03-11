@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="97487191-faa1-49e9-ac67-34515e92d291" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Capítulo 21 - JDBC.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Capítulo 21 - JDBC.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/derby.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/java/org/example/SetupDerbyDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/SetupDerbyDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/derby.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/db.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/log/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/log/log.ctrl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/log/log1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/log/logmirror.ctrl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c10.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c101.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c111.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c121.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c130.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c141.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c150.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c161.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c171.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c180.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c191.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c1a1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c1b1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c1c0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c1d1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c1e0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c1f1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c20.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c200.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c211.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c221.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c230.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c241.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c251.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c260.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c271.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c281.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c290.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c2a1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c2b1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c2c1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c2d0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c2e1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c2f0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c300.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c31.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c311.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c321.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c331.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c340.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c351.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c361.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c371.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c380.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c391.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c3a1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c3b1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c3c0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c3d1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c3e1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c3f1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c400.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c41.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c411.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c421.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c430.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c441.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c451.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c461.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c470.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c481.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c51.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c60.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c71.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c81.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/c90.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/ca1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/cb1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/cc0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/cd1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/ce1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/seg0/cf0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JdbcCode/src/main/resources/database/zoo/service.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2uAUrS4Q01FreEOJLrpLTDCzYNC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/davja/Desktop/DavJaveiro_RoadMap_Study/OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97487191-faa1-49e9-ac67-34515e92d291" name="Changes" comment="" />
+      <created>1741691071348</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741691071348</updated>
+      <workItem from="1741691073063" duration="489000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
