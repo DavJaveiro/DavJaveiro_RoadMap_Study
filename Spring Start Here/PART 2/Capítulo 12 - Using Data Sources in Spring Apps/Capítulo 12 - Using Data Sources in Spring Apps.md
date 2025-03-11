@@ -111,4 +111,36 @@ As colunas desta tabela são as seguintes:
 - #product - o nome do product comprado;
 - #price - o preço da compra.
 
-This book's examples don't
+Os exemplos deste livro não dependem de tecnologia de banco de dados relacional que escolhermos. Podemos usar o mesmo código com uma tecnologia de nossa escolha. No entanto, precisei escolher uma tecnologia específica para os exemplos. Neste livro, usaremos o H2. 
+
+Os requisitos para o aplicativo que implementaremos são simples. Desenvolveremos um serviço backend que expõe dois endpoints. Os clientes chamam um endpoint para adicionar um novo registro na tabela de compras e um segundo endpoint para obter todos os registros da tabela de compras.
+
+Ao trabalhar com um banco de dados, implementamos todas as funcionalidades relacionadas à camada de persistência em classes que (por convenção) nomeamos como repository. A figura 12.7 mostra o design da classe do aplicativo que queremos implementar.
+
+**NOTA:** um repositório é uma classe responsável por trabalhar com um banco de dados.
+
+![[Capítulo 12 - Using Data Sources in Spring Apps-4.png]]
+
+- *PurchaseController* é um controller REST. Ele expõe dois enpoints. O cliente chamada o endpoint **POST** */purchase* para adicionar um novo registro de compra e GET /purchase endpoint para obter todas as compras registradas no banco de dados.
+
+*PurchaseRepository* usa o template do Jdbc fornecido pelo Spring. JdbcTemplate usa um #DataSource e se conecta com um banco de dados no servidor através do JDBC.
+
+Em nosso projeto Maven, precisamos criar o nosso arquivo *schema.sql* na pasta resources, é o local onde iremos escrever as queries que irão definir a estrutura do nosso banco de dados. O Spring executa essas queries quando o aplicativo é iniciado.
+[[OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/resources/schema.sql|schema]]
+
+Precisamos adicionar uma tabela que armazena os registros de compras. Em exemplos teóricos, é fácil criar uma estrutura de banco de dados adicionando uma arquivo chamado *schema.sql* à pasta de recursos do projeto Maven
+
+Nesse arquivo, precisamos escrever todas as querys SQL estruturais necessárias para definir a estrutura do banco de dados. Também podemos encontrar desenvolvedores referindo-se a essas consultas como *Linguagem de descrição de dados"* (DDL). Também adicionaremos um arquivo desse tipo ao nosso projeto e incluiremos a consulta para criar a tabela de compras, conforme apresentado no próximo trecho de código:
+
+**NOTA:** Usar um arquivo *schema.sql* para definir a estrutura do banco de dados só funciona para exemplos teóricos. Essa abordagem é fácil porque é rápida e permite que a gente se concentre nas coisas que estamos aprendendo, em vez focar na definição da estrutura do banco de dados em um tutorial. Mas, em um exemplo do mundo real, precisaremos utilizar uma dependência que também permita versionar seus scripts de banco de dados. Recomendo que você conheça o Flyway ([https://flywaydb.org/](https://flywaydb.org/) ) e o Liquibase ([https://www.liquibase.org/](https://www.liquibase.org/) ). Essas são duas dependências muito apreciadas para versionamento de esquemas de banco de dados. Elas estão além dos conceitos básicos do Spring, então não as usaremos nos exemplos deste livro. Mas é uma das coisas que recomendo que você aprenda logo após os fundamentos.
+
+Precisamos de uma classe modelo para definir os dados de compra em nosso aplicativo. As instâncias dessa classe mapeiam as linhas da tabela *purchase* no banco de dados, então cada instância precisar ter um ID, o produto e o preço como atributos. O trecho de código a seguir mostra a classe de modelo *Purchase*:
+```java
+public class Purchase {
+	private int id;
+	private String product;
+	private BigDecimal price;
+
+	// Getters e setters omitidos
+}
+```
