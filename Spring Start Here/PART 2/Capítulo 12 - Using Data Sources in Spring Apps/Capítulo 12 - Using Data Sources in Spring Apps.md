@@ -95,7 +95,7 @@ Para uma revisão de SQL, recomendo o livro _Learning SQL, 3ª edição_ , de Al
 
 Os requisitos para o aplicativo que vamos implementar são simples. Desenvolveremos um serviço backend que expõe dois endpoints. Os clientes chamam um endpoint para adicionar um novo registro na tabela purchase e um segundo endpoint para obter todos os registros da tabela purchase.
 
-Ao trabalhar com um banco de dados, implementamos todas as funcionalidades relacionadas à camada de persistência em classes que, por convenção, chamamos de repository. 
+Ao trabalhar com um banco de dados, <span style="background:#d4b106">implementamos todas as funcionalidades relacionadas à camada de persistência em classes que, por convenção, chamamos de repository</span>. 
 
 **Nota:** um repository é uma classe responsável por trabalhar com o banco de dados.
 
@@ -144,3 +144,85 @@ public class Purchase {
 	// Getters e setters omitidos
 }
 ```
+
+Você pode achar interessante que o tipo do atributo price da classe *Purchase* é BigDecimaal. Não poderíamos tê-lo definido como double? Aqui está algo importante sobre o que quero que você esteja ciente: em exemplos teóricos, muitas vezes você encontra double sendo usado para valores decimais, mas em muitos exemplos do mundo real, usar double ou float para números decimais não é a coisa certa a se fazer. Ao operar com valores double e float, você pode perder a precisão até em operações aritméticas simples, como adição ou subtração. Esse efeito é causado pela forma como o Java armazena esses valores na memória. Quando você trabalhar com informações sensíveis, como preços, deve usar o tipo #BigDecimal. Não se preocupe com a conversão. Todas as funcionalidades essenciais que o Spring fornece sabem como usar BigDecimal.
+
+**NOTA:** quando você deseja armazenar um valor de ponto flutuante com precisão e garantir que não perca a precisão decimal ao executar várias operações com os valores, use #BigDecimal e não #double ou #float.
+
+Para obter facilmente uma instância de #PurchaseRepository quando precisarmos dela no #controller, também tornaremos esse objeto um bean no contexto do Spring. A abordagem mais simples é usar uma anotação de estereótipo (como *@Component* ou *@Service*), conforme você aprendeu no capítulo 3. Mas, ao invés de usar *@Component*, o Spring fornece uma anotação específica para repositórios que podemos usar: *@Repository*. Como aprendemos no capítulo 3 a usar *@Service* para classes de serviço, para repositórios, devemos usar a anotação de estereótipo *@Repository* para instruir o Spring a adicionar um bean ao seu contexto. A listagem a seguir mostra a definição de classe do repositório.
+
+```java
+@Repository
+public class PurchaseRepository {
+
+}
+```
+- We use the @Repository annotation to add a bean of this class type to the Spring context.
+
+Agora que *PurchaseRepository* é um bean no contexto da aplicação, podemos injetar uma instância do #JdbcTemplate que usaremos para trabalhar com o banco de dados. Eu sei o que você está pensando! De onde vem essa instância de **JdbcTemplate?** Quem criou essa instância para que possamos injetá-la em nosso repositório? Neste exemplo, como em muitos cenários de produção, mais uma vez beneficiaremos da mágica do Spring Boot. Quando o Spring Boot detectou que adicionamos a dependência do H2, ele automaticamente configurou uma fonte de dados e uma instância de **JdbcTemplate**. 
+
+Se você usar o Spring, mas não o Spring Boot, será necessário definir o bean #DataSource e o bean #JdbcTemplate  (você pode adicioná-lo ao contexto do Spring usando a anotação @Bean na classe de configuração, como já aprendemos). Na seção 12.3, mostrarei como personalizá-lo e em quais cenários você precisa definir suas próprias instâncias de **DataSource** e JdbcTemplate. A listagem a seguir mostra como injetar a instância de JdbcTempalte que o Spring Boot configurou para sua aplicação.
+
+
+[[PurchaseRepository.java]]
+
+Finalmente, temos uma instância de JdbcTempalte, então podemos implementar os requisitos da aplicação. O #JdbcTemplate possui um método #update que podemos usar para executar qualquer consulta de mutação de dados: #insert, #update ou #delete. Basta passar o SQL e os parâmetros necessários, e pronto; deixe o JdbcTemplate cuidar do resto (obter uma conexão, criar uma declaração, tratar o SQLException, e assim por diante). A listagem a seguir adiciona um método *storePurchase()* à classe PurchaseRepository. O método storePurchase() usa o Jdbctempalte para adicionar um novo registro na tabela:
+
+[[PurchaseRepository.java]]
+- O método update() do JdbcTempalte envia a query para o servidor de banco de dados. O primeiro parâmetro que o método recebe é a consulta, e os próximos parâmetros são os valores para os parâmetros da consulta. Esses valores substituem, na mesma ordem, cada ponto de interrogação na consulta.
+Logo, quando o método **update** é executado, ele substitui os ? pelos valores fornecidos, temos a substituição dos Placeholders. 
+
+---
+**Um pouco mais sobre o método *Update***
+O método *update()* é um dos métodos fornecidos pela classe *JdbcTemplate* para executar consultas SQL que alteram os dados no banco de dados. Ele é usado quando desejamos:
+1. **Inserir** novos registros (`INSERT`).
+2. **Atualizar** registros existentes (`UPDATE`).
+3. **Excluir** registros (`DELETE`).
+
+Ele é chamado de update() porque essas operações geralmente resultam em uma atualização no estado do banco de dados.
+
+**Sintaxe Básica**
+A assinatura do método *update()* é a seguinte:
+```java
+int update(String sql, Object ... args)
+```
+
+**Parâmetros**:
+1. SQL: a consulta SQL que será executada. Pode conter placeholders (?) para representar valores dinâmicos.
+2. Args: os valores que substituirão os placeholders (?) na consulta SQL. Esses valores são passamos como argumentos adicionais após a String SQL.
+**Retorno**: o método retorna um inteiro (int), que representa o número de linhas afetadas pela operação SQL.
+- Por exemplo:
+
+---
+Com algumas linhas de código, podemos inserir, atualizar ou excluir registros em tabelas.
+Recuperar dados não é muito mais difícil do que isso. Assim como no caso do Insert, você escreve e envia uma consulta. Para recuperar dados, desta vez, escreveremos uma consulta com #Select. E para informar ao JdbcTemplate como transformar os dados em objetos #Purchase (nossa classe modelo), implementamos um #RowMapper: um objeto responsável por transformar uma linha do #ResultSet em um objeto específico. Por exemplo, se quisermos obter os dados do banco de dados modelados como objetos Purchase, precisará implementar um #RowMapper para definir como uma linha é mapeada para uma instância de Purchase.
+
+
+![[Capítulo 12 - Using Data Sources in Spring Apps-5.png]]
+### 🔹 **Passo a passo do fluxo no diagrama**
+
+#### **1️⃣ Obtenção da conexão com o banco de dados**
+- O **JdbcTemplate** solicita uma conexão ao **DataSource** para enviar consultas SQL ao banco de dados (DBMS).
+- O **DataSource** verifica se há uma conexão disponível no pool e, se necessário, cria uma nova.
+- O banco retorna a conexão ativa para o **JdbcTemplate**.
+#### **2️⃣ Envio da consulta SQL e recuperação dos dados**
+- O **JdbcTemplate** envia a consulta `SELECT` ao banco para obter os dados.
+- O banco processa a consulta e retorna um **ResultSet** contendo os registros da tabela.
+#### **3️⃣ Conversão dos registros do ResultSet em objetos Purchase**
+- Para **cada linha** do **ResultSet**, o **JdbcTemplate** chama o **RowMapper**, que extrai os dados da linha e os transforma em um objeto `Purchase`.
+- O resultado final é uma **lista de objetos `Purchase`**, que pode ser usada no código da aplicação.
+
+O #RowMapper é uma interface funcional usada pelo JdbcTemplate para converter linhas do ResultSet em objetos Java. Ele recebe uma linha do ResultSet, extrai as colunas e retorna uma instância da classe correspondente.
+
+**ATENÇÃO**: este processo não é um ORM(Object-Relational Mapping), mas sim uma abordagem manual de mapeamento de resultados do banco para objetos Java.
+
+Um ORM (como Hibernate, JPA, Spring Data JPA), faz mais do que apenas mapear linhas de um banco de dados para objetos Java. Ele abstraí a interação com o banco de dados fornecendo recursos como:
+- Geração automática de SQL;
+- Gerenciamento de transações;
+- Cache de objetos;
+- Relacionamentos entre entidades;
+- Mapeamento declarativo via anotações (@Entity, @OneToMany, etc.)
+
+Uma vez que você tem os métodos na classe *repository* e seja capaz de armazenar e recuperar registros no banco de dados, é hora de expor esses métodos por meio de *endpoints*. A listagem a seguir mostra a implementação da classe *controller*.
+
+Adicionar um Logger aos métodos. O Spring Boot fornece ferramentas para registrar mensagens no console usando o framework de logging integrado (como o SLF4J com Logback). 

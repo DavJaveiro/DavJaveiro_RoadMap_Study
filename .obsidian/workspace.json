@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Flyway",
+                "query": "tag:#BigDecimal",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Procurar"
+              "title": "Search"
             }
           },
           {
@@ -84,7 +84,8 @@
               "title": "Plugin no longer active"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -224,17 +225,18 @@
   },
   "active": "a77ac1d5ef489ce4",
   "lastOpenFiles": [
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/java/org/example/sqch12ex1/model",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/resources/schema.sql",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/pom.xml",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/java/org/example/sqch12ex1/SqCh12Ex1Application.java",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/test/java/org/example/sqch12ex1/SqCh12Ex1ApplicationTests.java",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/java/org/example/sqch12ex1",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/test/java/org/example/sqch12ex1",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/java/org/example",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/test/java/org/example",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/resources/templates",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/src/main/resources/static",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/SqCh12Ex1Application.class",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/model/Purchase.class",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/model",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/repository/PurchaseRepository.class",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/repository",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/controller/PurchaseController.class",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/controller",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org",
+    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/generated-sources/annotations",
+    "Capítulo 12 - Using Data Sources in Spring Apps-5.png",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/HELP.md",
     "Capítulo 12 - Using Data Sources in Spring Apps-4.png",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/Capítulo 21 - JDBC.md",
@@ -251,7 +253,6 @@
     "Capítulo 1 - Java Basics.png",
     "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches.md",
     "Appendix A - Architectural Approaches-5.png",
-    "Appendix A - Architectural Approaches-4.png",
     "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
     "Modern API Development with SPring 6 and Spring Boot 3/Part 1 - Restful Web Service Fundamentals/Capítulo 4/Capítulo 4 - Writing Business Logic for APIs.md",
     "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
