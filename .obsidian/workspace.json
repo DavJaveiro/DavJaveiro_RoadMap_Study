@@ -8,6 +8,22 @@
         "type": "tabs",
         "children": [
           {
+            "id": "55ace22e242f796a",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Lembres.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Lembres"
+            }
+          },
+          {
             "id": "a77ac1d5ef489ce4",
             "type": "leaf",
             "state": {
@@ -21,7 +37,8 @@
               "title": "Capítulo 12 - Using Data Sources in Spring Apps"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -84,8 +101,7 @@
               "title": "Plugin no longer active"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -225,22 +241,23 @@
   },
   "active": "a77ac1d5ef489ce4",
   "lastOpenFiles": [
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/SqCh12Ex1Application.class",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/model/Purchase.class",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/model",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/repository/PurchaseRepository.class",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/repository",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/controller/PurchaseController.class",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1/controller",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example/sqch12ex1",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org/example",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/classes/org",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/target/generated-sources/annotations",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/test/java/org/example/sqch12ex2_1/ApplicationTests.java",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/java/org/example/sqch12ex2_1/Application.java",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/test/java/org/example/sqch12ex2_1",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/java/org/example/sqch12ex2_1",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/test/java/org/example",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/java/org/example",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/test/java/org",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/resources/templates",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/resources/static",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/resources/application.properties",
+    "Spring Start Here/codes/sq-ch12-ex2.1/src/main/java/org",
+    "Lembres.md",
+    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Capítulo 12 - Using Data Sources in Spring Apps.md",
     "Capítulo 12 - Using Data Sources in Spring Apps-5.png",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/HELP.md",
     "Capítulo 12 - Using Data Sources in Spring Apps-4.png",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/Capítulo 21 - JDBC.md",
-    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Capítulo 12 - Using Data Sources in Spring Apps.md",
     "OCP/OCFA.md",
     "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/Capítulo 1 - Java Basics.md",
     "Capítulo 12 - Using Data Sources in Spring Apps-3.png",
@@ -270,7 +287,6 @@
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1 - Copia/HELP.md",
     "Spring Start Here/PART 1/Capítulo 6 - Using aspects with Spring AOP/Capítulo 6 - Using aspects with Spring AOP.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/target/classes/target/classes/HELP.md",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/HELP.md",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch7-ex1/HELP.md"
+    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/sq-ch8-ex1/HELP.md"
   ]
 }

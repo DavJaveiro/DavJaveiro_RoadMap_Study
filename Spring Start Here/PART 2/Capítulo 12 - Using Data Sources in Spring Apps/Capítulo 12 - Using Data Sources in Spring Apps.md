@@ -197,7 +197,6 @@ int update(String sql, Object ... args)
 Com algumas linhas de código, podemos inserir, atualizar ou excluir registros em tabelas.
 Recuperar dados não é muito mais difícil do que isso. Assim como no caso do Insert, você escreve e envia uma consulta. Para recuperar dados, desta vez, escreveremos uma consulta com #Select. E para informar ao JdbcTemplate como transformar os dados em objetos #Purchase (nossa classe modelo), implementamos um #RowMapper: um objeto responsável por transformar uma linha do #ResultSet em um objeto específico. Por exemplo, se quisermos obter os dados do banco de dados modelados como objetos Purchase, precisará implementar um #RowMapper para definir como uma linha é mapeada para uma instância de Purchase.
 
-
 ![[Capítulo 12 - Using Data Sources in Spring Apps-5.png]]
 ### 🔹 **Passo a passo do fluxo no diagrama**
 
@@ -212,7 +211,7 @@ Recuperar dados não é muito mais difícil do que isso. Assim como no caso do I
 - Para **cada linha** do **ResultSet**, o **JdbcTemplate** chama o **RowMapper**, que extrai os dados da linha e os transforma em um objeto `Purchase`.
 - O resultado final é uma **lista de objetos `Purchase`**, que pode ser usada no código da aplicação.
 
-O #RowMapper é uma interface funcional usada pelo JdbcTemplate para converter linhas do ResultSet em objetos Java. Ele recebe uma linha do ResultSet, extrai as colunas e retorna uma instância da classe correspondente.
+O #RowMapper <span style="background:#d4b106">é uma interface funcional usada pelo JdbcTemplate para converter linhas do ResultSet em objetos Java</span>. Ele recebe uma linha do ResultSet, extrai as colunas e retorna uma instância da classe correspondente.
 
 **ATENÇÃO**: este processo não é um ORM(Object-Relational Mapping), mas sim uma abordagem manual de mapeamento de resultados do banco para objetos Java.
 
@@ -225,4 +224,23 @@ Um ORM (como Hibernate, JPA, Spring Data JPA), faz mais do que apenas mapear lin
 
 Uma vez que você tem os métodos na classe *repository* e seja capaz de armazenar e recuperar registros no banco de dados, é hora de expor esses métodos por meio de *endpoints*. A listagem a seguir mostra a implementação da classe *controller*.
 
-Adicionar um Logger aos métodos. O Spring Boot fornece ferramentas para registrar mensagens no console usando o framework de logging integrado (como o SLF4J com Logback). 
+<span style="background:#d4b106">Adicionar um Logger aos métodos. O Spring Boot fornece ferramentas para registrar mensagens no console usando o framework de logging integrado (como o SLF4J com Logback). </span>
+
+
+## 12.3 Customizing the configuration of the data source
+Nesta seção, aprenderemos como personalizar a fonte de dados que o #JdbcTemplate utiliza para trabalhar com o banco de dados, ou o famoso #DataSource. O banco de dados H2 que usamos na seção 12.2 é excelente para exemplos e tutoriais e para começar a implementar a camada de persistência de um aplicativo. No entanto, em aplicativos de produção, precisamos de algo mais do que um banco de dados em memória e, frequentemente, também precisamos configurar a fonte de dados. 
+
+Para discutir o uso de um **Sistema de Gerenciamento de Banco de Dados (DBMS)** em cenários do mundo real, vamos alterar o exemplo implementando nas seção 12.2 para utilizar um servidor MySQL. Você observará que a lógica no exemplo não muda e que alterar a fonte de dados para apontar para um banco de dados diferente não é complicado. Estas são as etapas que seguiremos:
+
+1. Na seção 12.3.1, adicionaremos um driver JDBC do MySQL e configuraremos uma fonte de dados usando o arquivo "application.properties" para apontar para um banco de dados MySQL. Ainda permitiremos que o Spring Boot defina o bean **DataSource** no contexto do Spring com base nas propriedades que especificarmos.
+2. Na seção 12.3.2, alteraremos o projeto para definir um bean *DataSource* personalizado e discutiremos em quais cenários reais algo como isso pode ser necessário.
+
+### 12.3.1 Defining the data source in the application properties file
+Nesta seção, conectaremos nossa aplicação a um DBMS MySQL. Aplicações prontas para produção utilizam servidores de banco de dados externos, então dominar essa habilidade será útil. O projeto para a demonstração desta seção será o *cq-ch12-ex2*. 
+
+Vamos precisar realizar as seguintes alterações:
+1. Alterar as dependências do projeto para excluir o H2 e adicionar o driver JDBC adequado;
+2. Adicionar as propriedades de conexão para o novo banco de dados no arquivo *application.properties*;
+
+
+Para a etapa 1, no arquivo *pom.xml*, exclua a dependência do H2 e adicione o driver JDBC específico para o RDBMS que estivermos utilizando.

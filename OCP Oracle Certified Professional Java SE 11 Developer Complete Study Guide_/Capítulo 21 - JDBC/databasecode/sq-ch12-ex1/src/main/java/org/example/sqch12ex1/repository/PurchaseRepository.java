@@ -17,6 +17,9 @@ public class PurchaseRepository {
 
     public void storePurchase(Purchase purchase) {
         String sql = "INSERT into purchase (product, price) VALUES (?, ?)"; // null pq é chave primária
+
+        /*O method update é um dos métodos fornecidos pela classe JbcTempalte para executar
+        * consultas que alteram os dados no banco de dados*/
         jdbcTemplate.update(sql, purchase.getProduct(), purchase.getPrice());
     }
 
