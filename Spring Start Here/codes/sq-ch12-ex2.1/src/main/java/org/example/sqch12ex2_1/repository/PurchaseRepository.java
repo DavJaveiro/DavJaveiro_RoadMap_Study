@@ -1,6 +1,6 @@
-package org.example.sqch12ex1.repository;
+package org.example.sqch12ex2_1.repository;
 
-import org.example.sqch12ex1.model.Purchase;
+import org.example.sqch12ex2_1.model.Purchase;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -11,15 +11,13 @@ import java.util.List;
 public class PurchaseRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public PurchaseRepository(JdbcTemplate jdbcTempalte) { // constructor injection to get a instance JdbcTemplate
-        this.jdbcTemplate = jdbcTempalte;
+    public PurchaseRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public void storePurchase(Purchase purchase) {
-        String sql = "INSERT into purchase (product, price) VALUES (?, ?)";
+        String sql = "INSERT into purchase (product, price) values (?, ?)";
 
-        /*O method update é um dos métodos fornecidos pela classe JbcTempalte para executar
-        * consultas que alteram os dados no banco de dados*/
         jdbcTemplate.update(sql, purchase.getProduct(), purchase.getPrice());
     }
 

@@ -89,8 +89,6 @@ Para os exemplos deste livro, parto do pressuposto de que já conhecemos os conc
 
 Para a parte de JDBC, recomendo o capítulo 21 do livro _OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_ de Jeanne Boyarsky e Scott Selikoff (Sybex, 2020).
 
-
-
 Para uma revisão de SQL, recomendo o livro _Learning SQL, 3ª edição_ , de Alan Beaulieu (O’Reilly Media, 2020).
 
 Os requisitos para o aplicativo que vamos implementar são simples. Desenvolveremos um serviço backend que expõe dois endpoints. Os clientes chamam um endpoint para adicionar um novo registro na tabela purchase e um segundo endpoint para obter todos os registros da tabela purchase.
@@ -244,3 +242,59 @@ Vamos precisar realizar as seguintes alterações:
 
 
 Para a etapa 1, no arquivo *pom.xml*, exclua a dependência do H2 e adicione o driver JDBC específico para o RDBMS que estivermos utilizando.
+
+**Subindo Docker com image do PostgreSQL**
+
+A Imagem Oficial do Docker do Postgres DOI permite que criemos contêiner Postgres adaptado especificamente para o nosso aplicativo. Esta imagem também lida com muitas tarefas de configuração principais. Discutiremos a conteinerização e o Postgres DOI e mostraremos como começar.
+
+## Por que você deve conteinerizar o Postgres?
+Como seu aplicativo de banco de dados Postgres pode ser executado junto com seu aplicativo principal, a conteinerização costuma ser benéfica. Isso torna muito mais rápido iniciar e implementar o Postgres em qualquer lugar que precisemos. A conteinerização também separa seus dados da aplicação de banco de dados. Caso seu aplicativo falhe, é fácil iniciar outro contêiner enquanto protege seus dados de danos.
+
+Isso é mais simples do que instalar o Portgres localmente, executar configurações adicionais e iniciar seus próprios processos em segundo plano. Esses fluxos de trabalho levam mais tempo, exigem conhecimento técnico mais profundo e não se adaptam bem às mudanças nos requisitos da nossa aplicação. É por isso que os contêineres Docker são úteis - eles são acessíveis e ajustados para desenvolvimento rápido.
+
+## Qual é a imagem oficial do Docker do Postgres?
+Como qualquer outra imagem do Docker, a Postgres Docker Official Image contém todo o código-fonte, dependências principais, ferramentas e bibliotecas que o nosso aplicativo precisa. O Postgres DOI informa ao nosso aplicativo de banco de dados como se comportar e interagir com os dados. Enquanto isso, o nosso contêiner Postgres é uma instância em execução dessa imagem padrão.
+
+Especificamente, o Postgres é perfeito para os seguintes casos de uso:
+- Conectando volumes compartilhados do Docker ao seu aplicativo;
+- Testando suas soluções de armazenamento durante o desenvolvimento;
+- Testando seu aplicativo de banco de dados em relação a versões mais recentes do seu aplicativo principal ou do próprio Postgres.
+
+## É possível implantar contêineres Postgres em produção?
+Sim! Embora essa resposta venha com algumas ressalvas e dependa de quantos contêineres você quer executar simultaneamente.
+
+<span style="background:#d4b106">Embora seja possível usar a imagem oficial do Postgres em produção, os contêineres do Docker Postgres são mais adequados para desenvolvimento local</span>.Isso permite que você use ferramentas como o Docker Compose para gerenciar seus serviços coletivamente. 
+
+Lançar contêineres Postgres de produção significa usar um sistema de orquestração como o Kubernetes para permanecer ativo e funcionando. Você também pode precisar de componentes de terceiros para complementar as ofertas do Docker. 
+
+# Como executar Postgres no Docker
+1. Baixar e instalar a versão mais recente do Docker Desktop. O Docker Desktop inclui o Docker CLI, o Docker Compose e ferramentas de desenvolvimento suplementares. Enquanto isso, o Docker Dashboard (componente de UI do Docker Desktop) ajudará você a gerenciar imagens e contêineres.
+
+## Insira um comando de pull rápido
+Puxar a imagem oficial do Postgres Docker é a maneira mais rápida de começar. No terminal, digite *docker pull postgres* para pegar a versão mais recente do Postgres do Docker Hub.
+
+Desta forma, o Docker baixará a imagem do Postgres localmente em nossa máquina. 
+
+Assim que o pull for concluído, seu terminal deve notificá-lo. Podemos confirmar isso no Docker Desktop! 
+
+O Postgres é uma das imagens de banco de dados principais mais finas no Docker Hub. Mas *alpine* variantes também estão disponíveis para reduzir ainda mais o tamanho das suas imagens e incluir pacotes básicos (perefitos para projetos mais simples). Podemos aprender mais benefícios sobre o Alpine em  https://www.docker.com/blog/how-to-use-the-alpine-docker-official-image/.
+
+A seguir, se quisermos executar nossa nova imagem como um contêiner? Enquanto muitas outras imagens permitem que passemos o mouse sobre elas na lista e clique no botão azul *Executar* que aparece, o Postgres precisa de um pouco mais de atenção. Sendo um banco de dados, ele requer que a gente defina variáveis de ambiente antes de formar uma conexão bem-sucedida. 
+
+## Iniciar uma instância do Postgres
+Digite o seguinte *docker run* comando para iniciar uma nova instância ou contêiner do Postgres:
+```cmd
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+```
+Isso cria um contêiner nomeado *some-postgres* e atribui variáveis de ambiente importantes antes de executar tudo em segundo plano. O Postgres requer uma senha para funcionar corretamente, e é por isso que ela está incluída.
+
+## Usando o Docker Compose
+Como provavelmente estamos utilizando vários serviços, ou até mesmo uma ferramenta de gerenciamento de banco de dados, o Docker Compose pode ajudar a executarmos instâncias de forma mais eficiente. Com um único arquivo YAML, podemos definir como seus serviços funcionam. 
+
+Ambos os serviços estão definidos como *restart: always*. Isso torna nossos dados acessíveis sempre que nossos aplicativos estiverem em execução e mantém o serviço de gerenciamento Adminer ativo simultaneamente. Quando um contêiner falha, isso garante que um novo seja iniciado imediatamente.
+
+Para a etapa 2, o arquivo *application.properties* deve ser semelhante ao trecho de código a seguir. Adicionamos a propriedade *spring.datasoruce.url* para definir a localização do banco de dados, e as propriedades *spring.datasource.username* e *spring.datasoruce.password* para definir as credenciais que o aplicativo precisa para autenticar e obter conexões do SGBD. Além disso, precisamos usar a propriedade spring.datasource.initialization-mode como *always* para instruir o Spring Boot a usar o arquivo *schema.sql* e criar a tabela de compras. 
+
+Como a minha tabela já está criada no meu PostgreSQL, não precisamos definir a propriedade *spring.datasource.initialization-mode=always*. 
+
+**NOTA:** armazenar as senhas no arquivo properties não é uma boa prática em aplicações prontas para produção. Esses detalhes sensíveis geralmente são armazenados em cofres de segredos (secret vaults). Não discutiremos #vaults neste livro, pois esse assunto está muito além dos fundamentos. 
