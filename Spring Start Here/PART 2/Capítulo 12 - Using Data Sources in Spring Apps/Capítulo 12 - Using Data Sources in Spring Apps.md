@@ -298,3 +298,17 @@ Para a etapa 2, o arquivo *application.properties* deve ser semelhante ao trecho
 Como a minha tabela já está criada no meu PostgreSQL, não precisamos definir a propriedade *spring.datasource.initialization-mode=always*. 
 
 **NOTA:** armazenar as senhas no arquivo properties não é uma boa prática em aplicações prontas para produção. Esses detalhes sensíveis geralmente são armazenados em cofres de segredos (secret vaults). Não discutiremos #vaults neste livro, pois esse assunto está muito além dos fundamentos. 
+
+### 12.3.2 Using a custom DataSource bean
+O Spring Boot sabe como usar um bean DataSource se fornecermos os detalhes da conexão no arquivo *application.properties*. Às vezes, isso é suficiente, e como de costume, é recomendado, na maioria dos casos, que se utilize a solução mais simples que resolva o nosso problema. Porém, em outros casos, não podemos contar com o Spring Boot para criar o nosso bean DataSource. Nesses casos, é necessário definir o bean manualmente. Alguns cenários nos quais precisamos definir o bean por conta própria são os seguintes:
+- Precisamos usar uma implementação específica de DataSource com base em uma condição que só pode ser obtida em tempo de execução;
+- Precisamos configurar parâmetros específicos do objeto DataSource em determinadas condições que o nosso aplicativo só tem em tempo de execução. Por exemplo, dependendo do ambiente onde o aplicativo é iniciado, podemos querer ter mais ou menos conexões no pool de conexões para otimização de desempenho.
+- Se o nosso aplicativo usa o Spring Framework, mas não o Spring Boot.
+
+Não se preocupe! O DataSource é apenas um bean que adicionamos o contexto do Spring, como qualquer outro bean. Em vez de deixar o Spring Boot escolher a implementação para a gente e configurar o objeto DataSource, definimos um método anotado com *@Bean* em uma classe de configuração e adiciona o objeto ao contexto por conta própria. Dessa forma, teremos total controle sobre a criação do objeto.
+
+Vamos modificar o exemplo *sq-ch12-ex2* para definir um bean para o data source, em vez de deixar o Spring Boot criá-lo a partir do arquivo *properties*. 
+
+[[Spring Start Here/codes/sq-ch12-ex3/src/main/java/org/example/sqch12ex2_1/ProjectConfig.java|ProjectConfig]]
+
+Não podemos de nos esquecer de configurar os valores para as propriedades que injetamos usando a annotation *@Value*, no arquivo *application.properties.
