@@ -1,0 +1,9 @@
+## Introduction
+Um sistema de gerenciamento de banco de dados (DBMS) é uma coleção de dados inter-relacionados e um conjunto de programas para acessar esses dados. A coleção de dados, geralmente chamada de banco de dados, contém informações relevantes para uma empresa. <span style="background:#b1ffff">O principal objetivo de um DBMS é fornecer uma maneira de armazenar e recuperar informações do banco de dados</span> de forma conveniente e eficiente. 
+
+Os sistemas de banco de dados são projetados para gerenciar grandes volumes de informação. O gerenciamento de dados envolve tanto a definição de estruturas para *armazenamento* das informações quanto a disponibilização de mecanismos para sua *manipulação*.  Além disso, o sistema de banco de dados deve <span style="background:#d4b106">garantir a segurança</span> das informações armazenadas, mesmo diante de falhas do sistema ou tentativas de acesso não autorizado. Se os dados forem compartilhados entre vários usuários, <span style="background:#b1ffff">o sistema deve evitar possíveis resultado anômalos</span>.
+
+Como a informação é extremamente importante para a maioria das organizações, cientistas da computação desenvolveram um vasto conjunto de conceitos e técnicas para o gerenciamento de dados. Este capítulo apresenta brevemente os princípios dos sistemas de banco de dados.
+
+## 1.1 Database-System Applications
+Os primeiros sistemas de banco de dados surgiram na década de 1960 em resposta à necessidade de gerenciamento computacional de dados comerciais.
