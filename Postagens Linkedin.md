@@ -25,6 +25,20 @@
 ### **Postagem**
 - Criar uma postagem que se liga com a última sobre JDBC, por exemplo, no último post, falamos sobre JDBC, onde vemos as mais diversas críticas sobre a API, se você não viu, clique aqui para dar uma olhada... portanto, dado a complexidade do desenvolvimento, uso de técnicas e abordagens, você sabia que aproximadamente 60% dos custos de um software estão relacionados ao *processo de desenvolvimento* e *40% aos casos de testes* com esse valor podendo ultrapassar a marca dos 60% quando falamos de *software personalizável?*
 
+Segundo Ian Sommerville, em seu livro "Engenharia de Software", aproximadamente **60% dos custos** de um software estão relacionados ao **desenvolvimento** e **40% aos testes**. Além disso, em softwares personalizados, os custos de **evolução frequentemente ultrapassam os de desenvolvimento**.
+
+Isso significa que a engenharia de software vai muito além da fase inicial de programação. O investimento em **qualidade, testes, manutenção e evolução** é fundamental para garantir a longevidade e o sucesso de um sistema.
+
+No mercado, existem diversos modelos para estimar custos, como o **COCOMO** (COnstructive COst MOdel), desenvolvido por Barry Boehm, que considera fatores como o tamanho do software e as características do projeto para fornecer estimativas de esforço e tempo.
+
+
+
+Um estudo interessante sobre esse tema é o artigo "Identificação do custo de trabalho no desenvolvimento de software: estudo de caso", que analisa o impacto do retrabalho nos custos finais do projeto. Link para o estudo
+
+Com base na sua experiência, quais fatores você considera mais relevantes na composição dos custos de um software? Você já enfrentou desafios relacionados a estimativas de custo em projetos?
+
+Vamos trocar ideias nos comentários! #EngenhariaDeSoftware #DesenvolvimentoDeSoftware #CustoDeSoftware
+
 ## 📅Postagem para o dia 20 de março (dica técnica)
 ### 📌 Uso do Docker para testes com PostgreSQL
 
