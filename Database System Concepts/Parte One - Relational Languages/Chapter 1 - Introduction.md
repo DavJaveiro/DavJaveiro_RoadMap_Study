@@ -6,4 +6,6 @@ Os sistemas de banco de dados são projetados para gerenciar grandes volumes de 
 Como a informação é extremamente importante para a maioria das organizações, cientistas da computação desenvolveram um vasto conjunto de conceitos e técnicas para o gerenciamento de dados. Este capítulo apresenta brevemente os princípios dos sistemas de banco de dados.
 
 ## 1.1 Database-System Applications
-Os primeiros sistemas de banco de dados surgiram na década de 1960 em resposta à necessidade de gerenciamento computacional de dados comerciais.
+Os primeiros sistemas de banco de dados surgiram na década de 1960 em resposta à necessidade de gerenciamento computacional de dados comerciais. Essas primeiras aplicações eram relativamente simples em comparação com as modernas aplicações de banco de dados, que hoje incluem operações altamente sofisticadas em escala global.
+
+Todas as aplicações de banco de dados, antigas e novas, compartilham elementos fundamentais. O aspecto central da aplicação não é um programa realizando cálculos, mas sim os próprios dados. Atualmente, algumas das empresas mais valiosas do mundo não devem seu valor aos ativos físicos que possuem, mas sim às informações que detêm 
