@@ -44,3 +44,7 @@ Vamos trocar ideias nos comentários! #EngenhariaDeSoftware #DesenvolvimentoDeSo
 
 
 ---
+
+## 📅Postagem para o dia 25 de março (dica técnica)
+### 📌 Você sabe o quanto o Spring é inteligente o suficiente para reverter uma transação? 
+O comportamento padrão do Spring é reverter a transação apenas quando encontra uma exceção em tempo de execução. É assim que as transações são usadas na maioria dos cenários.
