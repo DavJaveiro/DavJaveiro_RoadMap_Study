@@ -63,4 +63,33 @@ Vamos começar com um exemplo que ensina como usar transações em um aplicativo
 
 Escreveremos um aplicativo que armazena os detalhes das contas em uma tabela de banco de dados. Imagine que este é o backend de um aplicativo de carteira eletrônica que estamos implementando. Criar-se-á a funcionalidade de transferir dinheiro de uma conta para outra. **Para este caso de uso, será necessário usar uma transação para garantir que os dados permaneçam consistentes caso ocorra uma exceção**.
 
-O design de classes do aplicativo que implementaremos é simples. Usamos uma tabela em um banco de dados para armazenar os detalhes das contas (incluindo o saldo). Implementamos um repositório para manipular os dados dessa tabela e encapsulamos a lógica de negócio (o caso de uso de transferência de dinheiro) em uma classe de serviço. O método da classe de serviço que implementa essa lógica de negócio é onde precisamos utilizar uma transação
+O design de classes do aplicativo que implementaremos é simples. Usamos uma tabela em um banco de dados para armazenar os detalhes das contas (incluindo o saldo). Implementamos um repositório para manipular os dados dessa tabela e encapsulamos a lógica de negócio (o caso de uso de transferência de dinheiro) em uma classe de serviço. O método da classe de serviço que implementa essa lógica de negócio é onde precisamos utilizar uma transação. Exponhamos esse caso de uso implementando um endpoint na classe *controller*. Para transferir dinheiro de uma conta para outra, é necessário chamar esse endpoint. A figura abaixo ilustra o design de classes do nosso exemplo:
+![[Capítulo 13 - Using transactions in Spring apps-1.png]]
+- O *AccountController* é um REST controller que expõe o endpoint *POST /transfer*. Esse endpoint fornece uma maneira de chamar o caso de uso de transferência de dinheiro.
+- A lógica do método *transferMoney()* implementa as etapas "sacar o dinheiro da conta de origem" e "depositar o dinheiro na conta de destino". <span style="background:#b1ffff">Essas são operações mutáveis</span>, por isso as encapsulamos em uma transação para garantir que, se alguma delas falhar, os dados possam ser revertidos para o estado em que estavam antes do início do caso de uso #rollback.
+- O *TransferService* implementa o caso de uso de transferência de dinheiro por meio do método *transferMoney()*. Precisamos executar esse método dentro de uma transação para garantir que evitamos inconsistências nos dados.
+- A classe *AccountRepository* implementa todas as operações que podem ser realizadas sobre a tabela *account* no banco de dados.
+
+O aplicativo trabalha com apenas uma tabela no banco de dados, chamada *account*, que possui os seguintes campos:
+- id - chave primária. Definimos este campo como um valor *INT* com auto incremento;
+- name - Nome do proprietário da conta;
+- amount - quantidade de dinheiro que o proprietário possui na conta.
+
+Vamos criar dois registros que iremos utilizar para os testes futuramente:
+```sql
+INSERt INTO account VALUES (NULL, 'João Canabrava', 1000);
+INSERT INTO account VALUES (NULL, 'Sr.Madruga)', 1000);
+```
+
+Também precisamos de uma classe model para os valores que criamos em nossa tabela: [[Account.java]]
+
+Para implementar o caso de uso "transferir dinheiro", precisamos das seguintes funcionalidades na camada repository:
+1. Encontrar os detalhes de uma conta usando o ID da conta;
+	Usaremos o método *findAccountById(long id)*, que recebe o ID da conta como parâmetro e usa o JdbcTemplaate para obter os detalhes da conta com aquele ID no banco de dados. 
+
+2. Atualizar o valor de uma conta específica.
+	Implementaremos um método chamado *changeAmount(long id, BigDecimal amount)*; esse método define o valor passado como o segundo parâmetro para a conta com o ID fornecido no primeiro parâmetro.
+
+Vamos implementar essas funcionalidades como discutido no capítulo 10, utilizando o *JdbcTemplate*.
+
+
