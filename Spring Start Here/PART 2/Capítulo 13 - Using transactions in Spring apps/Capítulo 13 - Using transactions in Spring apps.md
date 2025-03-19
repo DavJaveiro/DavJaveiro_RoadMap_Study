@@ -63,4 +63,4 @@ Vamos começar com um exemplo que ensina como usar transações em um aplicativo
 
 Escreveremos um aplicativo que armazena os detalhes das contas em uma tabela de banco de dados. Imagine que este é o backend de um aplicativo de carteira eletrônica que estamos implementando. Criar-se-á a funcionalidade de transferir dinheiro de uma conta para outra. **Para este caso de uso, será necessário usar uma transação para garantir que os dados permaneçam consistentes caso ocorra uma exceção**.
 
-O design de classes do aplicativo que implementaremos é simples. Usamos uma tabela em um banco de dados para armazenar os detalhes das contas (incluindo o saldo).
+O design de classes do aplicativo que implementaremos é simples. Usamos uma tabela em um banco de dados para armazenar os detalhes das contas (incluindo o saldo). Implementamos um repositório para manipular os dados dessa tabela e encapsulamos a lógica de negócio (o caso de uso de transferência de dinheiro) em uma classe de serviço. O método da classe de serviço que implementa essa lógica de negócio é onde precisamos utilizar uma transação
