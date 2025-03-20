@@ -1,9 +1,11 @@
 package org.example.sqch13ex1.model;
 
+import java.math.BigDecimal;
+
 public class Account {
     private long id;
     private String name;
-    private String amount;
+    private BigDecimal amount;
 
     public long getId() {
         return id;
@@ -21,11 +23,11 @@ public class Account {
         this.name = name;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }
