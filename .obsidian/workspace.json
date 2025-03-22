@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
+                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 13 - Using transactions in Spring apps"
+              "title": "Módulo 1"
             }
           },
           {
@@ -91,7 +91,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Explorador de arquivos"
+              "title": "Files"
             }
           },
           {
@@ -251,13 +251,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Abrir a troca rápida": false,
-      "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
-      "daily-notes:Abrir a nota de hoje": false,
-      "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
-      "audio-recorder:Começar/parar a gravação de áudio": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -270,10 +270,14 @@
   },
   "active": "3eb56edf1f98466c",
   "lastOpenFiles": [
+    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Untitled",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1",
+    "AWS Academy Cloud Fundations",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRowMapper.java",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRepository.java~",
     "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
     "Postagens Linkedin.md",
     "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/service/AccountService.java",
@@ -281,12 +285,8 @@
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRepository.java",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/model/Account.java",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/model",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/resources/application-postgres.properties",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/resources/application-postgre.properties",
     "Spring Start Here/codes/sq-ch13-ex1/HELP.md",
-    "Spring Start Here/codes/sq-ch13-ex1/mvnw.cmd",
     "Capítulo 13 - Using transactions in Spring apps-1.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
     "Engenharia de Requisitos/Aula 1/Aula 1 - Fundamentos da Engenharia de Requisitos.md",
