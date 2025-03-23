@@ -36,9 +36,23 @@
               "icon": "lucide-file",
               "title": "Capítulo 13 - Using transactions in Spring apps"
             }
+          },
+          {
+            "id": "e89b66137c04b1f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Capítulo 1 - Introdução"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -239,13 +253,14 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6ca198c1da46b965",
+  "active": "e89b66137c04b1f4",
   "lastOpenFiles": [
+    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
+    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/dto",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/controller/TransferRequest.java",
-    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
     "Postagens Linkedin.md",
-    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/controller/AccountController.java",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/controller",
     "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/AccountController",
@@ -257,11 +272,9 @@
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Untitled",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1",
-    "AWS Academy Cloud Fundations",
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Spring Start Here/codes/sq-ch13-ex1/HELP.md",
     "Capítulo 13 - Using transactions in Spring apps-1.png",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
     "Engenharia de Requisitos/Aula 1/Aula 1 - Fundamentos da Engenharia de Requisitos.md",
     "Capítulo 13 - Using transactions in Spring apps.png",
     "Java Nelio Alves/Seção 19 - Acesso a banco de dados com JDBC/Transações.md",
