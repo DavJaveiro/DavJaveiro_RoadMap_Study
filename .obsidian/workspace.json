@@ -24,51 +24,21 @@
             }
           },
           {
-            "id": "55ace22e242f796a",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Postagens Linkedin.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Postagens Linkedin"
-            }
-          },
-          {
-            "id": "3eb56edf1f98466c",
+            "id": "6ca198c1da46b965",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
+                "file": "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Módulo 1"
-            }
-          },
-          {
-            "id": "25743fd5eafbcb3d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction"
+              "title": "Capítulo 13 - Using transactions in Spring apps"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -91,7 +61,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -135,7 +105,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 484.01216888427734
+    "width": 484.01216888427734,
+    "collapsed": true
   },
   "right": {
     "id": "80c3d83199a5dd81",
@@ -251,13 +222,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -268,23 +239,25 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "3eb56edf1f98466c",
+  "active": "6ca198c1da46b965",
   "lastOpenFiles": [
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/dto",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/controller/TransferRequest.java",
+    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
+    "Postagens Linkedin.md",
     "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/controller/AccountController.java",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/controller",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/AccountController",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/service/TransferService.java~",
+    "Capítulo 13 - Using transactions in Spring apps-2.png",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/service/TransferService.java",
+    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRepository.java~",
+    "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Untitled",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1",
     "AWS Academy Cloud Fundations",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRowMapper.java",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRepository.java~",
-    "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-    "Postagens Linkedin.md",
-    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/service/AccountService.java",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/service",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository/AccountRepository.java",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/repository",
-    "Spring Start Here/codes/sq-ch13-ex1/src/main/java/org/example/sqch13ex1/model/Account.java",
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Spring Start Here/codes/sq-ch13-ex1/HELP.md",
     "Capítulo 13 - Using transactions in Spring apps-1.png",
@@ -301,7 +274,6 @@
     "Spring Start Here/codes/JDBCDemo/target/site/images/icon_warning_sml.gif",
     "Spring Start Here/codes/JDBCDemo/target/site/images/icon_success_sml.gif",
     "Spring Start Here/codes/JDBCDemo/target/site/images/icon_info_sml.gif",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/icon_error_sml.gif",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/HELP.md",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/Capítulo 21 - JDBC.md",
     "OCP/OCFA.md",
@@ -315,7 +287,6 @@
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/HELP.md",
     "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
     "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md",
-    "Excalidraw/Drawing 2025-03-03 16.08.46.excalidraw.md",
-    "Spring Start Here/PART 1/Capítulo 5 - The Spring context Bean Scopes and life cycle/Chapter 5 -The Spring context - Bean scopes and life cycle.md"
+    "Excalidraw/Drawing 2025-03-03 16.08.46.excalidraw.md"
   ]
 }

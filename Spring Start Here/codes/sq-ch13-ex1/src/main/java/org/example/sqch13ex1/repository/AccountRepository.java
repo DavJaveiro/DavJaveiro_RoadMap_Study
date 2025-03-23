@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Repository
 public class AccountRepository {
@@ -21,9 +22,14 @@ public class AccountRepository {
         return jdbcTemplate.queryForObject(sql, new AccountRowMapper(), id);
     }
 
-    public void changeAccount(long id, BigDecimal amount) {
+    public void changeAmount(long id, BigDecimal amount) {
         String sql = "UPDATE account SET amount = ? WHERE id = ?";
         jdbcTemplate.update(sql, amount, id);
+    }
+
+    public List<Account> findAllAccounts() {
+        String sql = "SELECT * FROM accounts";
+        return jdbcTemplate.query(sql, new AccountRowMapper());
     }
 
 }

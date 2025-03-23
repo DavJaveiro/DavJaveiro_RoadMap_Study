@@ -94,11 +94,72 @@ Vamos implementar essas funcionalidades como discutido no capítulo 10, utilizan
 
 ---
 **Revisando o RowMapper**
-O #RowMapper é uma interface do Spring Framework que tem como objetivo **mapear uma linhaa de um conjunto de resultados de uma consulta SQL para um objeto Java.** Ela é usada principalmente em conjunto com o *JdbcTemplate* para facilitar a conversão dos dados retornados do banco de dados em instâncias de objetos Java.
+O #RowMapper é uma interface do Spring Framework que tem como objetivo **mapear uma linha de um conjunto de resultados de uma consulta SQL para um objeto Java.** Ela é usada principalmente em conjunto com o *JdbcTemplate* para facilitar a conversão dos dados retornados do banco de dados em instâncias de objetos Java.
 
-Portanto, para transformar os nossos dados em objetos do nosso modelo (ou entidades), precisamos de um mecanismo que mapeie cada linha do *ResultSet* para uma instância de um objeto Java.
+**Por que usar *RowMapper*?**
+Quando realizamos consultas SQL no banco de dados, os resultados são retornados como um *ResultSet*, que é uma estrutura tabular onde cada linha contém colunas com os dados retornados. No entanto, para que esses dados sejam úteis dentro da aplicação, eles precisam ser convertidos para objetos Java correspondentes. O *RowMapper* abstrai esse processo, evitando a manipulação manual do *ResultSet* e tornando o código mais limpo e reutilizável.
+
+**Funcionamento do RowMapper**
+A interface *RowMapper< T>* possui apenas um método funcional:
+```java
+T mapRow(ResultSet resultSet, int rowNum) throws SQLExceptions;
+```
+- O *ResultSet resultSet* contém os dados retornados pela consulta.
+- O *rowNum* representa o número da linha atual no conjunto de resultados.
+- O método deve retornar um objeto do tipo T, que é a entidade que queremos mapear.
+
+O #JdbcTemplate usa essa interface para percorrer cada linha do *ResultSet*, chamando o método *mapRow()* para convertê-la em um objeto do tipo *T*.
+
+Para testar o aplicativo com mais facilidade, vamos adicionar também a capacidade de obter todos os detalhes da conta a partir do banco de dados, conforme mostrado na listagem a seguir. Utilizaremos essa funcionalidade ao verificar se o aplicativo funciona como esperado.
+
+```java
+@Repository
+public class AccountRepository {
+	// omitted code
+
+	public List<Account> findAllAccounts() {
+		String sql = "SELECT * FROM account";
+		return jdbc.query(sql, new AccountRowMapper());
+	}
+}
+```
+
+Na classe de serviço, implementaremos a lógica para o caso de uso de *transferência de dinheiro*. A classe *TransferService* utiliza a classe *AccountRepository* para gerenciar os dados na tabela de contas. A lógica que o método implementa é a seguinte:
+1. Obter os detalhes das contas de origem e destino para verificar o saldo em ambas;
+2. Retirar o valor transferido da conta de origem, definindo um novo saldo que corresponde ao saldo atual menos o valor a ser transferido.
+3. Depositar o valor transferido na conta de destino, definindo um novo saldo, que corresponde ao saldo atual da conta mais o valor transferido;
+
+A Listagem 13.5 mostra como o método *transferMoney()* da classe de serviço implementa essa lógica. Observe que os pontos 2 e 3 definem operações mutáveis. Ambas  as operações alteram os dados persistidos (ou seja, atualizam os saldos das contas). Se não as envolvermos em uma transação, podemos acabar em situações onde os dados ficam inconsistentes devido à falha de uma das etapas.
+
+Felizmente, só precisamos usar a anotação *@Transaction* para marcar o método como transacional e informar ao Spring que ele precisa interceptar as execuções desse métodos e envolvê-las em transações:
+
+![[Capítulo 13 - Using transactions in Spring apps-2.png]]
+1. **AccountController**: representa o controlador da camada de apresentação, responsável por receber as solicitações do usuário (por exemplo, uma requisição HTTP para realizar uma transferência);
+2. **TransferService:** representa a camada de serviço, onde a lógica de negócios é implementada. Aqui, ocorre a chamada para os métodos que manipulam as contas.
+3. **AccountRepository:** representa a camada de acesso ao banco de dados, onde são realizadas as operações como SELECT e UPDATE nas tabelas correspondentes às contas.
+4. **Database:** o banco de dados onde as informações das contas são armazenadas.
 
 
+## Using #Transactional
+A anotação *@Transactional* também pode ser aplicada diretamente à classe. Se usada na classe (como apresentado no próximo trecho de código), a anotação se aplica a todos os métodos da classe. Frequentemente, em aplicativos do mundo real, a anotação *@Transactional* é utilizada na classe, pois os métodos de uma classe de serviço definem casos de uso e, em geral, todos os casos de uso precisam ser transacionais. Para evitar repetir a anotação em cada método. Por tanto, é mais fácil anotar a classe como um todo.
+Quando a anotação *@Transactional* é usada tanto na classe quanto no método, a configuração no nível do método sobrescreve a da classe.
 
+```java
+public class TransferService {
 
+	// Código omitido
+	public void transferMoney(long idSender,
+								long idReceiver,
+								BigDecimal amount) {
+								
+								}
+	)
+}
+```
+Frequentemente, usamos a anotação *@Transactional* diretamente na classe. 
 
+The next listing shows the implementation of the *getAllAccounts()* method, which returns a list of all the database's account records.
+
+O diferencial desse exemplo é que utilizaremos um objeto do tipo *TransferRequest* como parâmetro da ação do controller *transferMoney()*. O objeto *TransferRequest* simplesmente modela o corpo da requisição HTTP. Os objetos como esse, cuja responsabilidade é modelar os dados transferidos entre dois aplicativos, são chamados de DTOs.
+
+- *TransferRequest* é uma classe que serve para representar os dados que enviamos em uma requisição HTTP.
