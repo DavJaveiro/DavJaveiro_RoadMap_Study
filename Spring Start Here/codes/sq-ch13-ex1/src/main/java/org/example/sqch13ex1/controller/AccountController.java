@@ -1,12 +1,9 @@
 package org.example.sqch13ex1.controller;
 
+import org.example.sqch13ex1.dto.TransferRequest;
 import org.example.sqch13ex1.model.Account;
 import org.example.sqch13ex1.service.TransferService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,9 +16,7 @@ public class AccountController {
     }
 
     @PostMapping("/transfer")
-    public void transferMoney(
-            @RequestBody TransferRequest request
-    ) {
+    public void transferMoney(@RequestBody TransferRequest request) {
         transferService.transferMoney(
                 request.getSenderAccountId(),
                 request.getReceiverAccountId(),

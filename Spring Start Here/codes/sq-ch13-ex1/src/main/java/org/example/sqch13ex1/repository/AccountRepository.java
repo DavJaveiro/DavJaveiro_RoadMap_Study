@@ -28,7 +28,7 @@ public class AccountRepository {
     }
 
     public List<Account> findAllAccounts() {
-        String sql = "SELECT * FROM accounts";
+        String sql = "SELECT * FROM account";
         return jdbcTemplate.query(sql, new AccountRowMapper());
     }
 

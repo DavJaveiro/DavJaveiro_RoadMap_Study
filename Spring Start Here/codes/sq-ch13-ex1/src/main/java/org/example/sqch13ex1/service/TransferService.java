@@ -21,15 +21,15 @@ public class TransferService {
     @Transactional
     public void transferMoney(Long idSender, Long idReceiver, BigDecimal amount) {
         Account sender = accountRepository.findAccountById(idSender);
-
         Account receiver = accountRepository.findAccountById(idReceiver);
 
         BigDecimal senderNewAmount = sender.getAmount().subtract(amount);
-        BigDecimal receiverNewAmount = receiver.getAmount().subtract(amount);
+        BigDecimal receiverNewAmount = receiver.getAmount().add(amount);
 
         accountRepository.changeAmount(idSender, senderNewAmount);
-
         accountRepository.changeAmount(idReceiver, receiverNewAmount);
+
+        throw new RuntimeException("Oh no! Alguma coisa deu errada!");
     }
 
     public List<Account> getAllAccounts() {

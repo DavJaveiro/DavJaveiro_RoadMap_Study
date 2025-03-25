@@ -163,3 +163,16 @@ The next listing shows the implementation of the *getAllAccounts()* method, whic
 O diferencial desse exemplo é que utilizaremos um objeto do tipo *TransferRequest* como parâmetro da ação do controller *transferMoney()*. O objeto *TransferRequest* simplesmente modela o corpo da requisição HTTP. Os objetos como esse, cuja responsabilidade é modelar os dados transferidos entre dois aplicativos, são chamados de DTOs.
 
 - *TransferRequest* é uma classe que serve para representar os dados que enviamos em uma requisição HTTP.
+[[TransferRequest.java]]
+Utilizamos um validador do *Jakarta Validation*.
+
+Como podemos saber se a aplicação realiza o rollback caso algo no método lance uma exceção em tempo de execução?
+
+**Nota:** uma das coisas mais importantes que temos como lição sobre aplicações é que nunca devemos confiar que algo funciona a menos que tenha testado adequadamente!
+
+Enquanto não testarmos a nossa aplicação, podemos dizer que ela está em um **estado de Schrodinger**. Ela tanto funciona quanto não funciona até que provemos o seu estado! Vamos adicionar apenas um RunTimeException para realizar o teste.
+
+![[Capítulo 13 - Using transactions in Spring apps-3.png]]
+
+## Resumo
+- Uma transação é um conjunto de operações que alteram dados, e essas operações ou são executadas juntas ou não são executadas de forma alguma. Em um cenário real, quase qualquer caso de uso deve ser parte de uma transação para evitar inconsistências de dados.
