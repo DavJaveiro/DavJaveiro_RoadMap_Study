@@ -59,7 +59,7 @@ Para compreender a finalidade dos sistemas de banco de dados, considere uma part
 - Adicionar novos alunos, professores e cursos. Registrar alunos em cursos e gerar lista de presença.
 - Atribuir notas aos alunos, calcular médias ponderadas e gerar históricos acadêmicos.
 
-Os programadores desenvolvem esses programas de aplicação para atender às necessidades da universidade. Novos programas de aplicação são adicionados ao sistema conforme a necessidade surge. Por exemplo, suponha que uma universidade decida criar um novo curso de graduação. Como resultado, a universidade cria um novo departamento e decide criar um novo curso de graduação. Como resultado, a universidade cria um novo departamento e estabelece novos arquivos permanentes (ou adiciona informações a arquivos existentes) para registrar dados sobre todos os professores do departamento, os alunos matriculados neste curso, as disciplinas oferecidas, os requisitos para obtenção do diploma e assim por diante. A universidade pode precisar desenvolver novos programas de aplicação para lidar com regras específicas desse novo curso. Além disso, podem ser necessários novos programas de aplicação para implementar mudanças nas regras gerais da universidade. Assim, com o passar do tempo, o sistema adquire mais arquivos e mais programas de aplicação.
+Os programadores desenvolvem esses programas de aplicação para atender às necessidades da universidade. Novos programas de aplicação são adicionados ao sistema conforme a necessidade surgem. Por exemplo, suponha que uma universidade decida criar um novo curso de graduação. Como resultado, a universidade cria um novo departamento e decide criar um novo curso de graduação. Como resultado, a universidade cria um novo departamento e estabelece novos arquivos permanentes (ou adiciona informações a arquivos existentes) para registrar dados sobre todos os professores do departamento, os alunos matriculados neste curso, as disciplinas oferecidas, os requisitos para obtenção do diploma e assim por diante. A universidade pode precisar desenvolver novos programas de aplicação para lidar com regras específicas desse novo curso. Além disso, podem ser necessários novos programas de aplicação para implementar mudanças nas regras gerais da universidade. Assim, com o passar do tempo, o sistema adquire mais arquivos e mais programas de aplicação.
 
 Esse típico sistema de processamento de arquivos é suportado por um sistema operacional convencional. O sistema armazena registros permanentes em vários arquivos e requer diferentes programas de aplicação para extrair registros de, ou adicionar registros aos, arquivos apropriados. 
 
@@ -85,6 +85,90 @@ Essas dificuldades, entre outras, impulsionaram tanto o desenvolvimento inicial 
 No que se segue, veremos os conceitos e algoritmos que permitem aos sistemas de banco de dados resolver os problemas dos sistemas de processamento de arquivos. Na maior parte deste livro, usaremos uma organização universitária como exemplo prático de uma aplicação típica de processamento de dados.
 
 ## View of Data
-Um sistema de banco de dados é uma coleção de dados inter-relacionados e um conjunto de programas que permitem aos usuários acessar e modificar esses dados. Um dos principais objetivos de um sistema de banco de dados é fornecer aos usuários uma visão abstrata dos dados. Ou seja, o sistema oculta certos detalhes como os dados são armazenados e mantidos.
+Um sistema de banco de dados é uma coleção de dados inter-relacionados e um conjunto de programas que permitem aos usuários acessar e modificar esses dados. Um dos principais objetivos de um sistema de banco de dados é <span style="background:#d4b106">fornecer aos usuários uma visão abstrata dos dados.</span> Ou seja, o sistema oculta certos detalhes como os dados são armazenados e mantidos.
+
+### 1.3.1 Data Models
+Por trás da estrutura de um banco de dados está o *data model* (modelo de dados): uma coleção de ferramentas conceituais para *descrever dados*, *relacionamentos* entre os dados, semântica dos dados e restrições de consistência.
+Existem diversos modelos de dados diferentes que abordaremos no texto. Esses modelos podem ser classificados em quatro categorias distintas:
+
+- **Relational Model (Modelo Relacional).** O modelo relacional utiliza uma coleção de tabelas para representar tanto os dados quanto os relacionamentos entre esses dados. Cada tabela possui múltiplas colunas, e cada coluna tem um nome único. As tabelas também são conhecidas como relações. O modelo relacional é um exemplo de um modelo baseado em registros (*record-based model*). Modelos baseados em registros recebem esse nome porque o banco de dados é estruturado em registros de formato fixo de vários tipos. <span style="background:#affad1">Cada tabela contém registros de um tipo específico</span>. Cada tipo de registro define um número fixo de campos ou atributos. As colunas da tabela correspondem aos atributos do tipo de registro. O modelo de dados relacional é o mais amplamente utilizado, e a grande maioria dos sistemas de banco de dados atuais é baseada no modelo relacional. O capítulo 2 e o Capítulo 7 abordam o modelo relacional em detalhes.
+
+- **Entity-Relationship Model (Modelo Entidade-Relacionamento)**. O modelo de dados entidade-relacionamento (E-R) utiliza uma <span style="background:#b1ffff">coleção de objetos básicos</span>, <span style="background:#d4b106">chamados entidades</span>, e os relacionamentos entre esses objetos. uma entidade e uma "coisa" ou "objeto" do mundo real que pode ser distinguido de outros objetos. O modelo entidade-relacionamento é amplamente utilizado no design de banco de dados. O capítulo 6 explore esse modelo em detalhes. Aqui, o foco é entender como os objetos estão conectados, antes de decidir como eles serão armazenados. <span style="background:#affad1">Não foca diretamente na implementação em tabelas</span>.
+
+- **Semi-structured Data Model (Modelo de Dados Semi-estruturado)**. O modelo de dados semi-estruturado permite a especificação de dados onde itens de dados individuais do mesmo tipo podem ter conjuntos diferentes de atributos. Isso contrasta com os modelos de dados mencionados anteriormente, nos quais todos os itens de dados de um determinado tipo devem possuir o mesmo conjuntos de atributos. JSON e XML são representações amplamente utilizadas de dados semi-estruturados. Os modelos de dados semi-estruturados são explorados em detalhes no Capítulo 8. <span style="background:#d4b106">Aqui, itens do mesmo tipo podem ter atributos diferentes. Não há necessidade de seguir um formato fixo. </span> 
+- Considere um conjunto de dados sobre pessoas em JSON:
+```json
+  { "nome": "João", "idade": 20, "curso": "Engenharia" },
+  { "nome": "Maria", "hobbies": ["leitura", "viagem"] }
+```
+- Uma pessoa tem o atributo *curso*, enquanto outra tem *hobbies*. Isso não seria possível em um modelo relacional. 
+- É útil para lidar com dados, variáveis desconhecidas, como em APIs da web ou documentos XML/JSON.
+
+- **Modelos de Dados Baseado em Objetos**: a programação orientada a objetos (especialmente em Java, C++ ou C#) tornou-se a metodologia dominante no desenvolvimento de software. Isso inicialmente levou ao desenvolvimento de um **modelo de dados orientado a objetos distinto**, mas hoje o conceito de objetos está bem integrado aos bancos de dados relacionais. Existem padrões para armazenar objetos em tabelas relacionais. Os sistemas de banco de dados permitem que procedimentos sejam armazenados no sistema de banco de dados e executados pelo próprio sistema. Isso pode ser visto como uma extensão do modelo relacional com noções de *encapsulamento*, *métodos*  e *identidade de objetos*. Os modelos de dados baseados em objetos são resumidos no Capítulo 8.
+
+### 1.3.2 Relational Data Model
+No modelo relacional, os **dados** são representados na forma de *tabelas*. Cada tabela possui múltiplas colunas, e cada coluna tem um nome único. Cada linha da tabela representa uma única informação. A figura 1.1 apresenta um exemplo de banco de dados relacional composto por duas tabelas: uma mostra detalhes dos instrutores da universidade e a outra exibe detalhes dos diversos departamentos da universidade.
+
+A primeira tabela, a tabela *instructor*, mostra, por exemplo, que um instrutor chamado Einstein, com ID 22222, é membro do departamento de Física e tem um salário anual de $95.000. A segunda tabela, *department*, mostra, por exemplo, que o departamento de Biologia está localizado no prédio Watson e tem um orçamento de $90.000. Claro, em uma universidade do mundo real, haveria muitos mais departamentos e instrutores. No texto, usamos tabelas pequenas para ilustrar conceitos. Um exemplo maior para o mesmo esquema está disponível online.
+
+![[Chapter 1 - Introduction.png]]
 
 
+### 1.3.3 Data Abstraction
+Para que o sistema seja utilizável, ele <span style="background:#b1ffff">deve recuperar dados de forma eficiente</span>. A necessidade de eficiência levou os desenvolvedores de sistemas de banco de dados a utilizarem estruturas de dados complexas para representar os dados no banco de dados. Como muitos usuários de sistemas de banco de dados não possuem treinamento em computação, os desenvolvedores escondem essa complexidade dos usuários por meio de vários níveis de abstração de dados, simplificando as interações dos usuários com o sistema:
+- **Nível físico:** o nível mais baixo de abstração descreve como os dados são realmente armazenados. O nível físico detalha estruturas de dados de baixo nível e complexas;
+- **Nível lógico:** o próximo nível mais alto de abstração descreve quais dados estão armazenados no banco de dados e quais relações existem entre esses dados. O nível lógico descreve todo o banco de dados em termos de um pequeno número de estruturas relativamente simples. Embora a implementação dessas estruturas simples no nível lógico possa envolver estruturas complexas no nível físico, o usuário do nível lógico não precisa estar ciente dessa complexidade. Isso é chamado de *independência de dados física.* Os administradores de banco de dados, que devem decidir quais informações manter no banco de dados, utilizam o nível lógico de abstração.
+
+- **View Level** o nível mais alto de abstração descreve apenas **parte do banco de dados completo**. Embora o nível lógico utilize estruturas simples, a complexidade ainda persiste devido à grande variedade de informações armazenadas em um banco de dados extenso. Muitos usuários do sistema de banco de dados não precisam de todo esse conjunto de informações; em vez disso, eles precisam acessar apenas uma **parte específica do banco de dados.** O nível de visão existe para simplificar essa interação dos usuários com o sistema. O sistema pode fornecer várias visões diferentes para o mesmo banco de dados.
+
+![[Chapter 1 - Introduction-1.png]]
+
+Uma analogia com o conceito de tipos de dados em linguagens de programação pode esclarecer a distinção entre os níveis de abstração. Muitas linguagens de programação de alto nível suportam a noção de um **tipo estruturado**. Podemos descrever o tipo de um registro de forma abstrata da seguinte maneira:
+```python
+type instructor = record
+    ID : char(5);
+    name : char(20);
+    dept_name : char(20);
+    salary : numeric(8,2);
+end;
+```
+
+Esse código define um novo tipo de registro chamado *instructor* com quatro campos. Cada campo possui um nome e um tipo associado. Por exemplo:
+- *char(20)* específica uma string com 20 caracteres;
+- *numeric(8,2)* específica um número com 8 dígitos, dos quais dois estão à direita do ponto decimal;
+
+Uma organização universitária pode ter vários tipos de registros semelhantes, incluindo:
+
+1. **`department`**, com os campos:
+   - `dept_name`: Nome do departamento.
+   - `building`: Prédio onde o departamento está localizado.
+   - `budget`: Orçamento do departamento.
+
+2. **`course`**, com os campos:
+   - `course_id`: Identificador único do curso.
+   - `title`: Título ou nome do curso.
+   - `dept_name`: Departamento ao qual o curso pertence.
+   - `credits`: Número de créditos do curso.
+
+3. **`student`**, com os campos:
+   - `ID`: Identificador único do aluno.
+   - `name`: Nome do aluno.
+   - `dept_name`: Departamento ao qual o aluno está vinculado.
+   - `tot_cred`: Total de créditos acumulados pelo aluno.
+
+No nível físico, um registro de instrutor, departamento ou aluno pode ser descrito como um bloco de bytes consecutivos. O compilador esconde esse nível de detalhes dos programadores. Da mesma forma, o sistema de banco de dados oculta muito dos detalhes de armazenamento de baixo nível dos programadores de banco de dados. Os administradores de banco de dados, por outro lado, podem estar cientes de certos detalhes da organização física dos dados. Por exemplo, existem várias maneiras possíveis de armazenar tabelas em arquivos. Uma maneira é armazenar uma tabela como uma sequência de registros em um arquivo, com um caractere especial (como uma vírgula) usado para delimitar os diferentes atributos de um registro, e outro caractere especial (como um caractere de nova linha) pode ser usado para delimitar registros. Se todos os atributos tiverem comprimento fixo, os comprimentos dos atributos podem ser armazenados separadamente, e os delimitadores podem ser omitidos do arquivo. Atributos de comprimento variável podem ser tratados armazenando o comprimento, seguido pelos dados. Os bancos de dados utilizam um tipo de estrutura de dados chamada índice para suportar a recuperação eficiente de registros; esses também fazem parte do nível físico.
+
+No nível lógico, cada um desses registros é descrito por uma definição de tipo, como no segmento de código anterior. A inter-relação desses tipos de registros também é definida no nível lógico; um requisito de que o valor de *dept_name* em um registro de instrutor deve aparecer na tabela de departamentos é um exemplo de tal inter-relação. Programadores que utilizam uma linguagem de programação trabalham nesse nível de abstração. Da mesma forma, administradores de banco de dados geralmente trabalham nesse nível de abstração.
+
+Finalmente, no nível de visão, os usuários de computador veem um conjunto de programas de aplicação que ocultam detalhes dos tipos de dados. No nível de visão, várias visões do banco de dados são definidas, e um usuário do banco de dados vê algumas ou todas essas visões. Além de ocultar detalhes do nível lógico do banco de dados, as visões também fornecem um mecanismo de segurança para impedir que os usuários acessem determinadas partes do banco de dados. Por exemplo, os funcionários do escritório do registro universitário podem ver apenas aquela parte do banco de dados que contém informações sobre os alunos; eles não podem acessar informações sobre os salários dos instrutores.
+
+### 1.3.4 Instances and Schemas
+Os bancos de dados mudam ao longo do tempo à medida que informações são inseridas e excluídas. A coleção de informações armazenadas no banco de dados em um momento específico é chamada de *instância do banco de dados.* O design geral do banco de dados é chamado de *esquema do banco de dados*. O conceito de esquemas e instâncias de banco de dados pode ser entendido por analogia a um programa escrito em uma linguagem de programação. Um esquema de banco de dados corresponde às declarações de variáveis (juntamente com as definições de tipo associadas) em um programa. Cada variável possui um valor especifico em um determinado instante. Os valores das variáveis em um programa em um ponto no tempo correspondem a uma instância de um esquema de banco de dados.
+
+Os sistemas de banco de dados possuem vários esquemas, divididos de acordo com os níveis de abstração. O **esquema físico** descreve o design do banco de dados no nível físico, enquanto o **esquema lógico descreve** o design do banco de dados no nível lógico. Um banco de dados também pode ter vários esquemas no nível de visão, às vezes chamados de **subesquemas**, que descrevem diferentes visões do banco de dados.
+
+Desses, o **esquema lógico** é, de longe, o mais importante em termos de seu impacto nos programas de aplicação, pois os programadores constroem aplicações utilizando o esquema lógico. O esquema físico está oculto sob o esquema lógico e geralmente pode ser alterado facilmente sem afetar os programas de aplicação. Diz-se que os programas de aplicação exibem **independência de dados física** se não dependerem do esquema físico e, portanto, não precisarem ser reescritos se o esquema físico mudar. 
+
+Também observamos que é possível criar esquemas que apresentam problemas, como informações duplicadas desnecessariamente. Por exemplo, suponha que armazenemos o orçamento do departamento como um atributo do registro de instrutor. Então, sempre que o valor do orçamento de um departamento (digamos, o departamento de Física) mudar, essa mudança deve ser refletida nos registros de todos os intrutores associados ao departamento. No capítulo 7, estudaremos como distinguir bons designs de esquemas de designs ruins.
+
+## 1.4 Database Languages
