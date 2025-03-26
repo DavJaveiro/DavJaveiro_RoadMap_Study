@@ -22,23 +22,8 @@
               "icon": "lucide-file",
               "title": "Cronograma de Leitura"
             }
-          },
-          {
-            "id": "c482a7a98c1b1d7d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Capítulo 13 - Using transactions in Spring apps"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -199,8 +184,8 @@
             "state": {
               "type": "planner-timeline",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
             }
           },
           {
@@ -213,7 +198,8 @@
               "title": "Timeline"
             }
           }
-        ]
+        ],
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -239,42 +225,44 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "c482a7a98c1b1d7d",
+  "active": "6f45229cf5740154",
   "lastOpenFiles": [
-    "Capítulo 13 - Using transactions in Spring apps-3.png",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/service/TransferService.class",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/service",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/repository/AccountRowMapper.class",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/repository/AccountRepository.class",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/controller/AccountController.class",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/controller",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/SqCh13Ex1Application.class",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/repository",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/model/Account.class",
-    "Spring Start Here/codes/sq-ch13-ex1/target/classes/org/example/sqch13ex1/dto/TransferRequest.class",
+    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 19 - Generics/Chapter 19 - Generics.md",
+    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data",
+    "Cronograma/24-03 até 30-03.md",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
+    "Capítulo 1 - Introdução.png",
+    "Cronograma",
+    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-5.png",
+    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-4.png",
+    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-3.png",
+    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-2.png",
+    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-1.png",
+    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches.png",
+    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens/Capítulo 1 - Java Basics-2.png",
+    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens/Capítulo 1 - Java Basics-1.png",
+    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens/Capítulo 1 - Java Basics.png",
+    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens",
+    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/Nova pasta",
+    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/imagens",
+    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Nova pasta",
+    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/imagens",
+    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Nova pasta",
+    "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/imagens",
+    "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Nova pasta",
     "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 19 - Generics/Chapter 19 - Generics.md",
     "Postagens Linkedin.md",
-    "Capítulo 13 - Using transactions in Spring apps-2.png",
     "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Spring Start Here/codes/sq-ch13-ex1/HELP.md",
-    "Capítulo 13 - Using transactions in Spring apps-1.png",
     "Engenharia de Requisitos/Aula 1/Aula 1 - Fundamentos da Engenharia de Requisitos.md",
-    "Capítulo 13 - Using transactions in Spring apps.png",
     "Java Nelio Alves/Seção 19 - Acesso a banco de dados com JDBC/Transações.md",
     "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
     "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Capítulo 12 - Using Data Sources in Spring Apps.md",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/logos/maven-feather.png",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/logos/build-by-maven-white.png",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/logos/build-by-maven-black.png",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/newwindow.png",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/icon_warning_sml.gif",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/icon_success_sml.gif",
-    "Spring Start Here/codes/JDBCDemo/target/site/images/icon_info_sml.gif",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/HELP.md",
     "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/Capítulo 21 - JDBC.md",
     "OCP/OCFA.md",
@@ -285,8 +273,6 @@
     "Modern API Development with SPring 6 and Spring Boot 3/Part 1 - Restful Web Service Fundamentals/Capítulo 4/Capítulo 4 - Writing Business Logic for APIs.md",
     "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
     "RoadMap do DavJaveiro/RoadMap.md",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/HELP.md",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
-    "Spring Start Here/PART 2/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC/Capítulo 8 - Implementing web apps with Spring Boot and Spring MVC.md"
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/sq-ch9-ex1/HELP.md"
   ]
 }

@@ -2,7 +2,7 @@ Se todo programador de aplicativos tivesse de compreender como todas as partes d
 
 Uma visão simplificada dos principais componentes em discussão é a seguinte:
 Figura 1.1 - Onde o sistema operacional se encaixa
-![[Capítulo 1 - Introdução.png]]
+![[Sistemas Operacionais Modernos/Capítulo 1 Imagens/Capítulo 1 - Introdução.png]]
 1) Podemos ver o #hardware na parte inferior, ele consiste em chips, placas, discos e um teclado, um monitor e objetos físicos similares;
 Em cima do hardware está o software. A maioria dos computadores tem dois modos de operação:
 

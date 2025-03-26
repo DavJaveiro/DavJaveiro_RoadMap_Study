@@ -191,3 +191,75 @@ Para ilustrar os conceitos de engenharia de software, vamos visualizar exemplos 
 2. *Sistema de informação:* a finalidade principal desse tipo de sistema é gerenciar e proporcionar acesso a um banco de dados de informações. As questões nos sistemas de informação incluem segurança da informação (*security*), usabilidade, privacidade e manutenção da integridade dos dados. O exemplo de sistema de informação utilizado é um sistema de registros médicos.
 3. *Um sistema de coleta de dados baseado em sensores:* esse é um sistema cujas finalidades principais são coletar dados de um conjunto de sensores e processá-los de alguma maneira. Os requisitos fundamentais desses sistemas são confiabilidade, mesmo em condições ambientais hostis, e manutenibilidade. O exemplo de sistema de coleta de dados que utilizo é uma estação meteorológica na natureza.
 4. *Um ambiente de suporte:* esse é um conjunto integrado de ferramentas de software utilizadas para dar suporte a algum tipo de atividade. Ambientes de programação, como o Eclipse, serão o tipo de ambiente mais familiar aos leitores deste livro. Descrevo aqui um exemplo de ambiente digital de aprendizagem utilizado para suplementar a aprendizagem nas escolas.
+
+Cada um desses sistemas será apresentado neste capítulo; mais informações sobre cada um deles estão disponíveis no site do livro.
+
+### 1.3.1 Sistema de controle para bomba de insulina
+A bomba de insulina é um dispositivo médico que simula a operação do pâncreas. O software que controla esse sistema consiste em um sistema embarcado que coleta informações de um sensor que controla a bomba que, por sua vez, fornece uma dose controlada de insulina para o usuário.
+
+As pessoas que sofrem de diabetes usam esse sistema. Diabetes é uma condição relativamente comum na qual o pâncreas humano é incapaz de produzir quantidades suficientes de um hormônio chamado insulina, que é responsável por metabolizar a glicose (açúcar) no sangue. O tratamento convencional de diabetes envolve injeções regulares de insulina produzida através de engenharia genética. Os diabéticos medem seus níveis de glicose no sangue periodicamente usando um medidor externo e depois estimam a dose de insulina que devem injetar.
+
+O problema é que o nível de insulina necessário não depende apenas do nível de glicose no sangue, mas também o tempo desde a última injeção. A verificação irregular pode levar a níveis muitos baixos de glicose no sangue (se houver insulina demais) ou a níveis muito altos de açúcar no sangue (se houver muito pouca insulina). Glicose baixa no sangue é, no curto prazo, uma condição mais grave, já que pode resultar em mau funcionamento temporário do cérebro e, em último caso, perda de consciência e morte. Entretanto, no longo prazo, os níveis altos contínuos de glicose no sangue podem levar a danos oculares, danos renais e problemas cardíacos.
+
+Os avanços no desenvolvimento de <span style="background:#d4b106">sensores miniaturizados</span> tornaram possível a criação de <span style="background:#d4b106">sistemas automatizados de aplicação da insulina</span>. Esses sistemas monitoram os níveis de açúcar no sangue e fornecem uma dose correta de insulina, quando necessária. Sistemas como esse estão disponíveis hoje em dia e são utilizados por pacientes com dificuldade para controlar os níveis de insulina. No futuro, pode ser possível que os diabéticos tenham esses sistemas acoplados permanentemente em seus corpos.
+
+Um sistema de fornecimento de insulina controlado por software usa um microssensor embutido no paciente para medir algum parâmetro do sangue que seja proporcional ao nível de açúcar. Depois, esse parâmetro é enviado para o controlador de bomba, que <span style="background:#d4b106">computa o nível de açúcar e a quantidade de insulina necessária</span>. Em seguida, envia sinais para uma <span style="background:#d4b106">bomba miniaturizada</span> para fornecer a insulina através de uma agulha acoplada permanentemente.
+
+A figura 1.4 mostra os componentes de hardware e a organização da bomba de insulina. O sensor mede a condutividade elétrica do sangue em diferentes condições e que esses valores podem estar relacionados com o nível de açúcar no sangue. A bomba de insulina fornece uma unidade de insulina em resposta a um único pulso de um controlador. Portanto, para fornecer dez unidades de insulina, o controlador envia dez pulsos para a bomba. 
+
+Claramente, trata-se de um sistema crítico em segurança. Se a bomba não funcionar ou trabalhar de modo incorreto, a saúde do usuário pode ser prejudicada ou ele pode entrar em coma em virtude de seus níveis de açúcar no sangue estarem altos ou baixos demais. Portanto, esse sistema deve cumprir dois requisitos de alto nível essenciais:
+1. O sistema deve estar disponível para fornecer insulina sempre que necessário;
+2. O sistema deve funcionar de maneira confiável e fornecer a quantidade correta de insulina para compensar o nível de açúcar no sangue.
+
+Logo, o sistema deve ser projetado e implementado para garantir que cumpra esses requisitos sempre. Requisitos mais detalhados e discussões de como assegurar que o sistema esteja seguro serão apresentados nos próximos capítulos. 
+
+### 1.3.2 Sistema de informação de pacientes de saúde mental
+Um sistema de informação de pacientes que fornece suporte ao cuidado com a saúde mental (o sistema Mentcare) mantém dados sobre os pacientes que sofrem de problemas de saúde mental e os tratamentos aos quais foram submetidos. A maioria dos pacientes não precisa de tratamento hospitalar dedicado, mas apenas frequentar regularmente uma clínica especializada, onde podem encontrar um médico que tenha conhecimento detalhado de seus problemas. Para facilitar a frequência dos pacientes, essas clínicas não existem apenas dentro dos hospitais, mas em postos médicos locais ou centros comunitários.
+
+O sistema Mentcare é um sistema de informações de pacientes para ser utilizado em clínicas. Ele utiliza um banco de dados centralizado, que contém informações sobre os pacientes, mas também foi concebido para ser executado em um notebook, de modo que possar ser acessado e utilizado em locais sem acesso a uma conexão de rede segura. Quando os sistemas locais contam com acesso seguro à rede, eles usam as informações de pacientes que constam do banco de dados, mas podem baixar e usar cópias locais dos registros dos pacientes quando estiverem desconectados. O sistema não é um registro de informações médicas completo e, portanto, não mantém informações sobre outras condições clínicas. No entanto, ele pode interagir e trocar dados com outros sistemas de informações médicas.
+
+O sistema tem duas finalidades:
+1. Gerar informações de gestão que permitam que gestores de serviços de saúde avaliem o desempenho em relação às metas locais e governamentais;
+2. Fornecer informações atualizadas à equipe médica para o tratamento dos pacientes.
+
+Os usuários do sistema incluem o pessoal das clínicas, como médicos, profissionais de enfermagem e assistentes de saúde (profissionais de enfermagem que visitam as pessoas em casa para acompanhar o seu tratamento). Os usuários que não são da área médica incluem recepcionistas que marcam consultas, profissionais responsáveis pela manutenção do sistema de cadastros e pessoal administrativo que gera os relatórios.
+
+O projeto geral do sistema precisa levar em conta os requisitos de privacidade e segurança (safety). Ele deve estar disponível quando necessário, ou a segurança pode ficar comprometida e pode ser impossível prescrever a medicação correta para os pacientes. Aqui temos um conflito em potencial - a <span style="background:#d4b106">privacidade é mais fácil de manter quando há apenas uma única cópia dos dados do sistema</span>. No entanto, assegurar a disponibilidade no caso de falhas do servidor ou quando não houver conexão de rede, devem ser mantidas múltiplas cópias dos dados. Discuto os conflitos de escolha entre esses requisitos nos capítulos posteriores.
+
+
+
+
+## 1.3.3 Estação meteorológica na natureza
+Para ajudar a monitorar as mudanças climáticas e tornar mais precisas as previsões meteorológicas nas áreas remotas, o governo de um país com grandes áreas de natureza selvagem decide instalar centenas de estações meteorológicas em áreas remotas. Essas estações coletam dados de um conjunto de instrumentos que medem a temperatura e a pressão, a insolação, as precipitações e a velocidade e direção dos ventos.
+
+As estações meteorológicas na natureza fazem parte de um <span style="background:#d4b106">sistema maior</span>, que é o sistema de informações climáticas que coleta dados das estações e os disponibiliza para outros sistemas para que sejam processados. 
+
+![[Capítulo 1 - Introdução.png]]
+
+Os sistemas apresentados na Figura 1.7 são:
+1. *Sistema de estação meteorológica*. É responsável por coletar dados climáticos, realizar algum processamento inicial e transmitir os dados para o sistema de gerenciamento.
+2. *Sistema de Gerenciamento e arquivamento de dados.* Colega dados de todas as estações meteorológicas, processa e analisa os dados e os arquiva de uma forma que possam ser recuperados por outros sistemas, como os sistemas de previsão meteorológica.
+3. *Sistema de manutenção da estação.* Capaz de se comunicar via satélite com todas as estações meteorológicas na natureza para monitorar a condição desses sistemas e fornecer relatórios dos problemas. Ele também pode atualizar o software embarcado nesses sistemas. No caso de prob lemas de sistema, ele pode ser utilizado para controlar remotamente a estação meteorológica.
+
+As estações meteorológicas incluem instrumentos que medem os parâmetros climáticos, como velocidade e direção do vento, temperaturas no solo e no ar, pressão barométrica e precipitações ao longo de um período de 24 horas. Cada um desses instrumentos é controlado por um software que recebe periodicamente as leituras dos parâmetros e gerencia os dados coletados.
+
+O sistema da estação meteorológica funciona coletando observações climáticas em intervalos frequentes; as temperaturas, por exemplo, são medidas a cada minuto. No entanto, como a largura de bando de conexão por satélite é insuficiente, a estação meteorológica realiza parte do processamento e agregação dos dados localmente. Depois, <span style="background:#b1ffff">ela transmite esses dados agregados quando solicitado pelo sistema de coletas</span> de dados. Se for impossível estabelecer uma conexão, então a estação meteorológica mantém os dados localmente até a comunicação ser restabelecida.
+
+Cada estação meteorológica é alimentada por baterias e deve ser inteiramente autocontida; não há alimentação externa ou cabos de rede. Todas as comunicações se dão através de um *link* via satélite relativamente lento, e a estação meteorológica deve incluir algum mecanismo (solar ou eólico) para carregar as baterias. O software da estação, portanto, não está preocupado apenas com a coleta de dados, ele também deve:
+1. Monitorar os instrumentos, a alimentação e o hardware de comunicação e relatar defeitos para o sistema de gerenciamento.
+2. Gerenciar a alimentação do sistema, garantindo que as baterias sejam carregadas sempre que as condições ambientais permitirem, mas que os geradores sejam desligados em condições climáticas potencialmente danosas, como ventos fortes.
+3. Permitir a reconfiguração dinâmica quando partes do software forem substituídas por novas versões e quando os instrumentos de *backup* forem conectados em caso de falha de sistema.
+
+### 1.3.4 Ambiente digital de aprendizagem para escolas
+Um ambiente digital de aprendizagem é um *framework* ao qual um conjunto de ferramentas de propósito geral e ferramentas especialmente projetadas para a aprendizagem pode ser incorporado, além de um conjunto de aplicações voltadas para as necessidades dos estudantes que usam o sistema. O framework fornece serviços gerais como serviço de autenticação, serviços de comunicação síncrona e assíncrona e serviço de armazenamento.
+
+As ferramentas incluídas em cada versão do ambiente são escolhidas pelos professores e estudantes de acordo com suas necessidades. Elas podem ser aplicações genéricas, como planilhas, aplicações de gestão do aprendizado - um Ambiente Virtual de Aprendizagem (AVA) para gerenciar o envio e a avaliação das tarefas de casa -, jogos e simulações. Também pode incluir conteúdo específico - como as informações a respeito da guerra civil norte-americana - e aplicações para visualizar e anotar o conteúdo.
+
+O sistema é orientado a serviços, com todos os componentes considerados serviços substituíveis. Existem três tipos de serviço no sistema:
+1. *Serviços utilitários:* que fornecem funcionalidade, independente da aplicação básica, e que podem ser utilizados por outros serviços no sistema. 
+2. *Serviços de aplicação:* que fornecem as aplicações específicas como e-mail, videoconferência, compartilhamento de fotos etc., e acesso ao conteúdo educacional específico, como filmes científicos ou recursos históricos. Os serviços de aplicação são externos e adquiridos especificamente para o sistema ou disponibilizados gratuitamente pela internet.
+3. *Serviços de configuração:* são utilizados para adaptar o ambiente a um conjunto específico de serviços de aplicação e para definir como os serviços são compartilhados entre alunos, professores e seus pais.
+
+O ambiente foi projetado para que os serviços possam ser substituídos à medida que novos serviços forem disponibilizados e para proporcionar diferentes versões do sistema que sejam adequadas à idade dos usuários. Isso significa que o sistema tem de suportar <span style="background:#d4b106">dois níveis de integração de serviço</span>:
+1. *Serviços integrados:* são aqueles que oferecem uma API (interface de programação da aplicação) e que podem ser acessados por outros serviços através dessa API. Portanto, a comunicação direta entre serviços é possível. Um serviço de autenticação é um exemplo de serviço integrado, pois em vez de usar mecanismos de autenticação próprios, ele pode ser chamado por outros serviços para autenticar usuários. Se os usuários já estiverem autenticados, então o serviço de autenticação pode passar a informação de autenticação diretamente para outro serviço, por meio de uma API, sem que os usuários precisem ser autenticados novamente.
+2. *Serviços independentes:* são aqueles acessados por meio de uma interface do navegador e que operam de maneira independente dos demais serviços. As informações só podem ser compartilhadas com outros serviços por ações explícitas do usuário, como copiar e colar; a reautenticação pode ser necessária para cada serviço independente.
