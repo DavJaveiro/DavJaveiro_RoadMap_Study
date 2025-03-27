@@ -13,3 +13,4 @@ O objetivo deste capítulo é introduzir o conceito de processo de software, um 
 2.4 Melhoria de processo.
 
 ---
+Um processo de software é um conjunto de atividades relacionadas que levam à <span style="background:#affad1">produção de um sistema de software</span>. Conforme discutimos no Capítulo 1, existem muitos tipos diferentes de sistemas de software e <span style="background:#d4b106">não há um método universal de engenharia de software</span> que seja aplicável a todos eles. Consequentemente, não existem processos de software universalmente aplicáveis. O processo utilizado nas diferentes empresas depende do tipo de software que está sendo desenvolvido, dos requisitos do cliente e das habilidades das pessoas que o desenvolvem.
