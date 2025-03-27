@@ -29,12 +29,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
+                "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction"
+              "title": "Capítulo 14 - Implementing data persistence with Spring Data"
+            }
+          },
+          {
+            "id": "11511f15207e2bb0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Capítulo 1 - Introdução"
             }
           }
         ],
@@ -242,24 +256,25 @@
   },
   "active": "0e8a021cf83f8c58",
   "lastOpenFiles": [
+    "Capítulo 14 - Implementing data persistence with Spring Data-3.png",
+    "Capítulo 14 - Implementing data persistence with Spring Data-2.png",
+    "Capítulo 14 - Implementing data persistence with Spring Data-1.png",
+    "Capítulo 14 - Implementing data persistence with Spring Data.png",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
+    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
     "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
     "Chapter 1 - Introduction-1.png",
     "Chapter 1 - Introduction.png",
-    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data",
     "Cronograma/24-03 até 30-03.md",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
     "Capítulo 1 - Introdução.png",
     "Cronograma",
     "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-5.png",
     "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-4.png",
     "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-3.png",
     "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-2.png",
-    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-1.png",
-    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches.png",
-    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens/Capítulo 1 - Java Basics-2.png",
     "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens",
     "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/Nova pasta",
     "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/imagens",
