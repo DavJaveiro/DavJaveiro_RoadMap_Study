@@ -1,30 +1,14 @@
 {
   "main": {
-    "id": "fd7d188f736b1213",
+    "id": "220d879ea12a95c4",
     "type": "split",
     "children": [
       {
-        "id": "5493869bf56d3352",
+        "id": "5efafcfe499eb536",
         "type": "tabs",
         "children": [
           {
-            "id": "6f45229cf5740154",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Cronograma de Leitura"
-            }
-          },
-          {
-            "id": "4d3f7a0b347bc0e7",
+            "id": "ed5085c4a3a2feef",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -37,22 +21,21 @@
               "title": "Capítulo 2 - Processos de Software"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "bc5979b56c969d2b",
+    "id": "215c10e519e29cde",
     "type": "split",
     "children": [
       {
-        "id": "148c026c2ae72193",
+        "id": "c8945360b1171504",
         "type": "tabs",
         "children": [
           {
-            "id": "d8ace1bd3e1185b2",
+            "id": "e553ebdb7b397f9e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -65,7 +48,7 @@
             }
           },
           {
-            "id": "06f87ed22546d347",
+            "id": "126de6aa37c79397",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -82,7 +65,7 @@
             }
           },
           {
-            "id": "11e90dcc2bf9fbbb",
+            "id": "f227ed3a1ad92489",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -92,37 +75,37 @@
             }
           },
           {
-            "id": "1b188563ef97bd14",
+            "id": "58a32d4482799f37",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "js-dark-icon",
+              "title": "RunJS Codelist"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 484.01216888427734,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "80c3d83199a5dd81",
+    "id": "5eb10675aa408367",
     "type": "split",
     "children": [
       {
-        "id": "fb024bac3d81ed63",
+        "id": "10aa0f52362193da",
         "type": "tabs",
         "children": [
           {
-            "id": "eb7bf3ee1c749e7b",
+            "id": "512680946fab0be9",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Capítulo 11 - Consuming REST endpoints"
+              "title": "Links inversos para Capítulo 2 - Processos de Software"
             }
           },
           {
-            "id": "d9cb1929405a6119",
+            "id": "b7f2e41f58f4f21d",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 13 - Abstract Classes and Interfaces/Chapter 13 - Abstract Classes and Interfaces.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Chapter 13 - Abstract Classes and Interfaces"
+              "title": "Links de saída para Capítulo 2 - Processos de Software"
             }
           },
           {
-            "id": "7f0d3f1337d1e5d0",
+            "id": "737123e806a37404",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -165,7 +148,7 @@
             }
           },
           {
-            "id": "23a57661e25e6c5a",
+            "id": "8bf7fa43bd28f437",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -179,32 +162,22 @@
             }
           },
           {
-            "id": "2bd5d363588fde84",
+            "id": "749006f794fcc6e0",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 13 - Abstract Classes and Interfaces/Chapter 13 - Abstract Classes and Interfaces.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Chapter 13 - Abstract Classes and Interfaces"
+              "title": "Sumário de Capítulo 2 - Processos de Software"
             }
           },
           {
-            "id": "b49ce157a8bee02d",
-            "type": "leaf",
-            "state": {
-              "type": "planner-timeline",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Timeline"
-            }
-          },
-          {
-            "id": "77858298fadc1699",
+            "id": "e8373bcfea4568c8",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -213,8 +186,7 @@
               "title": "Timeline"
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
@@ -240,70 +212,8 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4d3f7a0b347bc0e7",
+  "active": "ed5085c4a3a2feef",
   "lastOpenFiles": [
-<<<<<<< HEAD
-    "Capítulo 14 - Implementing data persistence with Spring Data-9.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-8.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-7.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-6.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-5.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-4.png",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
-=======
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução.md",
-    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
-    "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-    "Inteligência Artificial/Matemática Necessária.md",
-    "Inteligência Artificial",
->>>>>>> 9e16244e688f9b71e29b75a14172ea09a4c58452
-    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
-    "Capítulo 14 - Implementing data persistence with Spring Data-3.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-2.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data-1.png",
-    "Capítulo 14 - Implementing data persistence with Spring Data.png",
-<<<<<<< HEAD
-    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
-    "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-=======
->>>>>>> 9e16244e688f9b71e29b75a14172ea09a4c58452
-    "Chapter 1 - Introduction-1.png",
-    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data",
-    "Cronograma/24-03 até 30-03.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
-    "Cronograma",
-<<<<<<< HEAD
-=======
-    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-5.png",
-    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-4.png",
-    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches-3.png",
->>>>>>> 9e16244e688f9b71e29b75a14172ea09a4c58452
-    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/imagens",
-    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/Nova pasta",
-    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/imagens",
-    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Nova pasta",
-    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/imagens",
-    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Nova pasta",
-    "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/imagens",
-    "Spring Start Here/PART 2/Capítulo 13 - Using transactions in Spring apps/Capítulo 13 - Using transactions in Spring apps.md",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 19 - Generics/Chapter 19 - Generics.md",
-    "Postagens Linkedin.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Spring Start Here/codes/sq-ch13-ex1/HELP.md",
-    "Engenharia de Requisitos/Aula 1/Aula 1 - Fundamentos da Engenharia de Requisitos.md",
-    "Java Nelio Alves/Seção 19 - Acesso a banco de dados com JDBC/Transações.md",
-    "Spring Start Here/PART 2/Capítulo 9 - Using the Spring web scopes.md",
-    "Spring Start Here/PART 2/Capítulo 12 - Using Data Sources in Spring Apps/Capítulo 12 - Using Data Sources in Spring Apps.md",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/databasecode/sq-ch12-ex1/HELP.md",
-    "OCP Oracle Certified Professional Java SE 11 Developer Complete Study Guide_/Capítulo 21 - JDBC/Capítulo 21 - JDBC.md",
-    "OCP/OCFA.md",
-    "OCA Oracle Certified Association Java SE 8/Capítulo 1 - Java Basics/Capítulo 1 - Java Basics.md",
-    "Untitled.md",
-    "Spring Start Here/Appendix/Appendix A - Architectural Approaches/Appendix A - Architectural Approaches.md",
-    "Spring Start Here/PART 2/Capítulo 11 - Consuming REST endpoints/Capítulo 11 - Consuming REST endpoints.md",
-    "Modern API Development with SPring 6 and Spring Boot 3/Part 1 - Restful Web Service Fundamentals/Capítulo 4/Capítulo 4 - Writing Business Logic for APIs.md",
-    "Spring Start Here/PART 2/Capítulo 10 - Implementing REST services/Capítulo 10 - Implementing REST services.md",
-    "RoadMap do DavJaveiro/RoadMap.md"
+    "Capítulo 2 - Processos de Software.png"
   ]
 }
