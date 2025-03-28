@@ -172,3 +172,96 @@ Desses, o **esquema lógico** é, de longe, o mais importante em termos de seu i
 Também observamos que é possível criar esquemas que apresentam problemas, como informações duplicadas desnecessariamente. Por exemplo, suponha que armazenemos o orçamento do departamento como um atributo do registro de instrutor. Então, sempre que o valor do orçamento de um departamento (digamos, o departamento de Física) mudar, essa mudança deve ser refletida nos registros de todos os intrutores associados ao departamento. No capítulo 7, estudaremos como distinguir bons designs de esquemas de designs ruins.
 
 ## 1.4 Database Languages
+Um sistema de banco de dados fornece uma linguagem de definição de dados (DDL - Data-Definition Language) para especificar o esquema do banco de dados e uma linguagem de manipulação de dados (DML - Data-Manipulation Language) para expressar consultas e atualizações no banco de dados.
+
+Na prática, as linguagens de definição e manipulação de dados não são duas linguagens separadas; em vez disso, elas simplesmente formam partes de uma única linguagem de banco de dados, como a **linguagem SQL**. Quase todos os sistemas de banco de dados relacionais utilizam a linguagem SQL, que será abordada em detalhes.
+
+### 1.4.1 Data-Definition Language
+Um esquema de um banco de dados é especificado por um conjunto de definições expressas em uma linguagem especial chamada **linguagem de definição de dados (DDL - Data-Definition Language)**. A DDL também é utilizada para especificar propriedades adicionais dos dados.
+
+A estrutura de armazenamento e os métodos de acesso utilizados pelo sistema de banco de dados são especificados por um conjunto de instruções em um tipo especial de DDL chamado **linguagem de definição e armazenamento de dados (Data Storage and Definition Language)**. Essas instruções definem os detalhes de implementação dos esquemas do banco de dados, que geralmente são ocultados dos usuários.
+
+Os valores armazenados no banco de dados devem obedecer a restrições de consistência. Por exemplo, suponha que uma universidade exija que o saldo da conta de um departamento **nunca seja negativo**. A DDL fornece mecanismos para especificar tais **restrições de integridade**. O sistema de banco de dados verifica essas restrições toda vez que ocorre uma atualização.
+
+Em geral, uma **restrição** ( #constraint) pode ser qualquer **predicado arbitrário** relacionado ao banco de dados. No entanto, testar predicados arbitrários pode ser **computacionalmente custoso**. Assim, os sistemas de banco de dados implementam apenas as restrições de integridade que podem ser verificadas com **mínimo impacto no desempenho.**
+
+- **Restrição de domínio:** um domínio de possíveis valores deve ser associado a cada atributo (por exemplo, tipos inteiros, tipos de caracteres, tipos de data/hora). <span style="background:#affad1">Declarar um atributo como pertencente a um domínio específico atua como uma restrição sobre os valores que ele pode assumir.</span> As restrições de domínio são a forma mais elementar de restrição de integridade. Elas são facilmente testadas pelo sistema sempre que um novo item de dados é inserido no banco de dados. Java possui tipagem estática, o que significa que os tipos dos atributos e variáveis devem ser declaradas explicitamente no código. Essa característica impõe uma forma de restrição de domínio ( #domain-constraints), portanto o compilador verifica se os valores atribuídos a uma variável estão em conformidade com o tipo declarado. Portanto, o #compilador Java verifica automaticamente se os valores atribuídos respeitam o tipo declarado. Se tentarmos atribuir um valor fora do domínio permitido para aquele tipo, o compilador gerará um erro de compilação. <span style="background:#d4b106">Isso garante que a restrição de domínio seja aplicada antes mesmo de o programa ser executado</span>! Mas atenção, existem limitações, Domains constraints não garante total verificação e todas as possíveis validações de integridade. 
+
+- #Autorização. Podemos querer diferenciar entre os usuários em relação ao tipo de acesso que eles têm permissão para realizar sobre diversos valores de dados no banco de dados. Essas diferenciações são expressas em termos de #autorização, sendo as mais comuns:
+	- Autorização de leitura, que permite leitura, mas não a modificação, dos dados;
+	- Autorização de inserção, que permite a inserção de novos dados, mas não a modificação dos dados existentes;
+	- Autorização de atualização, que permite a modificação, mas não e exclusão, dos dados.
+	- Autorização de exclusão, que permite a exclusão dos dados.
+Podemos atribuir ao usuário todas, nenhuma ou uma combinação dessas categorias de autorização. 
+
+O processamento de instruções DDL, assim como ocorre com qualquer outra linguagem de programação, gera uma saída. A saída da DDL é armazenada no **dicionário de dados**, que contém metadados - ou seja, dados sobre os dados. O dicionário de dados é considerado um tipo especial de tabela que pode ser acessado e atualizado apenas pelo próprio sistema de banco de dados (e não por um usuário comum). O sistema de banco de dados consulta o dicionário de dados antes de ler ou modificar os dados reais.
+
+### 1.4.2 The SQL Data-Definition Language
+
+O SQL fornece um DDL (Data Definition Language) rico, que permite definir tabelas com tipos de dados e restrições de integridade.
+
+Por exemplo, a seguinte instrução DDL em SQL define a tabela *department* (departamento):
+```sql
+create table department
+	(dept_name char(20),
+	building char(15),
+	budget numeric(12, 2)
+	);
+```
+A execução da instrução DDL acima cria a tabela *department* com três colunas: *dept_name*, *building* e *budget*, cada uma delas associada a um tipo de dados específico. Discutiremos os tipos de dados em mais detalhes no Capítulo 3.
+
+O SQL também oferece suporte a diversos tipos de #restrições de integridade. Por exemplo, pode-se especificar que o valor do atributo **dept_name** é uma chave primária, garantindo que nenhum departamento possar ter o mesmo nome de outro. Discutiremos o suporte do SQL para restrições de integridade e autorizações no Capítulo 3 e no Capítulo 4.
+
+### 1.4.3 Data-Manipulation Language
+Uma **linguagem de manipulação de dados (DML)** é uma linguagem que permite aos usuários acessar ou manipular dados organizados de acordo com o modelo de dados apropriado. Os tipos de acesso são:
+- **Recuperação** de informações armazenadas no banco de dados;
+- **Inserção** de novas informações no banco de dados;
+- **Exclusão** de informações do banco de dados;
+- **Modificação** de informações armazenadas no banco de dados.
+
+Existem basicamente dois tipos de **linguagem de manipulação de dados (DML)**:
+- **DMLs Procedurais** exigem que o usuário especifique quais dados são necessários e como obtê-los.
+- **DMLs Declarativas** (também chamadas de DMLs não procedurais) exigem que o usuário especifique quais dados são necessários sem precisar especificar como obtê-los.
+
+As DMLs declarativas geralmente são mais fáceis de aprender e usar do que as DMLs procedurais. No entanto, como o usuário não precisa especificar como obter os dados, os sistema de banco de dados precisa determinar uma maneira eficiente de acessar os dados.
+
+Uma consulta é uma instrução que solicita a recuperação de informações. A parte da DML que envolve a recuperação de informações é chamada de **linguagem de consulta**. Embora tecnicamente incorreto, é prática comum usar os termos **linguagem de consulta** e **linguagem de manipulação de dados** como sinônimos.
+
+Existem diversas linguagens de consulta de banco de dados em uso, seja comercialmente ou experimentalmente. Estudamos a linguagem de consulta mais amplamente utilizada, o SQL, nos capítulos 3 a 5.
+
+Os níveis de abstração que discutimos na seção 1.3 aplicam-se não apenas à definição ou estruturação dos dados, mas também à manipulação dos dados. No nível físico, devemos definir algoritmos que permitam acesso eficiente aos dados. Em níveis mais altos de abstração, enfatizamos a facilidade de uso. O objetivo é permitir que os seres humanos interajam de forma eficiente com o sistema.
+
+O componente *processador de consultas* do sistema de banco de dados (que estudamos nos Capítulos 15 e 16) traduz as consultas DML em sequências de ações no nível físico do sistema de banco de dados. No capítulo 22, estudamos o processamento de consultas nos cenários cada vez mais comuns de sistemas paralelos e distribuídos.
+
+### 1.4.4 The SQL Data-Manipulation Language
+A linguagem de consulta SQL não é procedural. Uma consulta recebe como entrada várias tabelas (possivelmente apenas uma) e sempre retorna uma única tabela. Aqui está um exemplo de uma consulta SQL que encontra os nomes de todos os instrutores no departamento de história:
+```sql
+select instructor.name from instructor where instructor.dept_name = 'History';
+```
+
+A consulta especifica que as linhas da tabela *instructor* onde o *dept_name* é *History* devem ser recuperadas, e o atributo *name* dessas linhas deve ser exibido. O resultado da execução dessa consulta é uma tabela com uma única coluna rotulada como *name* e um conjunto de linhas, cada uma das quais contém o nome de um instrutor cujo *dept_name* é **History**. Se a consulta for executada na tabela mostrada na figura 1.1, o resultado consistirá em duas linhas: uma com o nome *El Said* e outra com o nome *Califieri*. 
+
+As consultas podem envolver informações de mais de uma tabela. Por exemplo, a seguinte consulta encontra o ID do instrutor e o nome do departamento de todos os instrutores associados a um departamento com um orçamento superior a $95.000.
+
+```sql
+select instructor, ID, department.dept_name
+from instructor, department
+where instructor.dept_name = department.dept_name and department.budget > 95000;
+```
+
+**Explicação Resumida**
+- **Consulta Simples:** a primeira consulta demonstra como filtrar dados de uma única tabela *instructor* com base em um condição *dept_name = 'History'* e retornar apenas uma coluna específica (*name*).
+- **Consulta com Múltiplas Tabelas:** a segunda consulta ilustra como combinar informações de duas tabelas *instructor e department* usando uma condição de junção *instructor.dept_name = department.dept_name* e aplicando um filtro adicional *department.budget > 9500*. O resulta inclui colunas de ambas as tabelas.
+
+Essas consultas exemplificam a simplicidade e a flexibilidade do SQL como uma linguagem declarativa, permitindo que os usuários se concentrem no o quê (dados desejados) em vez de *como* (processo de recuperação).
+
+Se a consulta anterior fosse executada nas tabelas da Figura 1.1, o sistema identificaria que existem dois departamentos com orçamento superior a $95000, Ciência da Computação e Finanças; além disso, há cinco instrutores associados a esses departamentos. Assim, o resultado consistiria em uma tabela com duas colunas (Id, dept_name) e cinco linhas;
+
+### 1.4.5 Database Acess from Application Programs
+Linguagens de consulta não procedurais, como o SQL, não são tão poderosas quanto uma máquina de Turing universal; isto é, existem alguns cálculos que são possíveis de serem realizados usando uma linguagem de programação de propósito geral, mas que não são possíveis usando o SQL. Além disso, o SQL não suporta ações como entrada de dados pelos usuários, saída para displays ou comunicação via rede. Esses cálculos e ações devem ser escritos em uma *linguagem hospedeira* (host language), como C/C++, Java ou Python, com consultas SQL embutidas que acessam os dados no banco de dados.
+
+*Application programs* são programas que são usados para interagir com o banco de dados dessa maneira. Exemplos em um sistema universitário incluem programas que permitem que os alunos se matriculem em cursos, gerem listas de turmas, calculem o GPA (média de notas) dos alunos, emitam cheques de pagamento e realizem outras tarefas.
+
+Para acessar o banco de dados, as instruções DML precisam ser enviadas do programa hospedeiro (host) para o banco de dados, onde serão executadas. Isso é mais comumente feito utilizando uma *interface de programação de aplicativos API*, que consiste em um conjunto de procedimentos que podem ser usados para enviar instruções DML e DDL ao banco de dados e recuperar os resultados. O padrão *Open Database Connectivity (ODBC)* define interfaces de programação de aplicativos para uso com C e várias outras linguagens. Já o padrão *Java Database Connectivity (JDBC)* define uma interface correspondente para a linguagem Java.
+
+## 1.5 Database Design

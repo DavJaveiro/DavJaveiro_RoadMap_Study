@@ -3,8 +3,8 @@
 ### 📌 Março 2025
 - **16/03 a 31/03** → Capítulo 1 (pág. 3 a 17) + Capítulo 2 (pág. 29 a 38)
     - <span style="background:rgba(205, 244, 105, 0.55)">16 a 18 → Introdução e Desenvolvimento de Software Profissional</span> (pág. 3 a 8) [[Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução|Capítulo 1 - Introdução |]]
-    - <span style="background:#d4b106">19 a 21 → Ética da Engenharia de Software</span> (pág. 9 a 13)
-    - 22 a 24 → Estudos de Caso (pág. 14 a 17)
+    - **19 a 21 → Ética da Engenharia de Software (pág. 9 a 13)**
+    - **22 a 24 → Estudos de Caso (pág. 14 a 17)**
     - 25 a 27 → Modelos de Processo de Software (pág. 29 a 34)
     - 28 a 31 → Atividades do Processo (pág. 35 a 38)
 ### 📌 Abril 2025
