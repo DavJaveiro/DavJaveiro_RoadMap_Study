@@ -1,5 +1,6 @@
 {
   "main": {
+<<<<<<< HEAD
     "id": "579ef71c6ec4a6c7",
     "type": "split",
     "children": [
@@ -9,6 +10,17 @@
         "children": [
           {
             "id": "59b3bb78ec13487c",
+=======
+    "id": "220d879ea12a95c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "5efafcfe499eb536",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ed5085c4a3a2feef",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -27,6 +39,7 @@
     "direction": "vertical"
   },
   "left": {
+<<<<<<< HEAD
     "id": "151fad7627ad4e22",
     "type": "split",
     "children": [
@@ -36,6 +49,17 @@
         "children": [
           {
             "id": "7076dc33c677c8b0",
+=======
+    "id": "215c10e519e29cde",
+    "type": "split",
+    "children": [
+      {
+        "id": "c8945360b1171504",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e553ebdb7b397f9e",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +72,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "c363d4670193f670",
+=======
+            "id": "126de6aa37c79397",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +93,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "deae40d07f3bc470",
+=======
+            "id": "f227ed3a1ad92489",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,7 +107,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "cbd1e89ac7f75180",
+=======
+            "id": "58a32d4482799f37",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -88,6 +124,7 @@
       }
     ],
     "direction": "horizontal",
+<<<<<<< HEAD
     "width": 300
   },
   "right": {
@@ -100,11 +137,30 @@
         "children": [
           {
             "id": "bd451d1b03afb2c2",
+=======
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "5eb10675aa408367",
+    "type": "split",
+    "children": [
+      {
+        "id": "10aa0f52362193da",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "512680946fab0be9",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
+=======
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,25 +170,45 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
+<<<<<<< HEAD
               "title": "Links inversos para Capítulo 14 - Implementing data persistence with Spring Data"
             }
           },
           {
             "id": "cc2c7322aa288fbf",
+=======
+              "title": "Links inversos para Capítulo 2 - Processos de Software"
+            }
+          },
+          {
+            "id": "b7f2e41f58f4f21d",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
+=======
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
+<<<<<<< HEAD
               "title": "Links de saída para Capítulo 14 - Implementing data persistence with Spring Data"
             }
           },
           {
             "id": "d4ca763a0693b7bd",
+=======
+              "title": "Links de saída para Capítulo 2 - Processos de Software"
+            }
+          },
+          {
+            "id": "737123e806a37404",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -147,7 +223,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "95c271af73f6a970",
+=======
+            "id": "8bf7fa43bd28f437",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -161,22 +241,38 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "a9a2235006ea1b42",
+=======
+            "id": "749006f794fcc6e0",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
+=======
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
+<<<<<<< HEAD
               "title": "Sumário de Capítulo 14 - Implementing data persistence with Spring Data"
             }
           },
           {
             "id": "b5d012d2199cc28e",
+=======
+              "title": "Sumário de Capítulo 2 - Processos de Software"
+            }
+          },
+          {
+            "id": "e8373bcfea4568c8",
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -211,8 +307,14 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
+<<<<<<< HEAD
   "active": "59b3bb78ec13487c",
   "lastOpenFiles": [
     "Capítulo 14 - Implementing data persistence with Spring Data-8.png"
+=======
+  "active": "ed5085c4a3a2feef",
+  "lastOpenFiles": [
+    "Capítulo 2 - Processos de Software.png"
+>>>>>>> 376181a49c000564da4a23c590b411fd4cfab4e3
   ]
 }
