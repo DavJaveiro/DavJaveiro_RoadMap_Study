@@ -111,3 +111,55 @@ A figura 14.4 mostra a posição do Spring Data em uma aplicação Spring. O Spr
 
 ## 14.2 How Spring Data Works
 Nesta seção, vamos discutir como o Spring Data funciona e como nós podemos utilizá-lo para implementar a nossa camada de persistência em uma aplicação Spring.
+
+Quando estamos nos referindo ao termo *Spring Data*, estamos falando, de forma geral, sobre todas as capacidades que esse projeto oferece para conectarmos nossa aplicação Spring a uma tecnologia de persistência específica (seja JDBC, Hibernate, MongoDB ou outras).
+
+O projeto Spring Data fornece *módulos independentes* para cada tecnologia suportada. Ao invés de uma única dependência **Spring Data**, adicionamos ao nosso projeto **dependência Maven específicas** para o módulo correspondente à tecnologia escolhida. Por exemplo:
+- **Spring Data JDBC:** para conexão direta com um SGBD via JDBC;
+- **Spring Data MongoDB:** para integração com bancos MongoDB.
+The figures 14.5 shows what Spring Data looks like using JDBC:
+
+![[Capítulo 14 - Implementing data persistence with Spring Data-4.png]]
+
+Em uma aplicação, será utilizada uma ou outra tecnologia de persistência. O aplicativo só precisa do módulo **do Spring Data** correspondente à tecnologia escolhida. 
+
+Podemos encontrar a lista de módulos Spring Data na página oficial, https://spring.io/projects/spring-data.
+
+Qualquer que seja a tecnologia de persistência utilizada pelo seu aplicativo, o Spring Data fornece um conjunto comum de interfaces (contratos) que estendemos para definir os recursos de persistência do app. A figura 14.6 apresenta as seguintes interfaces:
+
+**Como o Spring Data funciona**
+![[Capítulo 14 - Implementing data persistence with Spring Data-5.png]]
+
+- #Repository: é o contrato mais abstrato. Ao estendê-lo, o nosso app reconhece a interface como um repositório Spring Data, mas sem herdar operações pré-definidas (como adicionar um registro, recuperar todos os registros ou buscar por chave primária). 
+- #CrudRepository: é o contrato mais simples que já inclui funcionalidades de persistência. Ao estendê-lo, obtemos as operações #CRUD básicas.
+- #PagingAdnSortingRepository: estende o #CrudRepository e adiciona operações para **ordenar registros** ou recuperá-los em **páginas** (conjuntos com número específico de itens).
+
+**NOTA:** Não confunda a anotação @Repository com a interface *Repository* do Spring Data.
+- @Repository é um *stereotype annotation* usada em classes para instruir o Spring a adicionar uma instância da classe anotada ao *application context*.
+- A interface *Repository* discutida neste capítulo é específica do **Spring Data**. Estendemos ela ou outra interface que deriva dela, como *CrudRepository* para definir um *Spring Data Repository*. 
+
+Mas, por que o Spring Data oferece múltiplas interfaces que herdam umas das outras, em vez de uma única interface com todas as operações? Essa abordagem segue um princípio conhecido como *Interface Segregation Principle (ISP)*, que visa:
+1. **Evitar contratos inchados**, (fat interfaces). Se todas as operações (CRUD, paginação, ordenação), estivessem em uma única interface, aplicações que precisam apenas de CRUD seriam sobrecarregadas com funcionalidades não utilizadas.
+2. **Permitir flexibilidade:** se o nosso app só precisa de operações básicas de CRUD, basta estender *CrudRepository*. Se precisar de paginação/sorting, estendemos *PagingAndSortingRepository* (que já inclui o CRUD).
+3. **Simplificar a implementação:** aplicações só herdam o que realmente usam, reduzindo complexidade desnecessária.
+
+![[Capítulo 14 - Implementing data persistence with Spring Data-6.png]]
+
+Se a nossa aplicação precisa de operações CRUD simples, mas não precisa filtrar ou de paginação, então a nossa aplicação repository pode extender diretamente a interface Spring Data's CrudRepository.
+
+Agora, se a nossa aplicação precisar de funcionalidades de paginação ou filtragem, capacidades além de uma simples operação CRUD, é melhor extender um contrato mais particular:
+![[Capítulo 14 - Implementing data persistence with Spring Data-7.png]]
+
+Alguns módulos do Spring Data podem fornecer contratos específicos para a tecnologia que representam. Por exemplo, ao usar o Spring Data JPA, podemos estender diretamente a *interface* *JpaRepository*. A interface *JpaRepository* é um contrato mais específico do que *PagingAndSortingRepository*. Esse contrato adiciona operações aplicáveis apenas quando se utiliza tecnologias específicas, como o #Hibernate, que implementa a especificação *Jakarta Persistence API (JPA)*.
+
+Outro exemplo é o uso de uma tecnologia NoSQL, como o *MongoDB*. Para usar o Spring Data com MongoDB ao nosso aplicativo, o Spring Data Mongo oferece um contrato específico chamado *MongoRepository*, adicionando operações específicas para essa tecnologias de persistência.
+
+Quando uma aplicação utiliza certas tecnologias, ele estende contratos do Spring Data que fornecem operações particulares para essa tecnologia. O aplicativo ainda pode implementar *CrudRepository* caso não precise de mais do que as operações CRUD, mas esses contratos específicos geralmente oferecem soluções adequadas para a tecnologia para a qual foram projetados. 
+
+![[Capítulo 14 - Implementing data persistence with Spring Data-8.png]]
+
+![[Capítulo 14 - Implementing data persistence with Spring Data-9.png]]
+
+Se a nossa aplicação estiver usando um framework ORM como o Hibernate, é recomendado estender *JpaRepository* em vez de *CrudRepository*, pois ele oferece métodos adicionais mais adequados para o JPA. Isso significa que a escolha da interface depende das necessidades da aplicação e da tecnologia utilizada.
+
+## 14.3 Using Spring Data JDBC
