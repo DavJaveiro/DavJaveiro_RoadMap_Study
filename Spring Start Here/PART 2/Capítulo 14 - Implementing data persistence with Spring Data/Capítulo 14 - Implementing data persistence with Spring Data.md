@@ -138,10 +138,10 @@ Qualquer que seja a tecnologia de persistência utilizada pelo seu aplicativo, o
 - @Repository é um *stereotype annotation* usada em classes para instruir o Spring a adicionar uma instância da classe anotada ao *application context*.
 - A interface *Repository* discutida neste capítulo é específica do **Spring Data**. Estendemos ela ou outra interface que deriva dela, como *CrudRepository* para definir um *Spring Data Repository*. 
 
-Mas, por que o Spring Data oferece múltiplas interfaces que herdam umas das outras, em vez de uma única interface com todas as operações? Essa abordagem segue um princípio conhecido como *Interface Segregation Principle (ISP)*, que visa:
+Mas, por que o Spring Data oferece múltiplas interfaces que herdam umas das outras, em vez de uma única interface com todas as operações? Essa abordagem segue um princípio conhecido como *Interface Segregation Principle (ISP)* (DESENVOLVIMENTO ÁGIL LIMPO), que visa:
 1. **Evitar contratos inchados**, (fat interfaces). Se todas as operações (CRUD, paginação, ordenação), estivessem em uma única interface, aplicações que precisam apenas de CRUD seriam sobrecarregadas com funcionalidades não utilizadas.
 2. **Permitir flexibilidade:** se o nosso app só precisa de operações básicas de CRUD, basta estender *CrudRepository*. Se precisar de paginação/sorting, estendemos *PagingAndSortingRepository* (que já inclui o CRUD).
-3. **Simplificar a implementação:** aplicações só herdam o que realmente usam, reduzindo complexidade desnecessária.
+3. **Simplificar a implementação:** aplicações só herdam o que realmente usam, reduzindo complexidade desnecessária. 
 
 ![[Capítulo 14 - Implementing data persistence with Spring Data-6.png]]
 
@@ -163,3 +163,120 @@ Quando uma aplicação utiliza certas tecnologias, ele estende contratos do Spri
 Se a nossa aplicação estiver usando um framework ORM como o Hibernate, é recomendado estender *JpaRepository* em vez de *CrudRepository*, pois ele oferece métodos adicionais mais adequados para o JPA. Isso significa que a escolha da interface depende das necessidades da aplicação e da tecnologia utilizada.
 
 ## 14.3 Using Spring Data JDBC
+Vamos utilizar o Spring Data JDBC para implementar a camada de persistência de uma aplicação Spring. Discutimos que tudo o que você precisa fazer é estender um contrato do Spring Data, mas vamos ver isso em ação. Além de implementar um repositório básico, também aprenderemos como criar e usar operações personalizadas de repositório.
+
+Vamos construir uma carteira eletrônica que gerencia as contas dos usuários. Um usuário pode transferir dinheiro de sua conta para outra conta. Neste tutorial, implementamos o caso de uso de transferência de dinheiro para permitir que o usuário envie dinheiro de uma conta para outra. A operação de dinheiro possui duas etapas:
+1. Retirar (*withdraw*) um valor específico da conta do remetente;
+2. Depositar (*deposit*) o valor na conta de destino.
+
+Essa abordagem garante que ambas as etapas sejam executadas de forma consistente, mantendo a integridade dos dados no sistema.
+
+Vamos armazenar os detalhes da conta em uma tabela no banco de dados. 
+
+A tabela de contas possui os seguintes campos:
+- *Id* - a chave primária. Definimos este campo como um valor do tipo *Int* que é autoincrementado;
+- *name* - o nome do proprietário da conta;
+- *amount* - a quantidade de dinheiro que o proprietário possui na conta.
+
+Lembre-se de que, para valores decimais, recomendo o uso de BigDecimal em vez de double ou float para evitar possíveis problemas de precisão em operações aritméticas.
+
+Para várias operações que o *Spring Data* oferece, como recuperar dados do banco de dados, ele precisa saber <span style="background:#affad1">qual campo mapeia a chave primária da tabela.</span> Usamos a anotação *@Id*, conforme mostrado na listagem 14.1, para marcar a chave primária:
+[[Spring Start Here/codes/sq-ch14-ex1/src/main/java/org/example/sqch13ex1/model/Account.java|Account]]
+
+Portanto, a anotação *@Id* do Spring Data (e do JPA) serve para indicar que um determinado campo de uma entidade representa a *chave primária* no banco de dados. 
+
+Logo, no *Spring Data JDBC*, o gerenciamento do ID não é feito automaticamente pelo framework, como acontece no JPA com *@GeneratedValue*. 
+Portanto, no **Spring Data JDBC**, o banco de dados precisa ser configurado para gerar a chave primária (exemplo: colunas *AUTO-INCREMENT* no MySQL ou *SERIAL* no *PostgreSQL*).
+
+O campo *amount* foi definido como *BigDecimal* para garantir a precisão nas operações aritméticas envolvendo valores monetários. Isso evita erros de arredondamento que podem ocorrer com tipos como *double* ou *float*.
+
+Agora que temos uma classe de modelo, podemos implementar o repositório do *Spring Data*. Como essa operação requer apenas operações CRUD, vamos criar uma *interface* que estende a interface *CrudRepository*. Todas as interfaces do *Spring Data* <span style="background:#d4b106">possuem dois tipos genéricos que precisam ser fornecidos</span>:
+1. A classe de modelo (às vezes chamada de entidade) para a qual estamos criando o repositório;
+2. O tipo do campo da chave primária.
+
+```java
+public interface AccountRepository extends CrudRepository(Account, Integer) {
+
+}
+```
+
+Quando você estende a interface *CrudRepository*, o *SpringData* fornece operações simples, como obter um valor por sua chave primária, recuperar todos os registros da tabela, excluir registros etc. No entanto, ele não oferece todas as operações possíveis que podemos implementar com consultas SQL. Em uma aplicação real, muitas vezes são necessárias operações personalizadas, que exigem a escrita de uma consulta SQL para serem implementadas. <span style="background:#b1ffff">Como podemos implementar uma operação personalizada em um repositório do Spring Data</span>?
+
+O Spring Data é capaz de interpretar os nomes dos métodos com base em algumas regras de nomenclatura predefinidas e cria a consulta SQL automaticamente nos bastidores. Por exemplo, suponha que desejamos escrever uma operação para obter todas as contas associadas a um determinado nome. No **Spring Data**, podemos apenas declarar um método com o seguinte nome: *findAccountsByName*.
+
+```java
+public interface AccountRepository
+	extends CrudRepository<Account, Integer> {
+
+		// Método personalizado para buscar contas pelo nome
+		List<Account> findAccountsByName(String name);
+	}
+```
+
+Quando o nome do método começa com *find*, o *Spring Data* entende que estamos realizando uma operação de *SELECT*. Em seguida, a palavra *Accounts* informa ao *Spring Data* o que desejamos selecionar. O *Spring Data* também permitiria a anotação *findByName*, e ele ainda saberia o que selecionar simplesmente porque o método está na interface *AccountRepository*.
+
+Após o *By* no nome do método, o Spring Data espera receber a condição de consulta (a cláusula *WHERE*). No nosso exemplo, queremos selecionar *ByName*, então o **Spring Data** traduz isso para *HERE name = ?*.
+![[Capítulo 14 - Implementing data persistence with Spring Data-10.png]]
+
+A mágica de traduzir o nome de um método em uma consulta parece incrível à primeira vista. No entanto, com a experiência, percebemos que essa abordagem não é a solução perfeita. Ela apresenta algumas desvantagens, e por isso sempre recomendamos que os desenvolvedores especifiquem explicitamente as consultas SQL, em vez de depender da tradução automática do *Spring Data* com base no nome do método. As principais desvantagens de confiar no nome do método são as seguintes:
+1. Consultas complexas tornam os nomes dos métodos extensos e Difíceis de Ler:
+	- Se a operação exigir uma consulta mais complexa (por exemplo, envolvendo múltiplas condições, junções ou funções agregadas), o nome do método pode se tornar excessivamente longo e difícil de interpretar.
+	- Exemplo: List< Account> findAccountsByNameAndAmountGreaterThanAndIdLessThanOrderByAmountDesc(String name, BigDecimal amount, Integer id);
+
+2. **Risco de Refatoração Acidental:**
+	- Se um desenvolvedor renomear o método por engano durante uma refatoração, ele pode alterar involuntariamente o comportamento da aplicação sem perceber.
+	- Infelizmente, nem todas as aplicações possuem testes abrangentes, e esse tipo de erro pode passar despercebido até causar problemas em produção.
+
+3. **Curva de Aprendizado das Regras de Nomenclatura**
+	- A menos que estejamos utilizando uma IDE que ofereça sugestões enquanto escreve o nome do método, será necessário aprender as regras de nomenclatura específicas do Spring Data.
+	- Como a maioria dos desenvolvedores já conhece SQL, aprender um conjunto adicional de regras que só se aplicam ao *Spring Data* pode não ser vantajoso.
+
+4. **Impacto no Desempenho**
+	- O **Spring Data** precisa traduzir o nome do método em uma consulta SQL durante a inicialização da aplicação. Isso adiciona um pequeno #overhead ao tempo de inicialização, especialmente em projetos grandes com muitos métodos personalizados.
+	- Embora o impacto seja geralmente mínimo, ele pode se tornar perceptível em cenários onde o <span style="background:#b1ffff">desempenho de inicialização</span> é crítico.
+
+**Quando utilizar consultas explícitas?**
+Para evitar essas desvantagens, é recomendável usar consultar SQL explícitas quando:
+- A consulta for complexa ou envolver múltiplas condições;
+- Houver necessidade de otimizar o desempenho;
+- A legibilidade do código for importante para facilitar a manutenção.
+
+A maneira mais simples de evitar esses problemas é usando a anotação *@Query* para especificar a consulta SQL que o aplicativo executará quando chamarmos esse método. Quando anotamos um método com *@Query*, o nome do método deixa de ser relevante. O *Spring Data* usará a consulta fornecida em vez de traduzir o nome do método em uma consulta SQL. Além disso, o comportamento se torna mais eficiente, pois elimina o #overhead de interpretação do nome do método durante a inicialização da aplicação. A listagem a seguir mostra como usar a anotação *@query*
+```java
+public interface AccountRepository extends CrudRepository<Account, Integer> {
+		@Query("SELECT * FROM account WHERE name = :name and amount > :amount ODER by amount DESC")
+		List<Account> findAccountWithNameAndAmount(
+			@Param("name") String name,
+			@Param("amount") BigDecimal amount
+		);
+}
+```
+Precisamos lembrar que o nome do parâmetro na consulta deve ser o mesmo que o nome do parâmetro do método. Não deve haver nenhum espaço entre o dois-ponto (:) e o nome do parâmetro.
+
+Usamos a anotação #Query da mesma maneira para definir qualquer consulta. No entanto, quando nossa consulta altera dados (como em operações de **Update**, **Insert** ou **Delete**), precisamos incluir a anotação *@Modifying*. A anotação informa ao **Spring Data** que a consulta não é apenas uma operação de leitura *SELECT*, mas sim uma operação que modifica os dados no banco de dados. A listagem a seguir mostra como usar *@Query* junto com *@Modifying* para definir uma consulta de **UPDATE** em um método de repositório.
+
+Agora, utilizaremos a injeção de dependência (DI) para obter um bean que implementa a interface *AccountRepository* sempre que precisarmos dela em nossa aplicação. Não precisamos nos preocupar com o fato de ter escrito apenas uma *interface* do *AccountRepository*, o Spring Data cria uma implementação dinâmica e adiciona um bean ao Spring Context Application. A listagem a seguir, mostra como o componente *TransferService* do aplicativo usa injeção de construtor para obter um bean do tipo *AccountRepository*. 
+
+## Summary
+- O **Spring Data** é um projeto do ecossistema Spring que nos ajuda a implementar de forma mais fácil a camada de persistência de um aplicativo Spring. O **Spring Data** fornece uma camada de abstração sobre várias tecnologias de persistência e facilita a implementação ao fornecer um conjunto comum de contratos. 
+
+- Com o **Spring Data**, implementamos repositórios por meio de *interfaces* que estendem contratos padrão do Spring Data: 
+	- Repository, que não fornece nenhuma operação de persistência; 
+	- #CrudRepository: fornece operações simples de CREATE, READ, UPDATE, DELETE (CRUD);
+	- #PagingAdnSortingRepository: estende CrudRepository e adiciona operações para paginação e ordenação dos registros recuperados;
+
+- Ao usar o **Spring Data**, escolhemos um módulo específico de acordo com a tecnologia de persistência que nosso aplicativo utiliza. Por exemplo, se nosso aplicativo se conecta ao DBMS através de JDBC, nosso aplicativo precisará do módulo *Spring Data JDBC*, enquanto se o nosso aplicativo usar uma implementação NoSQL, como o MongoDB, ele precisará do módulo Spring Data Mongo.
+
+- Ao estender um contrato do Spring Data, nosso aplicativo herda e pode usar operações definidas por esse contrato. No entanto,<span style="background:#b1ffff"> nosso aplicativo pode definir operações personalizadas com métodos nas interfaces de repositório</span>.
+
+- Usamos a anotação *@Query* com o método do repositório do *Spring Data* para definir a consulta SQL que nosso aplicativo executa para essa operação específica.
+
+- Se declararmos um método e não especificar explicitamente uma consulta com a anotação *@Query*, o **Spring Data** traduzirá o nome do método em uma consulta SQL. O nome do método precisa ser definido com base nas regras do Spring Data para entender e traduzi-lo na consulta correta. Se o Spring Data não conseguir resolver o nome do método, o aplicativo falhará ao iniciar e lançara uma exceção.
+
+- É preferível usar a anotação *@Query* e evitar depender do Spring Data para traduzir o nome do método na consulta. Usar a abordagem de tradução do nome pode trazer dificuldades. 
+	- Cria nomes de métodos longos e difíceis de ler para operações mais complexas, o que afeta a manutenibilidade do aplicativo. 
+	- Torna mais lenta a inicialização do aplicativo, pois agora ele precisa também traduzir os nomes dos métodos;
+	- Vamos precisar aprender a convenção de nomes de métodos do Spring Data.
+
+- Qualquer operação que altere dados (por exemplo, execute consultar INSERT, UPDATE ou DELETE) deve ser anotada com a anotação @Modifying para instruir o Spring Data de que a operação altera os registros de dados.
+
