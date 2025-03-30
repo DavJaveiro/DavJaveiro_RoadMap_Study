@@ -65,3 +65,29 @@ A implementação do cenário de teste está fortemente relacionada a como o apl
 
 Um ponto crítico a observar é que podemos encontrar vários cenários de teste relevantes, mesmo para um método pequeno - mais um motivo para manter os métodos em nosso aplicativo pequenos. Se escrevermos métodos grandes, com muitas linhas de código e parâmetros que lidam com várias coisas simultaneamente, identificar os cenários de teste relevantes se torna extremamente difícil. Dizemos que a *testabilidade* do aplicativo diminui quando não separamos adequadamente as diferentes responsabilidades em métodos pequenos e fáceis de ler.
 
+**![[Capítulo 15 - Testing your Spring app-2.png]]
+
+## 15.2 Implementing tests in Spring apps
+Nesta seção, nós vamos usar duas técnicas de testes para aplicações Spring que frequentemente encontramos em projetos do mundo real. Vamos demonstrar cada técnica considerando um caso de uso que implementamos nos capítulos anteriores e escrever os testes para ele. Essas técnicas são (na minha perspectiva) imprescindíveis para qualquer desenvolvedor:
+- **Escrever testes unitários para validar a lógica de um método**: os testes unitários são curtos, rápidos de executar e focam em apenas um fluxo. Esses testes são uma maneira de focar na validação de uma pequena parte da lógica eliminando todas as dependências. 
+- **Escrever testes de integração Spring para validar a lógica de um método e sua integração com recursos específicos fornecidos pelo framework.** Esses testes ajudam garantir que as capacidades do nosso aplicativo ainda funcionem quando atualizamos as dependências. 
+
+### 15.2.1 Implementing unit tests
+Testes unitários são métodos que chamam um determinado caso de uso em condições específicas para validar o comportamento. O método de teste unitário define as condições sob as quais o caso de uso é executado e valida o comportamento definido pelos requisitos do aplicativo. 
+Eles eliminam todas as dependências da funcionalidade que estão testando, cobrindo apenas uma parte específica e isolada da lógica.
+
+Os testes unitários são valiosos porque, quando um falha, você sabe que há um problema em uma parte específica do código e consegue identificar exatamente onde precisa corrigir. Um teste unitário é como um dos indicadores do painel do nosso carro.
+
+Se tentarmos ligar o carro e ele não dá partida, pode ser porque acabou o combustível ou porque a bateria não está funcionando corretamente. Um carro é um sistema complexo (assim como um aplicativo), e nós não sabemos qual é o problema sem um indicador. Se o painel mostrar que o combustível acabou, então, identificamos o problema imediatamente!
+
+O propósito dos testes unitários é validar o comportamento de uma única unidade de lógica e, assim como os indicadores do carro, eles ajudam a identificar problemas em um comportamento específico.
+
+
+**Implementando o primeiro teste unitário**
+Vamos analisar um dos casos de uso que escrevemos no capítulo 14: o caso de uso de transferência de dinheiro.
+1. Encontrar os detalhes da conta que envia dinheiro;
+2. Encontrar os detalhes da conta de destino (destination account details);
+3. Calcular os novos valores para cada conta;
+4. Atualizar o valor da conta do remetente;
+5. Atualizar o valor da conta de destino.
+

@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Explorador de arquivos"
+              "title": "Files"
             }
           },
           {
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "49ba25889a7814f6",
@@ -195,13 +194,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Abrir a troca rápida": false,
-      "graph:Abrir visualização em gráfico": false,
-      "canvas:Criar novo canvas": false,
-      "daily-notes:Abrir a nota de hoje": false,
-      "templates:Inserir modelo": false,
-      "command-palette:Abrir paleta de comandos": false,
-      "audio-recorder:Começar/parar a gravação de áudio": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
@@ -214,6 +213,7 @@
   },
   "active": "9ce285e56c56578f",
   "lastOpenFiles": [
+    "Capítulo 15 - Testing your Spring app-2.png",
     "Capítulo 15 - Testing your Spring app-1.png",
     "Capítulo 15 - Testing your Spring app.png",
     "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
