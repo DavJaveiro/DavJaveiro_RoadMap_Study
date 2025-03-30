@@ -20,13 +20,21 @@ public class TransferService {
 
     @Transactional
     public void transferMoney(Long idSender, Long idReceiver, BigDecimal amount)  {
+
+        /*We find the details of the sender's account*/
         Account sender = accountRepository.findById(idSender).orElseThrow(() -> new AccountNotFoundException());
+
+        /*We find the details of the destination account*/
         Account receiver = accountRepository.findById(idReceiver).orElseThrow(() -> new AccountNotFoundException());
 
+        /*We calculate the account's amounts*/
         BigDecimal senderNewAmount = sender.getAmount().subtract(amount);
         BigDecimal receiverNewAmount = receiver.getAmount().add(amount);
 
+        /*We update the new amount in the sender account*/
         accountRepository.changeAmount(idSender, senderNewAmount);
+
+        /*We update the new amount in the destination account*/
         accountRepository.changeAmount(idReceiver, receiverNewAmount);
 
     }

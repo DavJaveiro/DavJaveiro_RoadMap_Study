@@ -18,7 +18,7 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
     /*We annotate the methods that define operations that change data with the @Modify annotation*/
     @Modifying
     @Query("UPDATE account SET amount = :amount where id = :id")
-    void changeAmount(long id, BigDecimal amount);
+    void changeAmount(Long id, BigDecimal amount);
 
     @Query("SELECT * FROM account")
     List<Account> findAlAccounts();

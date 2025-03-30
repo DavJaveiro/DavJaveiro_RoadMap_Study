@@ -1,4 +1,4 @@
-package org.example.sqch13ex1.dto;
+package org.example.sqch15ex1.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class TransferRequest {
 
-    @Positive(message = "O ID da conta do rementente deve ser um número positivo!")
+    @Positive(message = "O ID da conta do remetente deve ser um número positivo!")
     private int senderAccountId;
 
     @Positive(message = "O ID da conta do destinatário deve ser um número positivo!")
@@ -17,7 +17,7 @@ public class TransferRequest {
     @Positive(message = "O valor da transferência deve ser representado por um valor positivo!")
     private BigDecimal amount;
 
-    public long getSenderAccountId() {
+    public int getSenderAccountId() {
         return senderAccountId;
     }
 
@@ -25,7 +25,7 @@ public class TransferRequest {
         this.senderAccountId = senderAccountId;
     }
 
-    public long getReceiverAccountId() {
+    public int getReceiverAccountId() {
         return receiverAccountId;
     }
 

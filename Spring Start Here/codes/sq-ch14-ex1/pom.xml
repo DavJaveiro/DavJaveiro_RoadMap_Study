@@ -58,6 +58,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <!--scope test significa que essa dependência será usada apenas durante a fase de testes do projeto-->
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>

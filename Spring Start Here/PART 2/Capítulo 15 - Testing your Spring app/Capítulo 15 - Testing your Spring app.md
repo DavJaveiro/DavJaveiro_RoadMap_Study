@@ -91,3 +91,76 @@ Vamos analisar um dos casos de uso que escrevemos no capítulo 14: o caso de uso
 4. Atualizar o valor da conta do remetente;
 5. Atualizar o valor da conta de destino.
 
+Geralmente, os cenários mais óbvios e os primeiros para os quais escrevemos testes são os `fluxos felizes` ou *happy flows*: uma execução que não encontrou exceções ou erros. A figura 15.4 representa visualmente o fluxo feliz do nosso caso de uso de transferência de dinheiro:
+
+![[Capítulo 15 - Testing your Spring app-3.png]]
+
+Vamos escrever um teste unitário para este fluxo feliz do caso de uso de transferência de dinheiro. Qualquer teste possui três partes principais:
+1. **Premissas:** precisamos definir quaisquer entradas e identificar quaisquer dependências da lógica que precisamos controlar para alcançar o cenário de fluxo desejado. Para este ponto, responderemos às seguintes perguntas: quais entradas devemos fornecer e como as dependências devem se comportar para que a lógica testada atua da maneira específica que queremos?
+A primeira parte do teste unitário é definir as 
+- **Entradas:** quais dados vamos fornecer ao teste? (Ex.: conta de origem, conta de destino, valor da transferência). 
+- **Dependências:** como as classes externas (repository, services) devem se comportar para simular o cenário correto? (Ex.: garantir que as contas existem e têm saldo suficiente).
+
+1. **Chamada/Execução:** precisamos chamar a lógica que estamos testando para validar o seu comportamento;
+
+2.**Validações:** precisamos definir todas as validações que devem ser feitas para a lógica em questão. Responderemos a esta pergunta: o que deve acontecer quando essa lógica for chamada nas condições dadas? 
+![[Capítulo 15 - Testing your Spring app-4.png]]
+
+- **STEP 1:** defining the assumptions, before calling the tested method, decide the input values the methods depends on;
+- **STEP 2:** call the tested method, call the method you test with the given inputs decided in the assumptions step.
+- **STEP 3:** validations, write all the checks the tests need to perform to validate the tested method executed as expected, with the inputs given in the assumptions.
+
+**NOTA:** às vezes, você encontrará essas três etapas (premissas, chamada e validações) nomeadas de forma um pouco diferente: *arrange, act e assert* ou *given, when e then*. Independentemente de como você prefira nomeá-las, a ideia de como escrever os testes permanece a mesma.
+
+Nas premissas do teste, <span style="background:#d4b106">identificamos as dependências</span> para o caso de teste que estamos escrevendo. Escolhemos as entradas e definimos como as dependências devem se comportar para fazer com que a lógica testada atue de uma determinada maneira.
+
+Quais são as dependências para o caso de uso de transferência de dinheiro? Dependências são qualquer coisa que o método utiliza, mas não cria por conta própria:
+- Os parâmetros do método;
+- Instâncias de objetos que o método utiliza, mas que não são criadas por ele:
+![[Capítulo 15 - Testing your Spring app-5.png]]
+- Os parâmetros são <span style="background:#d4b106">dependências de execução</span>. Com base em seus valores, o método pode se comportar de uma maneira ou de outra.
+- Outros <span style="background:#d4b106">objetos externos ao método</span>, mas que o método utiliza para implementar sua lógica, também são dependências de execução. Com base no comportamento desses objetos, o método pode se comportar de uma maneira ou de outra.
+
+Quando chamamos o método para testá-lo, podemos fornecer quaisquer valores para seus três parâmetros para controlar o fluxo de execução. No entanto, a instância de *AccountRepository* é um pouco mais complicada. A execução do método *transferMoney()* depende de como o método *findById()* da instância de *AccountRepository* se comporta.
+
+Mas, um teste unitário, foca apenas em uma parte específica da lógica, então ele não deve chamar o método *findById()* diretamente. O teste unitário deve assumir que o *findById()* funciona de uma determinada maneira e verificar se a execução do método testado faz o que é esperado para a situação dada.
+
+No entanto, o método testado chama o *findById()*. Como poderíamos controlar isso? Para controlar esse tipo de dependência, usamos *mocks*: objetos falsos cujo comportamento podemos controlar. Nesse caso, em vez de usar o objeto real *AccountRepository*, garantimos que o método testado utilize esse objeto falso. Aproveitaremos o controle sobre o comportamento desse objeto falso para induzir todas as diferentes execuções do método *transferMoney()* que queremos testar.
+
+Ao invés de chamarmos o *findById()* real, fazemos o mock dele para retornar contas fictícias. Dessa forma, testamos apenas a lógica de transferência, sem depender do banco de dados.
+
+![[Capítulo 15 - Testing your Spring app-6.png]]
+
+Na listagem 15.2, começaremos a implementar o teste unitário. Após criar uma nova classe na paste de testes, iniciamos a implementação do primeiro cenário de teste escrevendo um novo método que anotamos com a anotação *@Test*.
+
+**NOTAS:** para os exemplos neste livro, usamos **JUnit 5 Jupiter**, a versão mais recente do JUnit, para implementar os testes unitários e testes de integração. No entanto, em aplicativos do mundo real, podemos encontrar o JUnit 4 sendo usado frequentemente. 
+
+Criamos a instância de *TrasnferService* para chamar o método *transferMoney()* que queremos testar. Em vez de usar uma instância de *AccountRepository*,  criamos um objeto falso #mock que podemos controlar. Para criar esse objeto falso, usamos um método chamado *mock()*. Esse método *mock()* é fornecido por uma dependência chamada **Mockito** (frequentemente usada com JUnit para implementar testes). 
+
+[[TransferServiceUnitTests.java]]
+
+Agora podemos especificar como o objeto fictício ( #mock) deve se comportar, chamar o método testado e provar que ele funciona conforme o esperado nas condições dadas. Controlamos o comportamento do #mock usando o método *giver()*. Usando o método *given()*, informamos ao mock como ele deve se comportar quando um de seus métodos for chamado. No nosso caso, querermos que o método *findById()* de *AccountRepository* retorne uma instância específica de *Account* para um determinado valor de parâmetro.
+
+**NOTA:** em um aplicativo do mundo real, uma boa prática é usar a anotação *@DisplayName* para descrever o cenário de teste. Nos nossos exemplos, omiti a anotação *@DisplayName* para economizar espaço e permitir que você se concentre na lógica do teste. No entanto, usá-la em um aplicativo real pode ajudar você, assim como outros desenvolvedores da equipe, a entender melhor o cenário de teste implementado.
+
+[[TransferServiceUnitTests.java]]
+
+A última coisa que precisamos fazer é informar ao teste o que deve acontecer quando método testado for executado. O que esperamos? Sabemos que a finalidade desse método é transferir dinheiro de uma conta para outra. Portanto, esperamos que ele chame a instância do  repositório para alterar os valores das contas com os valores corretos. Para verificar se um método de um objeto *mock* foi chamado, usamos o método *verify()*, conforme:
+```java
+	transferService.transferMoney(
+		sender.getId(),
+		destination.getId(),
+		new BigDecimal(100)
+	);
+
+	verify(accountRepository).changeAmount(1L, new BigDecimal(900));
+	verify(accountRepository).changeAmount(2L, new BigDecimal(2100));
+```
+
+Se executarmos o teste agora, vamos observar que os testes passam. 
+
+A figura abaixo resume o teste que construímos. Nesta representação visual, encontramos as etapas e o código que escrevemos para resolver cada uma das etapas que enumeramos ao começarmos a escreve o teste:
+1. **Premissas** - enumerar e controlar as dependências;
+2. **Chamada** - executar o método testado;
+3. **Validações** - verificar se o método executado teve o comportamento esperado.
+![[Capítulo 15 - Testing your Spring app-7.png]]
