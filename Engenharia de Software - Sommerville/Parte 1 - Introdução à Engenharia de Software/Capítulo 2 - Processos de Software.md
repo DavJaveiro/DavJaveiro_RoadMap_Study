@@ -111,3 +111,53 @@ Os problemas do desenvolvimento incremental se tornam particularmente críticos 
 Adotar o desenvolvimento incremental não significa ter de entregar cada incremento para o cliente. É possível desenvolver um sistema de maneira incremental e expô-lo aos comentários dos clientes e de outros *stakeholder*, sem necessariamente entregá-lo ou implantá-lo no ambiente do cliente. A entrega incremental (coberta na Seção 2.3.2) significa que o software é utilizado em processos operacionais reais, o que faz com que o feedback do usuário tenda a ser realista. Entretanto, nem sempre é possível fornecer esse *feedback*, já que a experimentação de um novo software pode atrapalhar os processos normais do negócio.
 
 ## 2.1.3 Integração e configuração
+Na maioria dos projetos há algum reúso de software. Com frequência, isso acontece informalmente quando as pessoas que trabalham no projeto conhecem ou procuram algum código similar ao necessário. Elas procuram por esse código, modificam-no conforme a necessidade e integram-no ao novo código que desenvolveram.
+
+Esse reúso informal ocorre independentemente do processo de desenvolvimento utilizado. No entanto, desde os anos 2000, processos de desenvolvimento de software que se concentram no reúso de código existente passaram a ser amplamente utilizados. As abordagens orientadas ao reúso contam com bases de componentes de software reutilizáveis e um *framework* de integração para a composição desses componentes. 
+
+Três tipos de componentes de software são reutilizados frequentemente:
+1. Sistemas de aplicação *stand-alone* configurados para utilização em um ambiente particular. Esses sistemas são de uso geral e possuem muitas características, mas precisam ser adaptados para uso em uma aplicação específica.
+2. Coleções de objetos desenvolvidos como um componente ou como um pacote a ser integrado a um framework de componentes, como o Java Spring *framework*.
+3. *Web services* desenvolvidos de acordo com os padrões de serviço e que estão disponíveis para uso remoto na internet.
+
+A figura 2.3 mostra um modelo de processo genérico articulado em torno da integração e da configuração para o desenvolvimento de software baseado no reuso. 
+
+Os estágios nesse processo são:
+1. *Especificação dos requisitos:* os requisitos iniciais do sistema são propostos. Eles não precisam ser elaborados em detalhes, mas devem incluir descrições breves dos requisitos essenciais e das características de sistema desejáveis.
+2. *Descoberta e avaliação do software:* com base em uma descrição dos requisitos de software, é feita uma busca pelos componentes e sistemas que fornecem a funcionalidade necessária. Os candidatos são avaliados para ver se satisfazem os requisitos essenciais e se são genericamente adequados ao uso no sistema.
+3. *Refinamento dos requisitos:* Nesse estágio, os requisitos são definidos com base nas informações dos componentes reusáveis e das aplicações que foram descobertas. Os requisitos são modificados para refletir os componentes disponíveis, e a especificação do sistema é redefinida. Onde as modificações forem impossíveis, a atividade da análise de componentes pode ser reintroduzida para procurar soluções alternativas.
+4. *Configuração da aplicação:* se estiver disponível uma aplicação de prateleira que satisfaça os requisitos, ela pode ser configurada para utilização a fim de criar o novo sistema.
+5. *Adaptação e integração dos componentes.* Se não houver uma aplicação de prateleira, componentes reusáveis podem ser modificados ou novos componentes podem ser desenvolvidos, visando a integração posterior ao sistema.
+
+A engenharia de software baseada na reutilização, articulada em torno da configuração e da integração, tem a vantagem óbvia de **reduzir a quantidade de software a ser desenvolvido, diminuindo custos e riscos**. Normalmente, isso também leva a uma entrega mais rápida do software. Entretanto, concessões quanto aos requisitos são inevitáveis, o que pode resultar em um sistema que não satisfaz as necessidades reais dos usuários. Além disso, parte do controle sobre a evolução do sistema se perde, já que novas versões dos componentes reusáveis não estão sob controle da organização que os utiliza.
+
+O reúso de software é muito importante e, portanto, vários capítulos na terceira parte deste livro foram dedicados ao tema. As questões gerais de reúso de software são abordadas no Capítulo 15; a engenharia de software baseadas em componentes, nos capítulos 16 e 17; os sistemas orientados a serviços, no Capítulo 18.
+
+
+## 2.2 Atividades do Processo
+Os <span style="background:#d3f8b6">processos de software</span> reais são sequências intercaladas de atividades técnicas, colaborativas e gerenciais, cujo objetivo global é **especificar**, **projetar**, **implementar** e **testar** um sistema de software. Geralmente, os processos são apoiados por ferramentas. Isso significa que os desenvolvedores de software podem usar uma gama de ferramentas de software para ajudá-los, como sistemas de gerenciamento de requisitos, editores de modelo de projeto *design*, editores de programa, ferramentas de teste automatizadas e depuradores.
+
+As quatro atividades de processos básicas:
+- Especificação;
+- Desenvolvimento;
+- Validação;
+- Evolução.
+São organizadas de modo distinto em diferentes processos de desenvolvimento. 
+
+- No modelo em cascata, elas são organizadas em sequência; 
+- No desenvolvimento incremental, são intercaladas;
+
+O modo como essas atividades são executadas depende do tipo de software que está sendo desenvolvido, da experiência e da competência dos desenvolvedores e do tipo de empresa que o desenvolve.
+
+**Ferramentas de desenvolvimento de software**
+São programas utilizados para apoiar as atividades do processo de engenharia de software e incluem ferramentas de gerenciamento de requisitos, editores de projeto, ferramentas de apoio à refatoração, compiladores, depuradores, rastreadores de defitos bug trackers e ferramentas de construção de sistemas.
+
+As ferramentas de software fornecem suporte ao processo ao automatizarem algumas de suas atividades e ao fornecerem informações sobre o software que está sendo desenvolvido. Por exemplo:
+- O desenvolvimento de modelos gráficos do sistema como parte da especificação de requisitos ou do projeto *design* de software.
+- A geração de código a partir desses modelos gráficos;
+- A geração de interfaces com o usuário a partir de uma descrição da interface gráfica criada interativamente por esse usuário;
+- Depuração de programas por meio do fornecimento de informações a respeito de um programa em execução;
+- A tradução automática para uma versão mais recente dos programas escritos com versões antigas de uma linguagem de programação.
+
+### 2.2.2 Especificação do software
+
