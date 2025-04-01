@@ -11,6 +11,14 @@ public class Account {
     private String name;
     private BigDecimal amount;
 
+    public Account() {}
+
+    public Account(int id, String name, BigDecimal amount) {
+        this.id = id;
+        this.name = name;
+        this.amount = amount;
+    }
+
     public int getId() {
         return id;
     }

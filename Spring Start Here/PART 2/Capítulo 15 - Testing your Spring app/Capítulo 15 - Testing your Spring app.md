@@ -139,7 +139,7 @@ Criamos a instância de *TrasnferService* para chamar o método *transferMoney()
 
 [[TransferServiceUnitTests.java]]
 
-Agora podemos especificar como o objeto fictício ( #mock) deve se comportar, chamar o método testado e provar que ele funciona conforme o esperado nas condições dadas. Controlamos o comportamento do #mock usando o método *giver()*. Usando o método *given()*, informamos ao mock como ele deve se comportar quando um de seus métodos for chamado. No nosso caso, querermos que o método *findById()* de *AccountRepository* retorne uma instância específica de *Account* para um determinado valor de parâmetro.
+Agora podemos especificar como o objeto fictício ( #mock) deve se comportar, chamar o método testado e provar que ele funciona conforme o esperado nas condições dadas. Controlamos o comportamento do #mock usando o método *giver()*. Usando o método *given()*, <span style="background:#b1ffff">informamos ao mock como ele deve se comportar quando um de seus métodos for chamado</span>. No nosso caso, querermos que o método *findById()* de *AccountRepository* retorne uma instância específica de *Account* para um determinado valor de parâmetro.
 
 **NOTA:** em um aplicativo do mundo real, uma boa prática é usar a anotação *@DisplayName* para descrever o cenário de teste. Nos nossos exemplos, omiti a anotação *@DisplayName* para economizar espaço e permitir que você se concentre na lógica do teste. No entanto, usá-la em um aplicativo real pode ajudar você, assim como outros desenvolvedores da equipe, a entender melhor o cenário de teste implementado.
 
@@ -164,3 +164,66 @@ A figura abaixo resume o teste que construímos. Nesta representação visual, e
 2. **Chamada** - executar o método testado;
 3. **Validações** - verificar se o método executado teve o comportamento esperado.
 ![[Capítulo 15 - Testing your Spring app-7.png]]
+
+**1. Premissas (Given)** - Essa fase define e controla as dependências do teste. Aqui, criamos os objetos necessários e configuramos o comportamento esperado dos mocks.
+```java
+@Mock
+private AccountRepository accountRepository;
+
+@InjectMocks
+private TransferService transferService;
+```
+
+Isso significa que o *accountRepository* será um #mock gerenciado pelo #Mockito, e o *transferService* terá esse mock injetado automaticamente.
+
+```java
+    Account sender = new Account();
+    sender.setId(1);
+    sender.setAmount(new BigDecimal(1000));
+
+    Account destination = new Account();
+    destination.setId(2);
+    destination.setAmount(new BigDecimal(2000));
+```
+Aqui, criamos duas contas fictícias: uma que envia dinheiro *sender* e outra que recebe *destination*. 
+
+Depois, definimos o comportamento do mock através do método #given:
+```java
+given(accountRepository.findById(sender.getid())).willReturn(Optional.of(sender));
+
+given(accountRepository.findById(destination.getId())).willReturn(Optional.of(destination));
+```
+
+Portanto, quando o *findyById(1)* ou *findById(2)* forem chamados dentro do *transferService*, o mock retornará as contas criadas.
+
+**2. Chamada (When)**
+Nesta etapa, executamos a ação que queremos testar:
+```java
+transferService.transferMoney(1, 2, new BigDecimal(100));
+```
+Chamamos o método *transferMoney(1, 2, 100)*, que transfere 100 unidades monetárias da conta de ID 1 para a conta de ID 2.
+
+Essa é a ação principal do teste, que determinará se o código está funcionando corretamente. 
+
+**3. Validações (Then)**
+Nesta última etapa, verificamos se o comportamento do código foi o esperado.
+```java
+verify(accountRepository).changeAmount(1, new BigDecimal(900));
+verify(accountRepository).changeAmount(2, new BigDecimal(2100));
+```
+
+**Resumo da Estrutura**
+
+|Fase|O que acontece no código?|
+|---|---|
+|**Premissas (Given)**|Configuramos os mocks e os dados de entrada (contas e valores iniciais).|
+|**Chamada (When)**|Executamos a transferência chamando `transferMoney()`.|
+|**Validações (Then)**|Verificamos se os métodos `changeAmount()` foram chamados com os valores esperados.|
+
+**Writing a test for Exception Flow**
+Os fluxos felizes não são os únicos que precisamos testar. O método precisa ser executado da maneira desejada ao encontrar uma exceção. Esse tipo de fluxo é chamado de <span style="background:#b1ffff">fluxo de exceção</span>. Em nosso exemplo, um fluxo de exceção pode ocorrer caso os detalhes da conta do remetente ou do destino não sejam encontrados para o ID fornecido.
+![[Capítulo 15 - Testing your Spring app-8.png]]
+Os fluxos de exceção também desempenham um papel crucial em garantir a robustez e confiabilidade de um sistema. Eles ajudam a identificar como a aplicação se comporta em condições adversas ou inesperadas. Implementar testes para fluxos de exceção é essencial para validar que o sistema responde adequadamente, lidando com falhas de maneira controlada, o que evita comportamentos indesejados ou erros críticos em produção.
+
+A listagem abaixo demonstra como escrever o teste de unidade para um fluxo de exceção. Para verificar se o método lança uma exceção, usamos o *assertThrows()*. Nesse caso, especificamos a exceção que esperamos que o método lance e identificamos o método testado. O método *assertThrows()* chama o método testado e valida que ele lança a exceção esperada.
+
