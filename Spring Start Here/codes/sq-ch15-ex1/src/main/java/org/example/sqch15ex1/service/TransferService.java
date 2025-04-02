@@ -3,6 +3,7 @@ package org.example.sqch15ex1.service;
 import org.example.sqch15ex1.exceptions.AccountNotFoundException;
 import org.example.sqch15ex1.model.Account;
 import org.example.sqch15ex1.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 public class TransferService {
+
     private final AccountRepository accountRepository;
 
     public TransferService(AccountRepository accountRepository) {

@@ -22,8 +22,23 @@
               "icon": "lucide-file",
               "title": "Capítulo 15 - Testing your Spring app"
             }
+          },
+          {
+            "id": "e8d8c380580f15bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Appendix C - A Introduction to HTTP"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -90,8 +105,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "49ba25889a7814f6",
@@ -205,7 +219,6 @@
       "command-palette:Abrir paleta de comandos": false,
       "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
       "runjs:RunJS": false,
       "obsidian-git:Open Git source control": false,
@@ -214,21 +227,21 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "9ce285e56c56578f",
+  "active": "e8d8c380580f15bd",
   "lastOpenFiles": [
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile/default-compile",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/testCompile",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/maven-status/maven-compiler-plugin/compile",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/surefire-reports/TEST-org.example.sqch15ex1.TransferServiceWithAnnotationsUnitTests.xml",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/surefire-reports/TEST-org.example.sqch15ex1.TransferServiceUnitTests.xml",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/target/classes/target/classes/target/surefire-reports/TEST-org.example.sqch15ex1.SqCh15Ex1ApplicationTests.xml",
-    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
+    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
+    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP",
+    "Spring Start Here/codes/sq-ch15-ex1/target/test-classes/org/example/sqch15ex1/TransferServiceSpringIntegrationTests.class",
+    "Spring Start Here/codes/sq-ch15-ex1/target/test-classes/org/example/sqch15ex1/TransferServiceWithAnnotationsUnitTests.class",
+    "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/TransferService.class",
+    "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service",
+    "Spring Start Here/codes/sq-ch15-ex1/target/classes/application-postgres.properties",
+    "Spring Start Here/codes/sq-ch15-ex1/src/main/resources/application-postgres.properties",
+    "Spring Start Here/codes/sq-ch15-ex1/src/test/java/org/example/sqch15ex1/TransferServiceSpringIntegrationTests.java",
+    "Spring Start Here/PART 2/Capíttulo 9 - Using the Spring web scopes/sq-ch9-ex1/target/test-classes/com/example/LoginControllerUnitTests.class",
+    "Spring Start Here/PART 2/Capíttulo 9 - Using the Spring web scopes/sq-ch9-ex1/target/test-classes/com/example/MainTests.class",
+    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Capítulo 15 - Testing your Spring app-8.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",

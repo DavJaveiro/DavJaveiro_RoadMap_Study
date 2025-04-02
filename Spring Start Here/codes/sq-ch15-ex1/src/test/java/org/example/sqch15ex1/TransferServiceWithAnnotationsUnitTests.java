@@ -9,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -20,6 +22,9 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
+/*Permite o uso da anotação @Mock para criar mocks sem precisar inicializá-los manualmente*/
+// Permite o uso da anotação @InjectMocks para injetar dependências mockadas automaticamente
+// Facilita a manutenção e organização dos testes, deixando o código mais limpo
 @ExtendWith(MockitoExtension.class)
 public class TransferServiceWithAnnotationsUnitTests {
 

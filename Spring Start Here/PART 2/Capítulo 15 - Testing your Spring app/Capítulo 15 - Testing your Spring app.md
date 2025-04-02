@@ -227,3 +227,65 @@ Os fluxos de exceção também desempenham um papel crucial em garantir a robust
 
 A listagem abaixo demonstra como escrever o teste de unidade para um fluxo de exceção. Para verificar se o método lança uma exceção, usamos o *assertThrows()*. Nesse caso, especificamos a exceção que esperamos que o método lance e identificamos o método testado. O método *assertThrows()* chama o método testado e valida que ele lança a exceção esperada.
 
+**Testando o valor que um método retorna**
+
+Usamos o método *verify()* com a condição *never()* para afirmar que o método *changeAmount()* não foi chamado.
+
+Um caso comum é a necessidade de verificar o valor retornado por um método. A próxima listagem mostra um método que implementamos lá no capítulo 9.
+
+Como podemos implementar um teste unitário para o método, considerando que é necessário testar o cenário em que o usuário fornece as credenciais corretas para fazer login?
+```java
+@PostMapping("/")
+	public String loginPost(
+		@RequestParam String username,
+		@RequestParm String password,
+		Model model
+	) {
+		loginProcessor.setUsername(username);
+		loginProcessor.setPassword(password);
+		boolean loggedIn = loginProcessor.login();
+
+		if (loggedIn) {
+			model.addAttribute("message", "You are now logged in.");
+		} else {
+			model.addAttribute("message", "Login failed!");
+		}
+
+		return "login.html";
+	}
+```
+
+Vamos seguir os mesmos passos que aprendemos nesta seção:
+1. Identificar e controlar as dependências;
+2. Chamar o método testado;
+3. Verificar se a execução do método testado se comportou conforme o esperado.
+
+A listagem abaixo mostra a implementação do teste unitário. Observe que vamos simular (mockar) as dependências cujo comportamento queremos controlar ou verificar: os objetos *Model* e *LoginProcessor*.
+
+Instruímos o mock do *LoginProcessor* a retornar **true** (o que equivale a assumir que o usuário forneceu as credenciais corretas) e chamamos o método que queremos testar.
+Verificamos o seguinte:
+- Que o método retornou a string *login.html*. Usamos um método de asserção para validar que o método retornou um valor. Podemos usar o método *assertEquals()*, que compara um valor esperado com o valor retornado pelo método.
+- Que a instância de *Model* contém a mensagem válida *You are now logged in.* Usamos o método *verify()* para validar que o método *addAttribute()* da instância *Model* foi chamado com o valor correto como parâmetro.
+
+
+### 15.2.2 Implementing integrations tests
+Nesta seção, discutimos testes de integração. Um teste de integração é muito semelhante a um teste unitário. Ainda os escrevemos com JUnit. No entanto, em vez de focar em como um determinado componente funciona, um <span style="background:#d4b106">teste de integração se concentra em como dois ou mais componentes interagem entre si</span>.
+
+Em uma aplicação, mesmo que alguns componentes funcionem corretamente quando estão isolados, eles podem não se *comunicar* corretamente entre si. Escrever <span style="background:#d4b106">testes de integração nos ajuda a mitigar problemas que podem ocorrer quando os componentes funcionam bem individualmente, mas falham na comunicação entre eles</span>. 
+
+Usaremos o mesmo exemplo que utilizamos nos testes unitários para este caso: o caso de uso de transferência de dinheiro que implementamos no capítulo 14.
+
+Que tipos de integrações podemos testar? Temos algumas possibilidades:
+- **Integração entre dois (ou mais) objetos do seu aplicativo.** Testar se os objetos interagem corretamente ajuda a identificar problemas na colaboração entre eles caso você modifique um deles.
+- **Integração de um objeto do seu aplicativo com alguma funcionalidade que o framework adiciona.** Testar como um objeto interage com uma funcionalidade fornecida pelo framework ajuda a identificar possíveis problemas ao atualizar o framework para uma nova versão. O teste de integração permite detectar imediatamente se algo mudou no framework e se a funcionalidade da qual o objeto depende não funciona da mesma maneira
+- **Integração do aplicativo com sua camada de persistência (o banco de dados).** Testar como o repositório interage com o banco de dados garante que você possa identificar rapidamente problemas que possam surgir ao atualizar ou modificar uma dependência que ajuda seu aplicativo a lidar com dados persistidos (como o driver JDBC).
+
+Isto significa que, ao testar a integração entre o repositório e o banco de dados, podemos detectar rapidamente problemas que surgem quando há mudanças na infraestrutura de persistência. Por exemplo, se atualizarmos o JDBC ou mudar o banco de dados, um teste de integração pode indicar se a aplicação ainda consegue salvar e recuperar dados corretamente.
+
+Esse tipo de teste é essencial para evitar falhas inesperadas em produção, <span style="background:#b1ffff">garantindo que a comunicação entre a aplicação e o banco esteja funcionando conforme esperado.</span>
+
+**NOTA**: A anotação `@MockBean` é uma anotação do Spring Boot. Se você estiver trabalhando com um aplicativo Spring puro, e não um Spring Boot, como apresentado aqui, não poderá usar `@MockBean`. No entanto, você ainda pode utilizar a mesma abordagem anotando a classe de configuração com `@ExtendWith(SpringExtension.class)`. Um exemplo do uso dessa anotação pode ser encontrado no projeto “sq-ch3-ex1”.
+
+**NOTA**: Em um aplicativo real, utilize testes unitários para validar o comportamento dos componentes e testes de integração do Spring para validar os cenários de integração necessários. Mesmo que um teste de integração do Spring possa ser usado para validar o comportamento de um componente (implementando todos os cenários de teste para a lógica do método), **não é uma boa ideia usar testes de integração para esse propósito**.
+
+Os testes de integração levam mais tempo para serem executados porque precisam configurar o contexto do Spring. Além disso, cada chamada de método ativa vários mecanismos internos do Spring, dependendo das funcionalidades que ele fornece ao método específico. **Não faz sentido gastar tempo e recursos executando esses processos para cada cenário da lógica do seu aplicativo**. Para economizar tempo, a melhor abordagem é utilizar testes unitários para validar a lógica dos componentes e testes de integração apenas para validar como eles interagem com o framework.
