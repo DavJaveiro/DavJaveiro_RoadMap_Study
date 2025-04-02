@@ -105,7 +105,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "49ba25889a7814f6",
@@ -211,6 +212,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-excalidraw-plugin:Create new drawing": false,
       "switcher:Abrir a troca rápida": false,
       "graph:Abrir visualização em gráfico": false,
       "canvas:Criar novo canvas": false,
@@ -229,6 +231,8 @@
   },
   "active": "e8d8c380580f15bd",
   "lastOpenFiles": [
+    "Appendix C - A Introduction to HTTP-1.png",
+    "Appendix C - A Introduction to HTTP.png",
     "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP",
@@ -259,7 +263,6 @@
     "Capítulo 15 - Testing your Spring app-3.png",
     "Spring in Action/Parte 1 - Fundamentos do Spring/Capítulo 1 - Getting Started with Spring/Capítulo 1 - Getting Started With Spring.md",
     "Capítulo 15 - Testing your Spring app-2.png",
-    "Capítulo 15 - Testing your Spring app-1.png",
     "Java Persistence with Spring Data e Hibernate/Capítulo 1 - Entendendo o object-relational persistence.md",
     "Spring Start Here/codes/sq-ch14-ex1/HELP.md",
     "Spring Start Here/codes/sq-ch13-ex1 - Copia/HELP.md"
