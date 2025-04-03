@@ -77,3 +77,33 @@ Por padrão, os projetos gerados pelo Spring Initializr já incluem um arquivo *
 As configurações definidas nesses arquivos são carregadas no **Spring Environment**, permitindo o acesso à instância do **Environment** dentro das classes da aplicação. Além disso, essas propriedades também podem ser utilizadas por meio da anotação *@Value*.
 
 **Properties or YML file**
+O Spring Boot permite que especifiquemos as configurações da aplicação tanto em arquivos properties quanto em arquivos YML. Em um arquivo properties, podemos definir as propriedades no formato de par chave-valor, como mostrado abaixo, onde a chave da propriedade é separada do valor pelo símbolo =:
+```properties
+server.port=8081
+spring.datasource.username=sa
+spring.datasource.password=password
+```
+
+As mesmas propriedades podem ser configuradas em um arquivo YML da seguinte forma:
+```yml
+server:
+  port: 8081
+spring:
+  datasource:
+    username: sa
+    password: password
+```
+A escolha entre usar arquivos properties ou YML é uma preferência do desenvolvedor. O Spring Boot funciona de forma similar com ambos os tipos de arquivo (com algumas exceções). Algumas pessoas preferem usar YML devido à maior clareza e à capacidade de representar dados hierárquicos de forma mais natural. Além disso, é menos repetitivo e tem capacidades aprimoradas para suportar estruturas de dados como listas, maps e outras.
+
+No entanto, se você optar por usar arquivos YML na sua aplicação, deve ter cuidado com a sintaxe. É relativamente fácil esquecer um espaço extra ou definir uma indentação incorreta no arquivo YML. Adicionalmente, é muito mais fácil encontrar propriedades específicas pelo nome completo quando se usa o formato .properties. Com YML, você sempre precisa encontrar a propriedade desejada manualmente.
+
+Se precisarmos alterar o nome do arquivo de *application.properties* para outros nomes personalizados, podemos fazer isso facilmente. É possível customizar o nome do arquivo *application.properties* usando a propriedade *spring.config.name*.
+
+Em nossa aplicação Spring Boot, vamos criar um arquivo sbip.yml na pasta resources e definir a configuração *server.port* com o valor 8081.
+
+Podemos construir a aplicação usando o comando *mvn package* a partir do local onde está o nosso arquivo *pom.xml*. No pom.xml, especificamos o tipo de empacotamento como JAR. 
+
+Após construir a aplicação com sucesso, execute o JAR executável usando o comando:
+java -jar < nomeDoJar>
+
+Seremos notificado que a aplicação iniciou na porta HTTP padrão 8080. Podemos parar a aplicação com o comando Ctrl-C e reiniciar com o comando abaixo:
