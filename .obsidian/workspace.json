@@ -24,17 +24,17 @@
             }
           },
           {
-            "id": "e8d8c380580f15bd",
+            "id": "fc406cd356731d1c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
+                "file": "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Appendix C - A Introduction to HTTP"
+              "title": "Capítulo 2 - Common Spring Boot tasks"
             }
           }
         ],
@@ -70,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#DispatcherServlet",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -229,22 +229,29 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "e8d8c380580f15bd",
+  "active": "fc406cd356731d1c",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 1 - Booting Spring Boot/Capítulo 1 - Booting Spring Boot.md",
+    "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
+    "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks",
+    "Spring Start Here/codes/sq-ch15-ex1/sq-ch15-ex1.iml",
+    "Spring Start Here/codes/sq-ch15-ex1/target/classes/application-postgres.properties",
+    "Capítulo 1 - Booting Spring Boot-1.png",
+    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
+    "Capítulo 1 - Booting Spring Boot.png",
+    "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
+    "Spring Boot in Practice/Capítulo 1 - Booting Spring Boot",
+    "Spring Boot in Practice",
+    "Spring in Action/Parte 1 - Fundamentos do Spring/Capítulo 1 - Getting Started with Spring/Capítulo 1 - Getting Started With Spring.md",
+    "Spring in Action/📚 Cronograma de Leitura - Spring in Action.md",
+    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
     "Appendix C - A Introduction to HTTP-1.png",
     "Appendix C - A Introduction to HTTP.png",
-    "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
-    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP",
     "Spring Start Here/codes/sq-ch15-ex1/target/test-classes/org/example/sqch15ex1/TransferServiceSpringIntegrationTests.class",
     "Spring Start Here/codes/sq-ch15-ex1/target/test-classes/org/example/sqch15ex1/TransferServiceWithAnnotationsUnitTests.class",
     "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/TransferService.class",
     "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/application-postgres.properties",
-    "Spring Start Here/codes/sq-ch15-ex1/src/main/resources/application-postgres.properties",
-    "Spring Start Here/codes/sq-ch15-ex1/src/test/java/org/example/sqch15ex1/TransferServiceSpringIntegrationTests.java",
-    "Spring Start Here/PART 2/Capíttulo 9 - Using the Spring web scopes/sq-ch9-ex1/target/test-classes/com/example/LoginControllerUnitTests.class",
-    "Spring Start Here/PART 2/Capíttulo 9 - Using the Spring web scopes/sq-ch9-ex1/target/test-classes/com/example/MainTests.class",
     "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Capítulo 15 - Testing your Spring app-8.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
@@ -253,16 +260,11 @@
     "Chapter 1 - Introduction-3.png",
     "Chapter 1 - Introduction-2.png",
     "Java Nelio Alves/Seção 19 - Acesso a banco de dados com JDBC/Transações.md",
-    "Spring in Action/📚 Cronograma de Leitura - Spring in Action.md",
     "Capítulo 15 - Testing your Spring app-7.png",
     "Spring Start Here/codes/sq-ch14-ex1/target/classes/HELP.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Capítulo 15 - Testing your Spring app-6.png",
     "Capítulo 15 - Testing your Spring app-5.png",
-    "Capítulo 15 - Testing your Spring app-4.png",
-    "Capítulo 15 - Testing your Spring app-3.png",
-    "Spring in Action/Parte 1 - Fundamentos do Spring/Capítulo 1 - Getting Started with Spring/Capítulo 1 - Getting Started With Spring.md",
-    "Capítulo 15 - Testing your Spring app-2.png",
     "Java Persistence with Spring Data e Hibernate/Capítulo 1 - Entendendo o object-relational persistence.md",
     "Spring Start Here/codes/sq-ch14-ex1/HELP.md",
     "Spring Start Here/codes/sq-ch13-ex1 - Copia/HELP.md"
