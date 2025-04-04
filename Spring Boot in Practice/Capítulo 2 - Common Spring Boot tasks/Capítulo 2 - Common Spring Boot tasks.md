@@ -107,3 +107,74 @@ Após construir a aplicação com sucesso, execute o JAR executável usando o co
 java -jar < nomeDoJar>
 
 Seremos notificado que a aplicação iniciou na porta HTTP padrão 8080. Podemos parar a aplicação com o comando Ctrl-C e reiniciar com o comando abaixo:
+
+Por padrão, o Spring Boot lê o arquivo *application.properties* ou *application.yml* dos seguintes locais:
+1. A raiz do classpath;
+2. O pacote */config* dentro do classpath
+3. O diretório atual;
+4. O subdiretório */config* dentro do diretório atual;
+5. Diretórios filhos imediatos do subdiretório */config*.
+
+Nota sobre as propriedades *spring.config.name* e *spring.config.location*
+O Spring Boot carrega as propriedades *spring.config.name* e **spring.config.location** nas fases iniciais da inicialização da aplicação, antes mesmo dos arquivos **properties ou .yml**. Por isso, você **não pode** definir essas configurações dentro dos arquivos `application.properties` ou `application.yml`.
+Para configurar essas propriedades, você pode usar:
+
+- O método `SpringApplication.setDefaultProperties()`
+    
+- Variáveis de ambiente do sistema operacional (**OS environment variables**)
+    
+- Argumentos de linha de comando (**command-line arguments**), na hora de rodar a aplicação
+    
+Nos exemplos acima, utilizamos as opções de **argumentos de linha de comando**.
+
+**Argumentos de Linha de Comando**
+O **Spring Boot** permite que especifiquemos configurações diretamente como argumentos de linha de comando.
+
+Isso significa que, ao criar um arquivo #JAR da aplicação, podemos passar essa propriedade como argumentos na hora de executar o JAR.
+
+Por exemplo, nesta seção, as propriedades *spring.config.name* e *spring.config.location* foram especificadas diretamente na linha de comando ao executar a aplicação:
+```cmd
+java -jar minha-aplicação.jar --spring.config.name=meu-arquivo --spring.config.location=file:C:/config/
+```
+
+Este comando instrui o Spring Boot a:
+- Procurar um arquivo de configuração chamado *meu-arquivo.properties* ou *meu-arquivo.yml*;
+- Buscar esse arquivo no diretório C:/config/
+
+Isso é útil quando queremos definir configurações sem alterar o código-fonte da aplicação.
+
+O Spring Boot também permite que especifiquemos arquivos properties para um profile específico.
+
+Os profiles do Spring permitem segregar partes da configuração da aplicação e torná-las disponíveis apenas em um determinado ambiente (por exemplo, um profile para o ambiente de **teste** ou um profile para o ambiente de produção).
+
+Portanto, podemos definir arquivos de configuração adicionais dedicados a um profile, além do arquivo *application.properties* ou *.yml* padrão.
+
+Os arquivos de propriedades específicos de um *profile* seguem o formato:
+```
+application-{profile}.properties
+application-{profile}.yml
+```
+
+Por exemplo, se tivermos dois profiles -dev e test - podemos manter dois arquivos properties diferentes com os nomes:
+- *application-dev.properties*;
+- *application-test.properties*;
+
+Portanto, dependendo do profile ativo, a porta da aplicação iniciará em Dev ou Test.
+Podemos ativar um profile usando a propriedade do Spring Boot:
+*spring.profile.active=dev*
+
+
+### 2.1.4 OS environment variable
+
+Podemos especificar as configurações como uma variável de ambiente e utilizar o nome dessa variável de ambiente no arquivo de configuração (config data file).
+
+No arquivo *application.properties*, foi declarada a seguinte propriedade personalizada chamada **app.timeout**, conforme mostrado no trecho a seguir:
+```properties
+app.timeout=${TIMEOUT}
+```
+
+A variável de ambiente APP_TIMEOUT está configurada com o valor 30. No Windows, podemos definir uma variável de ambiente usando o comando *set < VAR>= < VALOR>* no prompt de comando...
+
+
+## 2.2 Creating custom properties with *@ConfigurationProperties*
+O Sring Boot oferece uma grande variedade de propriedades nativas para configurar diversos recursos da aplicação. O exemplo mais simples é a propriedade *server.port*, que utilizamos na seção anterior para definir a porta HTTP na qual a aplicação Spring Boot deve ser executada. 
