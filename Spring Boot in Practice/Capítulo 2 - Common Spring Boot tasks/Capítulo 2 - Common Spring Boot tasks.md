@@ -177,4 +177,182 @@ A variável de ambiente APP_TIMEOUT está configurada com o valor 30. No Windows
 
 
 ## 2.2 Creating custom properties with *@ConfigurationProperties*
-O Sring Boot oferece uma grande variedade de propriedades nativas para configurar diversos recursos da aplicação. O exemplo mais simples é a propriedade *server.port*, que utilizamos na seção anterior para definir a porta HTTP na qual a aplicação Spring Boot deve ser executada. 
+O Sring Boot oferece uma grande variedade de propriedades nativas para configurar diversos recursos da aplicação. O exemplo mais simples é a propriedade *server.port*, que utilizamos na seção anterior para definir a porta HTTP na qual a aplicação Spring Boot deve ser executada.  A propriedade *server.port* é uma propriedade embutida do Spring Boot. Podemos encontrar uma lista completa dessas propriedades na documentação oficial do Spring Boot.
+
+Nesta seção, discutiremos as propriedades personalizadas, que são específicas da sua aplicação. Dependendo da complexidade e dos recursos da sua aplicação, pode ser necessário configurar propriedades personalizadas. Por exemplo, podemos **definir a URL de um serviço web REST externo** ou uma flag booleano para ativar ou desativar um recurso específico. 
+
+A prática, de definir a URL de um serviço REST no arquivo *properties* de uma aplicação é amplamente utilizada para facilitar a configuração e manutenção da aplicação, permitindo que as URLS ou outras configurações externas sejam alteradas sem a necessidade de modificar o código-fonte.
+
+A boa notícia é que podemos configurar qualquer quantidade de propriedades nos arquivos de configuração da nossa aplicação, e o Spring Boot garantirá que elas sejam carregadas e estejam disponíveis em tempo de execução. Na seção anterior, vimos como o Spring Boot vincula as propriedades configuradas à instância de *Environment* do Spring, e que usamos *autowire* na classe para acessá-las.
+
+Embora essa abordagem funcione muito bem, ela apresenta algumas desvantagens:
+1. Não há *type-safety* nas propriedades configuradas, o que pode levar a problemas em tempo de execução. Por exemplo, suponha que estejamos capturando uma URL ou um endereço de e-mail em nosso arquivo de propriedades. Não há uma forma de impor *type-safety* para essas propriedades, pois não há validação.
+2. Você precisa acessar os valores das propriedades individualmente com a anotação *@Value* ou através da instância do *Spring Environment*.
+
+O Spring Boot oferece uma abordagem alternativa que permite definir beans definitions fortemente tipadas, garantindo **type-safety** e validando a configuração da nossa aplicação.
+
+### 2.2.1 Technique: Defining custom properties with @ConfigurationProperties in a Spring Boot application
+
+Nesta técnica, introduziremos a definição de propriedades personalizadas com *@ConfigurationProperties* em uma aplicação Spring Boot.
+
+**Problem**
+Precisamos definir propriedades personalizadas em nossa aplicação Spring Boot que sejam fortemente tipadas *type-safe* e possam ser validadas.
+
+**Solution**
+Nesta técnica, discutiremos como definir propriedades personalizadas em nossa aplicação Spring Boot e acessar essas propriedades nas classes de nossa aplicação sem usar a anotação @Value ou uma instância de Environment. Para isso, precisamos adicionar a seguinte configuração adicional no arquivo pom.xml, conforme mostrado na listagem a seguir:
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-configuration-processor</artifactId>
+<optional>true</optional>
+</dependency>
+```
+Precisamos de um processador de configuração do Spring Boot para gerar metadados sobre classes que estão anotadas com a anotação *@ConfigurationProperties*. Esses metadados são então usados por IDEs para fornecer suporte a autocompletar e documentação para as propriedades no arquivo *application.properties* ou *application.yml*. Aprenderemos mais sobre a anotação *@ConfigurationProperties* em breve. Em seguida, vamos definir as seguintes propriedades personalizadas na nossa aplicação Spring Boot, conforme mostrado na listagem a seguir:
+```properties
+app.sbip.ct.name=CourseTracker
+app.sbip.ct.ip=127.0.0.1
+app.sbip.ct.port=9090
+app.sbip.ct.security.enabled=true
+app.sbip.ct.security.token=asddf998hhyqthgtYYtggghg9908jjh7ttr
+app.sbip.ct.security.roles=USER,ADMIN
+```
+Observe que essas não são propriedades internas do Spring Boot, mas sim propriedades personalizadas específicas para a nossa aplicação. Você precisa especificar essas propriedades em nosso arquivo *application.properties*. Vamos definir uma classe Java que represente essas propriedades, conforme mostrado na listagem a seguir:
+
+Vamos explicar as mudanças na classe *AppProperties* da listagem 2.13:
+- Essa classe está anotada com *@ConstructorBinding* e *@ConfigurationProperties*. Forneceremos mais detalhes sobre essas duas anotações na seção de discussão. Além disso, definimos o prefixo para as propriedades como *app.sbip.ct*.
+- Definimos algumas variáveis com o nome das propriedades (por exemplo, *name*, *ip* e *port*). Para as propriedades relacionadas à segurança, definimos a classe estática *Security* dentro da classe *AppProperties*. Isso ocorre porque as propriedades estão aninhadas dessa forma. Por exemplo, a propriedade chamada *app.sbip.ct.security.enabled* é representada pela propriedade *enabled* na classe *Security*.
+
+- Você forneceu documentação Java para essas variáveis para que as IDEs possam exibir essa documentação no arquivo *application.properties*.
+
+Até agora, **definimos nossas propriedades e a classe associada que mapeia essas propriedades**. Vamos agora definir outra classe que utiliza as propriedades configuradas, conforme mostrado na listagem a seguir.
+
+```java
+@Service  
+public class AppService {  
+  
+    private final AppProperties appProperties;  
+  
+    @Autowired  
+    public AppService(AppProperties appProperties) {  
+        this.appProperties = appProperties;  
+    }  
+  
+    public AppProperties getAppProperties() {  
+        return this.appProperties;  
+    }  
+}
+```
+
+A classe definia na listagem 2.14 está  anotada com *@Service* do Spring para defini-la como um serviço e deve ser escaneada automaticamente pelo Spring Boot. A mudança mais notável é que injetamos *autowired* a instância de *appProperties* nesta classe. O Spring Boot garante que todas as propriedades configuradas no arquivo *application.properties* sejam lidas, validadas e vinculadas à instância de *AppProperties*. Essa instância é então injetada na classe de serviço. Vamos usar essa classe de serviço e acessar a instância de *AppProperties*, conforme mostrado na listagem a seguir. 
+
+---
+Estamos utilizando o padrão de design de desacoplamento. Ele é adotado a vários padrões e conceitos, incluindo:
+- **Dependency Injection (DI):** reduz o acoplamento entre componentes ao permitir que as dependências sejam injetadas em vez de instanciadas diretamente.
+- **Inversion of Control (IoC)** - um princípio que transfere o controle da criação e gerenciamento de dependências para um container, como no Spring Framework.
+- **Interface Segregation Principle (ISP) -** Parte do SOLID, sugere que interfaces devem ser específicas para cada cliente, evitando dependências desnecessárias;
+- **Event-Driven Architecture -** usa eventos para comunicação entre componentes, reduzindo o acoplamento direto.
+- **Observer Pattern -** permite que objetos sejam notificados sobre mudanças de estado sem depender diretamente uns dos outros.
+- **Hexagonal Architecture (Ports and Adapters)** - separa a lógica de negócio da infraestrutura, permitindo que diferentes tecnologias sejam usadas sem impactar o núcleo da aplicação.
+
+---
+Na listagem 2.15, usamos a anotação *@EnableConfigurationProperties(AppProperties.class)*. Essa anotação garante que as classes com *@ConfigurationProperties* sejam registradas no contêiner do Spring. Uma desvantagem dessa anotação é que precisamos especificar nossas classes anotadas com *@ConfigurationProperties* junto com a anotação.
+
+Se tiver mais classes anotadas com *@ConfigurationProperties*, podemos usar a alternativa *@ConfigurationPropertiesScan* e especificar um pacote base para que o Spring Boot possa escanear e encontrar as classes anotadas com *@ConfigurationProperties*. Nesse caso, não é necessário especificar explicitamente as classes *@ConfigurationProperties*.
+
+Observe que essa anotação não identifica classes que também estão anotadas ou meta-anotadas com a anotações *@Component*. Se iniciarmos a aplicação, podemos verificar que as propriedades configuradas são impressas no console da aplicação.
+
+**Discussion**
+O *@ConfigurationProperties* do Spring Boot fornece uma abordagem fortemente tipada e estruturada para configurar propriedades personalizadas da aplicação. Já percebemos como é fácil configurar, validar e usar um conjunto de propriedades em nossa aplicação Spring Boot. Juntamente com o *spring.config.import* e a anotação *@ConfigurationProperties*, podemos separar logicamente as propriedades da aplicação em vários arquivos bom base em suas categorias.
+
+A anotação *@ConfigurationProperties* permite externalizar configurações de forma fortemente tipada e estruturada. Podemos adicionar essa anotação à definição de uma classe (como demonstrado nesta técnica) ou a um método anotado com *@Bean* em uma classe Spring *@Configuration*. A vinculação das propriedades à classe pode ser feita por meio de métodos *setters* para as variáveis de membro ou através de vinculação via construtor.
+
+Neste exemplo, fornecemos um prefixo chamado *app.sbip.ct*. Esse prefixo é usado junto com as propriedades que definimos na classe. Assim, a propriedade *name* é usada como *app.sbip.ct.name*. 
+
+Neste exemplo, usamos o *@ConstructorBinding*, especificando explicitamente essa anotação na classe POJO. Essa anotação indica que as propriedades de configuração devem ser vinculadas usando os argumentos do construtor, em vez de chamar *setter*. Essa anotação pode ser especificada no nível da classe ou em um construtor específico. Se houver apenas um construtor, podemos especificar a anotação no nível da classe. No entanto, se houver múltiplos construtores, podemos usar a anotação em um construtor específico.
+
+Ou seja, quando o Spring Boot carregar as configurações do *application.properties* ou *application.yml*, ele usará o construtor da classe para injetar os valores, garantindo *imutabilidade* (já que os campos são *final* e não possuem setters). 
+
+Caso precise usar vinculação via setter em vez de vinculação via construtor, você pode especificar métodos setters para as variáveis de membro. Se estiver buscando imutabilidade na sua classe de configuração de propriedades, deve usar *@ConstructorBinding* sem fornecer métodos setters. Assim, uma vez que as propriedades sejam vinculadas à instância POJO, não há como modificá-las. Opcionalmente, podemos usar a anotação *@DefaultValue* nos parâmetros se precisar definir um valor padrão para uma ou mais propriedades. A listagem a seguir demonstra isso.
+
+**AppProperties class constructor with *@DefaultValue* annotation**
+```java
+public AppProperties(String name, String ip, @DefaultValue("8080") int port, Security security) {
+	this.name = name;
+	this.ip = ip;
+	this.port = port;
+	this.security = security;
+}
+```
+
+## 2.3 Executing code on Spring Boot application startup
+Às vezes, precisamos executar código personalizado durante a inicialização de uma aplicação Spring Boot. Por exemplo, pode ser necessário executar um script de inicialização do banco de dados antes que a aplicação termine sua inicialização <span style="background:#d4b106">ou consumir um serviço REST para carregar dados para sua aplicação</span>. 
+
+O *CommandLineRunner* e o *ApplicationRunner* são duas interfaces do Spring Boot que fornecem um único método *run(..)* e são invocados logo antes de a aplicação Spring Boot concluir sua inicialização. Esses métodos são invocados apenas uma vez no momento da inicialização da aplicação Spring Boot.
+
+Nesta seção, exploraremos o uso da interface *CommandLineRunner* em uma aplicação Spring Boot. A interface *ApplicationRunner* é bastante semelhante à interface *CommandLineRunner*.
+
+### 2.3.1 Technique: Using CommandLineRunner to execute code at Spring Boot application startup
+In this techinique, we'll introduce you to the *CommandLineRunner*.
+
+**Problem**
+You want to use *CommandLineRunner* to execute some application initialization code at the Spring Boot application startup.
+
+**Solution**
+You can configure *CommandLineRunner* in several ways. The following list shows the approaches to configure a *CommandLinerRunner* in a Spring Boot application:
+- In the Spring Boot main class that implements the *CommandLineRunner* **interface**;
+- By providing the *CommandLinerRuner* implementation as a bean definition using the *@Bean* annotation.
+- By providing the *CommandLineRunner* as a Spring Component using the *@Component* annotation.
+
+In this technique, you'll see the aforementioned  *CommandLineRunner* configuration approaches with examples. After creating or importing the Spring Boot project, implement the *CommandLineRunner* interface in your Spring Boot main class, as shown in the following listing.
+
+To keep the example simple, you are logging a statement in the console. Once the Spring Boot application starts, it logs the statement in the console, as shown in figure 2.1.
+
+You can also define a *CommandLineRunner* as a Spring *@Bean* definition, as shown in listing 2.18;
+
+In listing 2.18, you defined a Spring bean that provides an implementation of the *CommandLineRunner* is a functional interface with a single method called *run(String... args)*. The run method accepts a String varargs. You can supply the command line arguments, you can use the IDE to pass the arguments. 
+
+Para fornecer argumentos, você pode usar a IDE para passá-los. Além disso, você pode empacotar a aplicação usando o comando mvn package e executá-la utilizando o comando java -jar < appname> < args>.
+
+Essa implementação com *@Bean* gera o mesmo resultado que a alternativa apresentada na *Listing 2.17*. A vantagem dessa abordagem é que não precisamos, obrigatoriamente, implementar a interface *CommandLineRunner*.
+
+Até agora, a implementação de *CommandLineRunner* foi feita diretamente na classe principal do Spring Boot. No entanto, uma abordagem alternativa é criar essa implementação em uma classe separada e anotá-la com *@Component*. Isso mantém o código relacionado ao CommandLineRunner isolado em um arquivo Java específico, evitando que a classe principal do Spring Boot fique sobrecarregada com essa lógica. 
+
+As anotações @Bean e @Component permitem que instruamos o Spring a criar instâncias das classes anotadas, mas o modo como cada uma é usada é um pouco diferente.
+
+Geralmente usamos a anotação *@Bean* quando **não temos acesso ao código fonte de classe** que desejamos registrar como um bean. Nesse caso, declaramos um método dentro de uma classe de configuração (geralmente anotada com *@Configuration*) utiliza *@Bean* nesse método e retorna manualmente uma nova instância da classe desejada.
+
+Já a anotação *@Component* é usada quando temos acesso ao arquivo Java da classe. Nesse cenário, basta anotar diretamente a classe com *@Component*, e o Spring detectará e gerenciará automaticamente essa classe como um bean durante o processo de escaneamento de componentes (*component scanning*).
+
+A listagem a seguir mostra uma implementação simples de *CommandLineRunner* que registra uma mensagem no log do console:
+```java
+package com.manning.sbip.ch02.commandline;
+
+// imports
+
+@Order(1)
+@Component
+public class MyCommandLineRunner implements CommandLineRunner {
+
+    protected final Logger logger = LogFactory.getLogger(getClass());
+
+    @Override
+    public void run(String... args) throws Exception {
+        logger.info("MyCommandLineRunner executed as a Spring Component");
+    }
+}
+
+```
+O component scan do spring Boot consegue detectar essa classe porque ela está anotada com *@Component*. Isso significa que o Spring criará *MyCommandLineRunner* durante a inicialização do aplicativo. 
+
+Quando iniciarmos a aplicação, a mensagem definida no método *run()* será exibida no console, pois o *CommandLineRunner* é executado automaticamente assim que o contexto da aplicação é carregado. Essa é uma forma prática de executar código logo após a inicialização da aplicação. 
+
+You can also configure multiple *CommandLineRunner* implementations and decide the execution order base on the *@Order* annotation. Notice that the *Order(1)* annotation is specified in listing 2.19. For instance, the following listing shows another *CommandLinerRunner* implementation that is ordered with order value two.
+
+If you start the application, you can see that both the log statements are printed in the console based on their defined order, as shown in figure 2.2.
+
+**Discussion**
+The *CommandLineRunner* is a useful feature that is frequently used to perform several application initialization activities. In a *CommandLinerRunner* implementation, you also have acess to the command line arguments through the args parameter. Thus, you can control the *CommandLineRunner* implementation behavior externally through the supplied arguments.
+
+In a *CommandLineRunner* implementations you can also autowire any dependency using Spring's dependy injection mechanism. 
+
+## 2.4 Customizing logging in a Spring Boot application
