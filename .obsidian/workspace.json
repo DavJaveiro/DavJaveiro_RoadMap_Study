@@ -105,7 +105,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "49ba25889a7814f6",
@@ -230,6 +231,7 @@
   },
   "active": "fc406cd356731d1c",
   "lastOpenFiles": [
+    "Sem título.md",
     "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
     "Capítulo 2 - Common Spring Boot tasks-1.png",
     "Capítulo 2 - Common Spring Boot tasks.png",

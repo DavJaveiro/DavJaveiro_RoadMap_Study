@@ -521,3 +521,51 @@ You want to validate business entities using the Java Bean Validation framework 
 **Solution**
 Lets us demonstrate the usage of bean validation in Spring Boot with a example.
 
+In this Maven project, we've added the *spring-boot-starter-validation* dependency, as shown in the following listing.
+
+**Spring Boot starter validation Maven dependency**
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
+
+To start with, let us add a new entity named *Course*. A *course* contain an **id**, **name**, **category**, **rating** and **description**, as shown in the following listing.
+
+<**The course entity**>
+```java
+public class Course {
+	private long id;
+	private String name;
+	private String category;
+
+	@Min(value = 1, message = "A course should have a minimum of 1 rating")
+	@Max(value = 5, message = "A course should have a maximum of 5 rating")
+	private int rating;
+
+	private String description;
+
+	// Constructor, Getter, and Setters
+}
+```
+
+Adicionalmente, incluímos duas validações para o campo de avaliação (rating). Uma avaliação pode ter o valor mínimo de 1 e um valor máximo de 5. Caso essas restrições não sejam atendidas, a mensagem definida na anotação será exibida como mensagem de erro. Vamos validar essas restrições definindo um *CommandLineRunner*, conforme mostrado na listagem a seguir.
+
+No listing 2.31, criamos um curso e definimos o valor da avaliação *rating* do curso como 0. Além disso, obtemos uma instância do validator e fornecemos a instância do curso para validação de restrições (*constraint validation*). O *validator* realiza a validação e retorna o conjunto de violações de restrição (*constraint violations*) no objeto fornecido. Neste exemplo, a validação da restrição *@Min* é violada, e o *ConstraintViolation* associado é retornado. Em seguida, registramos esse erro de validação no console.
+
+### ✅ Como você faria normalmente no Spring?
+Podemos deixar o Spring cuidar automaticamente do validator, a criação manual do *Validator* é didática, utilizada geralmente para explicar como funciona o Bean Validation por baixo dos panos.
+
+No dia a dia com Spring Boot, o próprio framework já gerencia e **injeta automaticamente** o *Validator* quando precisarmos. Seja via *@Valid* em métodos de *controller*, *serviços* ou até dentro de formulário em aplicações web.
+
+```java
+@Service
+@Validated
+public class CourseService {
+	public void createCourse(@Valid Course course) {
+		// aqui, o Spring automaticamente valida o objeto
+		// se houver violações, um MethodArgumentNotValidException será lançada
+	}
+}
+```
