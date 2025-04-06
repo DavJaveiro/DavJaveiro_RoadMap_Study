@@ -569,3 +569,69 @@ public class CourseService {
 	}
 }
 ```
+
+If you run the application, you can find that, once the application starts successfully, the *CommandLineRunner* is executed, and the *ConstraintViolation* error message is logged in the console, as shown in figure 2.4.
+
+**Discussion**
+*Bean Validation* permite que especifiquemos e validemos restrições da aplicação. Você já deve ter percebido como ela permite definir essas restrições por meio de anotações, com a possibilidade de configurar mensagens de erro personalizadas.
+
+A Tabela 2.1 apresenta algumas das anotações mais utilizadas definidas na API do Hibernate Validator. Vale destacar que o *Hibernate Validator* é a implementação de referência do *Bean Validation*, sendo também utilizado pelo Spring Boot para validação de beans.
+
+ 📋 Tabela — Anotações do Hibernate Validator
+
+| **Anotação**               | **Finalidade (Purpose)**                                                                                                                                                   |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@NotBlank`                | Verifica se a sequência de caracteres anotada (**annotated character sequence**) não é nula nem composta apenas por espaços em branco. Suportada apenas em `CharSequence`. |
+| `@NotEmpty`                | Verifica se a sequência de caracteres, coleção, mapa ou array anotado não é nulo nem vazio. Suportada em *CharSequence*, *Collection*, *Map* e *arrays*.                   |
+| `@NotNull`                 | Verifica se o valor anotado não é nulo. Suportada em qualquer tipo de dado.                                                                                                |
+| `@Min(value=)`             | Verifica se o valor anotado é maior ou igual ao valor mínimo especificado.                                                                                                 |
+| `@Max(value=)`             | Verifica se o valor anotado é menor ou igual ao valor máximo especificado.                                                                                                 |
+| `@Pattern(regex=, flags=)` | Verifica se a string anotada corresponde **à expressão regular** (`regex`) informada, considerando as flags definidas.                                                     |
+| `@Size(min=, max=)`        | Verifica se o tamanho do elemento anotado está entre os valores `min` e `max` (inclusive).                                                                                 |
+| `@Email`                   | Verifica se a sequência de caracteres anotada é um endereço de email válido.                                                                                               |
+
+Embora as anotações internas (built-in annotations) funcionem bem na maioria dos cenários, às vezes pode ser necessário criar validações de restrição personalizadas (custom constraint validations).
+
+Por exemplo, podemos precisar verificar se uma determinada sequência de caracteres fornecida é um endereço IP válido. Ou ainda, podemos querer aplicar restrições adicionais para uma senha informada pelos usuários da nossa aplicação.
+
+Na próxima técnica, vamos aprender como implementar e utilizar uma restrição personalizada (custom constraint) utilizando o framework *Bean Validation* em nossa aplicação Spring Boot.
+
+### 2.5.2 Technique: Defining and using custom Bean Validations annotation to validate a POJO in a Spring Boot application
+
+Nesta técnica, aprenderemos como definir anotações personalizadas *custom annotations* e usá-las para realizar validações em entidades de negócio business entities.
+
+**Problema**
+Desejamos definir uma anotação personalizada (custom annotation) e utilizá-la para validar um **POJO** em uma aplicação Spring Boot.
+
+**Solution**
+Na técnica anterior, utilizamos anotações internas do Bean Validation (built-ind Bean Validation annotations) para aplicar restrições em entidade de negócio.
+
+Nesta técnica, aprenderemos como implementar uma anotação personalizada com um validador personalizado (custom annotation com custom validator) para aplicar restrições específicas de negócio (business-specific constraints) em nossas entidades.
+
+Para demonstrar como definir uma restrição personalizada (custom constraint) usaremos um **POJO** *User*, que possui um *username* e um *password*.
+
+Normalmente, as organizações definem políticas de senha (password policies) personalizadas que os usuários devem seguir. Neste exemplo, implementaremos uma anotação personalizada que valida as senhas com base em uma **política de senha predefinida (predefined password policy)**.
+
+Utilizaremos a biblioteca Passay para aplicar essas regras de senha password rules.
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.passay/passay -->
+<dependency>
+    <groupId>org.passay</groupId>
+    <artifactId>passay</artifactId>
+    <version>1.6.6</version>
+</dependency>
+```
+
+Antes de definir a *custom validation annotation*, precisamos definir o *ConstraintValidator* que é invocado para aplicar a restrição. Vamos definir a classe *PasswordRuleValidator*, que contém a lógica real de validação da senha, conforme mostrado na listagem a seguir.
+
+## Summary
+Neste capítulo, exploramos várias técnicas essenciais que precisam ser dominadas por qualquer desenvolvedor Spring Boot. Alguns dos principais tópicos abordados neste capítulo são:
+- Diversas abordagens para gerenciar as *application properties* em uma aplicação Spring Boot.
+- Como usar *@ConfigurationProperties* para definir propriedades de forma *type-safe* (com segurança de tipo);
+- Como configurar o *CommandLineRunner* para executar um código único no momento da inicialização da aplicação Spring Boot;
+- O *console logging* padrão do Spring Boot, configurações adicionais e como utilizar o *Log4j2* logging em uma aplicação Spring Boot.
+- Como usar a **Bean Validation** API para validar POJOs em nossa aplicação Spring Boot, tanto com anotações integradas quanto com anotações personalizadas.
+
+No capítulo 3, o próximo passo de nossa jornada com Spring Boot, aprenderemos a acessar o banco de dados a partir de uma aplicação Spring Boot.
+
