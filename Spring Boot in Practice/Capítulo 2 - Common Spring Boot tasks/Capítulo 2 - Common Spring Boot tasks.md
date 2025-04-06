@@ -356,3 +356,168 @@ The *CommandLineRunner* is a useful feature that is frequently used to perform s
 In a *CommandLineRunner* implementations you can also autowire any dependency using Spring's dependy injection mechanism. 
 
 ## 2.4 Customizing logging in a Spring Boot application
+Loggin is an essential aspect of an application. A log contains important events of application activity and provides useful information on application behavior. <span style="background:#b1ffff">Based on the logging configuration</span>, log statements <span style="background:#b1ffff">can be logged in various mediums</span>, such as in the **console**, **files**, and **database**. However, console and file-based logging are the dominant types and are most frequently used in an application.
+
+In this section, we'll first understand and explore the default Spring Boot logging mechanism. We'll then explore how to customize the logging in we Spring Boot application with other logging frameworks.
+
+### 2.4.1 Technique: understanding and customizing default Spring Boot logging in a Spring Boot application
+In this technique, we'll discuss Spring Boot default logging mechanisms and configurations for customizing logging in a Spring Boot application.
+
+**Problem**
+You want to understand and customize the default logging in a Spring Boot application.
+
+**Solution**
+By default, Spring Boot provides a console logging facility for all Spring Boot applications. This console log prints the log statements in the command prompt or terminal at application startup or when you perform any other activity in the application for which logging is enabled.
+
+Spring Boot uses the Apache commons logging framework for its internal logging purposes. It also supports other popular logging framework, such as Logback, Log4j2, and java.util.logging.
+
+If we are using any of the Spring Boot starter dependencies, **then by default Spring Boot uses de Logback logging framework**. This is because Spring Boot starter dependencies have a transitive dependency with *spring-boot-starter-logging* starter dependency, which includes the Logback dependencies. The following listing shows the Logback dependencies internally used by Spring Boot:
+
+Once the project setup is done, you can start the application using the IDE's launch option or by using the mvn spring-boot:run Maven command. You can see the startup log in the console, as shown:
+![[Capítulo 2 - Common Spring Boot tasks.png]]
+
+- *Date and Time*: Date and time of logging;
+- *Log level:* Logging level. Possible values include **FATAL, ERROR, WARN, INFO, DEBUG, and TRACE**. A logging level demonstrates the importance of the log statement. For instance, any log statement logged with FATAL or ERROR indicate some serious issues in the application processing, wheres INFO or DEBU, for example, indicate typical regular application activities, which you can likely ignore.
+- *Process ID* - Process ID of the application;
+- *Separator* - A separator --- to indicate the start of the actual log messages;
+- *Thread name* - Name of a thread performing the logging. A Spring Boot application contains multiple threads. Some of the threads could be application threads, and you might be starting a few threads for various reasons. Por exemplo, se estivermos executando capacidades de processamento assíncrono do Spring Boot, podemos criar um TaskExecutor e atribuir um nome às threads do pool de threads subjacente. Assim, nesses casos, veremos o nome personalizado da thread conforme configurado.
+- *Logger name* - Abbreviated source class name;
+- *Message* - The actual log message.
+![[Capítulo 2 - Common Spring Boot tasks-1.png]]
+
+The %clr is a conversion word that is used to configure the color-coding. Spring Boot uses the *org.springframework.boot.logging.logback.ColorConverter* class for this purpose.
+
+For example: %clr(${PID:- }) {magenta} prints the process ID in **magenta** color. This default logging pattern is specified in the Spring Boot Logback logging configuration file.
+
+You can customize the default logging pattern with a different logging format. For example, the following listing shows a custom loggin pattern by configuration the *logging.pattern.console* property in the application.properties.file.
+
+Custom loggin pattern in the application.properties file:
+```properties
+logging.pattern.console=%clr(%d{dd-MM-yyyy HH:mm:ss.SSS}){yellow} 
+%clr(${PID:- }){green} %magenta([%thread]) %highlight([%-5level]) 
+%clr(%-40.40logger{39}){cyan} %msg%n  
+```
+Configuring a custom logging pattern in Spring Boot application
+
+If we restart the application, we'll notice a different logging format printed in the console.
+
+**Appender e Logger no sistema de logs**
+Se estamos começando agora com logs, é bom entendermos alguns termos básicos:
+- #Logger: um logger é um componente do sistema de logs que tem a função de registrar as mensagens de log. Ele faz usando um ou mais **appenders**. Podemos criar vários loggers com diferentes níveis de log (como erro, aviso, informação) dependendo da nossa necessidade.
+- #Appender: o appender é quem define duas coisas principais:
+	1. Para onde as mensagens de log serão enviadas;
+	2. Qual formato elas terão;
+
+Existem vários tipos de **appenders**, dependendo do destino das mensagens:
+- *ConsoleAppender:* mostra os logs no console da aplicação;
+- *FileAppender:* grava os logs em um arquivo;
+- *RollingFileAppender:* além de gravar, ele também cuida da rotação do arquivo (por exemplo, cria um novo a cada dia ou quando o arquivo fica grande);
+- *SMTPAppender:* envia as mensagens de log por e-mail para um endereço definido.
+
+Por padrão, o Spring Boot registra logs nos níveis **INFO**, **WARN e ERROR**. Se precisarmos de outros níveis de log, como *TRACE* ou *DEBUG*, podemos configurá-los nas propriedades correspondentes no arquivo *.properties*. Por exemplo, para habilitar declarações de depuração, podemos configurar *debug-true* no arquivo. Da mesma forma é possível ativar o modo de rastreamento configurando *trace=true* no mesmo arquivo.
+
+Embora o log no console funciona bem durante o desenvolvimento, em uma aplicação de produção, é necessário registrar os logs em um arquivo, para que possam ser consultados no futuro. Além disso, apenas salvar os logs em um arquivo não é suficiente. Também é importante gerenciar os arquivos de log com base no tamanho e na duração (ou seja, determinar qual deve ser o tamanho máximo de um arquivo de log e por quanto tempo as informações devem continuar sendo gravadas no arquivo existente).
+
+Existem políticas baseadas em tamanho e em tempo para alternar o arquivo de log para um novo arquivo. Por exemplo, podemos optar por alternar para um novo arquivo de log assim que o arquivo atual atingir um tamanho específico (por exemplo, 10MB). Também é possível alternar para um novo arquivo de log diariamente, independentemente do tamanho do arquivo. 
+
+A maneira mais simples de configurar o registro de logs em um arquivo é definindo as propriedades logging.file.name ou logging.file.path no arquivo *.properties*. A propriedade *logging.file.name* permite especificar o nome de um arquivo de log onde os registros devem ser feitos. Por exemplo:
+*logging.file.name=application.log*;
+
+Se quisermos configurar o arquivo de log em um diretório diferente do diretório raiz do projeto, é possível especificar a propriedade *logging.file.path* com o valor do caminho desejado. Por exemplo, configurar *logging.file.path=C:/sbip/logs* gerará um arquivo de log chamado *spring.log* no diretório informado. 
+
+O Spring Boot oferece funcionalidades avançadas de registro, facilitando a gestão do *rollover* de arquivos de log com base no tamanho ou na idade do arquivo. A configuração das propriedades *logging.logback.rollingpolicy.max-file-size* e *logging.logback.rolling.policy.max-history* no arquivo *application.properties* permite controle total sobre esses componentes.
+
+**Discussion**
+Utilizando esta técnica, aprendemos sobre as configurações de *logging* padrão no Spring Boot. Vimos como configurar e gerenciar registros baseados em arquivos utilizando os parâmetros fornecidos pelo próprio Spring Boot. 
+
+Embora o *logging* com Logback funcione perfeitamente em projetos Spring Boot, pode ser que precisemos configurar outros frameworks de *logging* amplamente utilizados em nossa aplicação Spring. Por exemplo, você pode ter mais familiaridade com outros frameworks, como o Log4j2 ([https://logging.apache.org/log4j/2.x/](https://logging.apache.org/log4j/2.x/)), ou talvez sua organização adote um framework específico como padrão.
+
+Vamos demonstrar isso desabilitando a configuração do Logback e substituir por outro framework de *logging*. Na próxima técnica, aprenderemos a configurar o Log4j2 em nossa aplicação. 
+
+### 2.4.2 Technique: Using Log4j2 to configure logging in a Spring Boot application
+In this technique, we'll demonstrate how to use Log4j2 logging in a Spring Boot application.
+
+**Problem**
+We need to configure Log4j2 as the logging framework in me Spring Boot application.
+
+**Solution**
+Configuring Log4j2 in a Spring Boot application is straightforward. To start with, you need to exclude the default *spring-boot-starter-logging* dependency and provide the Log4j2 starter dependency in your build configuration file. You can then provide the Log4j2 logging configuration either in properties, XML, YAML, or JSON format for Spring Boot to load and configure the logging. Using this technique, we'll use XML to define the logging configuration.
+
+We need to perform two additional changes to start with the Log4j2 logging configuration:
+- Remove all the logging configurations you've added to the *application.properties* file. You can remove all properties that start whit the logging prefix;
+- You also need exclude the *spring-boot-starter-logging* dependency from the *spring-boot-starter-web* dependency in the pom.xml file. 
+
+As alterações no *pom.xml* acima garantem que as dependências relacionadas ao **Logback** sejam removidas e que as dependências do *Log4j2* estejam disponíveis no *classpath*.
+
+Podemos fornecer configurações do Log4j2 como *appender*, *loggers* e configurações associadas, em um arquivo no formato XML ou YML. Essa configuração em XML precisa ser criada na pasta *src\main\resources* com o nome *log4j2.xml* ou *log4j2-spring.xml*. Esse arquivo de configuração encapsula toda a configuração de *logging* que será utilizada em nossa aplicação Spring Boot.
+
+Embora o Spring Boot ofereça ambas as operações para definir configurações - seja com *log4j2.xml* ou *log4j2-spring.xml* - recomenda-se o uso deste último sempre que possível. Isso porque o Spring Boot consegue ter um controle melhor sobre a inicialização de *logging*. A listagem a seguir mostra um exemplo:
+
+Podemos consultar a documentação embutida para entender os diversos parâmetros de configuração. O Log4j2 é um framework de logging poderoso e cheio de recursos. A configuração acima representa a configuração básica necessária para demonstrar a integração do Log4j2 com o Spring Boot.
+
+Vamos adicionar a implementação do *CommandLineRunner* na classe principal do Spring Boot para incluir instruções de log no lugar de instruções *System.out*. A listagem a seguir mostra a classse principal do Spring Boot modificada.
+
+O *CommandLineRunner* é útil para executarmos alguma **lógica de inicialização** (como carregar dados no banco, imprimir logs, testar conexões, etc.);
+
+``` java
+@SpringBootApplication  
+public class CourseTrackerApplication {  
+  
+    private static Logger logger = LoggerFactory.getLogger(CourseTrackerApplication.class);  
+  
+    public static void main(String[] args) {  
+        SpringApplication.run(CourseTrackerApplication.class, args);  
+        logger.info("CourseTrackerApplication started successfully with Log4j2 configuration");  
+    }}
+```
+- A primeira mudança foi a criação de uma instância de logger utilizando o método *LoggerFactory.getLogger*. Se observamos os imports, veremos que a classe *LoggerFactory* importada é da biblioteca *SLF4J*. O Simple Logging Facade do Java (SLF4J) fornece uma abstração para diversos frameworks de log, permitindo que conectemos o framework de nossa preferência, por exemplo, *Log4j2* no momento de build da aplicação. 
+- A segunda mudança é que, ao invés de usar a instrução *System.out*, estamos usando a instância de logger recém-criada para registrar as mensagens.
+
+Se você iniciar a aplicação, verá que o arquivo **application-log4j2.log** é gerado na pasta `logs` do diretório raiz do seu projeto. E poderá ver que a mensagem de log configurada foi impressa junto com outras mensagens de inicialização da aplicação.
+
+**Discussion**
+Nesta técnica, aprendemos a configurar um dos frameworks de logging mais populares e amplamente utilizados no ecossistema Java. O Log4j2 é um dos frmeworks de logging mais estáveis e oferece diversos recursos úteis. 
+
+Podemos ver outros tipos de appenders, como o JDBC appender; filters e outros recursos que estão disponíveis.
+
+#JDBCAppender é um tipo de *appender* que permite **armazenar logs diretamente em um banco de dados** ao invés de arquivos, consoles e outros destinos.
+
+Ao invés de gravar as mensagens de log em arquivos .log, podemos configurar o Log4j2 para inserir cada entrada de log como uma linha em uma table ade banco de dados, como por exemplo:
+```sql
+INSERT INTO logs (data_hora, nivel, logger, mensagem) VALUES (...);
+```
+
+
+Exemplo básico de configuração:
+```xml
+<Appenders>
+    <JDBC name="DatabaseAppender" tableName="application_logs">
+        <ConnectionFactory class="com.exemplo.MyConnectionFactory"/>
+        <Column name="date" isEventTimestamp="true"/>
+        <Column name="level" pattern="%level"/>
+        <Column name="logger" pattern="%logger"/>
+        <Column name="message" pattern="%message"/>
+    </JDBC>
+</Appenders>
+```
+
+Aqui, o *ConnectionFactory* é uma classe que criamos para retornar uma conexão com JDBC com o banco.
+
+## 2.5 Validate user data using Bean Validation
+Frequentemente, é necessário validar os dados inseridos pelo usuário para garantir que atendem aos requisitos de negócio. Por exemplo, podemos querer verificar se determinados campos não estão vazios (noempty) ou validar o comprimento mínimo e máximo dos valores permitidos para esses campos. Além disso, pode ser necessário implementar validações personalizadas para os dados do usuário. Um exemplo comum é a criação de uma regra personalizada de validação de senha para garantir que a senha informada pelo usuário atenda a certos critérios de segurança. 
+
+Para esse tipo de necessidade, o *Bean Validation* é o padrão de fato utilizado no ecossistema Java. Essa especificação Java permite que definamos validações de forma declarativa, utilizando anotações simples diretamente nas classes do nosso modelo. Além disso, o Bean Validation também oferece suporte para a criação de validadores personalizados, de maneira extensível.
+
+A implementação de referência dessa especificação é o *Hibernate Validator*, que é amplamente utilizada em projetos Java.
+
+O **Spring Boot** facilita a integração com o Bean Validation por meio de uma dependência específica chamada *spring-boot-starter-validation*. Esse *starter dependency* permite que utilizemos o Hibernate Validator em nossa aplicação de forma simples e automática, sem a necessidade de configurações adicionais complexas.
+
+### 2.5.1 Technique: Using built-in Bean Validation annotations to validate business entity in a Spring Boot application
+In this technique, we'll discuss how to use bean validation to validate the business entities.
+
+**Problem**
+You want to validate business entities using the Java Bean Validation framework in your Spring Boot application.
+
+**Solution**
+Lets us demonstrate the usage of bean validation in Spring Boot with a example.
+

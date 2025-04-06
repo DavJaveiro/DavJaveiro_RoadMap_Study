@@ -105,8 +105,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "49ba25889a7814f6",
@@ -122,7 +121,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
+                "file": "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +131,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Capítulo 14 - Implementing data persistence with Spring Data"
+              "title": "Links inversos para Capítulo 2 - Common Spring Boot tasks"
             }
           },
           {
@@ -231,8 +230,10 @@
   },
   "active": "fc406cd356731d1c",
   "lastOpenFiles": [
-    "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
     "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
+    "Capítulo 2 - Common Spring Boot tasks-1.png",
+    "Capítulo 2 - Common Spring Boot tasks.png",
+    "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
     "Spring Boot in Practice/Capítulo 1 - Booting Spring Boot/Capítulo 1 - Booting Spring Boot.md",
     "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks",
     "Spring Start Here/codes/sq-ch15-ex1/sq-ch15-ex1.iml",
@@ -263,8 +264,6 @@
     "Capítulo 15 - Testing your Spring app-7.png",
     "Spring Start Here/codes/sq-ch14-ex1/target/classes/HELP.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Capítulo 15 - Testing your Spring app-6.png",
-    "Capítulo 15 - Testing your Spring app-5.png",
     "Java Persistence with Spring Data e Hibernate/Capítulo 1 - Entendendo o object-relational persistence.md",
     "Spring Start Here/codes/sq-ch14-ex1/HELP.md",
     "Spring Start Here/codes/sq-ch13-ex1 - Copia/HELP.md"
