@@ -159,5 +159,23 @@ As ferramentas de software fornecem suporte ao processo ao automatizarem algumas
 - Depuração de programas por meio do fornecimento de informações a respeito de um programa em execução;
 - A tradução automática para uma versão mais recente dos programas escritos com versões antigas de uma linguagem de programação.
 
-### 2.2.2 Especificação do software
+### 2.2.1 Especificação do software
+Especificação do software ou engenharia de requisitos é o processo de compreender e definir quais serviços são necessários para o sistema e identificar as restrições sobre sua operação e desenvolvimento. A engenharia de requisitos é um estágio particularmente crítico do processo de software, já que <span style="background:#b1ffff">os erros cometido</span>s nessa etapa inevitavelmente geram problemas posteriores no projeto e na implementação do sistema.
 
+Antes de iniciar o processo de engenharia dos requisitos, uma empresa pode realizar um estudo de **viabilidade** ou de marketing para avaliar se há ou não uma demanda ou um mercado para o software e se ele é realista ou não em termos técnicos e financeiros. O estudo de #viabilidade são de curto prazo, relativamente baratos e orientam a decisão de ir adiante ou não com uma análise mais detalhada.
+
+O processo de engenharia de requisitos visa à produção de um <span style="background:#d3f8b6">documento de requisitos</span> acordados que especifique um sistema que satisfaça os requisitos dos *stakeholders*. Os requisitos são apresentados normalmente em dois níveis de detalhes. Os usuários finais e os clientes precisam de uma declaração de requisitos mais superficial desse sistema; os desenvolvedores, de uma especificação mais detalhada.
+
+Existem três atividades principais no processo de engenharia de requisitos:
+1. *Elicitação e análise de requisitos:* é o processo de derivação dos requisitos do sistema por meio da observação dos sistemas existentes, de discussões com os potenciais usuários e clientes, da análise de tarefas etc. Pode envolver o desenvolvimento de um ou mais modelos do sistema e protótipos, pois eles ajudam a compreender o sistema a ser especificado. 
+2. *Especificação de requisitos:* é a atividade de traduzir a informação obtida durante a **análise** em um **documento** que defina um conjunto de requisitos. Dois tipos podem ser incluídos nesse documento: requisitos do usuário, que são declarações abstratas dos requisitos do sistema para o cliente e usuário final; e requisitos do sistema, que são uma descrição mais detalhada da funcionalidade a ser fornecida.
+3. *Validação de requisitos:* essa atividade confere os requisitos quanto ao realismo, consistência e integridade. Durante esse processo, erros no documento de requisitos são inevitavelmente descobertos. Assim, o documento deve ser modificado para corrigir tais problemas.
+
+A análise de requisitos prossegue durante as atividades de definição e de especificação e novos requisitos surgem nesse processo. Portanto, as atividades de análise, definição e especificação estão entrelaçadas.
+
+Nos métodos ágeis, a especificação de requisitos não é uma atividade separada, mas parte do desenvolvimento do sistema. Os requisitos são especificados informalmente para cada incremento do sistema imediatamente antes de ele ser desenvolvido. Os requisitos são especificados de acordo com as prioridades do usuário, e sua elicitação
+vem dos usuários que fazem parte ou que trabalham em estreita colaboração com o
+time de desenvolvimento.
+
+### 2.2.2 Projeto e implementação do software.
+O estágio de implementação no desenvolvimento de software é o processo elaborar um sistema executável para ser entregue ao cliente. 
