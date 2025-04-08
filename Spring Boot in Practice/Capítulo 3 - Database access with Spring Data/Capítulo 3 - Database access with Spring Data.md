@@ -150,3 +150,14 @@ Nesta técnica, demonstraremos como configurar um banco de dados relacional em u
 
 **Problema**
 A maioria das aplicações precisa interagir com um banco de dados para armazenar e recuperar dados. No entanto, antes de se comunicar com o banco de dados, é necessário configurá-lo na aplicação.
+
+**Solution**
+To configure a relational database with Spring Boot, you can add *spring-boot-starter-data-jpa* and the relational database driver dependency in the pom.xml of you application. Additionally, you need to supply the database details (fornecer os detalhes do banco de dados), such as database username, password, driver class, and connection URL.
+
+The provided details are sufficient for Spring Boot to configure the data source in the application.
+
+Para validar o data source criado, podemos definir um caso de teste que verifica o tipo do datasource e o banco de dados subjacente.
+
+**Listing 3.3 Unit Test to validate the data source details**
+
+Neste caso de teste, utilizamos o *autowired* para injetar a instância do *DataSource* e verificamos que o nome da classe do datasource é *com.zaxxer.hikari.HikariDataSource* e que o nome do produto do banco de dados é *MySQL*.
