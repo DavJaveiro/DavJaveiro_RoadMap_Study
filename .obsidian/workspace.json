@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Elements of Programming Interviews in Java/Introduction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 3 - Database access with Spring Data"
+              "title": "Introduction"
             }
           }
         ]
@@ -215,12 +215,14 @@
   "active": "5bcfd4d2d218f3ef",
   "lastOpenFiles": [
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
+    "Elements of Programming Interviews in Java/Introduction.md",
+    "Elements of Programming Interviews in Java",
+    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
     "Capítulo 2 - Introduction to the Relational Model-1.png",
     "Capítulo 2 - Introduction to the Relational Model.png",
     "AUTOSAR Fundamentals/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR.md",
     "AUTOSAR Fundamentals",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Capítulo 3 - Database access with Spring Data-1.png",
     "Capítulo 3 - Database access with Spring Data.png",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data",
@@ -246,7 +248,6 @@
     "Appendix C - A Introduction to HTTP-1.png",
     "Appendix C - A Introduction to HTTP.png",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP",
-    "Spring Start Here/codes/sq-ch15-ex1/target/test-classes/org/example/sqch15ex1/TransferServiceSpringIntegrationTests.class",
     "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
     "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
     "Java Nelio Alves/Seção 19 - Acesso a banco de dados com JDBC/Transações.md",
