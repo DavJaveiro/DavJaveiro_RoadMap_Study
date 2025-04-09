@@ -80,5 +80,62 @@ Entrevistas simuladas (mock interviews) são uma ótima maneira de se preparar p
 
 **Language review**
 Os programas são escritos em Java 1.7. Algumas construções específicas do Java 1.7 que utilizamos são:
-- O operador diamante (<>), que reduz a verbosidade ao declarar e instanciar variáveis;
-- 
+- O operador diamante (<>), que reduz a verbosidade ao declarar e instanciar variáveis, a **classe utilitária** *Objects*, facilita a escrita de funções de hash e comparadores, e **literais binários e underscores**, que tornam constantes integrais mais legíveis, por exemplo, 8b881_88881.
+
+Normalmente, declaramos classes auxiliares como **static**, **inner classes** da classe de nível superior que fornece a solução. 
+
+**Best practices for interview code**
+Agora descrevemos práticas que utilizamos no EPI que não são adequadas para código de produção. Elas se tornam necessárias devido às restrições de tempo finito de uma entrevista. 
+- Tornamos os **files** públicos, ao invés de utilizar getters e setters;
+- Não protegemos contra entrada inválidas, por exemplo, referências **null**, entrada negativas em um array que deveria conter apenas valores negativos, **input streams** que contêm objetos que não são do tipo esperado, etc.
+- Ocasionalmente usamos **static fields** para passar valores - isso reduz o número de classes que precisamos escrever, ao custo de perder a **thread safety**;
+
+Agora descrevemos práticas que seguimos no EPI que são padrão na indústria, mas que não recomendaríamos para uma entrevista.
+- Usamos identificadores longos para finds pedagógicos, por exemplo, *queuOfMaximalUsers*. Em uma entrevista real, você pode usar nomes mais curtos e menos descritivos do que usamos em nossos programas - escrever *queuOfMaximalUsers* repetidamente consome muito tempo comparado a simplesmente usar q;
+
+## Strategies For a Great Interview
+Uma entrevista típica de uma hora com um único entrevistador consiste em cinco minutos de apresentações e perguntas sobre o **résumé** do candidato. Em seguida, são feitos de cinco a quinze minutos de perguntas sobre conceitos básicos de programação. O núcleo da entrevista envolve uma ou duas questões de design detalhado, nas quais se espera que o candidato apresente uma solução completa em um **whiteboard**, papel ou IDE.
+
+Dependendo do entrevistador e da pergunta, pode ser exigido que a solução inclua código com sintaxe correta e testes.
+
+**Abordando o problema**
+Não importa quão preparado ou esperto você esteja, a solução para um problema de entrevista pode não vir à mente imediatamente. Aqui estão algumas coisas para ter em mente quando isso acontecer:
+
+**Esclareça a pergunta:** isso pode parecer óbvio, mas é impressionante quantas entrevistas vão mal porque o candidato passa a maior parte do tempo tentando resolver o **problema errado**. Se uma pergunta parecer excepcionalmente difícil, talvez tenhamos entendido de forma incorreta.,
+
+Uma boa forma de esclarecer a pergunta é propor um exemplo concreto do problema. Por exemplo, se a pergunta for:
+*Encontre a primeira ocorrência de um número maior que k em um array ordenado.*
+**Podemos perguntar:**
+*Se o array de entrada for (2, 20, 30) e k for 3, então devo retornar 1, o índice de 20?*
+
+Essas perguntas podem ser formalizadas como **unit tests**. 
+
+Sinta-se à vontade para perguntar ao entrevistador qual complexidade de tempo e espaço ele espera na solução. Se disserem que devemos implementar um algoritmo O(n) ou usar O(1) de espaço, isso pode simplificar bastante. É possível que ele se recuse a especificar isso, ou seja vaga sobre os requisitos de complexidade, mas não há problema em perguntar. 
+
+**Trabalhe com exemplos concretos:** considere o problema de determinar o menor valor de troco que não conseguimos formar com um determinado conjunto de moedas. Esse problema pode parecer difícil a primeira vista. No entanto, se testarmos os menores valores que não podem ser formados com alguns exemplos simples, por exemplo, (1, 2), (1, 3), (1, 2, 4), (1, 2, 5), chegaremos a insights importantes: analise as moedas em **ordem** e procure por um **salto** grande - uma moeda que seja maior do que a soma das moedas anteriores.
+
+**Explicite a solução brute-force:** os problemas apresentados em entrevistas geralmente têm uma solução força bruta óbvia, mas com alta complexidade de tempo em comparação com soluções mais sofisticadas. Por exemplo, ao invés de tentar imediatamente desenvolver uma solução com **programação dinâmica (DP)** para um problema, experimente todas as configurações possíveis:
+1. Ela ajuda a identificarmos oportunidades de otimização e, assim, alcançar uma solução melhor;
+2. Dá a chance de demonstrar nossas habilidades de **resolução de problemas e codificação**;
+3. Garante que tanto eu quanto o entrevistador estamos prestando a atenção no mesmo problema.
+
+**Pense em voz alta:** uma das piores coisas que podemos fazer em uma entrevista é travar diante de um problema. É sempre uma boa ideia **pensar em voz alta** para nos mantermos engajados. Por um lado, isso aumenta as nossas chances de encontrar a solução correta, pois obriga a organizarmos o nosso pensamento de forma coerente. Por outro, ajuda o entrevistador a guiar o nosso raciocínio na direção certa. Mesmo que não chegue à solução, o entrevistador ainda assim formará uma boa impressão de nossa **capacidade intelectual**. 
+
+**Aplique padrões: Patterns** podem ser uma ótima forma de abordar um problema confuso., Exemplos incluem: identificar uma **estrutura de dados** apropriada, verificar se o problema se encaixa em alguma técnica algorítmica geral (como **divide-and-conquer**, **recursion** ou **dynamic programming**), ou transformá-lo em um problema de **graph**.
+
+**Presenting the solution**
+
+Uma vez que tenhamos o algoritmo, é importante apresentá-lo de forma clara.. Sua solução será muito mais simples se aproveitarmos bibliotecas como o **Java Collections** ou o **C++ Boost**. Por tanto, é muito mais importante usar a linguagem com a qual nos sentimos mais confortável. Aqui estão alguns pontos a considerar ao apresentar uma solução:
+**Libraries:** não reivente a roda (a menos que seja solicitado isso). Em especial, domine as **libraries**, especialmente as **data structures**. Por exemplo, não perca tempo (e nem credibilidade) tentando lembrar como passar um **explicit comparator** para um construtor de BST. Lembre-se de que uma **hash function** deve usar exatamente os campos que são utilizados na verificação de igualdade. 
+
+**Foque no algoritmo de alto nível:** não tem problema usar funções que vamos implementar depois. Isso permite que nos concentre na parte principal do algoritmo e seja menos penalizado caso não consiga completar tudo. Funções como **hash**, **equals** e **compare** são ótimos exemplos para deixar a implementação para depois. Deixe claro que vamos focar primeiramente no algoritmo principal e, depois, nos **corner cases**. Adicione comentário do tipo **TODO** nas partes que pretende voltar mais tarde.
+
+**Gerencie o quadro branco:** provavelmente usaremos mais espaço do que podemos imaginar, então, comece no canto superior esquerdo. Faça o uso de funções - pule a implementação de qualquer coisa trivial (por exemplo, encontrar o valor máximo de um array) ou padrão (como configurar uma **thread poll**). As boas práticas de codificação no quadro branco são bem diferentes das práticas em um projeto real de produção. 
+
+Adote uma convenção para os nomes de variáveis, como:
+- i, j e k para índices de array;
+- A, B e C para arrays;
+- u, v, w para vetores;
+- s para uma String;
+- sb para um #StringBuild 
+
