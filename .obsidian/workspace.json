@@ -11,10 +11,21 @@
             "id": "b6690ceab70d4998",
             "type": "leaf",
             "state": {
+<<<<<<< HEAD
               "type": "empty",
               "state": {},
               "icon": "lucide-file",
               "title": "Nova aba"
+=======
+              "type": "markdown",
+              "state": {
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Capítulo 2 - Processos de Software"
+>>>>>>> 5b979d98551f1f13ea72315013e214fc13d9a1c9
             }
           }
         ]
@@ -210,6 +221,10 @@
   },
   "active": "b6690ceab70d4998",
   "lastOpenFiles": [
+<<<<<<< HEAD
+=======
+    "Capítulo 2 - Processos de Software-2.png",
+>>>>>>> 5b979d98551f1f13ea72315013e214fc13d9a1c9
     "Elements of Programming Interviews in Java/Introduction.md",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
     "Elements of Programming Interviews in Java",

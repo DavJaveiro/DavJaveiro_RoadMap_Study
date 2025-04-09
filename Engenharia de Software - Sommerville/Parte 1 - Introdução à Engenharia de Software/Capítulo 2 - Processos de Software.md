@@ -233,6 +233,43 @@ Historicamente, sempre houve uma divisão entre o processo de desenvolvimento e 
 Essa distinção entre desenvolvimento e manutenção é cada vez mais irrelevante. Poucos sistemas de softwares são completamente novos, e faz muito mais sentido encarar o desenvolvimento e a manutenção como uma coisa só. Em vez de processos diferentes, é mais realista encarar a engenharia de software como um processo evolutivo, no qual o software é alterado continuamente ao longo de sua vida útil em resposta à mudança dos requisitos e das necessidades do cliente.
 
 ## 2.3 Lidando com mudanças
+A mudança é inevitável em todos os grandes projetos de software. Os requisitos do sistema mudam à medida que as empresas reagem a **pressões externas**, à concorrência e a mudanças nas prioridades da gestão. Ao passo que novas tecnologias são disponibilizadas, novas abordagens de projeto e de implementação se tornam possíveis. Portanto, seja qual for o modelo de processo de software utilizado, é essencial que ele consiga apoiar as mudanças no software que está sendo desenvolvido.
+
+A mudança eleva os custos de desenvolvimento de software, já que isso normalmente significa que o trabalho já concluído precisará ser refeito: isso é retrabalho. Por exemplo, se os relacionamentos entre os requisitos em um sistema forem analisados e novos requisitos forem identificados, parte ou toda a análise de requisitos deve ser refeita. Então, pode ser necessário reprojetar o sistema para entregar os novos requisitos, mudar quaisquer programas que tenham sido desenvolvidos e testar o sistema novamente.
+
+Duas abordagens relacionadas podem ser utilizadas para reduzir os custos de retrabalho:
+1. **Antecipação da mudança:** o processo de software inclui atividades que podem antecipar ou prever possíveis mudanças antes da necessidade de um retrabalho considerável. Por exemplo, um protótipo do sistema pode ser desenvolvido para exibir aos clientes algumas características principais do sistema. Eles podem experimentar o protótipo e refinar seus requisitos antes de se comprometerem com os altos custos de produção do software.
+2. **Tolerância à mudança:** o processo e o software são projetados de modo que as mudanças no sistema possam ser feitas com facilidade. Isso envolve, normalmente, alguma forma de desenvolvimento incremental. As mudanças propostas podem ser implementadas em incrementos que ainda não foram desenvolvidos. Se isso for impossível, então apenas um único incremento (uma pequena parte do sistema) pode precisar de alteração a fim de incorporar a mudança. 
+
+Nesta seção, discuto duas maneiras de lidar com as mudanças e com as variações nos requisitos do sistema:
+1. **Prototipação do sistema:** uma versão ou parte do sistema é desenvolvida rapidamente para verificar os requisitos do cliente e a viabilidade de algumas decisões de projeto. Essa é uma maneira de antecipar a mudança, já que permite aos usuários experimentarem o sistema antes da entrega e, assim, refinar seus requisitos. Como consequência, <span style="background:#d4b106">a quantidade de propostas de alteração nos requisitos feitas após a entrega tender a ser reduzida</span>.
+
+2. **Entrega incremental:** o sistema é fornecido para o cliente em incrementos, a fim de que comentários e experimentações sejam feitos. Essa é uma maneira de antecipar as mudanças e aumentar a tolerância a elas, evitando o comprometimento prematura com os requisitos do sistema como um todo e permitindo que as mudanças sejam incorporadas aos incrementos finais a um custo relativamente baixo.
+
+O conceito de refatoração - ou seja, a melhoria da estrutura e da organização de um programa - também é um importante mecanismo de suporte de tolerância à mudança. Discutirei isso no Capítulo 3.
+
+### 2.3.1 Prototipação
+O protótipo é uma versão inicial de um sistema utilizado para demonstrar conceitos, experimentar opções de projeto e descobrir mais sobre o problema e suas possíveis soluções. O desenvolvimento rápido e iterativo do protótipo é essencial para que os custos sejam controlados e os *stakeholders* do sistema possam experimentar o protótipo no início do processo de desenvolvimento do software.
+
+Um protótipo de software pode ser utilizado em um processo de desenvolvimento para ajudar a antecipar as mudanças que podem ser necessárias:
+1. No processo de engenharia de requisitos, um protótipo pode ajudar na elicitação e validação dos requisitos do sistema.
+2. No processo de projeto do sistema, um protótipo pode ser utilizado para explorar soluções e no desenvolvimento de uma interface com o usuário para o sistema.
+
+Os protótipos de sistema permitem que usuários em potencial observem até que ponto o sistema os ajuda em seu trabalho;  esses usuários podem ter novas ideias a partir dos requisitos e encontrar pontos fortes e fracos no software para, então, propor novos requisitos de sistema. Além disso, à medida que o protótipo é desenvolvido, ele pode revelar erros e omissões nesses requisitos. 
+Uma característica descrita na especificação pode parecer clara e útil; no entanto, quando essa função é combinada com outras, muitas vezes os usuários acham que a sua opinião inicial estava errada ou incompleta. A especificação do sistema pode ser modificada para refletir a mudança na compreensão dos requisitos.
+
+Um protótipo do sistema pode ser utilizado - <span style="background:#b1ffff">enquanto o próprio sistema estiver sendo projetado</span> - para experimentos que visem averiguar a viabilidade do projeto proposto. Por exemplo: um projeto de banco de dados pode ser prototipado e testado para averiguar se ele suporta de maneira eficiente os acessos aos dados gerados pelas requisições mais comuns dos usuários. A prototipação rápida com envolvimento do usuário final é a única maneira coerente de desenvolver interfaces com o usuário. Devido à natureza  dinâmica das interfaces com o usuário, as descrições textuais e os diagramas não são suficientemente bons para expressar o projeto e os requisitos de uma interface com o usuário.
+
+Um modelo de processo para o desenvolvimento de um protótipo é exibido na Figura 2.9. Os objetivos da prototipação devem ser explicitados desde o início do processo. Esses objetivos podem ser o desenvolvimento da interface com o usuário, o desenvolvimento de um sistema para validar os requisitos funcionais ou o desenvolvimento de um sistema para demonstrar a aplicação para os gerentes. Geralmente, o mesmo protótipo não consegue cumprir todos os objetivos. Se os objetivos não forem declarados, a gestão ou os usuários finais podem entender mal a função do protótipo. Consequentemente, eles podem não obter os benefícios que esperavam do desenvolvimento do protótipo.
+
+![[Capítulo 2 - Processos de Software-2.png]]
+
+O próximo estágio no processo é decidir o que colocar e, talvez ainda mais importante, o que deixar de fora do sistema prototipado. Para reduzir os custos de prototipação e acelerar o cronograma de entrega, é possível deixar parte da funcionalidade fora do protótipo ou afrouxar os requisitos não funcionais, como o tempo de resposta e a utilização de memória. O tratamento e o gerenciamento dos erros podem ser ignorados, a menos que o objetivo do protótipo seja o de estabelecer uma interface com o usuário. Os padrões de confiabilidade e qualidade do programa podem ser reduzidos.
+
+O estágio final do processo é a avaliação do protótipo. Nessa etapa, deve ser realizado o treinamento dos usuários, e os objetivos do protótipo devem ser usados para a criação de um plano de avaliação. O usuários precisam de tempo para se acostumar com um sistema novo e estabelecer um padrão normal de uso. Isso feito, é possível descobrir erros e omissões nos requisitos. Um problema geral com a prototipação é que os usuários podem não utilizar o protótipo da mesma maneira que utilizam o sistema final. Os testadores do protótipo podem não ser usuários típicos do sistema. Pode não haver tempo suficiente para treinar os usuários durante a avaliação do protótipo. Se o protótipo for lento, os avaliadores poderão ajustar sua maneira de trabalhar, a fim de evitar as características do sistema com tempos de resposta lentos; quanto receberem uma resposta melhor, no sistema fina, eles poderão utilizá-lo de uma maneira diferente.
+
+### 2.3.2 Entrega incremental
+
 
 
 

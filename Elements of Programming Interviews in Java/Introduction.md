@@ -139,3 +139,81 @@ Adote uma convenção para os nomes de variáveis, como:
 - s para uma String;
 - sb para um #StringBuild 
 
+**Assuma entradas válidas:** em um ambiente de produção, é uma boa prática verificar se as entradas são válidas, por exemplo, que uma String que alega representar um inteiro não negativo realmente consiste apenas de caracteres numéricos, nenhum voo em um cronograma chega antes de partir, etc.
+
+A menos que façam parte do enunciado do problema, em um contexto de entrevista, essas verificações são inadequadas: elas consomem tempo para codificar e distraem do problema central. 
+
+**Teste Casos Extremos:** para muitos problemas, sua ideia geral pode funcionar para a maioria das entradas válidas, mas podem existir entradas válidas patológicas onde seu algoritmo (ou sua implementação dele) falha. Por exemplo, seu código de busca binária pode falhar se a entrada for um array vazio; ou você pode fazer aritmética sem considerar a possibilidade de estouro (overflow). É importante considerar sistematicamente essas possibilidades. Se houver tempo, escreva testes unitários. Entradas pequenas, extremas ou aleatórios são bons estímulos. Não se esqueça de adicionar código para verificar o resultado. Ocasionalmente, o código para lidar com casos extremos obscuros pode ser complicado demais para ser implementado em um contexto de entrevista. Se for o caso, devemos mencionar ao entrevistador que estamos ciente desses problemas e podemos resolvê-los se necessário.
+
+**Sintaxe:** entrevistadores raramente penalizam por pequenos erros de sintaxe, já que IDEs modernos lidam bem com esses detalhes. No entanto, muitos erros de sintaxe podem dar a impressão de que você tem pouca experiência em codificação. Depois de terminar de escrever o programa, faça uma revisão para corrigir quaisquer erros óbvios de sintaxe de afirmar que concluímos. Os candidatos frequentemente cometem erros nas assinaturas de funções, o que reflete negativamente sobre eles. Por exemplo, seria um erro escrever uma função em C que retorna um array, mas não seu tamanho.
+
+**Gerenciamento de memória:** de modo geral, é melhor evitar operações de gerenciamento de memória completamente. Veja se você pode reutilizar o espaço. Por exemplo, alguns problemas envolvendo listas encadeadas podem ser resolvidos com espaço adicional O(1) reaproveitando os nós existentes.
+
+**O seu entrevistador não é o Alan Turing:** entrevistadores não são capazes de analisar programas longos, especialmente em um quadro branco ou no papel. Por isso, eles fazem perguntas cujas soluções envolvem programas curtos. Ua boa dica é que, se sua solução exigir mais de 50-70 linhas de código, isso é um sinal de que estamos no caminho errado e devemos reconsiderar a abordagem.
+
+**Conheça seus entrevistadores e a empresa**
+Pode ser de grande ajuda se a empresa puder compartilhar com você o histórico de seus entrevistadores com antecedência. Você deve usar mecanismos de busca e redes sociais para saber mais sobre as pessoas que irão entrevistá-lo. Deixar seus entrevistadores cientes de que você pesquisou sobre eles ajuda a quebrar o gelo e cria a impressão de que você é entusiasmado e está disposto a se esforçar ao máximo. Para recém-graduados, também é importante pensar na perspectiva dos entrevistadores.
+
+Assim que você sair bem em suas entrevistas e receber uma oferta, você terá uma decisão importante a tomar: esta é a organização onde você deseja trabalhar? As entrevistas são um ótimo momento para coletar essas informações. Geralmente, as entrevistas terminam com os entrevistadores permitindo que os candidatos façam perguntas.  Você deve aproveitar ao máximo esse momento para obter as informações no trabalho. Com base na sua interação com os entrevistadores, você pode ter uma boa ideia do intelecto, paixão e senso de justiça deles. Isso se estende à equipe e à empresa como um todo.
+
+Além de conhecer seus entrevistadores, você deve estar informado sobre a visão, história, organização, produtos e tecnologia da empresa. Esteja preparado para falar sobre o que especificamente te atrai na empresa e para fazer perguntas inteligentes sobre ela e o cargo. Prepare uma lista de perguntas com antecedência; isso não apenas lhe dará informações úteis, mas também demonstrará seu conhecimento e entusiasmo pela organização. Você também pode querer pensar em algumas ideias concretas sobre o que poderia fazer pela empresa; tenha cuidado para não parecer arrogante ou como se soubesse tudo.
+
+Todas as empresas desejam engenheiros brilhantes e motivados. No entanto, as empresas diferem muito em termos de cultura e organização. Aqui está uma breve classificação:
+- **Empresa voltada para o consumidor madura**, por exemplo, Google: busca candidatos que entendam tecnologias emergentes do ponto de vista do usuário. Essas empresas possuem uma pilha de tecnologia mais profunda, grande parte desenvolvida internamente. Elas têm os recursos e o tempo para treinar novos contratados.
+- **Empresas voltada para o mercado corporativo:** por exemplo, Oracle: procura desenvolvedores familiarizados com a organização de grandes projetos, como engenheiros que sabem lidar com revisões, documentação e testes rigorosos.
+- **Contratante governamental:** por exemplo, Lockheed-Martin: valoriza  o conhecimento de especificações e testes e busca engenheiros familiarizados com processos exigidos pelo governo.
+- **Startup:** por exemplo, Uber: valoriza engenheiros que tomam iniciativa e desenvolvem produtos por conta própria. Essas empresas não têm tempo para treinar novos contratados e tendem a contratar candidatos que aprendem muito rápido ou já estão familiarizados com sua pilha de tecnologia, como seu framework de aplicativos web, sistema de aprendizado de máquina, etc.
+- **Empresas de sistemas embarcados/projeto de chips**, por exemplo, National Instruments: deseja engenheiros de software que saibam o suficiente sobre hardware para interagir com os engenheiros de hardware. A cadeia de ferramentas e práticas de desenvolvimento nessas empresas tendem as ser muito maduras.
+
+**Conversa Geral:**
+Muitas vezes, os entrevistadores farão perguntas sobre seus projetos passados, como um projeto de design sênior ou um estágio. O objetivo dessa conversa é responder às seguintes questões:
+
+1. **O candidato consegue comunicar claramente uma ideia complexa?** Essa é uma das habilidades mais importantes para trabalhar em uma equipe de engenharia. Se você tem uma grande ideia para redesenhar um sistema complexo, consegue comunicá-la aos seus colegas e trazê-lo a bordo? É crucial praticar como você apresentará seu melhor trabalho. Ser preciso, claro e usar exemplos concretos pode fazer uma grande diferença aqui. Candidatos que se comunicam em um idioma que não é a sua língua nativa devem tomar cuidado extra para falar devagar e fazer mais uso do quadro branco para complementar suas palavras.
+
+**Outros conselhos**  
+Uma atitude mental e física ruim pode levar a um resultado negativo. Não permita que esses erros simples desperdicem anos de preparação.
+
+- **Seja honesto**: Ninguém quer um colega que falsamente alegue ter testado código ou realizado uma revisão de código. A desonestidade em uma entrevista é um caminho rápido para uma saída precoce. Lembre-se, nada quebra mais a verdade do que esticá-la – você deve estar pronto para defender qualquer coisa que declare no seu currículo. Se seu conhecimento de Python se limita a copiar e colar exemplos de código, não inclua Python no seu currículo. Da mesma forma, se você já viu um problema antes, você deve dizer isso. (Certifique-se de que realmente seja o mesmo problema e tenha em mente que você deve ser capaz de descrever rapidamente uma solução correta se alegar tê-lo resolvido anteriormente.) Entrevistadores às vezes se coordenam para fazer a mesma pergunta a um candidato para ver se ele menciona ao segundo entrevistador sua experiência anterior com a questão. Um entrevistador pode fingir ignorância sobre um tópico que conhece profundamente para verificar se o candidato finge saber algo sobre ele.
+
+- **Mantenha um espírito positivo**: Uma atitude alegre e otimista pode fazer uma grande diferença. Absolutamente nada é ganho, e muito pode ser perdido, reclamando sobre como sua jornada foi difícil, como você não é uma pessoa matinal, ou como a companhia aérea/hotel/equipe de RH foram inconvenientes, etc.
+
+- **Não peça desculpas antecipadamente**: Candidatos às vezes pedem desculpas antecipadas por um GPA fraco, habilidades de codificação enferrujadas ou por não conhecer a pilha de tecnologia. Sua lógica é que, sendo proativos, de alguma forma se beneficiarão com expectativas reduzidas. Nada está mais longe da verdade. Isso chama atenção para suas fraquezas. Mais geralmente, se você não acredita em si mesmo, não pode esperar que os outros acreditem em você.
+
+- **Deixe dinheiro e benefícios fora da entrevista**: O dinheiro é um elemento importante em qualquer trabalho, mas é melhor discuti-lo com o departamento de RH após uma oferta ser feita. O mesmo vale para tempo de férias, suporte para creche e financiamento para viagens a conferências.
+
+- **Aparência**: A maioria das empresas de software tem um código de vestimenta relaxado, e novos graduados podem se perguntar se parecerão ridículos ao se vestirem formalmente demais. O dano causado por estar muito casual é maior do que o pequeno constrangimento que você pode sentir por estar excessivamente arrumado. É sempre uma boa ideia errar pelo lado da cautela e se vestir formalmente para suas entrevistas. No mínimo, esteja limpo e bem cuidado.
+
+- **Esteja ciente da sua linguagem corporal**: Pense em um amigo ou colega que está sempre encurvado ou fazendo coisas distraídamente que podem ofender os outros. Trabalhe na sua postura, contato visual e aperto de mão, e lembre-se de sorrir.
+
+### **Entrevistas sob pressão**
+Algumas empresas, principalmente na indústria financeira, têm como prática incluir um entrevistador que cria uma situação de estresse para o candidato. O estresse pode ser injetado tecnicamente, por exemplo, através de um problema extremamente difícil ("ninja problem"), ou por meio de comportamentos, como o entrevistador rejeitando uma resposta correta ou ridicularizando o candidato. O objetivo é observar como o candidato reage a tais situações – ele desmorona, fica agressivo ou se deixa influenciar facilmente? As diretrizes da seção anterior devem ajudá-lo a navegar por uma entrevista sob pressão. (Tenha em mente que você não saberá antecipadamente se um determinado entrevistador aplicará uma entrevista sob pressão.)
+
+---
+
+### **Aprendendo com resultados ruins**
+A realidade é que nem toda entrevista resulta em uma oferta de emprego. Há muitas razões para não conseguir um emprego específico. Algumas são técnicas: talvez você tenha perdido aquele momento decisivo de insight, como a chave para resolver o problema de lucro máximo em tempo linear (exemplo mencionado no texto). Se esse for o caso, volte e resolva esse problema, além de problemas relacionados.
+
+Muitas vezes, seu entrevistador pode ter passado apenas alguns minutos olhando para seu currículo – uma prática infelizmente comum. Isso pode levar a perguntas fora da sua área de especialização declarada no currículo, como protocolos de roteamento ou SQL (Structured Query Language). Nesse caso, certifique-se de que seu currículo seja preciso e revise esses tópicos para o futuro.
+
+Você também pode falhar em uma entrevista por motivos não técnicos, como parecer desinteressado ou não se comunicar claramente. A empresa pode ter decidido não contratar na sua área, ou outro candidato com habilidades semelhantes, mas experiência mais relevante, foi contratado.
+
+Você não receberá nenhum feedback sobre um resultado ruim, então cabe a você tentar reconstruir as causas. Lembre-se: os únicos erros verdadeiros são aqueles dos quais você não aprende.
+
+---
+
+### **Negociando uma oferta**
+Uma oferta só é oficial quando está no papel, com todos os detalhes preenchidos. Todas as ofertas são negociáveis. Já vimos pacotes de compensação dobrarem após negociação, mas aumentos de 10-20% são mais típicos. Ao negociar, lembre-se de que não há nada a ganhar, e muito a perder, sendo rude. (Ser firme não é o mesmo que ser rude.)
+
+Para obter a melhor oferta possível:
+1. Consegui múltiplas ofertas.
+2. Seja flexível quanto à forma de sua compensação. Por exemplo, o salário base é menos flexível do que opções de ações, bônus de assinatura, despesas de mudança e custos de processamento de imigração (INS).
+
+Seja concreto – em vez de simplesmente pedir "mais dinheiro", peça um aumento de P% no salário. Caso contrário, o recrutador simplesmente retornará com um pequeno aumento no bônus de assinatura e dirá que atendeu ao seu pedido.
+
+Seu contato de RH é um negociador profissional cujo dever fiduciário é para com a empresa. Ele conhece e usa técnicas de negociação, como reciprocidade, obtenção de consenso, colocar palavras na sua boca ("Você não acha isso razoável?") e até ameaças, para obter o melhor acordo possível para a empresa. (É assim que os recrutadores são avaliados internamente.) O artigo da Wikipedia sobre negociação expõe muitos truques que já vimos recrutadores usarem.
+
+---
+
+### **Conclusão**
+Lidar com entrevistas sob pressão, aprender com resultados negativos e negociar ofertas são habilidades críticas no processo de busca por emprego. A preparação mental, a honestidade e a flexibilidade são fundamentais para enfrentar desafios e maximizar suas oportunidades.
+
