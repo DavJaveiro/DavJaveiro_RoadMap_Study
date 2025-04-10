@@ -5,8 +5,8 @@
     - <span style="background:rgba(205, 244, 105, 0.55)">16 a 18 → Introdução e Desenvolvimento de Software Profissional</span> (pág. 3 a 8) [[Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 1 - Introdução|Capítulo 1 - Introdução |]]
     - **19 a 21 → Ética da Engenharia de Software (pág. 9 a 13)**
     - **22 a 24 → Estudos de Caso (pág. 14 a 17)**
-    - 25 a 27 → Modelos de Processo de Software (pág. 29 a 34)
-    - 28 a 31 → Atividades do Processo (pág. 35 a 38)
+    - **25 a 27 → Modelos de Processo de Software (pág. 29 a 34)**
+    - **28 a 31 → Atividades do Processo (pág. 35 a 38)**
 ### 📌 Abril 2025
 - **01/04 a 15/04** → Capítulo 2 (pág. 46 a 50) + Capítulo 3 (pág. 57 a 72)
     - 01 a 05 → Lidando com mudanças (pág. 46 a 50)

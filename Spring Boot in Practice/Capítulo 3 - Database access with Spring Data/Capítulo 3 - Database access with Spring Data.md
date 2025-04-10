@@ -1,6 +1,6 @@
 *This chapter covers*
 - Introducing Spring Data, its needs, and various Spring Data modules;
-- Configuring a relational database, NoSQL database (MongoDB), and access data in a Spring Boot application;
+- [ ] Configuring a relational database, NoSQL database (MongoDB), and access data in a Spring Boot application;
 - Enabling Spring Data JPA to manage business domain objects with relational databases;
 - Various techniques to access data from a relational database using *@NamedQuery*, *@Query*, Criteria API, and *Querydsl*.
 
