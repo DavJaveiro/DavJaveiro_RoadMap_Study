@@ -161,3 +161,65 @@ Para validar o data source criado, podemos definir um caso de teste que verifica
 **Listing 3.3 Unit Test to validate the data source details**
 
 Neste caso de teste, utilizamos o *autowired* para injetar a instância do *DataSource* e verificamos que o nome da classe do datasource é *com.zaxxer.hikari.HikariDataSource* e que o nome do produto do banco de dados é *MySQL*.
+
+---
+**Summary**
+
+1. **Spring Data Commons** - Essa é o núcleo comum do **Spring Data**. Ele fornece #interfaces genéricas que outras implementações especializadas reutilizam:
+	- **Repository**: interface base vazia que marca o tipo como um repositório Spring Data;
+	- #CrudRepository: fornece operações CRUD básicas como *save()*, findById(), delete(), etc.
+	- #PagingAdnSortingRepository: estende o *CrudRepository* com suporte para **paginação e ordenação**. 
+
+Essas interfaces são herdadas pelos repositórios nas aplicações Spring, e o Spring se encarrega de gerar a implementação em tempo de execução.
+
+ 2. **Spring Data Sub Modules** - são módulos especializados que implementam as interfaces do Spring Data Commons para tecnologias específicas de persistência:
+	 - **Spring Data JDBC:** para acesso direto via JDBC (sem usar ORM como JPA);
+	 - **Spring Data JPA**: para trabalhar com JPA (Hibernate, EclipseLink, etc), ideal para bancos relacionais como MySQL e PostgreSQL;
+	 - **Spring Data MongoDB:** integração com banco NoSQL MongoDB;
+	 - **Spring Data Cassandra:** integração com o banco NoSQL Cassandra;
+
+### 🔄 Fluxo de cima pra baixo (ou vice-versa)
+- Criamos repositórios estendendo interfaces como *CrudRepository*;
+- O Spring Data submodule correspondente gera a implementação automaticamente;
+- O submódulo se comunica com o banco de dados (via JPA, JDBC, etc) e realiza as operações;
+---
+
+**Discussion**
+Com essa técnica, aprendemos como configurar um banco de dados relacional em nossa aplicação Spring Boot com poucas configurações. 
+
+Como parte da configuração do banco de dados, o Spring Boot configura automaticamente o pool de conexões de banco de dados HikariCP. Um pool de conexões de banco de dados contém uma ou mais conexões de banco de dados que geralmente são criadas no momento da inicialização da aplicação e ficam disponíveis para uso pela aplicação. A vantagem de um pool de conexões de banco de dados é que um conjunto de conexões de banco de dados é criado durante a inicialização da aplicação e fica disponível para uso. A aplicação pode pegar uma conexão do pool, utilizá-la e devolvê-la ao pool. <span style="background:#b1ffff">O Spring Boot utiliza o</span> #HikariCP como a biblioteca padrão de pool de conexões de banco de dados.
+
+Caso desejamos visualizar a dependência da biblioteca HikariCP, podemos navegar entre as dependências conforme o esquema abaixo:
+
+![[Capítulo 3 - Database access with Spring Data-2.png]]
+
+If you need to use a database connection pooling library other than HikariCP, you can achieve this by exclueding the HikariCP dependency from the *spring-boot-starter-data-jpa* dependency and including your preferred database connection pooling library (e.g, Oracle UCP, Tomcat JDBC, DBCP2, etc). 
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+    <exclusions>
+        <exclusion>                             
+	        <groupId>com.zaxxer</groupId>
+	        <artifactId>HikariCP</artifactId>
+	    </exclusion>
+	</exclusions>
+</dependency>
+
+<dependency>
+	<groupId>org.apache.tomcat</groupId>
+	<artifactId>tomcat-jdbc</artifactId>
+</dependency>
+```
+
+O Spring Boot utiliza as seguintes estratégias para detectar a biblioteca de pool de conexões de banco de dados com base na configuração definida na listagem 3.4:
+1. Se o HikariCP não estiver disponível, o Spring Boot tenta usar o pool de conexões de banco de dados do Apache Tomcat, caso esteja presente no classpath.
+2. Se tanto o HikariCP quanto as dependências do pool de conexões do Apache Tomcat não estiverem disponíveis, o Spring Boot tenta usar a biblioteca Apache Commons DBCP2.
+3. Se o DBCP2 também não estiver disponível, o Spring Boot configura a fonte de dados padrão do JDK.
+
+
+Se estivermos interessados em explorar os parâmetros de configuração de banco de dados disponíveis, podemos consultar a documentação do *application.properties* do Spring Boot. 
+https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.data
+
+### 3.2.3 Technique: Initializing a relational database schema with a Spring Boot application

@@ -1,31 +1,24 @@
 {
   "main": {
-    "id": "04b02a2121dd41ee",
+    "id": "9ecab21e71d725e9",
     "type": "split",
     "children": [
       {
-        "id": "a7414b2db6cc225d",
+        "id": "6f561590de1ff929",
         "type": "tabs",
         "children": [
           {
-            "id": "b6690ceab70d4998",
+            "id": "a642b4dad559c3e0",
             "type": "leaf",
             "state": {
-<<<<<<< HEAD
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Nova aba"
-=======
               "type": "markdown",
               "state": {
-                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 2 - Processos de Software"
->>>>>>> 5b979d98551f1f13ea72315013e214fc13d9a1c9
+              "title": "Capítulo 3 - Database access with Spring Data"
             }
           }
         ]
@@ -34,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "d1465815f8d3360b",
+    "id": "fe9297934d736303",
     "type": "split",
     "children": [
       {
-        "id": "f878a01a174a24e8",
+        "id": "5138acb8cc6b0907",
         "type": "tabs",
         "children": [
           {
-            "id": "1a9eceb1a2a82ed7",
+            "id": "74094694549bbc08",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -55,12 +48,12 @@
             }
           },
           {
-            "id": "ada3a1ad43222b54",
+            "id": "79c56837625c800d",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#DispatcherServlet",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -72,7 +65,7 @@
             }
           },
           {
-            "id": "a7aea59cfe1c3a3d",
+            "id": "dec4bf12695a7477",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -82,7 +75,7 @@
             }
           },
           {
-            "id": "d2c88e4672423ca8",
+            "id": "d14353623c42c3fe",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -99,20 +92,20 @@
     "collapsed": true
   },
   "right": {
-    "id": "49ba25889a7814f6",
+    "id": "9b87a2f10ea8e6b0",
     "type": "split",
     "children": [
       {
-        "id": "8201ecfca0605870",
+        "id": "3bc50491344a9a65",
         "type": "tabs",
         "children": [
           {
-            "id": "2fb1ab3ecff13192",
+            "id": "3fb2e357052b3dbc",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Capítulo 2 - Common Spring Boot tasks"
+              "title": "Links inversos para Capítulo 3 - Database access with Spring Data"
             }
           },
           {
-            "id": "8f0f33f853a57567",
+            "id": "a208923bfd849c54",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Capítulo 14 - Implementing data persistence with Spring Data"
+              "title": "Links de saída para Capítulo 3 - Database access with Spring Data"
             }
           },
           {
-            "id": "7c196cc2dc3e08ac",
+            "id": "6c35486e91c91b0e",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -155,7 +148,7 @@
             }
           },
           {
-            "id": "492b991d3e37ab15",
+            "id": "ab516851ac54bf89",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -169,22 +162,22 @@
             }
           },
           {
-            "id": "f871abc2095ac242",
+            "id": "a30559c49f47bcf5",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Capítulo 14 - Implementing data persistence with Spring Data"
+              "title": "Sumário de Capítulo 3 - Database access with Spring Data"
             }
           },
           {
-            "id": "f4dd7224f371ea4b",
+            "id": "847cb4def99966f5",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -202,7 +195,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "switcher:Abrir a troca rápida": false,
       "graph:Abrir visualização em gráfico": false,
       "canvas:Criar novo canvas": false,
@@ -211,6 +203,7 @@
       "command-palette:Abrir paleta de comandos": false,
       "audio-recorder:Começar/parar a gravação de áudio": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
       "float-search:Search Obsidian In Modal": false,
       "runjs:RunJS": false,
       "obsidian-git:Open Git source control": false,
@@ -219,53 +212,12 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "b6690ceab70d4998",
+  "active": "a642b4dad559c3e0",
   "lastOpenFiles": [
-<<<<<<< HEAD
-=======
-    "Capítulo 2 - Processos de Software-2.png",
->>>>>>> 5b979d98551f1f13ea72315013e214fc13d9a1c9
-    "Elements of Programming Interviews in Java/Introduction.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
-    "Elements of Programming Interviews in Java",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
-    "Capítulo 2 - Introduction to the Relational Model-1.png",
-    "Capítulo 2 - Introduction to the Relational Model.png",
-    "AUTOSAR Fundamentals/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR.md",
-    "AUTOSAR Fundamentals",
-    "Capítulo 3 - Database access with Spring Data-1.png",
-    "Capítulo 3 - Database access with Spring Data.png",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data",
-    "Spring Start Here/PART 2/Capítulo 15 - Testing your Spring app/Capítulo 15 - Testing your Spring app.md",
-    "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks/Capítulo 2 - Common Spring Boot tasks.md",
-    "Sistemas Embarcados/Plano de Estudos - Sistemas Embarcados.md",
-    "Sem título.md",
-    "Sistemas Embarcados",
-    "Capítulo 2 - Common Spring Boot tasks-1.png",
-    "Capítulo 2 - Common Spring Boot tasks.png",
-    "Spring Boot in Practice/Capítulo 1 - Booting Spring Boot/Capítulo 1 - Booting Spring Boot.md",
-    "Spring Boot in Practice/Capítulo 2 - Common Spring Boot tasks",
-    "Spring Start Here/codes/sq-ch15-ex1/sq-ch15-ex1.iml",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/application-postgres.properties",
-    "Capítulo 1 - Booting Spring Boot-1.png",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
-    "Capítulo 1 - Booting Spring Boot.png",
-    "Spring Boot in Practice/Capítulo 1 - Booting Spring Boot",
-    "Spring Boot in Practice",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Spring in Action/Parte 1 - Fundamentos do Spring/Capítulo 1 - Getting Started with Spring/Capítulo 1 - Getting Started With Spring.md",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Spring in Action/📚 Cronograma de Leitura - Spring in Action.md",
-    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
-    "Appendix C - A Introduction to HTTP-1.png",
-    "Appendix C - A Introduction to HTTP.png",
-    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP",
-    "Spring Start Here/PART 2/Capítulo 14 - Implementing data persistence with Spring Data/Capítulo 14 - Implementing data persistence with Spring Data.md",
-    "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-    "Java Nelio Alves/Seção 19 - Acesso a banco de dados com JDBC/Transações.md",
-    "Spring Start Here/codes/sq-ch14-ex1/target/classes/HELP.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Java Persistence with Spring Data e Hibernate/Capítulo 1 - Entendendo o object-relational persistence.md",
-    "Spring Start Here/codes/sq-ch14-ex1/HELP.md",
-    "Spring Start Here/codes/sq-ch13-ex1 - Copia/HELP.md"
+    "Pasted image 20250409223432.png",
+    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
+    "Capítulo 3 - Database access with Spring Data-2.png"
   ]
 }
