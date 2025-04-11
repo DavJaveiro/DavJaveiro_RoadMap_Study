@@ -223,3 +223,27 @@ Se estivermos interessados em explorar os parâmetros de configuração de banco
 https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.data
 
 ### 3.2.3 Technique: Initializing a relational database schema with a Spring Boot application
+In this technique, we'll discuss how to initialize a relational database schema in a Spring Boot application.
+
+**Problem**
+In the configuring a relational database in a Spring Boot Application technique, you saw how to configure a relational database in your Spring Boot application. However, before start accessing the database, we need to ensure the database schema is initialized properly. For instance, all the required tables and indexes are created, and associated insert scripts are executed. You need to initialize the database schema at the application startup.
+
+**Solution**
+O Spring Boot permite inicializar o esquema do banco de dados tanto com soluções nativas quanto com bibliotecas de terceiros (como soluções ORM). Nesta abordagem, aprenderemos como inicializar o banco de dados usando os **scripts** *schema.sql* e *data.sql* fornecidos pelo próprio Spring Data.
+
+O Spring Boot pode carregar os scripts SQL a partir do classpath (por exemplo, da pasta `src/main/resources`) ou de um local previamente configurado. Por padrão, definimos o arquivo *schema.sql* para incluir todos os scripts DDL e o arquivo *data.sql* para os scripts DML, colocando ambos dentro da pasta *resources* para que o Spring Boot os detecte e execute automaticamente. Além disso, podemos também usar as propriedades *spring.datasource.schema* e *spring.datasource.data* para personalizar esse comportamento padrão.
+
+**DDL and DML in a nutshell**
+Data Definition Language is used to define database structures, such as database user, schemas, tables, indexes, constraints in a relational database. For example, in H2, we can use the following DDL statement to create a table named AUTHORS:
+```SQL
+create table AUTHORS (
+	id biginit not null,
+	name varchar(255),
+	primary key (id)
+);
+```
+
+Data Manipulation Language is used to manipule data. For example, DML statements allow we to INSERT, UPDATE  and DELETE data in a relational database tables. For example, the following DML script INSERTS data into the AUTHORS table:
+```sql
+INSERT INTO AUTHORS(id, name) VALUES(1, 'John Doe');
+```
