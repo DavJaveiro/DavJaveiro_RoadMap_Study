@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "14bae61ccc882fe8",
+        "id": "b0485d5a231f9781",
         "type": "tabs",
         "children": [
           {
-            "id": "218f515f0d9282e1",
+            "id": "956c49c320a72814",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 3 - Database access with Spring Data"
-            }
-          },
-          {
-            "id": "bdfe8da047b09b35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction"
+              "title": "Capítulo 3 - Desenvolvimento ágil de software"
             }
           }
         ]
@@ -226,12 +212,16 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "218f515f0d9282e1",
+  "active": "956c49c320a72814",
   "lastOpenFiles": [
+    "Linked - Conquer Linkedin/Chapter 2 - A Five-Step Framework for The Modern Job Search/Chapter 2 - A Five-Step Framework for The Modern Job Search.md",
+    "Chapter 2 - A Five-Step Framework for The Modern Job Search-3.png",
+    "Chapter 2 - A Five-Step Framework for The Modern Job Search-2.png",
+    "Chapter 2 - A Five-Step Framework for The Modern Job Search-1.png",
+    "Chapter 2 - A Five-Step Framework for The Modern Job Search.png",
     "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
-    "Linked - Conquer Linkedin/Chapter 2 - A Five-Step Framework for The Modern Job Search/Chapter 2 - A Five-Step Framework for The Modern Job Search.md",
     "Linked - Conquer Linkedin/Chapter 1 - The Old Game - and the New/Chapter 1 - The Old Game - and the New.md",
     "Linked - Conquer Linkedin/Chapter 2 - A Five-Step Framework for The Modern Job Search",
     "Chapter 1 - The Old Game - and the New.png",
