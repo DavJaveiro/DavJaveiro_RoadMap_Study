@@ -20,3 +20,4 @@ Como essas empresas operam em um ambiente em mudança, é praticamente impossív
 Processos de desenvolvimento de software orientados por planos, que especificam completamente os requisitos antes de projetar, construir e testar um sistema, <span style="background:#affad1">não são adequados para o desenvolvimento rápido de software</span>. À medida que os requisitos mudam os problemas nos requisitos são descobertos, o design ou a implementação do sistema precisa ser retrabalhada e retestada. Como consequência, um processo convencional baseado no modelo cascata (waterfall) ou em especificações tende a ser demorado, e o software final é entregue ao cliente muito tempo depois de sua especificação inicial.
 
 Para alguns tipos de software, como sistemas de controle críticos para segurança, onde uma análise completa do sistema é essencial, essa abordagem orientada por planos é a mais adequada. No entanto, em um ambiente empresarial dinâmico, ela 
+
