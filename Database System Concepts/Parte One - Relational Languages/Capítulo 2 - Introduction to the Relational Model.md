@@ -158,3 +158,56 @@ Por exemplo, o campo endereço de uma pessoa não deve fazer parte da chave prim
 Identificadores únicos gerados por empresas geralmente também não mudam, a menos que duas empresas se fundam; nesse caso, o mesmo identificador pode ter sido atribuído por ambas, e pode ser necessária uma realocação de identificadores para garantir a unicidade.
 
 A Figura 2.8 mostra o conjunto completo de relações que usamos em nosso **esquema de universidade de exemplo,** com os atributos da chave primária (*primary key*) sublinhados.
+
+Agora, consideramos outro tipo de restrição sobre o conteúdo das relações, chamada de **foreign-key constraint** (restrição de chave estrangeira). Considere o atributo *dept_name* da relação *instructor*. Não faria sentido que uma tupla em *instructor* tivesse um valor para *dept_name* que não correspondesse a um departamento na relação *department*. Assim, em qualquer instância do banco de dados, dada uma tupla qualquer, digamos Ta, da relação *instructor*, deve haver alguma tupla, digamos t_B, na relação *departament*, tal que o valor do atributo *dept_name* de ta, seja o mesmo que o valor da **primary key** dept_name de t_b.
+
+Imagina que você tem duas tabelas no seu banco de dados:
+
+- Uma chamada **`department`**, com os departamentos da faculdade.
+    
+- Outra chamada **`instructor`**, com os professores.
+
+Cada professor (na tabela `instructor`) tem um campo chamado `dept_name`, que diz a qual departamento ele pertence.
+
+Agora, pensamos: **não faz sentido ter um professor ligado a um departamento que nem existe.**
+
+É aí que entra a **foreign key** (chave estrangeira).
+
+**O que é uma foreign key?**
+É uma regra que diz o seguinte:
+"O valor deste campo aqui (na tabela `instructor`) **tem que existir** como chave primária na outra tabela (`department`).
+
+Ou seja, se o professor está no departamento "Ciência da Computação", esse nome **precisa existir** na tabela *(department*).
+
+- Chave estrangeira (foreign key): é um campo que aponta para a chave primária de outra tabela (por exemplo, o *dept_name* na tabela *instructor*).
+
+A *foreign key* garante que os dados entre duas tabelas estejam ligados corretamente. Evita que coloquemos um  professor em um departamento que não existe.
+
+Em uma **foreign-key constraint** (restrição de chave estrangeira), os atributos que estão sendo referenciados **devem ser a chave primária (pramary key)** da tabela que está sendo **referida**. 
+
+Existe uma versão mais geral dessa ideia, chamada de **referential-integrity constraint** (restrição de integridade referencial), que não exige que os atributos referenciados sejam a chave primária. 
+
+Então, resumindo:
+- Toda **foreign key** é um tipo de **referential integrity**;
+- Mas **nem toda referential integrity** pode ser implementada como **foreign key, porque o campo referenciado pode não ser uma *primary key***.
+
+Hoje em dia, os bancos de dados geralmente **suportam foreign keys**, mas **não suportam constraints te integridade referencial** quando o campo não for uma chave primária.
+
+## 2.4 Schema Diagrams
+Um **database schema** (esquema de banco de dados), junto com as **primary key** e **foreign-key constraints**, pode ser representado por meio de **schema diagrams** (diagramas de esquema). 
+
+A figura 2.9 mostra o **schema diagram** da nossa organização universitária. Cada **relation** (relação/tabela) aparece como uma caixa, com o nome da relação no topo (em azul) e os **attributes** listados dentro da caixa.
+
+Os atributos que são **primary key** aparecem sublinhados. As **foreign-key constraints** são representadas por setas que vão dos atributos de chave estrangeira (da **referencing relation**) até a **primary key** da **referenced relation**.
+
+Quando queremos indicar uma **referential integrity constraint** (restrição de integridade referencial) que não é uma **foreign-key constraint**, usamos uma **seta de duas pontas** em vez de uma seta simples.
+
+Na **Figura 2.9**, a linha com **seta de duas pontas** que vai de `time_slot_id` na relação `section` para `time_slot_id` na relação `time_slot` representa essa **referential integrity constraint** de `section.time_slot_id` para `time_slot.time_slot_id`.
+
+Muitos sistemas de banco de dados oferecem ferramentas de design com **interface gráfica** para criar **sechemas diagrams**.
+
+Vamos discutir mais adiante outro tipo de representação visual de esquemas, chamada de **entity-relatyionship diagram** (diagrama de entidade-relacionamento), no Capítulo 6. Apesar de haver algumas semelhanças visuais entre os dois, essas notações são **bastante diferentes** e **não devem ser confundidas.**
+
+![[Capítulo 2 - Introduction to the Relational Model-2.png]]
+
+## 2.5 Relational Query Languages
