@@ -97,3 +97,64 @@ Como podemos imaginar, há muitas outras relations mantidas em um banco de dados
 - takes (id, course_id, semester, year, grade).
 
 ## 2.3 Keys
+Devemos ter uma forma de especificar como as tuplas dentro de uma terminada relação são distinguidas. 
+Isso é expresso em termos de seus atributos. Ou seja, os valores dos atributos de uma tupla devem ser tais que permitam identificá-la de forma única. Em outras palavras, não é permitido que duas tuplas em uma mesma relação tenham exatamente o mesmo valor para os atributos.
+
+Uma superchave *superkey* é um conjunto de um ou mais atributos que, tomados em conjunto, nos permitem identificar de maneira única uma tupla na relação.
+Por exemplo, o atributo #id da relação *instructor* é suficiente para distinguir uma tupla de instrutor de outra. Portanto, #ID é uma superchave.
+Já o atributo #name da relação #instructor, por outro lado, <span style="background:#d4b106">não é uma superchave</span>, pois vários instrutores podem ter o mesmo nome.
+
+#tupla - uma tupla é simplesmente uma linha de uma tabela.
+
+Formalmente, seja R o conjunto de atributos no esquema da relação r. Se dissermos que um suboconjunto K de R é uma superchave para r, estamos restringindo a análise a instâncias da relação r nas quais nenhuma duas tuplas distintas possuem os mesmo valores em todos os atributos de K.
+Ou seja, se **t₁** e **t₂** pertencem a **r** e **t₁ ≠ t₂**, então **t₁.K ≠ t₂.K**.
+
+Uma superchave pode conter atributos redundantes. Por exemplo, a combinação de ID e Name é uma superchave para a relação *instructor*. Se **K** é uma superchave, então qualquer superconjunto de K também é uma superchave.
+
+Frequentemente, estamos interessados em superchaves nas quais nenhum subconjunto próprio também seja uma superchave.
+
+Essas superchaves mínimas são chamadas de **chaves candidatadas *candidate keys.***
+
+É possível que vários conjuntos distintos de atributos possam funcionar como chaves candidatas.
+
+Suponhamos que a combinação de **name** e **dept_name** seja suficiente para distinguir os membros da relação **instructor**.
+
+Nesse caso, tanto *{ID}* quanto *{name, dept_name}* são chaves candidatas.
+
+Embora os atributos **ID** e **name** juntos consigam distinguir as tuplas de **instructor**, a combinação de id e name não forma uma chave candidata, pois o atributo **ID** sozinho já é uma chave candidata.
+
+Usaremos o termo **chave primária** para denotar a chave candidata escolhida pelo projetista do banco de dados como o meio principal de identificar tuplas dentro de uma relação.
+
+Uma chave (seja ela primária, candidata ou superchave) é uma propriedade da relação como um todo, e não de tuplas individuais.
+
+Qualquer par de tuplas individuais na relação <span style="background:#d4b106">está proibido de ter</span>, ao mesmo tempo, o mesmo valor nos atributos da chave.
+
+Uma chave (seja ela primária, candidata ou superchave) é uma propriedade da relação como um todo, e não de tuplas individuais.
+
+Qualquer par de tuplas individuais na relação está proibido de ter, ao mesmo tempo, o mesmo valor nos atributos da chave.
+
+A designação de uma chave representa uma restrição no modelo do mundo real que está sendo representado.
+Por isso, as chaves primárias também são chamadas de **restrições de chave primária.**
+
+É comum listar os atributos da chave primária de um esquema de relação antes dos demais atributos; por exemplo, o atributo *dept_name* da relação *department* é listado primeiro, já que ele é a chave primária. Os atributos da chave primária também são sublinhados.
+Considere a relação *classroom:*
+```
+classroom(**building**, **room_number**, capacity)
+```
+Aqui, a **chave primária** é composta por dois atributos, building e room_number, que são sublinhados para indicar que fazem parte da chave primária. Nenhum desses atributos, isoladamente, pode identificar uma sala de aula de forma única, mas juntos eles  a identificam unicamente.
+
+Consideramos também a relação *time_slot:*
+time_slot(**time_slot_id**, day, start_time, end_time).
+
+Chaves primárias devem ser escolhidas com cuidado. Como já mencionado, o nome de uma pessoa não é suficiente, pois pode haver muitas pessoas com o mesmo nome.
+Nos Estados Unidos, o atributo social security number (número da seguridade social) de uma pessoa seria uma chave candidata (*candidate key*).
+
+Como pessoas de fora dos EUA geralmente não possuem esse número, empresas internacionais precisam gerar seus próprios identificadores únicos.
+Uma alternativa é usar alguma combinação única de outros atributos como chave.
+
+A chave primária deve ser escolhida de forma que seus valores nunca mudem ou mudem muito raramente.
+Por exemplo, o campo endereço de uma pessoa não deve fazer parte da chave primária, pois é algo que provavelmente poderá altarar-se.
+
+Identificadores únicos gerados por empresas geralmente também não mudam, a menos que duas empresas se fundam; nesse caso, o mesmo identificador pode ter sido atribuído por ambas, e pode ser necessária uma realocação de identificadores para garantir a unicidade.
+
+A Figura 2.8 mostra o conjunto completo de relações que usamos em nosso **esquema de universidade de exemplo,** com os atributos da chave primária (*primary key*) sublinhados.
