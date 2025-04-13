@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "9ecab21e71d725e9",
+    "id": "2cd6f2849b067028",
     "type": "split",
     "children": [
       {
-        "id": "b0485d5a231f9781",
+        "id": "1e4585b81492830d",
         "type": "tabs",
         "children": [
           {
-            "id": "956c49c320a72814",
+            "id": "8a7e294035e5cddf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md",
+                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 3 - Desenvolvimento ágil de software"
+              "title": "Capítulo 2 - Introduction to the Relational Model"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "fe9297934d736303",
+    "id": "5a8e6e3c7b518077",
     "type": "split",
     "children": [
       {
-        "id": "5138acb8cc6b0907",
+        "id": "9bd51600a516f223",
         "type": "tabs",
         "children": [
           {
-            "id": "74094694549bbc08",
+            "id": "239d16c4ce2e2a77",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "79c56837625c800d",
+            "id": "49b76b15934a2f08",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "dec4bf12695a7477",
+            "id": "7b4392d2355a82d5",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,7 +75,7 @@
             }
           },
           {
-            "id": "d14353623c42c3fe",
+            "id": "3278f0bfea11d8d2",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -92,20 +92,20 @@
     "collapsed": true
   },
   "right": {
-    "id": "9b87a2f10ea8e6b0",
+    "id": "7c431954dc020dee",
     "type": "split",
     "children": [
       {
-        "id": "3bc50491344a9a65",
+        "id": "55022976fbadf86d",
         "type": "tabs",
         "children": [
           {
-            "id": "3fb2e357052b3dbc",
+            "id": "f9772a0a2bcdcf01",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
+                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Cronograma de Leitura"
+              "title": "Links inversos para Capítulo 2 - Introduction to the Relational Model"
             }
           },
           {
-            "id": "a208923bfd849c54",
+            "id": "f5a9979d7bb8a183",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Capítulo 3 - Database access with Spring Data"
+              "title": "Links de saída para Capítulo 2 - Introduction to the Relational Model"
             }
           },
           {
-            "id": "6c35486e91c91b0e",
+            "id": "64a953bfa3feaad7",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -148,7 +148,7 @@
             }
           },
           {
-            "id": "ab516851ac54bf89",
+            "id": "563039702397f62c",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -162,22 +162,22 @@
             }
           },
           {
-            "id": "a30559c49f47bcf5",
+            "id": "611b982150214945",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Capítulo 3 - Database access with Spring Data"
+              "title": "Sumário de Capítulo 2 - Introduction to the Relational Model"
             }
           },
           {
-            "id": "847cb4def99966f5",
+            "id": "665c19ce77005480",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -212,27 +212,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "956c49c320a72814",
+  "active": "8a7e294035e5cddf",
   "lastOpenFiles": [
-    "Linked - Conquer Linkedin/Chapter 2 - A Five-Step Framework for The Modern Job Search/Chapter 2 - A Five-Step Framework for The Modern Job Search.md",
-    "Chapter 2 - A Five-Step Framework for The Modern Job Search-3.png",
-    "Chapter 2 - A Five-Step Framework for The Modern Job Search-2.png",
-    "Chapter 2 - A Five-Step Framework for The Modern Job Search-1.png",
-    "Chapter 2 - A Five-Step Framework for The Modern Job Search.png",
-    "Database System Concepts/Parte One - Relational Languages/Chapter 1 - Introduction.md",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
-    "Linked - Conquer Linkedin/Chapter 1 - The Old Game - and the New/Chapter 1 - The Old Game - and the New.md",
-    "Linked - Conquer Linkedin/Chapter 2 - A Five-Step Framework for The Modern Job Search",
-    "Chapter 1 - The Old Game - and the New.png",
-    "Linked - Conquer Linkedin/Chapter 1 - The Old Game - and the New",
-    "Linked - Conquer Linkedin",
-    "Engenharia de Software - Sommerville/Cronograma de Leitura.md",
+    "Capítulo 2 - Introduction to the Relational Model-2.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 2 - Processos de Software.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Pasted image 20250409223432.png",
-    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
-    "Capítulo 3 - Database access with Spring Data-2.png"
+    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md"
   ]
 }

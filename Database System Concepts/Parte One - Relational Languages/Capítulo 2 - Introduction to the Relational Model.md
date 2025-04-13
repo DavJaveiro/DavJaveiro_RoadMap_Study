@@ -97,3 +97,117 @@ Como podemos imaginar, há muitas outras relations mantidas em um banco de dados
 - takes (id, course_id, semester, year, grade).
 
 ## 2.3 Keys
+Devemos ter uma forma de especificar como as tuplas dentro de uma terminada relação são distinguidas. 
+Isso é expresso em termos de seus atributos. Ou seja, os valores dos atributos de uma tupla devem ser tais que permitam identificá-la de forma única. Em outras palavras, não é permitido que duas tuplas em uma mesma relação tenham exatamente o mesmo valor para os atributos.
+
+Uma superchave *superkey* é um conjunto de um ou mais atributos que, tomados em conjunto, nos permitem identificar de maneira única uma tupla na relação.
+Por exemplo, o atributo #id da relação *instructor* é suficiente para distinguir uma tupla de instrutor de outra. Portanto, #ID é uma superchave.
+Já o atributo #name da relação #instructor, por outro lado, <span style="background:#d4b106">não é uma superchave</span>, pois vários instrutores podem ter o mesmo nome.
+
+#tupla - uma tupla é simplesmente uma linha de uma tabela.
+
+Formalmente, seja R o conjunto de atributos no esquema da relação r. Se dissermos que um suboconjunto K de R é uma superchave para r, estamos restringindo a análise a instâncias da relação r nas quais nenhuma duas tuplas distintas possuem os mesmo valores em todos os atributos de K.
+Ou seja, se **t₁** e **t₂** pertencem a **r** e **t₁ ≠ t₂**, então **t₁.K ≠ t₂.K**.
+
+Uma superchave pode conter atributos redundantes. Por exemplo, a combinação de ID e Name é uma superchave para a relação *instructor*. Se **K** é uma superchave, então qualquer superconjunto de K também é uma superchave.
+
+Frequentemente, estamos interessados em superchaves nas quais nenhum subconjunto próprio também seja uma superchave.
+
+Essas superchaves mínimas são chamadas de **chaves candidatadas *candidate keys.***
+
+É possível que vários conjuntos distintos de atributos possam funcionar como chaves candidatas.
+
+Suponhamos que a combinação de **name** e **dept_name** seja suficiente para distinguir os membros da relação **instructor**.
+
+Nesse caso, tanto *{ID}* quanto *{name, dept_name}* são chaves candidatas.
+
+Embora os atributos **ID** e **name** juntos consigam distinguir as tuplas de **instructor**, a combinação de id e name não forma uma chave candidata, pois o atributo **ID** sozinho já é uma chave candidata.
+
+Usaremos o termo **chave primária** para denotar a chave candidata escolhida pelo projetista do banco de dados como o meio principal de identificar tuplas dentro de uma relação.
+
+Uma chave (seja ela primária, candidata ou superchave) é uma propriedade da relação como um todo, e não de tuplas individuais.
+
+Qualquer par de tuplas individuais na relação <span style="background:#d4b106">está proibido de ter</span>, ao mesmo tempo, o mesmo valor nos atributos da chave.
+
+Uma chave (seja ela primária, candidata ou superchave) é uma propriedade da relação como um todo, e não de tuplas individuais.
+
+Qualquer par de tuplas individuais na relação está proibido de ter, ao mesmo tempo, o mesmo valor nos atributos da chave.
+
+A designação de uma chave representa uma restrição no modelo do mundo real que está sendo representado.
+Por isso, as chaves primárias também são chamadas de **restrições de chave primária.**
+
+É comum listar os atributos da chave primária de um esquema de relação antes dos demais atributos; por exemplo, o atributo *dept_name* da relação *department* é listado primeiro, já que ele é a chave primária. Os atributos da chave primária também são sublinhados.
+Considere a relação *classroom:*
+```
+classroom(**building**, **room_number**, capacity)
+```
+Aqui, a **chave primária** é composta por dois atributos, building e room_number, que são sublinhados para indicar que fazem parte da chave primária. Nenhum desses atributos, isoladamente, pode identificar uma sala de aula de forma única, mas juntos eles  a identificam unicamente.
+
+Consideramos também a relação *time_slot:*
+time_slot(**time_slot_id**, day, start_time, end_time).
+
+Chaves primárias devem ser escolhidas com cuidado. Como já mencionado, o nome de uma pessoa não é suficiente, pois pode haver muitas pessoas com o mesmo nome.
+Nos Estados Unidos, o atributo social security number (número da seguridade social) de uma pessoa seria uma chave candidata (*candidate key*).
+
+Como pessoas de fora dos EUA geralmente não possuem esse número, empresas internacionais precisam gerar seus próprios identificadores únicos.
+Uma alternativa é usar alguma combinação única de outros atributos como chave.
+
+A chave primária deve ser escolhida de forma que seus valores nunca mudem ou mudem muito raramente.
+Por exemplo, o campo endereço de uma pessoa não deve fazer parte da chave primária, pois é algo que provavelmente poderá altarar-se.
+
+Identificadores únicos gerados por empresas geralmente também não mudam, a menos que duas empresas se fundam; nesse caso, o mesmo identificador pode ter sido atribuído por ambas, e pode ser necessária uma realocação de identificadores para garantir a unicidade.
+
+A Figura 2.8 mostra o conjunto completo de relações que usamos em nosso **esquema de universidade de exemplo,** com os atributos da chave primária (*primary key*) sublinhados.
+
+Agora, consideramos outro tipo de restrição sobre o conteúdo das relações, chamada de **foreign-key constraint** (restrição de chave estrangeira). Considere o atributo *dept_name* da relação *instructor*. Não faria sentido que uma tupla em *instructor* tivesse um valor para *dept_name* que não correspondesse a um departamento na relação *department*. Assim, em qualquer instância do banco de dados, dada uma tupla qualquer, digamos Ta, da relação *instructor*, deve haver alguma tupla, digamos t_B, na relação *departament*, tal que o valor do atributo *dept_name* de ta, seja o mesmo que o valor da **primary key** dept_name de t_b.
+
+Imagina que você tem duas tabelas no seu banco de dados:
+
+- Uma chamada **`department`**, com os departamentos da faculdade.
+    
+- Outra chamada **`instructor`**, com os professores.
+
+Cada professor (na tabela `instructor`) tem um campo chamado `dept_name`, que diz a qual departamento ele pertence.
+
+Agora, pensamos: **não faz sentido ter um professor ligado a um departamento que nem existe.**
+
+É aí que entra a **foreign key** (chave estrangeira).
+
+**O que é uma foreign key?**
+É uma regra que diz o seguinte:
+"O valor deste campo aqui (na tabela `instructor`) **tem que existir** como chave primária na outra tabela (`department`).
+
+Ou seja, se o professor está no departamento "Ciência da Computação", esse nome **precisa existir** na tabela *(department*).
+
+- Chave estrangeira (foreign key): é um campo que aponta para a chave primária de outra tabela (por exemplo, o *dept_name* na tabela *instructor*).
+
+A *foreign key* garante que os dados entre duas tabelas estejam ligados corretamente. Evita que coloquemos um  professor em um departamento que não existe.
+
+Em uma **foreign-key constraint** (restrição de chave estrangeira), os atributos que estão sendo referenciados **devem ser a chave primária (pramary key)** da tabela que está sendo **referida**. 
+
+Existe uma versão mais geral dessa ideia, chamada de **referential-integrity constraint** (restrição de integridade referencial), que não exige que os atributos referenciados sejam a chave primária. 
+
+Então, resumindo:
+- Toda **foreign key** é um tipo de **referential integrity**;
+- Mas **nem toda referential integrity** pode ser implementada como **foreign key, porque o campo referenciado pode não ser uma *primary key***.
+
+Hoje em dia, os bancos de dados geralmente **suportam foreign keys**, mas **não suportam constraints te integridade referencial** quando o campo não for uma chave primária.
+
+## 2.4 Schema Diagrams
+Um **database schema** (esquema de banco de dados), junto com as **primary key** e **foreign-key constraints**, pode ser representado por meio de **schema diagrams** (diagramas de esquema). 
+
+A figura 2.9 mostra o **schema diagram** da nossa organização universitária. Cada **relation** (relação/tabela) aparece como uma caixa, com o nome da relação no topo (em azul) e os **attributes** listados dentro da caixa.
+
+Os atributos que são **primary key** aparecem sublinhados. As **foreign-key constraints** são representadas por setas que vão dos atributos de chave estrangeira (da **referencing relation**) até a **primary key** da **referenced relation**.
+
+Quando queremos indicar uma **referential integrity constraint** (restrição de integridade referencial) que não é uma **foreign-key constraint**, usamos uma **seta de duas pontas** em vez de uma seta simples.
+
+Na **Figura 2.9**, a linha com **seta de duas pontas** que vai de `time_slot_id` na relação `section` para `time_slot_id` na relação `time_slot` representa essa **referential integrity constraint** de `section.time_slot_id` para `time_slot.time_slot_id`.
+
+Muitos sistemas de banco de dados oferecem ferramentas de design com **interface gráfica** para criar **sechemas diagrams**.
+
+Vamos discutir mais adiante outro tipo de representação visual de esquemas, chamada de **entity-relatyionship diagram** (diagrama de entidade-relacionamento), no Capítulo 6. Apesar de haver algumas semelhanças visuais entre os dois, essas notações são **bastante diferentes** e **não devem ser confundidas.**
+
+![[Capítulo 2 - Introduction to the Relational Model-2.png]]
+
+## 2.5 Relational Query Languages

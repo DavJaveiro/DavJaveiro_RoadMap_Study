@@ -209,7 +209,7 @@ Nessa "dança", você raramente tem uma visão interna real do que é trabalhar 
 Em outras palavras: descobrir o papel certo para você e **identificar pelo menos cinco empresas-alvo** que você realmente gosta, mesmo que o papel ideal ainda não exista lá. A definição das suas listas de funções e empresas que você deseja buscar será informada por aqueles que já trilharam caminhos profissionais antes de você. Então, você encontrará cinco ex-alunos em cada uma dessas cinco empresas-alvo para ajudá-lo a encontrar esse foco.
 
 2. Posicionando-se para o emprego que você mais deseja em seguida.  
-Em outras palavras: criar uma marca pessoal clara em um mundo digital cheio de ruídos e garantir que você se destaque por algo específico. Algo que vá além do seu currículo e seja seu “currículo-plus”:  currículo-plus-narrativa, currículo-plus-aspiração, currículo-plus-elementos-visuais, currículo-plus-prova-social, currículo-plus-mostrando-e-não-apenas-contando. Posicionar-se de forma eficaz é tudo sobre aparecer e exibir seu foco.
+Em outras palavras: criar uma <span style="background:#b1ffff">marca pessoal clara em um mundo digital cheio</span> de ruídos e garantir que você se destaque por algo específico. Algo que vá além do seu currículo e seja seu “currículo-plus”:  currículo-plus-narrativa, currículo-plus-aspiração, currículo-plus-elementos-visuais, currículo-plus-prova-social, currículo-plus-mostrando-e-não-apenas-contando. Posicionar-se de forma eficaz é tudo sobre aparecer e exibir seu foco.
 
 3. Procurando as pessoas certas, oportunidades e empregadores.  
 Em outras palavras: buscar e se candidatar a vagas com técnicas que lhe dão a melhor chance de conseguir uma entrevista. Manter-se engajado.  
@@ -245,7 +245,7 @@ Há uma implicação crucial — e uma ressalva — para o framework no coraçã
 Essa filosofia se aplica ao seu próximo emprego, assim como aos mais de vinte que você pode ter ao longo da vida.
 
 **Chaves para Manter a Motivação**  
-Vamos encarar os fatos: a busca por emprego pode ser exaustiva e frustrante. Enlouquecedora, até. Muitos de nós estão desempregados ou subempregados, e parece que a economia — e o que os empregadores procuram — está em constante mudança. Tentamos contar nossas histórias para um vazio. Os cargos que realmente queremos sempre vão para outras pessoas. Mesmo quando recebemos interesse de empregadores, pode ser para vagas ou empresas que não nos interessam. Sabemos como é. Por isso, é vital encontrar maneiras de se manter motivado em um processo que pode ser desanimador — e longo.  
+Vamos encarar os fatos: a busca por emprego pode ser exaustiva e frustrante. Enlouquecedora, até. Muitos de nós estão desempregados ou subempregados, e parece que a economia — e o que os empregadores procuram — está em constante mudança. <span style="background:#d4b106">Tentamos contar nossas histórias para um vazio</span>. Os cargos que realmente queremos sempre vão para outras pessoas. Mesmo quando recebemos interesse de empregadores, pode ser para vagas ou empresas que não nos interessam. Sabemos como é. Por isso, é vital encontrar maneiras de se manter motivado em um processo que pode ser desanimador — e longo.  
 
 A pesquisa em ciências sociais tem muito a dizer sobre como transformar em hábitos diários coisas que são boas para nós no longo prazo. O problema é que o sistema de recompensas do nosso cérebro é inclinado ao imediato. É por isso que comportamentos questionáveis, como jogar, comer junk food ou maratonar séries na Netflix, parecem tão bons.  
 
@@ -269,14 +269,17 @@ Muitos estudos de pesquisa encontraram a mesma coisa: as pessoas mantêm comport
 
 Esteja ciente de seus comportamentos. Você pode se pegar adotando a abordagem "espingarda": aplicando indiscriminadamente a uma vaga após outra em quadros de empregos ou no Easy Apply do LinkedIn. Se isso acontecer, pause, observe-se, saia para dar uma volta ou olhe ao redor, e então pare o que provavelmente será um esforço infrutífero. Quando estiver pronto para voltar, mude para uma abordagem mais produtiva, como encontrar e conectar-se com pessoas reais nos lugares onde você mais deseja trabalhar.  
 
+![[Chapter 2 - A Five-Step Framework for The Modern Job Search-4.png]]
+
+
 ---
 
 ### **3. Crie recompensas de curto prazo para um esforço de longo prazo.**  
 Se o que nos motiva são pequenos picos de dopamina causados por atividades como receber curtidas no Instagram, então você deve buscar ativamente formas de obter esses picos de forma consistente, no curto prazo, para um processo que provavelmente será de longo prazo. Aqui estão alguns exemplos:  
 - **Comece uma prática diária de gratidão** (escrevendo cinco coisas pelas quais você é grato).  
-- **Declare publicamente suas intenções** (deixe os outros saberem sobre seus objetivos e os passos incrementais que está tomando para maior responsabilidade).  
+- **Declare publicamente suas intenções** <span style="background:#d4b106">(deixe os outros saberem sobre seus objetivos e os passos incrementais que está tomando para maior responsabilidade).  </span>
 - **Experimente o "empilhamento de hábitos"** (adicione atividades de busca de emprego a hábitos já consolidados que você já possui).  
-- **Recompense-se** (faça uma visita ao seu restaurante favorito depois, digamos, de fazer dez conexões potencialmente valiosas).  
+- **Recompense-se** <span style="background:#d4b106">(faça uma visita ao seu restaurante favorito depois, digamos, de fazer dez conexões potencialmente valiosas).</span>  
 
 ---
 
