@@ -247,3 +247,100 @@ Data Manipulation Language is used to manipule data. For example, DML statements
 ```sql
 INSERT INTO AUTHORS(id, name) VALUES(1, 'John Doe');
 ```
+
+Se estivermos usando um banco de dados diferente de um banco de dados incorporado (in-memory), é necessário definir *spring.sql.init.mode* como **always** no arquivo *application.properties*, conforme mostrado na listagem 3.8. Essa propriedade instrui o Spring Boot a sempre inicializar o schema do banco de dados. Por padrão, essa propriedade está configurada com o valor *embedded*. Isso significa que o Spring Boot inicializa automaticamente o schema do banco de dados para tipos de banco de dados incorporados (por exemplo, o banco de dados in-memory H2). **Para inicializar o MySQL ou outros bancos de dados reais, precisamos configurar explicitamente o valor como *always*.** 
+
+Nesta abordagem baseada na inicialização do schema, o Spring Boot recria o schema toda vez que reiniciamos a aplicação. Não há versionamento de schema de banco de dados feito pelo Spring Boot. Por exemplo, no exemplo acima, o Spring Boot remove e recria a tabela *COURSES* a cada reinício da aplicação e executa as instruções DML fornecidas no script *data.sql*. A listagem a seguir mostra o arquivo *application.properties* atualizado.
+
+```json
+spring.sql.init.mode=always
+```
+Outras propriedades da data source, como *username*, *password*, *driver_name* e *connection URL*, instrui o Spring Boot a inicializar o schema do banco de dados. Os valores suportados são **embedded**, **always** e **never**.
+
+Vamos definir os arquivos *schema.sql* e *data.sql*. No entanto, antes disso, vamos recapitular o modelo de negócio com o qual estamos trabalhando nesta aplicação. Neste exemplo, estamos gerenciando os detalhes de **Course** na aplicação de exemplo. Assim, **Course** é o objeto de domínio de negócio da aplicação. O arquivo **schema.sql** cria a tabela **COURSES**, e o **data.sql** inseres alguns cursos de exemplo na tabela **COURSES**. 
+
+```sql
+CREATE TABLE COURSES (
+	id int(15) NOT NULL,
+	name varchar(100) NOT NULL,
+	category varchar(20) NOT NULL,
+	rating int(1) NOT NULL,
+	description varchar(1000) NOT NULL,
+	PRIMARY KEY (id)
+);
+```
+
+---
+**✅Configurando as propriedades de controle do schema ou DDL**
+#### **Opção 1: Tornar o `CREATE TABLE` condicional**
+
+Altere o seu `schema.sql` para que a tabela só seja criada se ainda não existir:
+
+`CREATE TABLE IF NOT EXISTS COURSES (     id INT(15) NOT NULL,     name VARCHAR(100) NOT NULL,     category VARCHAR(20) NOT NULL,     rating INT(1) NOT NULL,     description VARCHAR(1000) NOT NULL,     PRIMARY KEY (id) );`
+
+💡 Essa é a forma mais simples e **recomendada para MySQL**, pois evita erro se a tabela já existir.
+
+#### **Opção 2: Deixe o banco cuidar do schema**
+
+Se o seu banco já está criado e você **não quer que o Spring Boot crie nada**, desative o `schema.sql` com:
+
+`spring.sql.init.mode=never`
+
+Isso impede a execução do `schema.sql`, mas ainda permite usar `data.sql` para inserir dados (dependendo do caso).
+
+#### **Opção 3: Deixe o Hibernate gerenciar o schema**
+
+Se estiver usando JPA/Hibernate, você pode deixar ele cuidar do schema com:
+
+`spring.jpa.hibernate.ddl-auto=update spring.sql.init.mode=never`
+
+Esse `update` tenta atualizar a estrutura da tabela **sem apagar dados**.
+
+---
+
+**Arquivos SQL específicos para cada banco de dados**
+Além dos arquivos *schema.sql* e *data.sql*, o Spring Boot oferece suporte a SQLs específicos para cada banco de dados. Por exemplo, se a nossa aplicação oferece suporte a múltiplos tipos de banco de dados, e há diferenças de sintaxe SQL entre eles, podemos usar os arquivos *schema-${platform}.sql* e *data- ${platform}.sql*. Assim, podemos definir um *schema-h2.sql* e um *data-h2.sql* se precisarmos dar suporte ao banco de dados H2.
+
+Logo, podemos especificar a plataforma do banco de dados definido *spring.datasource.platform=h2* no arquivo *application.properties*.
+
+---
+
+# Resumo do que eu fiz
+### ✅ 1. **Criou arquivos SQL específicos para PostgreSQL**
+
+- `schema-postgres.sql` → define a tabela `COURSES_POSTGRES`
+    
+- `data-postgres.sql` → insere dados nessa tabela
+
+### ✅ 2. **Organizou as configurações de perfil**
+
+- No `application.properties`:
+```json
+spring.profiles.active=postgres
+```
+Isso ativa o *application-postgres.propertes*
+
+### ✅ 3. **Configurou a conexão com o banco no `application-postgres.properties`**
+```json
+spring.datasource.url=jdbc:postgresql://localhost:5432/teste
+spring.datasource.username=admin
+spring.datasource.password=admin
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
+
+### ✅ 4. **Habilitou a execução automática dos scripts SQL**
+Você adicionou (ou corrigiu) as seguintes linhas, no *application.properties:*
+```json
+spring.profiles.active=postgres  
+spring.sql.init.platform=postgres  
+spring.sql.init.mode=always
+```
+
+### ✅ 5. **Scripts SQL foram executados automaticamente**
+Quando a aplicação subiu, o Spring Boot:
+- Executou o *schema-postgres.sql* criando a tabela;
+- Executou o *data-postgres.sql* populando os dados.
+
+
+
+## 3.3 Understanding the CrudRepository interface
