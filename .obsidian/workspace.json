@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 3 - Database access with Spring Data"
+              "title": "Capítulo 3 - Desenvolvimento ágil de software"
             }
           }
         ]
@@ -214,6 +214,7 @@
   },
   "active": "8a7e294035e5cddf",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
     "Capítulo 2 - Introduction to the Relational Model-2.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md"
