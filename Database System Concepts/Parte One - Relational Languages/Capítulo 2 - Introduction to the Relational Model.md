@@ -211,3 +211,84 @@ Vamos discutir mais adiante outro tipo de representação visual de esquemas, ch
 ![[Capítulo 2 - Introduction to the Relational Model-2.png]]
 
 ## 2.5 Relational Query Languages
+Uma *query language* é uma linguagem na qual um usuário requisita informações do banco de dados. Essas linguagens geralmente operam em um nível mais alto do que uma linguagem de programação padrão. As *query languages* podem ser categorizadas como *imperative*, *functional* ou *declartive*.
+
+Em uma *imperative query language*, o usuário instrui o sistema a executar uma sequência específica de operações no banco de dados para computar o resultado desejado; tais linguagens geralmente possuem a noção de *state variables* (variáveis de estado), que são atualizadas no decorrer da computação.
+
+Em uma *functional query language*, a computação é expressa como a avaliação de *functions* que podem operar sobre dados no banco de dados ou sobre os resultados de outras *functions*; essas *functions* não tem efeitos colaterais *side-effect free* e não atualizam o estado do programa.
+
+Em uma *declarative query language*, o usuário descreve as informações  desejadas sem fornecer uma sequência específica de passos ou chamadas de *functions* para obtê-las; as informações desejadas são tipicamente descritas utilizando alguma forma de lógica matemática. Cabe ao sistema de banco de dados descobrir como obter essas informações.
+
+Existem várias *query languages* consideradas **puradas:**
+- A *relational algebra*, que descrevemos na Seção 2.6, é uma *functional query language*. A relational algebra forma a base teórica da SQL query language;
+- O *tuple relational calculus* e o *domain relational calculus*, que descrevemos no Capítulo 27, são declarative.
+
+Essas _query languages_ são concisas e formais, carecendo do _syntactic sugar_ das linguagens comerciais, mas ilustram as técnicas fundamentais para extração de dados do banco de dados.
+
+As _query languages_ usadas na prática, como a _SQL query language_, incluem elementos das abordagens _imperative_, _functional_ e _declarative_. Estudamos a amplamente utilizada _query language_ SQL do Capítulo 3 ao Capítulo 5. 
+
+## The Relational Algebra
+A álgebra relacional consiste em um conjunto de operações que recebem uma ou duas relações como entrada e produzem uma nova relação como resultado.
+
+Algumas dessas operações, como as operações **select**, **project** e **rename**, são chamadas de operações unárias porque operam sobre uma única relação. As outras operações, como **union**, **cartsian product** e **set difference**, operam sobre pares de relações e, portanto, são chamadas de operações binárias.
+
+Embora as operações de álgebra relacional formem a base para a amplamente utilizada linguagem de consulta SQL, os sistemas de bancos de dados não permitem que os usuários escrevam consultas diretamente em álgebra relacional. No entanto, existem implementações da álgebra relacional que foram desenvolvidas para que estudantes possam praticar consultas em álgebra relacional. O site do nosos livro, fornece referências para algumas dessas implementações.
+
+Vale a pena lembrar neste ponto que, como uma relação é um conjunto de tuplas, as relações não podem conter tuplas duplicadas. Na prática, no entanto, as tabelas em sistemas de banco de dados são permitidas conter duplicadas, a menos que uma restrição específica proíba isso. 
+
+### 2.6.1 The Select Operation
+A operação **select** seleciona tuplas que satisfazem um predicado dado. Usamos a letra grega minúscula sigma (σ) para denotar a seleção. O predicado aparece como um subscrito de σ. A relação argumento está entre parênteses após o σ. Assim, para selecionar tuplas  da relação **instructor** onde o instrutor pertence ao departamento *Physics*, escrevemos:
+<sup>σ</sup>dept_name="Physics"(instructor)
+
+Se a relação *instructor* for como mostrada na Figura 2.1, então a relação resultante da consulta anterior é como mostrada na figura 2.10.
+
+Podemos encontrar todos os instrutores com salário superior a $90.000 escrevendo:
+σsalary>90000(instructor)
+
+Em geral, permitimos comparações usando =, ≠, <, ≤, > e >= no predicado da seleção. Além disso, podemos combinar vários predicados em um predicado maior usando os conectivos and or e not. Assim, para encontrar os instrutores do departamento de Física com salário superior a $90.000, escrevemos:
+*σdept name =“Physics” ∧ salary>90000 (instructor)*
+
+O predicado de seleção pode incluir comparações entre dois atributos. Para ilustrar, considere a relação **department**. Para encontrar todos os departamentos cujo nome seja igual ao nome de seu prédio, podemos escrever:
+**σdept name =building(department)**
+
+### 2.6.2 The Project Operation
+Suponha que desejamos listar o ID, o nome e o salário de todos os instrutores, mas não nos importamos com o *dept_name*. A operação *project* nos permite produzir essa relação. A operação *project* é uma operação unária que retorna sua relação argumento, com certos atributos omitidos. Como uma relação é um conjunto, quaisquer linhas duplicadas são eliminadas. A projeção é denotada pela letra grega maiúscula pi. Listamos aqueles atributos que desejamos que apareçam no resultado como um subscrito de pi. A relação argumento segue entre parênteses. Escrevemos a consulta para produzir tal lista como:
+**ΠID, name, salary(instructor)**
+
+### 2.6.3 Composition of Relational Operations
+O fato de que o resultado de uma operação relacional ser, por si só, uma relação é importante. Considere a consulta mais complicada: "Encontre os nomes de todos os instrutores no departamento de Física." Escrevemos:
+Πname (σdept name =“Physics” (instructor))
+Observe que, em vez de fornecer o nome de uma relação como argumento da operação de projeção, fornecemos uma expressão que é avaliada como uma relação.
+
+Em geral, como o resultado de uma operação da álgebra relacional é do mesmo tipo (relação) que suas entradas, as operações da álgebra relacional podem ser compostas em uma **expressão da álgebra relacional**. Compor operações da álgebra relacional em expressões é semelhante a compor operações aritméticas (como +, -, * e /) em expressões aritméticas.
+
+### 2.6.4 The Cartesian-Product Operation
+A operação de **produto cartesiano**, denotada por um sinal de cruz (X), permite que combinemos informações de quaisquer duas relações. Escrevemos o produto cartesiano das relações **r1** e **r2** como **r1 x r2**. 
+
+O produto cartesiano de relações de banco de dados difere ligeiramente em sua definição do produto cartesiano matemático de conjuntos. Em vez de r1 x r2 **produzir pares (t1 e t2)** de tuplas de r1 e r2, a álgebra relacional concatena t1 e t2 em uma única tupla, como mostrado na Figura 2.12.
+
+Como o mesmo nome de atributo pode aparecer nos esquemas de ambos r1 e r2, precisamos criar um esquema de nomenclatura para distinguir entre esses atributos. Fazemos isso aqui anexando ao atributo o nome da relação de onde o atributo originalmente veio. Por exemplo, o esquema de relação para **r = instructor x teaches** é:
+*(instructor.ID, instructor.name, instructor.dept name, instructor.salary, teaches.ID, teaches.course id, teaches.sec id, teaches.semester, teaches.year)*
+
+Com esse esquema, podemos distinguir *instructor.ID* de *teaches.ID*. Para os atributos que aparecem em apenas um dos dois esquemas, geralmente omitimos o prefixo com o nome da relação. Essa simplificação não causa ambiguidade. Podemos então escrever o esquema da relação para **r** como:
+
+*(instructor.ID, name, dept name, salary,
+teaches.ID, course id, sec id, semester, year)*
+
+Essa convenção de nomenclatura exige que as relações que são argumentos da operação de produto cartesiano tenham nomes distintos. Esse requisito pode causar problemas em alguns casos, como quando é desejado o produto cartesiano de uma relação com ela mesma. Um problema semelhante surge se usarmos o resultado de uma expressão de álgebra relacional em um produto cartesiano, pois precisaremos de um nome para a relação para poder nos referir aos seus atributos. Na seção 2.6.8, veremos como evitar esses problemas usando a operação de **rename**.
+
+Agora que conhecemos o esquema da relação para **r = instructor x teaches**, que tuplas aparecem em **r**? Como podemos suspeitar, construímos uma tupla de **r** a partir de cada par possível de tuplas: uma relação **instructor** e outra da relação **teaches**. Assim, **r** é uma relação grande, como podemos ver na figura 2.12, que inclui apenas uma parte das tuplas que compõem **r**.
+
+Suponha que tenhamos **n1** tuplas em **instructor** e **n2** tuplas em **teaches**. Então, há **n1 * n2** maneiras de escolher um par de tuplas - uma tupla de cada relação; portanto, há **n1 * n2** tuplas em **r**. Em particular, para o nosso exemplo, para algumas tuplas **t** em **r**, pode ocorrer que os dois valores de ID, **instructor.ID** e **teaches.ID**, sejam diferentes.
+
+Em geral, se tivermos relação **r1(R1) e r2(R2)**, então *r1 x r2* é uma relação r(R) cujo esquema R é a concatenação dos esquemas R1 e R2. A relação contém todas as tuplas **t** para as quais existe uma tupla t1 em r1 e uma tupla t2 em r2, de modo que t e t1 tem os mesmo valores nos atributos de R1 e t e t2 tem os mesmos valores nos atributos de R2.
+
+### 2.6.5 The Join Operation
+Suponha que desejamos encontrar informações sobre todos os instrutores, juntamente com o **course_id** de todos os cursos que eles lecionaram. Precisamos das informações tanto na relação **instructor** quanto na relação **teaches** para calcular o resultado desejado. O produto cartesiano de **instrutor** e **teaches** de fato reúne informações de ambas as relações, mas, infelizmente, o produto cartesiano associa cada instrutor a todos os cursos que foram ministrados, independentemente de esse instrutor ter ministrado ou não esse curso.
+
+Como a operação de produto cartesiano associa cada tupla de **instructor** a cada tupla de **teaches**, sabemos que, se um instrutor ministrou um curso (conforme registrado na relação **teaches**), então existe alguma tupla em **instructor x teaches** que contém o nome do instrutor e satisfaz *instructor.ID = teaches.ID*. Portanto, se escrevermos:
+
+σinstructor.ID=teaches.ID(instructor × teaches)
+
+obteremos apenas aquelas tuplas de **instructor x teaches** que se referem a instrutores e aos cursos que eles lecioanram.
+
