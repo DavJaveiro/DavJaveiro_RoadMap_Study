@@ -94,3 +94,22 @@ A relação criada acima possui três atributos:
 
 O comando **create table** também especifica que o atributo **dept_name** é a **chave primária** da relação **department**.
 
+A forma geral do comando *create table* é:
+```sql
+create table r(
+	A1 D1,
+	A2 D2,
+	...,
+	An Dn,
+	(integrity-constraint),
+	...,
+	(integrity-constraint)
+);
+```
+Onde r é o nome da *relation (relação)*, cada Ai é o nome de um atributo no schema da relação r, e D1 é o domain (domínio) do atributo Ai; ou seja, Di específica o tipo do atributo Ai juntamente com restrições opcionais que limitam o conjunto de valores permitidos para Ai.
+
+O ponto e vírgula mostrado no final dos comandos *create table*, assim como no final de outros comandos SQL ao longo deste capítulo, é opcional em muitas implementações de SQL.
+
+SQL oferece suporte a diversos *integrity constraints* (restrições de integridade). Nesta seção, discutiremos apenas algumas delas:
+- **primary keys**: A especificação de *primary key* indica que os atributos Aj1, Aj2, ..., Ajm formam a *primary key* (chave primária) da *relation* (relação). Os atributos da *primary key* devem ser *nonnull* (não nulos) e *uniqueu (únicos)*; ou seja, nenhuma *tuple (tupla)* pode ter um valor nulo para um atributo da *primary key*, e nenhuma dupla de *tuples* na *relation* pode ter os mesmos valores em todos os atributos da *primary key*. Embora a especificação de *primary key* seja opcional, geralmente é uma boa prática definir uma primary key para cada *relation*.
+- **foreign key (Ak, Ak2, ..., Akn) references** s: 
