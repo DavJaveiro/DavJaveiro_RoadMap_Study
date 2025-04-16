@@ -292,3 +292,42 @@ Como a operação de produto cartesiano associa cada tupla de **instructor** a c
 
 obteremos apenas aquelas tuplas de **instructor x teaches** que se referem a instrutores e aos cursos que eles lecioanram.
 
+**resumo**
+**O que queremos fazer?**
+Queremos ver quais cursos cada professor ensinou, certo?
+Para isso, existem duas tabelas:
+- #instructor: onde estão os dados dos professores (ID, nome, departamento, salário...)
+- #teaches: onde está a informação de quais cursos cada professor ensinou (ID do professor e ID do curso);
+
+**Por que o produto cartesiano não serve direto?**
+O produto cartesiano *instructor x teaches* junta cada linha de uma tabela com **todas** as linhas da outra. Isso gera uma combinação absurda, tipo:
+- Professor X com Curso A
+- Professor X com Curso B
+- Professor Y com curso A
+Ou seja, o produto cartesiano junta tudo com tudo, sem filtrar o que faz sentido.
+
+Como filtra os pares certos?
+Se quiser somente os pares válidos, ou seja, só os cursos que um professor de fato ensinou, aí, precisamos fazer:
+```sql
+σinstructor.ID = teaches.ID (instructor × teaches)
+```
+Esse **σ** é uma seleção - pensa nele como um *filtro*.
+Então a gente está dizendo: "Me dá só os pares onde o ID do professor na tabela **instructor** é igual ao ID da tabela **teaches**".
+Isso limpa a bagunça do produto cartesiano e deixa só os pares reais.
+
+**Como simplificar isso com JOIN?**
+Em vez de fazer produto cartesiano + filtro, a gente pode usar a operação **JOIN**, que já faz isso de uma vez só.
+```sql
+instructor ⋈ instructor.ID = teaches.ID teaches
+```
+Esse ⋈ é o símbolo de join.
+Essa expressão lê-se assim: "Junte as tabelas *instructor* e *teaches* onde o ID do professor bate nas duas tabelas".
+
+Na prática, isso é o que escreveríamos em SQL assim:
+```sql
+SELECT * 
+FROM instructor
+JOIN teaches on instructor.ID = teaches.ID;
+```
+
+### 2.6.6 Set Operations
