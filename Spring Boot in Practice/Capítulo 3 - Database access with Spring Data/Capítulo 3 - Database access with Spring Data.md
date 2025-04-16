@@ -344,3 +344,59 @@ Quando a aplicação subiu, o Spring Boot:
 
 
 ## 3.3 Understanding the CrudRepository interface
+Antes de analisarmos a interface *CrudRepository*, precisamos conhecer a interface #Repository. O repositório do Spring Data utiliza essa interface genérica como **principal abstração para uma fonte de dados**. Ela recebe uma classe de domínio de negócio que precisa ser gerenciada e um tipo de identificador dessa classe como atributos de tipo *type parameters*.
+
+Uma **classe de domínio de negócio** é uma classe Java que representa uma entidade de negócio e que precisa ser persistida. 
+
+A #Repository é uma **interface marcadora** (*marker interface*) e é usada principalmente para capturar **informações sobre a classe de domínio** e o tipo do seu ID. Uma interface marcadora não possui métodos ou constantes e fornece informações de tipo em tempo de execução sobre os objetos.
+
+```java
+public interface Repository<T, ID> {}
+```
+
+*CrudRepository* é uma subinterface da interface #Repository e fornece operações CRUD. A Listagem 3.14 mostra a interface *CrudRepository* do módulo *spring-data-commons*. 
+```java
+public interface CrudRepository<T, ID> extends Repository<T, ID> {
+	<S extends T> S save(S entity); // Salva uma entidade fornecida
+	Optional<T> findById(ID id); // Finds an entity by the given ID
+	Iterable<T> findAll(); // Finds all entities
+	long count(); // Returns the number of entities available
+	void deleteById(ID id); // Deletes the entity with the given ID
+}
+```
+
+A definição da interface. O tipo genérico **T** representa a classe de domínio, e o tipo **ID** representa o identificador da classe de domínio. 
+
+Além da #CrudRepository, o Spring Data também fornece a interface *PagingAndSortingRepository*, que estende a #CrudRepository e oferece suporte adicional para **paginação e ordenação** das entidades. 
+
+Para gerenciar a persistência de uma classe de domínio de negócio, normalmente criamos uma interface que estender a *CrudRepository* ou a *PagingAndSortingRepository*, fornecendo a classe da entidade e o tipo do seu identificador. 
+
+A interface de repositório personalizada (por exemplo, *CourseRepository*) herda todos os métodos disponíveis da interface estendida (por exemplo, *CrudRepository*).
+
+![[Capítulo 3 - Database access with Spring Data-3.png]]
+
+### 3.3.1 Technique: Managing domain objects in a relational database with Spring Data JPA
+Nesta seção, vamos explorar como gerenciar objetos de domínio de negócio em um banco de dados relacional com o **Spring Data JPA**.
+
+**Solução**
+Vamos aprender a como utilizar a interface *CrudRepository* para realizar operações de **criação**, **leitura** etc.
+
+Let's start by modifying the *Course* domain class by providing a few JPA annotations so that Spring Data JPA can manage this class. This is shown in the following listing.
+
+- Anotamos a classe com as anotações #Entity e #Table. A primeira anotação marca a classe Java como uma entidade JPA, e a segunda fornece os detalhes da tabela no banco de dados onde a entidade deve ser gerenciada.
+- Anotamos os campos da classe Java com a anotação #Column. Isso fornece as informações de mapeamento entre os campos Java e os respectivos nomes das colunas na tabela.
+- Anotamos o campo #id com a anotação @id para indicar que esse campo é a chave primária da tabela. Também fornecemos detalhes indicando que **os valores para esse campo devem ser gerados usando a estratégia definida**.
+- O <span style="background:#d4b106">construtor de Course não possui o campo id</span>. O ID é gerenciado pelo JPA e é gerado automaticamente.
+
+Agora, podemos um repositório personalizado do Spring Data estendendo a interface *CrudRepository*, o que permitirá gerenciar os detalhes de **Course**. 
+
+Dessa forma, a interface *CourseRepository* herda o suporte às operações CRUD da interface estendida. A listagem a seguir mostra a interface *CourseRepository*. 
+
+Anotamos a interface *CourseRepository* com a anotation **@Repository** para indicar que se trata de um repositório do Spring. Embora pareça ser uma interface vazia, em tempo de execução sua implementação concreta é fornecida pelo **Spring Data JPA**, que então é usada para executar as operações CRUD.
+
+A última alteração que precisamos fazer é atualizar o properties com a propriedade *spring.jpa.hibernate.ddl-auto* definida como *create*. Essa propriedade instrui o **Hibernate** (o provedor JPA padrão no Spring Data JPA) a gerenciar as tabelas do banco de dados para as entidades.
+
+O valor *create* instrui o Hibernate a **criar todas as tabelas do banco de dados ao iniciar a aplicação**, baseando-se nos modelos definidos pelas entidades Java, que no nosso caso é *Course*. Porém, essa opção também apaga e recria as tabelas existentes no banco, o que significa que todos os dados previamente armazenados são perdidos toda vez que a aplicação é reiniciada.z 
+
+Vale notar que essa propriedade é específica do Hibernate e **não se aplica** se outro provedor JPA for utilizado.
+

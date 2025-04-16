@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "346b176de8cbd304",
+        "id": "2ac9174e6dee7677",
         "type": "tabs",
         "children": [
           {
-            "id": "9753f18f82c6c3e4",
+            "id": "26cc70bb5e52b243",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 2 - Introduction to the Relational Model"
+              "title": "Capítulo 3 - Database access with Spring Data"
             }
           }
         ]
@@ -212,8 +212,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "9753f18f82c6c3e4",
+  "active": "26cc70bb5e52b243",
   "lastOpenFiles": [
+    "Capítulo 3 - Database access with Spring Data-3.png",
+    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
     "Pasted image 20250409223432.png",
     "Errors API.md",
     "Compilação vs Transpilação.md",
@@ -225,7 +227,6 @@
     "Capítulo 3 - Desenvolvimento ágil de software-2.png",
     "Capítulo 3 - Desenvolvimento ágil de software-1.png",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
     "Capítulo 2 - Introduction to the Relational Model-2.png"
   ]
 }
