@@ -112,4 +112,109 @@ O ponto e vírgula mostrado no final dos comandos *create table*, assim como no 
 
 SQL oferece suporte a diversos *integrity constraints* (restrições de integridade). Nesta seção, discutiremos apenas algumas delas:
 - **primary keys**: A especificação de *primary key* indica que os atributos Aj1, Aj2, ..., Ajm formam a *primary key* (chave primária) da *relation* (relação). Os atributos da *primary key* devem ser *nonnull* (não nulos) e *uniqueu (únicos)*; ou seja, nenhuma *tuple (tupla)* pode ter um valor nulo para um atributo da *primary key*, e nenhuma dupla de *tuples* na *relation* pode ter os mesmos valores em todos os atributos da *primary key*. Embora a especificação de *primary key* seja opcional, geralmente é uma boa prática definir uma primary key para cada *relation*.
-- **foreign key (Ak, Ak2, ..., Akn) references** s: 
+- **foreign key (Ak1, Ak2, ..., Akn) referências s:** A especificação da chave estrangeira diz que os valores dos atributos (Ak1, Ak2) para qualquer tupla na relação devem corresponder aos valores dos atributos da chave primária de alguma tupla na relação s. 
+A figura 3.1 apresenta uma definição parcial em SQL DDL do banco de dados universitário que usamos no texto. A definição da tabela course contém a declaração *foreign key* (dept_name) references department. Sem essa restrição, seria possível que um curso especificasse um nome de departamento inexistente. 
+
+Alguns sistemas de bancos de dados, incluindo o MySQL, exigem uma sintaxe alternativa: "foreign key (dept_name) references department(dept_name)", onde os atributos referenciados na tabela referenciada são listados explicitamente.
+
+**not null:** a restrição **not null** em um atributo especifica que o valor nulo não é permitido para esse atributo; em outras palavras, a restrição exclui o valor nulo do domínio desse atributo. Por exemplo, na Figura 3.1, a restrição **not null** no atributo **name** da relação **instructor** garante que o nome de um instrutor não pode ser nulo. 
+
+Mais detalhes sobre a restrição de **foreign-key**, bem como sobre outras restrições de integridade que o comando **create table** pode incluir, são fornecidos posteriormente, na seção 4.4. <span style="background:#d4b106">O SQL impede qualquer atualização no banco de dados que viole uma restrição de integridade</span>. Por exemplo, se uma tupla recém-inserida ou modificada em uma relação tiver valores nulos para qualquer atributo da chave primária, ou se a tupla tiver o mesmo valor nos atributos da chave primária que outra tupla na relação, o SQL sinaliza um erro e impede a atualização. Da mesma forma, a inserção de uma tupla em **course** com um valor de **dept_name** que não aparece na relação **department** violaria a restrição de **foreign-key** em **course**, e o SQL impediria que tal inserção ocorresse.
+
+Uma relação recém-criada é inicialmente vazia. A inserção de tuplas em uma relação, sua atualização e sua exclusão são feitas por meio das instruções de manipulação de dados **insert, update e delete.**
+
+Para remover uma relação de um banco de dados SQL, usamos o comando **drop table**. O comando **drop table** exclui todas as informações sobre a relação removida do banco de dados. O comando é:
+```sql
+drop table r;
+```
+
+---
+**Chave estrangeira**
+Por padrão, a chave estrangeira (foreign key) aponta para a chave primária da tabela referenciada.
+
+A foreign key pode apontar para qualquer coluna que tenha uma restrição *UNIQUE*. Ou seja, não precisa ser obrigatoriamente a chave primária, mas sim uma **coluna única**.
+
+Podemos ter uma chave primária composta, formada por mais de uma coluna. Várias chaves candidatas, mas apenas uma delas pode ser escolhida como chave primária, e as outras podem receber **restrição** *UNIQUE*. 
+
+```sql
+create table section(  
+    course_id varchar(8),  
+    sec_id varchar(8),  
+    semester varchar(6),  
+    year numeric(4,0),  
+    building varchar(15),  
+    room_number varchar(7),  
+    time_slot_id varchar(4),  
+    primary key (course_id, sec_id, semester, year),  
+    foreign key (course_id) references course  
+)
+```
+Esse schema está dizendo que a combinação dessas 4 colunas identifica de forma única cada registro da tabela *section*.
+
+![[Capítulo 3 - Introduction to SQL.png]]
+**Tratando a relação:**
+- Cada **departament** tem um nome, funciona em um prédio e tem um orçcamenot.
+- Cada *course*: tem um título, número de créditos, e pertence a um *department (dept_name, como chave estrangeira)*, muitos cursos podem estar em um único departamento (relação muitos-para-um)
+## **Basic Structure of SQL Queries**
+A estrutura básica de uma consulta SQL consiste em três cláusulas: select, from e where. Uma consulta recebe como entrada as relações listadas na cláusula **from**, opera sore elas conforme especificados nas cláusulas **where** e **select**, e então produz uma relação como resultado. 
+Introduzimos a sintaxe do SQL por meio de exemplos e descrevemos a estrutura geral das consultas SQL posteriormente.
+
+### 3.3.1 Queries on a Single Relation
+Vamos considerar uma consulta simples usando nosso exemplo da universidade: "Encontre os nomes de todos os instrutores." Os nomes dos instrutores estão presentes na relação *instructor*, então colocamos essa relação na cláusula *from*. O nome do instrutor aparece no atributo *name*, então colocamos isso também na cláusula *select*:
+```sql
+select name from instructor;
+```
+
+O resultado é uma relação consistindo em um único atributo com o título *name*. Se a relação *instructor* for como mostrado na Figura 2.1, então a relação resultante da consulta acima é mostrada na Figura 3.2.
+
+![[Capítulo 3 - Introduction to SQL-1.png]]
+
+Agora, considere outra consulta: "encontre os nomes dos departamentos de todos os instrutores," que pode ser escrita como:
+```sql
+select dept_name from instructor;
+```
+Como mais de um instrutor pode pertencer a um departamento, um nome de departamento pode aparecer mais de uma vez na relação *instructor*. O resultado da consulta acima é uma relação contendo os nomes dos departamentos, mostrada na Figura 3.3.
+
+Na definição formal e matemática do modelo relacional, uma relação é um conjunto. Portanto, tuplas duplicadas nunca apareceriam em relações. <span style="background:#d4b106">Na prática, a eliminação de duplicadas é demorada</span>. Por isso, o SQL permite duplicatas em relações de banco de dados, bem como nos resultados de expressões SQL. Assim, a consulta SQL anterior lista cada nome de departamento uma vez para cada tupla em que ele aparece na relação **instructor**. 
+
+No casos em que queremos forçar a eliminação de duplicatas, inserimos a palavra-chave *distinct* após o *select*. Podemos reescrever a consulta anterior como:
+```sql
+select distinct dept_name from instructor;
+```
+se quisermos remover as duplicatas. O resultado da consulta acima conteria cada nome de departamento no máximo uma vez.
+
+![[Capítulo 3 - Introduction to SQL-2.png]]
+
+O SQL também nos permite usar a palavra-chave **all** para especificar explicitamente que as duplicatas não são removidas:
+```sql
+select all dept_name from instructor;
+```
+Como a retenção de duplicata é o padrão, não usaremos all em nosso exemplos. Para garantir a eliminação de duplicatas nos resultados de nossas consultas de exemplo, usaremos *distinct* sempre que for necessário. 
+
+A cláusula *select* também pode conter expressões aritméticas envolvendo os operadores +, -, * e /, operando em constantes ou atributos de tuplas. Por exemplo, a consulta:
+```sql
+select ID, name, dept_name, salary * 1.1 from instructor;
+```
+retorna uma relação que é igual à relação *instructor*, exceto pelo fato de que o atributo *salary* é  multiplicado por 1.1. isso mostra o que aconteceria se déssemos um aumento de 10% a cada instrutor; observe, no entanto, que isso não resulta em nenhuma alteração na relação *instructor*. 
+
+O SQL também fornece tipos de dados especiais, como várias formas do tipo **date**, e permite que várias funções aritméticas operem sobre esses tipos. Discutiremos isso mais detalhadamente na Seção 4.5.1.
+
+A cláusula **where** nos permite selecionar apenas aquelas linhas na relação resultante da cláusula **from** que satisfazem um predicado especificado. Considere a consulta: "Encontre os nomes de todos os instrutores do departamento de Ciência da Computação que têm salário maior que $70.000." Essa consulta pode ser escrita em SQL como:
+```sql
+select name from instructor where dept_name = 'Computer Science' and salary > 70000;
+```
+![[Capítulo 3 - Introduction to SQL-3.png]]
+
+```sql
+select name
+from instructor
+where dept_name = ´Comp.sci.' and salary > 70000;
+```
+
+O SQL permite o uso dos conectivos lógicos **and**, **or** e **not** nas cláusula *where*. Os operados dos conectivos lógicos podem ser expressões que envolvem os operadores de comparação <, <=, >= e <>. O SQL nos permite usar os operadores de comparação para comparar strings e expressões aritméticas, bem como tipos especiais, como os tipos de data.
+
+Exploraremos outras características dos predicados da cláusula **where** mais adiante neste capítulo.
+
+### 3.3.2 Queries on Multiple Relations
+
+
