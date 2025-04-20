@@ -16,7 +16,7 @@ Durante a entrevista, sua *postura geral* e *linguagem corporal* também podem s
 Antes da entrevista, é essencial pesquisar sobre a empresa e sua cultura, alinhando suas respostas aos valores e à missão da organização. Desta forma, podemos demonstrar nosso alinhamento com a empresa e aumentar suas chances de receber uma oferta.
 
 ## O método STARR
-Um método eficaz para responder as perguntas comportamentais é o método STARR, que significa, *Situação*, *Tarefa*, *Ação*, *Resultado* e*Reflexão*. Esse framework ajuda a estruturar suas respostas e a fornecer exemplos claros e concisos de nossa experiência e expertise.
+Um método eficaz para responder as perguntas comportamentais é o método STARR, que significa, *Situação*, *Tarefa*, *Ação*, *Resultado* e *Reflexão*. Esse framework ajuda a estruturar suas respostas e a fornecer exemplos claros e concisos de nossa experiência e expertise.
 
 Para começar, identifique as competências comportamentais específicas exigidas para o cargo e selecione experiências passadas que demonstrem sua proficiência nessas áreas. Em seguida, use o método *STARR* para organizar suas respostas às perguntas comportamentais.
 
