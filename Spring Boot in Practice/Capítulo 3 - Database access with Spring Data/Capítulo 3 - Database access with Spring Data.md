@@ -603,7 +603,6 @@ Na técnica anterior, usamos a anotação *@DataJpaTest* em vez *@SpringBootTest
 
 ## 3.4 Retrieve data from a database using Spring Data
 Nas seções anteriores, aprendemos a como configurar bancos de dados e gerenciar objetos ou entidades de domínio de negócios. Nesta seção, aprenderemos várias técnicas para <span style="background:#b1ffff">acessar dados de um banco de dados</span> de forma eficiente em uma aplicação Spring Boot.
-
 ### 3.4.1 Defining query methods
 Nós aprendemos a utilizar a interface **CrudRepository** para gerenciar objetos de domínio de negócios. Embora essa interface forneça operações CRUD padrão, <span style="background:#b1ffff">às vezes esses métodos genéricos</span> não são suficientes. Em vez disso, podemos precisar de um controle mais refinado para gerenciar os objetos de domínio. Por exemplo, pode ser necessário consultar entidades com base em propriedades da entidade, em vez de depender apenas do ID da entidade (ou seja, o método padrão *findById(..)*)
 
@@ -634,4 +633,245 @@ We need to use Spring Data JPA to define custom query methods query methods to r
 Spring Data JPA lets define custom query methods to retrieve business entity details from the database.  In this exercise, we'll learn to use this techinique by defining a few custom query methods in the *CourseTracker* application.
 
 Na técnica anterior, usamos a interface *CourseRepository* para estender a interface *CrudRepository* e acessar os métodos definidos nela. Vamos modificar a interface *CourseRepository* para fornecer algumas assinaturas de métodos de consulta, como mostrado na listagem a seguir:
+
+**Por que usar *Stream* direto no repositório?**
+1. Eficiência com muitos dados: como o **Stream** é lazy, ele não carrega tudo na memória de uma vez. Por exemplo, ao acessar uma entidade em um banco de dados, os dados relacionados são imediatamente carregados; portanto, o carregamento #lazy "*preguiçoso*", faz os dados serem buscados apenas quando tentarmos acessá-los diretamente.
+2. Maior flexibilidade para realizar transformações ( #map, #filter, #collect ) no mesmo fluxo;
+3. Permite encadear operações direto no resultado da consulta.
+
+**Mas há um detalhe:**
+Quando usamos #Stream em um método de repositório, o **Spring Data JPA** precisa gerenciar a conexão com o banco de forma especial. Por isso, é necessário que o método que consome o #Stream esteja dentro de uma transação.
+```java
+@Transactional(readOnly = true)
+public void imprimirNomesDosCursos(String category) {
+	try (Stream<Course> cursos = repository.streamAllByCategory(category)) {
+		cursos.map(Course::getName)
+			.forEach(System.out::println);
+	}
+}
+```
+
+O *try-with-resources* fecha o *Stream* automaticamente, finalizando a conexão com o banco de dados, que só é mantida aberta enquanto o *Stream* está em uso.
+
+**Exemplo real de uso**:
+```java
+public interface CourseRepository extends JpaRepository<Course, Long> {
+	Stream<Course> streamAllByCategory(String category);
+}
+```
+
+**Na classe service:**
+```java
+@Service
+public class CourseService {
+
+	@Autowired
+	private CourseRepository courseRepository;
+
+	@Transactional(readOnly = true)
+	public List<String> buscarNomesDosCursos(String category) {
+		try (Stream<Course> stream = repository.streamAllByCategory(category)) {
+			return stream
+				.filter(c -> c.getDuration() > 10)
+				.map(Course::getName)
+				.collect(Collectors.toList());
+		}
+	}
+}
+```
+
+---
+Em nossa técnica, definimos sete métodos de consulta personalizados que buscam os detalhes do curso e informações relacionadas no banco de dados. Vamos explicar esses métodos em detalhes. Podemos observar que apenas definimos as assinaturas dos métodos, sem fornecer nenhuma implementação para eles. O Spring Data JPA analisa as assinaturas dos métodos e garante uma implementação concreta internamente:
+- *findAllByCategory* - este é o método de consulta mais simples que definimos na interface *CourseRepository*. Esse método permite que definamos um método personalizado que encontra uma lista de entidades que pertencem a uma categoria específica. Podemos definir mais métodos de consulta personalizada que utilizem outras propriedades da entidade. Por exemplo, para encontrar um curso que corresponda à descrição do curso fornecida, podemos definir um método chamado *findByDescription(String description)*.
+
+- *findAllByCategoryOrderByName* - esta é uma extensão do método **findAllByCategory**, com a diferença de que ele retorna os cursos em ordem ascendente com base no nome do curso.
+
+- *existsByName* - este método verifica se existe um curso com o nome fornecido. Ele retorna **true** se o curso existir ou **false** caso contrário.
+
+- *countByCategory* - este método retorna a contagem de cursos para a categoria fornecida.
+
+- *findByNameOrCategory* - encontra todos os cursos que correspondem ao nome do curso fornecido ou à categoria do curso. Semelhante à cláusula **OR**, também podemos utilizar a cláusula **AND** se precisarmos definir uma consulta que exija que ambas as propriedades estejam disponíveis.
+
+- *findByNameStartsWith* - encontra todos os cursos cujo nome começa com a string do nome do curso fornecida. O parâmetro do método para o nome do curso pode ser uma substring do nome real do curso.
+
+- *streamAllByCategory* - encontra todos os cursos por categoria e retorna um **Stream** do Java 8. Um tipo de retorno **Stream** é diferente do tipo de retorno **Iterable**. Um **Iterable** é uma **estrutura de dados que contém os dados retornados**, sobre os quais podemos iterar. Um **Stream** não é uma estrutura de dados; em vez disso, ele aponta para uma fonte de dados da qual os dados podem ser transmitidos.
+
+**Discussion**
+Nesta seção, aprendemos alguns conceitos importantes do Spring Data JPA. Vamos resumir os conceitos que exploramos até agora:
+- Aprendemos como definir métodos de consulta personalizados no repositório com base nas propriedades da entidade. Também vimos como usar vários padrões, como **OR**, **StartsWith** e **OrderBy**, para controlar a consulta e a ordem dos resultados retornados. Essas são apenas algumas das expressões que demostramos neste exemplo. 
+
+- Vimos como definir um método de repositório com um Stream do Java 8 na interface do repositório e, subsequentemente, usar o **Stream** retornado em nossa aplicação. Isso constrasta com o tipo de retorno **Iterable**, através do qual retornamos uma coleção. Podemos aproveitar os recursos do **Stream**, como técnicas de **map-filter-reduce**, usando o método **stream** definido no repositório. 
+
+**Uso do Stream**
+Os métodos de streaming do Spring Data JPA mantêm a conexão com o banco de dados aberta para buscar resultados de forma preguiçosa #lazy à medida que processamos o stream. **Isso requer uma transação ativa para manter a conexão** e buscar os resultados de forma preguiçosa #lazy à medida que processamos o stream. Se a conexão, a sessão do banco de dados é fechada quando o método do repositório retorna, tornando o stream inutilizável.
+
+A anotação *@Transacional* mantém a conexão com o banco de dados aberta durante toda a exceução do método anotado.
+
+### 3.4.3 Implementing pagination with PagingAndSortingRepository
+Paginação é uma técnica utilizada para dividir um grande conjunto de dados em múltiplas páginas. Trata-se de uma abordagem eficiente e amigável ao servidor para entregar resultados aos seus usuários. Normalmente, os usuários de aplicações não costumam ir além dos primeiros resultados apresentados, independentemente da quantidade total dos resultados disponível. Dessa forma, recuperar, processar e retornar um grande volume de dados pode, em muitos casos, desperdiçar largura de bando e tempo de CPU. Além disso, se os dados retornados incluírem recursos como imagens, isso pode desacelerar o carregamento da aplicação e prejudicar a experiência do usuário. Um exemplo clássico é o de exibir um catálogo de produtos com centenas de itens, sendo que cada item do catálogo contém uma imagem.
+
+O Spring Data oferece a interface #PagingAdnSortingRepository, que permite paginar e ordenar os dados retornados. Como essa interface estende a #CrudRepository, também podemos acessar as funcionalidades básicas de CRUD fornecidas por ela. 
+
+### 3.4.4 Technique: using #PagingAndSortingRepository interface to paginate and sort the data
+
+Nesta técnica, vamos demonstrar como usar a interface para paginação e ordenação.
+
+**Problem**
+Carregar, ordenar e retornar um grande conjunto de dados para os usuários da aplicação desperdiça recursos do servidor e impacta negativamente a experiência do usuário. Precisamos retornar os dados em subconjuntos menores, na forma de páginas.
+
+**Solução**
+A paginação é a técnica de dividir os dados em porções menores, conhecidas como páginas. É possível configurar o tamanho da página, o que determina a quantidade de registros ou dados contidos nela. Para melhorar a experiência do usuário, podemos, opcionalmente, ordenar os dados em ordem ascendente ou descendente.
+
+Let's define the *CourseRepository* interface that extends the *PagingAndSortingRepository*", we'll look into the *PagingAndSortingRepository*:
+```java
+
+@Repository
+public interface CourseRepository extends PagingAndSortingRepository<Course, Long> {
+
+}
+```
+
+Next, let's define a test case that uses the *PagingAndSortingRepository* interface, as shown in the following listing.
+```java
+@Test
+void givenDataAvaibleWhenLoadFirstPageThenGetFiveRecords() {
+	Pageable pageable = PageRequest.of(0, 5);
+	assertThat(courseRepository.findAll(pageable)).hasSize(5);
+	assertThat(pageable.getPageNumber()).isEqualTo(0);
+
+	Pageable nextPageable = pageable.next();
+	assertThat(courseRepository.findAll(nextPageable)).hazSize(4);
+	assertThat(nextPageable.getPageNumber()).isEqualTo(1);
+}
+```
+No código acima, estamos realizando as seguintes atividades:
+- Criando uma instância de **PageRequest** usando o método estático *of*, especificando o número da página e a quantidade de registros na página. Definimos o número da página como 0 e o tamanho dos registros na página como 5.
+- Utilizando uma instância de **Pageable** no método **findAll()** da *CourseRepository* para carregar a primeira página. O método **findAll()** é proveniente da interface *PagingAndSortingRepository*. 
+- Utilizando os diversos métodos das instâncias de **Pageable** para verificar valores, como próxima página e o número da página.
+
+```java
+Pageable pageable = PageRequest.of(0, 5);
+```
+No exemplo acima, se tivermos 20 registros no banco e usarmos o objeto instanciado *pageable*, o Spring vai retornar:
+- A primeira página (índice 0);
+- Com 5 registros
+- A consulta final terá um *LIMIT 5 OFFSET 0* no SQL.
+
+O objeto *Pageable nextPageable = pageable.next()* é muito útil para navegarmos em uma estrutura de loop ou lógica de paginação automática:
+```java
+Page<Produto> pagina = produtoRepository.findAll(pageable);
+
+while (pagina.hasContent()) {
+	// processa os dados
+	pagina.forEach(produto -> System.out.println(produto.getName()));
+
+	if (pagina.hasNext()) {
+		pageable = pagina.nextPageable(); 
+		pagina = produtoRepository.findAll(pageable);
+	} else {
+		break;
+	}
+}
+```
+
+Vamos explorar o uso das facilidades de classificação fornecidas na interface *PagingAndSortingRepository*:
+
+**O que é a classe Condition< T>**
+*Condition< T>* é uma classe do *AssertJ*, usada para representar uma condição lógica que pode ser testada contra objetos do tipo genérico T.
+
+**O que *matches(Course course)* faz?**
+```java
+Condition<Course> sortedFirstCourseCondition = new Condition<Course>() {
+	public boolean matches(Course course) {
+		return course.getId() == 4 && course.getName().equals("Cloud Native Spring Boot Application Development");
+	}
+}
+
+```
+O método está dizendo:
+- Um *Course* atende à condição se:
+	- Seu **id** for igual a 4;
+	- e seu **name** for exatamente "nome passado";
+
+**Discussion**
+A interface #PagingAdnSortingRepository é uma interface útil que permite alcançar recursos personalizados de paginação e ordenação em nossa aplicação. O código fonte da interface é o seguinte:
+```java
+
+public interface PagingAndSortingRepository<T, ID> extends CrudRepository<T, ID> {
+	Page<T> findAll(Pageable pageable);
+
+	Iterable<T> findAll(Sort sort);
+}
+```
+
+O primeiro método *findAll()* recebe uma instância de **Pageable**. A interface **Pageable** fornece vários métodos úteis para construir requisições de página, além de permitir o acesso às informações da página. Podemos usar o método **of()** para criar a requisição de página, especificando o número da página junto com a quantidade de registros nela. Além disso, essa interface também permite acessar as páginas anteriores e seguintes.
+
+O segundo método **findAll()** recebe uma instância de Sort. A classe Sort é flexível e oferece diversas maneiras de construir uma ordenação personalizada. Em nosso segundo caso de teste, foi criado um critério de ordenação específico, com **rating** em ordem decrescente e **name** em ordem crescente.
+
+### 3.4.5 Specifying query using @NamedQuery
+Na seção 3.4.1, foram apresentados dois métodos para definir consultas. O primeiro, abordado anteriormente, trata da <span style="background:#d4b106">definição de métodos de consulta personalizados</span> para recuperar objetos de domínio de um banco de dados relacional usando **Spring Data JPA**. Nesse método, as assinaturas dos métodos de consulta são definidas manualmente, e o **Spring Data** gera automaticamente as consultas com base nos nomes desses métodos.
+
+Vamos explorar, nesta seção, uma segunda abordagem, que consiste em definir manualmente as consultas diretamente nos métodos do repositório. Dessa forma, o **Spring Data** utilizará essas consultas como foram escritas, em vez de derivá-las a partir dos nomes dos métodos.
+
+Embora a <span style="background:#d4b106">abordagem baseada nos nomes dos métodos funcione</span> bem na maioria dos casos, há situações em que definir explicitamente as consultas pode ser mais vantajoso. Algumas dessas circunstâncias incluem:
+- Quando uma consulta foi refinada para aproveitar recursos específicos do banco de dados.
+- Quando é necessário acessar múltiplas tabelas por meio de **joins**, permitindo a obtenção de dados combinados entre diferentes tabelas.
+
+Vamos aprender a especificar manualmente as consultas utilizando os recursos #NamedQuery, #Query e #QueryDSL do **Spring Data**.
+
+Uma #NamedQuery é uma consulta predefinida associada a uma entidade de negócio. Ela utiliza #JPQL (<span style="background:#b1ffff">Jakarta Persistence Query Language</span>) para definir a consulta. É possível definir uma **NamedQuery** em uma entidade ou em sua superclasse.
+
+Podemos criar a **NameQuery** utilizando a anotação *@NamedQuery* em nossa classe de entidade. Essa anotação possui quatro argumento: **name**, **query**, **lockMode** e **hints**. Os atributos **name** e **query** são obrigatórios. 
+
+### 3.4.6 Technique: Using a named query to manage domain objects in a relational database with Spring Data JPA
+In this technique, we'll discuss how to use name query to manage domain objects.
+
+**Problem**
+Precisamos usar **NamedQuery** com **Spring Data JPA** para definir consultas personalizadas nos métodos da interface do repositório e gerenciar objetos de domínio em um banco de dados relacional.
+
+**Solution**
+Embora os métodos de consulta com a abordagem de definição de assinatura de método funcionem bem na maioria dos cenários, há casos em que apresentam algumas limitações. Por exemplo, se for <span style="background:#d4b106">necessário unir várias tabelas e recuperar os dados</span>, não há uma maneira fácil de definir as assinaturas dos métodos. Com a consulta nomeada, é possível fornecer a consulta junto com a assinatura do método, para que ela possar ser usada para recuperar os dados.
+
+No POJO Course, fornecemos os detalhes da consulta que recupera todos os cursos pela categoria informada na anotação *@NamedQuery*. O atributo name contém o nome da entidade e do método concatenados com um ponto. . Na consulta, fornecemos a consulta junto com dois parâmetros posicionais **?1** e **?2**. Ele usa os valores dos parâmetros informados quando o método do repositório é invocado.
+
+Além disso, podemos usar a anotação *@NamedQuery* <span style="background:#d4b106">mais de uma vez na entidade se precisarmos definir mais de um método de repositório</span> para utilizar o recurso *@NamedQuery*, conforme mostrado na listagem a seguir:
+
+```java
+@Entity
+@Table(name = "COURSES")
+@NamedQueries({
+	@NamedQuery(name = "Course.findAllByRating", query = "select c from Course c where c.rating=?1"),
+	@NamedQuery(name = "Course.findAllByCategoryAndRating", query = "select c from Course c where c.category=?1 and c.rating=?2),
+})
+public class Course {
+	// omitted
+}
+
+```
+
+Let us redefine the *CourseRepository* interface, which now contains a custom method with the same method name provided in the *@NamedQuery* annotation in the *Course* entity.
+
+```java
+@Repository  
+public interface CourseRepository extends CrudRepository<Course, Long> {  
+    Iterable<Course> findAllByCategoryAndRating(String category, int rating);  
+}
+```
+O método do repositório é definido com a anotação *@NamedQuery*. Ele é definido na classe repository para que possamos usá-lo com a instância de *CourseRepository*. 
+
+## 3.5 Specifying query using @Query
+Embora as consultas nomeadas para declarar consultas na classe de entidade funcionem bem, elas adicionam <span style="background:#d4b106">desnecessariamente informações de persistência na classe do domínio de negócios</span>. Isso pode ser preocupante, pois acopla fortemente os detalhes de persistência nas classes do domínio de negócios.
+
+Como alternativa, podemos fornecer as informações da consulta na <span style="background:#d4b106">interface do repositório.</span> Isso coloca junto o método de consulta e a consulta JPQL no mesmo local. Podemos usar a anotação *@Query* nos métodos da interface do repositório para fazer isso. Além disso, a vantagem de usar a anotação *@Query* em vez de consultas nomeadas é que a anotação *@Query* <span style="background:#d4b106">permite que utilizemos consultas SQL nativas</span>. Assim, podemos usar tanto JPSQl quanto consultas SQL nativas com a anotação *@Query*.
+
+### 3.5.1 Technique: Using @Query annotation to define queries and retrieve domain objects in a relational database with Spring Data JPA
+In this technique, we'll discuss how to use *@Query* annotation to define and retrieve domain objects.
+
+**Problem**
+We want to use *@Query* annotation with Spring Data JPA to define custom queries in repository interface methods to manage domain objects in a relational database.
+
+**Solution**
+The *@Query* annotation allows you to provide the queries along with the method signature in the repository interface. This is considered a better approach, as the business domain objects are kept free from persistence-related information.
+
+Let's redefine the *CourseRepository* interface in which we'll provide three repository methods using the *@Query* annotation, as shown in the following listing.
 

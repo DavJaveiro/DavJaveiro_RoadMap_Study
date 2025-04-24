@@ -19,6 +19,10 @@ Como essas empresas operam em um ambiente em mudança, é praticamente impossív
 
 Processos de desenvolvimento de software orientados por planos, que especificam completamente os requisitos antes de projetar, construir e testar um sistema, <span style="background:#affad1">não são adequados para o desenvolvimento rápido de software</span>. À medida que os requisitos mudam os problemas nos requisitos são descobertos, o design ou a implementação do sistema precisa ser retrabalhada e retestada. Como consequência, um processo convencional baseado no modelo cascata (waterfall) ou em especificações tende a ser demorado, e o software final é entregue ao cliente muito tempo depois de sua especificação inicial.
 
+<<<<<<< HEAD
+Para alguns tipos de software, como sistemas de controle críticos para segurança, onde uma análise completa do sistema é essencial, essa abordagem orientada por planos é a mais adequada. No entanto, em um ambiente empresarial dinâmico, ela 
+
+=======
 Para alguns tipos de software, como sistemas de controle críticos para segurança, onde uma análise completa do sistema é essencial, essa abordagem orientada por planos é a mais adequada. No entanto, em um ambiente empresarial dinâmico, ela pode causar sérios problemas. Quando o software finalmente está disponível para uso, o motivo original de sua aquisição pode já ter mudado de forma tão radical que o software se torna, na prática, inútil. Portanto, especialmente para sistemas de negócios, processos de desenvolvimento que focam em desenvolvimento e entrega rápida de software são essenciais.
 
 A necessidade por desenvolvimento rápido de software e por processos capazes de lidar com requisitos em constante mudança já é reconhecida há muitos anos. No entanto, o desenvolvimento mais ágil de software realmente ganhou força no final da década de 1990 como surgimento da ideia de *agile methods*, como *Extreme Programming (Beck 1999)*, *Scrum* e *DSDM*.
@@ -151,6 +155,9 @@ Pode-se pensar que a programação em pares é menos eficiente do que a programa
 Estudos formais sobre o valor da programação em pares obtiveram resulta­ dos diversos. Usando estudantes como voluntários. Williams e seus colaboradores (WILLIAMS et al., 2000) constataram que a produtividade da programação em pares parece ser comparável à de duas pessoas trabalhando de maneira independente. Os motivos sugeridos são que os pares discutem o software antes do desenvolvimento e. portanto, provavelmente têm menos partidas em falso e menos retrabalho. Além disso, o número de erros evitados pela inspeção informal é tal que menos tempo é consumido consertando defeitos descobertos durante o processo de teste.
 
 Entretanto, estudos com programadores mais experientes não reproduzem esses resultados (ARISHOLM et al., 2007). Eles constataram que havia uma perda significativa de produtividade se comparado a dois programadores trabalhando isoladamente. Houve alguns benefícios para a qualidade, mas não compensaram totalmente a sobrecarga da programação em pares. Todavia, o compartilhamento de conhecimento que acontece durante a programação em pares é muito importante, já que reduz os riscos globais para um projeto quando os membros do time têm de deixa-lo. Isso já justifica, por si só, a aplicação da programação em pares.
+<<<<<<< HEAD
+>>>>>>> 0efd04d637a23d6c0b0b1724c0a37d045f1ef109
+=======
 
 ## 3.3 Gerenciamento Ágil de Projetos
 Em qualquer empresa de software, os gerentes precisam saber o que está acontecendo e se um projeto tende ou não a cumprir seus objetivos, entregar o software no prazo e dentro do orçamento proposto. As abordagens dirigidas por plano evoluíram para satisfazer essa necessidade. Como discuto no Capítulo 23, os gerentes traçam um plano para o projeto mostrando o que deve ser entregue, quando deve ser entregue e quem vai trabalhar no desenvolvimento dos entregáveis desse projeto. Uma abordagem dirigida por plano exige que um gerente tenha uma visão estável sobre tudo que deve ser desenvolvido e sobre os processos de desenvolvimento.
@@ -278,3 +285,4 @@ Introduzir e manter o uso dos métodos ágeis em uma grande organização é um 
 - O Scrum é um método ágil que define um arcabouço para organizar projetos ágeis. Ele gira em torno de *sprints*, que são períodos de tempos fixos nos quais um incremento do sistema é desenvolvido. O planejamento se baseia em priorizar um *backlog* de trabalho e selecionar as tarefas de maior prioridade para uma *sprint*.
 - Para promover a escalabilidade de métodos ágeis, algumas práticas dirigidas por plano precisam ser integradas à prática ágil. Elas incluem requisitos antecipados, vários representantes do cliente, mais documentação, ferramental comum aos times de projeto e o alinhamento das entregas entre os times.
 
+>>>>>>> 2d18955d8d5328f0570ebfe42ea2fac57a0e5fdd

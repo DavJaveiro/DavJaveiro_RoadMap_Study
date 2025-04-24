@@ -1,0 +1,162 @@
+{
+  "nodes": [
+    {
+      "id": "006e52929cf5c79c",
+      "type": "file",
+      "file": "IntelliOCR/imagens/Pasted image 20250421101243.png",
+      "styleAttributes": {},
+      "x": -1680,
+      "y": -1790,
+      "width": 929,
+      "height": 260
+    },
+    {
+      "id": "fd9b6cea87667cf4",
+      "type": "text",
+      "text": "# **Fallback**\nFallback local é uma estratégia para **manter o sistema funcionando** mesmo quando a API externa não esteja disponível - seja por falta de créditos, queda do serviço, ou timeout.\n\n- Podemos configurar o código para usar um modelo local (alternativa não muito boa); \n- Fallback para outra API (Google Translate);\n- Fallback para LLM local via Docker (não eficiente, mas curiosa);",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -2560,
+      "y": -2680,
+      "width": 640,
+      "height": 420,
+      "color": "4"
+    },
+    {
+      "id": "c68ae47fc61ac15b",
+      "type": "text",
+      "text": "# What is Tesseract?\nhttps://www.youtube.com/watch?v=3RdIRoUlVks\nhttps://www.klippa.com/en/blog/information/tesseract-ocr/",
+      "styleAttributes": {},
+      "x": 960,
+      "y": -3970,
+      "width": 760,
+      "height": 360
+    },
+    {
+      "id": "13a1eda60fb606cc",
+      "type": "text",
+      "text": "# Tesseract OCR With JNA Wrapper**\nhttps://medium.com/swlh/tesseract-ocr-with-java-jna-8b046dafcc85",
+      "styleAttributes": {},
+      "x": 1250,
+      "y": -2800,
+      "width": 940,
+      "height": 320
+    },
+    {
+      "id": "01e24428ae91dffd",
+      "type": "file",
+      "file": "Pasted image 20250421102344.png",
+      "styleAttributes": {},
+      "x": 2120,
+      "y": -4080,
+      "width": 1053,
+      "height": 580
+    },
+    {
+      "id": "d7a4738e55d5b5bc",
+      "type": "file",
+      "file": "Pasted image 20250421102921.png",
+      "styleAttributes": {},
+      "x": 480,
+      "y": -3280,
+      "width": 1145,
+      "height": 360
+    },
+    {
+      "id": "f1b911da310f61c2",
+      "type": "file",
+      "file": "Pasted image 20250421102446.png",
+      "styleAttributes": {},
+      "x": 678,
+      "y": -4800,
+      "width": 1288,
+      "height": 640
+    },
+    {
+      "id": "1da1d7440f2502f1",
+      "type": "file",
+      "file": "Pasted image 20250421115257.png",
+      "styleAttributes": {},
+      "x": -1400,
+      "y": -4480,
+      "width": 1174,
+      "height": 614
+    },
+    {
+      "id": "c9e7e93e6c7f9e0f",
+      "type": "text",
+      "text": "# Testar Amazon Textract API\nhttps://aws.amazon.com/pt/textract/",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -1153,
+      "y": -4720,
+      "width": 680,
+      "height": 160
+    }
+  ],
+  "edges": [
+    {
+      "id": "93d1ac97dbf39612",
+      "styleAttributes": {},
+      "fromNode": "006e52929cf5c79c",
+      "fromSide": "top",
+      "toNode": "fd9b6cea87667cf4",
+      "toSide": "right",
+      "color": "4"
+    },
+    {
+      "id": "919e6947bd4f15f8",
+      "styleAttributes": {
+        "pathfindingMethod": null,
+        "path": "short-dashed"
+      },
+      "fromNode": "c68ae47fc61ac15b",
+      "fromSide": "right",
+      "toNode": "01e24428ae91dffd",
+      "toSide": "left"
+    },
+    {
+      "id": "6d22971144832f32",
+      "styleAttributes": {},
+      "fromNode": "c68ae47fc61ac15b",
+      "fromSide": "bottom",
+      "toNode": "d7a4738e55d5b5bc",
+      "toSide": "top"
+    },
+    {
+      "id": "f28b984b1c80e079",
+      "styleAttributes": {},
+      "fromNode": "d7a4738e55d5b5bc",
+      "fromSide": "bottom",
+      "toNode": "006e52929cf5c79c",
+      "toSide": "right"
+    },
+    {
+      "id": "e03f5ce28df64677",
+      "styleAttributes": {},
+      "fromNode": "d7a4738e55d5b5bc",
+      "fromSide": "bottom",
+      "toNode": "13a1eda60fb606cc",
+      "toSide": "top"
+    },
+    {
+      "id": "220233a8e781c918",
+      "styleAttributes": {},
+      "fromNode": "c9e7e93e6c7f9e0f",
+      "fromSide": "bottom",
+      "toNode": "1da1d7440f2502f1",
+      "toSide": "top"
+    },
+    {
+      "id": "064d040c0d3522a8",
+      "styleAttributes": {},
+      "fromNode": "1da1d7440f2502f1",
+      "fromSide": "bottom",
+      "toNode": "006e52929cf5c79c",
+      "toSide": "top"
+    }
+  ],
+  "metadata": {}
+}

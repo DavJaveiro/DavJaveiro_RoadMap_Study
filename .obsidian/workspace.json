@@ -1,14 +1,39 @@
 {
   "main": {
-    "id": "2cd6f2849b067028",
+    "id": "4503012f4081cd19",
     "type": "split",
     "children": [
       {
+<<<<<<< HEAD
         "id": "0b5da1e272e38d0c",
         "type": "tabs",
         "children": [
           {
             "id": "6772b5365c6eabe1",
+=======
+        "id": "99d39052124680ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab3a9c06504da4aa",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "IntelliOCR/Projeto IntelliOCR.canvas",
+                "viewState": {
+                  "x": -456.7873200546831,
+                  "y": -4171.76104765677,
+                  "zoom": -1.2171611932480597
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Projeto IntelliOCR"
+            }
+          },
+          {
+            "id": "f1e9ab83543a2515",
+>>>>>>> c4998b33fe3f115f73fa52d5f115cbb80bc4b425
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -17,21 +42,22 @@
               "title": "Nova aba"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "5a8e6e3c7b518077",
+    "id": "2234b844293a4c63",
     "type": "split",
     "children": [
       {
-        "id": "9bd51600a516f223",
+        "id": "1e62434389013f47",
         "type": "tabs",
         "children": [
           {
-            "id": "239d16c4ce2e2a77",
+            "id": "5e6cb1933579e0ea",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,7 +70,7 @@
             }
           },
           {
-            "id": "49b76b15934a2f08",
+            "id": "e10d74de94dda976",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +87,7 @@
             }
           },
           {
-            "id": "7b4392d2355a82d5",
+            "id": "6039fac740c3c01f",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -71,7 +97,7 @@
             }
           },
           {
-            "id": "3278f0bfea11d8d2",
+            "id": "7108843f1a16d734",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -87,20 +113,20 @@
     "width": 300
   },
   "right": {
-    "id": "7c431954dc020dee",
+    "id": "1babf4cadbf3602e",
     "type": "split",
     "children": [
       {
-        "id": "55022976fbadf86d",
+        "id": "503a1afc6f5c7b8e",
         "type": "tabs",
         "children": [
           {
-            "id": "f9772a0a2bcdcf01",
+            "id": "f939ec89b70f6a1b",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,25 +136,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Capítulo 2 - Introduction to the Relational Model"
+              "title": "Links inversos para Capítulo 3 - Database access with Spring Data"
             }
           },
           {
-            "id": "f5a9979d7bb8a183",
+            "id": "884b0b6ad1d025ec",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Capítulo 2 - Introduction to the Relational Model"
+              "title": "Links de saída para Capítulo 3 - Database access with Spring Data"
             }
           },
           {
-            "id": "64a953bfa3feaad7",
+            "id": "266bc523c04ae539",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -143,7 +169,7 @@
             }
           },
           {
-            "id": "563039702397f62c",
+            "id": "560cab341b2db18d",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -157,22 +183,22 @@
             }
           },
           {
-            "id": "611b982150214945",
+            "id": "468b0a93cb3510ab",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
+                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Capítulo 2 - Introduction to the Relational Model"
+              "title": "Sumário de Capítulo 3 - Database access with Spring Data"
             }
           },
           {
-            "id": "665c19ce77005480",
+            "id": "d0163af16f26cacd",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -207,6 +233,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
+<<<<<<< HEAD
   "active": "6772b5365c6eabe1",
   "lastOpenFiles": [
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
@@ -226,9 +253,25 @@
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md",
     "Errors API.md",
+=======
+  "active": "f1e9ab83543a2515",
+  "lastOpenFiles": [
+    "IntelliOCR/Projeto IntelliOCR.canvas",
+    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+    "Pasted image 20250421115257.png",
+    "Pasted image 20250421102921.png",
+    "Pasted image 20250421102446.png",
+    "Pasted image 20250421102437.png",
+    "Pasted image 20250421102344.png",
+    "Pasted image 20250421102320.png",
+    "Chapter 2 - A Five-Step Framework for The Modern Job Search-4.png",
+>>>>>>> c4998b33fe3f115f73fa52d5f115cbb80bc4b425
     "Compilação vs Transpilação.md",
-    "README.md",
-    "Sem título.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Sem título"
+    "Pasted image 20250418164144.png",
+    "Pasted image 20250409223432.png",
+    "Pasted image 20250421101214.png",
+    "IntelliOCR/imagens",
+    "IntelliOCR",
+    "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md"
   ]
 }
