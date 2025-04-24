@@ -155,8 +155,8 @@ Esse schema está dizendo que a combinação dessas 4 colunas identifica de form
 **Tratando a relação:**
 - Cada **departament** tem um nome, funciona em um prédio e tem um orçcamenot.
 - Cada *course*: tem um título, número de créditos, e pertence a um *department (dept_name, como chave estrangeira)*, muitos cursos podem estar em um único departamento (relação muitos-para-um)
-## **Basic Structure of SQL Queries**
-A estrutura básica de uma consulta SQL consiste em três cláusulas: select, from e where. Uma consulta recebe como entrada as relações listadas na cláusula **from**, opera sore elas conforme especificados nas cláusulas **where** e **select**, e então produz uma relação como resultado. 
+## 3.3 Basic Structure of SQL Queries
+A estrutura básica de uma consulta SQL <span style="background:#d4b106">consiste em três cláusulas: select, from e where</span>. Uma consulta recebe como entrada as relações listadas na cláusula **from**, opera sore elas conforme especificados nas cláusulas **where** e **select**, e então produz uma relação como resultado. 
 Introduzimos a sintaxe do SQL por meio de exemplos e descrevemos a estrutura geral das consultas SQL posteriormente.
 
 ### 3.3.1 Queries on a Single Relation
@@ -216,5 +216,30 @@ O SQL permite o uso dos conectivos lógicos **and**, **or** e **not** nas cláus
 Exploraremos outras características dos predicados da cláusula **where** mais adiante neste capítulo.
 
 ### 3.3.2 Queries on Multiple Relations
+Até agora, nossas consultas de exemplo foram em uma única relação. 
 
+Como exemplo, suponha que queremos responder à consulta "*Recupere os nomes de todos os instrutores, juntamente com os nomes de seus departamentos e o nome do prédio do departamento.*" Analisando o esquema da relação *instructor*, percebemos que podemos obter o nome do departamento a partir do atributo *dept_name*, mas o nome do prédio do departamento está presente no atributo *building* da relação *department*. Para responder à consulta, cada tupla na relação **instructor** deve ser combinada com a tupla na relação  **department** cujo valor de *dept_name* corresponda ao valor de **dept_name** da tupla de **instrutor**.
 
+Em SQL, para responder à consulta acima, listamos as relações que precisam ser acessada na cláusula **from** e especificamos a condição de correspondência na cláusula **where**. A consulta acima pode ser escrita em SQL como:
+```sql
+select name, instructor.dept_name, building from instructor, department where instructor.dep_name = department.dept_name;
+```
+
+ Se as relações *instructor* e *department* forem como mostradas na Figura 2.1 e Figura 2.5, respectivamente, então o resultado dessa consulta é mostrado na Figura 3.5.
+
+Observe que o atributo *dept_name* ocorre em ambas as relações, **instructor e department**, e o nome da relação é usado como prefixo (em *instructor.dept_name*) e *department.dept_name* para deixar claro a qual atributo estamos nos referindo. Em contraste, os atributos **name** e *building* aparecem apenas em uma das relações e, po
+rtanto, não precisam ser prefixados pelo nome da relação.
+
+Essa convenção de nomenclatura requer que as relações presentes na cláusula **from** tenham nomes distintos. Essa exigência causa problemas em alguns casos, como quando informações de duas tuplas diferentes na mesma relação precisam ser combinadas. Na seção 3.4.1, veremos como evitar esses problemas usando a operação de renomeação *(rename)*.
+
+Agora consideramos o caso geral de consultas SQL envolvendo múltiplas relações. Como vimos anteriormente, <span style="background:#d4b106">uma consulta SQL pode conter três tipos de cláusulas</span>: a cláusula *select*, a cláusula *from* e a cláusula *where*. O papel de cada cláusula é o seguinte:
+- A cláusula *select* é usada para listar os atributos desejados no resultado de uma consulta;
+- A cláusula *from* é uma lista das relações a serem acessadas na avaliação da consulta;
+- A cláusula *where* é um predicado envolvendo atributos das relações presentes na cláusula *from*.
+
+Uma consulta SQL típica tem a forma:
+```sql
+select A1, A2,..., An
+from ri, r2,...,rm
+where P;
+```

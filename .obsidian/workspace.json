@@ -1,63 +1,41 @@
 {
   "main": {
-    "id": "4503012f4081cd19",
+    "id": "1fa446097e7ecba9",
     "type": "split",
     "children": [
       {
-<<<<<<< HEAD
-        "id": "0b5da1e272e38d0c",
+        "id": "656bbfa94f848c93",
         "type": "tabs",
         "children": [
           {
-            "id": "6772b5365c6eabe1",
-=======
-        "id": "99d39052124680ab",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ab3a9c06504da4aa",
+            "id": "692b24d4f12eb56b",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "IntelliOCR/Projeto IntelliOCR.canvas",
-                "viewState": {
-                  "x": -456.7873200546831,
-                  "y": -4171.76104765677,
-                  "zoom": -1.2171611932480597
-                }
+                "file": "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Projeto IntelliOCR"
-            }
-          },
-          {
-            "id": "f1e9ab83543a2515",
->>>>>>> c4998b33fe3f115f73fa52d5f115cbb80bc4b425
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Capítulo 3 - Introduction to SQL"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "2234b844293a4c63",
+    "id": "b2b0dbc1f2569a5a",
     "type": "split",
     "children": [
       {
-        "id": "1e62434389013f47",
+        "id": "bc700f81e111bc5b",
         "type": "tabs",
         "children": [
           {
-            "id": "5e6cb1933579e0ea",
+            "id": "94d90812d54ee88c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -70,7 +48,7 @@
             }
           },
           {
-            "id": "e10d74de94dda976",
+            "id": "e926e5c40c703898",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -87,7 +65,7 @@
             }
           },
           {
-            "id": "6039fac740c3c01f",
+            "id": "ceec65f7c201d4f9",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -97,7 +75,7 @@
             }
           },
           {
-            "id": "7108843f1a16d734",
+            "id": "100df034ff4de7c9",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -110,23 +88,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "1babf4cadbf3602e",
+    "id": "b52c6bbbf72dc5c0",
     "type": "split",
     "children": [
       {
-        "id": "503a1afc6f5c7b8e",
+        "id": "ac376509452c79d7",
         "type": "tabs",
         "children": [
           {
-            "id": "f939ec89b70f6a1b",
+            "id": "5eca53d4d856b3cf",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Capítulo 3 - Database access with Spring Data"
+              "title": "Links inversos para Capítulo 4 - Engenharia de Requisitos"
             }
           },
           {
-            "id": "884b0b6ad1d025ec",
+            "id": "8ba99daf8ef34152",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Capítulo 3 - Database access with Spring Data"
+              "title": "Links de saída para Capítulo 4 - Engenharia de Requisitos"
             }
           },
           {
-            "id": "266bc523c04ae539",
+            "id": "fd3a5a70e621424d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -169,7 +148,7 @@
             }
           },
           {
-            "id": "560cab341b2db18d",
+            "id": "85bc527f165c94f4",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -183,22 +162,22 @@
             }
           },
           {
-            "id": "468b0a93cb3510ab",
+            "id": "39d9d4553fe15815",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Capítulo 3 - Database access with Spring Data"
+              "title": "Sumário de Capítulo 4 - Engenharia de Requisitos"
             }
           },
           {
-            "id": "d0163af16f26cacd",
+            "id": "0b264c6aea0a0fef",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -233,45 +212,12 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-<<<<<<< HEAD
-  "active": "6772b5365c6eabe1",
+  "active": "692b24d4f12eb56b",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
-    "Capítulo 3 - Database access with Spring Data-8.png",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
-    "Pasted image 20250418164144.png",
-    "Capítulo 3 - Database access with Spring Data-7.png",
-    "Capítulo 3 - Database access with Spring Data-6.png",
-    "Capítulo 3 - Database access with Spring Data-5.png",
-    "Capítulo 3 - Database access with Spring Data-4.png",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
-    "Capítulo 4 - Engenharia de Requisitos-1.png",
-    "Capítulo 4 - Engenharia de Requisitos.png",
-    "Capítulo 3 - Introduction to SQL-3.png",
-    "Capítulo 3 - Introduction to SQL-2.png",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 3 - Desenvolvimento ágil de software.md",
-    "Errors API.md",
-=======
-  "active": "f1e9ab83543a2515",
-  "lastOpenFiles": [
-    "IntelliOCR/Projeto IntelliOCR.canvas",
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
-    "Pasted image 20250421115257.png",
-    "Pasted image 20250421102921.png",
-    "Pasted image 20250421102446.png",
-    "Pasted image 20250421102437.png",
-    "Pasted image 20250421102344.png",
-    "Pasted image 20250421102320.png",
-    "Chapter 2 - A Five-Step Framework for The Modern Job Search-4.png",
->>>>>>> c4998b33fe3f115f73fa52d5f115cbb80bc4b425
-    "Compilação vs Transpilação.md",
-    "Pasted image 20250418164144.png",
-    "Pasted image 20250409223432.png",
-    "Pasted image 20250421101214.png",
-    "IntelliOCR/imagens",
-    "IntelliOCR",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md"
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
+    "Capítulo 4 - Engenharia de Requisitos-4.png",
+    "Capítulo 4 - Engenharia de Requisitos-3.png",
+    "Capítulo 4 - Engenharia de Requisitos-2.png"
   ]
 }
