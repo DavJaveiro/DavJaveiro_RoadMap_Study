@@ -6,15 +6,15 @@ Os objetivos deste capítulo são introduzir **requisitos de software** e explic
 - compreender por que o gerenciamento de requisitos é necessário e como ele apoia outras atividades da engenharia de requisitos.
 
 **Conteúdo**
-- 4.1 Requisitos funcionais e não funcionais;
-- 4.2 Processos de engenharia de requisitos;
-- 4.3 Elicitação de requisitos;
-- 4.4 Especificação de requisitos;
-- 4.5 Validação de requisitos;
-- 4.6 Mudança de requisitos.
+- [x] 4.1 Requisitos funcionais e não funcionais;
+- [x] 4.2 Processos de engenharia de requisitos;
+- [ ] 4.3 Elicitação de requisitos;
+- [ ] 4.4 Especificação de requisitos;
+- [ ] 4.5 Validação de requisitos;
+- [ ] 4.6 Mudança de requisitos.
 
 ---
-Os requisitos de um sistema são as descrições dos serviços que o sistema deve prestar e as restrições a sua operação. Esses requisitos <span style="background:#b1ffff">refletem as necessidades dos clientes de um sistema</span> que atende a um determinado propósito, como controlar um dispositivo, fazer um pedido ou encontrar informações. O processo de descoberta, análise, documentação e conferência desses serviços e restrições é chamado de engenharia de requisitos ER.
+Os requisitos de um sistema são as descrições dos serviços que o sistema deve prestar e as restrições a sua operação. Esses requisitos <span style="background:#b1ffff">refletem as necessidades dos clientes de um sistema</span> que atende a um determinado propósito, como controlar um dispositivo, fazer um pedido ou encontrar informações. O processo de **descoberta**, **análise**, **documentação** e **conferência desses serviços** e restrições **é chamado de engenharia de requisitos ER**.
 
 O termo *requisito* não é utilizado consistentemente na indústria de software. Em alguns casos, um requisito é simplesmente uma declaração abstrata de alto nível de **um serviço** que um sistema deve **oferecer** ou de uma **restrição** a um sistema. No outro extremo, é uma **definição formal** detalhada de uma função do sistema. Davis (1993) explica por que essas diferenças existem:
 
@@ -161,5 +161,22 @@ Frequentemente, os requisitos não funcionais entram em conflito e interagem com
 Os requisitos não funcionais, como confiabilidade, segurança e confidencialidade, são particularmente importantes para os sistemas críticos. Na Parte 2, os requisitos de dependabilidade serão abordados, bem como as maneiras de especificar confiabilidade. segurança (safety) e segurança da informação (security) na forma de requisitos.
 
 ## 4.2 Processos de Engenharia de Requisitos
-Conforme discutido no Capítulo 2, a engenharia de requisitos envolve três atividades fundamentais: a descoberta dos requisitos por meio da interação com *stakeholders* (elicitação e análise); 
+Conforme discutido no Capítulo 2, a engenharia de requisitos envolve três atividades fundamentais: a descoberta dos requisitos por meio da interação com *stakeholders* (elicitação e análise); a conversão desses requisitos em uma forma padrão (especificação); e a averiguação de que os requisitos realmente definem o sistema que o cliente quer (validação). O processo foi demonstrado de forma sequencial, entretanto, na prática, a engenharia de requisitos é um processo iterativo, no qual as atividades são intercaladas, como mostra a Figura 4.6.
+![[Capítulo 4 - Engenharia de Requisitos-5.png]]
 
+As atividades são organizadas como um processo iterativo em torno de uma espiral, e o resultado do processo de ER é um documento de requisitos de sistema. A quantidade de tempo e esforço dedicados a cada atividade em uma iteração depende do estágio do processo geral, do sistema a ser desenvolvido e do orçamento disponível.
+
+No início do processo, a maior parte do esforço é dedicada à compreensão do negócio em alto nível e dos requisitos não funcionais, além dos requisitos de usuário do sistema. Em uma etapa mais avançada do processo - anéis mais externos da espiral -, mais esforço será dedicado à elicitação e à compreensão dos requisitos não funcionais e dos requisitos de sistema mais detalhados.
+
+Esse modelo em espiral acomoda abordagens para o desenvolvimento nas quais os requisitos são desenvolvidos em diferentes níveis de detalhe. O número te iterações em torno da espiral pode variar, de modo que ela pode ser encerrada após alguns ou todos os requisitos de usuário terem sido elicitados. O desenvolvimento ágil pode ser utilizado, em vez da prototipação, para que os requisitos e a implementação do sistema sejam desenvolvidos em conjunto.
+
+Em praticamente todos os sistemas, os requisitos mudam. As pessoas envolvidas desenvolvem uma compreensão melhor do que elas querem que o software faça; a organização que está adquirindo o sistema muda; e são feitas modificações no hardware, no software e no ambiente organizacional do sistema. As mudanças devem ser gerenciadas para entender tanto o impacto em outros requisitos quanto as implicações no sistema e o custo de realizã-las. 
+
+## 4.3 Elicitação de Requisitos
+Os objetivos do processo de elicitação de requisitos são compreender o trabalho que os *stakeholders* realizam e entender como usariam um novo sistema para apoiar o trabalho deles. Durante a elicitação de requisitos, os engenheiros de software trabalham com os *stakeholders* para saber mais sobre o domínio da aplicação, as atividades envolvidas no trabalho, os serviços e as características do sistema que eles querem, o desempenho desejado para o sistema, as limitações de hardware etc.
+Elicitar e compreender os requisitos dos *stakeholders* no sistema é um processo difícil por várias razões:
+1. Muitas vezes os *stakeholders* não sabem o que querem de um sistema de computador, exceto em aspectos mais gerais; eles podem achar difícil articular o que querem que o sistema faça; podem fazer exigências irreais porque não sabem o que é viável ou não;
+2. Em um sistema, é natural que os *stakeholders* expressem os requisitos em seus próprios termos e com conhecimento implícito de seu próprio trabalho. Os engenheiros de requisitos, sem experiência no domínio do cliente, podem não entender tais requisitos.
+3. Diferentes *stakeholders*, com requisitos distintos, podem expressá-los de maneiras variadas. Os engenheiros de requisitos têm de descobrir todas as possíveis fontes de requisitos, além dos pontos de convergência e de conflito.
+4. Fatores políticos podem influenciar os requisitos de um sistema. Os gerentes podem exigir requisitos de sistema específicos, o que lhes permite aumentar sua influência na organização.
+5. O ambiente econômico e de negócios no qual a análise ocorre é dinâmico. Inevitavelmente, ele muda durante o processo de análise. A importância de determinados requisitos pode mudar. Novos requisitos podem surgir de novos *stakeholders* que não foram consultados originalmente.
