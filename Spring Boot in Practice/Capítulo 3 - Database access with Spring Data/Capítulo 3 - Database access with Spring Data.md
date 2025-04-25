@@ -865,13 +865,107 @@ Embora as consultas nomeadas para declarar consultas na classe de entidade funci
 Como alternativa, podemos fornecer as informações da consulta na <span style="background:#d4b106">interface do repositório.</span> Isso coloca junto o método de consulta e a consulta JPQL no mesmo local. Podemos usar a anotação *@Query* nos métodos da interface do repositório para fazer isso. Além disso, a vantagem de usar a anotação *@Query* em vez de consultas nomeadas é que a anotação *@Query* <span style="background:#d4b106">permite que utilizemos consultas SQL nativas</span>. Assim, podemos usar tanto JPSQl quanto consultas SQL nativas com a anotação *@Query*.
 
 ### 3.5.1 Technique: Using @Query annotation to define queries and retrieve domain objects in a relational database with Spring Data JPA
-In this technique, we'll discuss how to use *@Query* annotation to define and retrieve domain objects.
+Neste técnica, discutiremos como usar a anotação *@Query* para definir e recuperar objetos de domínio. 
 
-**Problem**
-We want to use *@Query* annotation with Spring Data JPA to define custom queries in repository interface methods to manage domain objects in a relational database.
+Devemos utilizar a anotação *@Query* com o Spring Data JPA para definir consultas personalizadas nos métodos da interface do repositório, a fim de gerenciar objetos de domínio em um banco de dados relacional. 
+A anotação *@Query* permite que forneçamos as consultas junto com a assinatura do método na interface do repositório. Essa é considerada uma abordagem mais recomendada, pois os objetos de domínio do negócio ficam livres de informações relacionadas à persistência. 
 
-**Solution**
-The *@Query* annotation allows you to provide the queries along with the method signature in the repository interface. This is considered a better approach, as the business domain objects are kept free from persistence-related information.
+Let's define the *CourseRepository* interface in which you'll provide three repository methods using the *@Query* annotation, as shown in the following listing.
 
-Let's redefine the *CourseRepository* interface in which we'll provide three repository methods using the *@Query* annotation, as shown in the following listing.
+A classe que iremos escrever define diversos métodos de consulta e atualização em entidades do tipo *Course*, utilizando a anotação *@Query* com **JPQL**, parâmetros nomeados, argumentos posicionais, consultas nativas, e também operações de modificação com suporte transacional.
 
+**Método 1: Consulta por categoria (argumento posicional  ou placeholders)**:
+```java
+@Query("select c from Course c where c.category=?1")
+Iterable<Course> findAllByCategory(String category);
+```
+Este método de repositório encontra todos os cursos que pertencem à categoria fornecida. A anotação *@Query* permite definir uma consulta **JPQL** personalizada. Neste caso, foi usado um **argumento posicional (?1)**, que será substituído pelo valor do parâmetro *category*.
+
+**Método 2: Consulta por categoria e nota mínima (com parâmetros nomeados)**
+```java
+@Query("select c from Course c where c.category=:category and c.rating > :rating")
+Iterable<Course> findAllByCategoryAndRatingGreaterThan(@Param("category") String category, @Param("rating") int rating);
+```
+Esse método recupera todos os cursos que:
+- pertencem à categoria especificada e;
+- possuem uma nota (rating) maior que o valor fornecido
+Aqui são usados parâmetros nomeados (*:category* e *:rating*), que são substituídos pelas variáveis correspondentes nos argumentos do método com a anotação *@Param*. 
+
+Podemos escrever a consulta sem o uso de **parâmetros nomeados**, neste caso, usando apenas os placeholders:
+```java
+@Query("select c from Course c where c.category=?1 and c.rating>?2")
+Itrable<Course> findAllByCategoryAndRatingGreaterThan(String category, int rating);
+```
+
+**Método 3: Consulta por nota (com SQL nativo)**
+```java
+@Query("SELECT * FROM COURSE where rating=?1", nativeQuery = true)
+Iterable(Course) findAllByRating(int rating);
+```
+Este método busca todos os cursos com uma nota específica, usando uma consulta SQL nativa.
+Como a consulta não é JPQL, foi necessário definir o campo *nativeQuery = true*, logo após a consulta.
+
+**Método 4: atualização da nota do curso pelo nome**
+```java
+@Modifying
+@Transactional
+@Query("update Course c set c.rating=?1 where c.name=?2)
+int updateCourseRatingByName(int rating, String name);
+```
+
+---
+When we query changes data, we'll also need to annotate the method with the *@Modifying* annotation. If we use *UPDATE*, *INSERT* or *DELETE*, we also need to annotate the method with *@Modifying*.
+
+### 🔹 1. Uso de `@Query` com parâmetros posicionais
+
+- Você utilizou a anotação `@Query` para definir a **JPQL query** que será usada pelo **Spring Data** para buscar os cursos.
+    
+- Essa consulta é semelhante à usada na técnica de **named queries** da seção 3.4.6.
+    
+- A query utiliza **argumentos posicionais** para substituir os parâmetros fornecidos.
+    
+- Neste caso, você está recuperando todos os cursos que pertencem à **categoria fornecida**.
+
+### 2. Uso de `@Query` com parâmetros nomeados (`@Param`)
+
+- Na consulta seguinte, você também usa a anotação `@Query`, mas com algumas diferenças na sintaxe.
+    
+- Em vez de argumentos posicionais, você utilizou **parâmetros nomeados**.
+    
+- Embora o uso de argumentos posicionais funcione bem, ele pode ser **propenso a erros** durante refatorações, caso a posição dos parâmetros mude.
+    
+- Para evitar esse problema, você usa a anotação `@Param` para **atribuir um nome ao parâmetro** e **fazer o binding desse nome dentro da query**.
+### 🔹 3. Uso de `nativeQuery = true`
+
+- Na terceira query, você especificou uma **consulta SQL nativa** e definiu a flag `nativeQuery = true` para indicar que se trata de uma consulta **SQL nativa** (não JPQL).
+    
+- Normalmente, diferentes fornecedores de banco de dados oferecem **recursos específicos** nativos.
+    
+- Assim, se for necessário aproveitar recursos específicos de um banco, você pode definir a SQL nativa com `nativeQuery = true`.
+
+🔹 4. Query de modificação de dados com `@Transactional` e `@Modifying`
+- A quarta query é particularmente interessante: até agora, a maioria das queries demonstradas eram usadas apenas para recuperar dados.
+- Esta, no entanto, é uma **query de manipulação de dados - ela atualiza registros no banco**.
+
+Para isso, o método possui:
+- *@Transactional* - usada para garantir que a execução do método ocorra dentro de um contexto transacional; como há uma atualização no banco de dados, a operação precisa ser executada em uma transação. Visamos garantir que todas as ações de um método sejam executadas como parte de uma única transação. 
+- 
+- *@Modifying*
+- Indica que a query definida com `@Query` é uma **modifying query** (query que modifica dados).
+- Essa anotação só funciona em conjunto com `@Query`.
+- Além de `UPDATE`, também pode ser usada com `INSERT`, `DELETE` e comandos DDL.
+- **Atenção**: se você esquecer de usar `@Modifying` em uma query que altera dados, o Spring lançará uma exceção do tipo `InvalidDataAccessApiUsageException`.
+
+O mecanismo @Query é uma excelente funcionalidade que permite especificar consultas JPQL e SQL diretamente nos métodos de consulta do repositório. Ele oferece várias vantagens em comparação com as outras duas abordagens (por exemplo, métodos de consulta e consulta nomeada).
+
+O método de consulta do Spring Data tem uma limitação quando você precisa buscar dados de várias tabelas ou deseja usar algum recurso nativo do banco de dados. A abordagem @Query é útil quando você precisa buscar dados de várias tabelas com uma consulta complexa de junção de tabelas. Você pode definir a consulta e permitir que o repositório do Spring Data utilize essa consulta para recuperar os dados. Você também pode usar recursos nativos do SQL do banco de dados subjacente, se necessário.
+
+Embora semelhante, a abordagem de consulta nomeada introduz detalhes de persistência com a anotação @NamedQuery, o que nem sempre é considerado uma boa prática. Um leitor atento pode argumentar que a abordagem @Query também especifica consultas SQL nativas dentro da classe Java, o que também não é considerado uma boa prática. Para superar esse problema, o Spring Data também permite <span style="background:#d4b106">externalizar as consultas em um arquivo de propriedades</span>. Você pode criar uma pasta chamada META-INF dentro da pasta src\main\resources. Adicione um arquivo chamado jpa-named-queries.properties dentro da pasta META-INF. Em seguida, você pode externalizar as consultas no formato Entidade.metodoFinder=Consulta. Por exemplo, você pode externalizar a consulta para o método findAllByCategory(..), conforme mostrado aqui: Course.findAllByCategory = select c from Course c where c.category=?1. O Spring Data automaticamente fará referência a essa consulta externalizada quando precisar executar o método findAllByCategory(..).
+
+Embora as abordagens de consulta nomeada e consulta pareçam excelentes alternativas para controlar como buscar dados, ambas sofrem de uma grande desvantagem. 
+
+<span style="background:#d4b106">Nessas abordagens, não há verificação de sintaxe da consulta fornecida em tempo de compilação, e qualquer problema de sintaxe na consulta só aparece em tempo de execução. </span>
+
+Na próxima seção, você aprenderá duas técnicas diferentes para definir consultas de forma programática de maneira segura em termos de tipos.
+
+## 3.6 Using Criteria API with Spring Data JPA
