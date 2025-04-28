@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "14184fa1fdb71712",
+        "id": "e71551417ba85f27",
         "type": "tabs",
         "children": [
           {
-            "id": "c4f26226e8005e5d",
+            "id": "238653397798b432",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 4 - Spring Boot Autoconfiguration and Actuator"
+              "title": "Capítulo 4 - Engenharia de Requisitos"
             }
           }
         ]
@@ -212,10 +212,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "c4f26226e8005e5d",
+  "active": "238653397798b432",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+    "Capítulo 4 - Engenharia de Requisitos-6.png",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
+    "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator",
     "Capítulo 3 - Database access with Spring Data-10.png",
     "Sem título 1.md",

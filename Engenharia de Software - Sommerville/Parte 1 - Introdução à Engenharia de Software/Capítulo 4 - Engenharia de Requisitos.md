@@ -180,3 +180,15 @@ Elicitar e compreender os requisitos dos *stakeholders* no sistema é um process
 3. Diferentes *stakeholders*, com requisitos distintos, podem expressá-los de maneiras variadas. Os engenheiros de requisitos têm de descobrir todas as possíveis fontes de requisitos, além dos pontos de convergência e de conflito.
 4. Fatores políticos podem influenciar os requisitos de um sistema. Os gerentes podem exigir requisitos de sistema específicos, o que lhes permite aumentar sua influência na organização.
 5. O ambiente econômico e de negócios no qual a análise ocorre é dinâmico. Inevitavelmente, ele muda durante o processo de análise. A importância de determinados requisitos pode mudar. Novos requisitos podem surgir de novos *stakeholders* que não foram consultados originalmente.
+
+Um modelo do processo de elicitação e análise é exibido na Figura 4.7, abaixo. Cada organização terá sua própria versão ou instanciação desse modelo geral, dependendo de fatores locais como a experiência da equipe, o tipo de sistema sendo desenvolvido e os padrões utilizados.
+
+![[Capítulo 4 - Engenharia de Requisitos-6.png]]
+1. Descoberta e compreensão dos requisitos;
+2. Classificação e organização dos requisitos;
+3. Priorização e negociação dos requisitos;
+4. Documentação dos requisitos.
+
+- *Descoberta e compreensão dos requisitos:* esse é o processo de interagir com os *stakeholders* do sistema para descobrir seus requisitos. Os requisitos de domínio dos *stakeholders* e documentação também são descobertos durante essa atividade. 
+- *Classificação e organização dos requisitos.* Essa atividade pega o conjunto não estruturado de requisitos, agrupa os requisitos relacionados e os organiza em grupos coerentes.
+- 
