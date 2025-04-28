@@ -969,3 +969,278 @@ Embora as abordagens de consulta nomeada e consulta pareçam excelentes alternat
 Na próxima seção, você aprenderá duas técnicas diferentes para definir consultas de forma programática de maneira segura em termos de tipos.
 
 ## 3.6 Using Criteria API with Spring Data JPA
+Um dos principais inconvenientes de usar JPQL é a falta de segurança de tipos e a ausência de verificação estática de consultas. Isso ocorre porque as consultas JPQL <span style="background:#d4b106">não são validadas em tempo de compilação</span>. Assim, qualquer erro na consulta só pode ser detectado em tempo de execução. 
+
+Portanto, como escrevemos a nossa consulta como uma string, o Java não sabe nada sobre o conteúdo dessa string. Então:
+- Se erramos o nome do atributo ou o nome da entidade, o compilador não vai reclamar. Só iremos descobrir o erro em **tempo de execução**, ou seja, quando a nossa aplicação já estiver rodando e a consulta for executada!
+
+A Criteria API, introduzida no JPA 2.0, adiciona uma maneira segura de tipos para criar consultas. Ela permite expressar uma consulta de forma programática e com segurança de tipos. A segurança de tipos da consulta é alcançada usando interfaces e classes que representam várias partes da consulta, como a cláusula *select*, *order-by* e outras. A segurança de tipos também é garantida em termos de referenciar atributos de uma entidade. 
+
+### Technique: Using Criteria API to manage domain objects in a relational database with Spring Data JPA
+In this technique, we'lll demonstrate the use of Criteria API.
+
+**Problem**
+Usamos JPQL ou consultas SQL nativas para acessar dados do banco de dados. No entanto, tanto o JPSQ quanto o SQL não fornecem nenhum mecanismo para validar a correção das consultas em tempo de compilação. Em vez disso, <span style="background:#d4b106">todos os problemas de sintaxe das consultas são detectados em tempo de execução</span>. Podemos implementar uma técnica que permita definir consultas programaticamente de maneira segura em termos de tipos, a fim de reduzir erros de execução nas consultas. Criteria não é nada simples...
+
+Criteria API is a native API of JPA specification. Thus, we don't need additional libraries to use in our Spring Boot application.
+
+```java
+@SpringBootTest  
+class CourseTrackerSpringBootApplicationTests {  
+  
+    @Autowired  
+    private CourseRepository courseRepository;  
+  
+    @Autowired  
+    private EntityManager entityManager;  
+  
+    public void givenCoursesCreatedWhenLoadCoursesWithQueryThenExpectCorrectCourseDetails() {  
+  
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();  
+  
+        CriteriaQuery<Course> courseCriteriaQuery = criteriaBuilder.createQuery(Course.class);  
+  
+        Root<Course> courseRoot = courseCriteriaQuery.from(Course.class);  
+  
+        Predicate courseCategoryPredicate = criteriaBuilder.equal(courseRoot.get("category"), "Spring");  
+  
+        courseCriteriaQuery.where(courseCategoryPredicate);  
+  
+        TypedQuery<Course> query = entityManager.createQuery(courseCriteriaQuery);  
+  
+        Assertions.assertThat(query.getResultList().size()).isEqualTo(3);  
+    }  
+  
+}
+```
+
+Realizamos as seguintes atividades no caso de teste:
+1. Injeção do #EntityManager: injetamos o EntityManager na classe de teste e usamos para criar uma instância de #CriteriaBuilder. Uma instância de *EntityManager* está associada a um contexto de **persistência**, que é um conjunto de instâncias de entidades. Dentro do contexto de persistência, as instâncias de entidades e seus ciclos de vida são gerenciados. A instância de *CriteriaBuilder* permite construirmos consultas de critérios, seleções, ordenações etc.
+
+2. Definição da #CriteriaQuery: o *CriteriaBuilder* reetornado é usado para definir uma *CriteriaQuery*, e seu tipo é vinculado ao tipo *Course*. 
+
+3. Definição de #Root da consulta usando a *CriteriaQuery* retornada: o *Root* representa a raiz da consulta, que é a entidade principal sobre a qual a consulta será executada (neste caso, a entidade *Course*). 
+
+4. Criação de um *Predicate*: posteriormente, definimos o *Predicate* que especifica uma condição. Neste exemplo, o Predicate representa a categoria como *Spring*;
+
+5. Uso do *Predicate* e criação da *TypedQuery*: por fim, usamos o *Predicate* previamente definida e criamos uma *TypedQuery*, que fornece a saída da consulta.  A *TypedQuery* garante a segurança de tipos, permitindo que o resultado da consulta seja diretamente mapeado para o tipo *Course*. 
+
+## 3.7 Using QueryDSL with Spring Data JPA
+Na seção 3.6, exploramos o uso da Criteria API com o Spring Data JPA. Embora a Criteria API seja uma API nativa do JPA, um dos principais desafios é a sua natureza verbosa. Para executar uma consulta SELECT simples, é necessário escrever várias linhas de código. 
+
+O #QueryDSL é uma biblioteca alternativa de terceiros que também permite construir consultas seguras em termos de tipos de forma mais concisa, utilizando sua API fluente. Assim como a Criteria API, ele também garante que as seguintes verificações sejam feitas em tempo de compilação:
+- Os tipos de entidade especificados em uma consulta;
+- Todas as propriedades usadas em uma consulta, se elas existem e podem ser persistidas no banco de dados;
+- Todos os operadores SQL recebem os valores do tipo esperado;
+- A consulta resultante é sintaticamente correta.
+
+O Spring Data fornece uma interface chamada *QuerydslPredicateExecutor* para aproveitar os recursos do QueryDSL nos módulos do Spring Data. Na próxima técnica, vamos examinar o uso do #Querydsl com o JPA. #QueryDSL.
+
+
+🔸 **Para queries simples e médias** → `@Query` com JPQL resolve bem.  
+🔸 **Para queries dinâmicas e seguras** → QueryDSL é ótimo.  
+🔸 **Para queries complexas/otimizadas** → SQL em arquivo `.sql`, carregado via `NamedNativeQuery`, `JdbcTemplate`, ou até frameworks como **MyBatis**.
+
+QuerySQL is an alternative to Criteria API that provides a fluent and concise API. Like Criteria API, it allows you to define the queries programmatically in a type-safe manner. In this technique, you'll see the use of QueryDSL API with Spring Data JPA to manage domain objects in a relational database.
+
+- The *querydsl-apt* library is an annotation processing tool (APT) that enables the processing of the annotation in the source files before they move to the compilation stage. This tool generates the so-called *Q-types classes* that are related to the entity classes present in the application. These Q-types are classes that are directly related to the entity classes of your application but are prefixed with the letter Q. In our example, we'll see a QCourse.java source file created by this tool.
+- The *querydsl-jpa* is the *Querydsl* library designed to be working alongside a JPA application. Similarly, if you would like to use QueryDSL with MongoDB database, we need to use querydsl-mongodb Maven dependecy.
+- The *apt-maven-plugin* ensures that the **Q-types** are generated at the time of the <span style="background:#d4b106">process goal of the Maven build</span>. Besides, as the name indicates, the *output-directory* property is the place where the generated *Q-types* are kept. Furthermore, this directory needs to be included as the source folder of the project, as you'll use these generated Java files in our application.
+
+Let's now focus on the *CourseRepository* interface, as shown in the following listing.
+```java
+@Repository
+public interface CourseRepository extends CrudRepository<Course, Long>, QuerydslPredicateExecutor<Course> {
+
+}
+```
+Along with the *CrudRepository* interface, *CourseRepository* now also extends the *QuerydslPredicateExecutor* interface. Although this interface is not compulsory to be implemented to use *Querydsl*, it provides several overloadaed methods that let we use *Querydsl* instances with the familiar query methods (e.g., Iterable< T> findAll()). Note that the query method from the *CrudRepository* interfaces does not take any argument. 
+
+Portanto, ao estender a interface, o nosso repository herda várias métodos prontos que permitem usar a *QueryDSL* de forma fluida e integrada ao Spring Data - sem precisar criar uma query na mão com *JPAQuery*. 
+
+Mesmo que o uso do *QuerydslPredicateExecutor* não seja obrigatório para trabalhar com QueryDSL, ele facilita, pois podemos fazer consultas com predicates  e ordenações, do tipo:
+```java
+courseRepository.findAll(course.category.eq("Spring"));
+courseRepository.finAll(course.category.eq("Spring"), course.rating.desc());
+```
+
+Para esta demonstração, não há alteração em nosso POJO. Caso o nosso arquivo-fonte não seja gerado automaticamente, podemos executar o comando *mvn generate-sources* a partir do path root of we project for generated the source-code.
+
+
+## 3.8 Managing domain object relationships
+Acessar os dados de uma única tabela é relativamente simples, mas isso raramente ocorre em aplicações empresariais modernas. Na maioria dos cenários, é provável que usemos mais de uma tabela para recuperar os dados necessários.
+
+Na nomenclatura de banco de dados relacionais, recuperar as colunas necessárias de diferentes tabelas é conhecido como #projection. O Spring Data permite que utilizemos projeções por meio de projeção baseada em #interface ou projeção baseada em class.
+
+Uma projeção baseada em *interface*  permite que definamos atributos de forma limitada de uma entidade, declarando uma interface que expõe métodos de acesso para as propriedades que vem ser lidas. Por exemplo, se desejamos ler apenas o campo *description* da entidade **Course** ao buscar cursos pelo nome, podemos primeiro definir uma interface que retorne apenas a descrição:
+```java
+public interface DescriptionOnly {
+	String getDescription();
+}
+```
+
+Podemos, após isto, adicionar um método de consulta na interface *CourseRepository* que retorna uma coleção de tipos *DescriptionOnly*:
+```java
+@Repository
+public interface CourseRepository extends CrudRepository<Course, Long> {
+	Iterable<DescriptionOnly> getCourseByName(String name);
+}
+```
+
+O teste abaixo, validaria a projeção baseado em interface:
+```java
+@Test
+public void givenACourseAvaibleWhenGetCourseByNameThenGetCourseDescription() {
+	Iterable<DescriptionOnly> result = courseRepository.getCourseByName("Rapidt Spring Boot Application Development");
+	
+assertThat(result).extracting("description").contains("Spring Boot gives all the power of the Spring )
+}
+```
+
+Como as *projeções* em Spring Data geralmente estão fortemente acopladas aos repositórios (elas existem para buscar dados parciais diretamente do banco, e não para regra de negócio ou transporte entre camadas), é comum separarmos a estrutura em `repository/projection`, deixando bem explícito que são **projeções ligadas às consultas**. 
+
+com/
+└── seuprojeto/
+    ├── model/
+    ├── repository/
+    │    ├── CourseRepository.java
+    │    └── projection/
+    │         └── CourseView.java
+    ├── service/
+    ├── controller/
+    └── dto/
+
+
+O método **getCourseByName()** retorna um Iterable do tipo *DescriptionOnly*, e recuperamos a descrição. 
+
+Uma projeção baseada em classe também é conhecida como **DTO**. Um #DTO é uma classe Java POJO que contém as propriedades selecionadas retornadas pela consulta. Como o nome sugere, o principal propósito desse objeto é transferir dados da camada DAO para uma camada superior, como a camada de serviço. Podemos lembrar que, como uma boa prática, a camada de serviço atua como uma ponte entra a camada DAO e os controladores Spring, e as camadas DAO não são acessadas diretamente. 
+
+Outro conceito importante ao lidar com mais de uma entidade é a relação entre elas. Com base em sua associação, essa relação é classificada nas seguintes categorias:
+- **um-para-um** (One-to-one) - esse tipo de relacionamento indica que uma entidade está associada a exatamente uma entidade de outro tipo. Por exemplo, em nossos testes, usamos Course, e vamos assumir que temos outra entidade chamada *CourseDetails*, que captura detalhes adicionais sobre um *Course*. Assim, podemos dizer que as entidades **Course** e **CourseDetails** têm um relacionamento um-para-um, pois um **Course** pode ter apenas um **CourseDetails**. 
+- **um-para-muitos** (One-to-Many): esse tipo de relacionamento indica que uma entidade está associada a mais de uma entidade de outro tipo. Por exemplo, uma entidade **Person** pode ter mais de um **Address**. Assim, o relacionamento entre **Person** e **Address** é *one-to-many*.
+- **muitos-para-um** (Many-to-One): esse tipo de relacionamento indica que várias entidades de um tipo estão associadas a uma única entidade de outro tipo. Por exemplo, o relacionamento entre a entidade **Book** e a entidade **Publisher** é **muito-para-um**, já que vários Books podem ser publicados por um **Publishes**.
+- **muitos-para-muitos** (Many-To-Many): esse tipo de relacionamento indica que mais de uma entidade de um tipo está associada a mais de uma entidade de outro tipo. Por exemplo, no gerenciamento de cursos, um Course pode ser escrito por múltiplos Authors. Da mesma forma, um **Author** pode escrever múltiplos **Courses**. O relacionamento, nesse contexto, é **Muito-para-Muitos** entre as entidades author e course.
+
+### 3.8.1 Technique: Managing domain objects with many-to-many relationships in a relational database with Spring Data JPA
+Vamos aprender a gerenciar os relacionamentos muitos-para-muitos em objetos de domínio.
+
+Ao gerenciar relacionamentos entre objetos em nossa aplicação, frequentemente encontramos cenários em que os objetos mantêm relacionamentos muitos-para-muitos, em nossa aplicação, as entidades **Author** e **Course** mantêm um relacionamento muitos-para-muitos. Vamos gerenciar o relacionamento muitos-para-muitos entre duas entidades usando o **Spring Data JPA**.
+
+Neste cenário, é necessário mantermos os detalhes do autor e do curso, juntamente com o relacionamento entre curso e o autor. Por exemplo, um **autor** pode escrever vários cursos, e vários autores podem colaborar em um curso. Assim, nesse caso, é necessário manter as informações do autor e do curso, bem como os detalhes de seu relacionamento. Portanto, é necessário mantermos três tabelas:
+- uma para os detalhes do Author;
+- outra para os detalhes do Course
+- uma terceira para as informações relacionadas entre eles.
+
+![[Capítulo 3 - Database access with Spring Data-9.png]]
+many-to-many
+
+Antes de continuarmos para os nossos exemplos, vamos entender o modelo de dados que usaremos nesta técnica. A entidade **Author** é representada pela tabela **AUTHOR** no banco de dados.
+
+A tabela de mapeamento entre as entidades **Author** e **Course** é representada pela tabela *AUTHORS_COURSES*. Para representar um relacionamento em um Sistema de Gerenciamento de Banco de Dados Relacional (RDBMS), a regra é usar tabelas de relacionamento, nas quais o relacionamento entre **author** e **course** é representado por uma entrada no banco de dados contendo os identificadores únicos correspondentes das duas tabelas. Por exemplo, a tabela **AUTHOR_COURSES** contém as informações de mapeamento de autores e cursos com base em **author_id** e **course_id**. 
+
+```sql
+ALTER TABLE author_courses
+	ADD CONSTRAINT course_id_fk FOREIGN KEY
+		(course_id) REFERENCES courses (id);
+```
+Essa instrução adiciona uma restrição de chave estrangeira à taabela author_courses. A restrição garante que o valor da coluna **course_id** na tabela **authors_courses** seja um ID válido existente na tabela **courses** (na coluna id). Isso significa que qualquer valor inserido ou atualizado na coluna **course_id** <span style="background:#d4b106">deve corresponder a um valor presenta na coluna</span> **id** da tabela **courses**, garantindo assim a integridade dos dados e evitando referências inválidas.
+
+- A instrução, portanto, cria **chaves estrangeiras** para garantir que os valores nas colunas **course_id** e **author_id** da tabela **authors_courses** sejam válidos e correspondem a IDs existentes nas tabelas **courses** e **authors**, respectivamente.
+- Essas restrições são essenciais para manter a integridade referencial no banco de dados, evitando que registros inválidos ou "órfãos" sejam criados na tabela de relacionamento **authors_courses**.
+
+Para executar automaticamente o **schema.sql** e **data.sql**, adicionamos as seguintes propriedades adicionais no arquivo application.properties:
+```json
+spring.jpa.hibernate.dll-auto=none
+```
+Essa propriedade informa ao Spring Boot para **não gerenciar automaticamente o esquema** do banco de dados, já que estamos usando o **schema.sql** para inicializar o esquema.
+
+```json
+spring.datasource.initialization-mode=always
+```
+Essa propriedade instrui o Spring Boot a sempre executar os scripts de inicialização *como schema.sql* e o **data.sql** no banco de dados H2 ao iniciar a aplicação.
+
+O atributo **mappedBy** da anotação *@ManyToMany* é usado em relacionamentos bidirecionais para indicar que a entidade atual (neste caso, o lado não proprietário) não é responsável por gerenciar o relacionamento. Em vez disso, o lado oposto (a entidade *proprietária*) é quem define e controla como o relacionamento é mapeado no banco de dados.
+
+No contexto de um relacionamento *@ManyToMany*, uma tabela de junção (ou tabela de mapeamento) é usada armazenar as associações entre as duas entidades. O lado **mappedBy** informa ao JPA que a configuração do relacionamento já foi definida na outra entidade, evitando a criação duplicada da tabela Join.
+
+**@ManyToMany**
+A anotação *@ManyToMany* especifica a associação de vários valores com multiplicidade muitos-para-muitos. Cada associação desse tipo possui dois lados - o lado proprietário e o lado não proprietário. O lado proprietário indica a entidade que possui o relacionamento, enquanto o lado não proprietário é o inverso do relacionamento. 
+
+No caso de um relacionamento um-para-muitos, a parte "muitos" do relacionamento é o lado proprietário. Isso ocorre porque cada objeto da parte "muitos" pode facilmente ter uma ferência para a parte "um". 
+
+Para o relacionamento muitos-para-muitos, podemos escolher qual lado deve ser declarado como o lado proprietário, já que ambos os lados podem possuir o relacionamento. Por exemplo, nesta demonstração, selecionamos a entidade **Author** como o lado proprietário. Essa escolha foi baseada na compreensão de um autor *possui* seus cursos. 
+
+Além disso, especificação a anotação *@JoinTable* no lado proprietário do relacionamento. No caso do lado não proprietário, especificamos o parâmetro **mappedBy** na anotação **@ManyToMany** para indicar o campo do lado proprietário. Veremos o uso do parâmetro **mappedBy** na entidade **Course**.
+
+**@JoinTable**
+Essa anotação é especificada no lado proprietário do relacionamento e geralmente é usada no mapeamento de associações **many-to-many** e unidirecionais **um-para-muitos**. Especificamos essa anotação para definir a tabela de junção **AUTHORS_COURSES**. Se essa anotação não for fornecida, os valores padrão da anotação são aplicados. Por exemplo, se o nome da tabela não for fornecido, os nomes das tabelas das entidades serão concatenados com um caractere underline, onde o nome da tabela do lado proprietário é usado primeiro. Além disso, especificamos os atributos **joinColumns** e **inverseJoinColumns** com a anotação *@JoinTable*. O **joinColumns** especifica as colunas de chave estrangeira da tabela de junção, que fazem referência à tabela principal, que é responsável pela associação. O **inverseJoinColumns** especifica as colunas de chave estrangeira da tabela de junção, que fazem referência à tabela principal (por exemplo, **COURSES**) do lado não proprietário.
+
+**@JoinColumn**
+Essa anotação permite que especifiquemos uma coluna para realizar a junção (join) de uma associação de entidades. 
+```sql
+@JoinColumn(name="author_id", referencedColumnName="id", nullable=false, updatable=false)
+```
+O atributo **name** especifica o nome da coluna de chave estrangeira (foreign key) da tabela de relacionamento. O atributo **referencedColumnName** permite definir qual coluna do banco de dados deve ser referenciada pela chave estrangeira. O atributo **nullable** indica se a coluna pode ser nula. O atributo **updatable** define se a coluna deve ser incluída em instruções **SQL UPDATE** geradas pelo provedor de persistência. 
+```java
+@Entity(name = "AUTHOR_COURSE")
+@Table(name = "AUTHORS_COURSES")
+public class AuthorCourse {
+	@Id
+	@Column(name="author_id")
+	private long authorId;
+
+	@Column(name = "course_id")
+	private long courseId;
+}
+```
+
+Esta classe armazena as informações de relacionamento das entidades **Author** e **Course** e contém as chaves primárias de ambas as tabelas. Além disso, essa entidade também representa a tabela **AUTHORS_COURSES**.
+
+**Classe AuthorCourseDto**
+
+```java
+public class AuthorCourseDto {
+	private long id;
+	private String authorName;
+	private String courseName;
+	private String descripton;
+
+	public AuthorCourseDto(long id, String authorName, String courseName, String description) {
+		this.id = id;
+		this.authorName = authorName;
+		this.courseName = courseName;
+		...
+	}
+}
+```
+
+DTO é uma projeção baseada em classe, ela permite recuperarmos dados de diferentes tabelas por meio de uma projeção que pode não ser representada por uma entidade existente. Assim, um **DTO** é uma representação orientada a objetos dos dados projetados (**tuplas**) retornados pelo método do repositório. 
+
+Podemos usar uma classe **DTO** como tipo de retorno do repositório para consultas com **junções**.
+
+```java
+@Repository  
+public interface AuthorRepository extends CrudRepository<Author, Long> {  
+  
+    @Query("SELECT new com.manning.sbip.ch03.dto.AuthorCourseDto " +  
+            "(c.id, " +  
+            "a.name, " +  
+            "c.name, " +  
+            "c.description) " +  
+            "from AUTHOR a, " +  
+            "COURSE c," +  
+            "AUTHOR_COURSES ac where a.id = ac.authorId and c.id=ac.courseId and ac.authorId=?1")  
+    Iterable<Author> getAuthorCourseInfo(long authorId);  
+  
+}
+```
+Na interface *AuthorRepository*, acima, o método de consulta recupera os dados contidos na tabela AUTHORS, COURSES e AUTHORS_COURSES. Como os dados obtidos por meio da projeção não representam nem a entidade **Author** nem a **Course**, eles são representados pela classe **AuthorCourseDto**.
+
+A interface estende #CrudRepository para acessar as operações básicas de CRUD. Ela também define um método personalizado *custom finder method* para buscar os detalhes dos cursos escritos por um autor, usando o **authorId**. Como já vistos em técnicas anteriores, a anotação @Query permite especificar a consulta que será usada para recuperar os dados das tabelas do banco de dados. 
+
+Observamos que a consulta especificada na anotação *@Query* não é uma SQL query, mas sim uma JPQL query, que une as três tabelas para buscar os dados e mapeá-los para a instância do DTO fornecido.
+
+Portanto, temos três tabelas: **AUTHORS, AHTORS_COURSES e COURSES**. Definimos um método de consulta com uma query que faz um **JOIN** entre essas tabelas e recupera os dados com base nos critérios especificados. Para isso, criamos o **AuthorCourseDto**, um POJO Java que representa as colunas retornadas na projeção. 
+
+![[Capítulo 3 - Database access with Spring Data-10.png]]
+

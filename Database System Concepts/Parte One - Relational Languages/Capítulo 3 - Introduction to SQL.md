@@ -243,3 +243,54 @@ select A1, A2,..., An
 from ri, r2,...,rm
 where P;
 ```
+
+Cada **A** representa um *attribute*, e cada **r** é uma relação. P é um *predicate*. Se a *where* fore removido, o predicado P será verdadeiro. Embora as clauses devam ser escritas na ordem **select**, **from**, **where**, a maneira mais fácil de entender as operações especificadas pela *query* é considerar as *clauses* na ordem operacional: primeiro **from**, depois **where**, e então **select**. 
+
+A cláusula **from** por si só define um produto cartesiano das relações listadas na cláusula. Ela é definida formalmente em termos de álgebra relacional, mas também pode ser entendida como um processo iterativo que gera tuplas para a relação resultante da cláusula **from**. 
+
+Portanto, quando fazemos:
+```sql
+SELECT * FROM A, B;
+```
+Isso gera todas as combinações possíveis entre as linhas da Tabela A e Tabela B:
+A1 | B1  
+A1 | B2  
+A1 | B3  
+A2 | B1  
+A2 | B2  
+A2 | B3  
+Esse processo é chamado de produto cartesiano - ele combina cada linha de uma tabela com todas as linhas da outra. 
+Sozinha, a cláusula *FROM* com várias tabelas não filtra nada. Precisamos de condições com *where* ou *JOIN ON* para que o resultado faça sentido, especialmente se estiver relacionando dados.
+
+```SQL
+SELECT * FROM clientes, pedidos;
+```
+Neste exemplo, vamos gerar combinações de todos os clientes com todos os pedidos, o que provavelmente não faz sentido. Por isso, é comum fazer:
+```sql
+SELECT * FROM clientes JOIN pedidos ON clientes.id = pedidos.client_id;
+```
+para cada tupla t1 na relação r1
+    para cada tupla t2 na relação r2
+            para cada tupla tm na relação rm
+                Concatenar t1, t2, … , tm em uma única tupla t
+                Adicionar t à relação resultante
+
+A relação resultante possui todos os atributos de todas as relações presentes na cláusula **from**. Como o mesmo nome de atributo pode aparecer em mais de uma relação, como vimos anteriormente, prefixamos o nome da relação de origem antes do nome do atributo para evitar ambiguidade. Por exemplo, o esquema relacional para o produto cartesiano das relações **instructor** e **teaches** é:
+```sql
+(instructor.ID, instructor.name, instructor.dept_name, instructor.salary, teaches.ID, teaches.course_id, teaches.sec_id, teaches.semester, teaches.year)
+```
+
+Com esse esquema, podemos distinguir **instructorID** de **teaches.ID**. Para os atributos que aparecem em apenas um dos dois esquemas, geralmente omitimos o prefixo do nome da relação. Essa simplificação não causa ambiguidade. Assim, podemos escrever o esquema relacional como:
+```sql
+instructor.id, name, dep_name, salary, teaches.ID, course_id, sec_id, semester, year
+```
+
+O produto cartesiano por si só combina tuplas de **instructor** e **teaches** que não estão relacionadas entre si. Cada tupla em *instructor* é combinada com todas as tuplas em *teaches*, mesmo aquelas que se referem a um instrutor diferente. O resultado pode ser uma relação extremamente grande, e raramente faz sentido criar um produto cartesiano deste tipo.
+
+Em vez disso, o predicado na cláusula *where* é usado para restringir as combinações criadas pelo produto cartesiano apenas àquelas que são significativas para a resposta desejada. Provavelmente, queremos que uma consulta envolvendo *instructor* e *teaches* combina uma tupla específica **t** em *instructor* apenas com aquelas tuplas em **teaches** que se referem ao mesmo instrutor ao qual t se refere. Ou seja, desejamos combinar tuplas de teaches apenas com tuplas de *instructor* que tenham o mesmo valor de ID. A seguinte consulta SQL garante essa condição e retorna o nome do instrutor e os identificadores dos cursos dessas tuplas combinadas:
+```sql
+select name, course_id
+from instructor, teaches
+where instructor.ID = teaches.ID;
+```
+

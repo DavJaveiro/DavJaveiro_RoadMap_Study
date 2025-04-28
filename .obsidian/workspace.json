@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "23aea9a0633a8038",
+        "id": "14184fa1fdb71712",
         "type": "tabs",
         "children": [
           {
-            "id": "a217af559057054e",
+            "id": "c4f26226e8005e5d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
+                "file": "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 4 - Engenharia de Requisitos"
+              "title": "Capítulo 4 - Spring Boot Autoconfiguration and Actuator"
             }
           }
         ]
@@ -212,15 +212,21 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "a217af559057054e",
+  "active": "c4f26226e8005e5d",
   "lastOpenFiles": [
-    "Capítulo 4 - Engenharia de Requisitos-5.png",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
+    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
+    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator",
+    "Capítulo 3 - Database access with Spring Data-10.png",
+    "Sem título 1.md",
+    "Capítulo 3 - Database access with Spring Data-9.png",
+    "Sem título.md",
+    "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
+    "Capítulo 4 - Engenharia de Requisitos-5.png",
     "RoadMap do DavJaveiro/Covers/Software Requiriments Book 2.png",
     "Spring Start Here/PART 1/Capítulo 3 - The Spring context - Wiring beans/SpringStartHere3Ex4/src/main/java/com/DavJaveiro/helloWorldJPA/main/Person.java",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
     "Capítulo 4 - Engenharia de Requisitos-4.png",
     "Capítulo 4 - Engenharia de Requisitos-3.png",
     "Capítulo 4 - Engenharia de Requisitos-2.png"
