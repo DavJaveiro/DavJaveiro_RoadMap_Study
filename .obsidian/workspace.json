@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
+                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 4 - Engenharia de Requisitos"
+              "title": "Módulo 2"
             }
           }
         ]
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "b52c6bbbf72dc5c0",
@@ -214,6 +213,11 @@
   },
   "active": "238653397798b432",
   "lastOpenFiles": [
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2.md",
+    "Pasted image 20250428214027.png",
+    "Módulo 1.png",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
     "Capítulo 4 - Engenharia de Requisitos-6.png",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
@@ -223,7 +227,6 @@
     "Capítulo 3 - Database access with Spring Data-9.png",
     "Sem título.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
     "Capítulo 4 - Engenharia de Requisitos-5.png",
     "RoadMap do DavJaveiro/Covers/Software Requiriments Book 2.png",
     "Spring Start Here/PART 1/Capítulo 3 - The Spring context - Wiring beans/SpringStartHere3Ex4/src/main/java/com/DavJaveiro/helloWorldJPA/main/Person.java",
