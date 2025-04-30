@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "e71551417ba85f27",
+        "id": "fe067b3c98af057a",
         "type": "tabs",
         "children": [
           {
-            "id": "238653397798b432",
+            "id": "252acadb937c7878",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Módulo 2"
+              "title": "Nova aba"
             }
           }
         ]
@@ -88,7 +84,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "b52c6bbbf72dc5c0",
@@ -211,10 +208,19 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "238653397798b432",
+  "active": "252acadb937c7878",
   "lastOpenFiles": [
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2.md",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
+    "Módulo 3 - Visão geral da infraestrutura global da AWS.png",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1- Visão geral dos conceitos da nuvem.md",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2 - Economia e faturamento da nuvem.md",
+    "Módulo 2-5.png",
+    "Módulo 2-4.png",
+    "Módulo 2-3.png",
+    "Módulo 2-2.png",
+    "Módulo 2-1.png",
+    "Módulo 2.png",
+    "AWS Academy Cloud Fundations/Exames.md",
     "Pasted image 20250428214027.png",
     "Módulo 1.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
@@ -222,17 +228,10 @@
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator",
-    "Capítulo 3 - Database access with Spring Data-10.png",
     "Sem título 1.md",
-    "Capítulo 3 - Database access with Spring Data-9.png",
     "Sem título.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
-    "Capítulo 4 - Engenharia de Requisitos-5.png",
-    "RoadMap do DavJaveiro/Covers/Software Requiriments Book 2.png",
     "Spring Start Here/PART 1/Capítulo 3 - The Spring context - Wiring beans/SpringStartHere3Ex4/src/main/java/com/DavJaveiro/helloWorldJPA/main/Person.java",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md",
-    "Capítulo 4 - Engenharia de Requisitos-4.png",
-    "Capítulo 4 - Engenharia de Requisitos-3.png",
-    "Capítulo 4 - Engenharia de Requisitos-2.png"
+    "Database System Concepts/Parte One - Relational Languages/Capítulo 2 - Introduction to the Relational Model.md"
   ]
 }
