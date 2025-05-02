@@ -11,10 +11,14 @@
             "id": "a2d444637b237e7d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Módulo 3 - Visão geral da infraestrutura global da AWS"
             }
           }
         ]
@@ -84,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "b52c6bbbf72dc5c0",
@@ -209,12 +214,13 @@
   },
   "active": "a2d444637b237e7d",
   "lastOpenFiles": [
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2 - Economia e faturamento da nuvem.md",
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
+    "CND.md",
     "Spring Start Here/PART 1/Capítulo 2 - The Spring context - Defining beans/The Spring Context - Defining beans.md",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
     "Módulo 3 - Visão geral da infraestrutura global da AWS.png",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1- Visão geral dos conceitos da nuvem.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2 - Economia e faturamento da nuvem.md",
     "Módulo 2-5.png",
     "Módulo 2-4.png",
     "Módulo 2-3.png",
