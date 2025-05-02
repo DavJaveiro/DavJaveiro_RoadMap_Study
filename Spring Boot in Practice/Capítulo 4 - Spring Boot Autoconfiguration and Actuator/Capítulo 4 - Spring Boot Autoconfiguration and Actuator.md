@@ -159,7 +159,7 @@ public class CommonApplicationContextConfiguration {
 	}
 }
 ```
-Aqui, o Spring só vai criar esse RelationalDataSourceConfiguration se a classe **RelationalDatabaseCondition** disse "ok".
+Aqui, o Spring só vai criar esse RelationalDataSourceConfiguration se a classe **RelationalDatabaseCondition** retornar "ok".
 
 E a classe de condição é essa aqui:
 ```java
@@ -231,4 +231,78 @@ Ou seja:
 - Fornecemos uma implementação da interface **Condition**. Essa interface possui um método **matches()** que retorna um valor booleano;
 - Validamos se a classe do driver MySQL está presente no **classpath** da aplicação. Se a classe do driver estiver disponível, a condição retorna true para indicar que um banco de dados relacional está disponível.
 
-Para simplificar, mantivemos a *RelationalDatabaseCondition* direta, com apenas uma validação.  
+Para simplificar, mantivemos a *RelationalDatabaseCondition* direta, com apenas uma validação.  Essa única validação deve ser suficiente para transmitir a ideia por trás da anotação *@Condition*. Normalmente, podemos implementar uma condição para criar beans de duas formas diferentes:
+1. Avaliar o classpath para verificar a presença de bibliotecas específicas;
+2. Validar se determinadas propriedades estão configuradas na aplicação. No método *matches(..)*, temos uma instância de *ConditionContext*, que fornece acesso às propriedades da aplicação configuradas. Assim, podemos acessar todas as propriedades configuradas no arquivo *application.properties*.
+
+Embora a anotação *@Condition* funcione bem, ela é uma anotação de baixo nível. O Spring Boot fornece diversas anotações *@Condition* de alto nível que se destinam a tipos específicos de condições. A tabela 4.1 resuma algumas das anotações *@Conditional* mais populares, as anotações mais utilizadas com frequência, estão destacadas em negrito.
+
+## 4.1.2 Deep dive into autoconfiguration
+Cada projeto Spring Boot possui uma dependência no módulo *spring-boot-autoconfiguration*. Ele contém a chave para a magia de autoconfiguração do Spring Boot. Ele contém a chave para a magia de autoconfiguração do Spring Boot. Este JAR contém um arquivo chamado *spring.factories* dentro da pasta **META-INF**. A listagem a seguir mostra algumas das classes de autoconfiguração.
+
+Se explorarmos o arquivo *spring.factories* dentro do JAR, encontraremos uma seção chamada Auto Configure, que contém detalhes de autoconfiguração para vários componentes do Spring Boot e bibliotecas de terceiros com as quais o Spring Boot se integra. Essas classes de autoconfiguração são arquivos de configuração do Spring que utilizam as anotações *@Conditional*. 
+
+Na próxima seção, estudaremos a *DataSourceAutoConfiguration*, que configura uma fonte de dados (data source) em uma aplicação Spring Boot.
+
+```java
+@Configuration
+@ConditionalOnClass({ DataSource.class, EmbeddedDatabaseType.class})
+@EnabledConfigurationProperties(DataSourceProperties.class)
+```
+Essa configuração é carregada se as classes *DataSource* e *EmbeddedDatabaseType* estiverem presentes no classpath.
+
+```java
+@Import({DataSourcePoolMetadataProvidersConfiguration.class, DataSourceInitializationConfiguration.class})
+```
+O DataSourceAutoConfiguration também importa as classes de configuração *DataSourcePoolMetaadataProvidersConfiguration.class* e *DataSourceInitializationConfiguration.class*.
+
+```java
+public class DataSourceAutoConfiguration {
+	@Configuration
+
+	@Conditional(EmbeddedDatabaseCondition.class)
+	@ConditionalOnMissingBean({DataSource.class, XADataSource.class})
+	@Impooprt(EmbeddedDataSourceConfiguration.class)
+	protected static class EmbeddedDatabaseConfiguration {}
+}
+```
+
+```java
+@Configuration
+@Conditional(PooledDataSourceCondition.class)
+@ConditionalOnMissingBean({ DataSource.class, XADataSource.class})
+@Import({DataSourceConfiguration.Hikari.class, DataSourceConfiguration.Tomcat.class, DataSourceConfiguration.Dbcp2.class, DataSourceConfiguration.Generic.class, DataSourceJmxConfiguration.class})
+protected static class PooledDataSourceConfiguration {
+
+}
+```
+Existem várias configurações anotadas na classe *DataSourceAutoconfiguration*:
+- A classe *DataSourceAutoConfiguration* está configurada com a anotação *@Configuration*. Isso indica que se trata de uma classe de configuração padrão do Spring. 
+
+- Ela utiliza a anotação *@ConditionalOnClass* para indicar que a configuração de *DataSourceAutoConfiguration* só deve ser avaliada se as classes *DataSource.class* e *EmbeddedDatabaseType.class* estiverem presentes no classpath.
+
+- A anotação *EnableConfigurationProperties(DataSourceProperties.class)* garante que as propriedades específicas da fonte de dados (datasource) fornecidas no arquivo *application.properties* sejam automaticamente convertidas em uma instância de classe *DataSourceProperties*. Por exemplo, as propriedades *spring.datasource.* configuradas no arquivo *application.properties* são automaticamente mapeadas para *DataSourceProperties*. Na seção 2.2 do capítulo 2, discutimos detalhadamente o uso da anotação. 
+
+- A anotação *@Import* inclui duas configurações adicionais na classe atual: *DataSourcePoolMetadataProvidersConfiguration* e *DataSourceInitializationConfiguration*, dentro da *DataSourceAutoConfiguration*.
+
+- Na classe *DataSourceAutoConfiguration*, existem duas configurações internas: *EmbeddedDatabaseConfiguration* e *PooledDataSourceConfiguration*. A primeira cria uma configuração de banco de dados embutido (embedded) se a condição *EmbeddedDatabaseConditiion* for verdadeira e ainda não tenhamos configurado explicitamente um bean de *DataSource* ou *XDataSource*. A *PooledDataSourceConfiguration* cria um pool de conexões de banco de dados se a condição *PooledDataSourceCondition* for verdadeira e nenhum bean de *DataSource* ou *XADataSource* já esteja configurado.
+
+## 4.2 Using Spring Boot DevTools
+O Spring Boot fornece um **kit de desenvolvedor** que oferece um conjunto adicional de recursos voltados para o tempo de desenvolvimento. Essas ferramentas podem ser usadas para proporcionar uma experiência mais agradável no desenvolvimento de aplicações Spring Boot e aumentar a produtividade dos desenvolvedores. Em resumo, esse kit é popularmente conhecido como **Spring Boot DevTools**.
+
+Podemos habilitar o suporte ao DevTools em nossa aplicação adicionando a seguinte dependência no arquivo *pom.xml*:
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+Observamos que o **DevTools** é adicionado como uma dependência opcional. Isso evita que a dependência do DevTools seja aplicada transitivamente a outros módulos que dependem do nosso projeto.
+
+### 4.2.1 Property defaults
+O Spring Boot e algumas de suas bibliotecas de apoio suportam o uso de **cache** para melhorar o desempenho. Por exemplo, o mecanismo de templates **Thymeleaf** pode armazenar em cache os templates HTML para evitar que sejam analisados novamente (*reparsing*). Embora o uso de cache funcione bem em aplicações de produção, ele pode ser contraproducente durante o desenvolvimento, já que precisamos visualizar as alterações mais recentes. 
+
+O DevTools desativa todas as opções de cache por padrão. 
+
+### 4.2.2 Automatic restart

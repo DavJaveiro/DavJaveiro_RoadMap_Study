@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "fe067b3c98af057a",
+        "id": "7e8b28f9785c67ba",
         "type": "tabs",
         "children": [
           {
-            "id": "252acadb937c7878",
+            "id": "a2d444637b237e7d",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -84,8 +84,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "b52c6bbbf72dc5c0",
@@ -208,8 +207,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "252acadb937c7878",
+  "active": "a2d444637b237e7d",
   "lastOpenFiles": [
+    "Spring Start Here/PART 1/Capítulo 2 - The Spring context - Defining beans/The Spring Context - Defining beans.md",
+    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
     "Módulo 3 - Visão geral da infraestrutura global da AWS.png",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 1- Visão geral dos conceitos da nuvem.md",
@@ -225,7 +226,6 @@
     "Módulo 1.png",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
     "Capítulo 4 - Engenharia de Requisitos-6.png",
-    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "Spring Boot in Practice/Capítulo 3 - Database access with Spring Data/Capítulo 3 - Database access with Spring Data.md",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator",
     "Sem título 1.md",
