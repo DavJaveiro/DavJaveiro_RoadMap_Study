@@ -100,13 +100,41 @@ Serviço de computação serverless: escrevemos funções pequenas e o Lambda ex
 ## AWS Fargate
 Serviço que permite rodar containers sem se preocupar com servidores. Só definimos os requisitos CPU, RAM, imagem Docker, e o Fargate executa a escala conforme necessário. É ideal para workloads altamente dinâmicas ou de curta duração.
 
-|Serviço|Descrição resumida|
-|---|---|
-|EC2|Criação de servidores virtuais personalizáveis.|
-|EC2 Auto Scaling|Escala automática de instâncias EC2.|
-|ECS|Orquestração de containers Docker.|
-|ECR|Armazenamento privado de imagens Docker.|
-|Elastic Beanstalk|PaaS para implantar apps sem gerenciar infraestrutura.|
-|Lambda|Execução de código sob demanda, sem servidor.|
-|EKS|Kubernetes gerenciado na AWS.|
-|Fargate|Executa containers sem precisar provisionar servidores.|
+| Serviço           | Descrição resumida                                      |
+| ----------------- | ------------------------------------------------------- |
+| EC2               | Criação de servidores virtuais personalizáveis.         |
+| EC2 Auto Scaling  | Escala automática de instâncias EC2.                    |
+| ECS               | Orquestração de containers Docker.                      |
+| ECR               | Armazenamento privado de imagens Docker.                |
+| Elastic Beanstalk | PaaS para implantar apps sem gerenciar infraestrutura.  |
+| Lambda            | Execução de código sob demanda, sem servidor.           |
+| EKS               | Kubernetes gerenciado na AWS.                           |
+| Fargate           | Executa containers sem precisar provisionar servidores. |
+
+**Categoria de serviço de banco de dados**
+**Amazon Relational Database Service (RDS)**: é um serviço gerenciado que facilita o provisionamento, configuração, operação e escalonamento de bancos de dados relacionais. Suporta vários tipos de bancos de dados populares, como MySQL, PostgreSQL, Oracle, SQL Server e Aurora. Gerencia automaticamente tarefas de manutenção, como backups, atualizações de software e replicação de dados. Oferece alta disponibilidade através de instâncias multi-AZ (Availability Zone).  Permite fácil escalabilidade vertical (mais CPU ou memória) e horizontal (mais nós). Ideal para aplicativos que requerem um banco de dados relacional tradicional. Uso comum em aplicações web que precisam de um banco de dados relacional robusto e para migrar bancos de dados existentes para a nuvem sem alterações significativas no código.
+
+**Amazon Aurora**: é um banco de dados compatível com MySQL e PostgreSQL, projetado para ser rápido, confiável e econômico. É até 5 vezes mais rápido do que um banco de dados padrão MySQL e até 3x mais rápido do que PostgreSQL. Oferece alta disponibilidade com replicação síncrona em múltiplas AZs. Armazena dados em volumes de armazenamento SSD altamente duráveis. Gerencia automaticamente backups, recuperação de falhas e otimização de desempenho. Ideal para cargas de trabalho de alto desempenho e baixa latência. Seu uso, geralmente ocorre em aplicações que exigem um banco de dados relacional com alto desempenho e escalabilidade. 
+
+**Amazon Redshift**: é um serviço de data warehouse totalmente gerenciado, projetado para análise de grandes volumes de dados. Ele é escalável e otimizado para consultas complexas e análises de grande volume de dados. Usa arquitetura columnar para melhorar o desempenho de leitura e compreensão de dados. Integra-se facilmente com ferramentas de BI (Business Intelligence), como Tableau, Power BI e AWS QuickSight. Oferece segurança robusta, incluindo criptografia de dados em repouso e em trânsito. Ideal para análises de negócios, relatórios e visualizações de dados. Seu uso é comum em análises de dados históricos e tendências, processamento de grandes conjuntos de dados para tomada de decisões estratégicas e aplicações de  analytics empresariais.
+
+**Amazon DynamoDB**: é um banco de dados NoSQL completamente gerenciado, projetado para fornecer consistência forte e escalabilidade ilimitada. Possuí modelo de chave primária e suporte a índices secundários globais e locais, oferece throughput ajustável e previsível, garantindo desempenho consistente. Armazena dados em formato JSON, permitindo flexibilidade na estrutura dos dados. Gerencia automaticamente backups, replicação e recuperação de falhas.
+
+**Serviços de Rede e entrega de conteúdo** que permitem a construção de infraestruturas robustas, escaláveis e altamente disponíveis. Esses serviços são essenciais para gerenciar tráfego, garantir segurança, melhorar o desempenho e entregar de forma eficiente aos usuários finais. 
+
+**Amazon VPC (Virtual Private Cloud)**: é um serviço que permite criar redes virtuais isoladas dentro da infraestrutura da AWS. Com o VPC, podemos definir sub-redes, controlar o tráfego de rede usando firewalls e roteadores, e estabelecer conexões seguras com sua infraestrutura local. Seu uso é mais comum em implantação de aplicações em ambientes isolados e seguros, extensão de redes locais para a nuvem através de VPN ou AWS Direct Connect bem como criação de arquiteturas multicamadas (front-end/back-end) com isolamento de recursos.
+
+**Elastic Load Balancing (ELB)**: ele distribuí automaticamente o tráfego de rede entre instâncias de servidor, como EC2, para garantir alta disponibilidade e escalabilidade. 
+**Tipos de Load Balancers:** 
+- **Application Load Balancer (ALB)** : Ideal para aplicativos baseados em camada de aplicação (HTTP/HTTPS).
+- **Network Load Balancer (NLB)** : Ideal para cargas de trabalho de alto desempenho e baixa latência (TCP/UDP).
+- **Classic Load Balancer** : Versão mais antiga, ainda suportada, mas menos recomendada para novos projetos.
+
+- **Características** :
+    - Distribuição automática do tráfego entre instâncias de servidor.
+    - Monitoramento de saúde das instâncias e remoção automática de instâncias inativas.
+    - Suporte a SSL/TLS para criptografia de dados.
+    - Escalabilidade horizontal automática conforme a demanda.
+- **Uso Comum** :
+    - Distribuição de carga para clusters de servidores web ou aplicativos.
+    - Garantia de alta disponibilidade e tolerância a falhas.
