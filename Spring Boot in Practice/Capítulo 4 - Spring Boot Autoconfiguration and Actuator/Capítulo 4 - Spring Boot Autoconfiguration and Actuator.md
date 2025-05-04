@@ -330,9 +330,110 @@ In this technique, we'll demonstrate how to create a custom FailureAnalyzer
 Para demonstrar como criar um analisador de falhas personalizado, vamos considerar o seguinte cenário: suponha que nossa aplicação busque detalhes sobre cães de uma API externa chamada DOG API e exiba informações na interface da aplicação. Desejamos validar se essa URL está acessível no momento em que a aplicação é iniciada. Para isso, realizaremos as seguintes atividades:
 - Usaremos o evento *ContextRefreshedEvent* do Spring Boot para acionar a validação. O Spring Boot publica esse evento assim que o *ApplicationContext* é atualizado (após a inicialização completa do contexto).
 
-- Se a API não estiver disponível, lançaremos uma exceção personalizada chamada *UrllNotAccesibleException*;
+- Se a API não estiver disponível, lançaremos uma exceção personalizada chamada *UrlNotAccesibleException*;
 
 - Em seguida, definiremos um **FailureAnalyzer** personalizado chamado *UrlNotAccessibleFailureAnalyzer*, que será invocado quando a exceção *UrlNotAccessibleException* ocorrer.
 
 - Por fim, registraremos o *UrlNotAcessibleFailureAnalyzer* por meio do arquivo *spring.factories*, para que o Spring Boot registre o seu analisador de falhas personalizado. O *spring.factories* é um arquivo especial localizado na pasta *src/main/resources/META-INF* da nossa aplicação e é automaticamente carregado pelo Spring no momento da inicialização. Esse arquivo contém referências a várias classes de configuração. 
+
+```java
+@Getter
+public class UrlNotAccessibleException extends RuntimeException {
+    private String url;
+    public UrlNotAccessibleException(String url) {
+        this(url, null);
+    }
+    public UrlNotAccessibleException(String url, Throwable cause) {
+        super("URL " + url + " is not accessible", cause);
+        this.url = url;
+    }
+}
+```
+Extensão de *RunTimeException*: a nossa classe é uma classe de exceção não verificada (uncheked). 
+
+Na listagem acima, estamos definindo uma *RunTimeException* que será usada caso a URL não esteja acessível. Em seguida, vamos definir a classe *UrlAccessibilityHandler*:
+
+```java
+package com.manning.sbip.ch04.listener;
+//imports
+@Component
+public class UrlAccessibilityHandler {
+	@Value("${api.url:https://dog.ceo/}")
+	    private String url;
+	@EventListener(classes = ContextRefreshedEvent.class)
+	    public void listen() {
+	        // For demonstration purpose, we are throwing
+	        // the exception assuming the site is not reachable
+	        throw new UrlNotAccessibleException(url);
+	    }
+}
+```
+Na listagem acima, definimos a classe *UrlAccessibilityHandler* como um componente do Spring. Além disso, definimos um ouvinte de evento *event listener* que é invocado assim que o Spring Boot publica o evento *ContextRefreshedEvent*. Por simplicidade e fins de demonstração, estamos lançando a exceção *UrlNotAccessibleException*, assumindo que a URL não está acessível.
+
+Linha do tempo:
+1. Aplicação inicia -> *SpringApplication.run(...)*
+2. Spring dispara o evento *ContextRefreshedEvent*
+3. *UrlAccessibilityHandler.listen()* é chamado automaticamente (por causa do *@EventListener*).
+
+
+## 4.4 Spring Boot Actuator
+Além dos recursos principais para desenvolver aplicações, o Spring Boot também oferece um conjunto de funcionalidades para suporte operacional da nossa aplicação. Um aplicativo é considerado operacional quando está em produção e atendendo aos seus clientes ou usuários. Para gerenciar um serviço contínuo aos nossos clientes, precisamos monitorar e administrar a nossa aplicação. Esse monitoramento e gerenciamento incluem verificar a integridade da aplicação, desempenho, tráfego de entrada e saída, auditoria, diversas métricas do aplicativo, reiniciar a aplicação, alterar o nível de log e muito mais. Os diversos dados de monitoramento e métricas permitem analisar o comportamento da aplicação e agir conforme necessário.
+
+O Spring Boot Actuator traz essas capacidades de monitoramento e gerenciamento para nossa aplicação Spring Boot. O principal benefício do Spring Boot Actuator é que podemos obter muitos recursos prontos para produção em nossa aplicação sem precisar implementá-los explicitamente.
+
+## 4.4.1 Technique: Configuring Spring Boot Actuator in a Spring Boot application
+In this technique, we'll demonstrate how to configure Spring Boot Actuator.
+
+**Problem**
+Utilizamos o Actuator quando já temos uma aplicação implantada e em execução em produção. Agora, precisamos monitorar o status de integridade da aplicação configurando o **Spring Boot Actuator** em nosso projeto Spring Boot.
+
+**Solution**
+Podemos ativar o suporte do Spring Boot Actuator em nossa aplicação Spring Boot adicionando a dependência *spring-boot-starter-actuator* no arquivo de configuração pom.xml.
+
+A dependência inclui as bibliotecas **spring-boot-actuator-autoconfigure** e **micrometer-core** no projeto.
+- A primeira dependência (**spring-boot-actuator-autoconfigure**) fornece o suporte principal do Actuator.
+- A segunda (**micrometer-core**) adiciona a integração com o **Micrometer**, uma ferramenta para capturar métricas da aplicação.
+
+No arquivo *application.properties*, incluímos a propriedade:
+
+```json
+management.endpoints.web.exposure.include=*
+```
+
+Essa configuração ativa **todos os endpoints do Actuator** via HTTP. 
+
+Se não desejamos expor todos os endpoints, podemos listar apenas os necessários, separados por vírgulas. Por exemplo:
+```json
+management.endpoints.web.exposure.include=info,health
+```
+Neste caso, apenas os endpoints */info* e */health* estarão acessíveis. 
+
+Ao iniciarmos a aplicação, podemos acessar a seguinte URL:
+http://localhost:8080/actuator/health
+
+Isso permite verificar o endpoint */health* do Actuator. A figura 4.2 (ou saída no console) mostrará o status de integridade da aplicação:
+![[Capítulo 4 - Spring Boot Autoconfiguration and Actuator.png]]
+
+O endpoint */health* retorna um status *UP*, indicando que:
+1. A aplicação está saudável (tudo funcionando corretamente);
+2. Todos os componentes necessários (bancos de dados, serviços externos, etc.) estão acessíveis.
+
+Mais adiante, exploraremos:
+- Outros status de saúde (como DOWN, OUT_OF_SERVICE).
+- Como criar um **HealthIndicator personalizado** para monitorar componentes específicos da nossas aplicação.
+
+Além disso, veremos:
+- **Outros endpoints úteis** do Actuator (como *metrics, info, env*);
+- **Customizações avançadas** para adaptar o monitoramento às nossas necessidades.
+
+### 4.4.2 Understanding Spring Boot Actuator endpoints
+Um **endpoint do Actuator** permite monitorar e gerenciar nossa aplicação. Na técnica anterior, vimos o endpoint health que possibilita verificar o status de integridade da aplicação. O Spring Boot oferece vários endpoints prontos para uso, além de permitir a criação de endpoints personalizados específicos para nossa aplicação.
+
+Os endpoints do Actuator podem ser acessados via HTTP ou JMX (Java Management Extensions), e podemos configurá-los como **habilitados, desabilitados** ou **expostos**.
+
+- **Habilitar/Desabilitar**: controla se um endpoint específico estará disponível na aplicação. Por exemplo, por padrão o endpoint */shutdown* (que encerra a aplicação) vem desabilitado por motivos de segurança, mas podemos habilitá-lo manualmente se necessário.
+- **Exposição**: define se um endpoint estará disponível via HTTP, JMX ou ambos. Por padrão, apenas */health* e */info* são expostos via HTTP, enquanto todos os endpoints built-in são expostos via JMX por padrão (considerado mais seguro que HTTP).
+
+O Spring Boot inclui uma **página de descoberta** que lista todos os endpoints Actuator disponíveis. Por padrão, ela está acessível em:
+http://localhost:8080/actuator
 
