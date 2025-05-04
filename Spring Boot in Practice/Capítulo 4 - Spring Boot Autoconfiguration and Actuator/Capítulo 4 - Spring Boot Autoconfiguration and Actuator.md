@@ -306,3 +306,33 @@ O Spring Boot e algumas de suas bibliotecas de apoio suportam o uso de **cache**
 O DevTools desativa todas as opções de cache por padrão. 
 
 ### 4.2.2 Automatic restart
+In a typical development setup you make changes yo your application, and to view those changes, you restart the application, Spring Boot DevTools makes developer life a little easier by automatically restarting the application whenever there is an application classpath change. This provides a quick feedback loop for the code changes, as you can almost immediately validate your latest changes.
+
+O Spring Boot usa dois carregadores de classes (classes loaders) separados para implementar a funcionalidade de reinicialização automática. O primeiro, conhecido como carregador de classes base (base class loader), carrega as classes que têm menor probabilidade de mudar. Por exemplo, as bibliotecas de terceiros das quais nossa aplicação depende normalmente não mudam. O outro carregador de classes, conhecido como carregador de classes de inicialização (restart class loader), carrega as classes que estamos desenvolvendo. Esse carregador de classes de reinicialização é descartado sempre que há uma alteração em alguma classe, sendo então criado um novo. 
+
+### 4.2.3 Live reload
+O Spring Boot DevTools fornece um servidor LiveReload embutido que pode ser usado para acionar a atualização do navegador quando um recurso é alterado. Para utilizar essa funcionalidade, o navegador precisa ter a extensão LiveReload instalada. 
+
+## 4.3 Creating a custom failure analyzer
+No capítulo 1, aprendemos o conceito de um *FailureAnalyzer* no Spring Boot. Como o nome indica, ele detecta uma falha ou exceção na aplicação e fornece uma mensagem detalhada que é útil para o desenvolvedor entender melhor o problema. Por exemplo, é comum tentarmos iniciar múltiplas instâncias de uma aplicação Spring Boot que utilizam a mesma porta HTTP. Neste caso, o Spring Boot exibe uma mensagem de erro bem formatada informando que não é possível iniciar a segunda instância na mesma porta HTTP, pois ela já está em uso. O Spring Boot faz isso com a ajuda de uma infraestrutura de análise de falhas integrada. Além disso, ele também permite que estendamos o conceito de um analisador de falhas, possibilitando que aproveitemos os benefícios.
+
+Há duas razões pelas quais um *FailureAnalyzer* seja útil:
+- Ele permite que forneçamos uma mensagem de erro detalhada sobre o problema real e ajuda a identificar qual ação pode ser tomada para resolver a questão e determinar sua causa raiz;
+- Ele oferece a oportunidade de realizar validações na inicialização da aplicação e reportar quaisquer erros o mais cedo possível. Por exemplo, vamos supor que nossa aplicação dependa de um serviço REST externo que fornece dados críticos para o funcionamento da aplicação. Pode ser útil validar a acessibilidade desse serviço durante a inicialização e garantir que a nossa aplicação possa operar conforme esperado. No entanto, se o serviço não estiver acessível, podemos optar por não iniciar a aplicação, já que sem esse serviço REST ela pode não funcionar como desejado.
+
+### 4.3.1 Technique: Creating a custom Spring Boot FailureAnalyzer
+In this technique, we'll demonstrate how to create a custom FailureAnalyzer
+
+**Problem**: Nossa aplicação possui uma dependência em relação a um serviço REST externo. Precisamos garantir que esse serviço seja acessível no momento em que a aplicação é iniciada. Além disso, é necessário fornecer uma mensagem detalhada caso o serviço não esteja acessível.
+
+**Solution**: O Spring Boot fornece uma infraestrutura de análise de falhas que permite definir lógica personalizada para realizar validações específicas da sua aplicação e também relatar erros dessas validações. Assim, podemos aproveitar essa infraestrutura para verificar a acessibilidade da API REST e reportar qualquer erro já no momento da inicialização da aplicação.
+
+Para demonstrar como criar um analisador de falhas personalizado, vamos considerar o seguinte cenário: suponha que nossa aplicação busque detalhes sobre cães de uma API externa chamada DOG API e exiba informações na interface da aplicação. Desejamos validar se essa URL está acessível no momento em que a aplicação é iniciada. Para isso, realizaremos as seguintes atividades:
+- Usaremos o evento *ContextRefreshedEvent* do Spring Boot para acionar a validação. O Spring Boot publica esse evento assim que o *ApplicationContext* é atualizado (após a inicialização completa do contexto).
+
+- Se a API não estiver disponível, lançaremos uma exceção personalizada chamada *UrllNotAccesibleException*;
+
+- Em seguida, definiremos um **FailureAnalyzer** personalizado chamado *UrlNotAccessibleFailureAnalyzer*, que será invocado quando a exceção *UrlNotAccessibleException* ocorrer.
+
+- Por fim, registraremos o *UrlNotAcessibleFailureAnalyzer* por meio do arquivo *spring.factories*, para que o Spring Boot registre o seu analisador de falhas personalizado. O *spring.factories* é um arquivo especial localizado na pasta *src/main/resources/META-INF* da nossa aplicação e é automaticamente carregado pelo Spring no momento da inicialização. Esse arquivo contém referências a várias classes de configuração. 
+
