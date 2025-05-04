@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "7e8b28f9785c67ba",
+        "id": "ad7c07381603f0cb",
         "type": "tabs",
         "children": [
           {
-            "id": "a2d444637b237e7d",
+            "id": "990d29e86ce05a4c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -212,9 +212,12 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "a2d444637b237e7d",
+  "active": "990d29e86ce05a4c",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "Capítulo 4 - Spring Boot Autoconfiguration and Actuator.png",
+=======
+>>>>>>> f26663052b2b0e3f9c15d698d532046d4fe4cf0f
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 2 - Economia e faturamento da nuvem.md",
     "CND.md",

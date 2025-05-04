@@ -1,3 +1,4 @@
+
 **Tópicos abordados:**
 - Infraestrutura global da AWS;
 - Visão geral dos serviços e das categorias de serviços da AWS;
