@@ -139,3 +139,4 @@ Serviço que permite rodar containers sem se preocupar com servidores. Só defin
 - **Uso Comum** :
     - Distribuição de carga para clusters de servidores web ou aplicativos.
     - Garantia de alta disponibilidade e tolerância a falhas.
+

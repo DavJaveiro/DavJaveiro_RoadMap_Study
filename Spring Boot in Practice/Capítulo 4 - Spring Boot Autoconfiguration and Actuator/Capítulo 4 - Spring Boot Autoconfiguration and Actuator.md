@@ -4,6 +4,42 @@
 - [ ] *Introducing Spring Boot FailureAnalyzer and how to define a custom application-specific FailureAnalyzer*;
 - [ ] *An ind-depth discussion on Spring Boot Actuator and how to define custom metrics*;
 
+
+**Spring Boot Dependency Management (Gerenciamento de Dependências**
+O Spring Boot usa um *Parent POM* (Maven) ou um *BOM* (Bill of Materials) no gradle para importar automaticamente versões compatíveis de bibliotecas.
+
+**Exemplo com Maven:**
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+</dependencies>
+```
+
+Aqui, não precisamos declarar a versão do *spring-boot-starter-web*, nem das bibliotecas que ele puxa (como Spring MVC, Jackson, etc), porque todas essas versões são gerenciadas pelo POM pai do Spring Boot, que geralmente é assim:
+```xml
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.1.0</version> <!-- Por exemplo -->
+</parent>
+
+```
+
+**Como funciona?**
+- O *spring-boot-starter-parent* inclui um grande arquivo *dependencyManagement* c<span style="background:#d4b106">om todas as versões recomendadas e testadas de bibliotecas</span>.
+- Quando adicionamos uma dependência sem versão, o Maven consulta esse bloco e **usa a versão já definida lá**.
+
+**Quando devemos especificar a versão manualmente?**
+- Quando não estamos usando o parent POM do Spring Boot;
+- Quando adicionamos bibliotecas que não estão no BOM;
+- Quando queremos usar uma versão diferente da sugerida (mas isso deve ser feito com cuidado!).
+---
+
+
+
 Já aprendemos bastante sobre Spring Boot nos últimos três capítulos. Agora temos uma base sólida em Spring Boot, tendo visto várias funcionalidades do framework e diversas tarefas comuns que precisamos realizar diariamente. Também aprendemos como se comunicar e usar um banco de dados em uma aplicação Spring Boot.
 
 Neste capítulo, exploraremos dois conceitos principais do Spring Boot: a **autoconfiguração do Spring Boot** e o **Spring Boot Actuator**. Aprenderemos vários blocos de construção da autoconfiguração do Spring Boot e exploraremos como ela funciona em uma aplicação. Vamos explorar diversas anotações condicionais (*conditional annotations*), que são a base da autoconfiguração do Spring Boot. Em seguida, descobriremos o Spring Boot Actuator, que permite monitor a saúde da nossa aplicação e interagir com ela.
@@ -379,7 +415,7 @@ Linha do tempo:
 ## 4.4 Spring Boot Actuator
 Além dos recursos principais para desenvolver aplicações, o Spring Boot também oferece um conjunto de funcionalidades para suporte operacional da nossa aplicação. Um aplicativo é considerado operacional quando está em produção e atendendo aos seus clientes ou usuários. Para gerenciar um serviço contínuo aos nossos clientes, precisamos monitorar e administrar a nossa aplicação. Esse monitoramento e gerenciamento incluem verificar a integridade da aplicação, desempenho, tráfego de entrada e saída, auditoria, diversas métricas do aplicativo, reiniciar a aplicação, alterar o nível de log e muito mais. Os diversos dados de monitoramento e métricas permitem analisar o comportamento da aplicação e agir conforme necessário.
 
-O Spring Boot Actuator traz essas capacidades de monitoramento e gerenciamento para nossa aplicação Spring Boot. O principal benefício do Spring Boot Actuator é que podemos obter muitos recursos prontos para produção em nossa aplicação sem precisar implementá-los explicitamente.
+O Spring Boot Actuator traz essas capacidades de monitoramento e gerenciamento para nossa aplicação Spring Boot. <span style="background:#d4b106">O principal benefício do Spring Boot Actuator é que podemos obter muitos recursos prontos para produção em nossa aplicação sem precisar implementá-los explicitamente.</span>
 
 ## 4.4.1 Technique: Configuring Spring Boot Actuator in a Spring Boot application
 In this technique, we'll demonstrate how to configure Spring Boot Actuator.
@@ -427,13 +463,48 @@ Além disso, veremos:
 - **Customizações avançadas** para adaptar o monitoramento às nossas necessidades.
 
 ### 4.4.2 Understanding Spring Boot Actuator endpoints
-Um **endpoint do Actuator** permite monitorar e gerenciar nossa aplicação. Na técnica anterior, vimos o endpoint health que possibilita verificar o status de integridade da aplicação. O Spring Boot oferece vários endpoints prontos para uso, além de permitir a criação de endpoints personalizados específicos para nossa aplicação.
+Um **endpoint do Actuator** permite monitorar e gerenciar nossa aplicação. Na técnica anterior, vimos o endpoint health que possibilita verificar o status de integridade da aplicação. **O Spring Boot oferece vários endpoints prontos para uso**, além de permitir a criação de endpoints personalizados específicos para nossa aplicação.
 
 Os endpoints do Actuator podem ser acessados via HTTP ou JMX (Java Management Extensions), e podemos configurá-los como **habilitados, desabilitados** ou **expostos**.
 
 - **Habilitar/Desabilitar**: controla se um endpoint específico estará disponível na aplicação. Por exemplo, por padrão o endpoint */shutdown* (que encerra a aplicação) vem desabilitado por motivos de segurança, mas podemos habilitá-lo manualmente se necessário.
 - **Exposição**: define se um endpoint estará disponível via HTTP, JMX ou ambos. Por padrão, apenas */health* e */info* são expostos via HTTP, enquanto todos os endpoints built-in são expostos via JMX por padrão (considerado mais seguro que HTTP).
 
+Mesmo que um endpoint esteja habilitado, ele só será acessível externamente se estiver exposto.
+- **HTTP** - acessado pela URL, ex `http://localhost:8080/actuator/health`
+- **JMX** - acesso via ferramentas Java (como JConsole, VisualVM).
+
+**Exemplo para expor via HTTP**:
+`Expor apenas alguns endpoints via HTTP`
+`management.endpoints.web.exposure.include=*`
+
+
 O Spring Boot inclui uma **página de descoberta** que lista todos os endpoints Actuator disponíveis. Por padrão, ela está acessível em:
 http://localhost:8080/actuator
 
+#auditevents - esse endpoint retorna eventos de auditoria (audit events) registrados na aplicação com relação a segurançca, esses eventos normalmente incluem:
+- Usuários logando (*login*)
+- Usuários deslogando
+- Acessos negados
+- Falhas de autenticação
+- Outras ações relevantes de segurança
+
+Essas informações são úteis para fins de **segurança, auditoria, monitoramento de atividades dos usuãrios** ou até para análise de comportamento dentro da aplicação.
+
+Para usar esse endpoint, precisamos ter:
+1. Spring Security configurado na aplicação (pois os eventos geralmente vêm de interações com segurança);
+2. Um *AuditEventRepository* configurado (por padrão, o Spring Boot usa *InMemoryAuditEventRepository*), mas pode-se substituir por persistência em banco de dados.
+
+**Tipos comuns de eventos de auditoria**
+**AUTHENTICATION_SUCESS** - Login bem-sucedido
+**AUTHENTICATION_FAILURE** - Tentativa de login falhou
+**LOGOUT** - Logout do usuário
+**SECURITY** - Acesso negado a um recurso protegido
+
+#beans - list todos os beans disponíveis no #BeanFactory 
+
+#caches - lista todos os caches da aplicação
+#conditions - reporta todas as condições de autoconfiguração
+#configprops - demonstra todos os beans *@ConfigurationProperties*
+#env - exibe as propriedades do ambiente atual
+#flyway - mostra detalhes sobre as **migrações de banco de dados gerenciadas pelo Flyway**, portanto, ajuda a verificar o **estado das migrações de banco de dados** em tempo de execução - útil para **auditoria, depuração e garantir integridade do schema**.
