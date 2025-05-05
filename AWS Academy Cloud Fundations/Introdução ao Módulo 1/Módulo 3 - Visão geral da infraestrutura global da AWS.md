@@ -140,3 +140,23 @@ Serviço que permite rodar containers sem se preocupar com servidores. Só defin
     - Distribuição de carga para clusters de servidores web ou aplicativos.
     - Garantia de alta disponibilidade e tolerância a falhas.
 
+Neste módulo, aprendemos a:
+- Identificar a diferença entre regiões, zonas de disponibilidade e pontos de presença da AWS;
+- Identificar categorias de serviços e serviços da AWS;
+
+---
+1. Qual componente da infraestrutura global da AWS o Amazon CloudFront usa para garantir a entrega de baixa latência?
+Pontos de Presença da AWS
+
+2. Podemos executar aplicativos e cargas de trabalho de uma região mais próxima dos usuários finais para diminuir a latência. 
+
+3. Redes, armazenamento, computação e bancos de dados são exemplos de categorias de serviços que a AWS oferece.
+**Verdadeiro, a AWS oferece, sim, serviços de Resdes (ou networking), sendo uma das principais categorias de serviços da nuvem da AWS. Alguns exemplos são:**
+- Amazon VPC (Virtual Private Cloud): permite provisionar uma rede isolada logicamente na nuvem;
+- AWS Direct Connect: conecta a nossa local diretamente à AWS;
+- Elastic Load Balancing (ELB): distribui automaticamente o tráfego de entrada entre várias instâncias
+- Amazon Route 53: serviço de DNS altamente disponível e escalável;
+- AWS Transit Gateway: conecta VPCs e redes locais usando um hub centralizado.
+
+3. Quais das seguintes são áreas geográficas que hospedam duas ou mais zonas de disponibilidade?
+	As **Regiões da AWS** são áreas geográficas amplas ao redor do mundo que hospedam duas ou mais Zonas de Disponibilidade (Availability Zones). Cada zona de disponibilidade, por sua vez, é composta por um ou mais datacenters fisicamente separados, mas interconectados por redes de alta velocidade.
