@@ -508,3 +508,93 @@ Para usar esse endpoint, precisamos ter:
 #configprops - demonstra todos os beans *@ConfigurationProperties*
 #env - exibe as propriedades do ambiente atual
 #flyway - mostra detalhes sobre as **migrações de banco de dados gerenciadas pelo Flyway**, portanto, ajuda a verificar o **estado das migrações de banco de dados** em tempo de execução - útil para **auditoria, depuração e garantir integridade do schema**.
+#health - mostra o status de saúde da aplicação
+#heapdump - um heap dump é essencialmente uma captura do estado da memória heap no momento em que o comando é executado. Portanto, ele ajuda a identificar vazamentos de memória ou excessivo consumo de memória por objetos que não deveriam estar presentes. Permite entender quais objetos estão ocupando mais espaço e como a aplicação está gerenciando a memória. Se a JVM está consumindo mais memória do que o esperado, um heap dump pode ser analisado para encontrar possíveis problemas.
+
+#httptrace - permite rastrear detalhes das requisições e respostas HTTP, como status, cabeçalhos e tempo de execução. Para visualizar esses rastreamentos, é necessário configurar um bean do tipo *HttpTraceRepository*.
+```java
+@Bean
+public HttpTraceRepository httpTraceRepository() {
+	return new InMemoryHttpTraceRepository();
+}
+```
+Isso armazenará os rastreamentos na memória, permitindo visualizar as requisições que chegam até a aplicação. 
+
+#info - fornece informações gerais sobre a aplicação, como versão, nome e detalhes personalizados. Ele é ativado por padrão e pode ser configurado para exibir dados adicionais.
+Podemos adicionar informações estáticas no arquivo *application.properties* ou *application.yml*:
+```json
+info.app.name=Minha Aplicação
+info.app.version=1.0.0
+info.app.description=Aplicação de exemplo com Spring Boot
+```
+
+Isso fará com que o endpoint retorne:
+```json
+{
+  "app": {
+    "name": "Minha Aplicação",
+    "version": "1.0.0",
+    "description": "Aplicação de exemplo com Spring Boot"
+  }
+}
+```
+
+#integrationgraph - expõe um gráfico contendo todos os componentes do **Spring Integration**. Ele permite visualizar a estrutura da aplicação e entender como os componentes estão conectados. 
+
+Para obter informações sobre a aplicação, basta fazer uma requisição **GET** para:
+`GET http://localhost:8080/actuator/integrationgraph`
+
+O retorno será um JSON contendo detalhes sobre os componentes, incluindo **canais de mensagens**, adaptadores, padrões de integração e links entre eles.
+
+#logfile - permite acessar o conteúdo do arquivo de log da aplicação. Para recuperar o log, basta fazer uma requisição **GET** para `/actuator/logfile`, como no exemplo abaixo:
+`curl 'http://localhost:8080/actuator/logfile' -i -X GET`
+A resposta será o conteúdo do arquivo de log, retornado como **texto simples**. No entanto, para que esse endpoint funciona corretamente, é necessário que o log esteja configurado usando as propriedades *logging.file* ou *logging.path*. Caso contrário, ele pode não encontrar o arquivo de log automaticamente.
+
+### 4.4.3 Managing Spring Boot Actuator endpoints
+É possível especificarmos seletivamente os nomes dos endpoints que desejamos expor via web, ou utilizar o caractere curinga (ou) * para expor todos os endpoints do #Actuator. Portanto, existem duas formas:
+```json
+management.endpoints.web.exposure.include=beans,threaddump
+management.endpoints.web.exposure.include=*
+```
+
+Na listagem 4.15, a primeira configuração habilita apenas os endpoints *beans* e *threaddump* pela web (HTTP). A segunda configuração habilita todos os endpoints do Spring Boot Actuator disponíveis pela Web (HTTP).
+
+Além disso, também podemos usar a propriedade *exclude* para controlar a exposição dos endpoints do *actuator*. Por exemplo, podemos querer expor todos os endpoints do actuator, exceto os endpoints *threaddump*...
+
+Nas seções anteriores, vimos que o *context root* de todos os endpoints do actuator é sempre definido como: `http://localhost:8080/actuator/health`. O Spring Boot permite personalizar o *context root* dos endpoints com valores customizados. Isso é útil caso já utilizemos o endpoint */actuator* para outros propósitos e precisamos escolher um **context root** diferente. 
+
+Podemos alterar a propriedade no arquivo **application.properties**:
+`management.endpoints.web.base-path=/sbip` no arquivo *application.properties* para alterar o *context root* dos endpoints do actuator de *actuator* para *sbip*.
+
+Podemos alterar a porta do servidor de gerenciamento (management server) para uma porta HTTP diferente da porta HTTP da aplicação propriamente dita. Por exemplo, nossa aplicação Spring Boot está sendo executada na porta HTTP 8080 e, por padrão, essa porta é usada como a porta de gerenciamento para os endpoints do Actuator. Portanto, podemos alterar a porta de gerenciamento para 8081 configurando a propriedade:
+`management.server.port=8081` no arquivo *application.properties*, como mostrado na figura 4.4.
+
+![[Capítulo 4 - Spring Boot Autoconfiguration and Actuator-1.png]]
+
+### 4.4.4 Health endpoint deep dive
+O endpoint *health*, como o nome indica, ele fornece o status de saúde da aplicação e de vários outros componentes dela. Por exemplo, é possível obter o status de saúde do componente de banco de dados da aplicação por meio do endpoint *health* do Actuator.
+
+O Spring Boot fornece, por padrão, várias implementações de *HealthIndicator* que oferecem o status de saúde de componentes específicos da aplicação. Alguns desses *HealthIndicators* são fornecidos pelo próprio Spring Boot e são sempre configurados automaticamente. Por exemplo, o Spring Boot sempre configura o *DiskSpaceHealthIndicator* e o *PingHealthIndicator*.
+
+Vamos alterar e configurar a propriedade para obter, além do status de saúde agregado da aplicação, os status de espaço em disco e de resposta ao ping. Para isso, adicionaremos a seguinte propriedade ao arquivo *application.properties*:
+`management.endpoint.health.show-details=always`
+
+A propriedade na listagem pode ser configurada com um dos seguintes três valores:
+- **always**: indica que o status detalhado de saúde deve ser exibido sempre.
+- **never:** indica que apenas o status de saúde deve ser fornecido, sem quaisquer detalhes adicionais. Este é o valor padrão.
+- **when-authorized**: indica que os detalhes só devem ser fornecidos para o usuário ou API autorizados a acessar o endpoint de *health*.  Um usuário é considerado autorizado se estiver autenticado na aplicação e possuir os papéis (roles) definidos na propriedade *management.endpoint.health.roles* no arquivo *application.properties*.
+
+Às vezes, o Spring Boot habilita um *HealthIndicator* de forma condicional. Essas condições podem estar relacionadas à presença de uma determinada dependência no classpath da aplicação. Por exemplo, se estivermos utilizando um banco de dados relacional, o Spring Boot configura automaticamente o *DataSourceHealthIndicator* e fornece o status de saúde do banco de dados subjacente.
+
+Detalhes adicionais só ficam disponíveis no endpoint *health* se a propriedade *management.endpoint.health.show-details* estiver configurada como *always*. 
+
+### 4.4.6 Technique: Defining a custom Spring Boot actuator HealthIndicator
+O *healthIndicator* embutido do Spring Boot não permite consultar o status de saúde de componentes específicos da nossa aplicação. Precisamos definir um **HealthInidicator** personalizado que possibilite monitorar o status de saúde de um sistema crítico de API REST com o qual a nossa aplicação está integrada.
+
+**Solução**
+O Spring Boot fornece a interface *HealthIndicator*, que permite definir qualquer número de *HealthIndicators* personalizados para a nossa aplicação. Essas implementações são tratadas como componentes Spring regulares, sendo automaticamente descobertas pela varredura de componentes (*component scanning*) do Spring Boot e integradas automaticamente aos dados do endpoint */health* do Spring Boot Actuator.
+
+Para demonstrar como definir um `HealthIndicator` personalizado, vamos monitorar o status de saúde de uma API REST com a qual nossa aplicação Spring Boot está integrada. Utilizaremos a API REST [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/), que retorna belas imagens de cachorros.
+
+Depois de concluir a configuração do projeto, forneceremos uma implementação da interface *HealthIndicator* chamada *DogsApiHealthIndicator*. É uma convenção utilizar o sufixo *HealthIndicator* na classe personalizada de *HealthIndicator*. 
+
