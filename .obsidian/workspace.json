@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
+                "file": "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Módulo 4 - Segurança na Nuvem AWS"
+              "title": "Capítulo 4 - Spring Boot Autoconfiguration and Actuator"
             }
           }
         ]
@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d0a51d9d7e4077a1",
@@ -213,10 +214,10 @@
   },
   "active": "b150a1faa541b18d",
   "lastOpenFiles": [
+    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
     "Módulo 4 - Segurança na Nuvem AWS-1.png",
     "Módulo 4 - Segurança na Nuvem AWS.png",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 3 - Visão geral da infraestrutura global da AWS.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md"
   ]
 }
