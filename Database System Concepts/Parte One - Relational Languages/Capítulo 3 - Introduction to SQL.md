@@ -222,13 +222,14 @@ Como exemplo, suponha que queremos responder à consulta "*Recupere os nomes de 
 
 Em SQL, para responder à consulta acima, listamos as relações que precisam ser acessada na cláusula **from** e especificamos a condição de correspondência na cláusula **where**. A consulta acima pode ser escrita em SQL como:
 ```sql
-select name, instructor.dept_name, building from instructor, department where instructor.dep_name = department.dept_name;
+select name, instructor.dept_name, building 
+from instructor, department 
+where instructor.dep_name = department.dept_name;
 ```
 
  Se as relações *instructor* e *department* forem como mostradas na Figura 2.1 e Figura 2.5, respectivamente, então o resultado dessa consulta é mostrado na Figura 3.5.
 
-Observe que o atributo *dept_name* ocorre em ambas as relações, **instructor e department**, e o nome da relação é usado como prefixo (em *instructor.dept_name*) e *department.dept_name* para deixar claro a qual atributo estamos nos referindo. Em contraste, os atributos **name** e *building* aparecem apenas em uma das relações e, po
-rtanto, não precisam ser prefixados pelo nome da relação.
+Observe que o atributo *dept_name* ocorre em ambas as relações, **instructor e department**, e o nome da relação é usado como prefixo (em *instructor.dept_name*) e *department.dept_name* para deixar claro a qual atributo estamos nos referindo. Em contraste, os atributos **name** e *building* aparecem apenas em uma das relações e, portanto, não precisam ser prefixados pelo nome da relação.
 
 Essa convenção de nomenclatura requer que as relações presentes na cláusula **from** tenham nomes distintos. Essa exigência causa problemas em alguns casos, como quando informações de duas tuplas diferentes na mesma relação precisam ser combinadas. Na seção 3.4.1, veremos como evitar esses problemas usando a operação de renomeação *(rename)*.
 
@@ -244,7 +245,10 @@ from ri, r2,...,rm
 where P;
 ```
 
-Cada **A** representa um *attribute*, e cada **r** é uma relação. P é um *predicate*. Se a *where* fore removido, o predicado P será verdadeiro. Embora as clauses devam ser escritas na ordem **select**, **from**, **where**, a maneira mais fácil de entender as operações especificadas pela *query* é considerar as *clauses* na ordem operacional: primeiro **from**, depois **where**, e então **select**. 
+Cada **A** representa um *attribute*, e cada **r** é uma relação. P é um *predicate*. Se a *where* for removido, o predicado P será verdadeiro. Embora as clauses devam ser escritas na ordem **select**, **from**, **where**, a maneira mais fácil de entender as operações especificadas pela *query* é considerar as *clauses* na ordem operacional: 
+primeiro **from**, 
+depois **where**, 
+e então **select**. 
 
 A cláusula **from** por si só define um produto cartesiano das relações listadas na cláusula. Ela é definida formalmente em termos de álgebra relacional, mas também pode ser entendida como um processo iterativo que gera tuplas para a relação resultante da cláusula **from**. 
 
@@ -259,6 +263,7 @@ A1 | B3
 A2 | B1  
 A2 | B2  
 A2 | B3  
+
 Esse processo é chamado de produto cartesiano - ele combina cada linha de uma tabela com todas as linhas da outra. 
 Sozinha, a cláusula *FROM* com várias tabelas não filtra nada. Precisamos de condições com *where* ou *JOIN ON* para que o resultado faça sentido, especialmente se estiver relacionando dados.
 
@@ -293,4 +298,35 @@ select name, course_id
 from instructor, teaches
 where instructor.ID = teaches.ID;
 ```
+
+Observamos que a consulta anterior retorna apenas os *instructors* que ministram algum *course*. 
+
+*Instructors* que não ministram nenhum *course* não são retornados; se desejarmos retornar essas tuplas, podemos usar uma operação chamada *outer join*, que é descrita na Seção 4.1.3.
+
+Se quisermos encontrar apenas os nomes dos instructors e os identificadores dos *courses* dos *instructors* do departamento de *Computer Science*, podemos adicionar um predicado extra na cláusula *where*, como mostrado abaixo:
+```sql
+select name, course_id
+from instructor, teaches
+where instructor.ID = teaches.id and instructor.dept_name = 'Comp. Sci.'
+```
+
+Observamos que, como o atributo *dept_name* ocorre apenas na relação *instructor*, poderíamos ter usado apenas *dept_name*, em vez de *instructor.dept_name* na consulta acima. De forma geral, o significado de uma consulta SQL pode ser entendido da seguinte maneira:
+1. Gerar o *Cartesian product* das relações listadas na cláusula from
+2. Aplicar os predicados na cláusula where sobre o resultado do Passo 1;
+3. Para cada *tuple* no resultado do Passo 2, retornar os atributos (ou os resultados de expressões) especificados na cláusula *select*. 
+
+Essa sequência de passos ajuda a deixar claro qual deve ser o resultado de uma consulta SQL, e não como ela deve ser executada. 
+Uma implementação real de SQL **não** executaria a consulta dessa forma. Em vez disso, ela otimizaria a avaliação gerando (na medida do possível) apenas os elementos do Cartesian product que satisfazem os predicados da cláusula *where*. Estudamos mais técnicas de implementação no Capítulo 15 e no Capítulo 16.
+
+Ao escrever consultas, devemos ter cuidado para incluir condições apropriadas na cláusula *where*.
+Se omitirmos a condição da cláusula **where** na consulta SQL anterior, ela retornará o produto cartesiano, que pode ser uma relação enorme. 
+
+Por exemplo, para a relação *instructor* e para a relação *teaches*, o produto cartesiano terá  12 * 13 = 156 tuplas, mais do que conseguimos mostrar.
+
+Para piorar, suponhamos que tenhamos um número mais realista de instrutores do que nas relações de exemplo das figuras, digamos, 200 instrutores. Vamos assumir que cada instrutor ministra três cursos, então teríamos 600 tuplas na relação *teaches*.
+
+Nesse caso, o processo iterativo anterior geraria 200 * 600 = 120.000 tuplas no resultado.
+
+## 3.4 Additional Basic Operations
+Uma série de operações básicas são suportadas em SQL.
 

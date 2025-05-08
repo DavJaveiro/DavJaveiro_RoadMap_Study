@@ -78,3 +78,26 @@ Pare de usar o usuário raiz da conta:
 
 **Proteção de novas contas da AWS: AWS CloudTrail**
 Etapa 3: Usar o AWS CloudTraill
+
+# Laboratório 1: Introdução ao AWS IAM
+
+O AWS Identify and Access Management (AWS IAM) é um serviço da web que **possibilita a clientes da Amazon** Web Services (AWS) <span style="background:#d4b106">gerenciar usuários e permissões de usuários na AWS</span>. Com o IAM, podemos gerenciar de forma centralizada os **usuários**, as **credenciais de segurança** (como chaves de acesso) e as **permissões** que controlam quais recursos da AWS os usuários podem acessar.
+
+Esse laboratório demonstrará como:
+![[Módulo 4 - Segurança na Nuvem AWS-2.png]]
+
+- Como explorar **usuários e grupos do IAM** pré-criados
+- Como inspecionar **políticas do IAM**, conforme aplicadas aos grupos pré-criados;
+- Como seguir um **cenário real** adicionando usuários a grupos com recursos específicos ativados.
+- Como localizar e usar a URL de login do IAM
+- Como testar os efeitos das políticas no acesso ao serviço.
+
+**Restrições de serviço da AWS**
+Neste ambiente de laboratório, o acesso aos serviços e às ações de serviços da AWS podem ser restritos aos casos necessários para concluir as instruções do laboratório. 
+
+**AWS Identity and Access Management**
+O AWS Identity and Access Management (IAM) pode ser usado para:
+- **Gerenciar usuários do IAM e o acesso:** podemos criar usuários e atribuir a eles credenciais de segurança individuais (chaves de acesso, senhas e dispositivos de autenticação multifator). É possível gerenciar as permissões para controlar quais operações um usuário pode executar;
+- **Gerenciar perfis do IAM e as permissões:** um perfil do IAM é semelhante a um usuário, já que é uma identidade da AWS com políticas de permissão que definem o que a identidade pode e não pode fazer na AWS. Porém, a finalidade de uma função é poder ser assumida por qualquer pessoa que necessite dela e não associada exclusivamente a um único indivíduo.
+- **Gerenciar usuários federados e as permissões:** você pode ativar a **federação de identidade** para permitir que os usuários existentes em nossa empresa acessem o Console de Gerenciamento da AWS, chamem as APIs da AWS e acessem recursos, sem precisar criar um usuário do IAM para cada identidade. 
+
