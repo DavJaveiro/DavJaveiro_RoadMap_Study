@@ -598,3 +598,31 @@ Para demonstrar como definir um `HealthIndicator` personalizado, vamos monitorar
 
 Depois de concluir a configuração do projeto, forneceremos uma implementação da interface *HealthIndicator* chamada *DogsApiHealthIndicator*. É uma convenção utilizar o sufixo *HealthIndicator* na classe personalizada de *HealthIndicator*. 
 
+```java
+@Component  // pode ser descoberta por varredura dos componentes do Spring Boot
+public class DogsApiHealthIndicator implements HealthIndicator {  // HealthIndicator = saúde dos componentes da aplicação
+         
+    public Health health() {  
+       try {  
+          ParameterizedTypeReference<Map<String, String>> reference = new ParameterizedTypeReference<Map<String, String>>() {};  
+            ResponseEntity<Map<String, String>> result = new RestTemplate().exchange("https://dog.ceo/api/breeds/image/random", HttpMethod.GET, null, reference);  
+            if (result.getStatusCode().is2xxSuccessful() && result.getBody() != null) {  
+               return Health.up().withDetails(result.getBody()).build();  
+            }   
+            else {  
+               return Health.down().withDetail("status", result.getStatusCode()).build();  
+            }  
+       }  
+       catch(RestClientException ex) {  
+           return Health.down().withException(ex).build();  
+       }  
+    }  
+}
+```
+
+Estamos realizando as seguintes atividades nesta classe:
+- Esta classe implementa a interface **HealthIndicator**. Isso implica que esta classe fornece o status de saúde de algum componente da aplicação.
+- Ela está anotada com a anotação *@Component*, para que possa ser descoberta pelo mecanismo de varredura de componentes do Spring Boot.
+- Utilizamos a classe **RestTemplate** do Spring para chamar a API em *htt://dog.ceo*. O **RestTemplate** permite que invoquemos APIs REST a partir de nossa aplicação. 
+- Em seguida, avaliamos o status da resposta HTTP. Se o código de status for da série HTTP 2XX( por exemplo, 200, 201) e o corpo da resposta não for nulo, definimos o status de saúde como **UP** e retornamos o corpo da resposta do serviço REST, para que ele possa ser exibido no endpoint */health*;
+- Se encontrarmos qualquer exceção, retornamos o status de saúde do **actuator** como **DOWN** e fornecemos a exceção, para que ela possar ser mostrada no resultado do endpoint */health*.
