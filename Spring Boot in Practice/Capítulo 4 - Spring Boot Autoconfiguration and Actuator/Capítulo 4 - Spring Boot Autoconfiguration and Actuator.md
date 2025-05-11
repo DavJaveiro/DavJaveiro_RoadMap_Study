@@ -626,3 +626,20 @@ Estamos realizando as seguintes atividades nesta classe:
 - Utilizamos a classe **RestTemplate** do Spring para chamar a API em *htt://dog.ceo*. O **RestTemplate** permite que invoquemos APIs REST a partir de nossa aplicação. 
 - Em seguida, avaliamos o status da resposta HTTP. Se o código de status for da série HTTP 2XX( por exemplo, 200, 201) e o corpo da resposta não for nulo, definimos o status de saúde como **UP** e retornamos o corpo da resposta do serviço REST, para que ele possa ser exibido no endpoint */health*;
 - Se encontrarmos qualquer exceção, retornamos o status de saúde do **actuator** como **DOWN** e fornecemos a exceção, para que ela possar ser mostrada no resultado do endpoint */health*.
+
+É só isso, precisamos apenas definir o *HealthIndicator*, e o Spring Boot irá descobri-lo automaticamente para coletar o status de saúde e disponibilizar a saída no endpoint /health. Podemos iniciar a aplicação e acessar o endpoint `http://localhost:8080/actuator/health/`. 
+
+## 4.5 Info endpoint deep dive
+### 4.5.1 Technique: Configuring info Spring Boot Actuator endpoint
+**Problem**: precisamos configurar o endpoint *info* do Spring Boot Actuator em nossa aplicação.
+**Solution:** como o nome indica, o endpoint **info** fornece informações relacionadas à aplicação. Por padrão, o endpoint **info** não retorna nenhuma informação. No entanto, podemos personalizar esse comportamento para retornar dados relacionados à nossa aplicação. Existem dois modos pelos quais podemos configurar os dados para o endpoint *info*.
+
+Primeiramente, podemos configurar as propriedades no arquivo *application.properties*, definindo as propriedades *info.*. Por exemplo, podemos configurar as seguintes propriedades no *application* da nossa aplicação Spring Boot, como mostrado na listagem a seguir:
+```json
+info.app.name=Spring Boot Actuator Info Application
+info.app.description= Spring Boot application that explores  the /info endpoint
+info.app.version=1.0.0
+
+
+```
+

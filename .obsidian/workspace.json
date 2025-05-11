@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
+                "file": "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 4 - Spring Boot Autoconfiguration and Actuator"
+              "title": "Capítulo 5 - Securing Spring Boot Applications"
             }
           }
         ]
@@ -214,13 +214,17 @@
   },
   "active": "a0a47c63764326c8",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/imagens/Capítulo 5 - Securing Spring Boot Applications.png",
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/imagens",
+    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 5 - Redes e entrega de conteúdo.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
     "Módulo 4 - Segurança na Nuvem AWS-5.png",
     "Módulo 4 - Segurança na Nuvem AWS-4.png",
     "Módulo 4 - Segurança na Nuvem AWS-3.png",
     "Módulo 4 - Segurança na Nuvem AWS-2.png",
-    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
     "CEDERJ Matemática/Matemática.md",
     "CEDERJ Matemática"
