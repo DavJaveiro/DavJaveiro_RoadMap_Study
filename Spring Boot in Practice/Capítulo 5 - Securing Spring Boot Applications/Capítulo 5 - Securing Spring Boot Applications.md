@@ -47,4 +47,73 @@ Vamos explorar esses cabeçalhos e seu papel na proteção de uma aplicação **
 - O cabeçalho X-XSS-Protection com 1;mode=block previne ataques de **Cross-Site Scripting (XSS) reflexivo**. O valor 1 ativa o filtro XSS embutido no navegador, e a opção **mode=block** permite que o navegador impeça o carregamento de uma página se um ataque XSS for detectado.
 
 ## 5.2 Hello Spring Security with Spring Boot
+Nesta seção, vamos introduzir o Spring Security na aplicação de controle acadêmico (course tracker).
+
+### 5.2.1 Técnica: ativando a segurança da aplicação com Spring Security em uma aplicação Spring Boot
+Nesta técnica, vamos demonstrar como ativar a segurança da aplicação com o Spring Security.
+
+**Problem:** desenvolvemos uma aplicação Spring Boot. No entanto, não há nenhuma implementação de segurança da aplicação. Precisamos implementar uma segurança básica para a aplicação.
+
+**Solution:** a forma mais simples de fornecer segurança em uma aplicação Spring Boot é incluir a dependência *spring-boot-starter-security* no arquivo **pom.xml**. Essa dependência é mostrada no seguinte trecho:
+
+A dependência *spring-boot-starter-security* traz todas as bibliotecas necessárias e ativa o Spring Security na aplicação Spring Boot. Essa dependência inicial (starter) inclui as bibliotecas principais do Spring Security, como *spring-security-config* e *spring-security-web*, na aplicação.
+
+Podemos iniciar a aplicação utilizando a opção de configuração de execução (run configuration) da IDE. Uma vez que a aplicação seja iniciada com sucesso, acessaremos a página inicial (index) da aplicação através da URL *http://localhost:8080/index*. Para nossa surpresa, encontraremos uma página de login pedindo que façamos a autenticação, em vez de exibir a página inicial da aplicação. Isso acontece porque incorporamos o Spring Security à nossa aplicação, e ele automaticamente ativou um login baseado em formulário. Por padrão, o Spring Security exibe a página de login, como mostrado na figura 5.2, para que possamos nos autenticar-se na aplicação.
+
+O nome de usuário (username) padrão para a aplicação é **user**. O Spring Boot gera e exibe uma senha no log do console. Essa senha muda cada vez que a aplicação é reiniciada. Essa senha padrão pode não ser conveniente para uma aplicação em produção. 
+
+Agora, estamos autenticados na aplicação e podemos acessar todas as funcionalidades, como adicionar um novo curso, editar um curso existente e excluir um curso existente. Também podemos sair da aplicação clicando no botão de logout (sair) localizado no canto superior direito da interface.
+
+Por padrão, o Spring Security disponibiliza o endpoint */logout*. No exemplo do controle acadêmico (course tracker), incluímos o botão de logout na página inicial da aplicação. Ao clicar neste botão, o endpoint */logout* é acionado e somos desconectados da aplicação.
+
+Se quisermos customizar o comportamento do logout (como mudar a URL, definir uma página específica após o logout ou desativar a proteção CSRF apenas para esse endpoint), podemos configurar isso dentro da classe de configuração de segurança do Spring, por exemplo:
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .and()
+            .logout()
+                .logoutUrl("/logout") // padrão, mas você pode alterar se quiser
+                .logoutSuccessUrl("/login?logout") // redireciona após logout
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .and()
+            .csrf().disable(); // opcional, dependendo do caso
+
+        return http.build();
+    }
+}
+```
+
+**Discussão**
+Com essa técnica, aprendemos como ativar a segurança padrão de uma aplicação Spring Boot usando o Spring Security. Observamos que incluir a dependência *spring-boot-starter-security* no arquivo *pom.xml* ativa magicamente um certo nível de segurança na aplicação por meio de um login baseado em formulário. O Spring Boot também gera uma senha para acesso à aplicação. 
+
+A inclusão da dependência *spring-boot-starter-security* integra o ecossistema do Spring Security à aplicação. Podemos verificar a dependência no arquivo **pom.xml** e verificar que ela possui dependências transitivas para as bibliotecas *spring-security-config* e *spring-security-web*. Juntas, essas duas bibliotecas fornecem o suporte necessário ao funcionamento do Spring Security.
+
+Como já vimos anteriormente com a autoconfiguração do Spring Boot, a presença das bibliotecas do Spring Security no classpath da aplicação permite que o Spring Boot configure automaticamente os componentes necessários de segurança. Em breve, examinaremos quais são esses componentes e como eles são configurados na seção sobre autoconfiguração do Spring Security.
+
+![[Capítulo 5 - Securing Spring Boot Applications.png]]
+
+Antes de nos familiarizarmos com o funcionamento interno do Spring Security, vamos apresentar uma visão geral muito elevada do processo de autenticação em uma aplicação Web típica. O diagrama acima ilustra a sequência de etapas:
+1. Tentamos acessar a página inicial da aplicação acessando uma URL Web (por exemplo, `http://localhost:8080`) na aplicação course tracker;
+2. A requisição chega ao servidor, e ele verifica que estamos tentando acessar um recurso protegido;
+3. Como ainda não estamos autenticado, o servidor responde indicando que é necessário autenticar-se. Essa resposta pode ser um código de resposta HTTP ou um <span style="background:#d4b106">redirecionamento para uma página Web</span>, dependendo da implementação de segurança no servidor.
+4. Com base nos mecanismos de autenticação configurados no servidor, o navegador irá nos redirecionarmos para uma página de login ou recuperar as credenciais por outros meios, como a caixa de diálogo de autenticação básica HTTP ou um cookie. Aprenderemos como configurar esses mecanismos de autenticação no servidor em técnicas posteriores.
+5. As credenciais são então enviadas de volta ao servidor. O navegador pode usar uma requisição HTTP POST (por exemplo, em uma página de login) ou um cabeçalho HTTP (por exemplo, em autenticação BASIC) para enviar as credenciais ao servidor.
+6. O servidor valida as credenciais. Se forem válidas, o login é considerado bem-sucedido e o servidor avança para a próxima etapa. No entanto, se as credenciais forem inválidas, normalmente o navegador pede para tentar novamente, retornando à etapa 3.
+7. Se o login for bem-sucedido e o usuário possuir as autoridades (permissões) necessárias, a requisição será concluída com sucesso. Caso contrário, o servidor retorna o código de erro HTTP 403 (*Forbidden*). 
+8. Quando o usuário faz logout da aplicação, o servidor limpa a sessão e outras credenciais armazenadas e desconecta o usuário. Em seguida, redireciona o usuário para a página de login ou para a página inicial da aplicação, com base na configuração de segurança do servidor. 
+
+Na próxima seção, iniciaremos com a arquitetura do Spring Security e aprenderemos como os passos acima são implementados dentro do Spring Security.
+
+### 5.2.2 Filter, FilterChain, and Spring Security
 
