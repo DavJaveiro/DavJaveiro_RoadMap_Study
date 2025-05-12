@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+                "file": "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 5 - Securing Spring Boot Applications"
+              "title": "Appendix C - A Introduction to HTTP"
             }
           }
         ]
@@ -214,11 +214,12 @@
   },
   "active": "a0a47c63764326c8",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "Capítulo 5 - Securing Spring Boot Applications-1.png",
     "Capítulo 5 - Securing Spring Boot Applications.png",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/imagens/Capítulo 5 - Securing Spring Boot Applications.png",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/imagens",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 5 - Redes e entrega de conteúdo.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",

@@ -115,5 +115,18 @@ Antes de nos familiarizarmos com o funcionamento interno do Spring Security, vam
 
 Na próxima seção, iniciaremos com a arquitetura do Spring Security e aprenderemos como os passos acima são implementados dentro do Spring Security.
 
-### 5.2.2 Filter, FilterChain, and Spring Security
 
+**Note:**
+O Spring Security é um assunto extenso e contém diversas funcionalidades. Está além do escopo deste texto oferecer cobertura aprofundada dos conceitos do Spring Security e das várias funcionalidades que ele oferece. Neste livro, abordaremos os conceitos mínimos de Spring Security que precisamos para continuar com as técnicas subsequentes.
+
+Neste capítulo e no próximo, aprenderemos várias técnicas que demonstram como implementar diferentes funcionalidades de segurança aproveitando o Spring Security. Como este é um livro sobre Spring Boot, manteremos nosso foco limitado ao uso do Spring Security no contexto do Spring Boot.
+
+Para um entendimento mais aprofundado do Spring Security, recomendamos consultar livros dedicados ao Spring Security ou o material de referência oficial...
+### 5.2.2 Filter, FilterChain, and Spring Security
+Em uma aplicação web Java típica, um cliente solicita ao servidor o acesso a um recurso por meio do protocolo HTTP ou HTTPS. A solicitação do cliente no servidor é tratada por um *servlet*. O *servlet* processa a requisição HTTP e fornece uma resposta HTTP. Essa resposta é enviada de volta ao cliente. Em uma aplicação web Spring, esse *servlet* é o *DespatecherServlet*, que trata todas as requisições recebidas pela aplicação.
+
+Um componente fundamental da especificação de **Servlet** que desempenha um papel fundamental no processamento da requisição-resposta é o *Filter*. Um #Filter fica posicionado antes de um *Servlet* e intercepta a troca de requisição-resposta. Ele pode realizar alterações nos objetos de requisição e resposta, como mostrado na Figura 5.6. Um ou mais filters podem ser configurados por meio de uma *FilterChain*, e todos os *filters* que fazem parte da cadeia podem interceptar e modificar os objetos de requisição e resposta.
+
+Muitas das funcionalidades do Spring Security são baseadas nesses *filteres*. Tanto *Filter* quanto *FilterChain* são interfaces do pacote *javax.servlet*.
+
+![[Capítulo 5 - Securing Spring Boot Applications-1.png]]
