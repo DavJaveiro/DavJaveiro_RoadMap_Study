@@ -34,3 +34,31 @@ Content-Type: application/json
 Os cabeçalhos dizem: quem somos nós (autorização), o idioma da carta e o formato do conteúdo.
 
 5. **O corpo da requisição (opcional)** - uma quantidade maior de dados que o cliente envia ao servidor dentro da própria requisição. Quando o cliente precisa enviar informações que possuem algumas centenas de caracteres ou mais, ele pode utilizar o corpo da requisição (request body). O uso do corpo não é obrigatório. 
+
+O trecho de código a seguir detalhe uma requisição HTTP:
+
+POST /servlet/default.jsp HTTP/1.1 - Essa requisição específica o método e o caminho (path);
+
+
+**Diferentes headears com valoress que podem ser adicionados nos dados de uma requisição:**
+Accept: text/plain; text/html                    
+Accept-Language: en-gb                           
+Connection: Keep-Alive                           
+Host: localhost                                  
+Referer: http://localhost/ch8/SendDetails.html   
+User-Agent: Mozilla/4.0 (MSIE 4.01;Windows 98)   
+Content-Length: 33                               
+Content-Type: application/x-www-form-urlencoded  Accept-Encoding: gzip, deflate  
+
+**Parâmetro de requisição que pode ser utilizado para transferir dados de requisição**:
+lastName=Einstein&firstName=Albert
+
+A URI (Uniform Resource Identifier) da requisição identifica um recurso no lado do servidor com o qual o cliente deseja trabalhar. A URI é a parte da requisição HTTP que a maioria das pessoas conhece, pois precisamos escrever uma URI na barra de endereços do navegador toda vez que acessamos um site. A URI tem um formato como o próximo trecho. No trecho <server_location> é o endereço de rede do sistema onde o aplicativo do servidor está em execução, *application_port* é o número da porta que identifica a instância do aplicativo servidor em execução, e *resource_path* é um caminho que o desenvolvedor associou a um recurso específico. O cliente precisa solicitar um caminho específico para trabalhar com um recurso particular.
+
+Uma vez que o cliente identifica o recurso na requisição, ele utiliza um verbo chamado **método de requisição HTTP** para especificar o que fará com o recurso. A maneira como o cliente especifica o método depende de como a chamada é enviada ao servidor. Por exemplo, se a chamada for feita diretamente pelo navegador, quando digitamos um endereço na barra de endereços, o navegador enviará uma requisição GET. Na maioria dos casos, quando clicamos em um botão de envio em um formulário em uma página da web, o navegador usa **POST**. O desenvolvedor da página web decide qual método o navegador deve usar ao enviar uma requisição originada como resultado do envio de um formulário. Uma requisição HTTP também pode ser enviada por um script escrito em uma linguagem do lado do cliente, como JavaScript. Nesse caso, o desenvolvedor do script decide qual método HTTP a requisição irá utilizar. 
+Os métodos HTTP que encontraremos com mais frequência em aplicativos web são os seguintes:
+- GET - Expressa a intenção do cliente de obter alguns dados do servidor;
+- POST - Expressa a intenção do cliente de adicionar dados nos ervidor;
+- PUT - Expressa a intenção do cliente de alterar dados no servidor;
+- DELETE - Expressa a intenção do cliente de remover alguns dados do servidor.
+
