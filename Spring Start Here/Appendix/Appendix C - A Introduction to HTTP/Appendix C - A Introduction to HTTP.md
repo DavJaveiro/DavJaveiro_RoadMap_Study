@@ -34,3 +34,30 @@ Content-Type: application/json
 Os cabeçalhos dizem: quem somos nós (autorização), o idioma da carta e o formato do conteúdo.
 
 5. **O corpo da requisição (opcional)** - uma quantidade maior de dados que o cliente envia ao servidor dentro da própria requisição. Quando o cliente precisa enviar informações que possuem algumas centenas de caracteres ou mais, ele pode utilizar o corpo da requisição (request body). O uso do corpo não é obrigatório. 
+
+- **GET** - Express the client's intention to obtain some data from the server;
+- **POST** - Express the client's intention to add data on the server
+- **PUT** - Express the client's intention to change data on the server
+- **DELETE** - Express the client's intention to remove some data from the server
+
+**NOTA:** sempre lembre-se de que os verbos não são uma restrição para o que implementamos. O protocolo HTTP não pode impedir que você implemente uma funcionalidade HTTP GET que altere dados no backend.  
+
+Os métodos HTTP Options e PATCH são menos comuns, mas ainda relevantes. O método OPTIONS permite que um cliente descubra quais parâmetros o servidor suporta para requisições, sendo frequentemente utilizado em implementações de segurança, especialmente no contexto de CORS (Cross-Origin Resource Sharing). O autor menciona que há uma excelente discussão sobre isso no capítulo 10 de *Spring Security in Action*.
+
+O método PATCH é usado quando apenas parte dos dados de um recurso precisa ser alterada, enquanto o método PUT substitui completamente um recurso ou cria um novo quando ele não existe. Apesar dessa diferença, muitos desenvolvedores ainda optam pelo PUT em situações onde o PATCH seria mais apropriado.
+
+A URI e o método HTTP são obrigatórios. O cliente precisa indicar qual recurso está utilizando (por meio da URI) e o que está fazendo com esse recurso (o método) ao fazer uma requisição HTTP. 
+
+Por exemplo, a requisição representada no próximo trecho pode ser uma forma de instruir o servidor a retornar todos os produtos que ele gerencia. Consideramos aqui que *produto* é um recurso gerenciado pelo servidor:
+GET http://example.com/products
+
+A requisição representada no próximo trecho pode significar que o cliente deseja remover todos os produtos do servidor:
+**DELETE**: *http://example.com/products*
+
+Mas às vezes, o cliente também precisar enviar dados junto com a requisição. O servidor necessita desses dados para concluir a solicitação. Imagine que o cliente não queira excluir todos os produtos, mas apenas um específico. Nesse caso, ele precisa informar ao servidor qual produto deve ser excluído e enviar esse detalhe na requisição. A requisição HTTP poderia ser semelhante à apresentada no próximo trecho, em que o cliente usa um parâmetro para indicar ao servidor que deseja deletar o produto **Beer** (Cerveja):
+**DELETE**: http://example.com/products?product=Beer
+
+O cliente pode usar parâmetros de requisição, cabeçalhos de requisição ou o corpo da requisição para enviar dados ao servidor. Utilizamos os parâmetros de requisição para enviar pequenas quantidades de dados individuais. Se for necessário trocar uma quantidade maior de informações, a melhor forma de enviá-las é por meio do **corpo da requisição HTTP**. Nos capítulos 7 a 10, utilizaremos ambas as abordagens para enviar dados do cliente para o servidor dentro da requisição HTTP.
+
+## C.3 The HTTP response: The way the server responds
+Nesta seção, discutiremos a resposta HTTP. O HTTP é o protocol
