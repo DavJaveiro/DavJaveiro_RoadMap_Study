@@ -17,10 +17,10 @@ Neste capítulo, demonstraremos como utilizar o **Spring Security** em aplicaç�
 
 No entanto, antes de aprofundarmos nas técnicas para implementar diversos recursos de segurança oferecidos pelo **Spring Security**, vamos explorar algumas das funcionalidades padrão oferecidas pelo **Spring Security** em uma aplicação Spring Boot:
 - O **Spring Security** exige que os usuários da aplicação sejam autenticados antes de acessá-la;
- - Se a aplicação não possuir uma página de login, o **Spring Security** gera uma página de login padrão para autenticação e permite que o usuário faça logout da aplicação;
+ - Se a aplicação não possuir uma página de login, o **Spring Security** <span style="background:#d4b106">gera uma página de login padrão para autenticação e permite que o usuário faça logout da aplicação</span>;
  - O Spring Security cria um usuário padrão chamado *user* e gera uma senha padrão (impressa no log do console) para login baseado em formulário. O Spring Security gera automaticamente uma página HTML de login (formulário) quando acessamos a URL protegida. 
  - São fornecidos diversos codificadores de senha para criptografar senhas em texto simples e armazená-las de forma segura no banco de dados.
- - O Spring Security previne ataques de **fixação de sessão**, alterando o ID da sessão após a autenticação bem-sucedida do usuário.
+ - O Spring Security <span style="background:#d4b106">previne ataques</span> de **fixação de sessão**, <span style="background:#d4b106">alterando o ID da sessão</span> após a autenticação bem-sucedida do usuário.
 - O Spring Security oferece proteção contra ataques de **Cross-Site Request Forgery (CSRF)**. Ele inclui um token gerado aleatoriamente na resposta HTTP e espera que esse token esteja presente em todas as requisições baseadas em formulário que pretendam realizar operações que alterem o estado da aplicação. Um usuário mal-intencionado não terá acesso ao token e, portanto, não poderá realizar ataques **CSRF**. A figura 5.1 demonstra essa proteção no **Spring Security**.
 - Por padrão, o **Spring Security** inclui vários cabeçalhos de resposta HTTP que ajudam a prevenir diversos tipos comuns de ataques. Esses cabeçalhos são mostrados na listagem a seguir.
 ![[Capítulo 5 - Securing Spring Boot Applications.png]]
@@ -125,8 +125,82 @@ Para um entendimento mais aprofundado do Spring Security, recomendamos consultar
 ### 5.2.2 Filter, FilterChain, and Spring Security
 Em uma aplicação web Java típica, um cliente solicita ao servidor o acesso a um recurso por meio do protocolo HTTP ou HTTPS. A solicitação do cliente no servidor é tratada por um *servlet*. O *servlet* processa a requisição HTTP e fornece uma resposta HTTP. Essa resposta é enviada de volta ao cliente. Em uma aplicação web Spring, esse *servlet* é o *DespatecherServlet*, que trata todas as requisições recebidas pela aplicação.
 
-Um componente fundamental da especificação de **Servlet** que desempenha um papel fundamental no processamento da requisição-resposta é o *Filter*. Um #Filter fica posicionado antes de um *Servlet* e intercepta a troca de requisição-resposta. Ele pode realizar alterações nos objetos de requisição e resposta, como mostrado na Figura 5.6. Um ou mais filters podem ser configurados por meio de uma *FilterChain*, e todos os *filters* que fazem parte da cadeia podem interceptar e modificar os objetos de requisição e resposta.
+Um componente fundamental da especificação de **Servlet** que desempenha um papel fundamental no processamento da requisição-resposta é o *Filter*. Um #Filter fica posicionado antes de um *Servlet* e <span style="background:#d4b106">intercepta a troca de requisição-resposta</span>. Ele pode realizar alterações nos objetos de requisição e resposta, como mostrado na Figura 5.6. Um ou mais filters podem ser configurados por meio de uma *FilterChain*, e todos os *filters* que fazem parte da cadeia podem interceptar e modificar os objetos de requisição e resposta.
 
 Muitas das funcionalidades do Spring Security são baseadas nesses *filteres*. Tanto *Filter* quanto *FilterChain* são interfaces do pacote *javax.servlet*.
 
 ![[Capítulo 5 - Securing Spring Boot Applications-1.png]]
+
+Assim como um *servlet* especial chamado *DispatcherServlet* lida com todas as requisições recebidas em uma aplicação **Spring Web**, um *filter* especial chamado **DelegatingFilterProxy** é usado para habilitar o **Spring Security**. Esse filter é registrado no *container de servlets* e começa a interceptar as requisições recebidas. Em uma aplicação **Spring Boot**, esse registro é feito pela **autoconfiguração do Spring Security** do Spring Boot. Vamos agora analisar a interface #Filter, como mostrado no *listing* a seguir. 
+
+```java
+public interface Filter {
+	public default void init(FilterConfig filterConfig) throws ServletException {}
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException;
+
+	public default void destroy() {}
+}
+```
+
+Uma implementação de *Filter* precisa implementar três métodos *init(), doFilter() e destroy(..)*, conforme mostrado na Figura 5.7.
+
+---
+**Entendendo o que está acontecendo**
+O que o Spring Security faz?
+- O Spring Security precisa interceptar as requisições antes do *DispatcherServlet*, para verificar se o usuário está autenticado, autorizado, etc.
+- Para isso, ele usa um filtro especial chamado **DelegatingFilterProxy**.
+
+**E o que é esse tal de DelegatingFilterProxy?**
+- Ele é um filtro padrão do Java EE, mas com uma função especial: delegar a responsabilidade da segurança para um bean do Spring Security.
+- Ou seja, ele é registrado no container de servlets, mas passa a bola pro Spring Security fazer o trabalho.
+
+---
+![[Capítulo 5 - Securing Spring Boot Applications-2.png]]
+Figura 5.7: **Métodos do ciclo de vida do Filter.** O método *init()* contém um trecho de código que é invocado durante a inicialização do *filter*, e o método **destroy()** contém código que é invocado quando o *filter* está prestes a ser removido do container. O método **doFilter(..)** executa o tratamento da requisição (request handling) e retorna uma resposta (response) ao chamado *caller*.
+
+Os três métodos do *filter* são descritos abaixo:
+- **init()** - invocado pelo *Web container* para indicar que o *filter* está sendo colocado em serviço;
+- **doFilter()** - método principal onde ocorre a ação efetiva do *FILTER*. Ele tem acesso aos objetos:
+	- request
+	- response
+	- FilterChain (cadeia de filtros)
+
+O FilterChain permite que o *filter* atual invoque o próximo *filter* na cadeia após terminar seu processamento.
+
+- **destroy()** - chamado quando o *container* remove o *filter* de serviço.
+
+O **FilterChain** é outro componente fornecido pelo *servlet container* que oferece uma visão da cadeia de invocação de uma requisição filtrada. A Figura 5.8 mostra um exemplo de cadeia de filtros *filters chain*.
+
+Os *filters* utilizam o **FilterChain** para:
+- Invocar o próximo *filter* na cadeia **OU**
+- Invocar o recurso real (ex: o *servlet*), caso seja o último *filter* da cadeia
+
+Um **FilterChain** possui apenas um método chamado **doFilter()**
+
+Se revisarmos o Listing 5.3, observaremos que o método **doFilter()** da interface **Filter** tem acesso a:
+1. O **FilterChain**
+2. As instâncias **ServletRequest** e **ServletResponse**
+
+Dessa forma, um **Filter** pode:
+1. Executar sua tarefa designada;
+2. Acessar o **FilterChain** para invocar o próximo *filter* na cadeia
+
+![[Capítulo 5 - Securing Spring Boot Applications-3.png]]
+
+```java
+public interface FilterChain {
+	public void doFilter(ServletRequest request, ServletResponse response) throws IOException, ServletException;
+}
+```
+O Spring Security faz uso intensivo de *filters* para implementar diversos recursos de segurança. O núcleo fundamental do Spring Security é baseado nesses *filters*. Por exemplo:
+- Para autenticação baseada em **username/password**, o Spring Security delega a requisição a um *filter* chamado **UsernamePasswordAuthenticationFilter**, responsável por autenticar o usuário com as credenciais fornecidas. 
+- Para autenticação **HTTP Basic**, o Spring Security utiliza o **BasicAuthenticationFilter**
+
+Agora, vamos discutir duas implementações principais de *filters* no Spring Security:
+- **DelegatingFilterProxy**
+- **FilterChainProxy**
+
+Estes atuam como pronto de entrada para requisições HTTP na infraestrutura do Spring Security. Adicionalmente, podemos explorar a interface **SecurityFilterChain**.
+
+### 5.2.3 Spring Security architecture

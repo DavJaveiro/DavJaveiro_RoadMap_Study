@@ -11,4 +11,32 @@ Neste apêndice, discutimos o JavaScript Object Notation (JSON). JSON é uma for
 A Figura D.2 abaixo representa a instância de um produto no JSON formatada com o *atributo* name do tipo **chocolate** e o preço *5*:
 
 ![[Appendix D - Using JSON formatting.png]]
-Em JSON, o próprio objeto não tem um nome ou um tipo. Em nenhuma lugar se afirma que o trecho descreve um produto. 
+Em JSON, o próprio objeto não tem um nome ou um tipo. Em nenhuma lugar se afirma que o trecho descreve um produto. <span style="background:#d4b106">Os únicos elementos relevantes do objeto são seus atributos</span>. A figura D.2 detalha as regras do JSON para descrever um objeto. 
+
+Um objeto pode conter outra instância de objeto como valor de um de seus atributos. Se o Produto tem uma Embalagem e a Embalagem é um objeto descrito por seu atributo cor, então uma representação de uma instância de Produto seria:
+```json
+{
+	"nome": "chocolate",
+	"preco": 5,
+	"embalagem": {
+		"cor": "azul"
+	}
+}
+```
+
+A mesma regra se repetem. Podemos ter vários atributos representando outros objetos e aninhá-los quantas vezes precisarmos.
+
+Se quisermos definir uma coleção de objetos JSON, usamos colchetes [] e separamos as entradas com vírgulas. O próximo trecho de código mostra como definir uma coleção que contém duas instâncias de **Produto**:
+```json
+[
+	{
+		"nome": "chocolate",
+		"preco": 5
+	},
+	{
+		"nome": "bala",
+		"preco": 3
+	}
+]
+```
+

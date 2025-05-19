@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "f98d6f98180f91ee",
+        "id": "7da4630baa75b142",
         "type": "tabs",
         "children": [
           {
-            "id": "a0a47c63764326c8",
+            "id": "c7e8cc8222abe13e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
+                "file": "OCP Java SE21/Introduction e dicas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Appendix D - Using JSON formatting"
+              "title": "Introduction e dicas"
             }
           }
         ]
@@ -212,13 +212,17 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "a0a47c63764326c8",
+  "active": "c7e8cc8222abe13e",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "OCP Java SE21/Introduction e dicas.md",
+    "OCP Java SE21",
+    "Capítulo 5 - Securing Spring Boot Applications-3.png",
+    "Capítulo 5 - Securing Spring Boot Applications-2.png",
+    "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
     "Appendix D - Using JSON formatting.png",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
-    "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
     "Spring Start Here/Appendix/Appendix D - Using JSON formatting",
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Capítulo 5 - Securing Spring Boot Applications-1.png",
     "Capítulo 5 - Securing Spring Boot Applications.png",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/imagens/Capítulo 5 - Securing Spring Boot Applications.png",
