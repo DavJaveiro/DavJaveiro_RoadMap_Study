@@ -89,5 +89,56 @@ Mas às vezes, o cliente também precisar enviar dados junto com a requisição.
 O cliente pode usar parâmetros de requisição, cabeçalhos de requisição ou o corpo da requisição para enviar dados ao servidor. Utilizamos os parâmetros de requisição para enviar pequenas quantidades de dados individuais. Se for necessário trocar uma quantidade maior de informações, a melhor forma de enviá-las é por meio do **corpo da requisição HTTP**. Nos capítulos 7 a 10, utilizaremos ambas as abordagens para enviar dados do cliente para o servidor dentro da requisição HTTP.
 
 ## C.3 The HTTP response: The way the server responds
-Nesta seção, discutiremos a resposta HTTP. O HTTP é o protocol
->>>>>>> 67deae319c63e10ca76287ab503562c9e56e1532
+Nesta seção, discutimos a **resposta** HTTP. O **HTTP** é o protocolo que permite que o cliente se comunique com o **server** em uma aplicação web. Após tratar a **request** do client na aplicação, é hora de implementar a **resposta** do servidor. Em resposta a uma requisição do cliente, o server envia o seguinte:
+- **Response status** - um número inteiro entre 100 e 599 que define uma representação breve do resultado da request;
+- **Response headers** (opcional) - semelhante aos **request parameters**, representam dados no formato **key-value pair**. São projetados para enviar uma pequena quantidade de dados (entre 10 e 50 caracteres) do server para o client em resposta a uma request. Eles servem para fornecer informações adicionais sobre a resposta enviada pelo servidor ao cliente. Eles não contêm o conteúdo principal da resposta, mas os metadados que ajudam a interpretar e processar os dados corretamente. Algumas funções comuns dos responses headers incluem:
+	- **Indicar o tipo de conteúdo:** define se a resposta é JSON, HTML, XML, entre outros (*content-type*);
+	- **Controle de cache:** informa como e por quanto tempo a resposta pode ser armazenada (*cache-control*)
+	- **Autenticação e segurança:** pode incluir tokens de autorização ou políticas de segurança (**Authorization, Strict-Trasnport-Security**);
+	- **Encodificação:** especifica a compreensão usada para otimizar a transferência de dados (content-enconding);
+	- **Definir cookies:** permite o armazenamento de informações do usuário entre requisições *Set-Cookie*.
+
+- **Response Body** - uma forma do server enviar uma quantidade maior de dados (podendo ser arquivos inteiros) de volta ao cliente.
+
+**HTTP/1.1 200 OK**: A resposta HTTP especifica a versão do HTTP, o código de resposta e a mensagem. 
+
+**A resposta HTTP pode enviar dados por meio dos cabeçalhos de resposta.**
+Server: Microsoft-IIS/4.0
+Date: Mon, 14 May 2012 13:13:33 GMT
+Content-Type: text/html
+Last-Modified: Mon, 14 May 2012 13:03:42 GMT
+Content-Length: 112
+
+O status da resposta é o único <span style="background:#d4b106">detalhe obrigatório</span> que um servidor deve fornecer em resposta a uma solicitação do cliente. O status informa ao cliente se o servidor entendeu a solicitação e tudo correu bem, ou se houve algum problema durante o processamento da requisição. Por exemplo, o servidor retorna um código de status que começa com 2 para indicar que tudo ocorreu corretamente. 
+
+O status HTTP é uma representação resumida do resultado da requisição completa (incluindo se o servidor conseguiu lidar com a lógica de negócio da solicitação). Não precisamos decorar todos os códigos de status em detalhes. Os que encontramos com mais frequência são:
+- **Começando com 2:** significa que o servidor processou a requisição corretamente. O processamento foi bem-sucedido e o servidor executou o que o cliente solicitou.
+- **Começando com 4:** indica que há algo errado com a requisição do cliente (é um problema do lado do cliente). Por exemplo, o cliente requisitou um recurso que não existe, ou enviou parâmetros inesperados.
+- **Começando com 5:** significa que algo deu errado do lado do servidor. Por exemplo, o servidor tentou se conectar a um banco de dados, mas ele não estava acessível. Nesse caso, o servidor retorna um status informando ao cliente que não conseguiu concluir a requisição, mas não por culpa do cliente.
+
+Diferentes valores que começam com 2 são variações de mensagens que indicam que o servidor processou corretamente a solicitação do cliente. Alguns exemplos são:
+- **200 - OK** é o status de resposta mais conhecido e direto. Ele simplesmente informa ao cliente que o servidor não encontrou problemas ao processar sua solicitação.
+- **201 - CREATED** pode ser usado, por exemplo, em resposta a uma requisição POST para informar ao cliente que o servidor conseguiu adicionar o recurso solicitado. Nem sempre é obrigatório adicionar esse nível de detalhe ao status da resposta, e é por isso que o 200 geralmente é o status mais usado para indicar que tudo está certo.  
+- **204 - No Content** pode informar ao cliente que ele não deve esperar um corpo de resposta (response body) para essa resposta.
+
+Quando um código de status HTTP começa com 4, o servidor informa ao cliente que houve um problema com a solicitação. O cliente fez algo errado ao requisitar um recurso específico. Pode ser que o recurso não exista (o conhecido 404 - Not Found) ou que alguma validação dos dados tenha falhado. Alguns dos códigos de erro do cliente mais comuns são:
+- **400 Bad Request** - um status genérico frequentemente usado para representar qualquer tipo de problema a solicitação HTTP (por exemplo, validação dos dados ou problema ao ler um valor específico no corpo da solicitação ou em um parâmetro de solicitação);
+- **401 Não Autorizado** - Um status geralmente usado para informar ao cliente que a solicitação precisa de autenticação;
+- **403 Proibido** - Um status geralmente enviado pelo servidor para informar ao cliente que ele não está autorizado a executar sua solicitação;
+- **404 Não encontrado** - um status enviado pelo servidor para informar ao cliente que o recurso solicitado não existe.
+
+Quando o status de resposta começa com 5xx, significa que algo deu errado no lado do servidor, mas o problema é do próprio servidor. O cliente enviou uma solicitação válida, mas o servidor não conseguiu completá-la por algum motivo. O status mais utilizado nessa categoria é o **500 Erro Interno do Servidor**. Esse status de resposta é um valor genérico de erro que o servidor envia para informar ao cliente que ocorreu um problema durante o processamento da solicitação pelo backend.
+
+Opcionalmente, o servidor pode enviar dados de volta para o cliente como resposta, seja por meio de cabeçalhos da resposta ou pelo corpo da resposta.
+
+## C.4 The HTTP session
+Vamos falar sobre a sessão HTTP, um mecanismo que permite a um servidor armazenar dados entre múltiplas interações de requisição e resposta com o mesmo cliente. Lembre-se de que, no HTTP, cada requisição é independente das outras. Em outras palavras, uma requisição não tem conhecimento de requisições anteriores, futuras ou simultâneas. Uma requisição não pode compartilhar dados com outras requisições ou acessar os detalhes da resposta do backend para elas.
+
+No entanto, existem cenários em que o servidor precisa correlacionar algumas requisições. Um bom exemplo é a funcionalidade de carrinho de compras em uma loja online. Um usuário adiciona vários itens ao carrinho. Para adicionar um item, o cliente faz uma requisição. Para adicionar um segundo item, o cliente faz outra requisição. <span style="background:#d4b106">O servidor precisa de uma maneira de saber que o mesmo cliente adicionou previamente um item ao mesmo carrinho</span>.
+
+Uma maneira de implementar esse comportamento é utilizando a sessão HTTP. O backend atribui um identificador único chamado de *session ID* ao cliente e o associa a um espaço na memória do aplicativo. Cada requisição que o cliente enviar após receber o **session ID** deve conter esse identificador no cabeçalho da requisição. Dessa forma, <span style="background:#d4b106">o aplicativo backend sabe como associar as requisições específicas da sessão</span>. 
+
+A sessão HTTP geralmente termina após um período de inatividade do cliente. Esse tempo pode ser configurado, geralmente tanto no contêiner servlet quanto no aplicativo. Se a sessão durar muito tempo, o servidor consumirá muita memória. Na maioria dos aplicativos, <span style="background:#d4b106">uma sessão termina após menos de uma hora sem novas requisições do cliente</span>. 
+
+Se um cliente enviar uma nova requisição após a sessão ter terminado, o servidor iniciará uma nova sessão para esse cliente.
+

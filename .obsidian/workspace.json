@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
+                "file": "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Appendix C - A Introduction to HTTP"
+              "title": "Appendix D - Using JSON formatting"
             }
           }
         ]
@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "176d1a06caa79d71",
@@ -213,6 +214,10 @@
   },
   "active": "a0a47c63764326c8",
   "lastOpenFiles": [
+    "Appendix D - Using JSON formatting.png",
+    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
+    "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
+    "Spring Start Here/Appendix/Appendix D - Using JSON formatting",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Capítulo 5 - Securing Spring Boot Applications-1.png",
     "Capítulo 5 - Securing Spring Boot Applications.png",
