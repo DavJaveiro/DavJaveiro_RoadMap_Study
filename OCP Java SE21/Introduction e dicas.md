@@ -144,4 +144,3 @@ Ler e escrever dados no console e arquivos usando I/O Streams.
         1. **Todas as classes em um único arquivo** (.java)
         2. **Cada classe em arquivo separado**, mas todos no **mesmo diretório**
             
-

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OCP Java SE21/Introduction e dicas.md",
+                "file": "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Introduction e dicas"
+              "title": "Capítulo 5 - Securing Spring Boot Applications"
             }
           }
         ]
@@ -213,8 +213,9 @@
   },
   "active": "c7e8cc8222abe13e",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "OCP Java SE21/Introduction e dicas.md",
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "OCP Java SE21",
     "Capítulo 5 - Securing Spring Boot Applications-3.png",
     "Capítulo 5 - Securing Spring Boot Applications-2.png",

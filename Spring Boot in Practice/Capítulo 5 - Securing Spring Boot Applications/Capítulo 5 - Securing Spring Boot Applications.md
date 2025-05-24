@@ -204,3 +204,10 @@ Agora, vamos discutir duas implementações principais de *filters* no Spring Se
 Estes atuam como pronto de entrada para requisições HTTP na infraestrutura do Spring Security. Adicionalmente, podemos explorar a interface **SecurityFilterChain**.
 
 ### 5.2.3 Spring Security architecture
+Na seção anterior, fornecemos uma visão geral de alto nível de **Filter** e **FilterChain** e discutimos como o Spring Security aproveita as funcionalidades fornecidas por esses componentes. Nesta seção, vamos discutir o **DelegatingFilterProxy**, o filtro **FilterChainProxy** e a classe **SecurityFilterChain**.
+
+Um **filter** é um componente muito útil na especificação Servlet. O Spring Security o utiliza para implementar várias de suas funcionalidades centrais e estratégias de autenticação.
+
+Apesar de útil, uma instância de **Filter** é um componente do container servlet e é gerenciado por esse container. O container é responsável por instanciar, inicializar e destruir o filtro. A especificação Servlet não exige nenhum tipo de integração com o Spring para lidar com um **Filter**.
+
+O Spring Security fornece um filtro chamado **DelegatingFilterProxy** para preencher essa lacuna. Configuramos esse filtro com o container servlet, portanto seu ciclo de vida é gerenciado pelo container servlet. Em seguida, definimos uma implementação separada do **Filter** e a tornamos um bean gerenciado pelo Spring. Esse bean gerenciado pelo Spring é configurado
