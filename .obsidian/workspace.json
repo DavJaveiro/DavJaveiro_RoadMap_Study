@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "7da4630baa75b142",
+        "id": "fb678ff85741b0c7",
         "type": "tabs",
         "children": [
           {
-            "id": "c7e8cc8222abe13e",
+            "id": "dc3b2f41769dd26f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "176d1a06caa79d71",
@@ -211,11 +212,13 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "c7e8cc8222abe13e",
+  "active": "dc3b2f41769dd26f",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "Capítulo 5 - Securing Spring Boot Applications-5.png",
+    "Capítulo 5 - Securing Spring Boot Applications-4.png",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "OCP Java SE21/Introduction e dicas.md",
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "OCP Java SE21",
     "Capítulo 5 - Securing Spring Boot Applications-3.png",
     "Capítulo 5 - Securing Spring Boot Applications-2.png",
@@ -233,8 +236,6 @@
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
     "Módulo 4 - Segurança na Nuvem AWS-5.png",
     "Módulo 4 - Segurança na Nuvem AWS-4.png",
-    "Módulo 4 - Segurança na Nuvem AWS-3.png",
-    "Módulo 4 - Segurança na Nuvem AWS-2.png",
     "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
     "CEDERJ Matemática/Matemática.md",
     "CEDERJ Matemática"

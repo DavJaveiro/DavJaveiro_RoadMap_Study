@@ -210,4 +210,57 @@ Um **filter** é um componente muito útil na especificação Servlet. O Spring 
 
 Apesar de útil, uma instância de **Filter** é um componente do container servlet e é gerenciado por esse container. O container é responsável por instanciar, inicializar e destruir o filtro. A especificação Servlet não exige nenhum tipo de integração com o Spring para lidar com um **Filter**.
 
-O Spring Security fornece um filtro chamado **DelegatingFilterProxy** para preencher essa lacuna. Configuramos esse filtro com o container servlet, portanto seu ciclo de vida é gerenciado pelo container servlet. Em seguida, definimos uma implementação separada do **Filter** e a tornamos um bean gerenciado pelo Spring. Esse bean gerenciado pelo Spring é configurado
+O Spring Security fornece um filtro chamado **DelegatingFilterProxy** para preencher essa lacuna. Configuramos esse filtro com o container servlet, portanto seu ciclo de vida é gerenciado pelo container servlet. Em seguida, definimos uma implementação separada do **Filter** e a tornamos um bean gerenciado pelo Spring. Esse bean gerenciado pelo Spring é configurado.
+
+A classe **FilterChainProxy** é a outra implementação de filtro para a qual o **DelegatingFilterProxy** delega as requisições HTTP. Ela contém uma ou mais **SecurityFilterChains** que processam a requisição HTTP. A figura 5.9 mostra uma visão geral de alto nível desses componentes.
+
+![[Capítulo 5 - Securing Spring Boot Applications-4.png]]
+**Visão Geral do Fluxo**
+1. **Client (Cliente)** - faz uma requisição (por exemplo, acessar um */login* ou */api/users*).
+2. A requisição **entra na cadeia de filtros padrão do servidor Java (*FilterChain*)** - que é um conjunto de filtros do próprio servlet container (como Tomcat, Jetty).
+3. Um dos filtros dessa cadeia é o **DelegatingFilterProxy**.
+
+**O que é o DelegatingFilterProxy**
+Ele atua como um filtro fake, não implementa lógica própria, mas redireciona a requisição para um bean do Spring chamado #FilterChainProxy. Estando registrado no **web.xml** (em aplicações tradicionais) ou via Java config (em apps Spring Boot).
+
+**O que o FilterChainProxy faz?**
+Ele é o responsável de rodar todos os filtros de segurança do Spring, que estão dentro da *SecurityFilterChain*. Ele verifica qual conjunto de filtros deve ser aplicado com base na URL da requisição, e executa.
+
+A interface *SecurityFilterChain* possui dois métodos: matches(..) e getFilters(..). O primeiro método permite que o Spring Security avalie se a *SecurityFilterChain* atual corresponde à requisição recebida. O Spring Security fornece a interface **RequestMatcher** e oferece várias implementações para realizar essa correspondência. Por exemplo, para corresponder a qualquer requisição, ele fornece o AnyRequestMatcher que corresponde a todos as requisições HTTP. O Spring Security também fornece um matcher no estilo ant com o AntPathRequestMatcher que corresponde aos caminhos de URL.
+
+Se houver correspondência, o método getFilters(..) retorna a lista de filtros que precisam ser aplicados à requisição recebida. Se você continuar com as configurações padrão do Spring Security, então ele configura uma SecurityFilterChain padrão chamada DefaultSecurityFilterChain e configura uma lista de filtros necessários. Ele também garante que todas as requisições HTTP passem por essa cadeia de filtros.
+
+Com base no design da aplicação e em outros requisitos de segurança, você pode optar por sobrescrever as configurações de segurança padrão e configurar uma ou mais SecurityFilterChains em uma aplicação. Por exemplo, você pode configurar uma SecurityFilterChain para um conjunto de URLs da aplicação (ex: /courses) que tem acesso a um módulo da aplicação. Similarmente, você pode configurar outra SecurityFilterChain para outro conjunto de URLs (ex: /users). Como a SecurityFilterChain consiste em uma lista de filtros que fornecem segurança, essa abordagem oferece maior flexibilidade na sua implementação de segurança. Por exemplo, você pode optar por implementar autenticação baseada em formulário para o controlador de usuários da aplicação, enquanto para o controlador de cursos, você pode usar autenticação HTTP básica."
+
+### 5.2.4 Authenticating a user
+Antes de discutirmos os passos de autenticação em detalhes, vamos primeiro abordas algumas classes e conceitos notáveis que desempenham um papel importante na autenticação:
+- **SecurityContextHolder**: essa classe associa a instância *SecurityContext* ao thread de execução atual. Um **SecurityContext** contém informações sobre um principal autenticado, como nome de usuário, autoridades do usuário e outros detalhes de identificação.
+- **SecurityContextPersistenceFilter** - esse filtro gerencia a instância do SecurityContext. Ele tenta recuperar o **SecurityContext** de um **SecurityContextRepository**.
+- Em uma aplicação web, a implementação **HttpSessionSecurityContextRepository** tenta carregar o **SecurityContext** a partir da **HttpSession**.
+- No início, como não estamos autenticados, um **SecurityContext** vazio é adicionado ao **SecurityContextHolder**.
+
+
+A imagem abaixo mostra como o **Spring Security** armazena os dados de autenticação do usuário logado. Cada caixinha representa uma *camada* onde essas informações são guardadas.
+![[Capítulo 5 - Securing Spring Boot Applications-5.png]]
+
+1. SecurityContextHolder: é o topo da hierarquia. Um objeto **estático** que guarda o **SecurityContext** atual. Ele mantém essas informações disponíveis **em qualquer parte do código**, enquanto durar a requisição (ou sessão, dependendo da estratégia).
+
+2. **SecurityContext**: Ele armazena a autenticação atual (caso o usuário esteja autenticado).
+```java
+Authentication auth = context.getAuthentication();
+```
+
+3. **Authentication**: esse objeto representa os dados de autenticação do usuário logado.
+
+Ele possuí três partes principais:
+**Principal**: usuário autenticado: *UserDetails*, *username*, etc.
+**Credentials**: as credenciais usadas (geralmente a senha, mas é apagada depois): *password, token*.
+**Authorities**: são as permissões/perfis do usuário: *ROLE_ADMIN*, *ROLE_USER*, etc.
+
+- **AuthenticationFilters**: esses filtros são usados para autenticar um **principal**, e o Spring Security fornece vários filtros de autenticação. Por exemplo: **BasicAuthenticationFilter** executa a autenticação HTTP Basic. O **DigestAuthenticationFilter** realiza a autenticação **Digest**.
+
+- **ExceptionTranslationFilter** - desempenha um papel fundamental no processo de autenticação. Com base em se o usuário já está autenticado ou se possui o acesso necessário a um recurso, há dois tipos de exceção:
+	- AuthenticationException
+	- AcessDaniedException
+	O *ExceptionTranslationFilter* lida com ambos os tipos de exceção:
+	
