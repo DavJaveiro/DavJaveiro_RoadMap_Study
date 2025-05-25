@@ -262,5 +262,6 @@ Ele possuí três partes principais:
 - **ExceptionTranslationFilter** - desempenha um papel fundamental no processo de autenticação. Com base em se o usuário já está autenticado ou se possui o acesso necessário a um recurso, há dois tipos de exceção:
 	- AuthenticationException
 	- AcessDaniedException
-	O *ExceptionTranslationFilter* lida com ambos os tipos de exceção:
-	
+
+O *ExceptionTranslationFilter* lida com ambos os tipos de exceção:
+
