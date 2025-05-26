@@ -265,3 +265,95 @@ Ele possuí três partes principais:
 
 O *ExceptionTranslationFilter* lida com ambos os tipos de exceção:
 
+**SecurityAutoConfiguration**
+O **SecurityAutoConfiguration** está no centro da autoconfiguração do Spring Security. Ele utiliza outras três classes:
+- **SpringBootWebSecurityConfiguration**
+- **WebSecurityEnablerConfiguration**
+- **SecurityDataConfiguration**
+para realizar a autoconfiguração. A listagem a seguir mostra esta classe.
+```java
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnClass(DefaultAuthenticationEventPublisher.class)
+@EnableConfigurationProperties(SecurityProperties.class)
+@Import({SpringBootWebSecurityConfiguration.class, WebSecurityEnablerConfiguration.class,SecurityDataConfiguration.class})
+
+public class SecurityAutoConfiguration {
+	@Bean
+@ConditionalOnMissingBean(AuthenticationEventPublisher.class)
+}
+```
+Ela é uma **auto-configuração** do Spring Boot que é ativada automaticamente quando a dependência **spring-boot-starter-security** está presente no classpath. Ela registra beans importantes relacionados à segurança e importa outras configurações de segurança padrão.
+
+**Destrinchando as configurações**:
+- **@EnableConfigurationProperties({SecurityProperties.class})**: Habilita o suporte a propriedades definidas em *application.properties* ou *application.yml*, mapeando-as para a classe *SecurityProperties.class*.
+- Exemplo, podemos configurar coisas como *spring.security.user.name* e *spring.security.user.password*.
+
+```java
+@Import({
+	SpringBootWebSecurityConfiguration.class,
+	WebSecurityEnablerConfiguration.class,
+	SecurityDataConfiguration.class,
+	ErrorPageSecurityFilterConfiguration.class
+})
+```
+A configuração acima, importa várias outras classes de configuração de segurança. Cada uma tem uma função específica:
+- *SpringBootWebSecurityConfiguration* - configura a segurança padrão da aplicação web;
+- *WebSecurityEnablerConfiguration* - Ativa o filtro de segurança (Spring Security Filter Chain)
+- *SecurityDataConfiguration* - Integra segurança com dados, como configuração de *UserDetailsService*
+- *ErrorPageSecurityFilterConfiguration* - Lida com segurança em páginas de erro (ex: redirecionamento para login).
+
+**Método**
+```java
+@Bean
+@ConditionalOnMissingBean({AuthenticationEventPublisher.class})
+public DefaultAuthenticationEventPublisher authenticationEventPublisher(ApplicationEventPublisher publisher) {
+	return new DefaultAuthenticationEventPublisher(publisher);
+}
+```
+
+O método acima define um **@Bean** do tipo **DefaultAuthenticationEventPublisher**, que é responsável por **publicar eventos de autenticação** (login bem-sucedido, falha de login, etc.).
+
+🔐 Em resumo
+
+| <font color="#ff0000">O que ela faz?</font>       | <font color="#ff0000">Como?</font> |
+| ------------------------------------------------- | ---------------------------------- |
+| Ativa a segurança web básica                      | Importa outras configurações       |
+| Suporta eventos de autenticação                   | Registra um bean padrão para isso  |
+| Lê configurações do `application.properties`      | Usa `SecurityProperties`           |
+| Só é ativada quando Spring Security está presente | Usa `@ConditionalOnClass`          |
+
+Vamos discutir brevemente essas classes. A classe **SpringBootWebSecurityConfiguration** é carregada se o security estiver disponível e não tivermos definido nossa própria configuração. O código a seguir mostra a classe *WebSecurityEnablerConfiguration*:
+```java
+@Configuration(  
+    proxyBeanMethods = false  
+)  
+@ConditionalOnMissingBean(  
+    name = {"springSecurityFilterChain"}  
+)  
+@ConditionalOnClass({EnableWebSecurity.class})  
+@ConditionalOnWebApplication(  
+    type = Type.SERVLET  
+)  
+@EnableWebSecurity  
+class WebSecurityEnablerConfiguration {  
+    WebSecurityEnablerConfiguration() {  
+    }  
+}
+```
+
+A classe **WebSecurityEnablerConfiguration** é uma classe de configuração que adiciona a anotação **@EnableWebSecurity** na configuração do Spring caso o Spring Security esteja presente no *classpath*. Isso garante que a anotação **@EnableWebSecurity** esteja presente na autoconfiguração padrão do Spring Security. No entanto, se adicionarmos explicitamente essa anotação ao nosso arquivo de configuração do Spring Security ou definirmos um bean com o nome **springSecurityFilterChain**, essa configuração recua (backs off) e não faz nada.
+
+A anotação **@EnableWebSecurity** desempenha um papel fundamental na configuração do Spring Security. Ela fornece três configurações principais, além de outras funcionalidades:
+1. **Configuração padrão:** 
+	- *WebSecurityConfiguration*: é responsável por criar a instância **WebSecurity**, que gerencia a segurança baseada na web no Spring Security (como proteção de imagens, arquivos CSS e JS).
+	- *HttpSecurityConfiguration*: cria o *bean* **HttpSecurity**, usado para configurar a segurança das requisições HTTP.
+
+2. **Habilitação da autenticação global:**
+	- *@EnableGlobalAuthentication*: fornece a configuração necessária para configurar a instância **AuthenticationManagerBuilder**, usada para definir o **AuthenticationManager**.
+
+Se precisarmos personalizar a configuração padrão fornecida pelas classes mencionadas, podemos fazer facilmente definindo uma classe que estenda *WebSecurityConfigurerAdapter* ou implemente a interface *WebSecurityConfigurer*.
+
+Nos próximos tópicos, perceberemos que utilizamos frequentemente a classe **WebSecurityConfigurerAdapter** para customizar as implementações de **WebSecurity** e **HttpSecurity**, além de empregar o **AuthenticationManagerBuilder** para configurar diferentes tipos de autenticação em uma aplicação Spring Boot.
+
+**Integração com Spring Data**
+A classe **SecurityDataConfiguration** fornece suporte à integração entre Spring Data e Spring Security. 
