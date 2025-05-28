@@ -356,4 +356,37 @@ Se precisarmos personalizar a configuração padrão fornecida pelas classes men
 Nos próximos tópicos, perceberemos que utilizamos frequentemente a classe **WebSecurityConfigurerAdapter** para customizar as implementações de **WebSecurity** e **HttpSecurity**, além de empregar o **AuthenticationManagerBuilder** para configurar diferentes tipos de autenticação em uma aplicação Spring Boot.
 
 **Integração com Spring Data**
-A classe **SecurityDataConfiguration** fornece suporte à integração entre Spring Data e Spring Security. 
+A classe **SecurityDataConfiguration** fornece suporte à integração entre **Spring Data** e **Spring Security**. Ela define um **bean** chamado **SecurityEvaluationContextExtension**, que permite que o **Spring Security** seja exposto como expressões SpEL para criar consultas do Spring Data. 
+
+Por exemplo, geralmente, para permitir que uma consulta no banco de dados seja realizada, é necessário que o usuário esteja logado. Só que, o Spring Data, por padrão, não sabe quem é o usuário logado. Nesse diferencial, entra o *SecurityEvaluationContextExtension*, ele é um **bean**, como mencionado, que expõe o Spring Security para dentro das expressões do Spring Data chamadas de *Spring Expression Language*.
+
+Com isso, podemos fazer consultas mais poderosas assim:
+```java
+@Query("SELECT p FROM Pedido p WHERE p.usuario.username = ?#{authentication.name}")
+List<Pedido> findPedidosDoUsuarioAutenticado();
+```
+
+Sem o *SecurityEvaluationContextExtension*, não conseguimos usar o *authentication.name* dentro das queries do Spring Data. Portanto, com o uso do bean, conseguimos acessar o contexto de segurança dentro das queries JPA. (RESUMIDAMENTE REVISAR EM OUTRO MOMENTO)...
+
+**UserDetailsServiceAutoConfiguration**
+A classe **UserDetailsServiceAutoConfiguration** configura automaticamente um **InMemoryUserDetailsManager** caso uma instância de **UserDetailsService** não tenha sido configurado na aplicação. 
+
+A implementação padrão contém um usuário com:
+- Nome:"user"
+- senha gerada aleatoriamente (um UUID gerado aleatoriamente)
+
+Podemos personalizar esses valores fornecendo nossa própria implementação da interface **UserDetailService**, e com isso a configuração padrão do Spring Security será ignorada (o termo técnico para isso é *back off*) e a nossa implementação personalizada entrará em ação.
+
+## 5.3 Using Spring Security
+Nesta seção, implementaremos várias técnicas que explicam o uso de diversos recursos do Spring Security em uma aplicação Web baseada em Spring Boot. Na próxima técnica, personalizaremos a página de login da aplicação **Course Tracker**.
+
+### 5.3.1 Technique: Customizing the default Spring Security login page of a Spring Boot application
+In this technique, we'll discuss how to customize the Spring Security provided default login page to an application-specific custom login page.
+
+**Problem**
+In the previous technique, we introduced Spring Security in the course tracker application and noticed that Spring Security has enabled user login in the application with a default **login** page. 
+
+**Solution**
+The **default** login page generated and provided by Spring is a basic one and just does the job. However, there are several reasons we'll be interested in customizing this page. For instance, we might want to keep the application login page in line with we application's Web page design. Podemos implementar estratégias adicionais de autenticação, como: um PIN de segurança adicional junto ao login regular, uma senha de uso único (OTTP - One-Time Password) ou um **CAPTCHA**.
+
+Vamos adicionar uma nova página de login ao aplicativo, alinhada com o design do Course Tracker. 

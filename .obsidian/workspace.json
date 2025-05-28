@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "fb678ff85741b0c7",
+        "id": "9c32cf642d69b487",
         "type": "tabs",
         "children": [
           {
-            "id": "dc3b2f41769dd26f",
+            "id": "6731afd5936f86c5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -212,7 +212,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "dc3b2f41769dd26f",
+  "active": "6731afd5936f86c5",
   "lastOpenFiles": [
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Capítulo 5 - Securing Spring Boot Applications-5.png",
