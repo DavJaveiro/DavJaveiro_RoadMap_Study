@@ -390,3 +390,34 @@ In the previous technique, we introduced Spring Security in the course tracker a
 The **default** login page generated and provided by Spring is a basic one and just does the job. However, there are several reasons we'll be interested in customizing this page. For instance, we might want to keep the application login page in line with we application's Web page design. Podemos implementar estratégias adicionais de autenticação, como: um PIN de segurança adicional junto ao login regular, uma senha de uso único (OTTP - One-Time Password) ou um **CAPTCHA**.
 
 Vamos adicionar uma nova página de login ao aplicativo, alinhada com o design do Course Tracker. 
+
+This is a basic HTML page designed with Bootstrap. There is a login form that accepts the **username** and **password** of the user and invokes the login HTTP endpoint. Now, we let's define a **LoginController** that exposes this **login** endpoint. The following listing shows the **LoginController**.
+
+```java
+@Controller
+public class LoginController {
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+}
+```
+
+This endpoint ensures whenever there is an invocation to the **login** URL, the **login.html** page is presented to the user. 
+
+Let's now customize the Spring Security **HTTPSecurity** configuration to instruct Spring to redirect to the **login** endpoint for user login. Spring Security provides the default security configuration in the **WebSecurityConfigurerAdapter** class. Thus, to provide a custom configuration, you need to **override** this method. The following listing shows the **SecurityConfiguration** class that provides a custom security configuration.
+
+We've made the following configuration changes:
+- We've defined this class as the Spring configuration, so the Spring Boot component scanning can find this class;
+- The **SecurityConfiguration** class extends the **WebSecurityConfigurerAdapter** class. It allows we to customize the Spring Security configuration.
+- We've overridden the configure (HttpSecurity http) method and provided a custom implementation to include the custom login page;
+- We've also overridden the configure (WebSecurity web) method to allow static content, such as CSS and images, to be excluded from authentication. Otherwise, Web components, such as images, CSS, and JavaScript files, will not be rendered for the pages that do not require authentication.
+
+**NOTA**: Em aplicações Spring Security, por padrão, tudo pode acabar sendo protegido, até mesmo arquivos estáticos, como:
+- arquivos CSS
+- imagens
+- JS
+- recursos do H2 console
+- webjars
+
+Se não configurarmos exceções, nem mesmo o CSS da tela de login vai carregar, e a aplicação pode ficar estranha aos olhos...
