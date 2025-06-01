@@ -421,3 +421,18 @@ We've made the following configuration changes:
 - webjars
 
 Se não configurarmos exceções, nem mesmo o CSS da tela de login vai carregar, e a aplicação pode ficar estranha aos olhos...
+
+```java
+@Override
+public void configure(WebSecurity web) throws Exception {
+	web.ignoring().antMatchers("/webjars/**", "/images/**", "/css/**", "/h2-console/**");
+}
+```
+
+Em resumo:
+- *public void configure(WebSecurity web)*: é um método de configuração de segurança web em aplicações Java que usam o Spring Security.
+- *web.ignoring()*: instrui o Spring Security a ignorar completamente a segurança para determinados padrões de URL.
+- *.antMatchers("/webjars/**", "/css/**", "/h2-console/**", "/images/**")*
+
+Portanto, qualquer requisição para URLs que comecem com */webjars/*, */css/*, */h2-console* ou */images/* não passará pelo filtro de autenticação, permitindo que esses recursos sejam carregados livremente pelo navegador. Isso é útil para não sobrecarregar o sistema de autenticação com requisições para recursos que são públicos por natureza.
+
