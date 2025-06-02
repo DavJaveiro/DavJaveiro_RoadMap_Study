@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Desafio Itaú/Etapas.md",
+                "file": "Desafio Itaú/Estrutura.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Etapas"
+              "title": "Estrutura"
             }
           }
         ]
@@ -214,8 +214,9 @@
   },
   "active": "6731afd5936f86c5",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Desafio Itaú/Etapas.md",
+    "Desafio Itaú/Estrutura.md",
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Desafio Itaú",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "Capítulo 5 - Securing Spring Boot Applications-5.png",
