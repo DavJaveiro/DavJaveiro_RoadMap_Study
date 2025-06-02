@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+                "file": "Desafio Itaú/Etapas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 5 - Securing Spring Boot Applications"
+              "title": "Etapas"
             }
           }
         ]
@@ -214,8 +214,10 @@
   },
   "active": "6731afd5936f86c5",
   "lastOpenFiles": [
-    "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "Desafio Itaú/Etapas.md",
+    "Desafio Itaú",
+    "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "Capítulo 5 - Securing Spring Boot Applications-5.png",
     "Capítulo 5 - Securing Spring Boot Applications-4.png",
     "OCP Java SE21/Introduction e dicas.md",
