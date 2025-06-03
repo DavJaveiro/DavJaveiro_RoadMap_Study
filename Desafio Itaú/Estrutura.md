@@ -24,8 +24,61 @@ Visando reduzir drasticamente a quantidade de código *boilerplate* (código rep
 	- **@RequiredArgsConstructor**: Gera um construtor com argumentos para campos *final* ou marcados com *@NonNull* que não foram inicializados.
 	- **@AllArgsConstructor**: gera um construtor com argumentos para todos os campos da classe.
 
+### 1.2 Estrutura ou Arquitetura
+Ok, uma API básica em Java geralmente segue uma arquitetura em camadas para organizar as responsabilidades e facilitar a manutenção. 
+Uma estrutura de pacotes comum poderia ser algo assim:
+```
+com.suaempresa.suaapi
+├── controller       // Camada de Apresentação
+│   ├── SeuController.java
+│   └── dto
+│       └── SeuRequestDTO.java
+│       └── SeuResponseDTO.java
+├── service          // Camada de Serviço
+│   ├── SeuServico.java
+│   └── impl
+│       └── SeuServicoImpl.java // Implementação da interface do serviço (opcional, mas boa prática)
+├── repository       // Camada de Acesso a Dados
+│   └── SeuRepositorio.java // Geralmente uma interface com Spring Data JPA
+├── model            // Ou 'entity' - Contém as entidades JPA
+│   └── SuaEntidade.java
+├── exception        // Classes de exceção personalizadas
+│   └── RecursoNaoEncontradoException.java
+├── config           // Configurações da aplicação (ex: segurança, banco de dados)
+│   └── SecurityConfig.java
+└── SuaAplicacao.java  // Classe principal com o método main (ex: Spring Boot @SpringBootApplication)
+```
+### 1.3 Arquitetura Típica de uma API Java
+#### 1.3.1 Camada de Apresentação (Controller)
+Camada responsável por lidar com as requisições HTTP (GET, POST, PUT, DELETE, etc) e enviar as respostas. É o ponto de entrada de nossa API.
+**Componentes Típicos**: 
+- #Controllers (controladores): são classes que mapeiam as URLs para métodos específicos. Elas recebem os dados da requisição, validam (às vezes delegam para serviços de validação) e chamam os serviços apropriados na camada de serviço.
+- #DTOs (Data Transfer Objects): objetos simples para transportar dados entre as camadas, especialmente entre a camada de apresentação e a de serviço.
+
+**Frameworks Comuns:** #Spring-MVC (com anotações *@RestController*, *@GetMapping*, *@PostMapping*) ou JAX-RS (para APIs RESTful Java EE).
+
+#### 1.3.2 Camada de Serviço (Service)
+É a camada que contém a lógica de negócios de nossa aplicação. Orquestra as chamadas para a camada de acesso a dados e pode interagir com outros serviços.
+
+**Componentes Típicos**
+- #Services: são classes que implementam as regras de negócios. Por exemplo, *UserService* poderia ter métodos como *createUser*, *getUserById*, *updateUserPassword*, etc.
+- #Validação-negócios: Lógica para garantir que os dados e as operações sigam as regras de negócio.
+
+**Frameworks Comuns**
+- Spring Framework (com anotações como *@Service*) ajuda na injeção de dependência e gerenciamento de transações. 
+
+#### 1.3.3 Camada de Acesso a Dados (Repository/DAO)
+Lida com a interação com o banco de dados (ou qualquer outra fonte de dados). Abstrai os detalhes de como os dados são armazenados e recuperados.
+
+**Componentes Típicos**:
+- #Repositories ou #DAOs (Data Access Objects): interfaces e suas implementações que fornecem métodos para operações CRUD e outras consultas ao banco de dados.
+- #Entities: classes que mapeiam as tabelas do banco de dados (frequentemente usando JPA - Java Persistence API).
+
+**Frameworks**
+Spring Data JPA (simplifica muito a criação de repositórios), Hibernate (uma implementação JPA popular), JDBC (para acesso de baixo nível).
+
 ## 2. TransacaoService
-Complementar mais sobre a classe SERVICE
+As classes *services* são classes que implementam as regras de negócio.
 
 ```java
 @Service
@@ -34,8 +87,22 @@ public class TransacaoService {
 	
 }
 ```
+#RequiredArgsConstructor: ela gera automaticamente um construtor com argumentos para determinados campos da nossa classe. Portanto, no nosso contexto, ele é utilizado para **injeção de dependência via construtor**. Esta é considerada uma boa prática por diversos motivos.
 
+Supoonhamos que **TransacaoService** precisa de um **TransacaoRepository** para interagir com o banco de dados:
+```java
+@Service
+@RequiredArgsConstructor
+public class TransacaoService {
+	private final TransacaoRepository transacaoRepository;
+}
+```
 
+Sem o *@RequiredArgsConstructor*, teríamos que escrever o construtor manualmente. Com ele, o Lombok faz esse trabalho para a gente, mantendo o nosso código mais enxuto e focado na lógica de negócios.
+
+Em resumo: *@RequiredArgsConstructor* em nosso *TransacaoService* é utilizado para que o Lombok gere automaticamente um construtor que aceitará as dependências necessárias .
+
+Neste exemplo, optamos por utilizar um **ArrayList** para armazenar os dados. 
 ## 3. DTO
 Podemos criar o DTO de duas formas:
 ### 3.1 record TransacaoRequestDTO
