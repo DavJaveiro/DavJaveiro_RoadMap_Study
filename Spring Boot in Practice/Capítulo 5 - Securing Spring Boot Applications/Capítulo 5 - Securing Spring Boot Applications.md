@@ -436,3 +436,110 @@ Em resumo:
 
 Portanto, qualquer requisição para URLs que comecem com */webjars/*, */css/*, */h2-console* ou */images/* não passará pelo filtro de autenticação, permitindo que esses recursos sejam carregados livremente pelo navegador. Isso é útil para não sobrecarregar o sistema de autenticação com requisições para recursos que são públicos por natureza.
 
+Até o momento, realizamos as seguintes alterações de **configuração**:
+- Definimos a <span style="background:#fdbfff">classe de configuração do Spring</span>, para que o **component scanning** do Spring Boot possa encontrar esta classe.
+```java
+@Configuration
+public class...
+```
+
+
+- A classe **SecurityConfiguration** estende a class **WebSecurityConfigurerAdapter**. Isso permite que <span style="background:#d3f8b6">customizemos a configuração do Spring Security</span>;
+```java
+@Configuration
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {...}
+```
+
+
+- Sobrescrevemos o método **configure(HttpSecurity http)** e fornecemos uma implementação customizada para incluir a página de login customizada.
+```java
+@Override
+protected void configure(HttpSecurity http) throws Exception {...}
+```
+
+
+- Também sobrescrevemos o método *configure(WebSecurity web)* para permitir que conteúdos estáticos, como CSS e imagens, sejam excluídos da autenticação. Caso contrário, componentes da Web, como imagens, arquivos CSS e JavaScript, não serão renderizados para as páginas que não exigem autenticação:
+```java
+@Override
+public void configure(WebSecurity web) throws Exception {
+	web.ignoring().antMatchers("/webjars/**", "/css/**", "h2-console/", "/images/**");
+}
+```
+
+**Discussion**
+With this technique, we've explored how to customize the login page of a Spring Boot application with Spring Security. As part of this technique, we've added the *login.html* page and a *LoginController*, which contains an HTTP GET endpoint *login*. Once this endpoint is accessed, it returns the logical view name *login*, and it is rendered in the browser as *login.html*.
+
+The most notable change is the induction of the *SecurityConfiguration* class in the application. The first thing to notice here is that it extends the **WebSecurityConfigurerAdapter** class is the base class that provides the default Spring Security configurations in our Spring Boot application. We can extend this class to customize various security settings in Spring Security. As we will notice later in this chapter, we'lll heavily use this class to customize our configure several features of Spring Security.
+
+The second change to notice is that we've overridden the **configure(HttpSecurity http)** method that allows us to customize the security configuration in the application. The following listing shows the changes inside the method.
+
+The *antMatchers* allows us to specify an application URL or an URL pattern. In the above code snippet, we are ensuring that the **login** endpoint is permitted to be accessed by all users and does not require to be authenticated. Next, we are enforcing that all other requests (anyRequest()) to the application need to be authenticated. The authentication type is form-login, and the associated loing page is avaible at the *login* endpoint.
+
+We've also overridden the *configure(WebSecurity web)* method to ensure the static Web resources, such as the images and stylesheet files, are accessible without any form of authentication. Otherwise, the stylesheets or the images for the login page will not be accessible.
+
+### 5.3.2 Technique: Configuring in-memory authentication with custom users in Spring Security in a Spring Boot application
+Nesta técnica, demonstraremos como usar a autenticação *in-memory* do Spring Security em uma aplicação Spring Boot.
+
+Embora a aplicação na técnica anterior funcione perfeitamente, há um grande problema com o login do usuário. O password é um UUID aleatório que é alterado cada vez que a aplicação é reiniciada. Podemos aprimorar a experiência de **login** da aplicação configurando alguns usuários customizados.
+
+**Solução**
+Em técnicas anteriores, contamos com a **configuração** padrão do *InMemoryUserDetailsManager* do Spring Boot para configurar o usuário em nossa aplicação. Esta configuração padrão cria um usuário **in-memory** com um **username** como *user* e uma senha como um UUID aleatório. Vamos fornecer uma implementação customizada do *InMemoryUserDetailsManager*.
+
+O Spring Boot recua com as configurações padrão caso encontre uma implementação definida pelo usuário. Assim, a implementação do *InMemoryUserDetailsManager* fornecida pelo Spring Boot <span style="background:#b1ffff">não será mais usada se fornecermos nossa própria implementação</span>.
+
+Let's enhance the *SecurityConfiguration* class by defining the *InMemoryUserDetailsManager*, as shown in the following listing:
+
+```java
+package com.manning.sbip.ch05.security;  
+
+@Configuration  
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {  
+  
+    // TODO: CustomAccessDaniedHandler (implementação de AccessDeniedHAndler)  
+    @Autowired  
+    private AccessDeniedHandler customAccessDeniedHandler;  
+  
+    @Override  
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {  
+        auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())  
+                .withUser("user")  
+                .password(passwordEncoder().encode("p@wwsord"))  
+                .roles("USER")  
+                .and()  
+                .withUser("admin")  
+                .password(passwordEncoder().encode("pa$$w0rd"))  
+                .roles("ADMIN");  
+    }  
+  
+    @Override  
+    protected void configure(HttpSecurity http) throws Exception {  
+        http.authorizeRequests()  
+                .antMatchers("/login").permitAll()  
+                .antMatchers("/delete/**").hasRole("ADMIN")  
+                .anyRequest().authenticated()  
+                .and()  
+                .formLogin().loginPage("/login")  
+                .and()  
+                .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);  
+    }  
+  
+    @Override  
+    public void configure(WebSecurity web) throws Exception {  
+        web.ignoring().antMatchers("/webjars/**", "/images/**", "/css/**", "/h2-console/**");  
+    }  
+  
+    @Bean  
+    public PasswordEncoder passwordEncoder() {  
+        return new BCryptPasswordEncoder();  
+    }  
+}
+```
+
+In listing 5.11, we've performed the following activities:
+- Sobrescrevemos o método *configure(AuthenticationManagerBuilder auth)* para definir a configuração do *InMemoryUserDetailsManager*. Neste método, criamos dois usuários customizados, chamados de *user* e *admin*, com suas respectivas senhas e regras **USER** e **ADMIN**. Uma *role* é um aspecto importante no controle da **authorization** do usuário na aplicação.
+
+- Na configuração do **HttpSecurity**, fizemos o seguionte:
+	- A página de login não requer nenhuma **authentication**, e está disponível no **endpoint** *login*.
+	- O **endpoint** delete só pode ser invocado por um usuário com a role *ADMIN*. Observe como estamos **utilizando as roles** do usuário para controlar as ações do usuário na aplicação. ``antMatchers("/delete/**").hasRole("ADMIN") ``. O Spring Security lança uma *AccessDeniedException* se qualquer usuário sem a role admin tenta invocar um endpoint delete.
+	- Se houver uma access denied exception, configuramos um *AccessDeniedHandler* customizado que nos permite executar ações quando ela ocorre.
+	- Fornecemos uma implementação para um *PasswordEncoder*. Um password encoder codifica uma senha em um formato plain text para um formato codificado. Discutiremos o PasswordEncoder em breve. Neste exemplo, usamos o *BCryptPasswordEncoder* para codificar a senha.
