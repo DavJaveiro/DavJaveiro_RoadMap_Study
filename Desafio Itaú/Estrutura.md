@@ -125,6 +125,21 @@ public record TransacaoRequestDTO(@NotNull @DecimalMin("0.0") Double valor, @Not
 }
 ```
 
+Portanto, um #Record, é similar a uma classe que armazena dados. É a mesma ideia de construção similar a um JavaBean, possui **contrutor**, atributos e métodos acessores. Porém, ao invés de possibilitar qualquer alteração, a classe é imutável. Também possui os métodos *equals, hashCode* e *toString*.
+
+Dado o contexto da imutabilidade de um *Record*, existe apenas um construtor com todos os atributos. Também não existem métodos *setter*. 
+
+Outra diferença entre o primeiro design e utilizando *records* é que os métodos acessores não usam a terminologia com *get*, usam apenas o próprio nome do atributo, ou seja, ao invés de *getName()*, usa apenas um *name()*.
+```java
+String name = user.name();
+```
+
+**Usando records para serializar/desserializar classes**
+Dentre várias possibilidades usando *records*, uma utilidade seria serializar e desserializar classes que representam payloads de comunicação, também chamados de DTOs. O #payload de comunicação é a parte fundamental e útil de uma transmissão de dados. É a *carga* real que se deseja enviar, seja o texto de um e-mail, o conteúdo de uma imagem, ou a voz em uma chamada de vídeo. Todo o resto, como endereços, protocolos e informações de controle, serve apenas para garantir que essa carga chegue ao destino correto.
+
+
+
+
 ### 3.2 Classe Padrão
 ```java
 public class TransacaoRequestDTO() {
