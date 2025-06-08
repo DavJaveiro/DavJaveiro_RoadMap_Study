@@ -542,4 +542,55 @@ In listing 5.11, we've performed the following activities:
 	- A página de login não requer nenhuma **authentication**, e está disponível no **endpoint** *login*.
 	- O **endpoint** delete só pode ser invocado por um usuário com a role *ADMIN*. Observe como estamos **utilizando as roles** do usuário para controlar as ações do usuário na aplicação. ``antMatchers("/delete/**").hasRole("ADMIN") ``. O Spring Security lança uma *AccessDeniedException* se qualquer usuário sem a role admin tenta invocar um endpoint delete.
 	- Se houver uma access denied exception, configuramos um *AccessDeniedHandler* customizado que nos permite executar ações quando ela ocorre.
-	- Fornecemos uma implementação para um *PasswordEncoder*. Um password encoder codifica uma senha em um formato plain text para um formato codificado. Discutiremos o PasswordEncoder em breve. Neste exemplo, usamos o *BCryptPasswordEncoder* para codificar a senha.
+
+- Fornecemos uma implementação para um *PasswordEncoder*. Um password encoder codifica uma senha em um formato plain text para um formato codificado. Discutiremos o PasswordEncoder em breve. Neste exemplo, usamos o *BCryptPasswordEncoder* para codificar a senha.
+
+Na classe *CustomAccessDeniedHandler*, estamos redirecionando o usuário para o endpoint */accessDenied*, que redireciona o usuário para uma página de erro. O **AccessDeniedHandler** fornece a flexibilidade de realizar ações personalizadas caso ocorra uma **AccessDeniedException**. 
+
+Quando tentamos acessar a nossa página */index* sem estar logado, somos automaticamente redirecionados para a página de login personalizada.
+
+**DISCUSSÃO**
+Nesta seção, aprendemos a personalizar uma aplicação Spring Boot com usuários customizados utilizando a classe *AuthenticationManagerBuilder* do Spring Security. Essa classe oferece uma maneira simplificada de configurar diversos tipos de autenticação, como em memória, JDBC e LDAP. No exemplo apresentado, o método *inMemoryAuthentication(..)* foi utilizado para configurar a autenticação em memória. De forma análoga, os métodos *jdbcAuthentication(..)* e *ldapAuthentication(..)* podem ser empregados para configurar autenticações baseadas em JDBC e LDAP. 
+
+Um *PasswordEncoder* é responsável por codificar senhas em formato de texto simples para protegê-las. O Spring Security disponibiliza várias implementações de **PasswordEncoder**, como **NoOpPasswordEncoder**, **BCryptPasswordEncoder**, **Pbkdf2PasswordEncoder** e **SCryptPasswordEncoder**, entre outturas. 
+
+O Spring Security também oferece uma classe de fábrica chamada **PasswordEncoderFactories**, que permite a criação de uma instância de **DelegatingPasswordEncoder**. Essa implementação delega a codificação da senha para um **PasswordEncoder** concreto, como o **BCryptPasswordEncoder**, que executa a codificação de fato.
+
+De modo geral, a senha de um usuário é codificada pelo **PasswordEncoder** configurado e, em seguida, armazena em um sistema de persistência, caso um repositório de identidades baseado em persistência seja utilizado. Posteriormente, quando o usuário tenta se autenticar, a senha fornecida é processada pelo codificador, que a compara com a versão codificada previamente salva no repositório de identidades. 
+
+![[Capítulo 5 - Securing Spring Boot Applications-6.png]]
+
+Após a autenticação, a senha fornecida em texto plano é removida da aplicação. Isso impede que a senha permaneça disponível e vulnerável na memória da aplicação. 
+
+```java
+@Bean  
+@Override  
+public UserDetailsService userDetailsService() {  
+    UserDetails user = User.withUsername("user")  
+            .passwordEncoder(passwordEncoder()::encode)  
+            .password("p@ssw0rd").roles("USER").build();  
+  
+    UserDetails admin = User.withUsername("admin")  
+            .passwordEncoder(passwordEncoder()::encode)  
+            .password("pa$$w0rd").roles("ADMIN").build();  
+  
+    InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();  
+  
+    userDetailsManager.createUser(user);  
+    userDetailsManager.createUser(admin);  
+  
+    return userDetailsManager;  
+}
+```
+
+Na listagem acima, definimos uma instância de *UserDetaailsService*. Foram utilizados os métodos de construção (*builder methods* ) da classe *User* para criar a instância de *UserDetails*. *UserDetails* representa um usuário no contexto do Spring Security. 
+
+**Authentication, authorization, and roles**
+Na seção anterior, aprendemos a criar os usuários da aplicação, nós definimos não apenas os detalhes do usuário, mas também seus papéis (roles). Ao lidar com segurança, é fundamental compreender os conceitos de **autenticação** e **autorização**.
+
+A #autenticação é o processo que verifica se um usuário é realmente quem ele diz ser. Isso é feito por meio de algum mecanismo de identificação, como nome de usuário e senha, certificados, informações biométricas, entre outros. Já a #autorização define o que um usuário autenticado tem permissão para fazer depois que acessa a aplicação.
+
+Em uma aplicação com Spring Security, utiliza-se a noção de **papéis (roles)** para controlar o que um usuário logado está autorizado a visualizar e executar. Para entender um pouco mais sobre roles:
+https://github.com/spring-boot-in-practice/repo/wiki/Understanding-Roles
+
+### 5.3.3 Technique: Configuring JDBC authentication with Spring Security in a Spring Boot application 

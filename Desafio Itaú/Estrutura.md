@@ -137,7 +137,12 @@ String name = user.name();
 **Usando records para serializar/desserializar classes**
 Dentre várias possibilidades usando *records*, uma utilidade seria serializar e desserializar classes que representam payloads de comunicação, também chamados de DTOs. O #payload de comunicação é a parte fundamental e útil de uma transmissão de dados. É a *carga* real que se deseja enviar, seja o texto de um e-mail, o conteúdo de uma imagem, ou a voz em uma chamada de vídeo. Todo o resto, como endereços, protocolos e informações de controle, serve apenas para garantir que essa carga chegue ao destino correto.
 
+## 3.2 OffsetDateTime
+Quando usar o #OffSetDateTime, ela é a classe ideal quando:
+- **Recebemos dados de sistemas externos:** é muito comum que APIs, arquivos XML (padrão `xs:dateTime`) ou banco de dados forneçam um **timestamp** com um offset, mas sem a ID da zona (`America/Sao_Paulo`). **OffsetDateTime** é a forma perfeita para modelar essa informação sem perdê-la e sem fazer suposições.
+- **Para armazenar em banco de dados:** muitos bancos de dados SQL têm um tipo `TIMESTAMP WITH TIME ZONE`. Esse tipo geralmente armazena a data-hora normalizada em UTC e o offset original.
 
+**Conclusão:** Use `OffsetDateTime` quando precisar da precisão de um momento exato no tempo, mas também quiser preservar o offset original daquele momento, sem se preocupar com as regras complexas de fuso horário como o horário de verão
 
 
 ### 3.2 Classe Padrão
