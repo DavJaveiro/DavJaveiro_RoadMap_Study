@@ -594,3 +594,60 @@ Em uma aplicação com Spring Security, utiliza-se a noção de **papéis (roles
 https://github.com/spring-boot-in-practice/repo/wiki/Understanding-Roles
 
 ### 5.3.3 Technique: Configuring JDBC authentication with Spring Security in a Spring Boot application 
+In this technique, we'll discuss how to use Spring Security JDBC authentication in a Spring Boot application.
+
+**Problem**
+Storing user credentials in the source code is a bad idea, as it can be retrieved by anyone with access to the source code.  Store user credentials in a database table is a relatively better approach. <span style="background:#d4b106">We need to configure JDBC authentication</span> in a Spring Boot application.
+
+**Solution**
+The application we've developed in the previous technique is slightly better than its previous version, as we have the option to configure the custom users in the application. No entanto, isso não é suficiente, pois raramente será interessante manter as credenciais dos usuários codificadas diretamente no código-fonte (*hardcoded*). Isso vai contra o próprio propósito de habilitar a segurança, já que qualquer pessoa com acesso ao código-fonte pode facilmente obter essas credenciais. Além disso, se a nossa aplicação permitir o registro de novos usuários, será um desafio permitir que eles façam login utilizando essa abordagem.
+
+Uma alternativa melhor é armazenar as credenciais dos usuários em um armazenamento persistente, como um banco de dados. Em grande parte das aplicações em produção, uma tabela de banco de dados é segura e apenas pessoas autorizadas têm acesso a ela. Dessa forma, essa técnica nos permite explorar como armazenar as credenciais dos usuários em uma tabela do banco de dados e utilizá-las para a autenticação de usuários.
+
+The firt's change we need to perform is introducing two tables: **USERS** and **AUTHORITIES**. As the names suggest, the USERS table contains the user details, and the AUTHORITIES table contains the user authorities. Em termos mais amplos, *authorities* definem o que um usuário está autorizado a fazer na aplicação. 
+
+**USERS** e **AUTHORITIES** são os nomes de tabela padrão utilizados pelo Spring JDBC e, para utilizar a autenticação JDBC padrão fornecida pelo Spring Security, é necessário usar esses nomes de tabela. Vamos criar o nosso *schema.sql* personalizado.
+
+```java
+@Autowired
+private DataSource dataSource
+
+@Override
+    protected void configure(AuthenticationManagerBuilder auth) throws 
+➥ Exception {
+        auth.jdbcAuthentication().dataSource(dataSource);
+    }
+```
+Por padrão, o Spring Security utiliza o *data source* fornecido (injetado via *@autowired* ) para se conectar ao banco de dados e carregar os detalhes do usuário (*user details*) e suas permissões (*authorities*), respectivamente, das tabelas **USER** e **AUTHORITIES** que foram criadas com base no nosso *schema.sql*.
+
+A primeira alteração que realizamos foi injetar o *DataSource* em nossa classe usando o **@Autowiring** e alteramos a estratégia de autenticação para autenticação JDBC no método *configure(AuthenticationManagerBuilder auth)*.  Portanto, como configuramos a autenticação JDBC com esse *data source*, o Spring Boot ira realizar a consulta necessária ao banco de dados para a autenticação do usuário.
+
+**Mas como o Spring sabe quais tabelas e quais colunas utilizar?**
+O Spring já possui consultas SQL padrão embutidas. 
+
+Por padrão, o Spring espera que existam duas tabelas no banco chamadas:
+- *users* - com colunas **username**, **password**, **enabled**
+- *authorities* - com colunas **username**, **authority**
+
+**O que o Spring faz com essas tabelas?**
+Internamente, o Spring executa duas consultas SQL automáticas parecidas com estas:
+1. Para buscar os dados do usuário:
+```sql
+SELECT username, password, enabled
+FROM users
+WHERE username = ?;
+```
+
+2. Para buscar as permissões (roles/authorities) do usuário:
+```sql
+SELECT username, authority
+FROM authorities
+WHERE usernames = ?;
+```
+
+**Discussion**
+With this technique, we've learned to perform JDBC authentication in the application. This approach is much better than the previous authentication strategies, as the user credentials are stored in a database table.
+
+For JDBC authentication, Spring Security provides the JdbcDaoImpl class that implements the **UserDetailsService** and defines the **loadUserByUsername(...)** method. This method loads the user details using the database. Besides, as shown in figure above:
+
+![[Capítulo 5 - Securing Spring Boot Applications-7.png]]

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
+                "file": "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 4 - Engenharia de Requisitos"
+              "title": "Capítulo 5 - Securing Spring Boot Applications"
             }
           }
         ]
@@ -214,6 +214,9 @@
   },
   "active": "bb84ee59a665a0fe",
   "lastOpenFiles": [
+    "Capítulo 5 - Securing Spring Boot Applications-7.png",
+    "giphy.gif",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/Chapter 30 - Aggregate Operations For Collection Streams.md",
     "Capítulo 5 - Securing Spring Boot Applications-6.png",
@@ -243,7 +246,6 @@
     "Appendix D - Using JSON formatting.png",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
     "Capítulo 5 - Securing Spring Boot Applications-1.png",
-    "Capítulo 5 - Securing Spring Boot Applications.png",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 5 - Redes e entrega de conteúdo.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
