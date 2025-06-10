@@ -173,10 +173,10 @@ Esse modelo em espiral acomoda abordagens para o desenvolvimento nas quais os re
 Em praticamente todos os sistemas, os requisitos mudam. As pessoas envolvidas desenvolvem uma compreensão melhor do que elas querem que o software faça; a organização que está adquirindo o sistema muda; e são feitas modificações no hardware, no software e no ambiente organizacional do sistema. As mudanças devem ser gerenciadas para entender tanto o impacto em outros requisitos quanto as implicações no sistema e o custo de realizã-las. 
 
 ## 4.3 Elicitação de Requisitos
-Os objetivos do processo de elicitação de requisitos são compreender o trabalho que os *stakeholders* realizam e entender como usariam um novo sistema para apoiar o trabalho deles. Durante a elicitação de requisitos, os engenheiros de software trabalham com os *stakeholders* para saber mais sobre o domínio da aplicação, as atividades envolvidas no trabalho, os serviços e as características do sistema que eles querem, o desempenho desejado para o sistema, as limitações de hardware etc.
+Os objetivos do processo de elicitação de requisitos são compreender o trabalho que os *stakeholders* realizam e entender como usariam um novo sistema para apoiar o trabalho deles. Durante a elicitação de requisitos, os engenheiros de software trabalham com os *stakeholders* para saber mais sobre o domínio da aplicação, as atividades envolvidas no trabalho, os serviços e as características do sistema que eles querem, <span style="background:#affad1">o desempenho desejado para o sistema</span>, as limitações de hardware etc.
 Elicitar e compreender os requisitos dos *stakeholders* no sistema é um processo difícil por várias razões:
 1. Muitas vezes os *stakeholders* não sabem o que querem de um sistema de computador, exceto em aspectos mais gerais; eles podem achar difícil articular o que querem que o sistema faça; podem fazer exigências irreais porque não sabem o que é viável ou não;
-2. Em um sistema, é natural que os *stakeholders* expressem os requisitos em seus próprios termos e com conhecimento implícito de seu próprio trabalho. Os engenheiros de requisitos, sem experiência no domínio do cliente, podem não entender tais requisitos.
+2. Em um sistema, é natural que os *stakeholders* expressem os requisitos em seus próprios termos e com conhecimento implícito de seu próprio trabalho. Os **engenheiros de requisitos**, sem experiência no domínio do cliente, podem não entender tais requisitos.
 3. Diferentes *stakeholders*, com requisitos distintos, podem expressá-los de maneiras variadas. Os engenheiros de requisitos têm de descobrir todas as possíveis fontes de requisitos, além dos pontos de convergência e de conflito.
 4. Fatores políticos podem influenciar os requisitos de um sistema. Os gerentes podem exigir requisitos de sistema específicos, o que lhes permite aumentar sua influência na organização.
 5. O ambiente econômico e de negócios no qual a análise ocorre é dinâmico. Inevitavelmente, ele muda durante o processo de análise. A importância de determinados requisitos pode mudar. Novos requisitos podem surgir de novos *stakeholders* que não foram consultados originalmente.
@@ -191,4 +191,26 @@ Um modelo do processo de elicitação e análise é exibido na Figura 4.7, abaix
 
 - *Descoberta e compreensão dos requisitos:* esse é o processo de interagir com os *stakeholders* do sistema para descobrir seus requisitos. Os requisitos de domínio dos *stakeholders* e documentação também são descobertos durante essa atividade. 
 - *Classificação e organização dos requisitos.* Essa atividade pega o conjunto não estruturado de requisitos, agrupa os requisitos relacionados e os organiza em grupos coerentes.
-- 
+- *Priorização e negociação dos requisitos*. Inevitavelmente, quando estão envolvidos vários stakeholders, os requisitos entrarão em conflito. Essa atividade está relacionada com a priorização dos requisitos e com a descoberta e negociação para resolução de conflitos. Normalmente, os **stakeholders** devem se reunir para resolver as diferenças e chegar a um acordo sobre os requisitos. 
+- *Documentação dos requisitos.* Os requisitos são documentados e servem de entrada para a próxima volta da espiral. Um rascunho inicial pode ser produzido nesse estágio ou os requisitos podem simplesmente ser mantidos de modo informal em lousas, *wikis* ou outros espaços compartilhados.
+
+A Figura 4.7 mostra que a elicitação e análise de requisitos é um processo iterativo, com feedback contínuo de cada atividade para as demais. O ciclo do processo começa com a descoberta de requisitos e termina com a documentação dos requisitos. A compreensão do analista sobre os requisitos melhora a cada rodada do ciclo. O ciclo se encerra quando o documento de requisitos é produzido. 
+
+Para simplificar a análise de requisitos, é útil organizar e agrupar as informações dos stakeholders. Uma maneira de fazer isso é considerar cada grupo de stakeholders como um **ponto de vista** e reunir todos os requisitos desse grupo nesse ponto de vista. Também é possível incluir pontos de vista para representar requisitos de domínio e restrições de outros sistemas. Alternativamente, pode-se utilizar um modelo da arquitetura do sistema para identificar **subsístemas** e associar requisitos a cada um deles.
+
+Inevitavelmente, diferentes stakeholders têm preocupações distintas sobre a importância e prioridade dos requisitos, e, em alguns casos, essas percepções podem ser conflitantes. Se alguns stakeholders sentirem que suas opiniões não foram devidamente consideradas, podem tentar minar deliberadamente o processo de engenharia de requisitos. Portanto, é essencial organizar reuniões regulares entre stakeholders, garantindo que todos tenham a oportunidade de expressar suas preocupações e chegar a compromissos em relação aos requisitos.
+
+Na etapa de documentação de requisitos, é fundamental utilizar uma linguagem simples e diagramas para descrever os requisitos. Isso facilita a compreensão por parte dos stakeholders, permitindo que comentem e façam sugestões. Para tornar o compartilhamento de informações mais eficiente, é recomendável usar um **documento compartilhado** (como no Google Docs ou Office 365) ou um wiki acessível a todos os stakeholders interessados. Dessa forma, todos podem acompanhar as atualizações e contribuir de maneira colaborativa ao longo do processo.
+
+### 4.3.1 Técnicas de elicitação de requisitos
+Requirements elicitation involves meeting with stakeholders of different kinds to discover information about the proposed system. You may supplement this information with knowledge of existing  systems and their usage and information from documents of various kinds. You need to spend time understanding how people work, what they produce, how they use other systems, and how they may need to change to accommodate a new system.
+
+There are two fundamental approaches to requirements elicitation:
+1. Interviewing, where you talk to people about what they do.
+2. Observation or ethnography, where you watch people doing their job to see what artifacts they use, how they use them, and so on.
+
+You should use a mix of interviewing and observation to collect information and, from that, your derive the requirements, which are then the basis for further discussions.
+
+#### 4.3.1.1 Interviewing
+Formal or informal interviews with system stakeholders are part of most requirements engineering processes. In these interviews, the requirements engineering team puts questions to stakeholders about the system that they currently use and the sustem to be developed. 
+
