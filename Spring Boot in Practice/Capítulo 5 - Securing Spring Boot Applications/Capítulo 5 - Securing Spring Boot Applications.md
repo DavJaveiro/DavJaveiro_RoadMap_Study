@@ -651,3 +651,51 @@ With this technique, we've learned to perform JDBC authentication in the applica
 For JDBC authentication, Spring Security provides the JdbcDaoImpl class that implements the **UserDetailsService** and defines the **loadUserByUsername(...)** method. This method loads the user details using the database. Besides, as shown in figure above:
 
 ![[Capítulo 5 - Securing Spring Boot Applications-7.png]]
+
+### 5.3.4 Technique: Implementing JDBC authentication with custom UserDetailsService in a Spring Boot application
+
+**Problem**
+Implementing JDBC authentication with custom queries does not provide complete control of the user account management. Features such as user account locking, account expiry, and user credentials expiry are not available. 
+
+**Solution**
+O Spring Security fornece uma interface *UserDetailsService* que atua como uma ponte entre a implementação do usuário da aplicação e o *UserDetails* do Spring Security. Portanto, como cada aplicação pode ter seu próprio modelo de usuário, é aí que entra a necessidade de adaptar a implementação para o que o Spring espere. 
+
+A interface *UserDetailsService* é direta e oferece apenas um método: *loadUserByUsername()*, que permite carregar os detalhes do usuário a partir do **repositório de identidade** e retornar uma implementação do *UserDetails* do Spring Security.
+
+Nesta técnica, nós falaremos sobre usuários específicos da nossa aplicação. Portanto, nós iremos modelar uma entidade de aplicação de usuário, como mostrado no código *ApplicationUser*.
+
+Os detalhes na listagem 5.19 são diretos. Ele contém detalhes do usuário, como *first_name* (primeiro nome), *last_name* (sobrenome), *username* (nome do usuário) e outras informações da conta do usuário. Nomeamos a tabela que armazena os detalhes do usuário como **CT_USERS**.
+
+Precisamos de uma implementação de interface de repositório do Spring Data para o ApplicationUser (usuário da aplicação), para que possamos gerenciar os detalhes do usuário no banco de dados. 
+
+- A classe **CustomUserDetailsService** fornece uma implementação da interface **UserDetailsService**;
+- Ela injeta automaticamente (autowire) a implementação da interface **ApplicationUserRepository**, pois é por meio dela que os detalhes do usuário são carregados do banco de dados.
+- Por fim, no método **loadUserByUserName()**, estamos fazendo o seguinte:
+	- Buscamos os detalhes do usuário no banco de dados;
+	- Se não houver um usuário com o nome fornecido, lançamos uma exceção *UsernameNotFoundException*. Essa é uma exceção do Spring Security usada para indicar que o usuário não está disponível.
+	- Se o usuário existir, então construímos um objeto **User** do Spring Security com os dados do nosso **ApplicationUser**, portanto, convertendo o nosso modelo para um **UserDetails**., User implementa **UserDetails**.
+
+No exemplo, marcarmos o usuário como desabilitado se a sua conta não estiver verificada. Da mesma forma, os métodos **accountExpired()** e **accountLocked()** podem ser usadas para controlar o status da conta do usuário.
+
+Por exemplo, podemos implementar o bloqueio da conta após um número configurável de tentativas de login incorretas. Também podemos implementar a expiração da conta para forçar o usuário a trocar a senha após um período. Além disso, definimos a role como *USER* para indicar que ele possui esse papel. O Spring Security exige que configuremos o papel (role) ou as autoridades (authorities) do usuário.
+
+A última alteração que precisamos fazer é utilizar o **UserDetailsService** personalizado na classe **SecurityConfiguration**, para que a implementação customizada seja usada pelo Spring Security. 
+
+In last snipped code, we've made two additional changes:
+1. Adding the **UserDetailsService** bean definition;
+2. Removing the **configure(AuthenticationManagerBuilder auth)** method. The last method is no longer neccessary, as we are providing the **UserDetailsService** implementation.
+The last change we'll perform is creating the **CT_USERS** table and adding a few user details to it. 
+
+```sql
+create table ct_users(
+	ID BIGINIT(19) NOT NULL,
+	EMAIL VARCHAR(255) NOT NULL,
+	FIRST_NAME VARCHAR(255) NOT NULL,
+	LAST_NAME VARCHAR(255) NOT NULL,
+	PASSWORD VARCHAR(255) NOT NULL,
+	VERIFIED BOOLEAN(1) NOT NULL,
+	LOCKED BOOLEAN(1) NOT NULL,
+	ACC_CRED_EXPIRED BOOLEAN(1) NOT NULL,
+	PRIMARY KEY (ID)
+);
+```
