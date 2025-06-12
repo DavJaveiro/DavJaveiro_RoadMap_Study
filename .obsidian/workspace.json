@@ -13,12 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+=======
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
+>>>>>>> 88212459f6c4cb56fa983bb927264048ee0107db
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "Capítulo 6 - Implementing additional security with Spring Security"
+=======
+              "title": "Capítulo 4 - Engenharia de Requisitos"
+>>>>>>> 88212459f6c4cb56fa983bb927264048ee0107db
             }
           }
         ]
@@ -215,9 +223,12 @@
   "active": "bb84ee59a665a0fe",
   "lastOpenFiles": [
     "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+<<<<<<< HEAD
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security",
     "Capítulo 5 - Securing Spring Boot Applications-8.png",
+=======
+>>>>>>> 88212459f6c4cb56fa983bb927264048ee0107db
     "Capítulo 5 - Securing Spring Boot Applications-7.png",
     "giphy.gif",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
