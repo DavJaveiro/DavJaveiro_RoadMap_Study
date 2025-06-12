@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 5 - Securing Spring Boot Applications"
+              "title": "Capítulo 6 - Implementing additional security with Spring Security"
             }
           }
         ]
@@ -214,10 +214,13 @@
   },
   "active": "bb84ee59a665a0fe",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
+    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security",
+    "Capítulo 5 - Securing Spring Boot Applications-8.png",
     "Capítulo 5 - Securing Spring Boot Applications-7.png",
     "giphy.gif",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/Chapter 30 - Aggregate Operations For Collection Streams.md",
     "Capítulo 5 - Securing Spring Boot Applications-6.png",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/codes/StreamOneExample.class",
@@ -232,7 +235,6 @@
     "Spring Start Here/codes/sq-ch15-ex1/target/classes/application-postgres.properties",
     "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/TransferService.class",
     "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/TestArrayList.class",
-    "Spring Start Here/codes/sq-ch15-ex1/src/main/java/org/example/sqch15ex1/service/DallasRemove.java",
     "Chapter 11 - Inheritance and Polymorphism.png",
     "Pasted image 20250603090256.png",
     "Desafio Itaú/Etapas.md",
@@ -243,9 +245,7 @@
     "Capítulo 5 - Securing Spring Boot Applications-3.png",
     "Capítulo 5 - Securing Spring Boot Applications-2.png",
     "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
-    "Appendix D - Using JSON formatting.png",
     "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
-    "Capítulo 5 - Securing Spring Boot Applications-1.png",
     "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 5 - Redes e entrega de conteúdo.md",
     "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",

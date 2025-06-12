@@ -699,3 +699,44 @@ create table ct_users(
 	PRIMARY KEY (ID)
 );
 ```
+
+### 5.3.6 Technique: Implementing HTTP basic authentication in a Spring Boot Application
+In this technique, we'll discuss how too implement HTTP basic authentication in a Spring Boot application.
+
+**Problem**
+In the previous techniques, we've explored form-based user authentication for the user to allow access to the application. However, some applications prefer to use HTTP basic authentication instead of form-based login. We need to implement HTTP basic authentication in our application.
+
+**Solution**
+**NOTA:** não é recomendado utilizar autenticação básica HTTP em aplicações de produção devido às suas limitações. Esse modo de autenticação codifica a senha em texto puro usando codificação Base64, que pode ser facilmente decodificada. Uma aplicação em produção prefere usar técnicas como **autenticação baseada em token**.
+
+A autenticação básica HTTP é uma abordagem alternativa usada em aplicações para autenticar usuários. Assim como o login baseado em formulário (*form-based login*), ela também aceita as credenciais do usuário e permite que o servidor autentique esse usuário.
+
+Nesta técnica, primeiro vamos demonstrar o uso da autenticação básica HTTP na aplicação **Course Tracker**. Na seção de discussão, vamos apresentar mais informações sobre como funciona a autenticação básica.
+
+In this technique, we'll use the default **JDBC-based HTTP** basic authentication. Thus, we'll remove the form-based login, as used in the previous techniques, and define HTTP basic authentication in the **SecurityConfiguration** class.
+
+Mas qual forma eu devo utilizar para realizar as minhas autenticações:
+1. Se estivermos criando uma API REST: usar o HTTP Basic, ou de forma mais atual, o JWT;
+2. Se estivermos criando uma aplicação com **interface web**, devemos utilizar o *formLogin*, mas, ao utilizar o #Angular, por exemplo, ele gerencia o login via **requisições HTTP (AJAX)**, portanto, precisaremos de uma autenticação baseada em token.
+
+```java
+@Override  
+protected void configure(HttpSecurity http) throws Exception {  
+    http  
+            .authorizeRequests()  
+            .anyRequest()  
+            .authenticated()  
+            .and().httpBasic();  
+}
+```
+
+No código acima, nós definimos que qualquer request para a aplicação precisará ser autenticada, e o esquema de autenticação é um basic HTTP authentication. These are the only changes we've made to implement HTTP basic authentication in the application.
+
+Let's start the application and access the login page *http://localhost:8080/index* from the browser. 
+
+![[Capítulo 5 - Securing Spring Boot Applications-8.png]]
+
+We won't find the familiar login page.
+
+There is no logout function in HTTP basic authentication. To log out from the application, we'll need to close all instances of the browser.
+
