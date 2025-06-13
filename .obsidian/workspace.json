@@ -1,32 +1,24 @@
 {
   "main": {
-    "id": "e8589849a6e5f68d",
+    "id": "1646ee6a5d4746ff",
     "type": "split",
     "children": [
       {
-        "id": "903778af308a02ec",
+        "id": "e4e3042c02c67ec5",
         "type": "tabs",
         "children": [
           {
-            "id": "bb84ee59a665a0fe",
+            "id": "146b74cc05be4d57",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
                 "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
-=======
-                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
->>>>>>> 88212459f6c4cb56fa983bb927264048ee0107db
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
               "title": "Capítulo 6 - Implementing additional security with Spring Security"
-=======
-              "title": "Capítulo 4 - Engenharia de Requisitos"
->>>>>>> 88212459f6c4cb56fa983bb927264048ee0107db
             }
           }
         ]
@@ -35,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "87bbfb53d98c7706",
+    "id": "04e2629dbdc5aa1f",
     "type": "split",
     "children": [
       {
-        "id": "388160629d4317ec",
+        "id": "6287a133c2062f6c",
         "type": "tabs",
         "children": [
           {
-            "id": "44e68b1e22c0417a",
+            "id": "0862fa1b506aee5c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,7 +48,7 @@
             }
           },
           {
-            "id": "1bc04b76708a50b9",
+            "id": "2404e1a026c2209d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -73,7 +65,7 @@
             }
           },
           {
-            "id": "8168c6eb1b15e9a4",
+            "id": "a02fb52a4e1dc97d",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -83,7 +75,7 @@
             }
           },
           {
-            "id": "486d6017e3200575",
+            "id": "f860268544acc827",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -100,20 +92,20 @@
     "collapsed": true
   },
   "right": {
-    "id": "176d1a06caa79d71",
+    "id": "3dc897eb6943f3d5",
     "type": "split",
     "children": [
       {
-        "id": "a95723c20c828aad",
+        "id": "4e01607edf0c8862",
         "type": "tabs",
         "children": [
           {
-            "id": "a621e58e5442a837",
+            "id": "69b21947adb96676",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
+                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Módulo 4 - Segurança na Nuvem AWS"
+              "title": "Links inversos para Capítulo 6 - Implementing additional security with Spring Security"
             }
           },
           {
-            "id": "c78cdb6936cd4ed8",
+            "id": "e3d378c7cd7d7765",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
+                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Módulo 4 - Segurança na Nuvem AWS"
+              "title": "Links de saída para Capítulo 6 - Implementing additional security with Spring Security"
             }
           },
           {
-            "id": "0f937e1f05109677",
+            "id": "fc8d16d4c47fd105",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -156,7 +148,7 @@
             }
           },
           {
-            "id": "4c82d18d078c5bc2",
+            "id": "588f80b96341598e",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -170,22 +162,22 @@
             }
           },
           {
-            "id": "9a6cd2b3107e08af",
+            "id": "d7eff7fd6ad7af76",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
+                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Módulo 4 - Segurança na Nuvem AWS"
+              "title": "Sumário de Capítulo 6 - Implementing additional security with Spring Security"
             }
           },
           {
-            "id": "62af2dcce85b6df0",
+            "id": "3eef2b5fbbb39c32",
             "type": "leaf",
             "state": {
               "type": "planner-timeline",
@@ -220,47 +212,9 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "bb84ee59a665a0fe",
+  "active": "146b74cc05be4d57",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 5 - Securing Spring Boot Applications/Capítulo 5 - Securing Spring Boot Applications.md",
-<<<<<<< HEAD
-    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
-    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security",
-    "Capítulo 5 - Securing Spring Boot Applications-8.png",
-=======
->>>>>>> 88212459f6c4cb56fa983bb927264048ee0107db
-    "Capítulo 5 - Securing Spring Boot Applications-7.png",
-    "giphy.gif",
-    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/Chapter 30 - Aggregate Operations For Collection Streams.md",
-    "Capítulo 5 - Securing Spring Boot Applications-6.png",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/codes/StreamOneExample.class",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/codes/StreamOneExample.java",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/codes/StreamOne.java",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams/codes",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 30 - Aggregate Operations For Collection Streams",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 11 - Inheritance and Polymorphism/Chapter 11 - Inheritance and Polymorphism.md",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 19 - Generics/Chapter 19 - Generics.md",
-    "Desafio Itaú/Estrutura.md",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/DallasRemove.class",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/application-postgres.properties",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/TransferService.class",
-    "Spring Start Here/codes/sq-ch15-ex1/target/classes/org/example/sqch15ex1/service/TestArrayList.class",
-    "Chapter 11 - Inheritance and Polymorphism.png",
-    "Pasted image 20250603090256.png",
-    "Desafio Itaú/Etapas.md",
-    "OCP Java SE21/Chapter 1 - Building Blocks.md",
-    "Capítulo 5 - Securing Spring Boot Applications-5.png",
-    "Capítulo 5 - Securing Spring Boot Applications-4.png",
-    "OCP Java SE21/Introduction e dicas.md",
-    "Capítulo 5 - Securing Spring Boot Applications-3.png",
-    "Capítulo 5 - Securing Spring Boot Applications-2.png",
-    "Spring Start Here/Appendix/Appendix D - Using JSON formatting/Appendix D - Using JSON formatting.md",
-    "Spring Start Here/Appendix/Appendix C - A Introduction to HTTP/Appendix C - A Introduction to HTTP.md",
-    "Spring Boot in Practice/Capítulo 4 - Spring Boot Autoconfiguration and Actuator/Capítulo 4 - Spring Boot Autoconfiguration and Actuator.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 5 - Redes e entrega de conteúdo.md",
-    "AWS Academy Cloud Fundations/Introdução ao Módulo 1/Módulo 4 - Segurança na Nuvem AWS.md",
-    "Database System Concepts/Parte One - Relational Languages/Capítulo 3 - Introduction to SQL.md",
-    "CEDERJ Matemática/Matemática.md"
+    "RoadMap do DavJaveiro/RoadMap.canvas",
+    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md"
   ]
 }
