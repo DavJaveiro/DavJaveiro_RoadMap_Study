@@ -33,3 +33,62 @@ Habilitar o HTTPS em uma aplicação Spring Boot é um processo de duas etapas. 
 **Obtenção do certificado:** podemos obter o certificado por meio de uma **autoridade certificadora (CA)** confiável, como **Verisign, Entrust ou Let's Encrypt**; ou gerar um certificado autoassinado utilizando ferramentas como *keytool* ou *openssl*. Para aplicações em produção, recomenda-se sempre usar um certificado emitido por uma CA confiável.
 
 Para fins de demonstração, neste caso geraremos um certificado autoassinado utilizando a ferramenta *keytool* do JDK. Podemos consultar o wiki do GitHub para seguir os passos de geração do certificado autoassinado.
+
+#Keytool - é um utilitário de linha de comando que já vem incluído com o JDK (Java Development Kit), portanto, não precisamos instalar mais nada.
+
+``` cmd
+keytool -genkeypair -alias sbip -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore sbip.p12 -validity 3650 -storepass p@ssw0rd
+```
+**Entendendo Cada parte do Comando**
+ - Keytool - nome do programa que estamos executando
+ - -genkeypair - a ação que queremos realizar, que é gerar um par de chaves (uma chave pública e uma privada)
+ - alias sbip - um "apelido" ou nome único para identificar este certificado dentro do keystore. No tutorial, foi utilizado sbip.
+ - -keyalg RSa: o algoritmo criptográfico a ser usado para gerar as chaves. #RSA é o mais comum e amplamente suportado.
+ - -keysize 2048: o tamanho da chave em bits. 2048 é um valor seguro e padrão para hoje em dia.
+ - -storetype PKCS12: o formato do arquivo que armazenará as chaves. .p12 é o formato moderno e recomendado pelo Spring Boot.
+ - -validty 3650: por quantos dias o certificado será válido. 3650 dias equivalem a 10 anos.
+ - -storepass p@ssw0rd: a senha para proteger o nosso arquivo keystore. 
+
+Com relação a série de perguntas, quando o programa keytool perguntar What is your first and last name? O ideal para um certificado de desenvolvimento é responder *localhost*. Isso garante que o navegador não reclamará do nome do host quando acessarmos *https://localhost:8443* durante os testes.
+
+Ao final do processo, um arquivo chamado **sbip.p12** será criado e estará pronto para uso. Este é o nosso arquivo keystore, contendo o certificado autoassinado pronto para ser usado em nossa aplicação Spring Boot para habilitar o HTTPS.
+
+Depois de obter o certificado, podemos prosseguir com a configuração do HTTPS em nossa aplicação Spring Boot. Criamos o nosso arquivo sbip.p12 dentro do diretório src\main\resources\kesystore.
+
+O próximo passo é configurar a aplicação Spring Boot para user o keystore fornecido e, em seguida, habilitar o HTTPS.
+
+Agora, para habilitar o HTTPS em nossa aplicação Spring Boot, vamos abrir o arquivo *application.properties* ou *application.yml* e definir as propriedades.
+
+The next change we'll implement is enforcing HTTPS for every request. This can be done in the *SecurityConfiguration* class that extends the *WebSecurityConfigurerAdapter* class.
+
+O trecho de código que adicionamos na classe SecurityConfiguration indica que todas as requisições precisam ser seguras (ou sejam feitas via HTTPS). 
+```java
+@Configuration  
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	@Override  
+	protected void configure(HttpSecurity http) throws Exception {  
+	    http.requiresChannel().anyRequest().requiresSecure()  
+	            .and()  
+	            .authorizeRequests()  
+	            .antMatchers("/login").permitAll()  
+	            .anyRequest().authenticated().and().formLogin().loginPage("/login");  
+}
+```
+
+A mensagem do navegador informando que o site não é confiável/seguro aparece porque estamos utilizando um certificado TLS autoassinado, ou seja, um certificado que não foi emitido por uma autoridade certificadora (CA) confiável reconhecida pelo navegador (como Let's Encrypt, Verisign, etc)...
+
+Now that we've implemented HTTPS, and the application blocks all HTTP requests, we need to redirect all traffic to HTTPS automatically. In the application.propertiies fie, we've already confirued the HTTPS configuration (through the server.port=8433 property).
+
+Vamos configurar o conector HTTP do servidor Tomcat de forma programática, para que todas as requisições HTTP recebidas sejam automaticamente redirecionadas para HTTPS. 
+
+**DISCUSSION**
+Em qualquer aplicação com nível de produção, é sempre recomendado utilizar HTTPS em vez de HTTP. No protocolo HTTP, as requisições e respostas são transferidas em texto puro, o que torna a nossa aplicação vulnerável à exposição de informações sensíveis. Se os nossos dados forem transmitidos sem criptografia, usuários mal-intencionados poderiam interceptar essas informações facilmente.
+
+O protocolo HTTPS criptografa as requisições e respostas, evitando a exposição de dados durante o tráfego. Por isso, aplicações que usam HTTPS transmitem mais confiança aos usuários, além de proporcionarem segurança tanto para os usuários quanto para os responsáveis pela aplicação.
+
+Em aplicações reais, é essencial utilizar certificados emitidos por uma autoridade certificadora confiável CA.
+
+Por fim, é importante destacar que, em ambientes de produção ou setups corporativos, é comum que a gestão do HTTPS seja feita por **balanceadores de carga (load balancers)** que ficam à frente das aplicações Spring Boot. Neste caso, o próprio balanceador lida com o tráfego seguro, e não a aplicação diretamente. A técnica que acabamos de aprender é útil quando não há um load balancer, ou quando se deseja habilitar HTTPS diretamente na aplicação Spring Boot como último recurso ou em projetos internos da empresa.
+
+Testando com **Wireshark**...
+## 6.2 Securing secrets in Spring Cloud Vault
