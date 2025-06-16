@@ -384,3 +384,184 @@ The TypeScript language is an npm package that can be installed from the npm reg
 ```shell
 npm install -g typescript
 ```
+In the preceding command, we chose to install TypeScript globally in our system so that we can use it from any path our development environment. Let's see how we can use TypeScript through a simple example: 
+1. Open VSCode and select File | New File... from the main menu options;
+2. Enter app.ts in the New File... dialog and press *Enter*.
+3. Type the following snippet into the *app.ts* file:
+	1. const title = 'Hello TypeScript!';
+
+Embora tenhamos criado um arquivo TypeScript, o trecho de código anterior é um código JavaScript válido. Lembre-se que o TypeScript é um superconjunto do JavaScript que oferece *syntatic sugar* (recursos sintáticos) por meio de seu sistema de tipagem. No entanto, escrever código JavaScript puro com TypeScript não nos traz nenhum benefício claro.
+
+4. Open a terminal window and run the following command to compile the TypeScript file into JavaScript:
+`tsc app.ts`
+
+The preceding command initiates a process called transpilation performed by the tsc executable, a compiler is at the core of the TypeScript language. <span style="background:#d4b106">Precisamos compilar o código TypeScript para JavaScript</span> porque os navegadores atualmente não oferecem suporte nativo ao TypeScript.
+
+O Angular usa um compilador que aproveita o compilador do TypeScript nos bastidores para construir aplicações Angular.
+
+O compilador TypeScript oferece opções adicionais de configuração que podemos passar para o executável *tsc* através da janela do terminal ou de um arquivo de configuração. A lista completa de opções de compilador disponíveis pode ser encontrada em [TypeScript: Documentation - tsc CLI Options (typescriptlang.org)](https://www.typescriptlang.org/docs/handbook/compiler-options.html?form=MG0AV3)
+
+5. The transpilation process will create an *app.js* file in the same folder as the TypeScript file. The new file will contain the following code: `var title = 'Hello TypeScript';`
+
+Como ainda não utilizamos nenhum recurso específico do TypeScript, o trecho anterior parece quase idêntico ao original, exceto pela declaração de variável.
+
+7. O processo de transpialão substitui a palavra-chave *const* pela palavra-chave *var* porque o compilador *TypeScript* usa, por padrão, uma versão antiga do JavaScript. Podemos alterar isso especificando um alvo no comando *tsc*: `tsc app.ts --target es2022`
+No comando acima, especificamos o *es2022*, que representa a versão mais recente da linguagem JavaScript no momento da escrita. As aplicações Angular que construiremos ao longo deste livro também visam essa versão do JavaScript por padrão.
+
+## Types
+Trabalhar com TypeScript ou qualquer outra linguagem de programação significar lidar com dados, e esses dados podem representar diferentes tipos de conteúdo, chamados de tipos ou **types**. Os tipos são usados para representar o fato de que os dados podem ser texto, um valor inteiro ou um array desses tipos de valores, entre outros.
+
+
+*Types disappear during transpilation and are not included in the final JavaScript code.*
+
+Podemos já ter encontrado tipos em JavaScript, pois sempre trabalhamos implicitamente com eles. No JavaScript, qualquer variável pode assumir (ou retomar, no caso de funções) qualquer valor. Às vezes, isso leva a erros e exceções no código devido a conflitos de tipos entre o valor retornado e o esperado. No entanto, a tipagem estática das nossas variáveis proporciona à IDE e a nós uma visão claro do tipo de dados que devemos encontrar em cada instância do código. Isso se torna uma maneira valiosa de ajudar a depurar nossas aplicações no momento da compilação, antes que o código seja executado.
+
+**String**
+Um dos tipos primitivos mais utilizados é a *String*, que atribui texto a uma variável:
+```ts
+const product: string = 'keyboard';
+```
+O tipo é definido adicionando dois pontos (:) e o nome do tipo ao lado da variável.
+
+O JavaScript atribui dinamicamente o tipo *string* à variável *product* com base no valor fornecido. Essa característica é chamada de *tipagem dinâmica*, o que significa que os tipos das variáveis são determinados em tempo de execução.
+
+Por outro lado, em TypeScript, podemos explicitamente definir o tipo da variável para garantir mais segurança e evitar erros inesperados durante o desenvolvimento. Esse é um dos motivos pelos quais TypeScript é tão útil para projetos grandes e complexos.
+
+**Boolean**
+The boolean type defines a variable that can have a value of either true or false:
+```ts
+const isActive: boolean = true;
+```
+The result of a boolean variable represents the fulfillment of a conditional statement.
+
+**Number**
+The *number* type is probably the other most widely used primitive data type, along with string and boolean:
+```ts
+const price: number = 100;
+```
+O tipo *number* em TypeScript pode representar diversos formatos numéricos, incluindo números de ponto flutuante e literais hexadecimais, decimais, binários e octais. 
+
+**Array**
+O tipo *array* define uma lista de itens que contêm apenas um tipo específico. Isso ajuda a evitar erros comuns, como a atribuição de tipos errados dentro da lista. Em TypeScript, podemos definir arrays de duas maneiras:
+```ts
+const categories: string[] = ['Computing', 'Multimedia'];
+const categories: Array<string> = ['Computing', 'Multimedia'];
+```
+Ambas as sintaxes acima são equivalentes e garantem que *categories* seja um array que só pode conter valores do tipo *string*. Isso melhora a segurança do código e evita problemas inesperados ao trabalhar com listas.
+
+**any**
+Em todos os casos anteriores, a tipagem é opcional porque o TypeScript é inteligente o suficiente para inferir os tipos de dados das variáveis com base em seus valores com um certo nível de precisão.
+
+*Permitir que o sistema de tipagem infira os tipos é muito importante, em vez de defini-los manualmente. O sistema de tipos nunca está errado, mas o desenvolvedor pode ser.*
+
+No entanto, se isso não for possível, o sistema de tipagem atribuirá automaticamente o tipo dinâmico *any* aos dados com tipagem fraca, reduzindo a verificação de tipos ao mínimo. Além disso, podemos adicionar manualmente o tipo any ao nosso código quando for difícil inferir o tipo de dados a partir das informações que temos em determinado momento. O tipo *any* inclui todos os outros tipos existentes, permitindo que qualquer valor seja atribuído a ele posteriormente:
+```ts
+let order:any;
+
+function setOrderNo() {
+	order = '0011';
+}
+```
+
+O TypeScript contém outro tipo, semelhante ao tipo *any*, chamado de *unknown*. Uma variável do tipo *Unknown* pode ter um valor de qualquer tipo. A principal diferença é que o TypeScript não permite que realizemos operações arbitrárias com valores *unknown*, como chamar um método, a menos que façamos uma verificações de tipo primeiro.
+
+No entanto, com grande poder vem grandes responsabilidades. Se ignorarmos a conveniência da verificação estática de tipos, abrimos a porta para erros de tipo ao transmitir dados através da nossa aplicação. Cabe a nós garantir a segurança dos tipos em toda a aplicação.
+
+**Custom types**
+Em TypeScript, podemos criar nosso próprio tipo, se necessário, utilizando a palavra-chave *type*, da seguinte forma:
+```ts
+type Categories = 'computing' | 'multimedia';
+```
+
+Podemos então criar uma variável com esse tipo específico:
+```ts
+const category: Categories = 'computing';
+
+```
+
+Isso nos permite definir tipos personalizados e garantir que uma variável contenha apenas valores permitidos dentro desse tipo.
+
+O código anteriores é perfeitamente válido, pois *computing* é um dos valores permitidos e funciona conforme o esperado. Tipos personalizados são uma excelente maneira de adicionar tipos com um número finito de valores permitidos.
+
+Quando queremos criar um tipo personalizado a partir de um objeto, podemos usar o operador *keyof*. O operador *keyof* nos permite iterar sobre as propriedades de um objeto e extraí-las para um novo tipo:
+```ts
+type Category = {
+	computing: string;
+	multimedia: string;
+};
+type CategoryType = keyof Category;
+```
+No trecho acima, `CategoryType` produz o mesmo resultado que o tipo `Categories`.
+
+Aprenderemos como usar o operador `keyof` para iterar dinamicamente sobre as propriedades de um objeto no **Capítulo 4 - Enriquecendo Aplicações com Pipes e Diretivas**.
+
+O sistema de tipagem do TypeScript é usado principalmente para **anotar código JavaScript com tipos**, melhorando a experiência do desenvolvedor ao fornecer _IntelliSense_ e evitando bugs precocemente no desenvolvimento.
+
+**Functions**
+As funções em TypeScript não são muito diferentes das funções em JavaScript tradicionais, exceto pelo fato de que, assim como tudo no TypeScript, elas podem ser anotadas com tipos estáticos. Isso melhora o compilador ao fornecer informações sobre a assinatura da função e o tipo de dado que ela pretende retornar, se houver.
+
+O exemplo a seguir mostra como uma função regular é anotada em TypeScript:
+```ts
+function getProduct(): string {
+	return 'keyboard';
+}
+```
+
+No trecho acima, adicionamos o tipo *string* à declaração da função para especificar o tipo do valor retornado. Também podemos adicionar tipos aos parâmetros da função, como mostrado abaixo:
+```ts
+function getFullname(firstName: string, lastName: string): string {
+	return `${this.firstName ${this.lastName}`;
+}
+```
+
+Aqui, os parâmetros foram anotados com seus respectivos tipos, garantindo que o compilador verifique se os dados fornecidos possuem os tipos corretos.
+
+Quando uma função não retorna um valor, podemos anotá-la usando o tipo *void*:
+```ts
+function printFullname(firstName: string, lastName: string): void {
+	console.log(`${this.firstName} ${this.lastName}`);
+}
+```
+
+Já aprendemos como usar parâmetros *default* e *rest* em funções JavaScript. O TypeScript amplia esses recursos ao introduzir *parâmetros opcionais*, que são definidos adicionando o caractere ? após o nome do parâmetro:
+```ts
+function addtoCart(productId: number, quantity?: number) {
+	const product = {
+		id: productId,
+		qty: quantity ?? 1
+	};
+}
+```
+
+Na função acima, quantity foi definido como um **parâmetro opcional**. Além disso, utilizamos a **sintaxe de coalescência nula (??)** para definir a propriedade qty do objecto product, caso, quantity não seja passado.
+
+**Classes**
+```ts
+export clas User {
+	firstName: string = ' ';
+	lastName: string = ' ';
+	private isActive: boolean = false;
+}
+```
+
+**Modify the constructor by adding types to parameters**:
+```ts
+constructor(firstName: string, lastName: string, isActive: boolean = true) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.isActive = isActive;
+}
+```
+Finally, add types in the *active* property accessor and the *getFullname* method:
+```ts
+getFullname(): string {
+	return `${this.firstName} ${this.lastName}`;
+}
+
+get active(): boolean {
+	return this.isActive;
+}
+```
+
+**Interfaces**
+Uma interface é um contrato de código que define um esquema específico.
