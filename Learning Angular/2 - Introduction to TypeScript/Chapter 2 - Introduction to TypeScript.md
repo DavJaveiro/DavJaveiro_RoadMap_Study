@@ -564,4 +564,59 @@ get active(): boolean {
 ```
 
 **Interfaces**
-Uma interface é um contrato de código que define um esquema específico.
+Uma interface é um contrato de código que define um esquema específico. Quaisquer artefatos como classes e functions que implementam uma interface devem estar em conformidade com esse *schema*. *Interfaces* são úteis quando queremos impor uma tipagem estrita em *classes* geradas por *factories* ou quando definimos *functions signatures* para garantir que uma determinada *typed property* esteja presente no *payload*. As *interfaces* desaparecem durante a transpilação e não são incluídas no código JavaScript final.
+
+In the following snippet, we define an interface for managing products:
+```ts
+interface Product {
+	name: string;
+	price: number;
+	getCategories: () => string[];
+}
+```
+
+*Interfaces are the recommended approach when working with data from a backend API or other source*.
+
+Uma interface pode conter *properties* e *methods*. No trecho anterior, a interface *Product* continha as properties *name* e *price*. Ela também definia o method *getCategories*. Uma class pode utilizar uma interface adicionando a palavra-chave *implements* seguida do nome da *interface* na declaração da classe:
+```ts
+class keyboard implements Product {
+	name: string = 'keyboard';
+	price: number = 20;
+	getCategories(): string[] {
+		return ['Computing', 'Peripherals'];
+	}
+}
+```
+
+No trecho acima, a classe *keyboard* deve implementar todos os membros da interface Product; caso contrário, o TypeScript lançará um erro. Se não quisermos implementar um membro da interface, podemos defini-lo como opcional usando o caractere ?:
+```ts
+interface Product {
+	name: string;
+	price: number;
+	getCategories: () => string[];
+	description?: string;
+}
+```
+
+Também podemos usar interfaces para alterar o tipo de uma variável de um tipo para outro - isso é chamado de *type casting*. O *type casting* é útil ao lidar com dados dinâmicos ou quando o TypeScript não consegue inferir automaticamente o tipo de uma variável. No exemplo a seguir, instruímos o TypeScript a tratar o objeto *product* como do tipo *Product*:
+```ts
+const product = {
+	name: 'keyboard',
+	price: 20
+} as Product;
+```
+
+No entanto, o type casting deve ser usado com cautela. No trecho acima, omitimos intencionalmente o método *getCategories*, mas o TypeScript não lançou erro. Quando usamos type casting, estamos dizendo ao TypeScript que uma variável está fingindo ser de um tipo específico.
+
+Interfaces podem ser combinadas com *generics* para oferecer um comportamento de código mais genérico, independentemente do tipo de dado, como veremos na próxima seção.
+
+**Utility Types**
+São tipos que nos ajudam a derivar novos tipos a partir de tipos já existentes.
+
+O tipo *Partial* é usado quando queremos criar um objeto com base em uma interface onde todas as propriedades são opcionais. No exemplo abaixo, usamos a *interface* **Product** para declarar uma versão reduzida de um produto:
+```ts
+const mic: Partial<Product> = {
+	name: 'Microphone',
+	price: 67
+};
+```
