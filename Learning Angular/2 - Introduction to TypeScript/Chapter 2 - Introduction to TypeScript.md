@@ -159,3 +159,228 @@ function addToCart(productId, quantity = 1) {
 Se não passarmos um valor para o parâmetro *quantity*, ao chamar a função, ela irá assumir automaticamente o valor 1.
 
 Assim, teremos um objeto *product* com a propriedade *qty* igual a 1.
+
+*Parâmetros padrão devem ser definidos após todos os parâmetros obrigatórios na assinatura da função.*
+
+Uma vantagem significativa da flexibilidade do JavaScript ao definir funções é a capacidade de aceitar um número ilimitado de parâmetros não declarados, chamados de *parâmetros rest (rest paramters)*. Basicamente, podemos definir um parâmetro adicionar no final da lista de argumentos, precedido por reticências (...):
+```js
+function addProduct(name, ...categories) {
+	const product = {
+		name,
+		categories: categories.join(',')
+	};
+}
+addProduct("Notebook", "Eletrônicos", "Informática", "Promoção");
+```
+
+Portanto, a função poderá aceitar vários argumentos, mesmo que eles não tenham sido definidos previamente na assinatura da função.
+
+Portanto, o objeto criado seria:
+```js
+{
+	name: "Notebook",
+	categories: "Eletrônicos,Informática,Promoção"
+}
+```
+
+Portanto, o *rest parameters* transforma múltiplos argumentos em um array. Utilizamos ele quando não sabemos quantos argumentos serão passados. 
+
+Forma reduzida (shorthand):
+```js
+const product = {
+	name,
+	categories: categories.join(',')
+};
+```
+
+Devemos utilizar o *join(',)* quando quisermos converter o array para uma strnig.
+Usamos o *push()* quando quisermos adicionar mais valores ao array, mantendo ele como um *array*.
+
+## Arrow functions
+Em JavaScript, podemos criar funções de uma forma alternativa chamada de **funções de seta (arrow functions)**.
+
+O objetivo de uma função de seta é simplificar a sintaxe das funções tradicionais e fornecer uma maneira confiável de lidar com o escopo da função, que normalmente é tratado pelo objeto *this*.
+
+Veja o seguinte exemplo, que calcula um desconto para um produto com base em seu preço:
+```js
+const discount = (price) => {
+	return (price / 100) * 10;
+}
+```
+
+Neste código, não usamos a palavra-chave *function*, e o corpo da função é definido com uma seta =>.
+
+As arrow functions podem ser ainda mais simplificadas, seguindo estas boas práticas:
+- Omitir os parênteses dos parâmetros quando a função tiver **apenas um parâmetro**;
+- Omitir as chaves *{}* e a palavra *return* se o corpo da função tiver **apenas uma instrução**.
+
+A função resultante fica muito mais simples e fácil de ler:
+```js
+const discount = price => (price/100) *10;
+```
+
+Agora vamos explicar como as arrow functions estão relacionadas ao controle do escopo. O valor do objeto *this* pode apontar para contextos diferentes, dependendo de onde executamos uma função.
+
+Quando usamos *this* dentro de um **callback**, muitas vezes perdemos a referência do contexto original, o que costuma nos fazer usar truques, como guardar o valor de this em uma variável externa.
+
+```js
+function createProduct(name) {
+  this.name = name;
+  this.getName = function() {
+    setTimeout(function() {
+      console.log('Product name is:', this.name);
+    });
+  }
+}
+```
+Se executarmos assim:
+```js
+const product = new createProduct('Monitor');
+product.getName();
+```
+### Como corrigir?
+
+Basta **converter a função do `setTimeout` em uma arrow function**, assim:
+
+javascript
+
+CopiarEditar
+
+`setTimeout(() => {   console.log('Product name is:', this.name); });`
+
+Agora, nosso código fica mais simples e podemos usar o escopo da função com segurança, pois a arrow function **herda o `this` do contexto onde foi criada** — ou seja, mantém o `this` da instância de `createProduct`.
+
+## Optional chaining (encadeamento opcional)
+É um recurso poderoso que ajuda a refatorar e simplificar o nosso código.
+Basicamente, ele faz com que o código ignore a execução de uma expressão caso algum valor ao longo dela não exista (se for null ou undefined), evitando erros.
+
+Exemplo básico (em JavaScript):
+```js
+const getOrder = () => {
+	return {
+		product: {
+			name: 'keyboard'
+		}
+	};
+}
+```
+
+Se quisermos acessar o nome do produto de forma segura, usando optional chaining, podemos fazer assim:
+```js
+const order = getOrder();
+const productName = order?.product?.name;
+console.log(productName);
+```
+
+**Por que usar optinal chaining?**
+- Sem optional chaining, se *order* ou *product* forem *null* ou *undefined*, o nosso código lançaria um erro ao tentar acessar **name**.
+- Com o ?., a avaliação para e retorna *undefined* se algum valor no caminho não existir, evitando erros.
+
+## Nullish coalescing
+Nullish coalescing está relacionado a fornecer um valor padrão quando uma variável não foi definida.
+
+Considere o seguinte exemplo, que atribui um valor à variável *quantity* somente se a variável qty existir:
+```js
+const quantity = qty ? qty : 1;
+```
+
+Essa instrução é chamada de operador ternário, e funciona como uma estrutura condicional curta.
+
+Se a variável qty não tiver valor, quantity será inicializada com o valor padrão 1.
+
+Podemos reescrever essa expressão usando nullish coalescing:
+```js
+const quantity = qty ?? 1;
+```
+
+## Classes
+As classes em JavaScript permitem estruturar melhor o código da aplicação e criar instâncias (objetos) com base nessas classes.
+Uma classe pode ter:
+- Propriedades (variáveis internas)
+- Construtor
+- Métodos (funções internas)
+- Acessores de propriedade (get e set)
+
+Exemplo:
+```js
+class User {
+	firstName = '';
+	lastName = '';
+	#isActive = false; 
+}
+
+constructor(firstName, lastName, isActive = true) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.#isActive = isActive;
+}
+
+getFullName() {
+	return `${this.firstName} ${this.lastName}`;
+}
+
+get active() {
+	return this.#isActive;
+}
+```
+
+**Quais partes essa classe tem?**
+- Membros (properites)
+	- firstName e lastName: públicas, acessíveis de fora
+	- #isActive: privada, só pode ser acessada dentro da própria classe (por isso o #)
+- Construtor (constructor):
+	- É chamado automaticamente quando criamos um objeto da classe;
+	- Usado para inicializar os membros da classe.
+
+Exemplo:
+```js
+const user = new User("Davidson", "Linhares");
+```
+
+Uma classe também pode herdar membros e funcionalidades de outra classe. Podemos fazer isso utilizando a palavra-chave *extends* seguida do nome da classe que queremos herdar.
+```js
+class Customer extends User {
+	taxNumber = '';
+
+	constructor(firstName, lastName) {
+		super(firstName, lastName);
+	}
+}
+```
+
+- **super(...)** - serve para executar o construtor da classe pai *User*. 
+
+## Modules
+À medida que nossas aplicações crescem, chega um momento em que precisamos organizar melhor o código para que ele seja mais sustentável e reutilizável. Módulos são uma forma poderosa de fazer isso, e é sobre eles que vamos falar agora.
+
+Na seção anterior, aprendemos sobre classes *User*, *Customer*. Porém, manter tudo em um único arquivo é péssimo para projetos maiores. 
+
+Os módulos nos permitem dividir o código em arquivos separados, cada um com uma responsabilidade específica (isso segue o princípio chamado SRP - Princípio da Responsabilidade Única).
+
+Se um arquivo exportar várias coisas:
+```js
+export class User {...}
+export class UserPreferences {...}
+```
+Importamos assim:
+```js
+import { User, UserPreferences} from './user.js';
+```
+
+## What is TypeScript?
+As primeiras versões do JavaScript tinham muitas limitações, o que tornava inviável transformar pequenas aplicações web em clientes robustos e *monolíticos* executados inteiramente no navegador. Em poucas palavras, aplicações JavaScript de grande porte sofriam com sérios problemas de manutenibilidade e escalabilidade conforme aumentavam em tamanho e complexidade. Esse problema ficava ainda mais evidente quando novas bibliotecas e módulos precisavam se integrar de forma transparente às aplicações, pois faltavam mecanismos adequados de interoperabilidade, gerando soluções complicadas e frágeis.
+
+Para superar essas dificuldades, a Microsoft criou um **superset** da linguagem JavaScript que ajudasse a desenvolver aplicações corporativas com menos erros, usando verificação estática de tipos, ferramentas melhores e análise de código. Foi assim que, em 2014, surgiu o TypeScript 1.0.
+- Ele se manteve à frente do JavaScript: implementava as mesmas funcionalidades antes mesmo de chegarem aos navegadores, oferecendo um ambiente estável para projetos de larga escala.
+- Introduziu **tipagem estática opcional** por meio de anotações de tipo, garantindo validação em tempo de compilação e capturando erros mais cedo;
+- Suportou arquivos de declaração .d.ts, permitindo que desenvolvedores descrevessem a interface de seus módulos para que outros pudessem integrá-los de forma mais confiável em seus fluxos de trabalho e ferramentas.
+
+Nas aplicações Angular, não é necessário executar o código TypeScript manualmente, pois isso é feito automaticamente pelo Angular CLI (a ferramenta de linha de comando do Angular).
+
+No entanto, é importante saber como esse processo funciona por baixo dos panos, ou seja, entender o que acontece nos bastidores quando o Angular executa o TypeScript.
+
+## Getting started with TypeScript
+The TypeScript language is an npm package that can be installed from the npm registry using the following command:
+```shell
+npm install -g typescript
+```
