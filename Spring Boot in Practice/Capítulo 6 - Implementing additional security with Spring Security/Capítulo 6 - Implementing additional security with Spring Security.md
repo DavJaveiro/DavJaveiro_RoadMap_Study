@@ -57,11 +57,19 @@ Depois de obter o certificado, podemos prosseguir com a configuração do HTTPS 
 
 O próximo passo é configurar a aplicação Spring Boot para user o keystore fornecido e, em seguida, habilitar o HTTPS.
 
-Agora, para habilitar o HTTPS em nossa aplicação Spring Boot, vamos abrir o arquivo *application.properties* ou *application.yml* e definir as propriedades.
+Agora, para habilitar o HTTPS em nossa aplicação Spring Boot, vamos abrir o arquivo *application.properties* ou *application.yml* e definir as propriedades da certificação HTTPS.:
+```json
+# HTTPS Certification
+server.ssl.key-store-type=PKCS12
+server.ssl.key-store=classpath:keystore/sbip.p12
+server.ssl.key-store-password=p@ssw0rd
+server.ssl.key-alias=sbip
+server.port=8433
+```
 
 The next change we'll implement is enforcing HTTPS for every request. This can be done in the *SecurityConfiguration* class that extends the *WebSecurityConfigurerAdapter* class.
 
-O trecho de código que adicionamos na classe SecurityConfiguration indica que todas as requisições precisam ser seguras (ou sejam feitas via HTTPS). 
+O trecho de código que adicionamos na classe *SecurityConfiguration* indica que todas as requisições precisam ser seguras (ou sejam feitas via HTTPS). 
 ```java
 @Configuration  
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -84,7 +92,7 @@ Vamos configurar o conector HTTP do servidor Tomcat de forma programática, para
 **DISCUSSION**
 Em qualquer aplicação com nível de produção, é sempre recomendado utilizar HTTPS em vez de HTTP. No protocolo HTTP, as requisições e respostas são transferidas em texto puro, o que torna a nossa aplicação vulnerável à exposição de informações sensíveis. Se os nossos dados forem transmitidos sem criptografia, usuários mal-intencionados poderiam interceptar essas informações facilmente.
 
-O protocolo HTTPS criptografa as requisições e respostas, evitando a exposição de dados durante o tráfego. Por isso, aplicações que usam HTTPS transmitem mais confiança aos usuários, além de proporcionarem segurança tanto para os usuários quanto para os responsáveis pela aplicação.
+<span style="background:#d4b106">O protocolo HTTPS criptografa as requisições e respostas, evitando a exposição de dados durante o tráfego</span>. Por isso, aplicações que usam HTTPS transmitem mais confiança aos usuários, além de proporcionarem segurança tanto para os usuários quanto para os responsáveis pela aplicação.
 
 Em aplicações reais, é essencial utilizar certificados emitidos por uma autoridade certificadora confiável CA.
 
@@ -92,3 +100,40 @@ Por fim, é importante destacar que, em ambientes de produção ou setups corpor
 
 Testando com **Wireshark**...
 ## 6.2 Securing secrets in Spring Cloud Vault
+Gerenciar segredos de aplicação é um dos principais desafios para qualquer aplicação, e as aplicações Spring Boot não são uma exceção. Uma aplicação pode conter vários tipos de segredos, como senhas, chaves de API, certificados TLS e chaves de criptografias. Expor esses segredos a agentes mal-intencionados pode causar danos catastróficos a uma aplicação. Por exemplo, imagine as consequências se a senha do banco de dados de uma aplicação bancária for exposta a usuários maliciosos.
+
+O Spring Boot permite gerenciar as propriedades da aplicação (incluindo secrets) por meio do arquivo *application.properties* para uma configuração de aplicação mais fluida. Embora essa abordagem seja amigável ao desenvolvedor, ela pode permitir que os secrets sejam colocados acidentalmente em texto simples e expostos externamente. É comum que desenvolvedores acidentalmente façam commit de segredos em repositórios públicos e comprometam a segurança geral da aplicação. Na técnica anterior, armazenamos a senha do keystore em nosso arquivo **application.properties**.
+
+Nesta seção, iremos ver o Vault da HashiCorp, trata-se de uma ferramenta popular que permite gerenciar com segurança e eficiência os secrets de uma aplicação. 
+
+O HashiCorp Vault oferece diversas configurações e opções para gerenciar e utilizar o cofre. Algumas dessas configurações incluem armazenamento persistente do cofre, integração com a nuvem, geração dinâmica de segredos e outras. 
+
+## 6.2.1 Technique: Managing application secrets with HashiCorp Vault in a Spring Boot application
+
+Antes de prosseguirmos com esta técnica, precisamos configurar o servidor Vault e ajustá-lo para armazenar seus segredos. Podemos consultar https://github.com/spring-boot-in-practice/repo/wiki/Installing-and-Configuring-HashiCorp-Vault, para realizar essa configuração. 
+
+Em seguida, vamos incluir o Spring Cloud Config em nosso arquivo maven. 
+
+Em seguida, vamos configurar o vault em nosso *application.properties*:
+```json
+spring.cloud.vault.token=s.YGgzy5qOtEf4d6Xo0i6qqQGL spring.cloud.vault.authentication=token
+spring.cloud.vault.host=localhost
+spring.cloud.vault.port=8200
+spring.cloud.vault.scheme=http
+spring.config.import=vault://secret/coursetracker   
+spring.application.name=coursetracker server.ssl.key-store-password=${keystore}
+```
+
+1. Utilizamos **modo de autenticação baseado em token**. O vault oferece vários outros modos de autenticação.
+2. Especificamos host, porta e scheme do vault. Estamos usando HTTP porque configuramos o vault para rodar com HTTP. Isso é apenas para simplificar o exemplo, mas em um ambiente de produção devemos sempre utilizar HTTPS.
+3. Definimos configuração de segredos, usando *secret/course-tracker* no Vault para armazenar a senha do keystore. Também específicamos o nome da aplicação como coursetracker.
+4. Substituímos a senha do keystore pelo vault key, configurado como um keystore dentro vault.
+
+**Discussion**
+Com esta técnica, exploramos o uso do **HashiCorp Vault** para armazenar segredos da aplicação e utilizá-los em uma aplicação **Spring Boot**. O HashiCorp Vault é um cofre poderoso e repleto de recursos, sendo flexível e permitindo que configuremos conforme as nossas necessidades.
+
+A Figura 6.1 ilustra a interação entre o usuário, a aplicação Spring Boot e o Vault. Nesta abordagem, incluímos o token raiz inicial no nosso *application.properties*. O vault gera esse token ao ser inicializado com o comando *vault operator init*. No entanto, em um ambiente de produção, recomenda-se utilizar uma variável de ambiente ou outro método seguro para fornecer esse token à aplicação. 
+
+Além disso, estamos utilizando HTTP para a comunicação com o Vault, o que pode comprometer a segurança dos segredos. Por isso, recomenda-se configurar HTTPS para proteger a comunicação em uma ambiente de produção.
+
+## 6.3 Implementing user registration
