@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
+                "file": "Concursos TI/Conhecimentos Computacionais.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3 - Structuring User Interfaces with Components"
+              "title": "Conhecimentos Computacionais"
             }
           }
         ]
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -214,9 +213,11 @@
   },
   "active": "c8d1439fe727bd66",
   "lastOpenFiles": [
+    "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
+    "Concursos TI/Conhecimentos Computacionais.md",
+    "Concursos TI",
     "3 - Structuring User Interfaces with Components.png",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
-    "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
     "Learning Angular/3 - Structuring User Interfaces with Components",
     "Learning Angular/2 - Introduction to TypeScript/Chapter 2 - Introduction to TypeScript.md",
     "Java Para Iniciantes/Capítulo 12 - Enumerações, autoboxing, importação estática e anotações/Capítulo 12 - Enumerações, autoboxing, importação estática e anotações.md",
