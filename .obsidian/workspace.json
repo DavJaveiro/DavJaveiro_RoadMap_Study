@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Concursos TI/Conhecimentos Computacionais.md",
+                "file": "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Conhecimentos Computacionais"
+              "title": "3 - Structuring User Interfaces with Components"
             }
           }
         ]
@@ -213,8 +213,8 @@
   },
   "active": "c8d1439fe727bd66",
   "lastOpenFiles": [
-    "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
     "Concursos TI/Conhecimentos Computacionais.md",
+    "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
     "Concursos TI",
     "3 - Structuring User Interfaces with Components.png",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
