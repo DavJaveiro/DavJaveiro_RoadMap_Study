@@ -21,8 +21,8 @@ Nesta seção, exploraremos os seguintes tópicos sobre componentes Angular:
 
 ## The structure of an Angular component
 Como aprendemos no Capítulo 1, uma aplicação Angular típica contém pelo menos um componente principal que é composto por vários arquivos. A classe TypeScript do componente é definida no arquivo app.component.ts:
-
-O @Component é um decorador do Angular que define as propriedades de um componente Angular. Um **decorador Angular** é um método que aceita um objeto com metadados como parâmetro. Esses metadados são usados para configurar uma classe TypeScript como um componente Angular, utilizando as seguintes propriedades:
+ 
+O *@Component* é um decorador do Angular que define as propriedades de um componente Angular. Um **decorador Angular** é um método que aceita um objeto com metadados como parâmetro. Esses metadados são usados para configurar uma classe TypeScript como um componente Angular, utilizando as seguintes propriedades:
 	- **selector**: um seletor CSS que instrui o Angular a carregar o componente no local onde encontrar a tag correspondente em um template HTML. O Angular CLI adiciona o prefixo app por padrão, mas podemos personalizá-lo usando a opção *--prefix* ao criar o projeto Angular.
 	- **imports:** define uma lista de artefatos do Angular que o componente precisa para ser carregado corretamente, como outros componentes Angular. O Angular CLI adiciona o *RouterOutlet* no componente principal da aplicação por padrão. O *RouterOutlet* é utilizado quando precisamos de funcionalidades de roteamento em uma aplicação Angular. Aprenderemos como configurar roteamento no Capítulo 9, Navegando pela Aplicação com Roteamento.
 	- **templateUrl:** Define o caminho de um arquivo HTML externo que contém o template diretamente no código usando a propriedade **template**.
@@ -91,3 +91,85 @@ Run the ng serve commando in a terminal window to start the Angular application.
 This error is caused because the main application component does not recognize the product list component yet. 
 
 ## Displaying data from the component class
+Já nos deparamos com **interpolação** para exibir o valor de uma propriedade como texto da classe do componente para o template:
+```html
+<h1> Hello, {{ title }}</h1>
+```
+
+No nosso exemplo acima, o Angular irá procurar a propriedade *title* na classe do componente:
+```ts
+export class AppComponent {
+	title = 'DavJaveiro';
+}
+```
+
+Substituindo {{ title }} por seu valor.
+
+Portanto, a #interpolação é uma forma de exibir variáveis *typeScript* no HTML de um componente. O Angular avalia a **expressão dentro das chaves duplas {{}}** no contexto da **classe do componente**, e exibe o valor resultante na página.
+
+O Angular converte a propriedade *title* do componente em texto e a exibe na tela. Uma forma alternativa de realizar interpolação é **vincular** a propriedade *title* à propriedade *innerText* do elemento HTML < h1>, utilizando uma técnica chamada **property binding** (vinculação de propriedade):
+```html
+<h1 [innerText]="title"></h1>
+```
+No trecho acima, estamos vinculando à propriedade do DOM de um elemento e não ao seu atributo HTML, como pode parecer à primeira vista. A propriedade dentro dos colchetes ([ ]) é chamada de **propriedade-alvo** (*target property*), e corresponde à propriedade do elemento DOM na qual queremos fazer a vinculação. A variável à direita é chamada de **expressão de template** (*template expression*) e corresponde à propriedade *title* do componente.
+
+Quando abrimos uma página da web, o navegador analisa o conteúdo HTML da página e o converte em uma estrutura em árvore chamada #DOM. Cada elemento HTML da página é convertido em um objeto chamado **nó** (node), que representa uma parte do DOM. Um nó define um conjunto de propriedades e é usada para definir o texto interno de um elemento HTML.
+
+Para entender melhor como o mecanismo de templates do Angular funciona, precisamos primeiro compreender como o Angular interage com atributos e propriedades. Ele utiliza os atributos HTML para inicializar uma propriedade do DOM, e depois usa **data binding** para interagir diretamente com essa propriedade.
+
+Para definir um atributo de um elemento HTML, usamos a sintaxe *attr.* através de property binding, seguida do nome do atributo. Por exemplo, para definir o atributo de acessibilidade *aria-label* de um elemento HTML, escreveríamos:
+```html
+<p [attr.aria-label]="myText"></p>
+```
+
+Outro exemplo:
+```html
+<button [attr.aria-label]="saveLabel">
+	<i class="fa fa-save"></i>
+</button>
+```
+Mesmo sem texto, o leitor de tela vai ler "Salvar dados", se saveLabel = `Salvar dados`.
+
+Portanto, quando objetivo não é exibir o texto visualmente, mas fim fornecer metadados para tecnologias assistivas, o attr. é o mais utilizado, em ícones, por exemplo.
+
+## Controlling data representation
+A nova sintaxe de controle de fluxo introduzida nas versões mais recentes do framework Angular permite manipular como os dados serão representados no template do componente.
+
+Ela apresenta um conjunto de **blocos integrados** (built-in blocks) que adicionam as seguintes funcionalidades à sintaxe de templates do Angular:
+- Exibição condicional de dados
+- Iteração sobre conjuntos de dados
+- Alternância entre templates
+
+Exemplo:
+1. Exibição condicional de dados
+```html
+@if (user.loggedIn) {
+	<p>Bem-vindo, {{user.name}}!</p>
+} @else {
+	<p>Por favor, faça o login.</p>
+}
+```
+
+2. Iteração sobre dados, repete um bloco HTML para cada item em uma lista
+```html
+@for (let item of items) {
+	<li>{{item.name}}</li>
+}
+```
+
+3. Alternância entre templates (switch), mostra diferentes blocos com base no valor de uma variável
+```html
+@switch (status) {
+  @case ('loading') {
+    <p>Carregando...</p>
+  }
+  @case ('error') {
+    <p>Ocorreu um erro!</p>
+  }
+  @default {
+    <p>Pronto!</p>
+  }
+}
+```
+
+### Display data conditionally

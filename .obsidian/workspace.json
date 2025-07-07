@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -213,8 +214,9 @@
   },
   "active": "c8d1439fe727bd66",
   "lastOpenFiles": [
-    "Concursos TI/Conhecimentos Computacionais.md",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
     "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
+    "Concursos TI/Conhecimentos Computacionais.md",
     "Concursos TI",
     "3 - Structuring User Interfaces with Components.png",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
@@ -231,7 +233,6 @@
     "Color-1.png",
     "Color.png",
     "Design for Developers/Color",
-    "Design for Developers",
-    "RoadMap do DavJaveiro/RoadMap.canvas"
+    "Design for Developers"
   ]
 }
