@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
+                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3 - Structuring User Interfaces with Components"
+              "title": "Capítulo 6 - Implementing additional security with Spring Security"
             }
           }
         ]
@@ -214,8 +214,8 @@
   },
   "active": "c8d1439fe727bd66",
   "lastOpenFiles": [
-    "RoadMap do DavJaveiro/RoadMap.canvas",
     "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
     "Concursos TI/Conhecimentos Computacionais.md",
     "Concursos TI",
     "3 - Structuring User Interfaces with Components.png",

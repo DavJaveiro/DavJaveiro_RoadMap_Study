@@ -137,3 +137,96 @@ A Figura 6.1 ilustra a interação entre o usuário, a aplicação Spring Boot e
 Além disso, estamos utilizando HTTP para a comunicação com o Vault, o que pode comprometer a segurança dos segredos. Por isso, recomenda-se configurar HTTPS para proteger a comunicação em uma ambiente de produção.
 
 ## 6.3 Implementing user registration
+Registrar e gerenciar usuário é uma das funcionalidades essenciais de uma aplicação web. Nesta seção, discutiremos como podemos criar novos usuário em nossa aplicação **Course Tracker**. Vamos implementar.
+
+### 6.3.1 Técnica: Implementando o registro de usuário com Spring Security em uma aplicação Spring Boot
+Nesta técnica, discutiremos a implementação do registro de usuários em uma aplicação Spring Boot.
+
+**Problema** 
+Precisamos implementar um módulo de registro de usuário em nossa aplicação **Course Tracker**. Os dados do novo usuário devem ser persistidos na aplicação, e o usuário deve conseguir fazer o login.
+
+**Solução**
+Antes de mergulharmos na implementação do registro de usuário em si, vamos apresentar um panorama das mudanças que faremos na aplicação existente Course Tracker:
+- Definir uma página HTML de registro de usuário (**add-user.html**) para capturar os dados do novo usuário.
+- Definir uma classe de entidade de domínio **ApplicationUser**, que representa o usuário na aplicação Course Tracker. Vale notar que a classe **UserDto** representa os dados capturados na página HTML e pode conter parâmetros adicionais que não são necessários na entidade **ApplicationUser** (por exemplo, o campo **ConfirmPassword** na classe **UserDto**).
+- Criar as implementações de serviço e os repositórios do Spring Data correspondentes.
+
+Para adicionar um novo usuário, vamos começar definindo uma página de registro de usuário. 
+Essa página de registro de usuário é semelhante às páginas HTML que utilizamos anteriormente. Ela possui um formulário HTML que permite aos usuários inserirem informações básicas e se registrarem na aplicação.
+
+Vamos adicionar uma classe Java do tipo POJO (Plain Old Java Object) que capturará essas informações. 
+
+```java
+package com.manning.sbip.ch06.dto;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.Data;  
+import lombok.NoArgsConstructor;  
+import lombok.ToString;  
+  
+import javax.validation.constraints.Email;  
+import javax.validation.constraints.NotEmpty;  
+  
+  
+@Data  
+@ToString(exclude = "password")  
+@NoArgsConstructor  
+@AllArgsConstructor  
+public class UserDto {  
+  
+    @NotEmpty(message ="Enter your firstname")  
+    private String firstName;  
+  
+    @NotEmpty(message ="Enter your lastname")  
+    private String lastName;  
+  
+    @NotEmpty(message ="Enter a username")  
+    private String username;  
+  
+    @NotEmpty(message ="Enter an email")  
+    @Email(message ="Email is not valid")  
+    private String email;  
+  
+    @NotEmpty(message ="Enter a password")  
+    private String password;  
+  
+    @NotEmpty(message ="Please, confirm your password")  
+    private String confirmPassword;   
+}
+```
+
+A classe **UserDto** é uma classe Java simples (POJO) que contém os mesmos campos presentes na página de registro, com anotações de validação do pacote *javax.validation.constraints*, usadas para realizar validações. 
+
+```java
+package com.manning.sbip.ch06.model;  
+  
+import lombok.Data;  
+import lombok.NoArgsConstructor;  
+  
+import javax.persistence.*;  
+  
+@Data  
+@Entity  
+@Table(name = "CT_USERS")  
+@NoArgsConstructor  
+public class ApplicationUser {  
+  
+    @Id  
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
+    private Long id;  
+  
+    private String firstName;  
+    private String lastName;  
+    private String username;  
+    private String email;  
+    private String password;  
+}
+```
+Essa classe é uma entidade JPA, e estamos utilizando claramente uma tabela personalizada chamada *CT_USERS* para armazenar os dados dos usuários da aplicação.
+
+É uma prática comum adicionar a sigla do módulo da aplicação (por exemplo, CT para o sistema CourseTracker) ao nome da tabela. Isso ajuda a identificar a que módulo cada tabela pertence, especialmente em bancos de dados maiores.
+
+Let's define the *UserRepository* interface that lets us manage the **ApplicationUser** details in the applicatiom:
+```java
+
+```
