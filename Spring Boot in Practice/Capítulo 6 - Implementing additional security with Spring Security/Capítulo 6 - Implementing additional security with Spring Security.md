@@ -228,5 +228,88 @@ Essa classe é uma entidade JPA, e estamos utilizando claramente uma tabela pers
 
 Let's define the *UserRepository* interface that lets us manage the **ApplicationUser** details in the applicatiom:
 ```java
+public interface UserRepository extends CrudRepository<ApplicationUser, Long> {
+	ApplicationUser findByUsername (String username);
+}
+```
 
+O código acima define um método personalizado que nos permite encontrar o **ApplicationUser** com base no nome de usuário fornecido. No capítulo 3, discutimos em detalhes como o Spring Data utiliza esses métodos personalizados e recupera dados do banco de dados.
+
+Vamos definir uma interface *UserService* que fornece as operações que podem ser realizadas para manter os usuários na aplicação, conforme mostrado na listagem abaixo:
+```java
+public interface UserService {
+	ApplicationUser createUser(UserDto userDot);
+	ApplicationUser findByUsername(String username);
+}
+```
+
+No código acima, estamos definindo duas operações:
+- O método **createUser(..)**, que permite criar um novo usuário.
+- O método **findByUsername(..)**, que localiza o usuário a partir do nome de usuário fornecido. 
+
+Agora, precisamos realizar a implementação desta interface:
+
+```java
+@Service  
+public class DefaultUserService implements UserService {  
+    @Autowired  
+    private UserRepository userRepository;  
+    @Autowired  
+    private PasswordEncoder passwordEncoder;  
+  
+    public ApplicationUser createUser(UserDto userDto) {  
+        ApplicationUser applicationUser = new ApplicationUser(); // instan  
+        applicationUser.setFirstName(userDto.getFirstName());  
+        applicationUser.setLastName(userDto.getLastName());  
+        applicationUser.setEmail(userDto.getEmail());  
+        applicationUser.setUsername(userDto.getUsername());  
+        applicationUser.setPassword(passwordEncoder.encode(userDto.getPassword()));  
+  
+        return userRepository.save(applicationUser);  
+    }  
+    public ApplicationUser findByUsername(String username) {  
+        return userRepository.findByUsername(username);  
+    }}
+```
+
+No código acima, implementamos o método **createUser(..)**. Criamos uma instância de **ApplicationUser** e preenchemos o objeto usando os dados do objeto **userDto**. Em seguida, salvamos os detalhes do objeto da aplicação na tabela **CT_USERS** utilizando o **userRepository**. Utilizamos o codificador de senha para codificar a senha, de forma que ela fosse armazenada codificada na tabela do banco de dados.
+
+Também fornecemos uma implementação do método **findByUsername(..)**, que localiza o **ApplicationUser** usando o nome de usuário fornecido. Veremos o uso desse método ao implementarmos o nosso **UserDetailsService** personalizado para carregar os dados na tabela CT_USERS.
+
+A interface **UserDetailsService** fornece uma ponte entre o repositório de identidades personalizado e o gerenciamento de usuários do Spring Security. O próximo passo será fornecer uma implementação do **UserDetailsService**.
+
+Let's now add a Spring controller that manages the user registration. The following listing shows this.
+```java
+@Controller  
+public class RegistrationController {  
+  
+    @Autowired  
+    private UserService userService;  
+  
+    @GetMapping("/adduser")  
+    public String register(Model model) {  
+        model.addAttribute("user", new UserDto());  
+        return "adduser";  
+    }  
+    @PostMapping("/adduser")  
+    public String register(@Valid @ModelAttribute("user") UserDto userDto, BindingResult bindingResult) {  
+        if (bindingResult.hasErrors()) {  
+            return "adduser";  
+        }        
+        userService.createUser(userDto);  
+        return "redirect:adduser?sucess= " + userDto.getUsername();  
+    }}
+```
+
+No código acima, nós adicionamos dois endpoints: o **adduser** HTTP GET endpoint, o qual irá retornar a página **add-user.html** e o **adduser** HTTP POST endpoint, que irá checar se o objeto UserDto está valido e se todos os detalhes necessários foram fornecidos. Se os detalhes estiverem inválidos, retornamos a página add-user.html com a lista de erros. Se estiver tudo ok, o usuário é criado na tabela CT_USERS.
+
+Vamos agora lidar com a falha de login do usuário na classe **LoginController**. LoginController exibe a página de login para o usuário.
+```java
+public class LoginController {
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+}
 ```
