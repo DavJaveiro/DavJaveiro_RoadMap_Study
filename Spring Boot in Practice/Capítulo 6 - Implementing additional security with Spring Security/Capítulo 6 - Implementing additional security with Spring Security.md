@@ -313,3 +313,5 @@ public class LoginController {
 	}
 }
 ```
+
+Arquitetura MVC, separando responsabilidades em 
