@@ -383,3 +383,64 @@ Em uma arquitetura separada:
 	2. `/api/verify-email?token=...` - ativa a conta
 
 O Spring Security pode auxiliar bloqueando o login até a verificação ser completada.
+
+Um usuário se registra na aplicação Course Tracker criando uma nova conta. A aplicação salva com sucesso os dados do usuário na tabela CT_USERS. No entanto, a conta do usuário é marcada como **desabilitada**, pois o e-mail ainda não foi verificado.
+
+Como parte do processo de registro, a aplicação envia um e-mail para o endereço fornecido com um **link de verificação**, que permite ativar a conta.
+
+Se o usuário tentar acessar a conta antes de ativá-la, ele será **redirecionado para uma página de erro**, que solicita a ativação da conta. Após a verificação ser concluída com sucesso, a conta é ativada no sistema e o usuário pode fazer login normalmente.
+
+Neste exemplo, usamos o #Gmail como servidor de e-mail preferido, apenas para fins de demonstração. Podemos usar outros provedores de e-mail ou até mesmo um servidor de e-mail próprio. Caso opte por outro, certifique de fornecer as configurações adequadas do servidor SMTP no lugar das configurações do Gmail. 
+
+A primeira mudança no código é adicionar a dependência **spring-boot-starter-mail** no arquivo *pom.xml* da aplicação. Essa dependência contém as bibliotecas necessárias que permitem o envio de e-mail para o endereço eletrônico do usuário.
+
+Essa técnica implementa um **workflow de verificação por e-mail**, que é prática comum em sistemas de autenticação modernos por motivos de segurança.
+
+Cada serviço de e-mail (Gmail, Outlook, Yahoo, etc.) possui seu próprio servidor SMTP e requer configurações específicas. No Spring Boot, podemos configurar isso facilmente no *application.properties*.
+
+**Dica: deixar genérico por ambiente**
+Se quisermos tornar isso mais flexível, podemos usar variáveis de ambiente ou *application-{profile}.properties*:
+```json
+spring.mail.host=${MAIL_HOST}
+spring.mail.port=${MAIL_PORT}
+spring.mail.username=${MAIL_USERNAME}
+spring.mail.password=${MAIL_PASSWORD}
+```
+
+Incluindo a dependency *spring-boot-starter-mail*:
+```json
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+```
+
+Vamos atualizar o arquivo **application.properties** para fornecer os detalhes do servidor de e-mail que será utilizado para o envio das mensagens. Nesta demonstração, usaremos o Gmail como servidor de e-mail.
+
+Configurações:
+```json
+# Outras propriedades da aplicação
+
+# Configurações do servidor SMTP do Gmail
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=<Digite seu e-mail do Gmail>
+spring.mail.password=<Digite a senha ou senha de aplicativo>
+
+# Habilita autenticação SMTP e STARTTLS
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+# Define o protocolo como SMTP
+spring.mail.protocol=smtp
+
+# Desativa o teste automático de conexão
+spring.mail.test-connection=false
+
+```
+
+Vamos realizar os testes com o #MailHog. 
+- MailHog é um servidor SMTP local de testes. Ele recebe e-mails da nossa aplicação, mas nao envia de verdade, apenas captura para visualizarmos em um navegador. 
+- instalação via Docker: `docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog`
+- Porta 1025 = SMTP local
+- Porta 8025 = interface web para ver os e-mails.
