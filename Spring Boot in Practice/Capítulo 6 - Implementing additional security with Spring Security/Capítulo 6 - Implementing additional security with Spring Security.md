@@ -311,7 +311,141 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
+
+	@GetMapping("/login-error")
+	public String loginError(Model model) {
+		model.addAttribute("loginError", true);
+		return "login";
+	}
 }
 ```
+<<<<<<< HEAD
 
 Arquitetura MVC, separando responsabilidades em 
+=======
+Para erros de login, o endpoint */login-error* é invocado. Ele define a flag *loginError* como **true** e, com base nisso, a página de login exibe a mensagem de erro ao usuário. Podemos perceber que estamos utilizando a instância do **Model** do Spring MVC para **transportar o atributo** *loginError* para a página **login.html**.
+Portanto, essa abordagem comum no **Spring MVC** serve para tratar falhas de login:
+- Quando o login falha, o Spring redireciona para o endpoint *login-error*.
+- Dentro desse método, o atributo *loginError* é adicionado ao **Model**, que funciona como uma caixa de atributos, enviando do controller para a view (login.html).
+- A view então pode verificar esse atributo (${loginError}) e exibir, por exemplo, uma mensagem como: *Usuário ou senha incorretos.*
+Isso permite uma **separação clara** entre a lógica de controle (Java) e a camada de apresentação (HTML/Thymeleaf).
+
+The last change we'll perform is updating the **SecurityConfiguration** class:
+- Adicionamos o endpoint *login-error* à lista de rotas acessíveis sem autenticação;
+- Configuramos a URL de falha de login (*failureUrl*) apontando para o endpoint **login-error**, que redireciona o usuário ao login novamente em caso de falha. O **Spring Security** realiza esse redirecionamento internamente. 
+- Definimos o **BCryptPaasswordEncoder** como codificador de senhas.
+
+Essa configuração reflete um **padrão de segurança robusto** no ecossistema Spring, promovendo:
+1. Separação clara entre acesso público e protegido: a configuração de #andMatchers define com clareza o que pode ser acessado anonimamente (como login e cadastro) e o que exige autenticação. Isso reforça o **princípio do menor privilégio** e permite regras de segurança específicas para cada rota.
+2. Tratamento explícito de falhas de login: Ao usar *failureUrl("/login-error")*, o Spring redireciona automaticamente para o ponto de falha, o que permite à interface informar ao usuário que suas credenciais estão incorretas, mantendo a mesma página de login. Isso melhora a **UX** (experiência do usuário) sem comprometer a lógica de segurança.
+3. Uso do BCrypt para hashing de senhas: o #BCryptPasswordEncoder é um padrão atual e recomendado para proteção de senhas, pois:
+	- Introduz salt automático, o que dificulta ataques de rainbow table;
+	- É adaptável ao tempo de processamento, permitindo aumento de segurança no futuro;
+
+**Comparando com o Angular (front-end moderno)**
+Se fosse utilizado com **Angular como front-end** e Spring como back-end via API REST:
+- O tratamento de login seria **stateless** e não baseado em **formLogin**, mas sim com JWT (JSON Web Token). Portanto, a cada requisição HTTP, o cliente (Angular) envia todas as informações necessárias para se autenticar, geralmente via um token JWT. O servidor (Spring), não armazena sessões nem histórico do usuário entre as requisições, isso torna a aplicação escalável, pois cada requisição é independente. 
+
+Fluxo simplificado:
+1. O usuário faz login pelo **Angular**, enviando *username* e *password* para o endpoint */auth/login* (por exemplo);
+2. O Spring valida as credenciais e gera um JWT assinado.
+3. O servidor envia o JWT de volta para o cliente Angular
+4. O Angular armazena o token (geralmente no **localStorage** ou **sessionStorage**).
+5. Em cada nova requisição para APIs protegidas,  o Angular envia o JWT no cabeçalho Authorization: ``Authorization: Bearer <token>``
+6. O Spring valida o token, extrai os dados e autoriza o acesso com base nas roles contidas no token.
+
+- Com Angular, ao invés de usarmos o **failureUlr**, o back-end retornaria uma resposta **401 Unauthorized**, e o Angular mostraria mensagens personalizadas usando *Reactive Forms* ou *Toasts*.
+
+- A codificação de senha com #BCrypt continuaria válida no back-end, mas o envio da senha do lado do Angular seria feito com HTTPS, e o login consumiria um endpoint */api/login*.
+
+## 6.4 Implementing email verification at user registration
+Na seção anterior, durante o registro de um usuário, coletamos o endereço de e-mail do usuário. Na página de registro, aplicamos uma **validação estrutural de e-mail**, que garante que o usuário forneça um endereço com formato válido. No entanto, ainda não validamos se o e-mail informado realmente existe ou se ele pertence ao usuário.
+
+A validação do e-mail do usuário é uma ação importante realizada pela maioria das aplicações web e existem várias razões para isso:
+- Estamos verificando se o usuário é quem ele realmente afirma ser, e não está se passando por outra pessoa;
+- Evitamos que o registro seja feito por um bot da internet, garantindo que é um usuário legítimo;
+- Um e-mail válido também é útil para informar o usuário sobre marketing, promoções e ofertas de produto.  
+
+Vamos demonstrar como validar o e-mail do usuário enviando um **link de verificação para o e-mail fornecido**. 
+
+Portanto, a validação de e-mail por meio de link de verificação é uma prática essencial e moderna, transcendendo a simples verificação de formato `@dominio.com` e parte para a validação de propriedade, um passo fundamental para:
+- Evitar #spoofing (usuário fingindo ser outra pessoa);
+- Reduz o risco de **ataques automatizados**, especialmente quando associada ao uso de **captcha** e **rate limiting**;
+- Permite o uso futuro do e-mail para recuperação de senha, confirmação de ações sensíveis 2FA, comunicação transacional e promocional;
+
+**Como funciona tecnicamente**
+O processo típico de verificação de e-mail envolve:
+1. O usuário se cadastra com um e-mail;
+2. A aplicação gera um **token de verificação único**, com tempo de expiração
+3. Ao clicar, o sistema valida o token e ativa a conta.
+
+**Arquitetura frontend-backend separada**
+Em uma arquitetura separada:
+1. O Angular cuida da tela de cadastro e da resposta visual pós-verificação
+2. O Spring Boot fornece endpoints RESTful:
+	1. `/api/register` - para criação e envio do token
+	2. `/api/verify-email?token=...` - ativa a conta
+
+O Spring Security pode auxiliar bloqueando o login até a verificação ser completada.
+
+Um usuário se registra na aplicação Course Tracker criando uma nova conta. A aplicação salva com sucesso os dados do usuário na tabela CT_USERS. No entanto, a conta do usuário é marcada como **desabilitada**, pois o e-mail ainda não foi verificado.
+
+Como parte do processo de registro, a aplicação envia um e-mail para o endereço fornecido com um **link de verificação**, que permite ativar a conta.
+
+Se o usuário tentar acessar a conta antes de ativá-la, ele será **redirecionado para uma página de erro**, que solicita a ativação da conta. Após a verificação ser concluída com sucesso, a conta é ativada no sistema e o usuário pode fazer login normalmente.
+
+Neste exemplo, usamos o #Gmail como servidor de e-mail preferido, apenas para fins de demonstração. Podemos usar outros provedores de e-mail ou até mesmo um servidor de e-mail próprio. Caso opte por outro, certifique de fornecer as configurações adequadas do servidor SMTP no lugar das configurações do Gmail. 
+
+A primeira mudança no código é adicionar a dependência **spring-boot-starter-mail** no arquivo *pom.xml* da aplicação. Essa dependência contém as bibliotecas necessárias que permitem o envio de e-mail para o endereço eletrônico do usuário.
+
+Essa técnica implementa um **workflow de verificação por e-mail**, que é prática comum em sistemas de autenticação modernos por motivos de segurança.
+
+Cada serviço de e-mail (Gmail, Outlook, Yahoo, etc.) possui seu próprio servidor SMTP e requer configurações específicas. No Spring Boot, podemos configurar isso facilmente no *application.properties*.
+
+**Dica: deixar genérico por ambiente**
+Se quisermos tornar isso mais flexível, podemos usar variáveis de ambiente ou *application-{profile}.properties*:
+```json
+spring.mail.host=${MAIL_HOST}
+spring.mail.port=${MAIL_PORT}
+spring.mail.username=${MAIL_USERNAME}
+spring.mail.password=${MAIL_PASSWORD}
+```
+
+Incluindo a dependency *spring-boot-starter-mail*:
+```json
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+```
+
+Vamos atualizar o arquivo **application.properties** para fornecer os detalhes do servidor de e-mail que será utilizado para o envio das mensagens. Nesta demonstração, usaremos o Gmail como servidor de e-mail.
+
+Configurações:
+```json
+# Outras propriedades da aplicação
+
+# Configurações do servidor SMTP do Gmail
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=<Digite seu e-mail do Gmail>
+spring.mail.password=<Digite a senha ou senha de aplicativo>
+
+# Habilita autenticação SMTP e STARTTLS
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+# Define o protocolo como SMTP
+spring.mail.protocol=smtp
+
+# Desativa o teste automático de conexão
+spring.mail.test-connection=false
+
+```
+
+Vamos realizar os testes com o #MailHog. 
+- MailHog é um servidor SMTP local de testes. Ele recebe e-mails da nossa aplicação, mas nao envia de verdade, apenas captura para visualizarmos em um navegador. 
+- instalação via Docker: `docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog`
+- Porta 1025 = SMTP local
+- Porta 8025 = interface web para ver os e-mails.
+>>>>>>> dcb78fcd663a5e37fa3aee79b64c4fc0b84d3515
