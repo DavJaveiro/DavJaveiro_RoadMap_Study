@@ -443,9 +443,59 @@ spring.mail.test-connection=false
 
 ```
 
+**Entendendo o que significa cada propriedade**
+- *spring.mail.host*: define o host do servidor de e-mail a ser usado para enviar e-mail.
+- *spring.mail.port:* define a porta do servidor de e-mail a ser usada para enviar e-mails.
+- *spring.mail.username:* define o nome de usuário usado para autenticar com o servidor de e-mail.
+- *spring.mail.password*: define a senha usada para autenticar com o servidor de e-mail.
+
+**Dicas de Segurança**
+1. Não exponha credenciais no código, ou seja, nunca deixar *spring.mail.username* e *spring.mail.password* direto no *application.properties* ou *application.yml* versionado no Git. Devemos utilizar variáveis de ambiente ou *application-prod.yml* fora do controle de versão.
+2. **Usar conexões seguras**
+Certificar-se de usar SMTP seguro (TLS/SSL), com as propriedades:
+```json
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.protocol=smtp
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+```
+
+**Estrutura do Código**
+3. Criar um serviço de envio de e-mails separado. Encapsulamento da lógica de envio de e-mail em uma classe de serviço (**EmailService**), em vez de colocar dentro de controllers ou outras classes:
+```java
+@Service
+public class EmailService {
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	public void enviarEmailSimples(String para, String assunto, String corpo) {
+		SimpleMailMessage mensagem = new SimpleMailMessage();
+		mensagem.setTo(para);
+		mensagem.setSubject(assunto);
+		mensagem.setText(corpo);
+		mensagem.setFrom("segu@email.com");
+
+		mailSender.send(mensagem);
+	}
+}
+```
+
+4. Devemos usar #MimeMessageHelper para e-mails HTML ou com anexos. Quando quisermos enviar e-mails mais ricos (HTML ou com anexos):
+```java
+MimeMessage message = mailSender.createMimeMessage();
+MimeMessageHelper helper = new MimeMessageHelper(message, true);
+helper.setTo("destino@example.com");
+helper.setSubject("Assunto");
+helper.setText("<b>Mensagem com HTML</b>", true);
+helper.addAttachment("arquivo.pdf", new File("caminho/arquivo.pdf"));
+
+```
+
 Vamos realizar os testes com o #MailHog. 
 - MailHog é um servidor SMTP local de testes. Ele recebe e-mails da nossa aplicação, mas nao envia de verdade, apenas captura para visualizarmos em um navegador. 
 - instalação via Docker: `docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog`
 - Porta 1025 = SMTP local
 - Porta 8025 = interface web para ver os e-mails.
->>>>>>> dcb78fcd663a5e37fa3aee79b64c4fc0b84d3515
+
