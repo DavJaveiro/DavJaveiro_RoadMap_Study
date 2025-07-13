@@ -499,3 +499,275 @@ Vamos realizar os testes com o #MailHog.
 - Porta 1025 = SMTP local
 - Porta 8025 = interface web para ver os e-mails.
 
+Podemos acompanhar o processo de registro de um novo usuário em nossa aplicação através do *ApplicationEvent* e pelo *ApplicationListener* do Spring para esse propósito.
+
+A classe *ApplicationEvent* representa um **evento** na aplicação. A classe permite que escutemos os eventos publicados e execute alguma ação assim que esses eventos forem emitidos.
+
+Com essa técnica, podemos gerar um *UserRegistrationEvent* sempre que um novo usuário for criado na aplicação. Em seguida, definiremos um *EmailVerificationListener* que **escutará esse evento e permitirá compor e enviar um e-mail com o link de verificação.** 
+
+Nós podemos nos questionar por qual motivo não podemos simplesmente enviar o e-mail diretamente dentro da classe *RegistrationController* no momento do registro do usuário...
+
+O benefício de usarmos o *ApplicationEvent* do Spring é que <span style="background:rgba(240, 167, 216, 0.55)">ele permite desacoplar a atividade de envio de e-mail do processo real de registro do usuário</span>.
+
+O uso dessa padrão observador (*observer pattern*) é geralmente considerado uma boa prática, especialmente em cenários distribuídos com microservices.
+
+Resumindo:
+1. Quando um usuário é registrado, um evento é disparado: *UserRegistrationEvent*;
+2. Um listener *EmailVerificationListener* escuta esse evento e:
+	1. Gera um ID de verificação com **EmailVerificatrionService**
+	2. Cria um e-mail com um link de verificação
+	3. Usa o **JavaMailSender** para enviar esse e-mail.
+
+**Motivos para usar ApplicationEvent**
+- Evita acoplamento da lógica de e-mail dentro do **RegistrationController**
+- Segue o padrão #Observer (ou #Publisher/subscriber)
+- Torna o sistema mais flexível e testável
+- É útil especialmente em microservices ou sistemas maiores
+
+## 6.5 Controlling multiple incorrect login attempts
+Em muitas aplicações, é uma prática comum suspender temporariamente o acesso do usuário se houver múltiplas tentativas de login incorretas. Essa é uma das medidas de segurança adotadas pelas aplicações para prevenir ataques de força bruta, cujo objetivo é obter acesso não autorizado à aplicação. 
+
+### 6.5.1 Técnica: Controlando múltiplas tentativas de login incorretas
+Vamos aplicar o bloqueio temporário em uma conta de usuário caso ocorram múltiplas tentativas de login incorretas.
+
+No estágio atual, a aplicação permite que os usuários façam um número ilimitado de tentativas de login. É necessário suspender temporariamente o acesso do usuário por 24 horas se ele realizar três tentativas de login incorretas.
+
+Para essa feature, o **Spring Security** publica vários eventos Spring enquanto realiza diferentes atividades de segurança em uma aplicação. Por exemplo:
+- Quando um usuário é autenticado com sucesso, o Spring Security publica o **AuthenticationSuccessEvent**
+- Da mesma forma, o Spring publica o evento **AuthenticationFailureBadCredentialsEvent** se a autenticação falhar devido a credenciais inválidas.
+
+Existem vários eventos deste tipo publicados pelo Spring Security que podem ser ouvidos (listened to) pelas aplicações para que ações apropriadas sejam tomadas.
+
+Alguns eventos publicos:
+- #AuthenticationSuccessEvent: Login bem-sucedido
+- #AuthenticationFailureBadCredentialsEvent: Falha por senha errada
+- #InteractiveAuthenticationSuccessEvent: Login via interface
+
+O #Observer-Pattern define uma dependência um-para-muitos entre objetos, de modo que quando um objeto (o "sujeito" ou **observável**) muda de estado, todos os seus observadores são notificados automaticamente e atualizados.
+
+No caso, o Spring Security é o nosso sujeito/observável, que dispara eventos, os #Listeners são os observadores que reagem quando algo acontece.
+
+Podemos ter múltiplos observadores reagindo ao mesmo evento:
+- Um que conta as falhas de login
+- Outro que envia alerta de segurança
+- Outro que loga a tentativa para auditoria
+
+- Definiremos um **cache** que mantém o número de tentativas de login falhas;
+- Usaremos os **eventos mencionados anteriormente** para gerenciar o status do usuário no cache;
+- Bloquearemos o acesso do usuário se o cache indicar que ele teve mais de três tentativas de login falhas;
+- O **cache** expirará automaticamente o status das tentativas de login do usuário após 24 horas.
+
+Nós utilizaremos o Google #Guava para implementar o cache. 
+
+Vamos também definir a classe **LoginAttemptService**, que define o **cache** e alguns métodos úteis para manter o **cache** e o status de tentativa de login dos usuários. A listagem a seguir mostra isso em ação.
+
+**Vantagens de usar LoadingCache**
+- Podemos configurar o cache para expirar automaticamente (por exemplo, após 24 hhoras)
+- Não precisamos usar um banco de dados para isso;
+- O cache fica na memória da aplicação Spring, no back-end Spring;
+
+**Algumas desvantagens**
+- Como o **LoadingCache** é em memória, ao reiniciar o servidor, o cache é perdido (podemos persistir em um banco, se necessário);
+- Como o bloqueio é por username, não impede múltiplas tentativas com nomes diferentes;
+
+**Reforço de segurança recomendado**
+- Rate limiting por IP (via filtro ou firewall reverso);
+- Persistência opcional do número de tentativas em banco;
+
+```java
+@Service  
+public class LoginAttemptService {  
+  
+    private static final int MAX_ATTEMPTS_COUNT = 3;  
+  
+    // In this cache, the String type represents a username,  
+    // and the Integer type represents the failed login attempts    private LoadingCache<String, Integer> loginAttemptCache;  
+  
+    // Creates the cache and expires the cache contents after one day  
+    public LoginAttemptService() {  
+        loginAttemptCache = CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.DAYS)  
+                .build(new CacheLoader<String, Integer>() {  
+                    public Integer load(final String key) {  
+                        return 0;  
+                    }  
+                });  
+    }  
+  
+    // remove as tentativas de login do cache  
+    public void loginSucess(String username) {  
+        loginAttemptCache.invalidate(username);  
+    }  
+  
+    // Increments the failed login attempt counter for the specified username  
+    public void loginFailed(String username) {  
+        int failedAttemptCounter = 0;  
+  
+        try {  
+            failedAttemptCounter = loginAttemptCache.get(username);  
+        } catch (ExecutionException e) {  
+            failedAttemptCounter = 0; // se o usuário não tiver no cache, assume 0 para ele  
+        }  
+        failedAttemptCounter++;  
+        loginAttemptCache.put(username, failedAttemptCounter);  
+    }  
+  
+  
+    public boolean isBlocked(String username) {  
+        try {  
+            return loginAttemptCache.get(username) >= MAX_ATTEMPTS_COUNT;  
+        }  
+        catch (ExecutionException e) {  
+            return false;  
+        }  
+    }  
+}
+```
+
+Após, iremos definir dois eventos *listeners* (ouvintes de eventos): um que escuta o evento **AuthenticationFailureBadCredentialsEvent**, e outro que invoca o **LoginAttemptService** para atualizar o cache com a contagem de tentativas de login fracassadas:
+
+```java
+package com.manning.sbip.ch06.listener;
+// imports
+
+@Service
+public class AuthenticationFailureEventListener implements
+    ApplicationListener<AuthenticationFailureBadCredentialsEvent> {
+
+    @Autowired
+    private LoginAttemptService loginAttemptService;
+
+    @Override
+    public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent 
+            authenticationFailureBadCredentialsEvent) {
+        
+        String username = (String)
+            authenticationFailureBadCredentialsEvent.getAuthentication().getPrincipal();
+        
+        loginAttemptService.loginFailed(username);
+    }
+}
+```
+*Esse padrão de escuta de eventos promove uma separação clara de responsabilidades no Spring Boot, facilitando a integração com frameworks front-end como o Angular, que pode consumir o status de bloqueio via APIs REST. Ele também reforça boas práticas de segurança reativa e desacoplamento na arquitetura de microservices.*
+
+Agora definiremos dois ouvintes de eventos (event listeners): um que escuta o evento *AuthenticationFailureBadCredentialsEvent* e outro que invoca o serviço *LoginAttemptService* para atualizar o cache com a contagem de tentativas de login fracassadas.
+```java
+// Marca a classe como um componente do Spring, permitindo sua detecção automática e injeção de dependências
+@Component
+public class AuthenticationSucessEventListener implements ApplicationListener<AuthenticationSucessEvent> { // Implementa um ouvinte que responde ao evento de sucesso de autenticação
+
+	// Injetamos o serviço responsável por gerenciar as tentativas de login (sucesso ou falha)
+	@Autowired
+	private LoginAttemptService loginAttemptService;
+
+	@Override
+	public void onApplicationEvent(AuthenticationSuccessEvent authenticationSuccessEvent) {
+		// Recupera o usuário autenticado a partir do evento; o principal geralmente contém o UserDetails
+		User user = (User) authenticationSuccessEvent.getAuthentication().getPrincipal();
+		
+		loginAttemptService.loginSuccess(user.getUsername());	
+	}
+
+}
+```
+*Ao invalidar o cache somente quando o login é bem-sucedido, evitam-se falsos bloqueios. Isso pode ser aproveitado em sistemas front-end Angular com feedback visual ao usuário sobre desbloqueio de conta.*
+
+Na listagem 6.30, recuperamos o nome do usuário a partir do **AuthenticationSuccessEvent** e invalidamos o cache correspondente:
+
+loginAttemptService.loginSucess(user.getUsername());
+
+O método: *loginAttemptCache.invalidate(username)*;
+
+Assim, as tentativas de login incorretas são removidas do cache, à medida que o usuário realiza o login com sucesso na aplicação.
+*A estratégia de invalidar o cache após o login bem-sucedido permite tratamento dinâmico de bloqueios temporários sem intervenção manual, integrando-se perfeitamente com componentes front-end para exibir o feedback de desbloqueio automático em tempo real.*
+
+Em seguida, atualizaremos a classe *CustomUserDetailsService* para validar se o usuário está bloqueado. Devemos lembrar que o método *isBlocked()* do LoginAttemptService verifica se o usuário excedeu o número máximo de tentativas de login incorretas permitidas.
+```java
+@Service
+public class CustomUserDetailsService implements UserDetailsService {	
+
+	@Autowired
+	private UserService userService;
+
+    @Autowired
+	private LoginAttemptService loginAttemptService;
+
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+			if (loginAttemptService.isBlocked(username)) {
+				throw new LockedException("User Account is Blocked");
+			}
+	}
+}
+```
+
+*Ao lançar o LockedException* dentro do método *LoadUserByUsername*, a aplicação integra perfeitamente o controle de acesso com o ciclo de autenticação do Spring Security. Essa exceção pode ser interceptada por controladores REST para retornar mensagens personalizadas ao Angular.
+
+Na listagem 6.31, retornamos a exceção *LockedException* do Spring Security caso a conta do usuário esteja bloqueada. Essa exceção indica que houve um erro na tentativa de login, e a autenticação falhou. Invocamos o *CustomAuthenticationFailureHandler* para identificar o tipo de falha de autenticação e redirecionar o usuário para o endpoint de login apropriado. 
+Ao personalizar o manipulador de falhas de autenticação, é possível fornecer respostas mais informativas ao usuário final e melhorar a experiência de interface em aplicações Angular por meio de redirecionamentos específicos ou mensagens visuais dinâmicas.
+```java
+@Service  
+public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {  
+  
+    /*Define uma estratégia de redirecionamento padrão.  
+    * Essa estratégia é usada para enviar o usuário para URLs específicas com base na fallha de login.*/    private DefaultRedirectStrategy defaultRedirectStrategy = new DefaultRedirectStrategy();  
+      
+    public void onAuthenticationFailure(  
+          HttpServletRequest request,  
+          HttpServletResponse response,  
+          AuthenticationException exception)  
+          throws IOException, ServletException {  
+  
+       /*Se o erro for causado por uma conta desabilitada (ex: usuário inativo),  
+       * redireciona para o endpoint específico "/login-disabled".*/        if(exception instanceof DisabledException) {  
+           defaultRedirectStrategy.sendRedirect(request, response, "/login-disabled");  
+           return;  
+        }  
+         
+       /*Se a causa da exceção for uma conta bloqueada,  
+       * redireciona para o endpoint "login-locked"*/       if(exception.getCause() instanceof LockedException) {  
+          defaultRedirectStrategy.sendRedirect(request, response, "/login-locked");  
+          return;  
+       }  
+        defaultRedirectStrategy.sendRedirect(request, response, "/login-error");  
+    }  
+}
+```
+
+Esse padrão de tratamento por tipo de exceção promove uma arquitetura extensível e orientada a mensagens. Quando usado com Angular, pode ser mapeado para rotas de erro distintas com base no status da conta, melhorando a clareza e fluidez da experiência de autenticação.
+
+Portanto, nós modificamos o *CustomAuthenticationFailureHandler*, já implementado na técnica anterior, com a adição de mais um redirecionamento para instâncias de *LockedException*. Redirecionaremos o usuário para o endpoint */login-locked* caso ocorra uma *LockedException*.
+
+Em aplicações Angular, podemos mapear esse endpoint a uma rota distinta para exibir mensagens explicativas e oferecer opções de recuperação de conta ou contato com o suporte.
+
+Portanto, precisamos implementar o endpoint */login-locked* para redirecionar o usuário para a página de login com uma mensagem de erro informando que a conta está bloqueada. 
+```java
+@Controller
+public class LoginController {
+	@GetMapping("/login-locked)
+	public String loginLocked(Model model) {
+		model.addAttribute("loginLocked", true);
+		return "login";
+	}
+}
+```
+
+Agora, precisamos usar a flag *loginLocked* na página *login.html* para exibir a mensagem de erro de que a conta do usuário está bloqueada. 
+
+Por fim, precisamos permitir que esse endpoint seja acessado sem qualquer autenticação, #permitAll na classe *SecurityConfiguration*.
+
+## 6.6 Implementing a Remember Me feature
+Além de protegermos ao máximo a nossa aplicação, também é necessário estarmos atento à experiência do usuário. Se a aplicação for excessivamente segura, exigindo grande esforço por parte do usuário para acessá-la, isso pode facilmente desmotivá-lo a utilizá-la. Portanto, é preciso manter um equilíbrio cuidadoso entre experiência do usuário e segurança da aplicação.
+Em aplicações com Angular no front-end, interfaces excessivamente protetivas podem causar muito atrito na navegação. Um sistema de autenticação bem calibrado com Spring Boot, com feedback adequado, reduz abandonos sem comprometer a segurança.
+
+Muitas aplicações oferecem o recurso *remember-me*, permitindo que a aplicação se lembra da identidade do usuário entre sessões. O Spring Security oferece suporte a esse recurso por meio de um cookie adicional no navegador do usuário, que é incluído em todas as requisições subsequentes ao servidor. Caso o cookie de sessão expire, o Spring usa o cookie de *remember-me* para autenticar o usuário.
+
+O Spring Security oferece duas abordagens integradas para implementar serviços de *remember-me*: uma abordagem baseada em *token hash* e outra baseada em *token persistente*. A primeira armazena a identidade do usuário em um cookie do navegador, o que a torna menos segura. A abordagem baseada em token persistente armazena os dados em um banco de dados. 
+*A opção por remember-me com token hash permite uma implementação rápida, mas pode ser frágil contra ataques se não for usada com HTTPS e cookies com atributos HttpOnly e Secure. Em sistemas modernos, Angular pode coordenar esse fluxo via interceptadores HTTP.*
+
+Como o Spring Security oferece suporte nativo para o recurso "remember-me, portanto, precisamos realizar duas alterações em nossa aplicação:
+1. Adicionar um *checkbox* HTML à pagina de login com o atributo *name="remember-me"*. <span style="background:#b1ffff">O nome do campo precisa ser exatamente remember-me</span>, pois o Spring Security verifica a requisição HTTP em busca desse parâmtro;
+2. Habilitar a configuração de remember-me na classe *SecurityConfiguration*, permitindo que o Spring Security aplica as configurações necessárias.
+O campo *name="remember-me"* é essencial, o Spring Security só reconhecerá a intenção de lembrar o usuário se esse nome for exatamente igual. Ao marcar essa opção, o Spring criará um cookie persistente no navegador.
+
+O *userDetailService()* precisa ser sobrescrito para que o serviço remember-me consiga recuperar os dados do usuário e recriar o contexto de autenticação.
+
+## 6.7 Implementing reCAPTCHA
