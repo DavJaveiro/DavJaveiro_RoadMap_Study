@@ -237,4 +237,84 @@ E etnografia é uma técnica de observação que pode ser utilizada para entende
 
 Frequentemente, as pessoas acham difícil articular detalhes do seu trabalho porque é tão natural para elas que não precisam mais pensar a respeito dele. Elas entendem seu próprio trabalho, mas não a relação que ele possui com outros trabalhos na organização. Fatores sociais e organizacionais que afetam o trabalho, mas que não 
 
-Suchman (1983) foi pioneira no uso da etnografia para estudar o trabalho de escritório. Ela constatou que as práticas de trabalho reais eram muito mais ricas, complexas e dinâmicas do que os modelos simples presumidos pelos sistemas de automação. 
+Suchman (1983) foi pioneira no uso da etnografia para estudar o trabalho de escritório. Ela constatou que as práticas de trabalho reais eram muito mais ricas, complexas e dinâmicas do que os modelos simples presumidos pelos sistemas de automação.  A diferença entre o trabalho presumido e o real foi a razão mais importante para esses sistemas de escritório não produzirem um efeito significativo na produtividade. #Crabtree (2003) discute uma ampla gama de estudos desde então e descreve, em geral, o uso da etnografia no projeto de sistemas. Em minha própria pesquisa, investiguei método de integração da etnografia nos processos de engenharia de software vinculando-a com os métodos de engenharia de requisitos e padrões de documentação da interação em sistemas cooperativos.
+A etnografia é particularmente eficaz <span style="background:rgba(205, 244, 105, 0.55)">para descobrir dois tipos de requisitos</span>:
+1. Requisitos derivados da maneira que as pessoas realmente trabalham, e não da maneira que as definições de processos de negócio dizem que deveriam trabalhar. Na prática, as pessoas nunca seguem processos formais. Por exemplo, os controladores de tráfego aéreo podem desligar um sistema de alerta de conflitos que detecta aeronaves que estão em rotas de colisão, embora os procedimentos de controle normais especifiquem que tal sistema deva ser utilizado. O sistema de alerta de conflitos é sensível e emite alertas sonoros mesmo quando os aviões estão bem distante. Os controladores consideram que isso os distrai e preferem outras alternativas para assegurar que os aviões não sigam trajetórias de voo conflitantes.
+2. Requisitos derivados da cooperação e do conhecimento das atividades das outras pessoas. Por exemplo, os controladores de tráfego aéreo podem usar o conhecimento do trabalho dos demais controladores para prever o número de aeronaves que entrarão em seu setor. Depois, eles modificam suas estratégias de controle, dependendo da carga de trabalho prevista. Portanto, um sistema de controle de tráfego aéreo automatizado deve permitir que os controladores em um setor tenham alguma visibilidade do trabalho realizado nos setores adjacentes.
+
+A etnografia pode ser combinada com o desenvolvimento de um protótipo do sistema e informa o desenvolvimento do protótipo, de modo que sejam necessários menos ciclos de refinamento. Além disso, a prototipação permite dar foco à etnografia por identificar problemas e questões que depois poderão ser discutidas com o etnógrafo, que buscará respostas para essas perguntas durante a próxima fase de estudo do sistema.
+
+A etnografia é útil para compreender os sistemas existentes, mas essa compreensão nem sempre ajuda na inovação. Esta é particularmente relevante para o desenvolvimento de novos produtos. Alguns analistas sugeriram que a Nokia usava etnografia para descobrir como as pessoas utilizavam seus telefones e, com base nisso, desenvolver novos modelos de telefone; a Apple, por outro lado, ignorou o uso atual e revolucionou a indústria de celular com a introdução do iPhone.
+
+Os estudos etnográficos podem revelar detalhes críticos dos processos que muitas vezes passam despercebidos por outras técnicas de elicitação de requisitos. Entretanto, em virtude do foco no usuário final, essa abordagem não é eficaz para descobrir requisitos de empresas ou de áreas mais amplas, nem para sugerir inovações. Portanto, a etnografia é uma entre as várias técnicas de elicitação de requisitos.
+
+### 4.3.2 Histórias e cenários
+As pessoas acham mais fácil se identificar com exemplos da vida real do que com descrições abstratas. Elas não são boas para falar requisitos de sistema. No entanto, podem ser capazes de descrever como lidam com determinadas situações ou imaginar coisas que poderiam fazer com uma nova forma de trabalhar. As histórias e cenários são maneiras de capturar esse tipo de informação, que pode ser usada posteriormente ao entrevistas grupos de *stakeholders* para discutir o sistema com outros grupos e desenvolver requisitos de sistema mais específicos.
+
+Histórias e cenários são essencialmente a mesma coisa. Trata-se de uma descrição de como o sistema pode ser utilizado em alguma tarefa em particular. Histórias e cenários descrevem o que as pessoas fazem, quais informações usam e produzem e quais sistemas podem adotar nesse processo. A diferença está no modo como as descrições são estruturadas e no nível de detalhe apresentado. As histórias são escritas como texto narrativo e apresentam uma descrição de alto nível do uso do sistema; os cenários normalmente são estruturados com informações específicas coletadas, como entradas e saídas. Considero as histórias eficazes para estabelecer o 'panorama geral'. Partes delas podem ser desenvolvidas em mais detalhes e representadas como cenários.
+
+*Compartilhamento de imagens na sala de aula* é um exemplo de história que desenvolvi para entender o requisitos do ambiente de aprendizagem digital iLearn. Ela descreve uma situação em uma escola primária (ensino fundamental) em que o professor está usando o ambiente para apoiar os projetos dos alunos sobre a indústria pesqueira. Dá para ver que se trata de uma descrição de alto nível. Sua finalidade é facilitar a discussão sobre como o iLearn poderia ser utilizado e atuar como um ponto de partida para a elicitação dos requisitos do sistema.
+
+*Compartilhamento de imagens na sala de aula*
+Jack é um professor de escola primária em Ullapool (uma vila no norte da Escócia). Ele decidiu que um projeto de sala de aula deveria se concentrar na indústria pesqueira da região, examinando a história, o desenvolvimento e o impacto econômico da pesca. Como parte do projeto, ele pode que os alunos reúnam e compartilhem lembranças dos parentes, usem arquivos de jornais e coletem fotografias antigas relacionadas à pesca e às comunidades pesqueiras da região. Os alunos usam um *wiki* do iLearn para reunir histórias sobre pesca e o SCRAN (um site de recursos de história) para acessar os arquivos do jornal e as fotografias. No entanto, Jack também precisa de um site de compartilhamento de imagens, pois quer que os alunos troquem e comentem as fotos uns dos outros e coloquem no site as imagens escaneadas de fotografias antigas que possam ter em suas famílias.
+
+Jack envia um e-mail para um grupo de professores de escola primária, do qual é membro, para ver se alguém pode recomendar um sistema adequado. Dois professores respondem e ambos sugerem que ele use o KidsTakePics, um site de compartilhamento de imagens que permite aos professores conferirem e moderarem o conteúdo. Como o KidsTakePics não é integrado ao serviço de autenticação do iLearn, ele cria uma conta de professor e uma conta de turma. Ele utiliza o serviço de configuração do iLearn para adicionar o KidsTakePics aos serviços visualizados pelos alunos em sua turma para que, quando fizerem o login, possam usar imediatamente o sistema para enviar fotos de seus celulares, tablets e computadores da sala de aula.
+
+A vantagem das histórias é que todo mundo pode ser identificar facilmente com elas. Achamos que essa abordagem é especialmente útil para obter informações de uma comunidade mais ampla do que poderíamos entrevistar na realidade. Disponibilizamos as histórias em um wiki e convidamos professores e alunos dos país inteiro para comentá-las.
+
+Essas histórias de mais alto nível não entram em detalhes sobre um sistema, mas podem ser desenvolvidas em cenários mais específicos. Os cenários são descrições de exemplos de sessões de interação do usuário. Acredito que seja melhor apresentar os cenários de uma maneira estruturada, em vez de um texto narrativo. As histórias de usuários nos métodos ágeis, como na Programação Externa, são cenários narrativos e não histórias genéricas para ajudar a elicitar requisitos.
+Um cenário começa com uma descrição da interação. Durante o processo de elicitação, são acrescentados detalhes para criar uma descrição completa dessa interação. De modo geral, um cenário pode incluir:
+1. uma descrição do que o sistema e os usuários esperam quando o cenário se inicia;
+2. uma descrição do fluxo normal dos eventos no cenário;
+3. uma descrição do que pode dar errado e de como esses problemas podem
+ser enfrentados;
+4. informações sobre outras atividades que poderíam ocorrer ao mesmo tempo;
+5. uma descrição do estado do sistema quando o cenário termina.
+
+Como exemplo de um cenário, o texto abaixo descreve o que acontece quando um aluno envia fotos para o sistema KidsTakePics. A diferença fundamental estre esse e outros sistemas é que o professor modera as fotos enviadas para conferir se são adequadas ao compartilhamento. 
+
+Nota-se que essa é uma descrição muito mais detalhada do que a da história relatada na Figura 4.9 e, portanto, pode ser utilizada para propor requisitos do sistema iLearn. Assim como as histórias, os cenários podem ser empregados para facilitar discussões com os stakeholders, que às vezes podem ter maneiras diferentes de atingir o mesmo resultado.
+
+📸 Enviar fotos para o KidsTakePics
+
+🧩 Pressuposto inicial
+Um usuário ou grupo de usuários possui uma ou mais fotografias digitais armazenadas em um **tablet** ou **notebook**. Eles realizaram login no site **KidsTakePics**.
+
+✅ Fluxo normal
+- O usuário opta por enviar fotos.
+- O sistema solicita:
+  - Seleção das fotos no computador.
+  - Escolha do nome do **projeto** onde as fotos serão armazenadas.
+  - Digitação de **palavras-chave** associadas a cada foto.
+- As fotos recebem um nome automático criado pela junção:
+  - Nome do usuário + nome do arquivo original.
+- Após o envio:
+  - Um e-mail automático é enviado ao **moderador do projeto**.
+  - Uma mensagem é exibida ao usuário informando que a verificação foi iniciada.
+
+ ⚠️ O que pode dar errado
+
+🔸 Projeto sem moderador
+- Caso nenhum moderador esteja associado ao projeto:
+  - Um e-mail é enviado ao **administrador da escola** solicitando a nomeação de um moderador.
+  - O usuário é informado sobre possível **atraso na visibilidade** das fotos.
+
+🔸 Conflito de nomes
+- Se fotos com o mesmo nome já foram enviadas pelo mesmo usuário:
+  - O sistema pergunta se o usuário deseja:
+    - **Reenviar (sobrescrever)** as fotos.
+    - **Renomear automaticamente** (acrescentando um número).
+    - **Cancelar o envio**.
+
+🔄 Outras atividades
+- O moderador pode estar logado e **aprovar fotos** conforme são enviadas.
+
+🏁 Estado final do sistema
+- O usuário permanece **logado**.
+- As fotos foram enviadas e receberam o status:
+  - `'aguardando moderação'`
+- As fotos estão visíveis para:
+  - O **moderador**
+  - O **usuário que as enviou**
+
+## 4.4 Especificação de requisitos

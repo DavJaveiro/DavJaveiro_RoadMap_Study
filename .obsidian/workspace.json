@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Formação em Java (RocketSeat)/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
+                "file": "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rotas, Autenticação e Autorização"
+              "title": "Capítulo 4 - Engenharia de Requisitos"
             }
           }
         ]
@@ -214,9 +214,10 @@
   },
   "active": "c8d1439fe727bd66",
   "lastOpenFiles": [
+    "Formação em Java (RocketSeat)/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
+    "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
     "Formação em Java (RocketSeat)/Projeto Gestão de Vagas",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
-    "Formação em Java (RocketSeat)/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
     "Formação em Java (RocketSeat)",
     "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
