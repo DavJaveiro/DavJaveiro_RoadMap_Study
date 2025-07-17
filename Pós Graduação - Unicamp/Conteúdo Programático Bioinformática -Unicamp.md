@@ -1,0 +1,18 @@
+- [ ] Ácidos nucléicos: estrutura e função
+- [ ] Código genético e síntese de proteínas;
+- [ ] Regulação da expressão gênica;
+- [ ] Replicação e reparo do material genético;
+- [ ] Mutação e seleção natural
+- [ ] Projetos Genoma, transcritoma, proteoma, metagenoma e genoma estrutural
+- [ ] Fundamentos de programação: tipos de dados, estruturas de repetição e desvio, estruturas de dados básicas, procedimentos, recursão, algoritmos fundamentais.
+- [ ] Análise de algoritmos.
+- [ ] Bancos de dados estruturais.
+- [ ] Análise de sequências de DNA e proteínas.
+- [ ] Bancos de sequências
+- [ ] Métodos preditivos usando sequências de nucleotídeos e proteínas
+- [ ] Blast e Fasta
+- [ ] Alinhamento múltiplo de sequências
+- [ ] Montagem de sequências
+- [ ] Análise de dados em larga escala (RNA-seq, ChIP-seq, e sRNA-seq)
+- [ ] Polimorfismo de sequências
+

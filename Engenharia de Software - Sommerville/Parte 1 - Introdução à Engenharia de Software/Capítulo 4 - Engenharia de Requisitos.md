@@ -318,3 +318,130 @@ Um usuário ou grupo de usuários possui uma ou mais fotografias digitais armaze
   - O **usuário que as enviou**
 
 ## 4.4 Especificação de requisitos
+A especificação de requisitos é o processo de escrever os requisitos de usuário e de sistema em um documento de requisitos. Em condições ideais, esses requisitos devem ser claros, inequívocos, fáceis de entender, completos e consistentes. Na prática, isso é quase impossível de alcançar. Os #stakeholders interpretam os requisitos de maneiras diferentes e muitas vezes há conflitos e incoerências inerentes a eles.
+
+Os requisitos de usuário quase sempre são escritos em linguagem natural, complementada por diagramas e tabelas apropriadas no documento de requisitos. Os requisitos de sistemas também podem ser escritos em linguagem natural, mas outras notações baseadas em formulários, gráficos ou modelos matemáticos do sistema também podem ser utilizadas. A Figura 4.11 resume as possíveis notações para escrever requisitos de sistema.
+
+**Notações para escrever requisitos de sistema**
+**Sentença em linguagem natural** - os requisitos são escritos usando frases numeradas em linguagem natural. Cada frase deve expressar um requisito.
+**Linguagem natural estruturada** - os requisitos são escritos em linguagem natural em um formulário ou *template*. Cada campo fornece informações sobre um aspecto do requisito.
+**Notações gráficas**: Modelos gráficos, suplementados por anotações em texto, são utilizados para definir os requisitos funcionais do sistema. São utilizados com frequência os diagramas de casos de uso e de sequência da UML.
+**Especificações matemáticas** - Essas notações se baseiam em conceitos matemáticos como as máquinas de estados finitos ou conjuntos. Embora essas especificações inequívocas possam reduzir a ambiguidade em um documento de requisitos, a maioria dos clientes não compreende uma especificação formal. Eles não conseguem averiguar se ela representa o que desejam e relutam em aceitar essa especificação como um contrato do sistema.
+
+
+Os requisitos de usuário de um sistema devem descrever os requisitos funcionais e não funcionais de modo que sejam compreensíveis para os usuários do sistema que não têm conhecimento técnico detalhado. Em condições ideias, eles devem especificar apenas o comportamento externo do sistema. O documento de requisitos não deve incluir detalhes da arquitetura ou do projeto *design* do sistema. Consequentemente, ao escrever requisitos de usuário, não se deve usar jargões de software, notações estruturadas ou notações formais. Os requisitos de usuário devem ser escritos em linguagem natural, com tabelas simples, formulários e diagramas intuitivos.
+
+Os requisitos de sistema são versões ampliadas dos requisitos de usuário, que os engenheiros de software usam como ponto de partida para o projeto do sistema, acrescentando detalhes e explicando como o sistema deverá atender os requisitos de usuário. Eles podem ser utilizados como parte do contrato para a implementação do sistema, portanto devem ser uma especificação completa e detalhada do sistema inteiro. 
+
+Em condições ideais, os requisitos de sistema devem descrever apenas o comportamento externo do sistema e suas restrições operacionais. Eles não devem se preocupar com o modo que o sistema deve ser projetado ou implementado. No entanto, no nível de detalhe exigido para especificar completamente um sistema de software complexo, não é possível nem desejável excluir todas as informações de projeto *design*. Existem várias razões para isso:
+1. Pode ser necessário fazer o projeto de uma arquitetura inicial do sistema para ajudar a estruturar a especificação dos requisitos. Os requisitos de sistema são organizados de acordo com diferentes subsistemas que o compõem. Fizemos isso quando definimos os requisitos do sistema iLearn, no qual propusemos a arquitetura exibida na Figura 1.8.
+2. Na maioria dos casos, os sistemas devem interoperar com os sistemas existentes, o que restringe o projeto e impõe requisitos ao novo sistema.
+3. Pode ser necessário o uso de uma arquitetura específica para satisfazer requisitos não funcionais, como a programação N-versões, discutida no Capítulo 11, para alcançar confiabilidade. Um regulador externo que precise certificar-se de que o sistema é segura *safe* pode especificar que deve ser utilizado um projeto de arquitetura já certificado.
+
+### 4.4.1 Especificação em linguagem natural
+A linguagem natural tem sido utilizado para descrever requisitos de software desde os anos 1950. É uma linguagem expressiva, intuitiva e universal. Também é potencialmente vaga e ambígua, sendo que a sua interpretação depende da experiência do leitor. Consequentemente, tem havido muitas propostas de maneiras alternativas para escrever os requisitos. No entanto, nenhuma dessas propostas foi adotada amplamente, e a linguagem natural continuará sendo a maneira mais utilizada de especificar requisitos de sistema e software.
+Para minimizar os mal-entendido ao escrever requisitos em linguagem natural, recomendo seguir estas diretrizes simples:
+1. Inventar um formato padrão e garantir que todas as definições de requisitos o sigam. Padronizar o formato diminui a probabilidade de omissões e torna os requisitos mais fáceis de serem conferidos. Sempre que for possível, sugiro escrever o requisito em uma ou duas frases de linguagem natural.
+2. Usar a linguagem coerentemente para distinguir entre requisitos obrigatórios e desejáveis. Os requisitos obrigatórios são aqueles que o sistema deve apoiar, e normalmente são escritos usando 'deve'. Os requisitos desejáveis não são essenciais, e são escritos usando 'pode'.
+3. Um realce de texto (negrito, itálico ou cor) para destacar partes importantes do requisito.
+4. Não supor que os leitores compreendem a linguagem técnicas da engenharia de software. É fácil que palavras como 'arquitetura' e 'módulo' sejam mal compreendidas. Sempre que possível, evitar o uso de jargões, abreviações e acrônimos.
+5. Sempre que possível, tentar associar um racional a cada requisito de usuário. O racional deve explicar por que o requisito foi incluído e quem o propôs (a origem do requisito), de modo que se saiba a quem recorrer se o requisito precisar ser alterado. O racional dos requisitos é particularmente útil quando isso acontece, já que essa mudança pode ajudar a decidir quais alterações seriam indesejáveis.
+
+A figura 4.12 ilustra como essas diretrizes podem ser utilizadas. Ela inclui dois requisitos para software embarcado na bomba de insulina automatizada, introduzida no Capítulo 1. Outros requisitos desse sistema embarcado são definidos no documento de requisitos da bomba de insulina, que pode ser baixado no site do livro (em inglês).
+
+**Exemplos de requisitos do sistema de software da bomba de insluina**
+3.2. O sistema deve medir o nível de açúcar no sangue e fornecer insulina, se for necessário, a cada 10 minutos. (As variações do açúcar no sangue são relativamente lentas, então é desnecessário medir com uma frequência maior; a medição menos frequente poderia levar a níveis de açúcar sanguíneo desnecessariamente elevados).
+3.6. O sistema deve executar uma rotina de autoteste a cada minuto com as condições a serem testadas e as ações associadas, definidas na Tabela 1 do documento de requisitos. (Uma rotina de autoteste pode descobrir problemas de hardware e alertar o usuário de que a operação normal pode ser impossível).
+
+### 4.4.2 Especificações estruturadas
+A linguagem natural estruturada é uma maneira de escrever os requisitos  de sistema, de modo que estes sejam escritos em uma forma padrão em vez de em texto livre. Essa abordagem mantém a maior parte da expressividade e da clareza da linguagem natural, mas garante que alguma uniformidade seja imposta à especificação. As notações que adotam linguagem estruturada usam modelos para especificar requisitos de sistema. Essa especificação pode usar construtos de linguagem de programação para mostrar alternativas e iteração, podendo destacar elementos-chave por intermédio de sombreamento ou de fontes diferentes. Os Robertsons, em seu livro sobre o método VOLERE de engenharia de requisitos, recomendam que os requisitos de usuário sejam escritos inicialmente em cartões, com um requisito por cartão. Eles sugerem uma série de campos em cada cartão, como o racional dos requisitos, as dependências de outros requisitos, a origem dos requisitos e os materiais de apoio. Isso é similar à abordagem utilizada no exemplo de uma especificação estruturada, exibido na Figura 4.13.
+
+**Problemas com o uso da linguagem natural na especificação dos requisitos**
+A flexibilidade da linguagem natural, tão útil para a especificação, costuma causar problemas. Existe espaço para escrever requisitos obscuros e os leitores (os projetistas) podem interpretar erroneamente os requisitos porque eles e os usuários têm experiências diferentes. É fácil fundir vários requisitos em uma única frase, o que pode dificultar a estruturação dos requisitos em linguagem natural.
+
+## Bomba de Insulina / Software de Controle / SRS / 3.3.2
+
+| Campo              | Detalhes                                                                                                                                         |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Função**         | Computar a dose de insulina: nível de açúcar segura                                                                                              |
+| **Descrição**      | Computa a dose de insulina a ser fornecida quando o nível de açúcar estiver entre 3 e 7 unidades (zona segura).                                 |
+| **Entradas**       | Leitura atual do açúcar (`r2`) e duas leituras prévias (`r0` e `r1`).                                                                            |
+| **Fonte**          | Sensor de leitura atual de açúcar e memória para leituras anteriores.                                                                            |
+| **Saídas**         | `DoseComp` – dose de insulina a ser fornecida.                                                                                                   |
+| **Destino**        | Laço de controle principal.                                                                                                                      |
+| **Ação**           | - `DoseComp = 0` se o nível estiver estável ou caindo. <br> - Se o nível estiver subindo, mas com desaceleração: `DoseComp = 0`. <br> - Se o nível e a taxa de crescimento estiverem aumentando: `DoseComp = arred( (r2 - r1) / 4 )`. <br> - Se o resultado arredondado for 0: `DoseComp = dose mínima permitida` (ver Figura 4.14). |
+| **Requer**         | Leituras `r0` e `r1` para cálculo da taxa de variação do nível de açúcar.                                                                        |
+| **Pré-condição**   | O reservatório de insulina contém pelo menos a dose máxima permitida.                                                                            |
+| **Pós-condição**   | `r0 ← r1`, depois `r1 ← r2`.                                                                                                                     |
+| **Efeitos colaterais** | Nenhum.                                                                                                                                      |
+
+Para usar uma abordagem estruturada para especificar requisitos de sistema, é preciso definir um ou mais *templates* para os requisitos e representá-los como formulários estruturados. A especificação pode ser estruturada em volta dos objetos manipulados pelo sistema, das funções realizadas por ele ou dos eventos processados. Um exemplo de especificação baseada em formulário, nesse caso, é o que define como calcular a dose de insular a ser fornecida quando o açúcar no sangue estiver dentro da faixa segura.
+
+Quando um *template* é empregado para especificar requisitos funcionais, as seguintes informações devem ser incluídas:
+1. uma descrição da função ou entidade que está sendo especificada;
+2. uma descrição das entradas e suas origens;
+3. uma descrição das saídas e sua destinação;
+4. informações sobre os dados necessários para computar ou outras entidades no sistema que sejam necessárias (a parte 'requer');
+5. uma descrição da ação a ser tomada;
+6. se for utilizada uma abordagem funcional, uma precondição estabelecendo o que deve ser verdadeiro antes da função ser invocada e uma pós-condição especificando o que deve ser verdadeiro antes da função ser invocada e uma pós-condição especificando o que é verdadeiro após a função ser invocada.
+7. uma descrição dos efeitos colaterais (se houver) da operação.
+
+
+O uso de especificações estruturadas remove alguns dos problemas da especificação em linguagem natural. A variabilidade na especificação é reduzida, e os requisitos são organizados com mais eficácia. No entanto, às vezes é difícil escrever os requisitos de uma maneira clara e inequívoca, particularmente quando computações complexas (como calcular a dose da insulina) devem ser especificadas.
+
+Para resolver esse problema, é possível acrescentar mais informações aos requisitos em linguagem natural, por exemplo, usando tabelas ou modelos gráficos do sistema. Esses recursos podem mostrar como os cálculos são feitos, como o estado do sistema muda, como os usuários interagem com o sistema e como as sequências de ações são realizadas.
+
+### 4.4.3 Casos de uso
+Os casos de uso são uma maneira de descrever as interações entre usuários e um sistema usando um modelo gráfico e um texto estruturado. Foram introduzidos pela primeira vez no método #Objectory e hoje se tornaram uma característica fundamental da UML. Em sua forma mais simples, um caso de uso identifica os atores envolvidos em uma interação e nomeia o tipo de interação. Depois, são adicionadas informações descrevendo a interação com o sistema, que pode ser uma descrição textual ou um ou mais modelos gráficos, como os diagramas de sequência ou de máquina de estados da UML.
+
+Os casos de uso são documentados por meio de um diagrama de casos de uso de alto nível. O conjunto de casos de uso representa todas as interações possíveis que serão descritas nos requisitos de sistema. Os atores n processo, que podem ser seres humanos ou outros sistemas, são representados como 'bonecos palito'. Cada classe de interação é representada como uma elipse nomeada. Linhas fazem a ligação entre os atores e a interação. Opcionalmente, pontas da seta podem ser acrescentadas às linhas para mostrar como a interação começa. Isso é ilustrado pela Figura 4.15, que mostra alguns dos casos de uso do sistema Mentcare.
+![[Capítulo 4 - Engenharia de Requisitos-7.png]]
+
+Os casos de uso identificam cada interação entre o sistema e seus usuários ou outros sistemas. Cada caso de uso deve ser documentado com uma descriçao textual, que pode ser ligada a outros modelos, também em UML - para compor um cenários mais detalhado. Por exemplo, uma descrição resumida do uso de caso de Realizar discussão de caso da Figura 4.15 poderia ser:
+*Realizar discussão de caso permite que dois ou mais médicos, trabalhando em consultórios diferentes, vejam o registro do mesmo paciente ao mesmo tempo. Um médico inicia a discussão do caso de um paciente escolhendo as pessoas envolvidas em um menu suspenso de médicos que estão on-line. O registro do paciente é exibido em suas telas, mas apenas o médico que iniciou a consulta pode editar o registro. Além disso, cria-se um chat para ajudar a coordenar as açoes. Presume-se que uma chamada telefõnica ou comunicação por voz possa ser providenciada separadamente*.
+
+A UML é um padrão para modelagem orientada a objetos, então os casos de uso
+e a elicitação de requisitos baseada em casos de uso são utilizadas no processo de
+engenharia de requisitos. No entanto, minha experiência com os casos de uso é que
+eles são muito refinados para serem úteis na discussão de requisitos. Os stakeholders
+não compreendem o termo caso de uso, não acham útil o modelo gráfico e. muitas
+vezes, não estão interessados em uma descrição detalhada de cada interação do
+sistema. Consequentemente, acho os casos de uso mais úteis no projeto de sistemas
+do que na engenharia de requisitos. Discutirei melhor esse assunto no Capitulo 5, que
+mostra como os casos de uso são utilizados com outros modelos de sistema para
+documentar um projeto (design).
+
+Algumas pessoas acham que cada caso de uso é um cenário de interação único e
+detalhado. Outras, como Stevens e Pooley (2006), sugerem que cada caso inclui um
+conjunto relacionado de cenários detalhados. Cada um deles é um único caminho do
+caso de uso. Portanto, haveria um cenário para a interação normal, além de cenários
+para cada exceção possível. Na prática, dá para usá-los de ambas as formas.
+
+### 4.4.4 O documento de requisitos de software
+O documento de requisitos de software (às vezes chamado de especificação de requisitos de software ou ERS) é uma declaração oficial do que os desenvolvedores do sistema devem implementar. Ele pode incluir os requisitos de usuário para um sistema e uma especificação detalhada dos requisitos de sistema. Às vezes, os requisitos de usuário e de sistema são integrados em uma descrição única. Em outros casos, os requisitos de usuário são descritos em um capítulo introdutório na especificação de requisitos de sistema.
+
+Os documentos de requisitos são essenciais quando: os sistemas têm o seu desenvolvimento terceirizado, times diferentes desenvolvem partes diferentes do sistema ou uma análise detalhada dos requisitos é obrigatória. Em outras circunstâncias, como o desenvolvimento de um produto de software ou de um sistema de negócio, um documento de requisitos detalhado pode não ser necessário.
+
+Os métodos ágeis argumentam que os requisitos mudam com tanta rapidez que um documento de requisitos fica obsoleto logo que é escrito, então o esforço é quase todo desperdiçado. Em vez de um documento formal, as abordagens ágeis costumam coletar os requisitos de usuário de modo incremental e escrevê-los em cartões ou lousas na forma de pequenas histórias de usuário. Então, o usuário priorizará essas histórias para implementação nos incrementos seguintes do sistema.
+
+Nos sistemas de negócio nos quais os requisitos são instáveis, creio que essa abordagem é boa. No entanto, ainda acredito que seja útil escrever um documento de suporte resumido que defina o negócio e os requisitos de dependabilidade do sistema; é fácil esquecer os requisitos que se aplicam ao sistema como um todo quando nos concentramos nos requisitos funcionais da próxima versão do sistema.
+
+O documento de requisitos tem um conjunto de usuários diversos, variando da alta gerência da organização que está pagando pelo sistema até os engenheiros responsáveis por desenvolver o software. A Faigura 4.16 mostra os possíveis usuários do documento e como eles o utilizam:
+
+**Usuários de um document de requisitos**
+**Clientes do sistema**: Especificam os requisitos e os leem para conferir se satisfazem suas necessidades. Os clientes especificam mudanças nos requisitos.
+
+**Gerentes**: usam o documento de requisitos para planejar uma proposta para o sistema e planejar o seu processo de desenvolvimento.
+
+**Engenheiros de sistema**: usam os requisitos para compreender qual sistema deve ser desenvolvido.
+
+**Engenheiros de teste do sistema**: usam os requisitos para desenvolver testes de validação do sistema.
+
+**Engenheiros de manutenção do sistema**: usam os requisitos para entender o sistema e as relações entre suas partes.
+
+O nível de detalhe que deve ser incluído em um documento de requisitos depende do tipo de sistema que está sendo desenvolvido e do processo de desenvolvimento utilizado. Os sistemas críticos precisam de requisitos detalhados porque a segurança *safety* e a segurança  da informação (*security*) devem de ser analisadas em detalhes, a fim de encontrar possíveis erros nos requisitos. Quando o sistema é desenvolvido por uma empresa diferente (por meio de terceirização, por exemplo), as especificações do sistema precisam ser detalhadas e precisas. Se o desenvolvimento for interno, usando um processo de desenvolvimento interativo, o documento de requisitos pode ser menos detalhado. Podem ser acrescentados detalhes aos requisitos e as ambiguidades resolvidas durante o desenvolvimento do sistema.
+
+A Figura 4.17 mostra uma possível organização do documento de requisitos baseada em um padrão do IEEE para esse tipo de documento. Esse padrão é genérico e pode ser adaptado a usos específicos. Nesse caso, o padrão precisa ser ampliado para incluir informações sobre a evolução prevista para o sistema, pois elas ajudam os responsáveis pela manutenção do sistema e permitem que os projetistas incluam suporte para futuras características do sistema.
+
+## 4.5 Validação de Requisitos
+A validação 
