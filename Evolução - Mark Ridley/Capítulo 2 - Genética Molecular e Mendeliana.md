@@ -1,0 +1,19 @@
+ O capítulo é uma introdução à genética, o que necessitamos para a compreensão da biologia evolutiva contida neste livro. Ele começa com o mecanismo molecular da #hereditariedade e, em seguida, passa para os princípios mendelianos. Depois considera como a teoria de Darwin quase exige que a herança seja mendeliana, pois a <span style="background:#d3f8b6">seleção natural</span> dificilmente operaria no contexto de um mecanismo de herança por mistura.
+
+## 2.1 A herança é causada por moléculas de DNA, que são fisicamente passadas dos progenitores para a sua prole
+
+A molécula chamada DNA (ácido desoxirribunucléico) proporciona o mecanismo físico de herança em quase todas as criaturas vivas. O DNA é o portador da informação utilizada para a construção de um novo corpo e para diferenciá-lo em várias partes. As moléculas de DNA existem no interior de quase todas as células do corpo e em todas as células reprodutivas (ou gametas). A sua localização precisa na célula depende do tipo #celular. 
+
+No interior do núcleo de uma célula eucariótica, o DNA está fisicamente organizado em estruturas chamadas de #cromossomos. Os cromossomos podem ser visualizados por meio de um microscópio óptico em certos estágios do ciclo celular. Indivíduos de espécies diferentes apresentam, caracteristicamente, números diferentes de cromossomos _o homem, por exemplo, possui 46 cromossomos, enquanto que a mosca das frutas Drosophila melanogaster possui oito_. 
+
+ A molécula de DNA consiste em uma sequência de unidades; cada unidade, chamada de nucleotídeo, consiste em um fosfato e em um açúcar, com base ligada a ele. Os grupos de fosfato e açúcar alternados de nucleotídeos sucessivos formam o arcabouço da molécula de DNA. A molécula de DNA completa consiste em duas fitas complementares pareadas, cada uma delas formada por uma sequência de nucleotídeos. Os nucleotídeos de fitas opostas são unidos quimicamente uns aos outros. As duas fitas existem como uma hélice dupla.
+## 2.2 O DNA codifica estruturalmente a informação utilizada para formar as proteínas do corpo
+Como o DNA codifica a informação para construir um corpo? O DNA de uma célula individual humana contém em torno de 3 x 10^9 unidades nucleotídicas. Essa extensão total pode ser dividida em *genes* e em vários tipos de DNA não-codificador. Inicialmente, iremos considerar os genes. Alguns genes estão posicionados na vizinhança imediata de outros genes; outros estão separados por regiões de extensão variável de DNA não-codificador. Os genes contêm a informação que codifica as proteínas.
+
+Uma maneira pouco abrangente mas didática de descrever a biologia de proteínas é afirmar que os corpos são construídos a partir de proteínas e são regulados, mantidos e defendidos também por proteínas. <mark style="background: #FFF3A3A6;">Diferentes partes do corpo possuem características diferentes porque são formados por proteínas diferentes</mark>. A pele, por exemplo, é formada principalmente por uma proteína chamada de queratina; o oxigênio é transportado nas células vermelhas do sangue por uma proteína chamada de hemoglobina; os olhos são sensíveis à luz devido a proteínas pigmentares como a rodopsina (na realidade, a rodopsina é formada por uma proteína chamada de opsina, combinada com um derivado de vitamina A); 
+
+**A maioria dos genes codifica proteínas...** 
+As proteínas são formadas por sequências particulares de aminoácidos. Vinte aminoácidos diferentes são encontrados na maioria dos tipos de seres vivos.
+
+## 2.4 Existem grandes quantidades de DNA não-codificador em algumas espécies
+O genoma humano possui em torno de 3 bilhões (3 x 10^9) de nucleotídeos de extensão. O projeto genoma humano fez uma estimativa primária do número de #genes em um ser humano como sendo em torno de 30.000 (3 x 10^4). A extensão média de um gene humano é de aproximadamente 5.000 (5 x 10^3)
