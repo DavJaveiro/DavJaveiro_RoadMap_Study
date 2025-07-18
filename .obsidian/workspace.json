@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -223,8 +224,11 @@
       "obsidian-spaced-repetition:Revisar flashcards": false
     }
   },
-  "active": "da12e2f551912e38",
+  "active": "28023a602d0c2c2b",
   "lastOpenFiles": [
+    "Chapter 2 - Building Biological Databases with SQL-4.png",
+    "Chapter 2 - Building Biological Databases with SQL-3.png",
+    "Building Bioinformatics Solutions/Chapter 2 - Building Biological Databases with SQL/Chapter 2 - Building Biological Databases with SQL.md",
     "Biologia de Campbell/Capítulo 12 - O Ciclo celular/Capítulo 12 - O Ciclo Celular.md",
     "Biologia de Campbell/Capítulo 44 - Osmorregulação e Excreção.md",
     "Biologia de Campbell/Capítulo 42 - Circulação e Trocas Gasosas.md",

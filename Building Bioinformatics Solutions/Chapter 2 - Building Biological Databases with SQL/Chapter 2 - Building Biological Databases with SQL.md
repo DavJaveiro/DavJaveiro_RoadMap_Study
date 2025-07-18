@@ -362,5 +362,66 @@ Porque todos os números de pedido têm exatamente 16 caracteres, então um tipo
 ?
 **Resposta:** Aproximadamente **65.535 caracteres**.
 
-### 2.2.2 Step 5: atomicity of data
 
+![[Chapter 2 - Building Biological Databases with SQL-3.png]]
+### 2.2.3 Step 5: atomicity of data
+O termo atomicidade pode parecer, a princípio, excessivamente abstrato, mas tudo o que ele significa é que cada pedaço de informação em <span style="background:#affad1">um campo deve ser o menor possível, ou seja, deve conter dados sobre apenas um item</span>.
+
+Se considerarmos o exemplo do número de telefone, ele parece ser um único dado: um número de telefone. No entanto, esse campo <span style="background:#fdbfff">pode conter três</span> ou mais partes distintas de informação, como o código do país, o código de área e o número em si. Geralmente, as formas de representar essas informações exigem caracteres que não são números, como +, parênteses ou espaços. Isso por si só pode introduzir inconsistências e erros no banco de dados, e, portanto, <span style="background:#d4b106">qualquer forma de evitar isso é desejável.</span>
+
+Uma forma de evitar esse problema é dividir os dados em partes menores, criando um campo para código do país, outro para código de área e outro para o número principal. Todos esses campos conterão  apenas valores inteiros, então o tipo #INT pode ser usado. Ao separarmos os campos, podemos pesquisar, por exemplo, por cientistas cientistas de um país específico utilizando o código do país como critério.
+
+Outro exemplo está no campo *supplier_address* (endereço do fornecedor) na tabela kit. Um endereço normalmente é composto por várias partes, como: número ou nome do prédio, nome da rua, cidade, estado ou província, código postal e país. Portanto, *supplier_address* não é atômico. Para corrigir isso, seria necessário criar seis campos separados e remover o campo *supplier_address*.
+
+O campo *name* na tabela Scientist também deve ser tratado de forma semelhante, separando, por exemplo, o primeiro nome, sobrenome e possíveis títulos.
+
+Para garantir a atomicidade no seu banco de dados, revise cada campo e verifique se ele pode ser dividido em partes menores. Se não puder, alcançamos a atomicidade. Os benefícios completos desse princípio serão discutidos na próxima seção, mas, por hora, <span style="background:#affad1">é útil pensar na atomicidade como uma forma de tornar cada pedaço de dado o mais simples possível</span>, e coisas simples são sempre mais fáceis de lidar. 
+
+**Flashcards**
+**Pergunta:** O que significa o princípio de #atomicidade em modelagem de banco de dados #relacional?
+?
+**Resposta:** Significa que cada campo deve conter apenas uma informação indivisível, ou seja, não deve ser possível dividi-lo em partes menores e independentes.
+
+**Pergunta:** Por que o campo *tel_number* pode violar o princípio da atomicidade?
+?
+**Resposta:** Porque ele pode conter múltiplas informações em apenas um único campo, como código do país, código de área e número de telefone, além de caracteres especiais.
+
+### 2.2.4 Steps 6 and 7: indexing and linking tables
+Agora que temos um banco de dados atômico contendo toda a informação que achamos necessária sobre os experimentos de PCR sendo realizados. No entanto, este banco de dados ainda não é relacional, não há ligações entre as tabelas, além das informações contidas nelas não estarem interligadas. Este formato funciona bem para um exemplo simples, pois podemos pensar intuitivamente que, se falássemos sobre dois diferentes experimentos, poderíamos imaginar duas páginas separadas contendo os dados, uma para cada experimento. Isso é muito parecido com uma visão em planilhas de dados. <span style="background:#d4b106">Muito do poder de um banco de dados relacional vem da capacidade de pesquisar através dos dados contidos nele para identificar tendências</span>, ordenar por diferentes variáveis, como cientistas ou fabricante, para identificar erros sistemáticos, e geralmente pesquisar os dados como um todo interligado, e não como uma série de itens discretos. Por essa razão, precisaremos adicionar alguns campos ao banco de dados que permitam que as tabelas sejam ligadas à tabela Experiment. Nesta tabela, cada experimento foi dado um número de identificação (ID). Se esse número de identificação fosse simplesmente um inteiro, cada um maior que o anterior, seria suficiente sozinho para identificar exclusivamente qualquer experimento na tabela.
+
+Muitos designers de bancos de dados recomendam que cada tabela dentro do banco de dados tenha um identificador único **baseado em um número incremental**. Isso pode resultar em certos aumentos de desempenho em algumas circunstâncias, mas discordamos dessa abordagem em dois aspectos. O mais importante desses pontos é que isso complica o banco de dados ao introduzir campos artificiais, sem relação direta com os dados, em cada tabela. Isso torna o banco de dados mais difícil de entender, projetar e consultar. O segundo ponto é que isso quebra uma das regras formais ao projetar bancos de dados, que <span style="background:#b1ffff">é que toda a informação em uma tabela deve estar diretamente relacionada à chave</span> dessa tabela, se introduzirmos um número sequencial arbitrário na chave, quebramos essa relação. 
+
+Então, como criar chaves sem usar identificadores numéricos? Da mesma forma que qualquer objeto é identificado no dia a dia, através de características distintivas. Como exemplo disso, consideremos a tabela Sciencist, nesta tabela, uma chave de índice poderia ser criada apenas com o sobrenome. Mas muitos sobrenomes são comuns, então podemos incluir o primeiro nome do cientista. Dessa forma, podemos construir uma chave composta para a tabela, consistindo tanto do primeiro nome quanto do sobrenome. Se pudéssemos garantir que nenhum dos cientistas terá a mesma combinação de primeiro nome e sobrenome, isso funcionaria bem, mas isso também não é verdade, muitas pessoas compartilham o mesmo nome. Nesse ponto, alguém pode sugerir adicionar o número de empregado e referenciar os cientistas usando isso. Fazê-lo tem algumas utilidades, especialmente se esse banco de dados for conectado ao sistema de recursos humanos da organização. No entanto, isso é improvável, e a maioria das pessoas não conhece seu número de empregado, então obter esses números pode ser difícil. É também tão contraintuitivo quanto usar o método de número incremental. Há uma opção melhor já presente nesta tabela — <span style="background:#fdbfff">o endereço de e-mail</span>. Por definição, isso será único para cada cientista, desde que ele tenha uma conta de e-mail. A maioria dos cientistas agora tem esses e-mails, e, se não tiverem, eles podem ser facilmente obtidos, mesmo que nunca sejam usados!
+
+Por regra, um #ID deve ser:
+- imutável
+- sem significado
+- curto
+E-mail é mutável, com significado e com tamanho variável, geralmente, longo.
+
+A tabela Primer, na sua forma atual, não parece ter nenhuma chave natural. Eventualmente, essa tabela também precisará ser ligada à tabela Experiment. <span style="background:#affad1">A ligação entre duas tabelas é alcançada quando elas compartilham pelo menos um campo</span>. Neste caso, nenhuma delas contém um campo presenta na outra, e portanto precisamos escolher pelo menos um campo de uma tabela para colocar na outra. Aqui, o ID parece uma boa escolha, pois as sequências de primers estarão relacionadas à sequência experimental que estamos tentando amplificar. Isso também permitirá que o ID seja usado como chave primária para a tabela Primer. Uma vez feito isso, pode-se ver que as duas tabelas agora têm ID como sua chave. Como toda a informação em ambas as tabelas é identificada de forma única pela mesma chave, logicamente toda essa informação deveria aparecer na mesma tabela, embora tenhamos pensado anteriormente que elas deveriam ser separadas. (Há um argumento de que as informações na tabela Primer devem permanecer separadas porque a mesma combinação de primers pode ser usada para mais de um experimento, e assim a mesma informação poderia ser repetida várias vezes na tabela Experiment, o que seria indesejável. A escolha final dependerá do uso final — cada experimento realizado neste laboratório geralmente usa primers diferentes ou não?)
+
+Da mesma forma, nenhuma chave na tabela Result sugere-se naturalmente, e esses dados estão diretamente relacionados ao experimento. Esses campos, portanto, devem ser colocados dentro da tabela Experiment. A tabela Experiment agora é muito maior, conforme mostrado na Figura 2.8.
+![[Chapter 2 - Building Biological Databases with SQL-4.png]]
+
+Ao considerar a tabela Kit, uma chave adequada para a tabela poderia ser uma combinação de fabricante e nome do kit (manufacturer, name). Isso funciona para a maioria dos campos nessa tabela, exceto para aqueles relacionados ao fornecedor — um fornecedor pode fornecer muitas marcas e versões de kits, e portanto seus detalhes não são unicamente identificados por um único fabricante de kit e nome. Isso sugere que os detalhes do fornecedor devem ser retirados da tabela Kit e colocados em sua própria tabela, Supplier. Como os fornecedores de produtos similares devem ter nomes diferentes, assumimos que o fornecedor formará uma chave adequada para essa nova tabela, conforme mostrado na Figura 2.9.
+
+No entanto, uma consideração mais profunda da tabela Kit mostra que essa chave primária também está incorreta. Se o mesmo kit for encomendado duas vezes, grande parte da informação dentro da tabela terá que ser repetida, pois isso terá um número de ordem diferente. Isso demonstra que ou (manufacturer, name) é uma chave primária incorreta, ou que essa tabela ainda não está adequadamente projetada. A resposta é a última: o número de ordem não deve estar nessa tabela, pois a maioria das outras informações na tabela não depende do número de ordem. Isso, portanto, deve ser retirado para outra tabela.
+
+O número de ordem vincula de forma única ao fabricante e ao nome do kit e, portanto, esses campos podem também figurar na nova tabela e servir para ligar as duas tabelas. Além disso, o número de ordem é naturalmente atribuído a um fornecedor, e esse campo pode, portanto, aparecer na tabela Supplier. As tabelas resultantes e suas ligações são mostradas na Figura 2.10.
+
+Para ligar a tabela Experiment à tabela Kit, pode ser tentador colocar o campo ID na tabela Kit, mas isso quebraria a restrição de que toda a informação na tabela Kit deve ser exclusivamente identificada por (manufacturer, name) — o número de identificação do experimento não tem nada a ver com isso. Uma escolha melhor de campos para ligar as duas tabelas é fazer isso indiretamente através da tabela Kit_order, colocando o order_number na tabela Experiment. Isso servirá para identificar de forma exclusiva qualquer kit utilizado em um experimento. Não é coincidência que a chave de uma tabela forme um bom link para outra tabela dessa maneira — elas são rotas para identificar qualquer linha única em sua própria tabela e, portanto, podem ser usadas para um propósito similar em tabelas relacionadas.
+
+**Perguntas**
+**Por que o uso de números incrementais como chaves primárias em tabelas de um banco de dados relacional pode ser problemático?**
+?
+**Resposta:**  
+O uso de números incrementais como chaves primárias pode ser problemático por dois motivos principais:
+1. **Introdução de Campos Artificiais:** Esses números não têm relação direta com os dados reais da tabela, tornando o banco de dados mais complexo e difícil de entender, projetar e consultar.
+2. **Quebra de Regras Formais:** Em design de bancos de dados, todas as informações em uma tabela devem estar diretamente relacionadas à chave primária. Ao adicionar um número sequencial arbitrário, quebra-se essa relação formal.
+
+**Como criar uma chave primária para a tabela Scientist sem usar números incrementais?**
+?
+Uma chave primária para a tabela Scientist pode ser criada utilizando características únicas dos cientistas. Um exemplo é o uso do endereço de e-mail, que é único para cada cientista (desde que todos tenham um e-mail). Outra alternativa seria combinar o primeiro nome e o sobrenome, mas isso pode não ser suficientemente distinto, já que muitas pessoas compartilham o mesmo nome completo. *Nem mesmo e-mail pode ser utilizado de forma eficaz, pois ele possuí significado, é mutável e até mesmo longo.*
+
+**Defining relationshhhips between tables**
