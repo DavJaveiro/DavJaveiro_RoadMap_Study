@@ -267,3 +267,110 @@ O #PIR surgiu a partir do primeiro banco de dados de sequências, desenvolvido p
 *A convergência de PIR, SWISS-PROT e TrEMBL no UniProtKB reflete a necessidade de integração entre anotação automatizada e curadoria manual para lidar com a complexidade da biologia de proteínas, especialmente em organismos eucarióticos, onde modificações pós-traducionais e processamento do RNA desempenham papéis críticos.*
 
 Hoje, quase toda a informação sobre sequências de aminoácidos provém da tradução de sequências gênicas. No entanto, mesmo a sequência de aminoácidos de uma proteína, em geral, não pode ser inferida com certeza a partir da sequência do gene. 
+
+## Databases of protein families
+As relações evolutivas são essenciais para dar sentido aos dados biológicos. A evolução fornece o quadro conceitual para uma apreciação integrada das propriedades de moléculas e processos, bem como suas similaridades e diferenças em várias espécies. Talvez menos óbvio é que estudos comparativos iluminam, de forma essencial, até mesmo moléculas individuais. Conhecendo apenas uma única sequência ou estrutura, é difícil compreender o significado de certas características. Padrões de conservação identificam características que a natureza julgou necessário preservar. (As assinaturas do PROSITE são um exemplo). *As assinaturas do #PROSITE são padrões conservados de sequências de aminoácidos ou motivos estruturais em proteínas que estão associados a funções biológicas específicas. Elas são usadas para identificar e classificar proteínas em famílias ou domínios estruturais, ajudando a prever a função de uma proteína com base em sua sequência.*
+
+**Características das assinaturas do PROSITE:**
+1. Padrões conservados: representam regiões altamente preservadas em proteínas relacionadas, que muitas vezes são críticas para a função ou estrutura da proteína.
+2. Motivo de sequência: Podem ser descritos como:
+	1. Padrões *patterns*: expressões regulares que definem combinações específicas de aminoácidos em uma sequência.
+	2. Perfis (profiles): matrizes de pontuação que avaliam a similaridade de uma sequência a um modelo estatístico.
+	3. Marcos (signatures): combinações de motivos que caracterizam uma família de proteínas.
+3. **Baseados em funções:** muitas assinaturas estão ligadas a sítios ativos, domínios de ligação a ligantes ou outras regiões funcionais.
+
+**Exemplos de assinaturas do PROSITE**
+- O motivo "G-x-G-x-x-G" em #quinases (onde "G" é glicina e "x" é qualquer aminoácido) está associado à ligação de ATP.
+- O padrão "[ LIVMF ]-G-E-x-[GAS]-[LIVM]-x(5,11)-R-[STAQ]-A-x-[LIVMA]-x-[STACV]" é típico da enzima #serina #protease.
+
+**Importância**
+- Anotação funcional: permitem inferir a função de proteínas não caracterizadas.
+- Classificação: agrupam proteínas em famílias evolutivas ou funcionais.
+- Descoberta de alvos terapêuticos: Motivos conservados podem indicar sítios importantes para drogas.
+Portanto, o #PROSITE é um banco de dados de domínios proteicos, famílias e motivos funcionais, integrado ao #ExPASy (Expert Protein Analysis System). Suas assinaturas são ferramentas valiosas em bioinformática e biologia estrutural para entender a relação entre sequência, estrutura e função.
+
+*A identificação de padrões conservados em famílias de proteínas é fundamental para a inferência funcional em genômica comparativa, especialmente para proteínas com função desconhecida, onde a conservação de motivos específicos pode sugerir atividade enzimática ou interações moleculares.*
+
+O estudo de padrões evolutivos deve começar com a montagem de um conjunto de #homólogos. Ressaltamos novamente:
+1. a distinção entre #homologia - descendência de um ancestral comum, uma propriedade binária (sim/não), e #similaridade, uma medida quantitativa da diferença entre dois objetos;
+2. que a similaridade pode sempre ser medida, mas é raro observa a homologia diretamente; portanto, na maioria dos casos, a homologia é uma **inferência a partir da similaridade**.
+
+R. Doolittle propôs uma calibração geral da similaridade de sequências para detecção de homologia. **Duas sequências completas (>= 100 resíduos) que compartilham 25% ou mais de identidade em um alinhamento ótimo, provavelmente são relacionadas. Abaixo de cerca de 15% de identidade em um alinhamento ótimo, entremos em um campo de ruído.** Nessa faixa de similaridade, não temos razão para acreditar que as sequências sejam relacionadas, embora possam ser. Doolittle definiu a faixa entre 18 e 25% de identidade como "a zona crepuscular", onde pode haver suspeitas tentadoras de uma relação, mas a evidência não é conclusiva. Em alguns casos, o **sítio ativo** é melhor conservado do que a maior parte da proteína. Nesses casos, o aparecimento de um **motivo**, como o padrão consenso do PROSITE para a inorgânica #pirofosfatase **D-[SGDN]-D-[PE]-[LIVMF]-D-[LIVMGAC]** — pode apoiar o caso para #homologia.
+
+**Alinhamentos múltiplos de sequência** são muito mais poderosos do que alinhamento de pares. Primeiro, os dados adicionais permitem alinhamentos mais precisos. Segundo, os padrões de conservação se destacam muito mais claramente. 
+
+<span style="background:#fff88f">A estrutura de proteínas muda de forma mais conservativa do que a sequência de aminoácidos.</span> Portanto, a inferência de homologia a partir da **similaridade estrutural** pode ligar parentes mais distantes do que a **similaridade de sequência** consegue. Em casos que estão na **zona crepuscular**, onde a similaridade de sequência é sugestiva, mas não convincente, a similaridade estrutural é o tribunal de última instância. Em muitos casos, a similaridade estrutural pode identificar homólogos mesmo quando **nenhum sinal**, pelo menos detectável pelas técnicas atuais, permanece nas sequências.
+
+É comum referir-se a um grupo de proteínas relacionadas como uma **família**. Muitos bancos de dados classificam proteínas em famílias. Estes incluem bancos orientados por sequência, como #InterPro, #Pfarm e #COG, e bancos orientados por estrutura, como #SCOP e #CATCH. A atribuição de proteínas a famílias é semelhante, mas não idêntica, em diferentes fontes.
+
+A maioria das famílias de proteínas contém muitos agrupamentos de parentes mais próximos. Esses formam subfamílias. Inversamente, duas ou mais famílias podem ser agrupadas em **superfamílias**. Enquanto a distinção entre proteínas homólogas e não homólogas é objetiva (mesmo que nem sempre possamos determiná-la com confiança), o agrupamento de homólogos em subfamílias ou superfamílias é parcialmente uma questão de convenção ou gosto. A definição de subfamílias e superfamílias pode legitimamente diferir entre diferentes bancos de dados.
+
+**Pergunta (Frente):**  
+Qual é a principal função das assinaturas no banco de dados PROSITE?
+**A)** Determinar a estrutura tridimensional exata de uma proteína.  
+**B)** Realizar simulações moleculares em tempo real.  
+**C)** Identificar e classificar proteínas com base em padrões conservados ligados à função.  
+**D)** Produzir proteínas recombinantes em larga escala.  
+**E)** Prever mutações espontâneas em genes codificadores.
+?
+✅ **Resposta correta:** C  
+🔍 **Explicação (Verso):**  
+As assinaturas do PROSITE são padrões conservados de sequência ou estrutura usados para reconhecer famílias ou domínios funcionais, auxiliando na previsão da função de proteínas com base na sequência.
+
+**Pergunta (Frente):**  
+Segundo R. Doolittle, qual nível de identidade entre duas sequências (≥ 100 resíduos) é geralmente considerado indicativo de homologia?
+**A)** Acima de 50%  
+**B)** Acima de 35%  
+**C)** Acima de 25%  
+**D)** Abaixo de 15%  
+**E)** Exatamente 18%
+?
+✅ **Resposta correta:** C  
+🔍 **Explicação (Verso):**  
+Para sequências com pelo menos 100 resíduos, uma identidade de 25% ou mais em um alinhamento ótimo é considerada evidência forte de homologia, segundo a calibração de Doolittle.
+
+**Pergunta (Frente):**  
+Por que a similaridade estrutural pode ser mais confiável que a sequencial na identificação de homologia?
+**A)** Porque estruturas são mais fáceis de serem comparadas do que sequências.  
+**B)** Porque a estrutura de proteínas muda de forma mais conservadora que a sequência.  
+**C)** Porque os dados de estrutura estão sempre mais atualizados.  
+**D)** Porque a estrutura permite prever diretamente a expressão gênica.  
+**E)** Porque proteínas não sofrem mutações estruturais.
+?
+✅ **Resposta correta:** B  
+🔍 **Explicação (Verso):**  
+Como a estrutura de proteínas é mais conservada evolutivamente do que sua sequência de aminoácidos, a similaridade estrutural pode revelar relações evolutivas ocultas em casos de baixa identidade de sequência — como na “zona crepuscular”.
+
+## Bancos de dados de estruturas
+Os bancos de estruturas arquivam, anotam e distribuem conjuntos de **coordenadas atômicas**. Iniciado pelo falecido **Walter Hamilton** no Brookhaven National Laboratories (EUA) em 1971, o principal banco de dados para estruturas de macromoléculas biológicas é agora o **Worldwide Protein Data Bank (wwPDB)**. É um esforço conjunto do **Research Collaboratory for Structural Bioinformatics (RCSB)**, uma organização descentralizada sediada na Rutgers Universite (Nova Jersey), no San Diego Supercomputer Center (Califórnia) e na Universidade de Wisconsin (EUA), do Protein Data Bank Europe (no EBI, Reino Unido) e do Protein Data Bank Japan (na Osaka University, Japão). O wwPDB contém estruturas de proteínas, ácidos nucleicos e alguns carboidratos. 
+
+As páginas iniciais dos parceiros do wwPDB contêm links para os arquivos de dados, material explicativo e tutoriais, incluindo notícias curtas e a **PDB Newsletter** , além de ferramentas especializadas para depósito de novas entradas e software de busca estrutural.
+
+O **Quadro 4.2** mostra parte de uma entrada do Protein Data Bank para uma estrutura da **tiorredoxina do cloroplasto de espinafre** . As informações incluem:
+- qual proteína é o objeto da entrada e de qual espécie ela veio;
+- quem resolveu a estrutura e referências bibliográficas;
+- detalhes experimentais sobre a determinação da estrutura, incluindo informações relacionadas à qualidade geral do resultado, como a **resolução** em determinações por raios X e estatísticas esteroquímicas.
+- a sequência de aminoácidos
+- as coordenadas atômicas (linhas iniciadas com ATOM);
+- quais moléculas adicionais aparecem na estrutura, potencialmente incluindo cofatores, inibidores e moléculas de água (a palavra-chave HETATM identifica as coordenadas dessas entidades);
+- atribuições de estrutura secundária: hélices e folhas beta;
+- pontes dissulfeto.
+
+O #PDB se sobrepõe a vários outros bancos de dados. O **Cambridge Crystallographic Data Centre (CCDC)** arquiva estruturas de moléculas pequenas; #oligonucleotídeos aparecem tanto no CCDC quanto no PDB. A combinação de dados estruturais dessas fontes é extremamente útil em estudos de conformações das unidades componentes de macromoléculas biológicas e em investigações de interações macromolécula-ligante, incluindo, mas não limitado a, aplicações no **design de medicamentos**.
+
+O **Nucleic Acid Structure Databank (NDB)** na Rutgers University também complementa o PDB. O **BioMagResBank**, no Departamento de Bioquímica da Universidade de Wisconsin, um parceiro do RCSB, arquiva estruturas de proteínas determinadas por **ressonância magnética nuclear (NMR)**.
+
+Os arquivos coletam não apenas os resultados da determinação estrutural, mas também as **medicições em que se baseiam.** o wwPDB mantém os dados de determinações por raios X e **BioMagResBank**, os de NMR.
+*A integração entre dados experimentais brutos e estruturas depositadas no wwPDB e BioMagResBank é essencial para a validação rigorosa de modelos estruturais, particularmente em contextos de modelagem preditiva e estudos de dinâmica molecular*.
+
+## Classifications of protein structures
+Vários sites oferecem classificações hierárquicas de todas as proteínas cuja estrutura é conhecida, com base em seus padrões de dobramento (folding).
+- #SCOP: classificação estrutural de proteínas (Structural Classification of Proteins);
+- #CATH: Classe/Arquitetura/Topologia/Homologia
+- #DALI: baseado na extração de estruturas similares a partir de matrizes de distância;
+- #CE: um banco de dados de alinhamentos estruturais.
+
+Esses sites são úteis como **pontos de entradas gerais aos dados estruturais de proteínas**. Por exemplo, o SCOP oferece ferramentas de busca por palavras-chave para identificar estruturas, navegação ascendente e descendente na hierarquia, geração de imagens, acesso aos registros de anotação nas entradas do PDB e links para bancos de dados relacionados.
+
+*A classificação estrutural hierárquica, como a do SCOP e CATH, permite a identificação de relações evolutivas profundas entre proteínas que podem não ter similaridade de sequência, mas compartilham dobras comuns, essencial para a inferência funcional em proteômica estrutural.*
+
