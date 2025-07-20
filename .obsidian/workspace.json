@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "679d896cdd827568",
+        "id": "e3b1d09d67691602",
         "type": "tabs",
         "children": [
           {
-            "id": "a1689b42267b7256",
+            "id": "475d49a062f8c4da",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -224,14 +224,16 @@
       "obsidian-spaced-repetition:Revisar flashcards": false
     }
   },
-  "active": "a1689b42267b7256",
+  "active": "475d49a062f8c4da",
   "lastOpenFiles": [
-    "Building Bioinformatics Solutions/Chapter 2 - Building Biological Databases with SQL/Chapter 2 - Building Biological Databases with SQL.md",
+    "Chapter 4 - Archives and information retrieval-1.png",
+    "Chapter 4 - Archives and information retrieval.png",
+    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
     "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
+    "Building Bioinformatics Solutions/Chapter 2 - Building Biological Databases with SQL/Chapter 2 - Building Biological Databases with SQL.md",
     "Pós Graduação - Unicamp/Regulação da Expressão Gênica_ Fundamentos e Perspectivas Bioinformáticas.pdf",
     "Pós Graduação - Unicamp/prompt.md",
     "Pós Graduação - Unicamp/🧬 Alinhamento múltiplo de sequências.md",
-    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
     "Chapter 2 - Building Biological Databases with SQL-4.png",
     "Chapter 2 - Building Biological Databases with SQL-3.png",
     "Biologia de Campbell/Capítulo 12 - O Ciclo celular/Capítulo 12 - O Ciclo Celular.md",

@@ -771,3 +771,139 @@ O campo *name="remember-me"* é essencial, o Spring Security só reconhecerá a 
 O *userDetailService()* precisa ser sobrescrito para que o serviço remember-me consiga recuperar os dados do usuário e recriar o contexto de autenticação.
 
 ## 6.7 Implementing reCAPTCHA
+#CAPTCHA é um acrônimo para *completely automated public Turing test to tell computers and humans apart* (teste de Turing público e totalmente automatizado para distinguir computadores de humanos). Trata-se de um programa ou aplicativo de computador que diferencia entradas fornecidas por humanos de entradas geradas por máquinas, com o objetivo de impedir o spam automatizado por bots. Os CAPTCHas podem ser apresentados em diversos formatos, desde a simples marcação de uma caixa de seleção até tarefas mais complexas, como clicar emmm determinados tipos de imagens ou inserir um texto específico.
+*O uso de CAPTCHA reflete uma estratégia de segurança essencial em aplicações web modernas, especialmente em frameworks como o Spring Security, onde a autenticação baseada em comportamento humano ajuda a mitigar ataques automatizados, fortalecendo a integridade dos endpoints de registro.*
+
+Embora os CAPTCHAs possam ser irritantes para os usuários, eles desempenham um papel fundamental na proteção da aplicação. Por exemplo, atualmente, bots da internet são amplamente utilizados para enviar spam às aplicações. No caso da nossa aplicação, Course Tracker, esses bots poderiam criar usuários fictícios e exaurir os recursos do sistema, resultando em um ataque de negação de serviço (*denial-of-service ou DoS*). Os #CAPTCHAs ajudam  a prevenir, até certo grau, esse tipo de spam automatizado. 
+*A implementação de CAPTCHA em aplicações Spring Boot pode ser integrada de forma não intrusiva com controladores REST, permitindo que a verificação da resposta do usuário ocorra no backend, sem comprometer a experiência do cliente ou a escalabilidade do sistema.*
+
+Existem diversos provedores de serviços CAPTCHA: o reCAPTCHA, oferecido pelo Google, é uma escolha popular entre os desenvolvedores. O HCAPTCHA é uma alternativa viável.
+
+### 6.7.1 Técnica: Ativando o Google reCAPTCHA em uma aplicação Spring Boot com Spring Security
+O spam automatizado por bots na web é uma preocupação crescente para os proprietários de aplicações, pois pode gerar usuários fictícios e esgotar os recursos do sistema. 
+
+Com esta técnica, implementaremos os serviços do Google reCAPTCHA durante o processo de registro de usuários. Isso garantirá que apenas usuários humanos possam se registrar com sucesso no aplicativo Course Tracker. As etapas para configurar o Google reCAPTCHA estão documentadas em [http://mng.bz/en6V](http://mng.bz/en6V?spm=a2ty_o01.29997173.0.0.663ec921vns6D5) .
+
+Após concluir essa configuração, teremos duas chaves: a chave do site (*site key*) e a chave secreta (*secret key*). Essas chaves serão utilizadas em nossa aplicação Spring Boot. A chave do site será especificada na página HTML, enquanto a chave secreta será usada para validar a resposta do CAPTCHA fornecida pelo usuário.
+*A separação entre chave pública e privada no reCAPTCHA permite uma arquitetura segura e escalável, alinhada com os princípios de segurança do Spring Boot e do Spring Security, onde a chave secreta pode ser gerenciada como um segredo de ambiente em vez de estar hard-coded no código fonte*.
+
+A primeira alteração que precisamos fazer é incluir o link para o CAPTCHA na página de registro:
+```html
+<div class="g-recaptcha mb-2" data-sitekey="<Sua Chave do Site>"></div>
+```
+*Essa implementação demonstra a integração do front-end com o reCAPTCHA, permitindo uma verificação invisível ou visual, dependendo do comportamento do usuário, o que é essencial para manter a usabilidade e a segurança em aplicações web com Angular ou Thymeleaf.*
+
+Precisamos adicionar a seguinte tag de script dentro da seção < head> da página:
+```hyml
+<script src="https://www.google.com/recaptcha/api.js "></script>
+```
+
+Os dois trechos de código acima ativa a opção do Google reCAPTCHA na página de registro. Agora, vamos definir um serviço de verificação do reCAPTCHA que valida a resposta do usuário, como mostrado na próxima listagem.
+
+*A chave secreta é definida no arquivo application.properties com a chave captcha.secret.key. As chaves são armazenadas no application.properties apenas para fins de demonstração*.
+
+```java
+package com.manning.sbip.ch06.service.impl;
+// imports
+@Service
+public class GoogleRecaptchaService {
+    private static final String VERIFY_URL = 
+        "https://www.google.com/recaptcha/api/siteverify " +
+        "?secret={secret}&remoteip={remoteip}&response={response}";
+
+    private final RestTemplate restTemplate;
+
+    @Value("${captcha.secret.key}")
+    private String secretKey;
+
+    public GoogleRecaptchaService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public RecaptchaDto verify(String ip, String recaptchaResponse) {
+        Map<String, String> request = new HashMap<>();
+        request.put("remoteip", ip);
+        request.put("secret", secretKey);
+        request.put("response", recaptchaResponse);
+
+        ResponseEntity<Map> response = 
+            restTemplate.getForEntity(VERIFY_URL, Map.class, request);
+
+        Map<String, Object> body = response.getBody();
+        boolean success = (Boolean) body.get("success");
+
+        RecaptchaDto recaptchaDto = new RecaptchaDto();
+        recaptchaDto.setSuccess(success);
+
+        if (!success) {
+            recaptchaDto.setErrors((List) body.get("error-codes"));
+        }
+
+        return recaptchaDto;
+    }
+}
+```
+
+O código da listagem acima valida a resposta do CAPTCHA fornecida pelo usuário com o serviço de verificação do Google reCAPTCHA hospedado... fornecemos a nossa chave secreta, o endereço IP do servidor (localhost, neste exemplo) e a resposta do CAPTCHA. A chave secreta foi adicionada ao arquivo **application.properties** com o nome da chave **captacha.secret.key**. Se esses dados estiverem corretos, receberemos uma resposta bem-sucedida. Em caso de falha, receberemos uma lista de códigos de erro. Por exemplo, para uma resposta incorreta, o código de erro será **invalid-input-response**.
+
+ _A utilização do `RestTemplate` para integração com a API do reCAPTCHA reflete uma abordagem síncrona eficiente e segura, comum em aplicações Spring Boot, permitindo a validação em tempo real com baixa latência e alta disponibilidade._
+
+Também foi adicionada uma configuração do **RestTamplate** para invocar o serviço do Google reCAPTCHA, como mostrado na listagem a seguir.
+```java
+@configuration
+public class CommonConfiguratin {
+	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
+		return restTemplateBuilder.build();
+	}
+}
+```
+
+A próxima listagem mostra a classe **RecaptchaDto**, que captura a resposta da validação do CAPTCHA.
+```java
+public class RecaptchaDto {
+	private boolean success;
+	private List<String> erros;
+	// Getters e Setters
+}
+```
+
+O atributo **success** indica se a resposta do usuário foi correta. A lista **errors** armazena os erros, caso ocorra uma falha na validação da resposta do CAPTCHA fornecida pelo usuário.
+*A classe RecaptchaDto exemplifica o uso de objetos de transferência de dados (DTOs), prática comum em aplicações Java para encapsular e transportar dados entre camadas, promovendo desacoplamento e clareza na arquitetura.*
+
+Na classe **RegistrationController**, precisamos validar se a resposta do usuário ao CAPTCHA é válida. Para uma resposta válida, o processo de cadastro do usuário é continuado. Caso contrário, uma mensagem de erro é exibida na página de registro. A próxima listagem mostra o endpoint **adduser** atualizado.
+
+```java
+@PostMapping("/adduser")
+public String register(
+        @Valid @ModelAttribute("user") UserDto userDto,
+        HttpServletRequest httpServletRequest,
+        BindingResult result) {
+
+    if (result.hasErrors()) {
+        return "add-user";
+    }
+
+    String response = httpServletRequest.getParameter("g-recaptcha-response");
+    if (response == null) {
+        return "add-user";
+    }
+
+    String ip = httpServletRequest.getRemoteAddr();
+    RecaptchaDto recaptchaDto = captchaService.verify(ip, response);
+
+    if (!recaptchaDto.isSuccess()) {
+        return "redirect:adduser?incorrectCAPTCHA";
+    }
+
+    ApplicationUser applicationUser = userService.createUser(userDto);
+
+    if ("Y".equalsIgnoreCase(emailVerification)) {
+        eventPublisher.publishEvent(new UserRegistrationEvent(applicationUser));
+        return "redirect:adduser?validate";
+    }
+
+    return "redirect:adduser?success";
+}
+```
+Se o usuário tiver fornecido uma resposta na caixa de seleção do CAPTCHA, usamos o serviço CAPTCHA para validar com o Google se a resposta está correta. Para uma resposta incorreta, o usuário é redirecionado para a página de erro do CAPTCHA.

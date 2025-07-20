@@ -83,3 +83,187 @@ O arquivamento de dados em bioinformática foi originalmente realizado por grupo
 - Redes: de vias metabólicas, de interações entre genes e proteínas, e de cascata de controle
 - Publicações
 
+## Nucleic acid sequence databases
+O arquivo mundial de sequências de ácidos nucleicos é uma parceria tríplice entre o NCBI (EUA), o European Nucleotide Archive (ou ENA; no EBI, Reino Unido) e o DNA Data Bank of Japan (Instituto Nacional de Genético, Japão). Esses projetos curam, arquivam e distribuem sequências de DNA e RNA coletadas a partir de projetos genômicos, publicações científicas e solicitações de patentes. Os grupos trocam dados diariamente. <span style="background:#b1ffff">Como resultado, os dados brutos são idênticos</span>. No entanto, o formato em que são apresentados e a natureza da anotação variam entre esses bancos de dados. <span style="background:#affad1">Para garantir que esses dados fundamentais estejam livremente disponíveis</span>, as revistas científicas <span style="background:#ff4d4f">exigem o depósito de novas sequências de nucleotídeos</span> como condição para a publicação de um artigo. Condições semelhantes aplicam-se às estruturas de ácidos nucleicos e proteínas.
+*A padronização e troca global de dados genômicos entre NCBI, ENA e DDBJ são os pilares da infraestrutura de dados em bioinformática, permitindo análises comparativas e estudos de variação genética em escala planetária, essenciais para epidemiologia molecular e saúde pública.*
+
+Os bancos de dados de sequências de ácidos nucleicos, como distribuídos, são coleções de entradas. Cada entrada tem o formato de um arquivo de texto contendo dados e anotações para uma única sequência contígua. Algumas entradas são montadas a partir de vários artigos que relatam fragmentos sobrepostos de uma sequência completa. Atualmente, é mais comum o depósitos dos resultados de (a) sequenciamento e montagem de genomas completos e (b) sequências de fragmentos, sem montagem, provenientes de amostras metagenômicas.
+
+As entradas possuem uma história de vida. Devido ao desejo da comunidade de usuários por acesso rápido aos dados, novas entradas são disponibilizadas antes da conclusão da anotação e verificação. As entradas amadurecem através das seguintes categorias:
+Não anotada -> preliminar -> Não Revisada -> Padrão
+*A categorização do ciclo de vida das entradas em bancos de dados genômicos reflete a dinâmica entre a necessidade de disponibilidade imediata de dados e a precisão científica, especialmente relevante em contextos de resposta rápida a surtos epidêmicos ou estudos de genômica ambiental.*
+
+Raramente, uma entrada "morre": algumas poucas são removidas quando se determina que contêm erros.
+
+Uma entrada de exemplo de sequência de DNA do European Nucleotide Archive, incluindo anotações além dos dados da sequência, é o gene **ATP7A** do **aardvark**. Ele codifica uma proteína envolvida na regulação dos níveis de cobre. Mutações no homólogo humano estão associadas à síndrome de Menkes, um distúrbio neurodegenerativo progressivo do metabolismo do cobre.
+
+Uma **tabela de características** (linhas iniciadas com FT) é um componente da anotação de uma entrada que relata propriedades de regiões específicas, por exemplo, sequências codificantes (CDS). O gene **ATP7A** do aardvark contém apenas um único éxon. Como as tabelas de características são projetadas para serem lidas por programas computacionais, por exemplo, para extrair a sequência de aminoácidos, elas têm um formato mais cuidadosamente controlados e um vocabulário mais restrito.
+*A padronização das tabelas de características permite a automação na extração e análise funcional de genes, essencial para pipelines de anotação genômica em larga escala e para a integração com bases de dados funcionais, como a Gene Ontology (GO).*
+
+A tabela de características <span style="background:#d3f8b6">pode indicar regiões</span> que:
+- desempenham ou afetam a função;
+- interagem com outras moléculas;
+- afetam a replicação;
+- estão envolvidas na recombinação;
+- são unidades repetidas;
+- possuem estrutura secundária ou terciária;
+- foram revisadas ou corrigidas.
+
+```json
+ID   AAG47427; SV 1; linear; DNA genômico; STD; MAM; 675 pb.
+XX
+PA   AY011392.1
+XX
+DE   Orycteropus afer (aardvark) ATP7A
+XX
+OS   Orycteropus afer (aardvark)
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Afrotheria; Tubulidentata; Orycteropodidae; Orycteropus.
+OX   NCBI_TaxID=9818;
+XX
+FH   Key Location/Qualifiers FH
+FT   source          1..675
+FT                   /organism="Orycteropus afer"
+FT                   /mol_type="DNA genômico"
+FT   CDS             AY011392.1:\<1..>675
+FT                   /codon_start=1
+FT                   /gene="ATP7A"
+FT                   /product="ATP7A"
+FT                   /db_xref="GOA:Q9BFP6"
+FT                   /db_xref="HSSP:Q04656"
+FT                   /db_xref="InterPro:IPR001757"
+FT                   /db_xref="InterPro:IPR006121"
+FT                   /db_xref="UniProtKB/TrEMBL:Q9BFP6"
+FT                   /protein_id="AAG47427.1"
+FT                   /translation="IYQPHLITVEEIKKQIEAVGFPAFIKKQPKYLTLGAIDIERLKN
+FT                   TSARSSEGSLQKSPSYTNDSTATFIIDGMHCKSCVSNIESALSTLQYVSSIAISLENRS
+FT                   AIVKYNASSVTPETLRKAIEAVSPGQYTVSIISDVESIPNSPFSSSHQKIPLNIVSQPL
+FT                   TQETVINISGMTCNSCVQSIEGVISKKAGVKSVQVSLADSSGVVEYDPLLTSPETLREE
+FT                   IEN"
+SQ   Sequence 675 BP; 233 A; 136 C; 124 G; 182 T; 0 other; 264016655 CRC32;
+     attgtttatc agcctcatct tatcacagta gaggaaataa aaaagcagat tgaagctgtg 60
+     ggttttccag cattcatcaa aaaacagccc aagtacctta cattgggagc tattgacata 120
+     gaacgtctaa agaacacatc tgccagatcc tcagaaggat cactgcaaaa gagtccatca 180
+     tataccaatg attcaacagc cacttttatc atagatggca tgcattgtaa atcatgtgtg 240
+     tcaaatattg aaagtgcttt atctacactc caatatgtaa gcagcatagc aatttcttta 300
+     gagaataggt ctgccattgt aaaatataat gcaagctcag tcactccaga aaccctgaga 360
+     aaggcaatag aggcagtatc accagggcaa tatactgtta gtattataag tgatgttgag 420
+     agtatcccaa actctccttt tagctcatct catcaaaaaa tccctttgaa catagtgagc 480
+     cagcctctga ctcaagaaac tgtaataaac atcagtggca tgacttgtaa ttcttgtgta 540
+     cagtctattg agggtgtcat atcaaaaaag gcaggtgtaa aatccgtaca agtctccctt 600
+     gcagatagca gtggagttgt tgaatatgat cctctactaa cctctccaga aaccttgaga 660
+     gaagaaatag aaaac 675
+     //
+```
+*A riqueza de metadados e links cruzados em entradas de bancos genômicos, como db_xref e protein_id, permite a integração multidimensional de dados genéticos, estruturais e funcionais, essencial para estudos de genômica translacional e descoberta de alvos terapêuticos.*
+
+- have secondary or tertiary structure;
+- are revised or corrected.
+
+**Pergunta:**
+Qual das alternativas descreve corretamente a principal característica da cooperação entre NCBI, ENA e DDBJ?
+**A)** Cada banco armazena apenas os dados gerados em seu país de origem.
+**B)** Eles compartilham os dados semanalmente, com formatos e anotações totalmente idênticos.
+**C)** Trocam dados diariamente, resultando em dados brutos idênticos, mas com formatos e anotações que podem variar.
+**D)** Cada banco trabalha de forma isolada para evitar conflitos de anotação.
+**E)** Os dados não são disponibilizados ao público para evitar duplicação de pesquisas.
+?
+✅ **Resposta correta:** C
+🔍 **Explicação (Verso):**
+NCBI (EUA), ENA (Europa) e DDBJ (Japão) trocam os dados diariamente, garantindo que o conteúdo das sequências brutas seja idêntico. No entanto, o modo como as informações são anotadas e apresentadas pode variar entre os três.
+<!--SR:!2025-07-24,4,270-->
+
+**Pergunta (Frente):**
+Qual é a sequência correta de maturação de uma entrada em bancos de dados de ácidos nucleicos?
+**A)** Rascunho → Anotado → Padrão → Arquivado
+**B)** Prévia → Verificada → Publicada → Final
+**C)** Submetida → Revisada → Valida → Completa
+**D)** Não anotada → Anotações Preliminares → Não revisada → Padrão
+**E)** Provisória → Curada → Consolidada → Validação final
+?
+✅ **Resposta correta:** D
+🔍 **Explicação (Verso):**
+As entradas genômicas passam por um ciclo de amadurecimento. Primeiro são disponibilizadas sem anotação, depois recebem anotações preliminares, passam por revisões e, por fim, tornam-se padrão quando consideradas completas e confiáveis.
+<!--SR:!2025-07-23,3,252-->
+
+**Pergunta (Frente):**
+Qual é a principal finalidade das tabelas de características (linhas FT) em entradas genômicas?
+**A)** Armazenar os dados de sequências cruas, sem anotações.
+**B)** Indicar o número de genes presentes em cada cromossomo.
+**C)** Fornecer informações de expressão gênica em tecidos específicos.
+**D)** Relatar propriedades de regiões específicas da sequência, com vocabulário controlado para uso computacional.
+**E)** Descrever as doenças associadas à mutação dos genes presentes na sequência.
+?
+✅ **Resposta correta:** D
+🔍 **Explicação (Verso):**
+As linhas FT detalham características como regiões codificantes, estruturas secundárias e locais de interação molecular. São escritas de forma padronizada para permitir interpretação automatizada por programas de bioinformática.
+![[Chapter 4 - Archives and information retrieval.png]]
+<!--SR:!2025-07-21,1,232-->
+
+
+## Genomes databases and genomes browsers
+Os bancos de dados gerais de ácidos nucleicos focam na coleta de sequências individuais. Associados a muitas sequências completas de genomas, existem navegadores genômicos (*genome browsers*), que reúnem todas as informações moleculares disponíveis sobre uma determinada espécie. 
+
+#Ensembl 
+O Ensembl tem como objetivo ser a fonte universal de informações para o genoma humano e de outras espécies. Um dos objetivos é coletar e anotar todas as informações disponíveis sobre sequências de DNA humano, vinculá-las à sequência mestre do genoma e disponibilizá-las para os muitos cientistas que abordarão esses dados sob diferentes perspectivas e com diferentes necessidades. Para isso, além de coletar e organizar as informações, um esforço computacional substancial foi dedicado ao desenvolvimento da infraestrutura, incluindo a definição de convenções de nomenclatura adequadas. Não é trivial criar um esquema que mantenha identificadores estáveis diante de dados que estarão em constante crescimento e revisão. O resultado mais visível desses esforços é o site, rico em funcionalidades tanto para navegação geral quanto para análise detalhada.
+*A manutenção de identificadores estáveis em meio a atualizações frequentes do genoma é um desafio crítico para a reprodutibilidade em estudos genômicos, especialmente em contextos clínicos, onde variações podem impactar diagnósticos e terapias baseadas em sequências específicas.*
+
+O Ensembl é um projeto conjunto do **EBI** e do **Wellcome Trust Sanger Institute** . No entanto, o Ensembl é organizado como um projeto aberto, incentivando contribuições externas. Qualquer leitor minimamente experiente reconhecerá que isso impõe grandes exigências sobre os procedimentos de controle de qualidade.
+
+Os dados coletados no Ensembl incluem genes, SNPs, regiões repetidas e homologias. Os genes podem ser conhecidos experimentalmente ou deduzidos a partir da sequência. Como o suporte experimental para a anotação do genoma humano é muito variável, o Ensembl registra e apresenta as evidências para a identificação e anotação de cada gene. Links extensivos com outros bancos de dados que contêm informações relacionadas, como **Online Mendelian Inheritance in Man (OMIM)** ou bases de dados de expressão, ampliam a quantidade de informações acessíveis.
+*A integração entre anotação automatizada e evidências experimentais é essencial para a precisão na interpretação genômica, especialmente em variantes raras ou em regiões não codificantes, onde a incerteza é maior.*
+
+O Ensembl e outros navegadores genômicos são estruturados em torno das próprias sequências. Para focar em uma região desejada, os usuário dispõem de várias formas de acesso seletivo ao sistema:
+- navegação, começando no nível do cromossomo e depois aumentando o zoom;
+- buscas BLAST em uma sequência ou fragmento;
+- nome do gene;
+- relação com doenças, via OMIM;
+- ID do Ensembl, se o usuário o conhecer;
+- busca textual geral.
+
+Uma busca textual no navegador do genoma humano do Ensembl pelo termo BRCA1 produziu a página exibida na Figura IV, mostrando a região em torno do locus BRCA1. O quadro superior mostra um megabase, mapeado às bandas q21.2 e q21.31 do cromossomo 17. Ele relata marcadores e genes atribuídos. O quadro inferior mostra uma visão mais detalhada. Observe os painéis de controle entre os dois quadros, que permitem navegação e “zoom”. O quadro inferior mostra uma região de 0,1 megabase, com muitos mais detalhes, incluindo a estrutura detalhada do gene BRCA1 e os SNPs observados.
+
+**Pergunta (Frente):**  
+Qual é a principal função dos navegadores genômicos como o Ensembl?
+**A)** Calcular automaticamente a expressão gênica em tempo real.  
+**B)** Anotar exclusivamente genes codificantes com suporte experimental.  
+**C)** Agregar, organizar e disponibilizar informações moleculares completas de uma espécie em torno de sua sequência genômica.  
+**D)** Substituir bancos de dados de ácidos nucleicos como o NCBI e ENA.  
+**E)** Gerar novas sequências genéticas usando simulações computacionais.
+?
+✅ **Resposta correta:** C  
+🔍 **Explicação (Verso):**  
+Navegadores genômicos como o Ensembl organizam dados moleculares (genes, SNPs, regiões repetidas, etc.) ao redor das sequências genômicas completas, facilitando visualizações e análises detalhadas por diversos pesquisadores.
+![[Chapter 4 - Archives and information retrieval-1.png]]
+
+**Pergunta (Frente):**  
+Qual é um dos principais desafios técnicos enfrentados pelo Ensembl em relação aos dados genômicos?
+**A)** Automatizar a transcrição de RNA em proteínas.  
+**B)** Padronizar enzimas de restrição para todas as espécies.  
+**C)** Manter identificadores estáveis mesmo com atualizações frequentes do genoma.  
+**D)** Traduzir sequências diretamente para estruturas tridimensionais.  
+**E)** Controlar a duplicação de genes por meio de edição genética.
+?
+✅ **Resposta correta:** C  
+🔍 **Explicação (Verso):**  
+Como os dados genômicos estão sempre sendo revisados e expandidos, é um desafio técnico manter identificadores consistentes, algo crucial para garantir a reprodutibilidade e confiança em análises, especialmente clínicas.
+
+**Pergunta (Frente):**  
+Qual das opções **não** representa um método de acesso às regiões genômicas no Ensembl?
+**A)** Navegação por cromossomos com zoom progressivo  
+**B)** Busca por nome do gene  
+**C)** Busca textual geral  
+**D)** Busca por RNA mensageiro traduzido  
+**E)** Busca por ID do Ensembl
+?
+✅ **Resposta correta:** D  
+🔍 **Explicação (Verso):**  
+O Ensembl permite diversas formas de acesso às regiões genômicas, mas não é projetado especificamente para buscas diretas por RNAs traduzidos. As buscas comuns envolvem cromossomos, nomes de genes, IDs e relações com doenças.
+
+## Protein Sequence databases
+Em 2002, três bancos de dados de sequências de proteínas, o Protein Information Resource (PIR), sediado na **National Biomedical Research Foundation** do **Georgetown University Medical Center** em Washington, DC, EUA; o **SWISS-PROT** e o **TrEMBL**, desenvolvidos pelo **Swiss Institute of Bioinformatics** em Genebra, Suíça, e pelo **EBI** em Hinxton, Reino Unido, uniram seus esforços para formar o **consórcio UniProtKB**. Os parceiros compartilham o banco de dados, mas continuam oferecendo ferramentas independentes de recuperação de informações.
+
+O #PIR surgiu a partir do primeiro banco de dados de sequências, desenvolvido por **Margaret O. Dayhoff**, pioneira no campo da bioinformática. O **SWISS-PROT** foi desenvolvido pelo **Swiss Institue of Bioinformatics**. O TrEMBL contém as traduções dos genes identificados dentro das sequências de DNA do European Nucleotide Archive. As entradas do TrEMBL são consideradas preliminares e são convertidas, após curadoria e anotação estendida, em entradas maduras.
+*A convergência de PIR, SWISS-PROT e TrEMBL no UniProtKB reflete a necessidade de integração entre anotação automatizada e curadoria manual para lidar com a complexidade da biologia de proteínas, especialmente em organismos eucarióticos, onde modificações pós-traducionais e processamento do RNA desempenham papéis críticos.*
+
+Hoje, quase toda a informação sobre sequências de aminoácidos provém da tradução de sequências gênicas. No entanto, mesmo a sequência de aminoácidos de uma proteína, em geral, não pode ser inferida com certeza a partir da sequência do gene. 
