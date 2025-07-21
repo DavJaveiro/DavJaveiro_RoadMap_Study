@@ -198,7 +198,7 @@ Qual é a principal finalidade das tabelas de características (linhas FT) em en
 🔍 **Explicação (Verso):**
 As linhas FT detalham características como regiões codificantes, estruturas secundárias e locais de interação molecular. São escritas de forma padronizada para permitir interpretação automatizada por programas de bioinformática.
 ![[Chapter 4 - Archives and information retrieval.png]]
-<!--SR:!2025-07-21,1,232-->
+<!--SR:!2025-07-24,3,252-->
 
 
 ## Genomes databases and genomes browsers
@@ -223,42 +223,45 @@ O Ensembl e outros navegadores genômicos são estruturados em torno das própri
 
 Uma busca textual no navegador do genoma humano do Ensembl pelo termo BRCA1 produziu a página exibida na Figura IV, mostrando a região em torno do locus BRCA1. O quadro superior mostra um megabase, mapeado às bandas q21.2 e q21.31 do cromossomo 17. Ele relata marcadores e genes atribuídos. O quadro inferior mostra uma visão mais detalhada. Observe os painéis de controle entre os dois quadros, que permitem navegação e “zoom”. O quadro inferior mostra uma região de 0,1 megabase, com muitos mais detalhes, incluindo a estrutura detalhada do gene BRCA1 e os SNPs observados.
 
-**Pergunta (Frente):**  
+**Pergunta (Frente):**
 Qual é a principal função dos navegadores genômicos como o Ensembl?
-**A)** Calcular automaticamente a expressão gênica em tempo real.  
-**B)** Anotar exclusivamente genes codificantes com suporte experimental.  
-**C)** Agregar, organizar e disponibilizar informações moleculares completas de uma espécie em torno de sua sequência genômica.  
-**D)** Substituir bancos de dados de ácidos nucleicos como o NCBI e ENA.  
+**A)** Calcular automaticamente a expressão gênica em tempo real.
+**B)** Anotar exclusivamente genes codificantes com suporte experimental.
+**C)** Agregar, organizar e disponibilizar informações moleculares completas de uma espécie em torno de sua sequência genômica.
+**D)** Substituir bancos de dados de ácidos nucleicos como o NCBI e ENA.
 **E)** Gerar novas sequências genéticas usando simulações computacionais.
 ?
-✅ **Resposta correta:** C  
-🔍 **Explicação (Verso):**  
+✅ **Resposta correta:** C
+🔍 **Explicação (Verso):**
 Navegadores genômicos como o Ensembl organizam dados moleculares (genes, SNPs, regiões repetidas, etc.) ao redor das sequências genômicas completas, facilitando visualizações e análises detalhadas por diversos pesquisadores.
 ![[Chapter 4 - Archives and information retrieval-1.png]]
+<!--SR:!2025-07-24,3,250-->
 
-**Pergunta (Frente):**  
+**Pergunta (Frente):**
 Qual é um dos principais desafios técnicos enfrentados pelo Ensembl em relação aos dados genômicos?
-**A)** Automatizar a transcrição de RNA em proteínas.  
-**B)** Padronizar enzimas de restrição para todas as espécies.  
-**C)** Manter identificadores estáveis mesmo com atualizações frequentes do genoma.  
-**D)** Traduzir sequências diretamente para estruturas tridimensionais.  
+**A)** Automatizar a transcrição de RNA em proteínas.
+**B)** Padronizar enzimas de restrição para todas as espécies.
+**C)** Manter identificadores estáveis mesmo com atualizações frequentes do genoma.
+**D)** Traduzir sequências diretamente para estruturas tridimensionais.
 **E)** Controlar a duplicação de genes por meio de edição genética.
 ?
-✅ **Resposta correta:** C  
-🔍 **Explicação (Verso):**  
+✅ **Resposta correta:** C
+🔍 **Explicação (Verso):**
 Como os dados genômicos estão sempre sendo revisados e expandidos, é um desafio técnico manter identificadores consistentes, algo crucial para garantir a reprodutibilidade e confiança em análises, especialmente clínicas.
+<!--SR:!2025-07-24,3,250-->
 
-**Pergunta (Frente):**  
+**Pergunta (Frente):**
 Qual das opções **não** representa um método de acesso às regiões genômicas no Ensembl?
-**A)** Navegação por cromossomos com zoom progressivo  
-**B)** Busca por nome do gene  
-**C)** Busca textual geral  
-**D)** Busca por RNA mensageiro traduzido  
+**A)** Navegação por cromossomos com zoom progressivo
+**B)** Busca por nome do gene
+**C)** Busca textual geral
+**D)** Busca por RNA mensageiro traduzido
 **E)** Busca por ID do Ensembl
 ?
-✅ **Resposta correta:** D  
-🔍 **Explicação (Verso):**  
+✅ **Resposta correta:** D
+🔍 **Explicação (Verso):**
 O Ensembl permite diversas formas de acesso às regiões genômicas, mas não é projetado especificamente para buscas diretas por RNAs traduzidos. As buscas comuns envolvem cromossomos, nomes de genes, IDs e relações com doenças.
+<!--SR:!2025-07-24,3,250-->
 
 ## Protein Sequence databases
 Em 2002, três bancos de dados de sequências de proteínas, o Protein Information Resource (PIR), sediado na **National Biomedical Research Foundation** do **Georgetown University Medical Center** em Washington, DC, EUA; o **SWISS-PROT** e o **TrEMBL**, desenvolvidos pelo **Swiss Institute of Bioinformatics** em Genebra, Suíça, e pelo **EBI** em Hinxton, Reino Unido, uniram seus esforços para formar o **consórcio UniProtKB**. Os parceiros compartilham o banco de dados, mas continuam oferecendo ferramentas independentes de recuperação de informações.
@@ -305,41 +308,44 @@ R. Doolittle propôs uma calibração geral da similaridade de sequências para 
 
 A maioria das famílias de proteínas contém muitos agrupamentos de parentes mais próximos. Esses formam subfamílias. Inversamente, duas ou mais famílias podem ser agrupadas em **superfamílias**. Enquanto a distinção entre proteínas homólogas e não homólogas é objetiva (mesmo que nem sempre possamos determiná-la com confiança), o agrupamento de homólogos em subfamílias ou superfamílias é parcialmente uma questão de convenção ou gosto. A definição de subfamílias e superfamílias pode legitimamente diferir entre diferentes bancos de dados.
 
-**Pergunta (Frente):**  
+**Pergunta (Frente):**
 Qual é a principal função das assinaturas no banco de dados PROSITE?
-**A)** Determinar a estrutura tridimensional exata de uma proteína.  
-**B)** Realizar simulações moleculares em tempo real.  
-**C)** Identificar e classificar proteínas com base em padrões conservados ligados à função.  
-**D)** Produzir proteínas recombinantes em larga escala.  
+**A)** Determinar a estrutura tridimensional exata de uma proteína.
+**B)** Realizar simulações moleculares em tempo real.
+**C)** Identificar e classificar proteínas com base em padrões conservados ligados à função.
+**D)** Produzir proteínas recombinantes em larga escala.
 **E)** Prever mutações espontâneas em genes codificadores.
 ?
-✅ **Resposta correta:** C  
-🔍 **Explicação (Verso):**  
+✅ **Resposta correta:** C
+🔍 **Explicação (Verso):**
 As assinaturas do PROSITE são padrões conservados de sequência ou estrutura usados para reconhecer famílias ou domínios funcionais, auxiliando na previsão da função de proteínas com base na sequência.
+<!--SR:!2025-07-24,3,250-->
 
-**Pergunta (Frente):**  
+**Pergunta (Frente):**
 Segundo R. Doolittle, qual nível de identidade entre duas sequências (≥ 100 resíduos) é geralmente considerado indicativo de homologia?
-**A)** Acima de 50%  
-**B)** Acima de 35%  
-**C)** Acima de 25%  
-**D)** Abaixo de 15%  
+**A)** Acima de 50%
+**B)** Acima de 35%
+**C)** Acima de 25%
+**D)** Abaixo de 15%
 **E)** Exatamente 18%
 ?
-✅ **Resposta correta:** C  
-🔍 **Explicação (Verso):**  
+✅ **Resposta correta:** C
+🔍 **Explicação (Verso):**
 Para sequências com pelo menos 100 resíduos, uma identidade de 25% ou mais em um alinhamento ótimo é considerada evidência forte de homologia, segundo a calibração de Doolittle.
+<!--SR:!2025-07-24,3,250-->
 
-**Pergunta (Frente):**  
+**Pergunta (Frente):**
 Por que a similaridade estrutural pode ser mais confiável que a sequencial na identificação de homologia?
-**A)** Porque estruturas são mais fáceis de serem comparadas do que sequências.  
-**B)** Porque a estrutura de proteínas muda de forma mais conservadora que a sequência.  
-**C)** Porque os dados de estrutura estão sempre mais atualizados.  
-**D)** Porque a estrutura permite prever diretamente a expressão gênica.  
+**A)** Porque estruturas são mais fáceis de serem comparadas do que sequências.
+**B)** Porque a estrutura de proteínas muda de forma mais conservadora que a sequência.
+**C)** Porque os dados de estrutura estão sempre mais atualizados.
+**D)** Porque a estrutura permite prever diretamente a expressão gênica.
 **E)** Porque proteínas não sofrem mutações estruturais.
 ?
-✅ **Resposta correta:** B  
-🔍 **Explicação (Verso):**  
+✅ **Resposta correta:** B
+🔍 **Explicação (Verso):**
 Como a estrutura de proteínas é mais conservada evolutivamente do que sua sequência de aminoácidos, a similaridade estrutural pode revelar relações evolutivas ocultas em casos de baixa identidade de sequência — como na “zona crepuscular”.
+<!--SR:!2025-07-24,3,250-->
 
 ## Bancos de dados de estruturas
 Os bancos de estruturas arquivam, anotam e distribuem conjuntos de **coordenadas atômicas**. Iniciado pelo falecido **Walter Hamilton** no Brookhaven National Laboratories (EUA) em 1971, o principal banco de dados para estruturas de macromoléculas biológicas é agora o **Worldwide Protein Data Bank (wwPDB)**. É um esforço conjunto do **Research Collaboratory for Structural Bioinformatics (RCSB)**, uma organização descentralizada sediada na Rutgers Universite (Nova Jersey), no San Diego Supercomputer Center (Califórnia) e na Universidade de Wisconsin (EUA), do Protein Data Bank Europe (no EBI, Reino Unido) e do Protein Data Bank Japan (na Osaka University, Japão). O wwPDB contém estruturas de proteínas, ácidos nucleicos e alguns carboidratos. 
@@ -373,4 +379,106 @@ Vários sites oferecem classificações hierárquicas de todas as proteínas cuj
 Esses sites são úteis como **pontos de entradas gerais aos dados estruturais de proteínas**. Por exemplo, o SCOP oferece ferramentas de busca por palavras-chave para identificar estruturas, navegação ascendente e descendente na hierarquia, geração de imagens, acesso aos registros de anotação nas entradas do PDB e links para bancos de dados relacionados.
 
 *A classificação estrutural hierárquica, como a do SCOP e CATH, permite a identificação de relações evolutivas profundas entre proteínas que podem não ter similaridade de sequência, mas compartilham dobras comuns, essencial para a inferência funcional em proteômica estrutural.*
+
+## Precisão e exatidão na determinação da estrutura proteica
+*Cristalografia de Raios X*
+A crystalografia de raios X produz estimativas das posições dos átomos em uma molécula. Ela também fornece estimativas de seus tamanhos efetivos, chamados de **fatores B**. Um aspecto importante dos dados experimentais (geralmente medidos são os valores absolutos dos coeficientes de Fourier da densidade eletrônica) é que todos os átomos contribuem para todas as observações. É difícil estimar erros nas posições individuais dos átomos. Para moléculas pequenas, que formam cristais bem ordenados, os fatores B refletem as amplitudes de vibração térmica. Para estruturas cristalinas de proteínas, os fatores B são um índice útil da precisão das posições dos átomos individuais. No entanto, os fatores B para proteínas não reportam exclusivamente as amplitudes de vibração, mas incluem contribuições da variabilidade conformacional. (Um colega que leu essa página em rascunho comentou sombriamente que, para muitas determinações de estrutura proteica, os fatores B "ocultam muitos pecados"). De fato, as determinações de estrutura cristalina estão à mercê do grau de ordem em diferentes partes da molécula. (Ordem refere-se ao quanto diferentes células unitárias do cristal são cópias exatas e estáticas uma da outra). O grau de ordem governa a resolução disponível dos dados experimentais.
+*A interpretação dos fatores B em cristais de proteínas é complexa, pois eles incorporam tanto informações sobre a mobilidade térmica quanto sobre a variabilidade conformacional, tornando-os indicadores importantes, mas ambíguos, da qualidade da determinação.*
+
+A resolução é um índice da qualidade potencial de uma determinação por raios X, medindo a razão entre o número de parâmetros a serem determinados e o número de observações. Em determinações de estruturas de pequenas moléculas orgânicas ou minerais, essa razão geralmente é generosa, aproximadamente 10. Mas para um cristal típico de proteína:
+- A resolução mede a finura dos detalhes que podem ser distinguidos; portanto quanto menor o número, maior a resolução.
+
+Além da desordem, os erros nas estruturas cristalinas refletem tanto erros na medição dos dados quanto no processo de solução de estrutura. Uma comparação de quatro estruturas independentemente resolvidas do interleucina-1β mostrou uma variação média na posição dos átomos de 0,84Å, superior ao erro experimental esperado. Muitos cristalografistas depositam seus dados experimentais juntamente com as estruturas resolvidas. Isso permite verificações detalhadas dos resultados. No entanto, em muitos casos, os dados experimentais não estão disponíveis. Como então avaliar a qualidade de uma estrutura? Os fatores B fornecem pistas importantes; altos fatores B em uma região inteira sugerem que aquela região não foi bem determinada. Isso geralmente reflete uma ordem imperfeita no cristal. Programas podem sinalizar outliers estereoquímicos: exceções às regularidades comuns em estruturas proteicas bem determinadas. As entradas correspondentes às entradas do PDB descrevem análises diagnósticas e identificação de problemas e outliers.
+
+_Insight científico: A disponibilidade dos fatores B e dos outliers estereoquímicos é essencial para a avaliação crítica de estruturas proteicas, mas decisões definitivas sobre sua qualidade exigem acesso aos dados experimentais brutos, reforçando a necessidade de arquivamento e disponibilização desses dados._
+
+No entanto, embora os outliers sejam relativamente fáceis de detectar, é difícil decidir se eles representam características corretas, mas incomuns, da estrutura, ou se resultam de erros no modelo construído, ou ainda se são consequências inevitáveis da desordem no cristal. Uma avaliação adequada requer acesso aos dados experimentais; e corrigir erros reais pode exigir a atenção de um cristalografista experiente. Parece inescapável concluir que os fatores de estrutura devem ser arquivados e acessíveis.
+
+**Frente (Pergunta):**  
+**Qual das alternativas descreve corretamente o papel dos fatores B em estruturas proteicas obtidas por cristalografia de raios X?**
+A) Representam exclusivamente os erros instrumentais durante a coleta dos dados.  
+B) Medem apenas a mobilidade térmica dos átomos na estrutura.  
+C) Indicam a variabilidade conformacional e mobilidade térmica, sendo úteis mas ambíguos.  
+D) Servem como unidade de medida da resolução estrutural.
+?
+**Resposta correta: C)** Indicam a variabilidade conformacional e mobilidade térmica, sendo úteis mas ambíguos.  
+_Explicação:_ Os fatores B refletem tanto vibrações térmicas quanto desordem conformacional. Assim, embora úteis para avaliar regiões mal definidas da estrutura, sua interpretação é complexa e pode ocultar problemas estruturais.
+
+**Em uma estrutura cristalina de proteína, o que indica um valor consistentemente alto de fator B em uma determinada região?**
+A) Alta confiabilidade estrutural e ordenamento cristalino.  
+B) Mobilidade térmica nula e baixa variabilidade conformacional.  
+C) Possível desordem ou baixa confiabilidade na determinação estrutural local.  
+D) Presença de ligação covalente entre resíduos adjacentes.
+?
+**Resposta correta: C)** Possível desordem ou baixa confiabilidade na determinação estrutural local.  
+_Explicação:_ Altos fatores B em uma região indicam baixa ordem ou variabilidade conformacional, sugerindo que aquela parte da estrutura pode não ter sido bem determinada.
+
+**Sobre a resolução em cristalografia de proteínas, qual das opções é verdadeira?**
+A) Uma resolução de 3,0 Å é mais detalhada que uma de 1,2 Å.   
+B) A resolução está diretamente relacionada ao grau de ordem do cristal. 
+C)A resolução aumenta quando há menos observações do que parâmetros.  
+D) Resolução e fator B são sinônimos e intercambiáveis.
+?
+**Resposta correta: B)** A resolução está diretamente relacionada ao grau de ordem do cristal.  
+_Explicação:_ Quanto maior a ordem no cristal, mais detalhes podem ser resolvidos, ou seja, menor é o valor numérico da resolução e melhor é a qualidade estrutural obtida.
+
+*Nuclear Magnetic resonance*
+A ressonância magnética nuclear (NMR) é a segunda técnica principal para a determinação de estruturas macromoleculares. Produz estruturas corretas em termos de topologia, mas frequentemente não tão precisas quanto uma boa determinação por cristalografia de raios X. Os cristalógrafos relatam um única estrutura ou apenas um pequeno número delas. Já os espectroscopistas de NMR geralmente produzem um conjunto de cerca de 10 a 20 estruturas relacionadas, ou até mais, calculadas a partir dos mesmos dados experimentais. A comparação entre essas estruturas indica a precisão: as regiões onde a variação local é pequena são bem definidas pelos dados. Isso equivale, de forma aproximada, ao fator B usado pelos cristalógrafos.
+
+Existem duas fontes de variação estrutural entre os modelos reportados pelos espectroscopistas de NMR. Uma é a **desordem dinâmica real**, que ocorre porque a conformação não está fixa pelas forças de empacotamento cristalino. A outra é uma razão **desconfotavelmente baixa** entre o número de medições e os parâmetros que precisam ser determinados. Como resultado, várias conformações diferentes podem explicar os dados experimentais de forma igualmente plausível.
+
+A análise dos dados de NMR pode distinguir esses efeitos, mas isso é realizado apenas numa minoria das determinações estruturais de proteínas por NMR.
+
+## Bancos de dados especializados, ou "boutique"
+Muitos indivíduos ou grupos selecionam, anotam e recompilam dados focados em tópicos específicos, incluindo links que permitem um acesso simplificado a informações sobre assuntos de interesse. Por exemplo, o **repositório de cinases protéicas** é uma compilação especializada que inclui sequências, estruturas, informações funcionais, procedimentos laboratoriais, listas de cientistas interessados, ferramentas de análise, um quadro de avisos e ligações externas.
+
+O banco de dados da #protease do HIV arquiva estruturas das proteinases do vírus da imunodeficiência humana 1 (HIV-1), do vírus da imunodeficiência humana 2 (HIV-2) e do vírus da imunodeficiência dos símios (SIV), bem como os seus complexos, oferecendo também ferramentas para a sua análise e ligações para outros sites com informações relacionadas à SIDA. Este banco contém algumas estruturas cristalinas que não foram depositadas no PDB.
+
+No campo da imunologia:
+
+- **IMGT** , o banco internacional de imunogenética, é um repositório integrado e de alta qualidade especializado em imunoglobulinas (Ig), recetores de células T (TcR) e moléculas do complexo principal de histocompatibilidade (MHC) de todas as espécies de vertebrados. O servidor IMGT oferece acesso comum a todos os dados de imunogenética. Inclui o IMGT/LIGM-DB, um banco de dados abrangente de sequências de genes de imunoglobulinas e TcR de humanos e outros vertebrados, com traduções para sequências totalmente anotadas, e o IMGT/MH-DB, um banco de dados do MHC humano, ou antígenos leucocitários humanos (HLA). Veja [http://www.imgt.org](http://www.imgt.org/) .
+    
+- **IEDB** , o Banco de Dados e Recurso de Epitópios Imunológicos, gerido pelo Instituto de Alergia e Imunologia de La Jolla, contém dados relacionados a epitópios de anticorpos e de células T. Veja [http://www.iedb.org](http://www.iedb.org/) .
+    
+- **DIGIT** , o Banco de Dados de Imunoglobulinas com Ferramentas Integradas, reúne sequências anotadas dos domínios variáveis de imunoglobulinas e ferramentas para a sua análise. Veja [http://biocomputing.it/](http://biocomputing.it/) .
+    
+- O site [http://www.antibodyresource.com/antibody-database.html](http://www.antibodyresource.com/antibody-database.html) lista 19 diferentes sites com informações relacionadas a bancos de dados e software sobre anticorpos.
+
+## Bancos de dados de expressão e proteómica
+Lembre-se do dogma central: o DNA origina o RNA, que por sua vez origina as proteínas. Os bancos genômicos contém sequências de DNA. Os bancos de expressão registram medições dos níveis de mRNA. Alguns registram etiquetas de sequência expressas (ESTs), sequências curtas terminais de cDNA sintetizado a partir de mRNA, descrevendo padrões de transcrição genética. Os bancos de proteómica registram medições sobre proteínas, descrevendo padrões de tradução genética.
+
+As comparações dos padrões de expressão fornecem pistas sobre:
+1. A função e o mecanismo de ação dos produtos gênicos;
+2. Como os organismos coordenam o controle dos seus processos metabólicos em diferentes condições (por exemplo, leveduras em condições aeróbicas ou anaeróbicas);
+3. As variações na ativação dos genes em diferentes estágios do ciclo celular ou do desenvolvimento de um organismo;
+4. Os mecanismos de resistência a antibióticos em bactérias e, consequentemente, sugestões de alvos para o desenvolvimento de medicamentos;
+5. A resposta a uma infecção por um parasita;
+6. A resposta a medicamentos de diferentes tipos de dosagens, para orientar uma terapia eficaz.
+
+Existem muitos bancos de dados de ESTs. Na maioria deles, as entradas contêm campos que indicam o tecido de origem e/ou localização subcelular, o estado de desenvolvimento, as condições de crescimento e a quantificação do nível de expressão. No GenBank, a coleção dbEST contém atualmente mais de 74 milhões de entradas, provenientes de 2551 espécies, lideradas pelas da Tabela 4.1.
+
+ **Tabela 4.1 – Espécies com maior número de entradas no dbEST**
+Homo sapiens - 8.704.790
+Mus musculus + domesticus (rato) - 4.853.570
+Zea mays (milho) - 2.019.137
+
+Algumas coleções de ESTs são especializadas em tecidos específicos (por exemplo, músculo, dente) ou em espécies. Em muitos casos, existe o esforço de ligar os padrões de expressão ao conhecimento geral do organismo. Por exemplo, o Projeto de Recursos de Informação sobre Expressão Gênica do Jackson Lab para o Desenvolvimento do Rato coordena dados sobre expressão genética e anatomia do desenvolvimento.
+
+Muitos bancos de dados estabelecem ligações entre ESTs de diferentes espécies, por exemplo, entre genes homólogos humanos e de rato, ou entre genes humanos associados a doenças e proteínas de leveduras. Outras coleções de ESTs são especializadas em tipos específicos de proteínas, como citocinas. Um grande esforço tem sido direcionado ao estudo do cancro: integrando informações sobre mutações, rearranjos cromossômicos e alterações nos padrões de expressão, com o objetivo de identificar as mudanças durante a formação e progressão do tumor.
+
+Embora exista uma relação estreita entre os padrões de transcrição e os de tradução, as medições diretas dos conteúdos proteicos em células e tecidos, a proteômica, fornece informações valiosas adicionais. Devido às taxas diferenciadas de tradução e degradação dos diferentes mRNAs, as medições diretas de proteínas fornecem uma descrição mais precisa dos padrões de expressão genética do que as medições de transcrição. Modificações pós-traducionais só podem ser detectadas ao examinar diretamente as proteínas. 
+
+A análise proteômica envolve a separação, identificação e determinação quantitativa das proteínas presentes na amostra. Os bancos de proteômica armazenam imagens de géis e a sua interpretação em termos de padrões proteicos. Para cada proteína, uma entrada tipicamente registra:
+- Identificação da proteína;
+- Quantidade relativa;
+- Função;
+- Mecanismo de ação;
+- Padrão de expressão;
+- Localização subcelular;
+- Proteínas relacionadas;
+- Modificações pós-traducionais;
+- Interações com outras proteínas;
+- Ligações a outros bancos de dados.
+
+
 
