@@ -496,3 +496,105 @@ Este livro não inclui uma longa lista anotada de sítios recomendados por duas 
 A minha recomendação é a seguinte: dedique algum tempo à navegação — não lhe levará muito tempo encontrar um sítio que pareça razoavelmente estável e cujo estilo se adeque ao seu modo de trabalhar. Alternativamente, o sítio **ExPASy** (ver a secção sobre o Instituto Suíço de Bioinformática) é abrangente e demonstra um compromisso claro em manter-se atualizado e completo.
 *A volatilidade dos recursos online reforça a importância de utilizar ferramentas dinâmicas e interconectadas, como os portais integrados, que atuam como hubs funcionais na rede de dados biológicos, garantindo sustentabilidade e interoperabilidade em ambientes de investigação em rápida evolução.*
 
+## Portais de acesso aos arquivos
+Os bancos de dados em biologia molecular disponibilizam funcionalidades para uma grande variedade de operações de recuperação e análise de informação. As categoriais destas operações incluem as seguintes:
+1. **Recuperação de sequências a partir de uma base de dados**. As sequências podem ser obtidas com base em características das anotações ou em padrões identificados dentro das próprias sequências.
+2. **Comparação de sequências:** Isto não é apenas uma funcionalidade, é uma indústria intensiva! Foi introduzida no Capítulo 1 e será discutida em detalhe no Capítulo 5. Inclui pesquisas muito importantes para detectar sequências relacionadas #homólogas.
+3. **Identificação de genes em sequências genômicas** e traduções de sequências codificadoras de proteínas nas respectivas sequências de aminoácidos.
+4. **Tipos simples de análise e predição estrutura**, por exemplo, métodos estatísticos para prever a estrutura secundária de proteínas apenas a partir da sequência, como perfis de hidrofobicidade, através dos quais é geralmente possível identificar proteínas #transmembranares. Outros sítios oferecem predições completas de estruturas tridimensional a partir de sequência.
+5. **Reconhecimento de padrões**, é possível procurar todas as sequências que contêm um determinado padrão ou combinação de padrões, expressos como probabilidades de encontrar certos conjuntos de resíduos em posições consecutivas. Estes padrões podem estender-se por grandes regiões da sequência e refletem frequentemente o padrão global de dobramento da proteína. Outros são curtos: em sequências de DNA, podem corresponder a locais de reconhecimento para enzimas, como as responsáveis pelo #splicing de genes interrompidos. Em proteínas, padrões curtos e localizados identificam geralmente moléculas com função comum.
+6. **Gráficos moleculares**, necessários para representar de forma inteligível sistemas altamente complexos. Aplicações típicas incluem:
+	1. fornecer uma impressão geral útil do padrão de dobramento de uma proteína;
+	2. mapear resíduos suscetíveis de estar envolvidos na função sobre a estrutura tridimensional da proteína, o que frequentemente permite isolar o sítio ativo;
+	3. classificar e comparar os padrões de dobramento de proteínas;
+	4. analisar diferenças entre estruturas estreitamente relacionadas ou entre dois estados conformacionais de uma mesma molécula.
+	5. estudar a interação entre uma pequena molécula e uma proteína, com vista à atribuição de função ou ao desenvolvimento de fármacos;
+	6. ajuste interativo de um modelo à imagem ruidosa e difusa da molécula obtida inicialmente durante a resolução de estruturas proteicas por cristalografia de raios X;
+	7. desenho e modelação de novas estruturas.
+
+*A integração de múltiplas funcionalidades em portais como o ExPASy ou o NCBI reflete a natureza sistêmica da bioinformática moderna, onde a capacidade de transitar entre sequência, estrutura, função e interação é essencial para a descoberta biológica orientada por dados.*
+
+## Access to databases in molecular biology
+*How to learn web skills*
+Seria difícil aprender a andar de bicicleta apenas lendo um livro que descreve os movimentos necessários, muito menos um tratado sobre a teoria do giroscópio. Da mesma forma, o lugar ideal para aprender competências na web é diante de um terminal, a utilizar um navegador. É verdade, mas existe sempre um período inicial de dificuldade e instabilidade. O objetivo aqui é apenas oferecer alguma ajuda provisória para ajudar a começar. 
+Esta seção apresenta uma introdução a algumas principais bases de dados e sistemas de recuperação de informação em biologia molecular. Em cada caso, as ilustrações mostram pesquisas e aplicações relativamente simples. Sempre, serão destacadas funcionalidades únicas de cada sistema.
+
+#ENTREZ 
+O NCBI mantém bases de dados e formas de acesso a elas. O ENTREZ oferece acesso através de 35 divisões de bases de dados.
+ **Tabela 4.2 – Sistema de bases de dados ENTREZ do NCBI**
+
+|**Nome**|**Conteúdo**|
+|---|---|
+|Nucleotide|Subconjunto principal de registos de sequências de nucleótidos|
+|EST|Registos de_Expressed Sequence Tags_|
+|GSS|Registos de_Genome Survey Sequences_|
+|Protein|Base de dados de sequências proteicas|
+|Genome|Sequências completas de genomas|
+|Structure|Estruturas tridimensionais de macromoléculas|
+|Taxonomy|Organismos no GenBank|
+|SNP|Variações genéticas curtas|
+|dbVar|Variações estruturais genómicas|
+|Gene|Informação centrada em genes|
+|SRA|Arquivo de Leituras de Sequência (_Sequence Read Archive_)|
+|BioSystems|Vias metabólicas e sistemas de moléculas interativas|
+|HomoloGene|Grupos de homologia em eucariotas|
+|OMIM|Herança Mendeliana em Humanos (_Online Mendelian Inheritance in Man_)|
+|OMIA|Herança Mendeliana em Animais (_Online Mendelian Inheritance in Animals_)|
+|Probe|Reagentes específicos por sequência|
+|BioProject|Dados agregados de projetos de investigação biológica|
+|dbGaP|Genótipos e fenótipos|
+|UniGene|Agrupamentos orientados por gene de sequências de transcritos|
+|CDD|Base de dados de domínios proteicos conservados|
+|Clone|Dados integrados sobre recursos de clones|
+|UniSTS|Marcadores e dados de mapeamento genético|
+|PopSet|Conjuntos de dados de estudos populacionais|
+|GEO Profiles|Perfis de expressão e abundância molecular|
+|GEO DataSets|Conjuntos experimentais de dados do_Gene Expression Omnibus_(GEO)|
+|Epigenomics|Mapas e conjuntos de dados epigenéticos|
+|PubChem BioAssay|Ensaios de bioatividade de substâncias químicas|
+|PubChem Compound|Estruturas químicas únicas de pequenas moléculas|
+|PubChem Substance|Registos depositados de substâncias químicas|
+|Protein Clusters|Coleção de sequências proteicas relacionadas|
+|BioSample|Descrição de material biológico|
+|PubMed|Citações e resumos da literatura biomédica|
+|PubMed Central|Artigos científicos completos em acesso aberto|
+|Site Search|Pesquisa nos sites web e FTP do NCBI|
+|Books|Livros científicos online|
+Para ver um diagrama com todas as bases de dados ENTREZ e as suas interligações, visite:  
+[http://www.ncbi.nlm.nih.gov/Database/datamodel/index.html](http://www.ncbi.nlm.nih.gov/Database/datamodel/index.html?spm=a2ty_o01.29997173.0.0.5810c92122itUD)
+
+A integração entre as diversas bases de dados, pelo menos do ponto de vista dos motores de busca, é um dos pontos fortes do sistema do NCBI.
+
+Vamos escolher uma molécula, a **elastase de neutrófilos humanos**, e procurar entradas relevantes nas diferentes secções do ENTREZ.
+
+## Pesquisas na base de dados ENTREZ Protein
+Selecione **Protein** , introduza os termos de pesquisa **HUMAN ELASTASE** e clique em **Go** .
+
+Os resultados, naturalmente, mudam ao longo do tempo à medida que as bases de dados crescem.
+
+O **Quadro 4.3** mostra 14 "correspondências" (_hits_ ): as três primeiras, mais resultados selecionados mais abaixo na lista. O primeiro resultado é a **PRECURSORA DA ELASTASE LEUCOCITÁRIA** . Outras respostas incluem elastases de outras espécies, inibidores, uma proteína de sanguessuga e um regulador transcricional. (Por que razão uma proteína de sanguessuga e um regulador transcricional — que presumivelmente interage com DNA, não com proteínas — aparecem numa pesquisa por elastase humana?) Veremos mais à frente como refinar a consulta para eliminar estas respostas irrelevantes.
+
+O formato das respostas é o seguinte: em cada caso, a primeira linha contém um identificador, cuja forma reflete a base de dados de origem. Por exemplo, na primeira resposta, **P08246** é um número de acesso do **SWISS-PROT** ; na segunda, **1HNEE** indica a cadeia E da entrada **1HNE** do **wwPDB** . A linha seguinte apresenta o nome e sinónimos da molécula, bem como a espécie de origem. Note-se que as letras gregas são escritas por extenso. A última linha fornece referências às bases de dados de origem: **gi** = identificador geninfo (ver Quadro 1.7); **gb** = número de acesso do GenBank; **sp** = SWISS-PROT; **pdb** = Protein Data Bank; **pir** = Protein Identification Resource; **dbj** = DNA Data Bank of Japan; **ref** = projeto de Sequência de Referência do NCBI. As entradas recuperadas incluem elastases humanas e de outras espécies, bem como inibidores da elastase.
+
+A abertura da entrada correspondente ao primeiro resultado recupera um ficheiro com o conteúdo apresentado no **Quadro 4.4** . (O ficheiro completo tem 469 linhas.)
+
+https://www.ncbi.nlm.nih.gov/protein/P08246/
+
+As primeiras linhas são sobretudo informações administrativas da base de dados, como números de acesso, nome da molécula e data de depósito. Depois vêm dados descritivos como a origem (neste caso, humana), com a classificação taxonómica completa; créditos aos cientistas que depositaram a entrada; e referências bibliográficas. Existem extensas referências cruzadas com outras bases de dados. Por fim, aparece a informação científica específica: localização do gene e do seu produto (CDS = sequência codificante) e a sequência propriamente dita (ver Exercício 4.2). Mais uma vez, note-se que a sequência ocupa apenas uma pequena parte da entrada.
+
+*A densidade de metadados em entradas como esta demonstra o valor da anotação curada: a integração de dados funcionais, clínicos (como mutações em ELA2 associadas à neutropenia cíclica) e de interação permite a transição de dados genômicos para interpretação biológica e clínica, essencial na medicina personalizada.*
+
+Muitas referências bibliográficas e entradas da tabela de características foram omitidas. Palavras-chave (tipos de sítios ou nomes de regiões) associadas às entradas da tabela de características incluem: _Helical region_ , _Beta-strand region_ , _Domain_ , _Hydrogen bonded turn_ , _Disulphide bridge_ , _Mature chain_ , _Propeptide_ , _Signal_ , _Tryp_SPc_ (indicando pertença à família das serinoproteases semelhantes à tripsina), _Variant_ (por exemplo, um SNP observado), _Substrate-binding site_ , _Charge relay system_ e _Glycosylation site_ .
+
+## Pesquisas na base de dados bibliográfica PubMed
+Talvez seja altura de ver o que as pessoas têm dito sobre a nossa molécula. Naturalmente, a literatura sobre elastase é vasta. Uma pesquisa no **PubMed** por **HUMAN ELASTASE** devolve 10 453 entradas. Para refinar os resultados, vamos procurar citações a artigos que descrevam o papel da elastase na doença. Uma pesquisa por **HUMAN ELASTASE DISEASE** devolve 2 447 entradas. E quanto a mutações específicas da elastase associadas a doenças humanas? Uma pesquisa por **HUMAN ELASTASE DISEASE MUTATION** devolve 114 artigos, apresentados por ordem cronológica inversa. Eis os primeiros oito...
+
+## Online Mendelian Inheritance in Man (OMIN)
+A **Online Mendelian Inheritance in Man (OMIM™)** é uma base de dados de genes humanos e distúrbios genéticos. Foi originalmente compilada por V.A. McKusick, M. Smith e colegas, e publicada em formato impresso. O NCBI transformou-a numa base de dados acessível via web, integrando-a com links para outras fontes de informação relacionada, incluindo bancos de sequências e literatura médica. Atualmente, a OMIM está bem integrada no sistema de recuperação de informação do NCBI, o **ENTREZ** . Uma base relacionada, o **OMIM Morbid Map** , trata de doenças genéticas e das suas localizações cromossómicas.
+
+A resposta à pesquisa por **ELASTASE** na OMIM descreve a ligação entre mutações no gene _ELA2_ e dois tipos de neutropenia: **cíclica** e **congénita (não cíclica)** . A OMIM lista nove variantes alélicas (embora sejam conhecidas muitas mais). Cinco estão associadas à neutropenia cíclica: três causam substituições de aminoácidos, uma afeta um local de _splicing_ e outra está num intrão. Quatro variantes (todas substituições) estão associadas à neutropenia congénita grave.
+
+O conjunto de resultados sobre a elastase que reunimos poderia sustentar investigação sobre o sistema; por exemplo, poderíamos mapear as mutações da elastase na estrutura tridimensional da molécula para procurar pistas sobre as causas da neutropenia cíclica e não cíclica.
+
+*A integração entre dados clínicos (OMIM), funcionais (PubMed) e estruturais permite a transição de variantes genéticas para mecanismos patofisiológicos, essencial para a medicina genômica e o desenvolvimento de terapias direcionadas.*
+

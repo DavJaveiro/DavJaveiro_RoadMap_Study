@@ -84,13 +84,11 @@
               "title": "RunJS Codelist"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -225,8 +223,9 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "da12e2f551912e38",
+  "active": "0862fa1b506aee5c",
   "lastOpenFiles": [
+    "Introduction to Bioinformatics - Lesk/Chapter 5 -",
     "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
     "Chapter 4 - Archives and information retrieval-1.png",
     "Chapter 4 - Archives and information retrieval.png",
