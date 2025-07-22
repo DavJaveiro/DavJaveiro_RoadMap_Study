@@ -480,5 +480,19 @@ A análise proteômica envolve a separação, identificação e determinação q
 - Interações com outras proteínas;
 - Ligações a outros bancos de dados.
 
+## Bibliographics databases
+O #Medline (com sede na Biblioteca Nacional de Medicina dos EUA) integra a literatura médica, incluindo um grande número de artigos sobre temas de biologia molecular que não têm conteúdo clínico explícito. Está integrado no PubMed, um banco de dados bibliográfico que disponibiliza resumos de artigos científicos, combinado com outras ferramentas de recuperação de informação do NCBI, da Biblioteca Nacional de Medicina.
 
+Outra funcionalidade muito eficaz do PubMed é a opção de **recuperar artigos relacionados**. Esta é uma forma rápida de se introduzir na literatura sobre um determinado tema. Em combinação com o uso de um moto de busca geral para aceder a sites que não correspondem a artigos publicados em revistas científicas, torna-se fácil obter informações bastante abrangentes sobre a maioria dos temas. Aqui vai uma dica: se estiver a tentar começar a aprender sobre um assunto desconhecido, experimente adicionar a palavra-chave **tutorial** à sua pesquisa num motor de busca geral, ou a palavra-chave **review** à sua pesquisa no PubMed.
+
+Atualmente, quase todas as revistas científicas disponibilizam os seus índices e, em muitos casos, edições completas em sítios *web*. Os **Institutos Nacionais de Saúde dos EUA** criaram uma biblioteca centralizada baseada na web de artigos científicos, denominada PubMed Central. Em colaboração com revistas científicas, o NCBI está a organizar a distribuição eletrônica dos textos completos dos artigos publicados.
+*A integração entre bases bibliográficas como o PubMed e repositórios de acesso aberto como o PubMed Central permite uma exploração eficiente e sistemática da literatura biomédica, essencial para revisões sistemáticas, meta-anaálises e investigação translacional.*
+
+### Inventários de bases de dados e servidores em biologia molecular
+É muito comum encontrar listas de recursos *web* em biologia molecular. É difícil explorar qualquer tema nesta área na internet sem rapidamente deparar com uma lista deste tipo. Embora contenham, em grande parte, a mesma informação, diferem amplamente no seu aspecto e usabilidade. O problema real é que, se não forem devidamente curadas, tendem a degenerar em listas de hiperligações inativas. Um racunho desta secção incluía uma referência a um sítio que apresentava um levantamento razoável; ao regressar dois meses depois, o nome do sítio tinha mudado e mais de metade das ligações já não funcionavam.
+
+Este livro não inclui uma longa lista anotada de sítios recomendados por duas razões: (1) o leitor não precisa de uma lista longa, mas sim de uma seleção breve e eficaz, e (2) a web é demasiado volátil para que tal lista permaneça útil por muito tempo. É muito mais eficaz recorrer a um motor de busca geral para encontrar aquilo de que se necessita, exatamente quando é necessário.
+
+A minha recomendação é a seguinte: dedique algum tempo à navegação — não lhe levará muito tempo encontrar um sítio que pareça razoavelmente estável e cujo estilo se adeque ao seu modo de trabalhar. Alternativamente, o sítio **ExPASy** (ver a secção sobre o Instituto Suíço de Bioinformática) é abrangente e demonstra um compromisso claro em manter-se atualizado e completo.
+*A volatilidade dos recursos online reforça a importância de utilizar ferramentas dinâmicas e interconectadas, como os portais integrados, que atuam como hubs funcionais na rede de dados biológicos, garantindo sustentabilidade e interoperabilidade em ambientes de investigação em rápida evolução.*
 
