@@ -907,3 +907,29 @@ public String register(
 }
 ```
 Se o usuário tiver fornecido uma resposta na caixa de seleção do CAPTCHA, usamos o serviço CAPTCHA para validar com o Google se a resposta está correta. Para uma resposta incorreta, o usuário é redirecionado para a página de erro do CAPTCHA.
+
+## 6.9 Authentication with OAuth2
+Hoje, muitas pessoas já possuem contas em plataformas como Google, Facebook e GitHub, onde já forneceram seus dados. Podemos aproveitar essas identidades externas para autenticar usuário em nossa aplicação. O melhor disto é que, ambos os métodos, autenticação própria e login social, podem coexistir. 
+
+Essa funcionalidade é baseada no padrão aberto #OAuth 2.0, um framework de autorização que permite aplicações de terceiros (como o Course Tracker) obter acesso limitado a recursos protegidos (como dados do Google), seja em nome do proprietário do recurso, seja por delegação. O **Spring Security** oferece um módulo dedicado, o Spring Security #OAuth2 Client, para integrar esse fluxo com facilidade.
+
+Precisamos registrar a nossa aplicação como um **cliente OAuth 2.0** no Google Console. Após o registro, obteremos um **Client ID** e um **Client Secret**, que são as credenciais essenciais para autenticação segura entre a nossa aplicação e o Google. Essas chaves são usadas durante o fluxo de autorização para identificar e autenticar o nosso app.
+
+O fluxo seguirá o padrão #OAuth2 Authorization Code Grant, o mais seguro para aplicações web. Após o usuário consentir, o Google retornará um código de autorização, que a nossa aplicação Spring Boot trocará por um **access token (e opcionalmente um refresh token)**, permitindo acesso a informações básicas do perfil.
+
+**Registering our application for Google OAuth2**
+https://github.com/spring-boot-in-practice/repo/wiki/Registering-Your-Application-for-Google-OAuth2
+
+O **Spring Boot** simplifica essa integração com anotações como #EnableWebSecurity e configurações baseadas em propriedades (application.properties), enquanto o Spring Security lida com os detalhes do protocolo.
+
+Para começar, vamos adicionar a dependência *spring-boot-starter-oauth2-client* ao arquivo *pom.xml*. Essa starter fornece o suporte necessário para configurar o OAuth2 em nossa aplicação.
+
+Em seguida, precisamos adicionar as seguintes propriedades em nosso arquivo *application.properties*:
+```json
+spring.security.oauth2.client.registration.google.client-id=<Seu ID de cliente>
+spring.security.oauth2.client.registration.google.client-secret=<Seu Segredo>
+spring.security.oauth2.client.registration.google.scope=email,profile
+```
+
+*Em um ambiente de produção, nunca armazene os secrets em arquivos de código ou configuração em texto claro.*
+
