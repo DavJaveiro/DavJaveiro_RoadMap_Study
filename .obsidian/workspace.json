@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+                "file": "Java Rocketseat/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 6 - Implementing additional security with Spring Security"
+              "title": "Rotas, Autenticação e Autorização"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Querydsl",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -84,7 +84,8 @@
               "title": "RunJS Codelist"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -224,14 +225,14 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "d01bb0781bba7ddc",
+  "active": "da12e2f551912e38",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
     "Building Bioinformatics Solutions/Chapter 2 - Building Biological Databases with SQL/Chapter 2 - Building Biological Databases with SQL.md",
     "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
     "Introduction to Bioinformatics - Lesk/Chapter 5 -",
     "Chapter 4 - Archives and information retrieval-1.png",
     "Chapter 4 - Archives and information retrieval.png",
-    "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
     "Pós Graduação - Unicamp/Regulação da Expressão Gênica_ Fundamentos e Perspectivas Bioinformáticas.pdf",
     "Pós Graduação - Unicamp/prompt.md",
     "Pós Graduação - Unicamp/🧬 Alinhamento múltiplo de sequências.md",
