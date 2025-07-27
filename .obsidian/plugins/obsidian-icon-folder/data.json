@@ -5,7 +5,12 @@
     "fontSize": 26,
     "emojiStyle": "native",
     "iconColor": null,
-    "recentlyUsedIcons": [],
+    "recentlyUsedIcons": [
+      "🏎",
+      "🔖",
+      "LiAtom",
+      "LiAsterisk"
+    ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
     "extraMargin": {
@@ -27,5 +32,8 @@
     "lucideIconPackType": "native",
     "debugMode": false,
     "useInternalPlugins": false
-  }
+  },
+  "Engenharia de Software Anhanguera": "🔖",
+  "Matemática Universidade Federal Fluminense": "🔖",
+  "Embedded Software": "🏎"
 }

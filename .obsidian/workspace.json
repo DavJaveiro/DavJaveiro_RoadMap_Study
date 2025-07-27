@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2870e0162aa8b356",
+        "id": "e87233acfecf350e",
         "type": "tabs",
         "children": [
           {
-            "id": "d01bb0781bba7ddc",
+            "id": "f9054010efa219b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+                "file": "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 6 - Implementing additional security with Spring Security"
+              "title": "Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR"
             }
           }
         ]
@@ -167,23 +167,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Capítulo 6 - Implementing additional security with Spring Security"
-            }
-          },
-          {
-            "id": "3eef2b5fbbb39c32",
-            "type": "leaf",
-            "state": {
-              "type": "planner-timeline",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Timeline"
+              "title": "Sumário"
             }
           },
           {
@@ -195,13 +184,23 @@
               "icon": "SpacedRepIcon",
               "title": "Fila de Notas para Revisar"
             }
+          },
+          {
+            "id": "4d499966f338e27b",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 460,
     "collapsed": true
   },
   "left-ribbon": {
@@ -220,53 +219,58 @@
       "runjs:RunJS": false,
       "obsidian-git:Open Git source control": false,
       "vscode-editor:Create Code File": false,
-      "obsidian-day-planner:Open Timeline": false,
-      "obsidian-day-planner:Open Multi-Day View": false
+      "mermaid-tools:Open Mermaid Toolbar": false,
+      "markwhen:Create new Markwhen file": false
     }
   },
-  "active": "d01bb0781bba7ddc",
+  "active": "f9054010efa219b5",
   "lastOpenFiles": [
-    "Java Rocketseat/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-20257263442471.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-20257263441309.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-2025726343734.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR-7.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR-6.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR-5.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR-4.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR-3.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSA.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR.md",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR-2.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-20257265355250.png",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-20257263232193.png.md",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR",
+    "Engenharia de Software - Sommerville/Leitura Eng. Software Moderna.md",
+    "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR",
+    "Embedded Software/AUTOSAR Fundamentals and Applications",
+    "Embedded Software",
+    "Markwhen/Markwhen 7-26-2025 16.25.24.mw",
+    "Markwhen/Markwhen 7-26-2025 16.23.10.mw",
+    "Markwhen",
+    "CND.md",
+    "Cronograma/24-03 até 30-03.md",
+    "Cronograma/24-03 até 30-03",
+    "2025-07-27.md",
+    "2025-07-26.md",
+    "2025-07-23.md",
+    "2025-07-22.md",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+    "Matemática Universidade Federal Fluminense/2026.1",
+    "Java Rocketseat/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
     "Building Bioinformatics Solutions/Chapter 2 - Building Biological Databases with SQL/Chapter 2 - Building Biological Databases with SQL.md",
     "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
-    "Introduction to Bioinformatics - Lesk/Chapter 5 -",
-    "Chapter 4 - Archives and information retrieval-1.png",
-    "Chapter 4 - Archives and information retrieval.png",
-    "Pós Graduação - Unicamp/Regulação da Expressão Gênica_ Fundamentos e Perspectivas Bioinformáticas.pdf",
     "Pós Graduação - Unicamp/prompt.md",
     "Pós Graduação - Unicamp/🧬 Alinhamento múltiplo de sequências.md",
-    "Chapter 2 - Building Biological Databases with SQL-4.png",
-    "Chapter 2 - Building Biological Databases with SQL-3.png",
     "Biologia de Campbell/Capítulo 12 - O Ciclo celular/Capítulo 12 - O Ciclo Celular.md",
     "Biologia de Campbell/Capítulo 44 - Osmorregulação e Excreção.md",
     "Biologia de Campbell/Capítulo 42 - Circulação e Trocas Gasosas.md",
-    "Biologia de Campbell/Capítulo 43 - Sistema Imune-1.png",
     "Biologia de Campbell/Capítulo 41 - Nutrição Animal.md",
     "Biologia de Campbell/Capítulo 29 - Diversidade Vegetal I - Como as Plantas Colonizaram o Ambiente Terrestre.md",
     "Biologia de Campbell/Capítulo 20 - Ferramentas do DNA e Biotecnologia.md",
     "Pós Graduação - Unicamp/💻 Análise de Algoritmos.md",
     "Engenharia de Software - Sommerville/Parte 1 - Introdução à Engenharia de Software/Capítulo 4 - Engenharia de Requisitos.md",
-    "Capítulo 4 - Engenharia de Requisitos-7.png",
     "Formação em Java (RocketSeat)/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
-    "Formação em Java (RocketSeat)/Projeto Gestão de Vagas",
-    "Formação em Java (RocketSeat)",
     "Learning Angular/3 - Structuring User Interfaces with Components/3 - Structuring User Interfaces with Components.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Concursos TI/Conhecimentos Computacionais.md",
-    "Concursos TI",
-    "3 - Structuring User Interfaces with Components.png",
-    "Learning Angular/3 - Structuring User Interfaces with Components",
-    "Learning Angular/2 - Introduction to TypeScript/Chapter 2 - Introduction to TypeScript.md",
-    "Java Para Iniciantes/Capítulo 12 - Enumerações, autoboxing, importação estática e anotações/Capítulo 12 - Enumerações, autoboxing, importação estática e anotações.md",
-    "Learning Angular/3 -",
-    "Untitled.md",
-    "Learning Angular/1 - Building Your First Angular Application/1 - Building Your First Angular Application.md",
-    "Learning Angular/2 - Introduction to TypeScript",
-    "Learning Angular/1 - Building Your First Angular Application",
-    "Learning Angular",
-    "Design for Developers/Color/Color.md",
-    "Color-1.png",
-    "Color.png"
+    "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }

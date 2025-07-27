@@ -3,7 +3,6 @@
   "obsidian-math-plus",
   "editing-toolbar",
   "obsidian-excalidraw-plugin",
-  "obsidian-paste-image-rename",
   "float-search",
   "runjs",
   "execute-code",
@@ -18,6 +17,8 @@
   "vscode-editor",
   "obsidian-wordnet-plugin",
   "obsidian-state-switcher",
-  "obsidian-day-planner",
-  "obsidian-spaced-repetition"
+  "obsidian-spaced-repetition",
+  "mermaid-tools",
+  "image-classify-paste",
+  "markwhen"
 ]
