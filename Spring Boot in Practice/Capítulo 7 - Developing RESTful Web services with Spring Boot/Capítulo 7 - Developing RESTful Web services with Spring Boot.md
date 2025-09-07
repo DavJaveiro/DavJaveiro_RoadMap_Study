@@ -120,3 +120,58 @@ public class DefaultProductService implements ProductService {
 Nós vamos agora definir o *CourseController*, ele irá definir os endpoints REST. Um controlador Spring contém um ou mais endpoints e recebe as requisições do cliente. Em seguida, opcionalmente, utiliza os serviços oferecidos pela camada de serviço e gera uma resposta. Ele encapsula essa resposta em um modelo (model) e a compartilha com a camada de visualização (view layer). 
 
 Um *RestController* também realiza uma atividade semelhante. No entanto, em vez de encapsular a resposta em um modelo e enviá-la à camada de visualização, ele vincula diretamente a resposta ao *body* da resposta HTTP, que é então retornado ao solicitante do endpoint.
+
+```java
+@RestController
+@RequestMapping("/products/")
+public class ProductController {...}
+```
+A anotação *RequestMapping* especifica a rota ou o caminho da API. Neste  exemplo, definimos o caminho /products/, de forma que todas as requisições HTTP para o caminho /products/ sejam direcionadas para este controller.
+
+#RestController - indica que a classe é um controlador REST, combinando *@Controller* e *@ResponseBody*. Isso significa que os métodos retornam dados (JSON/XML) diretamente na resposta HTTP. 
+
+#RequestMapping("/products/")  - define a rota base da classe. Ou seja, todos os endpoints dentro desse controller começarão com /products/.
+
+```java
+@GetMapping
+public Iterable<Product> getProducts() {
+	return productService.findAllProducts();
+}
+```
+#GetMapping é uma forma *encurtada* de dizer **@RequestMapping(method= RequestMethod.GET**. Como nenhum caminho foi especificado dentro de GetMapping, esse método será chamado quando alguém fizer uma requisição **HTTP GET** para a URL base do controller.
+
+```java
+@GetMapping("{id}")
+public Optional<Product> getProductById(@PathVariable("id") long productId) {
+	return productService.getProductById(productId);
+}
+```
+
+@GetMapping define que a rota vai aceitar URLs no formato */courses/{id}*. 
+{id} é um **path variable**, ou seja, uma parte da URL que varia.
+
+**Discussão**
+Com essa técnica, aprendemos a criar uma API RESTful completa. Mantivemos a aplicação extremamente simples para demonstrar os conceitos. Vamos agora discutir algumas práticas recomendadas que seguimos ao projetar a API REST.
+
+Utilizamos JSON para aceitar as requisições e, de forma semelhante, respondemos com JSON na resposta. Essa é uma prática recomendada. APIs REST devem aceitar cargas de requisição (request payloads) em formato JSON e fornecer respostas também em #JSON.
+
+O #JSON é amplamente utilizado para armazenar e transferir dados. O Spring Boot oferece suporte embutido para realizar o mapeamento entre JSON e POJOs (objetos Java simples) e vice-versa. Por exemplo, se observamos no trecho 7.6, enviou-se uma requisição JSON como carga útil para criar um novo curso na aplicação. No entanto, o endpoint POST aceita uma instância de Course. O Spring Boot realiza essa desserialização internamente para nós. Por padrão, ele utiliza a biblioteca Jackson para realizar esse mapeamento.
+
+Outro ponto importante a destacar é o uso de substantivos ao definir os caminhos dos endpoints. É uma prática recomendada utilizar a forma plural do substantivo (por exemplo, Courses, Persons, Vehicles, etc.) para definir as rotas. Não devemos usar verbos nos caminhos das rotas, pois o método da requisição HTTP já possui um verbo (por exemplo, GET, POST, etc.) que define a ação. Permitir que desenvolvedores utilizem verbos nos caminhos torna esses caminhos mais longos e inconsistentes. Por exemplo, para obter os detalhes de um curso, um desenvolvedor pode usar /getCourses, enquanto outro pode usar /retrieveCourses. Entretanto, o verbo "get" ou "retrieve" já está definido pelo método HTTP GET. Assim, especificar o verbo no caminho da rota torna-o redundante. Portanto, GET /courses/ é o caminho do endpoint preferido para obter todos os cursos. Da mesma forma, POST /courses/ é o endpoint apropriado para criar um novo curso.
+
+Vamos agora apresentar um diagrama de fluxo de alto nível que mostra o processamento de requisições e respostas em uma API REST em uma aplicação Spring Boot. A figura 7.1 mostra esse diagrama.
+
+
+![image-2025971654326.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%207%20-%20Developing%20RESTful%20Web%20services%20with%20Spring%20Boot/Cap%C3%ADtulo%207%20-%20Developing%20RESTful%20Web%20services%20with%20Spring%20Boot/image-2025971654326.png)
+Figura 7.1 Diagrama de fluxo de comunicação em uma API REST. Um usuário invoca um endpoint REST, que é tratado pelo Controlador REST. O controlador, então, utiliza a camada de serviço para processar a requisição. A camada de serviço depende do repositório para se comunicar com o banco de dados. Após receber uma resposta do repositório, ela é processada pela camada de serviço e encaminhada ao controlador. O controlador pode realizar processamentos adicionais, e a resposta final é fornecida ao cliente da API.
+
+No trecho 7.5, utilizamos a anotação *@RestController* no lugar da anotação *@Controller* usada anteriormente. A anotação *@RestController* é uma anotação de conveniência que é meta-anotada com as anotações *@Controller* e *@ResponseBody*. A anotação *@ResponseBody* indica que o valor de retorno de um método deve ser vinculado diretamente ao corpo da resposta HTTP. 
+
+Embora a API funcione bem e atenda ao propóstio, atualmente não há tratamento de exceções. Por exemplo, vamos tentar excluir um curso que não existe na aplicação. Notaremos que será exibido um erro com um grande e feio rastreamento de pilha (stack trace). Corrigiremos isso na próxima técnica.
+
+## 7.2 Managing exceptions in a Spring Boot RESTful API
+Exceções são inevitáveis no código de software. Diversos fatores podem causar um cenário excepcional em nosso código. Por exemplo, na API RESTful que projetamos, um usuário pode tentar acessar ou excluir um curso com  um ID inexistente. Ele também pode enviar um payload JSON malformado para criar um novo curso através do endpoint POST. Todos esses cenários geram exceções na API. Nesta seção, discutiremos como lidar com esses exceções e fornecer uma resposta significativa ao usuário, especificando os detalhes da exceção.
+
+### 7.2.1 Technique: Handling exceptions in a RESTful API
+In this technique, we'll discuss how to handle exceptions in a RESTful API.
+
