@@ -175,3 +175,46 @@ Exceções são inevitáveis no código de software. Diversos fatores podem caus
 ### 7.2.1 Technique: Handling exceptions in a RESTful API
 In this technique, we'll discuss how to handle exceptions in a RESTful API.
 
+**Problem**
+A API RESTful definida anteriormente não é capaz de lidar com erros, pois não há tratamento de exceções em vigor. Ela apresenta ao usuário um grande rastreamento de pilha que não é intuitivo e expõe detalhes internos do aplicativo. Você precisa tratar as exceções e garantir o fornecimento de respostas de erro significativas. 
+
+**Solution**
+O tratamento de exceções é um aspecto importante de uma API RESTful. Normalmente, nossas APIs serão consumidas por uma variedade de consumidores e a capacidade de fornecer uma resposta de erro significativa no caso de um cenário de exceção torna a nossa API robusta e fácil de usar. 
+
+Na API projetada, não tratamos as exceções e o mecanismo padrão de tratamento de exceções do Spring Boot está em vigor. Por exemplo, a exclusão de um curso que não existe no aplicativo apresenta uma mensagem de erro, conforme mostrado na listagem a seguir:
+
+Expor ao **caller** informações sobre a **tech stack** usado na implementação da API, é considerado uma falha de segurança. Além disso, o HTTP response code também é genérico (500 Internal Server Error), o que indica que ocorreu um erro no lado do servidor. Nesta técnica, vamos melhorar a **Course Tracker RESTful API** implementando exception handling na API.
+
+Para começar, vamos primeiro discutir os tipos de exceptions que podemos encontrar em nossa aplicação. Para esta API, podemos ter apenas alguns cenários de exceção. Por exemplo, pode ser que um usuário tente buscar, atualizar ou deletar um **course** que não existe na aplicação. Isso deve resultar em um HTTP 404 Not Found error, já que o recurso solicitado não existe na aplicação. Também é possível que o usuário envie um JSON payload incompleto/incorreto. Isso resulta em um HTTP 400 Bad Request status code, já que a requisição do usuário não pode ser processada porque o servidor não conseguiu fazer o **parse** da requisição, pois ela está malformada.
+
+Para lidar com o primeiro cenário, vamos criar uma **custom exception** chamada **CourseNotFoundException**, conforme mostrado no listing a seguir:
+```java
+package com.manning.sbip.ch07.exception;
+public class CourseNotFoundException extends RuntimeException {
+private static final long serialVersionUID = 5071646428281007896L;
+public CourseNotFoundException(String message) {
+super(message);
+}
+}
+```
+
+Essa CourseNotFoundException é lançada sempre que os usuários da API tentam acessar um curso que não existe no aplicativo. Vamos agora redefinir a classe CourseServiceImpl para realizar uso deste tratamento de exceção.
+
+Agora que lançamos uma exception, o que vem a seguir? Precisamos definir um **exception handler** que intercepte a exception lançada e execute a lógica de custom exception handling. Por exemplo, para uma unhandled exception, o HTTP responde code 500 Internal Server Error é retornado. No entanto, se um course como courseId fornecido não existir na aplicação, o HTTP error code apropriado deve ser 404 Not Found. Este último HTTP Response code informa ao API consumer que o course que ele está acessando não existe.
+
+Vamos definir a classe GlobalExceptionHandler, que estabelece os ExceptionHandlers da nossa aplicação.
+
+#GlobalExceptionHandler é uma classe anotada com #ControllerAdvice que funciona como uma rede de segurança para toda a nossa aplicação. Ela tem métodos que são acionados apenas quando uma exceção específica acontece em **qualquer um dos nossos controllers.**
+
+
+Na classe do Listing 7.11, definimos algumas implementações de ExceptionHandler que tratam as exceptions que podem ser lançadas durante o processamento das requisições. Vamos explorar essa classe em detalhes:
+- Essa classe está anotada com *@ControllerAdvice*. Essa anotação é um *@Component* especializado que permite declarar o *@ExceptionHandler*. A anotação *@ControllerAdvice* possibilita escrever código global que se aplica a um conjunto de *controllers* e *RestControllers*. Assim, o **ExceptionHandler** definido no Listing 7.11 se aplica a todos os *controllers* da aplicação. 
+- Essa classe estende a ResponseEntityExceptionHandler, que é uma classe base para classes anotadas com @ControllerAdvice e que fornecem um tratamento centralizado de exceptions em todos os métodos anotados com *@RequestMapping* por meio dos métodos **@ExceptionHandler**. Essa classe já provê lógica de exception handling para uma variedade de exceptions que podem ocorrer na aplicação.
+
+Portanto a GlobalExceptionHandler tem como função interceptar um tipo específico de erro que pode acontecer em qualquer lugar de nossa aplicação. O CourseNotFoundException  e transformá-lo em uma resposta HTTP bonita e padronizada para o cliente, em vez de deixar o servidor quebrar e mostrar um erro feio.
+
+- #ControllerAdvice: essa é a anotação mais importante. Ela diz ao Spring: "Ei, essa classe não é um controller comum. Ela é um conselheiro global. Fique de olho nela, porque ela tem instruções sobre como lidar com erros que podem acontecer em qualquer controller da aplicação."
+- #ResponseEntityExceptionHandler: essa classe do Spring já vem com vários métodos prontos para lidar com erros web comuns. Ao estendê-la, herdamos toda essa inteligência e podemos adicionar nossos próprios tratamentos de erro, como estamos fazendo.
+- #ExceptionHandler(value= { CourseNotFoundException.class}): esse é o gatilho. Ele diz, método, você só deve executar quando um erro do tipo exato CourseNotFoundException for lançado em algum lugar. Se qualquer outro erro acontecer, esse método será ignorado.
+- **public ResponseEntity< ? > handlerCourseNotFound(CourseNotFoundException**: esta é a assinatura do método que trata o erro. 
+- return super.handlerExceptionInternal(...) é essa linha que constrói a resposta final. Estamos chamando um método útil da classe pai. 
