@@ -1,7 +1,5 @@
 [
-  "table-editor-obsidian",
   "obsidian-math-plus",
-  "editing-toolbar",
   "obsidian-excalidraw-plugin",
   "float-search",
   "runjs",
@@ -16,10 +14,10 @@
   "advanced-canvas",
   "vscode-editor",
   "obsidian-wordnet-plugin",
-  "obsidian-state-switcher",
   "obsidian-spaced-repetition",
   "mermaid-tools",
   "image-classify-paste",
   "markwhen",
-  "obsidian-asciimath"
+  "table-editor-obsidian",
+  "editing-toolbar"
 ]

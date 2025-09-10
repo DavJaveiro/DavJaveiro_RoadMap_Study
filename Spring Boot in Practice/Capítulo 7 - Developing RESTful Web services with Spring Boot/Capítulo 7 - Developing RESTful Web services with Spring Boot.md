@@ -218,3 +218,12 @@ Portanto a GlobalExceptionHandler tem como função interceptar um tipo específ
 - #ExceptionHandler(value= { CourseNotFoundException.class}): esse é o gatilho. Ele diz, método, você só deve executar quando um erro do tipo exato CourseNotFoundException for lançado em algum lugar. Se qualquer outro erro acontecer, esse método será ignorado.
 - **public ResponseEntity< ? > handlerCourseNotFound(CourseNotFoundException**: esta é a assinatura do método que trata o erro. 
 - return super.handlerExceptionInternal(...) é essa linha que constrói a resposta final. Estamos chamando um método útil da classe pai. 
+
+**Discussion**
+A capacidade de uma API RESTful de lidar com diversos erros de usuário e responder com os códigos de status HTTP e mensagens de erro apropriados a torna robusta e fácil de usar. Isso também deixa a aplicação mais aderente ao próprio paradigma RESTful.
+
+Ao projetar APIs, é uma prática comum primeiro identificar os possíveis cenários de erro na aplicação. Em seguida, podemos definir classes de exceção personalizadas que representem esses cenários identificados. Uma das vantagens de projetar uma exceção personalizada é que ela permite modelar a exceção de uma forma mais adequada e oferece flexibilidade para capturar vários detalhes sobre ela.
+
+Depois, podemos definir um #ExceptionHandler que intercepte essas classes de exceção e permita criar uma resposta de erro personalizada. Por exemplo, tentamos definir um #exception handler que trate cargas de requisição inválidas (wrong request payloads) e responda com o HTTP 400 Bad Request. Isso é deixado como exercício para os leitores.
+
+## 7.3 Testing a RESTful API

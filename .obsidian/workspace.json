@@ -35,8 +35,7 @@
               "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -239,28 +238,28 @@
       "markwhen:Create new Markwhen file": false
     }
   },
-  "active": "0cd950a435153cfb",
+  "active": "9a75d325abda9640",
   "lastOpenFiles": [
-    "Tá Salgado/Security.md",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
-    "Tá Salgado",
+    "Tá Salgado/Security.md",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/controller/CourseController.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/controller",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception/handler/CourseTrackerGlobalExceptionHandler.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception/handler",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/service/CourseServiceImpl.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/repository/CourseRepository.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/repository",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/ProductsApiApplication.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception/CourseNotFoundException.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts.md",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts/image-2025983652343.png",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts/image-20259718969.png",
     "Sem título 2.md",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts",
-    "RESTful Web Services with Java/Part I - Steps to a Great API",
-    "RESTful Web Services with Java",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot/image-2025971654326.png",
     "Concurso de TI/Temas Informática.md",
-    "Computação em Nuvem",
-    "Concurso de TI/Sem título",
-    "Concurso de TI",
     "Números uma Introdução à Matemática/Capítulo 1 - Números Inteiros.md",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot",
     "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR.md",
     "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-20257263442471.png",
     "Embedded Software/AUTOSAR Fundamentals and Applications/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/Capítulo 1 - Exploring the Genesis and Objectives of AUTOSAR/image-20257263441309.png",
@@ -286,7 +285,6 @@
     "Biologia de Campbell/Capítulo 12 - O Ciclo celular/Capítulo 12 - O Ciclo Celular.md",
     "Biologia de Campbell/Capítulo 44 - Osmorregulação e Excreção.md",
     "Biologia de Campbell/Capítulo 42 - Circulação e Trocas Gasosas.md",
-    "Biologia de Campbell/Capítulo 41 - Nutrição Animal.md",
     "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }

@@ -2,6 +2,7 @@ package com.davjaveiro.products_api.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -14,10 +15,13 @@ public class Course {
     @Column(name = "ID")
     private Long id;
 
+
     @Column(name = "NAME")
+    @NotBlank(message = "O nome não pode ser em branco!")
     private String name;
 
     @Column(name = "CATEGORY")
+    @NotBlank(message = "A categoria não pode ficar em branca.")
     private String category;
 
     @Column(name = "RATING")
