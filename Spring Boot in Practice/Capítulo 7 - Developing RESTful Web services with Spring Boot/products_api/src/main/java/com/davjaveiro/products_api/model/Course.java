@@ -3,11 +3,17 @@ package com.davjaveiro.products_api.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @Table(name = "COURSES")
+@Data
+@Builder // permite construir objetos de forma fluente e legível, sem precisar lembrar a ordem dos parâmetros
+@NoArgsConstructor // cria automaticamente um construtor vazio (sem argumentos)
+@AllArgsConstructor // cria automaticamente um construtor com todos os atributos da classe
 public class Course {
 
     @Id

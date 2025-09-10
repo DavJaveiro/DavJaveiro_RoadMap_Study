@@ -13,26 +13,40 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tá Salgado/Security.md",
+                "file": "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Security"
+              "title": "Chapter 3 - Moving into Spring Boot"
             }
           },
           {
-            "id": "0cd950a435153cfb",
+            "id": "a87ff26df4eda007",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+                "file": "Tá Salgado/Test.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
+              "title": "Test"
+            }
+          },
+          {
+            "id": "2f2a6dc90cbae24f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tá Salgado/Dependencys.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dependencys"
             }
           }
         ]
@@ -67,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Querydsl",
+                "query": "jackson",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +112,8 @@
               "title": "RunJS Codelist"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -240,20 +255,28 @@
   },
   "active": "9a75d325abda9640",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
-    "Tá Salgado/Security.md",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/controller/CourseController.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/controller",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception/handler/CourseTrackerGlobalExceptionHandler.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception/handler",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/service/CourseServiceImpl.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/repository/CourseRepository.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/repository",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/ProductsApiApplication.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception/CourseNotFoundException.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/exception",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts.md",
+    "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md",
+    "Spring Boot and Angular/Chapter 1 - Spring Boot and Angular - The Big Picture.md",
+    "Spring Boot 3 and React/cardatabase",
+    "Spring Boot 3 and React",
+    "Tá Salgado/Security.md",
+    "Spring Boot and Angular/Chapter 1/Sem título.md",
+    "Tá Salgado/Test.md",
+    "Tá Salgado/Dependencys.md",
+    "Spring Boot and Angular/Chapter 2 - Understanding Dependency Injection.md",
+    "Spring Boot and Angular/Chapter 1/1 - Setting Up the Environment and Tools - Backend.md",
+    "Spring Boot and Angular/cardatabase/target/classes/com/packt/cardatabase/CardatabaseApplication.class",
+    "Spring Boot and Angular/cardatabase/target/classes/com/packt/cardatabase",
+    "Spring Boot and Angular/cardatabase/target/classes/com/packt",
+    "Spring Boot and Angular/cardatabase/target/classes/com",
+    "Spring Boot 3 and React/cardatabase/src/main/java/com/packt/cardatabase/CardatabaseApplication.java~",
+    "Spring Boot and Angular/cardatabase/target/test-classes/com/packt/cardatabase/CardatabaseApplicationTests.class",
+    "Spring Boot and Angular/cardatabase/target/test-classes/com/packt/cardatabase",
+    "Spring Boot and Angular/cardatabase/target/test-classes/com/packt",
+    "Spring Boot and Angular/cardatabase/HELP.md",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts/image-2025983652343.png",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts/image-20259718969.png",
     "Sem título 2.md",
@@ -278,13 +301,6 @@
     "2025-07-22.md",
     "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
     "Java Rocketseat/Projeto Gestão de Vagas/Rotas, Autenticação e Autorização.md",
-    "Building Bioinformatics Solutions/Chapter 2 - Building Biological Databases with SQL/Chapter 2 - Building Biological Databases with SQL.md",
-    "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
-    "Pós Graduação - Unicamp/prompt.md",
-    "Pós Graduação - Unicamp/🧬 Alinhamento múltiplo de sequências.md",
-    "Biologia de Campbell/Capítulo 12 - O Ciclo celular/Capítulo 12 - O Ciclo Celular.md",
-    "Biologia de Campbell/Capítulo 44 - Osmorregulação e Excreção.md",
-    "Biologia de Campbell/Capítulo 42 - Circulação e Trocas Gasosas.md",
     "RoadMap do DavJaveiro/RoadMap.canvas"
   ]
 }

@@ -227,3 +227,34 @@ Ao projetar APIs, é uma prática comum primeiro identificar os possíveis cená
 Depois, podemos definir um #ExceptionHandler que intercepte essas classes de exceção e permita criar uma resposta de erro personalizada. Por exemplo, tentamos definir um #exception handler que trate cargas de requisição inválidas (wrong request payloads) e responda com o HTTP 400 Bad Request. Isso é deixado como exercício para os leitores.
 
 ## 7.3 Testing a RESTful API
+Nas técnicas anteriores, aprendemos a construir uma RESTful API. Depois de concluir o desenvolvimento, a próxima tarefa é testar os endpoints da API para garantir que ela esteja funcionando conforme o esperado. Existem múltiplas formas de testar uma REST API, como mostrado na figura 7.2
+
+Figura 7.2 Opções para testar uma RESTful API. As utilidades de **command line** incluem cURL, HTTPie. As ferramentas baseadas em GUI incluem Postman, SoapUI. O unit testing pode ser feito com Spring Boot MockMVC em conjunto com o JUnit.
+
+Até agora, discutimos o uso da ferramenta de command line HTTPie, que pode ser utilizada para acessar os endpoints. Também podemos usar o cURL para testar os endpoints. 
+
+No REST API testing, o Postman é amplamente utilizado para desenvolvedores de API para testar as APIs.
+
+Na próxima seção, dicutiremos como testar uma REST API por meio de integration testing. Sem´re é uma best practice escrever test cases para os entpoins que são executados enquanto construímos nossa API. 
+
+### 7.3.1 Techinque: testing a RESTful API in a Spring Boot application
+**Solution**
+Em uma aplicação típica, para testar nossas classes, podemos instanciá-las e invocar os métodos definidos nelas ou utilizar **mocking frameworks**, como o Mockito, para mockar a classe e outros componentes.
+
+Em uma aplicação Spring MVC, podemos definir test cases de forma semelhante. No entanto, isso não verifica alguns recursos importantes do MVC framework, como request mapping, validation, data binding, @ExceptionHandler, entre outros.
+
+O **Spring MVC** fornece um **testing framework** que disponibiliza capacidades de teste abrangentes para aplicações baseadas em **Spring MVC**, sem a necessidade de um servidor real. Esse framework, também conhecido como **MockMVC**, realiza o tratamento de requisições **MVC** por meio de objetos de requisição e resposta **mock**.
+
+Nesta técnica, vamos mostrar como usar o Spring MockMVC framework em uma aplicação Spring Boot para testar uma REST API. Definiremos integration test cases para os APIS endpoints que criamos nas técnicas anteriores.
+
+Vamos começar definindo o primeiro test case, que cria um curso em nossa aplicação Course Tracker.
+
+[[ProductsApiApplicationTests.java]]
+
+- A anotação **@SpringBootTest** indica que a classe anotada executa Spring Boot-based tests e fornece o suporte de ambiente necessário para rodar os test cases. Ela cria o Spring application.context, que instancia os Spring beans necessários para executar os testes.
+- A anotação **@AutoConfigureMockMvc** habilita e auto-configura o **MockMVC** framework. Essa anotação faz o trabalho pesado para fornecer o suporte necessário, permitindo que simplesmente façamos o **autowire** de uma instância de **MockMVC** e a utilizemos no teste.
+- A anotação **@ExtendWith(SpringExtension.class)** integra o **Spring TestContext Framework** com o modelo de programação Jupiter do Junit 5. @ExtendWith é uma anotação do Junit 5 que permite especificar a extension a ser usada para executar o test case.
+- Fizemos o autowire do CourseService e da instância MockMvc na classe.
+- Utilizamos a instância mockMvc para executar uma operação HTTP POST com um curso de exemplo.
+
+Uma vez que a requisição é disparada, usamos o andExpect para verificar vários atributos. Usamos o jsonpath para extrair os valores da resposta JSON. Por fim, validamos o código de status da resposta HTTP. Agora, vamos fornecer o caso de teste para obter o curso pelo ID. A listagem a seguir mostra esse caso de teste.

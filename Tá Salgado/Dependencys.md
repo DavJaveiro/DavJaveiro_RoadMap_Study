@@ -1,0 +1,2 @@
+- #SpringBootDevTools: permite reinicialização automática com base nas modificações que realizamos no código ao longo do desenvolvimento.
+- #SpringWeb

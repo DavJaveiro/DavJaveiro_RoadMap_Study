@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fa5e89ab-767f-455d-b831-c75296526119" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.obsidian/community-plugins.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/community-plugins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.obsidian/plugins/editing-toolbar/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/plugins/editing-toolbar/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/test/java/com/davjaveiro/products_api/ProductsApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/test/java/com/davjaveiro/products_api/ProductsApiApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tá Salgado/Security.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tá Salgado/Security.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="32W3tk5D4Cpzye2Fz25LABC41ER" />
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.CardatabaseApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="CardatabaseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="cardatabase" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.packt.cardatabase.CardatabaseApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa5e89ab-767f-455d-b831-c75296526119" name="Changes" comment="" />
+      <created>1757522724780</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757522724780</updated>
+      <workItem from="1757522726520" duration="2126000" />
+      <workItem from="1757528507886" duration="57000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

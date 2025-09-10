@@ -5,9 +5,12 @@ import com.davjaveiro.products_api.service.CourseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 
 @RestController
@@ -33,8 +36,9 @@ public class CourseController {
     }
 
     @PostMapping
-    public Course createCourse(@Valid @RequestBody Course course) {
-        return courseService.createCourse(course);
+    public ResponseEntity<Course> createCourse(@Valid @RequestBody Course course) {
+        Course savedCourse = courseService.createCourse(course);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedCourse);
     }
 
     @PutMapping("{id}")
