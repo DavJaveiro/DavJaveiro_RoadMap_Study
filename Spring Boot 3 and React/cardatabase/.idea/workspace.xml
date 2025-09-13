@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa5e89ab-767f-455d-b831-c75296526119" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.obsidian/community-plugins.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/community-plugins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.obsidian/appearance.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/appearance.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.obsidian/plugins/editing-toolbar/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/plugins/editing-toolbar/data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../.obsidian/workspace.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/model/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/test/java/com/davjaveiro/products_api/ProductsApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/test/java/com/davjaveiro/products_api/ProductsApiApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tá Salgado/Security.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tá Salgado/Security.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../The Princepton Companion/Preface.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../The Princepton Companion/Preface.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tá Salgado/Test.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tá Salgado/Test.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,26 +35,26 @@
     <option name="flattenModules" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.CardatabaseApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CardatabaseApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="CardatabaseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -85,6 +83,7 @@
       <updated>1757522724780</updated>
       <workItem from="1757522726520" duration="2126000" />
       <workItem from="1757528507886" duration="57000" />
+      <workItem from="1757685808115" duration="16000" />
     </task>
     <servers />
   </component>
