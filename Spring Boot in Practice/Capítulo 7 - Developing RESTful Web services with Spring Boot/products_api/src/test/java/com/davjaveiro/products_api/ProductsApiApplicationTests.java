@@ -1,7 +1,7 @@
 package com.davjaveiro.products_api;
 
-import com.davjaveiro.products_api.model.Course;
-import com.davjaveiro.products_api.service.CourseService;
+import com.davjaveiro.products_api.products.domain.Course;
+import com.davjaveiro.products_api.products.service.CourseService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;

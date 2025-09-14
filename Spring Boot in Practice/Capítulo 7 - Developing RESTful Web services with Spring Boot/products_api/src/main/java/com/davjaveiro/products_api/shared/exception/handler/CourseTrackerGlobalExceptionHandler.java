@@ -1,12 +1,11 @@
-package com.davjaveiro.products_api.exception.handler;
+package com.davjaveiro.products_api.shared.exception.handler;
 
-import com.davjaveiro.products_api.exception.CourseNotFoundException;
+import com.davjaveiro.products_api.shared.exception.CourseNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;

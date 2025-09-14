@@ -1,4 +1,4 @@
-package com.davjaveiro.products_api.exception;
+package com.davjaveiro.products_api.shared.exception;
 
 public class CourseNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 5071646428281007896L;

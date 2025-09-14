@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "70f3e23245c21c48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tá Salgado/Security.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Security"
+            }
+          },
+          {
             "id": "a87ff26df4eda007",
             "type": "leaf",
             "state": {
@@ -254,28 +268,31 @@
   },
   "active": "9a75d325abda9640",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/application.properties",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/resources/application.properties~",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/generated-sources/annotations",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/generated-sources",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
+    "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
+    "().md",
+    "Tá Salgado/Security.md",
     "Tá Salgado/Dependencys.md",
     "Tá Salgado/Test.md",
-    "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/resources/application.properties~",
     "Spring Boot and Angular/Chapter 4 - Setting Up the Database and Spring Data JPA.md",
     "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md",
     "The Princepton Companion/Preface.md",
-    "The Princepton Companion",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts.md",
     "Spring Boot and Angular/Chapter 1 - Spring Boot and Angular - The Big Picture.md",
-    "Spring Boot 3 and React/cardatabase",
-    "Spring Boot 3 and React",
-    "Tá Salgado/Security.md",
     "Spring Boot and Angular/Chapter 1/Sem título.md",
     "Spring Boot and Angular/Chapter 2 - Understanding Dependency Injection.md",
     "Spring Boot and Angular/Chapter 1/1 - Setting Up the Environment and Tools - Backend.md",
-    "Spring Boot and Angular/cardatabase/target/classes/com/packt/cardatabase/CardatabaseApplication.class",
-    "Spring Boot and Angular/cardatabase/target/classes/com/packt/cardatabase",
-    "Spring Boot and Angular/cardatabase/target/classes/com/packt",
-    "Spring Boot and Angular/cardatabase/target/classes/com",
-    "Spring Boot 3 and React/cardatabase/src/main/java/com/packt/cardatabase/CardatabaseApplication.java~",
-    "Spring Boot and Angular/cardatabase/target/test-classes/com/packt/cardatabase/CardatabaseApplicationTests.class",
     "Spring Boot and Angular/cardatabase/HELP.md",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
@@ -297,8 +314,6 @@
     "Engenharia de Software - Sommerville/Leitura Eng. Software Moderna.md",
     "CND.md",
     "Cronograma/24-03 até 30-03.md",
-    "2025-07-27.md",
-    "2025-07-26.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas"
+    "2025-07-27.md"
   ]
 }
