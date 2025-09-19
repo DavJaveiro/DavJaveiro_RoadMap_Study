@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
+                "file": "ByeByeCupom/Requisitos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 5 - Building APIs with Spring"
+              "title": "Requisitos"
             }
           },
           {
@@ -130,8 +130,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -268,6 +267,9 @@
   },
   "active": "9a75d325abda9640",
   "lastOpenFiles": [
+    "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
+    "ByeByeCupom/Requisitos.md",
+    "ByeByeCupom",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile",
@@ -277,10 +279,7 @@
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/application.properties",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/resources/application.properties~",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/generated-sources/annotations",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/generated-sources",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
     "().md",
     "Tá Salgado/Security.md",
     "Tá Salgado/Dependencys.md",
