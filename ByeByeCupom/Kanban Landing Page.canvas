@@ -1,0 +1,254 @@
+{
+  "nodes": [
+    {
+      "id": "c271039eca52e4ec",
+      "type": "text",
+      "text": "### Padrão de cores para status de tarefas\n\n- **Amarelo** → **A Fazer (To Do)**\n    \n    - Representa atenção, algo pendente, ainda não iniciado.\n        \n    - Hex: `#FFD966`\n        \n- **Azul** → **Em Progresso (Doing)**\n    \n    - Indica movimento, tarefa em andamento.\n        \n    - Hex: `#5DADE2`\n        \n- **Verde** → **Concluído (Done)**\n    \n    - Finalizado, sucesso, algo que não precisa mais de ação.\n        \n    - Hex: `#58D68D`\n        \n- **Vermelho** → **Bloqueado / Impedimento**\n    \n    - Algo que não pode ser feito agora, precisa de revisão ou desbloqueio.\n        \n    - Hex: `#E74C3C`\n        \n- **Laranja** → **Prioridade Alta / Urgente**\n    \n    - Chamativo para itens que precisam de atenção imediata.\n        \n    - Hex: `#F39C12`\n        \n- **Cinza** → **Cancelado / Não será feito**\n    \n    - Neutro, indica que não faz mais sentido trabalhar naquela tarefa.\n        \n    - Hex: `#B2BABB`",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -2240,
+      "y": -1040,
+      "width": 1280,
+      "height": 1320
+    },
+    {
+      "id": "60eb3e6f2b24489d",
+      "type": "text",
+      "text": "Implementar uma seção de teste com QR code: usuário vai scanear com um celular ou clicar no botão para baixar;",
+      "styleAttributes": {},
+      "x": 660,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "549973ee47263333",
+      "type": "text",
+      "text": "Gerar o Layout do PDF a partir de um arquivo XML da SEFAZ;",
+      "styleAttributes": {},
+      "x": 705,
+      "y": 600,
+      "width": 430,
+      "height": 180,
+      "color": "#eef2dc"
+    },
+    {
+      "id": "3992d16045094c3b",
+      "type": "text",
+      "text": "- Implementar a página sobre as legalidades (embasamento jurídico do projeto);",
+      "styleAttributes": {},
+      "x": 1345,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "eb0bf4027f29f8b7",
+      "type": "text",
+      "text": "A Fazer (To Do)",
+      "styleAttributes": {
+        "textAlign": "center",
+        "shape": "circle"
+      },
+      "x": 995,
+      "y": -660,
+      "width": 370,
+      "height": 100,
+      "color": "#eef2dc"
+    },
+    {
+      "id": "44883e94d0d6d0bf",
+      "type": "text",
+      "text": "- Utilizar o menu lateral (vertical) flutuante na página em dispositivos com tela grande;\n- Na versão mobile, usar o menu (botão), para facilitar a navegação;",
+      "styleAttributes": {},
+      "x": 1345,
+      "y": 580,
+      "width": 520,
+      "height": 400,
+      "color": "#eef2dc"
+    },
+    {
+      "id": "d85b0e56c929a7f0",
+      "type": "text",
+      "text": "Implementar o meu sistema de recebimento de e-mail (remover o Formspree);\n- User a Hostinger para hospedagem do siste + e-mail;",
+      "styleAttributes": {},
+      "x": 40,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "e352fd6c7014b410",
+      "type": "text",
+      "text": "Em Progresso (Doing)",
+      "styleAttributes": {
+        "textAlign": "center",
+        "shape": "pill"
+      },
+      "x": 2600,
+      "y": -660,
+      "width": 370,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "f0f41629e800db2d",
+      "type": "text",
+      "text": "Concluído (Done)",
+      "styleAttributes": {
+        "textAlign": "center",
+        "shape": "pill"
+      },
+      "x": 4000,
+      "y": -660,
+      "width": 370,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "715ba0a76bc5740e",
+      "type": "text",
+      "text": "- [x] Corrigir os erros ortográficos da página;\n- [ ] 2025-09-22",
+      "styleAttributes": {},
+      "x": 3935,
+      "y": 50,
+      "width": 500,
+      "height": 180,
+      "color": "5"
+    },
+    {
+      "id": "50e0f6ea0ce8f3b5",
+      "type": "text",
+      "text": "- [ ] Corrigir a seção sobre nós: posicionamento das duas frentes, aplicar espaçamento para melhorar a legibilidade\n- [ ] 2025-09-22",
+      "styleAttributes": {},
+      "x": 2522,
+      "y": 159,
+      "width": 526,
+      "height": 261,
+      "color": "5"
+    },
+    {
+      "id": "1f23e192ba79afa3",
+      "type": "text",
+      "text": "Esconder a página de agradecimento, quando o e-mail é enviado, para que ninguém consiga acessar sem apertar no botão (ByeBye Cupom!)",
+      "styleAttributes": {},
+      "x": -1240,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "4b4086eaf559b61e",
+      "type": "text",
+      "text": "Melhorar a estilização do link compartilhável da página",
+      "styleAttributes": {},
+      "x": -600,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e6ba38cee06990d6",
+      "styleAttributes": {
+        "path": "short-dashed"
+      },
+      "fromNode": "eb0bf4027f29f8b7",
+      "fromSide": "bottom",
+      "toNode": "60eb3e6f2b24489d",
+      "toSide": "top"
+    },
+    {
+      "id": "4c90e96c75044f65",
+      "styleAttributes": {},
+      "fromNode": "60eb3e6f2b24489d",
+      "fromSide": "bottom",
+      "toNode": "549973ee47263333",
+      "toSide": "top"
+    },
+    {
+      "id": "a53ca5ef087ccd59",
+      "styleAttributes": {},
+      "fromNode": "eb0bf4027f29f8b7",
+      "fromSide": "bottom",
+      "toNode": "3992d16045094c3b",
+      "toSide": "top"
+    },
+    {
+      "id": "d6bd884cb8b4949a",
+      "styleAttributes": {},
+      "fromNode": "3992d16045094c3b",
+      "fromSide": "bottom",
+      "toNode": "44883e94d0d6d0bf",
+      "toSide": "top"
+    },
+    {
+      "id": "26eaa2998bdf12db",
+      "styleAttributes": {
+        "path": "short-dashed"
+      },
+      "fromNode": "eb0bf4027f29f8b7",
+      "fromSide": "bottom",
+      "toNode": "d85b0e56c929a7f0",
+      "toSide": "top"
+    },
+    {
+      "id": "107f98978376bdc6",
+      "styleAttributes": {
+        "path": "short-dashed"
+      },
+      "fromNode": "eb0bf4027f29f8b7",
+      "fromSide": "bottom",
+      "toNode": "1f23e192ba79afa3",
+      "toSide": "top"
+    },
+    {
+      "id": "a22e1e6445f0a9af",
+      "styleAttributes": {},
+      "fromNode": "eb0bf4027f29f8b7",
+      "fromSide": "right",
+      "toNode": "e352fd6c7014b410",
+      "toSide": "left"
+    },
+    {
+      "id": "17786be878e9119f",
+      "styleAttributes": {},
+      "fromNode": "f0f41629e800db2d",
+      "fromSide": "bottom",
+      "toNode": "715ba0a76bc5740e",
+      "toSide": "top"
+    },
+    {
+      "id": "a88c021926cb462b",
+      "styleAttributes": {},
+      "fromNode": "e352fd6c7014b410",
+      "fromSide": "right",
+      "toNode": "f0f41629e800db2d",
+      "toSide": "left"
+    },
+    {
+      "id": "85ea6c6d4d72dd27",
+      "styleAttributes": {},
+      "fromNode": "e352fd6c7014b410",
+      "fromSide": "bottom",
+      "toNode": "50e0f6ea0ce8f3b5",
+      "toSide": "top"
+    },
+    {
+      "id": "6e2badb06067aa10",
+      "styleAttributes": {},
+      "fromNode": "eb0bf4027f29f8b7",
+      "fromSide": "bottom",
+      "toNode": "4b4086eaf559b61e",
+      "toSide": "top"
+    }
+  ],
+  "metadata": {}
+}

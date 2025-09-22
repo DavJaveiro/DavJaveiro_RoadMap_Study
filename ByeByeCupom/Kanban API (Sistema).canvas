@@ -1,0 +1,205 @@
+{
+  "nodes": [
+    {
+      "id": "e16d77bc3e6d44a5",
+      "type": "text",
+      "text": " Em Progresso (Doing)",
+      "styleAttributes": {
+        "shape": "pill",
+        "textAlign": "center"
+      },
+      "x": 220,
+      "y": -260,
+      "width": 320,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "d90c348c81b854c6",
+      "type": "text",
+      "text": "### Padrão de cores para status de tarefas\n\n- **Amarelo** → **A Fazer (To Do)**\n    \n    - Representa atenção, algo pendente, ainda não iniciado.\n        \n    - Hex: `#FFD966`\n        \n- **Azul** → **Em Progresso (Doing)**\n    \n    - Indica movimento, tarefa em andamento.\n        \n    - Hex: `#5DADE2`\n        \n- **Verde** → **Concluído (Done)**\n    \n    - Finalizado, sucesso, algo que não precisa mais de ação.\n        \n    - Hex: `#58D68D`\n        \n- **Vermelho** → **Bloqueado / Impedimento**\n    \n    - Algo que não pode ser feito agora, precisa de revisão ou desbloqueio.\n        \n    - Hex: `#E74C3C`\n        \n- **Laranja** → **Prioridade Alta / Urgente**\n    \n    - Chamativo para itens que precisam de atenção imediata.\n        \n    - Hex: `#F39C12`\n        \n- **Cinza** → **Cancelado / Não será feito**\n    \n    - Neutro, indica que não faz mais sentido trabalhar naquela tarefa.\n        \n    - Hex: `#B2BABB`",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -3140,
+      "y": -1240,
+      "width": 1280,
+      "height": 1320
+    },
+    {
+      "id": "0213234b5b535b49",
+      "type": "text",
+      "text": "Levantamento de Requisitos da API\n",
+      "styleAttributes": {},
+      "x": -1655,
+      "y": 160,
+      "width": 520,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "aaf5878cd52dbcdb",
+      "type": "file",
+      "file": "ByeByeCupom/ByeByeCupom Logo.png",
+      "styleAttributes": {},
+      "x": -520,
+      "y": -1520,
+      "width": 1146,
+      "height": 400
+    },
+    {
+      "id": "a28b2629d7fcd22c",
+      "type": "text",
+      "text": "Concluído (Done)",
+      "styleAttributes": {
+        "shape": "pill",
+        "textAlign": "center"
+      },
+      "x": 1220,
+      "y": -260,
+      "width": 320,
+      "height": 80,
+      "color": "4"
+    },
+    {
+      "id": "d80a9b8160ef3c9d",
+      "type": "text",
+      "text": "A Fazer (To Do)",
+      "styleAttributes": {
+        "shape": "pill",
+        "textAlign": "center"
+      },
+      "x": -1555,
+      "y": -260,
+      "width": 320,
+      "height": 80,
+      "color": "2"
+    },
+    {
+      "id": "9476a60bfcdd840c",
+      "type": "text",
+      "text": "Baixar Plugin para baixar exportar esse diagrama em PNG\n",
+      "styleAttributes": {},
+      "x": 2560,
+      "y": 2820,
+      "width": 640,
+      "height": 240,
+      "color": "1"
+    },
+    {
+      "id": "76ccb142abf80b4e",
+      "type": "file",
+      "file": "ByeByeCupom/Diagrama UML Fluxo Geral.md",
+      "styleAttributes": {},
+      "x": 40,
+      "y": 2130,
+      "width": 2000,
+      "height": 1620
+    },
+    {
+      "id": "c9c33a5808776f95",
+      "type": "file",
+      "file": "ByeByeCupom/Diagrama UML API.md",
+      "x": -2240,
+      "y": 2130,
+      "width": 2120,
+      "height": 1620
+    },
+    {
+      "id": "0c55b34cb3c88c8c",
+      "type": "text",
+      "text": "Levantamento de segurança (como garantir segurança para a API)?\n",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -1080,
+      "y": 160,
+      "width": 680,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "b6ef94848ccd5450",
+      "type": "text",
+      "text": "ARMAZENAMENTO:\n- Qual banco de dados utilizar?\n  - Quais dados iremos armazenar? XML, JSON, PDF?",
+      "styleAttributes": {},
+      "x": -1720,
+      "y": 500,
+      "width": 640,
+      "height": 220,
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "f12e897cb9e99f1f",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "e16d77bc3e6d44a5",
+      "fromSide": "bottom",
+      "toNode": "76ccb142abf80b4e",
+      "toSide": "top"
+    },
+    {
+      "id": "ac3596b7cae0e585",
+      "styleAttributes": {},
+      "fromNode": "76ccb142abf80b4e",
+      "fromSide": "right",
+      "toNode": "9476a60bfcdd840c",
+      "toSide": "left",
+      "color": "1"
+    },
+    {
+      "id": "0acc813f2d1f0ae8",
+      "styleAttributes": {},
+      "fromNode": "e16d77bc3e6d44a5",
+      "fromSide": "right",
+      "toNode": "a28b2629d7fcd22c",
+      "toSide": "left"
+    },
+    {
+      "id": "7de6496fd05ef762",
+      "styleAttributes": {},
+      "fromNode": "d80a9b8160ef3c9d",
+      "fromSide": "right",
+      "toNode": "e16d77bc3e6d44a5",
+      "toSide": "left"
+    },
+    {
+      "id": "c057512870c9d214",
+      "styleAttributes": {},
+      "fromNode": "d80a9b8160ef3c9d",
+      "fromSide": "bottom",
+      "toNode": "0213234b5b535b49",
+      "toSide": "top"
+    },
+    {
+      "id": "2b4a6a17c7edfd4c",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "e16d77bc3e6d44a5",
+      "fromSide": "bottom",
+      "toNode": "c9c33a5808776f95",
+      "toSide": "top"
+    },
+    {
+      "id": "b9ae45537a451330",
+      "styleAttributes": {},
+      "fromNode": "d80a9b8160ef3c9d",
+      "fromSide": "bottom",
+      "toNode": "0c55b34cb3c88c8c",
+      "toSide": "top"
+    },
+    {
+      "id": "46828b15583d9c3f",
+      "styleAttributes": {},
+      "fromNode": "0213234b5b535b49",
+      "fromSide": "bottom",
+      "toNode": "b6ef94848ccd5450",
+      "toSide": "top"
+    }
+  ],
+  "metadata": {}
+}

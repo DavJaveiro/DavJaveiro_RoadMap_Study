@@ -3,7 +3,6 @@ Com certeza. Montar um cronograma detalhado é a melhor forma de garantir um pro
 Aqui está uma proposta de cronograma semanal para seu primeiro ano de estudos.
 
 ### **Filosofia do Cronograma**
-
 - **Ritmo Sustentável:** A rotina sugerida é de **2 sessões de estudo por semana**:
     
     - **Quarta-feira (1h - 1.5h):** Foco em leitura e assimilação da teoria.

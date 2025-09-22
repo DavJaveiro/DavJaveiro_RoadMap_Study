@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "id": "a84e1d8249b6bb41",
+      "type": "file",
+      "file": "ByeByeCupom/ByeByeCupom Logo.png",
+      "styleAttributes": {},
+      "x": 460,
+      "y": -100,
+      "width": 400,
+      "height": 140
+    },
+    {
+      "id": "f9097f92bd672280",
+      "type": "text",
+      "text": "## 🎨 Padrões de cores para Brainstorming\n\n### 1. **Por tipo de ideia**\n\n- 🟨 **Amarelo** → Ideias iniciais / livres (sem filtro)\n    \n- 🟩 **Verde** → Ideias práticas / viáveis\n    \n- 🟥 **Vermelho** → Problemas / riscos / críticas\n    \n- 🟦 **Azul** → Sugestões de melhoria / alternativas\n    \n- 🟪 **Roxo** → Ideias inovadoras / fora da caixa",
+      "styleAttributes": {},
+      "x": -1020,
+      "y": -520,
+      "width": 820,
+      "height": 720
+    },
+    {
+      "id": "d00bc7d1d0c21dba",
+      "type": "file",
+      "file": "Pasted image 20250922131718.png",
+      "x": 660,
+      "y": 960,
+      "width": 908,
+      "height": 460
+    },
+    {
+      "id": "69fb58e84f4b9344",
+      "type": "text",
+      "text": "ARMAZENAMENTO",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 954,
+      "y": 460,
+      "width": 320,
+      "height": 60
+    },
+    {
+      "id": "13e0f8697703d130",
+      "type": "text",
+      "text": "Não precisamos armazenar o PDF ou XML, podemos apenar armazenar o código gerado pela SEFAZ, em formato STRING, apontando para o cupon no SEFAZ;",
+      "styleAttributes": {},
+      "x": 1980,
+      "y": 1050,
+      "width": 460,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "727d7519a72afab1",
+      "type": "text",
+      "text": "EVOLUÇÃO",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -180,
+      "y": 430,
+      "width": 320,
+      "height": 60
+    },
+    {
+      "id": "493c636942b9ce15",
+      "type": "text",
+      "text": "Criar um aplicativo para receber os cupons gerados por QR code para possível gestão financeira;",
+      "styleAttributes": {},
+      "x": -860,
+      "y": 860,
+      "width": 840,
+      "height": 100,
+      "color": "#ffb02e"
+    },
+    {
+      "id": "61a6ba4162cb44ed",
+      "type": "text",
+      "text": "Ou seria melhor realizar essa gestão via WhatsApp?",
+      "styleAttributes": {
+        "textAlign": "center",
+        "shape": "pill"
+      },
+      "x": -960,
+      "y": 1080,
+      "width": 520,
+      "height": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "91fc269ede2b06e2",
+      "styleAttributes": {},
+      "fromNode": "a84e1d8249b6bb41",
+      "fromSide": "bottom",
+      "toNode": "727d7519a72afab1",
+      "toSide": "top"
+    },
+    {
+      "id": "33076ae273a4e540",
+      "styleAttributes": {},
+      "fromNode": "a84e1d8249b6bb41",
+      "fromSide": "bottom",
+      "toNode": "69fb58e84f4b9344",
+      "toSide": "top"
+    },
+    {
+      "id": "9d5318c7c981fb48",
+      "styleAttributes": {},
+      "fromNode": "69fb58e84f4b9344",
+      "fromSide": "bottom",
+      "toNode": "d00bc7d1d0c21dba",
+      "toSide": "top"
+    },
+    {
+      "id": "b1f510bff758ac5e",
+      "styleAttributes": {},
+      "fromNode": "d00bc7d1d0c21dba",
+      "fromSide": "right",
+      "toNode": "13e0f8697703d130",
+      "toSide": "left"
+    },
+    {
+      "id": "2251d2cb4eda71d1",
+      "styleAttributes": {},
+      "fromNode": "727d7519a72afab1",
+      "fromSide": "bottom",
+      "toNode": "493c636942b9ce15",
+      "toSide": "top"
+    },
+    {
+      "id": "c74d183e294e441c",
+      "styleAttributes": {},
+      "fromNode": "493c636942b9ce15",
+      "fromSide": "bottom",
+      "toNode": "61a6ba4162cb44ed",
+      "toSide": "top"
+    }
+  ],
+  "metadata": {}
+}
