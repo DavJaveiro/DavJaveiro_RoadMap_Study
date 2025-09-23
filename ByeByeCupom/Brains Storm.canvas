@@ -24,6 +24,7 @@
       "id": "d00bc7d1d0c21dba",
       "type": "file",
       "file": "Pasted image 20250922131718.png",
+      "styleAttributes": {},
       "x": 660,
       "y": 960,
       "width": 908,
@@ -87,6 +88,26 @@
       "y": 1080,
       "width": 520,
       "height": 100
+    },
+    {
+      "id": "eaee2c4365b5c2b6",
+      "type": "text",
+      "text": "BENCHMARKING COMPETITIVO",
+      "styleAttributes": {},
+      "x": 360,
+      "y": 480,
+      "width": 500,
+      "height": 60
+    },
+    {
+      "id": "d30b25188e1da24f",
+      "type": "text",
+      "text": "Estudar a concorrência e mostrar como o nosso produto ou serviço se diferencia ou entrega mais valor",
+      "styleAttributes": {},
+      "x": 320,
+      "y": 680,
+      "width": 580,
+      "height": 160
     }
   ],
   "edges": [
@@ -136,6 +157,22 @@
       "fromNode": "493c636942b9ce15",
       "fromSide": "bottom",
       "toNode": "61a6ba4162cb44ed",
+      "toSide": "top"
+    },
+    {
+      "id": "89868fab401ddabf",
+      "styleAttributes": {},
+      "fromNode": "a84e1d8249b6bb41",
+      "fromSide": "bottom",
+      "toNode": "eaee2c4365b5c2b6",
+      "toSide": "top"
+    },
+    {
+      "id": "dea873b9e27352c3",
+      "styleAttributes": {},
+      "fromNode": "eaee2c4365b5c2b6",
+      "fromSide": "bottom",
+      "toNode": "d30b25188e1da24f",
       "toSide": "top"
     }
   ],

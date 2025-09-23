@@ -13,73 +13,26 @@
       "height": 1320
     },
     {
-      "id": "60eb3e6f2b24489d",
-      "type": "text",
-      "text": "Implementar uma seção de teste com QR code: usuário vai scanear com um celular ou clicar no botão para baixar;",
-      "styleAttributes": {},
-      "x": 660,
-      "y": 140,
-      "width": 520,
-      "height": 280,
-      "color": "#e1ff00"
-    },
-    {
-      "id": "549973ee47263333",
-      "type": "text",
-      "text": "Gerar o Layout do PDF a partir de um arquivo XML da SEFAZ;",
-      "styleAttributes": {},
-      "x": 705,
-      "y": 600,
-      "width": 430,
-      "height": 180,
-      "color": "#eef2dc"
-    },
-    {
       "id": "3992d16045094c3b",
       "type": "text",
       "text": "- Implementar a página sobre as legalidades (embasamento jurídico do projeto);",
       "styleAttributes": {},
-      "x": 1345,
-      "y": 140,
+      "x": 2025,
+      "y": 0,
       "width": 520,
       "height": 280,
       "color": "#e1ff00"
-    },
-    {
-      "id": "eb0bf4027f29f8b7",
-      "type": "text",
-      "text": "A Fazer (To Do)",
-      "styleAttributes": {
-        "textAlign": "center",
-        "shape": "circle"
-      },
-      "x": 995,
-      "y": -660,
-      "width": 370,
-      "height": 100,
-      "color": "#eef2dc"
     },
     {
       "id": "44883e94d0d6d0bf",
       "type": "text",
       "text": "- Utilizar o menu lateral (vertical) flutuante na página em dispositivos com tela grande;\n- Na versão mobile, usar o menu (botão), para facilitar a navegação;",
       "styleAttributes": {},
-      "x": 1345,
-      "y": 580,
+      "x": 2025,
+      "y": 440,
       "width": 520,
       "height": 400,
       "color": "#eef2dc"
-    },
-    {
-      "id": "d85b0e56c929a7f0",
-      "type": "text",
-      "text": "Implementar o meu sistema de recebimento de e-mail (remover o Formspree);\n- User a Hostinger para hospedagem do siste + e-mail;",
-      "styleAttributes": {},
-      "x": 40,
-      "y": 140,
-      "width": 520,
-      "height": 280,
-      "color": "#e1ff00"
     },
     {
       "id": "e352fd6c7014b410",
@@ -89,10 +42,21 @@
         "textAlign": "center",
         "shape": "pill"
       },
-      "x": 2600,
-      "y": -660,
+      "x": 3280,
+      "y": -800,
       "width": 370,
       "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "715ba0a76bc5740e",
+      "type": "text",
+      "text": "- [x] Corrigir os erros ortográficos da página;\n- [ ] 2025-09-22",
+      "styleAttributes": {},
+      "x": 4615,
+      "y": -90,
+      "width": 500,
+      "height": 180,
       "color": "5"
     },
     {
@@ -103,41 +67,77 @@
         "textAlign": "center",
         "shape": "pill"
       },
-      "x": 4000,
-      "y": -660,
+      "x": 4680,
+      "y": -800,
       "width": 370,
       "height": 100,
       "color": "4"
-    },
-    {
-      "id": "715ba0a76bc5740e",
-      "type": "text",
-      "text": "- [x] Corrigir os erros ortográficos da página;\n- [ ] 2025-09-22",
-      "styleAttributes": {},
-      "x": 3935,
-      "y": 50,
-      "width": 500,
-      "height": 180,
-      "color": "5"
     },
     {
       "id": "50e0f6ea0ce8f3b5",
       "type": "text",
       "text": "- [ ] Corrigir a seção sobre nós: posicionamento das duas frentes, aplicar espaçamento para melhorar a legibilidade\n- [ ] 2025-09-22",
       "styleAttributes": {},
-      "x": 2522,
-      "y": 159,
+      "x": 3202,
+      "y": 19,
       "width": 526,
       "height": 261,
       "color": "5"
+    },
+    {
+      "id": "d85b0e56c929a7f0",
+      "type": "text",
+      "text": "Implementar o meu sistema de recebimento de e-mail (remover o Formspree);\n- User a Hostinger para hospedagem do siste + e-mail;",
+      "styleAttributes": {},
+      "x": 720,
+      "y": 0,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "60eb3e6f2b24489d",
+      "type": "text",
+      "text": "Implementar uma seção de teste com QR code: usuário vai scanear com um celular ou clicar no botão para baixar;",
+      "styleAttributes": {},
+      "x": 1340,
+      "y": 0,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "549973ee47263333",
+      "type": "text",
+      "text": "Gerar o Layout do PDF a partir de um arquivo XML da SEFAZ;",
+      "styleAttributes": {},
+      "x": 1385,
+      "y": 460,
+      "width": 430,
+      "height": 180,
+      "color": "#eef2dc"
+    },
+    {
+      "id": "eb0bf4027f29f8b7",
+      "type": "text",
+      "text": "A Fazer (To Do)",
+      "styleAttributes": {
+        "textAlign": "center",
+        "shape": "circle"
+      },
+      "x": 1675,
+      "y": -800,
+      "width": 370,
+      "height": 100,
+      "color": "#eef2dc"
     },
     {
       "id": "1f23e192ba79afa3",
       "type": "text",
       "text": "Esconder a página de agradecimento, quando o e-mail é enviado, para que ninguém consiga acessar sem apertar no botão (ByeBye Cupom!)",
       "styleAttributes": {},
-      "x": -1240,
-      "y": 140,
+      "x": -560,
+      "y": 0,
       "width": 520,
       "height": 280,
       "color": "#e1ff00"
@@ -147,11 +147,33 @@
       "type": "text",
       "text": "Melhorar a estilização do link compartilhável da página",
       "styleAttributes": {},
-      "x": -600,
-      "y": 140,
+      "x": 80,
+      "y": 0,
       "width": 520,
       "height": 280,
       "color": "#e1ff00"
+    },
+    {
+      "id": "342e116d9aa0e8c3",
+      "type": "text",
+      "text": "Melhorar nosso Benchmarking Competitivo",
+      "styleAttributes": {},
+      "x": 4000,
+      "y": 60,
+      "width": 360,
+      "height": 300,
+      "color": "1"
+    },
+    {
+      "id": "a0d4cd27ec1c0687",
+      "type": "text",
+      "text": "Sobre Nós\n\n## Revolucionando a experiência no caixa\n\nNa **ByeBye Cupom**, estamos redefinindo a jornada do consumidor no ponto de venda. Acreditamos que o cupom fiscal não precisa ser apenas um pedaço de papel, mas sim um **dado integrado, útil e acessível**. Nossa missão é eliminar atritos, digitalizar processos e construir o futuro da comprovação de compra de forma **inteligente e sustentável**.\n\nPara isso, atuamos em **duas frentes** de inovação:\n\n**Para o varejo:** nossa solução via **QR Code** agiliza o checkout e elimina o desperdício.\n\n**Para o ecossistema financeiro:** vamos além, nossa plataforma baseada em **Open Finance** permite que **fintechs e bancos** integrem a geração do cupom fiscal **diretamente no extrato bancário** do cliente, de forma automática e instantânea. Uma solução poderosa para enriquecer a experiência do usuário e agregar valor aos serviços financeiros.",
+      "styleAttributes": {},
+      "x": 3900,
+      "y": 720,
+      "width": 960,
+      "height": 900,
+      "color": "1"
     }
   ],
   "edges": [
@@ -248,6 +270,24 @@
       "fromSide": "bottom",
       "toNode": "4b4086eaf559b61e",
       "toSide": "top"
+    },
+    {
+      "id": "577dd51a8d8659ba",
+      "styleAttributes": {},
+      "fromNode": "50e0f6ea0ce8f3b5",
+      "fromSide": "right",
+      "toNode": "342e116d9aa0e8c3",
+      "toSide": "left",
+      "color": "1"
+    },
+    {
+      "id": "320f491949b1a986",
+      "styleAttributes": {},
+      "fromNode": "342e116d9aa0e8c3",
+      "fromSide": "bottom",
+      "toNode": "a0d4cd27ec1c0687",
+      "toSide": "top",
+      "color": "1"
     }
   ],
   "metadata": {}

@@ -16,9 +16,9 @@
               "state": {
                 "file": "ByeByeCupom/Kanban Landing Page.canvas",
                 "viewState": {
-                  "x": 745.1593198121453,
-                  "y": 204.93879652529094,
-                  "zoom": -1.5538341220856486
+                  "x": 4508.400946210364,
+                  "y": 876.0090703082107,
+                  "zoom": -0.6774780227923385
                 }
               },
               "pinned": true,
@@ -35,9 +35,9 @@
               "state": {
                 "file": "ByeByeCupom/Brains Storm.canvas",
                 "viewState": {
-                  "x": 592.0625897698563,
-                  "y": 701.0914171260455,
-                  "zoom": -1.0177134396823806
+                  "x": 686.444949420073,
+                  "y": 556.6810697731878,
+                  "zoom": 0.561821950353345
                 }
               },
               "pinned": true,
@@ -54,8 +54,8 @@
               "state": {
                 "file": "ByeByeCupom/Kanban API (Sistema).canvas",
                 "viewState": {
-                  "x": -675.3503180302604,
-                  "y": -16.264554983115147,
+                  "x": -15.974841017347984,
+                  "y": 878.6021877910274,
                   "zoom": -1.651643856549621
                 }
               },
@@ -78,8 +78,7 @@
               "title": "Capítulo 1 - Uma Filosofia Pragmática"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -282,12 +281,12 @@
       "markwhen:Create new Markwhen file": false
     }
   },
-  "active": "6b8afacd5e6c2729",
+  "active": "4a6dd6be2bccbce1",
   "lastOpenFiles": [
-    "ByeByeCupom/Kanban Landing Page.canvas",
-    "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
-    "ByeByeCupom/Kanban API (Sistema).canvas",
     "ByeByeCupom/Brains Storm.canvas",
+    "ByeByeCupom/Kanban API (Sistema).canvas",
+    "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
+    "ByeByeCupom/Kanban Landing Page.canvas",
     "Programador Pragmático",
     "Pasted image 20250922131718.png",
     "ByeByeCupom/Diagrama UML API.md",
