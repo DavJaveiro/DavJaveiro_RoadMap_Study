@@ -13,28 +13,6 @@
       "height": 1320
     },
     {
-      "id": "3992d16045094c3b",
-      "type": "text",
-      "text": "- Implementar a página sobre as legalidades (embasamento jurídico do projeto);",
-      "styleAttributes": {},
-      "x": 2025,
-      "y": 0,
-      "width": 520,
-      "height": 280,
-      "color": "#e1ff00"
-    },
-    {
-      "id": "44883e94d0d6d0bf",
-      "type": "text",
-      "text": "- Utilizar o menu lateral (vertical) flutuante na página em dispositivos com tela grande;\n- Na versão mobile, usar o menu (botão), para facilitar a navegação;",
-      "styleAttributes": {},
-      "x": 2025,
-      "y": 440,
-      "width": 520,
-      "height": 400,
-      "color": "#eef2dc"
-    },
-    {
       "id": "e352fd6c7014b410",
       "type": "text",
       "text": "Em Progresso (Doing)",
@@ -46,17 +24,6 @@
       "y": -800,
       "width": 370,
       "height": 100,
-      "color": "5"
-    },
-    {
-      "id": "715ba0a76bc5740e",
-      "type": "text",
-      "text": "- [x] Corrigir os erros ortográficos da página;\n- [ ] 2025-09-22",
-      "styleAttributes": {},
-      "x": 4615,
-      "y": -90,
-      "width": 500,
-      "height": 180,
       "color": "5"
     },
     {
@@ -72,50 +39,6 @@
       "width": 370,
       "height": 100,
       "color": "4"
-    },
-    {
-      "id": "50e0f6ea0ce8f3b5",
-      "type": "text",
-      "text": "- [ ] Corrigir a seção sobre nós: posicionamento das duas frentes, aplicar espaçamento para melhorar a legibilidade\n- [ ] 2025-09-22",
-      "styleAttributes": {},
-      "x": 3202,
-      "y": 19,
-      "width": 526,
-      "height": 261,
-      "color": "5"
-    },
-    {
-      "id": "d85b0e56c929a7f0",
-      "type": "text",
-      "text": "Implementar o meu sistema de recebimento de e-mail (remover o Formspree);\n- User a Hostinger para hospedagem do siste + e-mail;",
-      "styleAttributes": {},
-      "x": 720,
-      "y": 0,
-      "width": 520,
-      "height": 280,
-      "color": "#e1ff00"
-    },
-    {
-      "id": "60eb3e6f2b24489d",
-      "type": "text",
-      "text": "Implementar uma seção de teste com QR code: usuário vai scanear com um celular ou clicar no botão para baixar;",
-      "styleAttributes": {},
-      "x": 1340,
-      "y": 0,
-      "width": 520,
-      "height": 280,
-      "color": "#e1ff00"
-    },
-    {
-      "id": "549973ee47263333",
-      "type": "text",
-      "text": "Gerar o Layout do PDF a partir de um arquivo XML da SEFAZ;",
-      "styleAttributes": {},
-      "x": 1385,
-      "y": 460,
-      "width": 430,
-      "height": 180,
-      "color": "#eef2dc"
     },
     {
       "id": "eb0bf4027f29f8b7",
@@ -143,37 +66,146 @@
       "color": "#e1ff00"
     },
     {
-      "id": "4b4086eaf559b61e",
+      "id": "50e0f6ea0ce8f3b5",
       "type": "text",
-      "text": "Melhorar a estilização do link compartilhável da página",
+      "text": "- [x] Corrigir a seção sobre nós: posicionamento das duas frentes, aplicar espaçamento para melhorar a legibilidade\n- [x] 2025-09-23",
       "styleAttributes": {},
-      "x": 80,
+      "x": 4926,
+      "y": -31,
+      "width": 526,
+      "height": 261,
+      "color": "4"
+    },
+    {
+      "id": "f75967b196cd64f1",
+      "type": "text",
+      "text": "- [x] Adicionar o texto de duas frentes com as imagens em seguida\n2025-09-23",
+      "styleAttributes": {},
+      "x": 4969,
+      "y": 510,
+      "width": 440,
+      "height": 220,
+      "color": "4"
+    },
+    {
+      "id": "18c08edc0f88b0e9",
+      "type": "text",
+      "text": "Cancelado",
+      "styleAttributes": {
+        "textAlign": "center",
+        "shape": "pill"
+      },
+      "x": 9915,
+      "y": -780,
+      "width": 370,
+      "height": 100
+    },
+    {
+      "id": "43cc3be2e2c9c256",
+      "type": "file",
+      "file": "Imagem do WhatsApp de 2025-09-23 à(s) 10.28.27_5cd4b7e6.jpg",
+      "styleAttributes": {},
+      "x": 9850,
+      "y": 1000,
+      "width": 500,
+      "height": 500
+    },
+    {
+      "id": "c882a8bd0b00b65d",
+      "type": "text",
+      "text": "- Refazer a paleta de cores do site, criando mais identidade visual (estou usando uma paleta de cores genérica);",
+      "styleAttributes": {},
+      "x": 9840,
+      "y": -110,
+      "width": 520,
+      "height": 280
+    },
+    {
+      "id": "0c1bea634593248e",
+      "type": "text",
+      "text": "- Eyeball: #FFFBF8\n- Peach and Quiet: #FFCCB6\n- Mystic Green: #D8F878\n- Surfer: #70b8ba\n- regatta Bay: #2D5367\n- Sunken Ship: #10252A",
+      "styleAttributes": {},
+      "x": 9840,
+      "y": 330,
+      "width": 520,
+      "height": 400
+    },
+    {
+      "id": "3992d16045094c3b",
+      "type": "text",
+      "text": "- Implementar a página sobre as legalidades (embasamento jurídico do projeto);",
+      "styleAttributes": {},
+      "x": 1415,
       "y": 0,
       "width": 520,
       "height": 280,
       "color": "#e1ff00"
     },
     {
-      "id": "342e116d9aa0e8c3",
+      "id": "44883e94d0d6d0bf",
       "type": "text",
-      "text": "Melhorar nosso Benchmarking Competitivo",
+      "text": "- Utilizar o menu lateral (vertical) flutuante na página em dispositivos com tela grande;\n- Na versão mobile, usar o menu (botão), para facilitar a navegação;",
       "styleAttributes": {},
-      "x": 4000,
-      "y": 60,
-      "width": 360,
-      "height": 300,
-      "color": "1"
+      "x": 1415,
+      "y": 440,
+      "width": 520,
+      "height": 400,
+      "color": "#eef2dc"
     },
     {
-      "id": "a0d4cd27ec1c0687",
+      "id": "549973ee47263333",
       "type": "text",
-      "text": "Sobre Nós\n\n## Revolucionando a experiência no caixa\n\nNa **ByeBye Cupom**, estamos redefinindo a jornada do consumidor no ponto de venda. Acreditamos que o cupom fiscal não precisa ser apenas um pedaço de papel, mas sim um **dado integrado, útil e acessível**. Nossa missão é eliminar atritos, digitalizar processos e construir o futuro da comprovação de compra de forma **inteligente e sustentável**.\n\nPara isso, atuamos em **duas frentes** de inovação:\n\n**Para o varejo:** nossa solução via **QR Code** agiliza o checkout e elimina o desperdício.\n\n**Para o ecossistema financeiro:** vamos além, nossa plataforma baseada em **Open Finance** permite que **fintechs e bancos** integrem a geração do cupom fiscal **diretamente no extrato bancário** do cliente, de forma automática e instantânea. Uma solução poderosa para enriquecer a experiência do usuário e agregar valor aos serviços financeiros.",
+      "text": "Gerar o Layout do PDF a partir de um arquivo XML da SEFAZ;",
       "styleAttributes": {},
-      "x": 3900,
-      "y": 720,
-      "width": 960,
-      "height": 900,
-      "color": "1"
+      "x": 775,
+      "y": 460,
+      "width": 430,
+      "height": 180,
+      "color": "#eef2dc"
+    },
+    {
+      "id": "d85b0e56c929a7f0",
+      "type": "text",
+      "text": "Implementar o meu sistema de recebimento de e-mail (remover o Formspree);\n- User a Hostinger para hospedagem do siste + e-mail;",
+      "styleAttributes": {},
+      "x": 110,
+      "y": 0,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "60eb3e6f2b24489d",
+      "type": "text",
+      "text": "Implementar uma seção de teste com QR code: usuário vai scanear com um celular ou clicar no botão para baixar;",
+      "styleAttributes": {},
+      "x": 730,
+      "y": 0,
+      "width": 520,
+      "height": 280,
+      "color": "#e1ff00"
+    },
+    {
+      "id": "4b4086eaf559b61e",
+      "type": "text",
+      "text": "Melhorar a estilização do link compartilhável da página (whatsapp, etc)",
+      "styleAttributes": {},
+      "x": 4929,
+      "y": 1040,
+      "width": 520,
+      "height": 280,
+      "color": "4"
+    },
+    {
+      "id": "715ba0a76bc5740e",
+      "type": "text",
+      "text": "- [x] Corrigir os erros ortográficos da página;\n- [ ] 2025-09-22",
+      "styleAttributes": {},
+      "x": 4939,
+      "y": -320,
+      "width": 500,
+      "height": 180,
+      "color": "4"
     }
   ],
   "edges": [
@@ -256,38 +288,60 @@
       "toSide": "left"
     },
     {
-      "id": "85ea6c6d4d72dd27",
+      "id": "1f46cc0c07caf494",
       "styleAttributes": {},
-      "fromNode": "e352fd6c7014b410",
+      "fromNode": "50e0f6ea0ce8f3b5",
+      "fromSide": "bottom",
+      "toNode": "f75967b196cd64f1",
+      "toSide": "top"
+    },
+    {
+      "id": "54980aae77af692c",
+      "styleAttributes": {},
+      "fromNode": "c882a8bd0b00b65d",
+      "fromSide": "bottom",
+      "toNode": "0c1bea634593248e",
+      "toSide": "top"
+    },
+    {
+      "id": "d734025ab3b05a3c",
+      "styleAttributes": {},
+      "fromNode": "0c1bea634593248e",
+      "fromSide": "bottom",
+      "toNode": "43cc3be2e2c9c256",
+      "toSide": "top"
+    },
+    {
+      "id": "c57fa8258af89927",
+      "styleAttributes": {},
+      "fromNode": "f0f41629e800db2d",
       "fromSide": "bottom",
       "toNode": "50e0f6ea0ce8f3b5",
       "toSide": "top"
     },
     {
-      "id": "6e2badb06067aa10",
+      "id": "d85807f6847ab335",
       "styleAttributes": {},
-      "fromNode": "eb0bf4027f29f8b7",
+      "fromNode": "18c08edc0f88b0e9",
       "fromSide": "bottom",
-      "toNode": "4b4086eaf559b61e",
+      "toNode": "c882a8bd0b00b65d",
       "toSide": "top"
     },
     {
-      "id": "577dd51a8d8659ba",
+      "id": "92da56587ed3ae7b",
       "styleAttributes": {},
-      "fromNode": "50e0f6ea0ce8f3b5",
+      "fromNode": "f0f41629e800db2d",
       "fromSide": "right",
-      "toNode": "342e116d9aa0e8c3",
-      "toSide": "left",
-      "color": "1"
+      "toNode": "18c08edc0f88b0e9",
+      "toSide": "left"
     },
     {
-      "id": "320f491949b1a986",
+      "id": "406c5334c66cc017",
       "styleAttributes": {},
-      "fromNode": "342e116d9aa0e8c3",
+      "fromNode": "f0f41629e800db2d",
       "fromSide": "bottom",
-      "toNode": "a0d4cd27ec1c0687",
-      "toSide": "top",
-      "color": "1"
+      "toNode": "4b4086eaf559b61e",
+      "toSide": "top"
     }
   ],
   "metadata": {}

@@ -129,6 +129,16 @@
       "width": 640,
       "height": 220,
       "color": "2"
+    },
+    {
+      "id": "e98b22d31ac93dad",
+      "type": "text",
+      "text": "iText 7 ou PDF BOX",
+      "styleAttributes": {},
+      "x": 1800,
+      "y": 1260,
+      "width": 260,
+      "height": 60
     }
   ],
   "edges": [
@@ -199,6 +209,14 @@
       "fromNode": "0213234b5b535b49",
       "fromSide": "bottom",
       "toNode": "b6ef94848ccd5450",
+      "toSide": "top"
+    },
+    {
+      "id": "d73189c9a434ea39",
+      "styleAttributes": {},
+      "fromNode": "e16d77bc3e6d44a5",
+      "fromSide": "bottom",
+      "toNode": "e98b22d31ac93dad",
       "toSide": "top"
     }
   ],

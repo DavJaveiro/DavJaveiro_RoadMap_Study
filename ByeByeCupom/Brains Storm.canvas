@@ -21,39 +21,6 @@
       "height": 720
     },
     {
-      "id": "d00bc7d1d0c21dba",
-      "type": "file",
-      "file": "Pasted image 20250922131718.png",
-      "styleAttributes": {},
-      "x": 660,
-      "y": 960,
-      "width": 908,
-      "height": 460
-    },
-    {
-      "id": "69fb58e84f4b9344",
-      "type": "text",
-      "text": "ARMAZENAMENTO",
-      "styleAttributes": {
-        "textAlign": "center"
-      },
-      "x": 954,
-      "y": 460,
-      "width": 320,
-      "height": 60
-    },
-    {
-      "id": "13e0f8697703d130",
-      "type": "text",
-      "text": "Não precisamos armazenar o PDF ou XML, podemos apenar armazenar o código gerado pela SEFAZ, em formato STRING, apontando para o cupon no SEFAZ;",
-      "styleAttributes": {},
-      "x": 1980,
-      "y": 1050,
-      "width": 460,
-      "height": 280,
-      "color": "3"
-    },
-    {
       "id": "727d7519a72afab1",
       "type": "text",
       "text": "EVOLUÇÃO",
@@ -108,6 +75,113 @@
       "y": 680,
       "width": 580,
       "height": 160
+    },
+    {
+      "id": "0b3659de47171782",
+      "type": "text",
+      "text": "Pegar uma bola de massa de modelar;\nPedir para a equipe modelar, até atingir o formato de um quadrado perfeito;\nCada um terá apenas 3 segundos para modelar;\nO ciclo se repete a cada tentativa;\nA missão se dará por completa quando a forma passar sem deixar resquícios através de um molde;",
+      "styleAttributes": {},
+      "x": 660,
+      "y": -1460,
+      "width": 400,
+      "height": 540
+    },
+    {
+      "id": "c1a046e4abe799f2",
+      "type": "text",
+      "text": "A CALMARIA DO CERAMISTA",
+      "styleAttributes": {},
+      "x": 630,
+      "y": -640,
+      "width": 460,
+      "height": 60
+    },
+    {
+      "id": "ce90826b5dfdeb2f",
+      "type": "text",
+      "text": "Se tivermos cupons físicos e eventualmente quisermos ele digital?",
+      "styleAttributes": {},
+      "x": -1610,
+      "y": 360,
+      "width": 650,
+      "height": 100,
+      "color": "2"
+    },
+    {
+      "id": "c076de925ee4f7fd",
+      "type": "text",
+      "text": "Verificar para onde o QR code dos cupons digitais apontam",
+      "styleAttributes": {
+        "shape": "pill"
+      },
+      "x": -1610,
+      "y": 680,
+      "width": 500,
+      "height": 120
+    },
+    {
+      "id": "69fb58e84f4b9344",
+      "type": "text",
+      "text": "ARMAZENAMENTO",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 2054,
+      "y": 130,
+      "width": 320,
+      "height": 60
+    },
+    {
+      "id": "13e0f8697703d130",
+      "type": "text",
+      "text": "Não precisamos armazenar o PDF ou XML, podemos apenar armazenar o código gerado pela SEFAZ, em formato STRING, apontando para o cupon no SEFAZ;",
+      "styleAttributes": {},
+      "x": 3080,
+      "y": 720,
+      "width": 460,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "d00bc7d1d0c21dba",
+      "type": "file",
+      "file": "Pasted image 20250922131718.png",
+      "styleAttributes": {},
+      "x": 1760,
+      "y": 630,
+      "width": 908,
+      "height": 460
+    },
+    {
+      "id": "80fa5b54fb0c6ae9",
+      "type": "text",
+      "text": "Melhorar nosso Benchmarking Competitivo",
+      "styleAttributes": {},
+      "x": 320,
+      "y": 1080,
+      "width": 360,
+      "height": 300,
+      "color": "1"
+    },
+    {
+      "id": "ccff02af098ba0c2",
+      "type": "text",
+      "text": "Sobre Nós\n\n## Revolucionando a experiência no caixa\n\nNa **ByeBye Cupom**, estamos redefinindo a jornada do consumidor no ponto de venda. Acreditamos que o cupom fiscal não precisa ser apenas um pedaço de papel, mas sim um **dado integrado, útil e acessível**. Nossa missão é eliminar atritos, digitalizar processos e construir o futuro da comprovação de compra de forma **inteligente e sustentável**.\n\nPara isso, atuamos em **duas frentes** de inovação:\n\n**Para o varejo:** nossa solução via **QR Code** agiliza o checkout e elimina o desperdício.\n\n**Para o ecossistema financeiro:** vamos além, nossa plataforma baseada em **Open Finance** permite que **fintechs e bancos** integrem a geração do cupom fiscal **diretamente no extrato bancário** do cliente, de forma automática e instantânea. Uma solução poderosa para enriquecer a experiência do usuário e agregar valor aos serviços financeiros.",
+      "styleAttributes": {},
+      "x": 220,
+      "y": 1740,
+      "width": 960,
+      "height": 900,
+      "color": "1"
+    },
+    {
+      "id": "0224aeda9ce1ad78",
+      "type": "file",
+      "file": "Pasted image 20250923141646.png",
+      "x": 2480,
+      "y": -1098,
+      "width": 685,
+      "height": 917
     }
   ],
   "edges": [
@@ -153,7 +227,9 @@
     },
     {
       "id": "c74d183e294e441c",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "path": "long-dashed"
+      },
       "fromNode": "493c636942b9ce15",
       "fromSide": "bottom",
       "toNode": "61a6ba4162cb44ed",
@@ -174,6 +250,70 @@
       "fromSide": "bottom",
       "toNode": "d30b25188e1da24f",
       "toSide": "top"
+    },
+    {
+      "id": "af242704538cf48b",
+      "styleAttributes": {
+        "path": "short-dashed",
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "a84e1d8249b6bb41",
+      "fromSide": "top",
+      "toNode": "c1a046e4abe799f2",
+      "toSide": "bottom"
+    },
+    {
+      "id": "9ba2c104008032bd",
+      "styleAttributes": {},
+      "fromNode": "c1a046e4abe799f2",
+      "fromSide": "top",
+      "toNode": "0b3659de47171782",
+      "toSide": "bottom",
+      "label": "Trabalho em Equipe"
+    },
+    {
+      "id": "0742281ff3539156",
+      "styleAttributes": {},
+      "fromNode": "727d7519a72afab1",
+      "fromSide": "bottom",
+      "toNode": "ce90826b5dfdeb2f",
+      "toSide": "top"
+    },
+    {
+      "id": "b65fba0339b4783f",
+      "styleAttributes": {
+        "path": "long-dashed"
+      },
+      "fromNode": "ce90826b5dfdeb2f",
+      "fromSide": "bottom",
+      "toNode": "c076de925ee4f7fd",
+      "toSide": "top"
+    },
+    {
+      "id": "7323dd37d59fa159",
+      "styleAttributes": {},
+      "fromNode": "80fa5b54fb0c6ae9",
+      "fromSide": "bottom",
+      "toNode": "ccff02af098ba0c2",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "01ce757129ce1f32",
+      "styleAttributes": {},
+      "fromNode": "d30b25188e1da24f",
+      "fromSide": "bottom",
+      "toNode": "80fa5b54fb0c6ae9",
+      "toSide": "top"
+    },
+    {
+      "id": "df8f6fe57c55333b",
+      "styleAttributes": {},
+      "fromNode": "a84e1d8249b6bb41",
+      "fromSide": "right",
+      "toNode": "0224aeda9ce1ad78",
+      "toSide": "left",
+      "label": "Quando scaneamos o QR Code do cupom em papel"
     }
   ],
   "metadata": {}

@@ -51,6 +51,178 @@ Veja o fluxo modificado:
 - **iText 7** ou **Apache PDFBox**: Para geração e manipulação de PDFs (DANFE).
     
 - **JAXB** ou **Jackson XML**: Para parsing do XML autorizado enviado pelo PDV.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+        <infNFe versao="4.00" Id="NFe33250955997109000137650010000121351019252294">
+            <ide>
+                <cUF>33</cUF> <cNF>01925229</cNF>
+                <natOp>VENDA</natOp>
+                <mod>65</mod> <serie>1</serie>
+                <nNF>12135</nNF>
+                <dhEmi>2025-09-22T16:30:10-03:00</dhEmi>
+                <tpNF>1</tpNF>
+                <idDest>1</idDest>
+                <cMunFG>3304201</cMunFG> <tpImp>4</tpImp> <tpEmis>1</tpEmis> <cDV>4</cDV>
+                <tpAmb>1</tpAmb> <finNFe>1</finNFe>
+                <indFinal>1</indFinal>
+                <indPres>1</indPres>
+                <procEmi>0</procEmi>
+                <verProc>1.0</verProc>
+            </ide>
+            <emit>
+                <CNPJ>55997109000137</CNPJ>
+                <xNome>COMERCIO AGRO E PET PARAISO</xNome>
+                <enderEmit>
+                    <xLgr>AVENIDA JEFERSO GERALDO BRUNO</xLgr>
+                    <nro>1640</nro>
+                    <xBairro>PARAISO</xBairro>
+                    <cMun>3304201</cMun>
+                    <xMun>Resende</xMun>
+                    <UF>RJ</UF>
+                    <CEP>27535000</CEP> <cPais>1058</cPais>
+                    <xPais>Brasil</xPais>
+                </enderEmit>
+                <IE>81181181</IE> <CRT>1</CRT> </emit>
+            <det nItem="1">
+                <prod>
+                    <cProd>3574</cProd>
+                    <cEAN/>
+                    <xProd>WHISKAS CARNE GRANEL</xProd>
+                    <NCM>23091000</NCM> <CFOP>5102</CFOP>
+                    <uCom>UN</uCom>
+                    <qCom>1.4200</qCom>
+                    <vUnCom>16.90</vUnCom>
+                    <vProd>24.00</vProd>
+                    <cEANTrib/>
+                    <uTrib>UN</uTrib>
+                    <qTrib>1.4200</qTrib>
+                    <vUnTrib>16.90</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>2.50</vTotTrib> <ICMS>
+                        <ICMSSN102>
+                            <orig>0</orig>
+                            <CSOSN>102</CSOSN> </ICMSSN102>
+                    </ICMS>
+                    <PIS>
+                        <PISOutr>
+                            <CST>99</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.00</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISOutr>
+                    </PIS>
+                    <COFINS>
+                        <COFINSOutr>
+                            <CST>99</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.00</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSOutr>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="2">
+                <prod>
+                    <cProd>3293</cProd>
+                    <cEAN/>
+                    <xProd>SPECIAL DOG CARNE 15KG - 2G</xProd>
+                    <NCM>23091000</NCM> <CFOP>5102</CFOP>
+                    <uCom>UN</uCom>
+                    <qCom>1.0000</qCom>
+                    <vUnCom>109.90</vUnCom>
+                    <vProd>109.90</vProd>
+                    <cEANTrib/>
+                    <uTrib>UN</uTrib>
+                    <qTrib>1.0000</qTrib>
+                    <vUnTrib>109.90</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>11.50</vTotTrib> <ICMS>
+                        <ICMSSN102>
+                            <orig>0</orig>
+                            <CSOSN>102</CSOSN>
+                        </ICMSSN102>
+                    </ICMS>
+                    <PIS>
+                        <PISOutr>
+                            <CST>99</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.00</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISOutr>
+                    </PIS>
+                    <COFINS>
+                        <COFINSOutr>
+                            <CST>99</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.00</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSOutr>
+                    </COFINS>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>0.00</vBC>
+                    <vICMS>0.00</vICMS>
+                    <vICMSDeson>0.00</vICMSDeson>
+                    <vFCP>0.00</vFCP>
+                    <vBCST>0.00</vBCST>
+                    <vST>0.00</vST>
+                    <vFCPST>0.00</vFCPST>
+                    <vFCPSTRet>0.00</vFCPSTRet>
+                    <vProd>133.90</vProd>
+                    <vFrete>0.00</vFrete>
+                    <vSeg>0.00</vSeg>
+                    <vDesc>0.00</vDesc>
+                    <vII>0.00</vII>
+                    <vIPI>0.00</vIPI>
+                    <vIPIDevol>0.00</vIPIDevol>
+                    <vPIS>0.00</vPIS>
+                    <vCOFINS>0.00</vCOFINS>
+                    <vOutro>0.00</vOutro>
+                    <vNF>133.90</vNF>
+                    <vTotTrib>14.00</vTotTrib> </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>9</modFrete> </transp>
+            <pag>
+                <detPag>
+                    <tPag>04</tPag> <vPag>24.00</vPag>
+                </detPag>
+                <detPag>
+                    <tPag>04</tPag> <vPag>109.90</vPag>
+                </detPag>
+                <vTroco>0.00</vTroco>
+            </pag>
+            <infAdic>
+                <infCpl>Trib aprox R$: 14,00 (10.46%) Fonte: IBPT</infCpl>
+            </infAdic>
+            <infNFeSupl>
+                <qrCode>
+                    <![CDATA[https://www.fazenda.rj.gov.br/nfce/consulta?p=33250955997109000137650010000121351019252294|2|1|1|ABCDEF1234567890ABCDEF1234567890ABCDEF12]]>
+                </qrCode>
+                <urlChave>https://www.fazenda.rj.gov.br/nfce/consulta</urlChave>
+            </infNFeSupl>
+        </infNFe>
+        <protNFe versao="4.00">
+            <infProt>
+                <tpAmb>1</tpAmb>
+                <verAplic>4.00</verAplic>
+                <chNFe>33250955997109000137650010000121351019252294</chNFe>
+                <dhRecbto>2025-09-22T16:30:10-03:00</dhRecbto>
+                <nProt>233252255253885</nProt>
+                <digVal>dGlnaXZhbD1kZXVz</digVal> <cStat>100</cStat>
+                <xMotivo>Autorizado o uso da NF-e</xMotivo>
+            </infProt>
+        </protNFe>
+    </nfeProc>
+```
     
 - **AWS SDK for Java S3** (ou outro provedor de nuvem, ex: GCP, Azure): Upload seguro dos PDFs para nuvem.
     
