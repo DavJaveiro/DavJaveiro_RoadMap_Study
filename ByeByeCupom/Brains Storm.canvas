@@ -33,50 +33,6 @@
       "height": 60
     },
     {
-      "id": "493c636942b9ce15",
-      "type": "text",
-      "text": "Criar um aplicativo para receber os cupons gerados por QR code para possível gestão financeira;",
-      "styleAttributes": {},
-      "x": -860,
-      "y": 860,
-      "width": 840,
-      "height": 100,
-      "color": "#ffb02e"
-    },
-    {
-      "id": "61a6ba4162cb44ed",
-      "type": "text",
-      "text": "Ou seria melhor realizar essa gestão via WhatsApp?",
-      "styleAttributes": {
-        "textAlign": "center",
-        "shape": "pill"
-      },
-      "x": -960,
-      "y": 1080,
-      "width": 520,
-      "height": 100
-    },
-    {
-      "id": "eaee2c4365b5c2b6",
-      "type": "text",
-      "text": "BENCHMARKING COMPETITIVO",
-      "styleAttributes": {},
-      "x": 360,
-      "y": 480,
-      "width": 500,
-      "height": 60
-    },
-    {
-      "id": "d30b25188e1da24f",
-      "type": "text",
-      "text": "Estudar a concorrência e mostrar como o nosso produto ou serviço se diferencia ou entrega mais valor",
-      "styleAttributes": {},
-      "x": 320,
-      "y": 680,
-      "width": 580,
-      "height": 160
-    },
-    {
       "id": "0b3659de47171782",
       "type": "text",
       "text": "Pegar uma bola de massa de modelar;\nPedir para a equipe modelar, até atingir o formato de um quadrado perfeito;\nCada um terá apenas 3 segundos para modelar;\nO ciclo se repete a cada tentativa;\nA missão se dará por completa quando a forma passar sem deixar resquícios através de um molde;",
@@ -97,12 +53,159 @@
       "height": 60
     },
     {
+      "id": "69fb58e84f4b9344",
+      "type": "text",
+      "text": "ARMAZENAMENTO",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 5734,
+      "y": -500,
+      "width": 320,
+      "height": 60
+    },
+    {
+      "id": "13e0f8697703d130",
+      "type": "text",
+      "text": "Não precisamos armazenar o PDF ou XML, podemos apenar armazenar o código gerado pela SEFAZ, em formato STRING, apontando para o cupon no SEFAZ;",
+      "styleAttributes": {},
+      "x": 6760,
+      "y": 90,
+      "width": 460,
+      "height": 280,
+      "color": "3"
+    },
+    {
+      "id": "d00bc7d1d0c21dba",
+      "type": "file",
+      "file": "Pasted image 20250922131718.png",
+      "styleAttributes": {},
+      "x": 5440,
+      "y": 0,
+      "width": 908,
+      "height": 460
+    },
+    {
+      "id": "0224aeda9ce1ad78",
+      "type": "file",
+      "file": "Pasted image 20250923141646.png",
+      "styleAttributes": {},
+      "x": 5663,
+      "y": -2107,
+      "width": 685,
+      "height": 917
+    },
+    {
+      "id": "d30b25188e1da24f",
+      "type": "text",
+      "text": "# Estudar a concorrência e mostrar como o nosso produto ou serviço se diferencia ou entrega mais valor",
+      "styleAttributes": {},
+      "x": -40,
+      "y": 2450,
+      "width": 960,
+      "height": 470
+    },
+    {
+      "id": "ccff02af098ba0c2",
+      "type": "text",
+      "text": "Sobre Nós\n\n## Revolucionando a experiência no caixa\n\nNa **ByeBye Cupom**, estamos redefinindo a jornada do consumidor no ponto de venda. Acreditamos que o cupom fiscal não precisa ser apenas um pedaço de papel, mas sim um **dado integrado, útil e acessível**. Nossa missão é eliminar atritos, digitalizar processos e construir o futuro da comprovação de compra de forma **inteligente e sustentável**.\n\nPara isso, atuamos em **duas frentes** de inovação:\n\n**Para o varejo:** nossa solução via **QR Code** agiliza o checkout e elimina o desperdício.\n\n**Para o ecossistema financeiro:** vamos além, nossa plataforma baseada em **Open Finance** permite que **fintechs e bancos** integrem a geração do cupom fiscal **diretamente no extrato bancário** do cliente, de forma automática e instantânea. Uma solução poderosa para enriquecer a experiência do usuário e agregar valor aos serviços financeiros.",
+      "styleAttributes": {},
+      "x": -210,
+      "y": 4340,
+      "width": 960,
+      "height": 900,
+      "color": "1"
+    },
+    {
+      "id": "80fa5b54fb0c6ae9",
+      "type": "text",
+      "text": " ",
+      "styleAttributes": {},
+      "x": -110,
+      "y": 3680,
+      "width": 360,
+      "height": 300,
+      "color": "1"
+    },
+    {
+      "id": "815b3b01c3400606",
+      "type": "text",
+      "text": "## 1. <span style=\"background:rgba(205, 244, 105, 0.55)\">Dashboard de Business Intelligence (BI) com Análise Preditiva</span>\n- **A Matéria Prima**: Os milhares de **XLMs** que nossa API recebe de um determinado CNPJ;\n- **A solução com IA:** em vez de apenas armazenar os PDFs, nossa plataforma processa os dados dos XMLs em tempo real e alimenta um painel de controle exclusivo para o varejista;\n\t- **Análise de Cesta de Compras (Market Basket Analysis):**\n\t- **Como funciona:** algoritmos de associação (como Apriori ou FP-Growth) analisam a tag < det nItem > em milhares de notas para encontrar produtos que são frequentemente comprados juntos.\n\t- **Exemplo Prático:** o sistema descobre que 70% dos clientes que compra *WHISKAS CARNE GRANEL*, também levam areia para gatos ou um outro petisco.\n\t- **Benefício para o Varejista:** o dono da loja pode criar promoções *compre e ganhe*, ajustar o layout física da loja para colocar produtos correlacionados próximos, ou treinar os vendedores para fazer cross-selling.\n\t- **Previsão de Demanda (Sales Forecasting):**\n\t\t- **Como funciona**: usando modelos de séries temporais (como ARIMA ou Prophet), a IA analisa o histórico de vendas (tags < dehEmi> e < qCom> para cada produto) e prevê a demanda futura.\n\t\t- **Exemplo Prático:** \"Previsão para a próxima semana: aumento de 30% na venda de **SPECIAL DOG CARNE 15KG** devido a padrões sazonais. Sugestão: verifique o estoque.\"\n\t\t- **Benefícios para o varejista:** otimização de estoque, evitando falta de produtos ou excesso de mercadoria parada.\n\t- **Detecção de Anomalias:**\n\t- **Como funciona:** Modelos de Machine Learning são treinados com o padrão normal de vendas. Eles podem detectar transações que fogem muito desse padrão.\n\t- **Exemplo Prático:** alerta em tempo real: \"NFC-e n° 12136 teve um valor 500% acima da média para este horário. Possível erro de digitação do operador ou fraude.\"\n\t- **Benefícios para o Varejista:** redução de perdas e identificação rápida de problemas operacionais",
+      "styleAttributes": {},
+      "x": 4774,
+      "y": 2280,
+      "width": 1280,
+      "height": 1400
+    },
+    {
+      "id": "9a664879f4245b44",
+      "type": "text",
+      "text": "## <span style=\"background:#d3f8b6\">2. Limpeza e Categorização Automática de Produtos</span>\n- **A Matéria-Prima:** A tag `<xProd>`, que muitas vezes vem \"suja\" ou inconsistente (ex: \"COCA COLA 2L\", \"COCA 2LTS GARRAFA\", \"REFRI COCA 2L\"). \n- - **A Solução com IA:**\n    - **Como funciona:** Usando NLP (Processamento de Linguagem Natural), a IA pode:\n        1. **Padronizar:** Agrupar todas as variações em um único produto \"Coca-Cola 2L\".\n            \n        2. **Categorizar:** Ler a descrição e, usando o código NCM (`<NCM>23091000</NCM>` para ração, por exemplo) como apoio, classificar os produtos automaticamente em \"Bebidas\", \"Alimentos para Pets\", \"Higiene\", etc.\n            \n- **Benefício para o Varejista:** Fornece relatórios de vendas muito mais limpos e precisos, sem trabalho manual de cadastro.",
+      "styleAttributes": {},
+      "x": 4774,
+      "y": 4170,
+      "width": 1280,
+      "height": 1360
+    },
+    {
+      "id": "aceebb6eb2d5afeb",
+      "type": "text",
+      "text": "# Aplicativo de Gestão Financeira Pessoal\n- **A Matéria-Prima:** Todos os cupons fiscais que um usuário escaneia e associa à sua conta (criada via Google, Apple, etc.).\n- **A Solução com IA:**\n\n- **Como funciona:** Quando o cliente escaneia o QR Code da sua API, ele tem a opção de apenas baixar o PDF ou de \"Adicionar este cupom à minha carteira ByeByeCupom\". Dentro do app, a IA entra em ação:\n    \n    1. **Extração de Dados:** A API já tem o XML, então a extração dos itens é perfeita.\n        \n    2. **Categorização de Despesas Automática:** O mesmo modelo de NLP que categoriza os produtos para o varejista agora organiza a vida financeira do usuário. `\"WHISKAS CARNE GRANEL\"` é classificado como \"Despesas com Pets\".\n        \n    3. **Análise de Gastos:** O app pode mostrar ao usuário gráficos e insights: \"Você gastou R$ 180 com seu pet este mês\", ou \"Seus gastos em supermercado aumentaram 15% em relação ao mês passado\".\n- **Benefício:** Cria um produto B2C extremamente \"pegajoso\". Transforma um simples download de PDF em uma experiência de valor contínuo para o consumidor.",
+      "styleAttributes": {},
+      "x": 4774,
+      "y": 6180,
+      "width": 1280,
+      "height": 1430
+    },
+    {
+      "id": "bf69f17f9b142a27",
+      "type": "text",
+      "text": "# Camada 2: Criando um Ecossistema para o Consumidor Final",
+      "styleAttributes": {},
+      "x": 2934,
+      "y": 6050,
+      "width": 1360,
+      "height": 260
+    },
+    {
+      "id": "1d1f1ab17208c4a3",
+      "type": "text",
+      "text": "## 1. Geração de Valor para o Varejista",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 2874,
+      "y": 2890,
+      "width": 720,
+      "height": 180
+    },
+    {
+      "id": "50ad1adf5b87b416",
+      "type": "text",
+      "text": "# Camada 3: Criando um Ecossistema para o Consumidor Final\nCom dados de múltiplos varejistas e múltiplos consumidores (sempre de forma anonimizada e agregada, respeitando a LGPD), a ByeByeCupom se torna um hub de inteligência de mercado.\n",
+      "styleAttributes": {},
+      "x": 2414,
+      "y": 8640,
+      "width": 1720,
+      "height": 260
+    },
+    {
+      "id": "28c3719ba55f8fd9",
+      "type": "text",
+      "text": "## Análise de Tendências de Consumo\n- **A Matéria-Prima:** dados agregados e anonimizados de milhões de transações em diferentes segmentos e regiões.\n\n**A Solução com IA:**\n- **Como funciona:** A IA pode identificar macro e micro tendências de consumo em tempo real.\n- **Exemplo Prático:** \"A venda de produtos da categoria 'ração para gatos' cresceu 12% no estado do RJ no último trimestre, enquanto a de 'ração para cães' se manteve estável.\" ou \"Um novo produto, 'Ração Vegana para Cães', começou a aparecer com frequência em pet shops na cidade de São Paulo\". (COITADO DO CACHORRO!)\n\n- **Benefício:** podemos vender esses relatórios de inteligência para a indústria (ex.: para a Mars, dona da Whiskas), consultorias de mercado, agências de publicidade, etc. **Isso cria uma nova e poderosa linha de receita**",
+      "styleAttributes": {},
+      "x": 4774,
+      "y": 8840,
+      "width": 1280,
+      "height": 1720
+    },
+    {
       "id": "ce90826b5dfdeb2f",
       "type": "text",
       "text": "Se tivermos cupons físicos e eventualmente quisermos ele digital?",
       "styleAttributes": {},
-      "x": -1610,
-      "y": 360,
+      "x": -1140,
+      "y": 700,
       "width": 650,
       "height": 100,
       "color": "2"
@@ -114,74 +217,40 @@
       "styleAttributes": {
         "shape": "pill"
       },
-      "x": -1610,
-      "y": 680,
+      "x": -1140,
+      "y": 1020,
       "width": 500,
       "height": 120
     },
     {
-      "id": "69fb58e84f4b9344",
+      "id": "eaee2c4365b5c2b6",
       "type": "text",
-      "text": "ARMAZENAMENTO",
-      "styleAttributes": {
-        "textAlign": "center"
-      },
-      "x": 2054,
-      "y": 130,
-      "width": 320,
+      "text": "BENCHMARKING COMPETITIVO",
+      "styleAttributes": {},
+      "x": 380,
+      "y": 800,
+      "width": 500,
       "height": 60
     },
     {
-      "id": "13e0f8697703d130",
+      "id": "ba9eacb9863f487c",
       "type": "text",
-      "text": "Não precisamos armazenar o PDF ou XML, podemos apenar armazenar o código gerado pela SEFAZ, em formato STRING, apontando para o cupon no SEFAZ;",
+      "text": "### Roadmap Estratégico de IA para a ByeByeCupom\n\n1. **Fundação (Agora):** Continue focando na robustez da API principal. O mais importante é **armazenar não apenas o PDF, mas também o XML estruturado** em um banco de dados analítico (como um Data Warehouse ou Data Lake). **O XML é o seu ativo.**\n    \n2. **Fase 1 - Foco no B2B:** Desenvolva o **Dashboard de BI para o Varejista**. Este é o caminho mais rápido para aumentar o valor do seu serviço e justificar um preço maior (modelo SaaS por faixas de faturamento ou volume de notas).\n    \n3. **Fase 2 - Engajamento B2C:** Crie o **aplicativo de gestão financeira para o consumidor final**. O objetivo inicial não é a monetização direta, mas sim criar uma base de usuários engajados e coletar dados (com consentimento) para fortalecer o ecossistema.\n    \n4. **Fase 3 - Inteligência de Mercado:** Com uma massa crítica de dados B2B e B2C, comece a desenvolver e vender os **relatórios de tendências de mercado**.\n    \n\nSua ideia tem o potencial de ir muito além de \"eliminar a bobina de papel\". Você está na posição perfeita para se tornar o \"Google Analytics do varejo físico brasileiro\", e a Inteligência Artificial é o motor que fará isso acontecer.",
       "styleAttributes": {},
-      "x": 3080,
-      "y": 720,
-      "width": 460,
-      "height": 280,
-      "color": "3"
+      "x": 7000,
+      "y": 10360,
+      "width": 1180,
+      "height": 1120
     },
     {
-      "id": "d00bc7d1d0c21dba",
-      "type": "file",
-      "file": "Pasted image 20250922131718.png",
-      "styleAttributes": {},
-      "x": 1760,
-      "y": 630,
-      "width": 908,
-      "height": 460
-    },
-    {
-      "id": "80fa5b54fb0c6ae9",
+      "id": "5c4cd4db287b8731",
       "type": "text",
-      "text": "Melhorar nosso Benchmarking Competitivo",
+      "text": "### A Ponte para o Futuro: O Início do Marketing Preditivo (A \"Visão de Unicórnio\")\n\nEsta é a sua visão de longo prazo que justifica um valuation alto. É a conexão entre o B2B (varejista) e o B2C (consumidor).\n\n- **O Conceito:** Utilizar os dados de compra para criar um canal de marketing hiper-personalizado e consensual.\n    \n- **O Pitch para o Investidor:**\n    \n    > \"O Santo Graal do varejo é saber quando um cliente está prestes a precisar de um produto novamente. Com o nosso app de consumidor, nós teremos essa informação. Se um cliente compra 'SPECIAL DOG CARNE 15KG', nossa IA sabe que, em média, aquele produto dura 28 dias. Na quarta semana, nossa plataforma poderá habilitar o varejista a enviar, através do nosso app, uma notificação push com uma oferta direcionada: 'Vimos que está na hora de comprar a ração do seu pet. Use este cupom para 10% de desconto na sua próxima compra.' Isso não é publicidade em massa, é um serviço. É o fim do palpite no marketing e o começo do marketing preditivo, baseado em dados reais de compra. Nenhum concorrente que não esteja no fluxo de pagamento pode fazer isso.\"",
       "styleAttributes": {},
-      "x": 320,
-      "y": 1080,
-      "width": 360,
-      "height": 300,
-      "color": "1"
-    },
-    {
-      "id": "ccff02af098ba0c2",
-      "type": "text",
-      "text": "Sobre Nós\n\n## Revolucionando a experiência no caixa\n\nNa **ByeBye Cupom**, estamos redefinindo a jornada do consumidor no ponto de venda. Acreditamos que o cupom fiscal não precisa ser apenas um pedaço de papel, mas sim um **dado integrado, útil e acessível**. Nossa missão é eliminar atritos, digitalizar processos e construir o futuro da comprovação de compra de forma **inteligente e sustentável**.\n\nPara isso, atuamos em **duas frentes** de inovação:\n\n**Para o varejo:** nossa solução via **QR Code** agiliza o checkout e elimina o desperdício.\n\n**Para o ecossistema financeiro:** vamos além, nossa plataforma baseada em **Open Finance** permite que **fintechs e bancos** integrem a geração do cupom fiscal **diretamente no extrato bancário** do cliente, de forma automática e instantânea. Uma solução poderosa para enriquecer a experiência do usuário e agregar valor aos serviços financeiros.",
-      "styleAttributes": {},
-      "x": 220,
-      "y": 1740,
-      "width": 960,
-      "height": 900,
-      "color": "1"
-    },
-    {
-      "id": "0224aeda9ce1ad78",
-      "type": "file",
-      "file": "Pasted image 20250923141646.png",
-      "x": 2480,
-      "y": -1098,
-      "width": 685,
-      "height": 917
+      "x": 7160,
+      "y": 8820,
+      "width": 1220,
+      "height": 1080
     }
   ],
   "edges": [
@@ -216,24 +285,6 @@
       "fromSide": "right",
       "toNode": "13e0f8697703d130",
       "toSide": "left"
-    },
-    {
-      "id": "2251d2cb4eda71d1",
-      "styleAttributes": {},
-      "fromNode": "727d7519a72afab1",
-      "fromSide": "bottom",
-      "toNode": "493c636942b9ce15",
-      "toSide": "top"
-    },
-    {
-      "id": "c74d183e294e441c",
-      "styleAttributes": {
-        "path": "long-dashed"
-      },
-      "fromNode": "493c636942b9ce15",
-      "fromSide": "bottom",
-      "toNode": "61a6ba4162cb44ed",
-      "toSide": "top"
     },
     {
       "id": "89868fab401ddabf",
@@ -314,6 +365,90 @@
       "toNode": "0224aeda9ce1ad78",
       "toSide": "left",
       "label": "Quando scaneamos o QR Code do cupom em papel"
+    },
+    {
+      "id": "c8c34fb85494d8c8",
+      "styleAttributes": {},
+      "fromNode": "d30b25188e1da24f",
+      "fromSide": "right",
+      "toNode": "1d1f1ab17208c4a3",
+      "toSide": "left"
+    },
+    {
+      "id": "9ef1ad78e0243982",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "1d1f1ab17208c4a3",
+      "fromSide": "right",
+      "toNode": "815b3b01c3400606",
+      "toSide": "left"
+    },
+    {
+      "id": "229ea31894b37066",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "1d1f1ab17208c4a3",
+      "fromSide": "right",
+      "toNode": "9a664879f4245b44",
+      "toSide": "left"
+    },
+    {
+      "id": "7b3a230eb93252a5",
+      "styleAttributes": {},
+      "fromNode": "d30b25188e1da24f",
+      "fromSide": "right",
+      "toNode": "bf69f17f9b142a27",
+      "toSide": "left"
+    },
+    {
+      "id": "4a221fba0c6d581a",
+      "styleAttributes": {},
+      "fromNode": "bf69f17f9b142a27",
+      "fromSide": "right",
+      "toNode": "aceebb6eb2d5afeb",
+      "toSide": "left"
+    },
+    {
+      "id": "e8fc651ebd36dddd",
+      "styleAttributes": {},
+      "fromNode": "d30b25188e1da24f",
+      "fromSide": "right",
+      "toNode": "50ad1adf5b87b416",
+      "toSide": "left"
+    },
+    {
+      "id": "c2ead217f7985533",
+      "styleAttributes": {},
+      "fromNode": "50ad1adf5b87b416",
+      "fromSide": "right",
+      "toNode": "28c3719ba55f8fd9",
+      "toSide": "left"
+    },
+    {
+      "id": "6e3003cd8641b37a",
+      "styleAttributes": {},
+      "fromNode": "28c3719ba55f8fd9",
+      "fromSide": "right",
+      "toNode": "ba9eacb9863f487c",
+      "toSide": "left"
+    },
+    {
+      "id": "7589a3f03bc5a6e6",
+      "styleAttributes": {},
+      "fromNode": "727d7519a72afab1",
+      "fromSide": "right",
+      "toNode": "eaee2c4365b5c2b6",
+      "toSide": "left"
+    },
+    {
+      "id": "cd06adec06419058",
+      "styleAttributes": {},
+      "fromNode": "28c3719ba55f8fd9",
+      "fromSide": "right",
+      "toNode": "5c4cd4db287b8731",
+      "toSide": "left"
     }
   ],
   "metadata": {}

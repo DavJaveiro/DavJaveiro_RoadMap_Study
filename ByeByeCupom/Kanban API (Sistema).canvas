@@ -131,37 +131,81 @@
       "color": "2"
     },
     {
+      "id": "8962b4f309aa77c1",
+      "type": "text",
+      "text": "Criar a parte do sistema responsável por transformar o XML em PDF",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 1380,
+      "y": 370,
+      "width": 560,
+      "height": 240,
+      "color": "5"
+    },
+    {
       "id": "e98b22d31ac93dad",
       "type": "text",
       "text": "iText 7 ou PDF BOX",
-      "styleAttributes": {},
-      "x": 1800,
-      "y": 1260,
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 2140,
+      "y": 760,
       "width": 460,
       "height": 180,
-      "color": "4"
+      "color": "5"
     },
     {
       "id": "82b87c92ac4febb6",
       "type": "text",
       "text": "Usando PDFBox",
       "styleAttributes": {},
-      "x": 2600,
-      "y": 1260,
+      "x": 2980,
+      "y": 820,
       "width": 260,
       "height": 60,
-      "color": "4"
+      "color": "5"
     },
     {
       "id": "9a6575d233b1b578",
       "type": "text",
       "text": "Gerar art QrCode do site para anexar ao PDF",
       "styleAttributes": {},
-      "x": 2560,
-      "y": 1560,
+      "x": 3960,
+      "y": 940,
       "width": 360,
       "height": 240,
       "color": "4"
+    },
+    {
+      "id": "a29899e91f21cb43",
+      "type": "text",
+      "text": "Otimizar a arte, ainda não ficou padrão",
+      "styleAttributes": {},
+      "x": 4700,
+      "y": 1020,
+      "width": 540,
+      "height": 100
+    },
+    {
+      "id": "09c5b10725b155f5",
+      "type": "text",
+      "text": "Sua classe `DanfeGenerator` está fazendo **muita coisa ao mesmo tempo**:\n\n- Carrega XML\n    \n- Faz parsing e extração de dados\n    \n- Desenha cada seção do PDF\n    \n- Gerencia layout, fontes e formatação\n    \n- Salva o PDF no disco\n    \n- Tem utilitários de formatação (CNPJ, chave, data, etc.)\n    \n\n👉 Em termos de boas práticas, o ideal seria **separar responsabilidades** (princípio **SRP** do SOLID).\n\n### Como você poderia separar:\n\n1. **Classe de Entrada de Dados (XML Parser)**\n    \n    - Ex.: `NotaFiscalParser`\n        \n    - Responsável apenas por ler o XML e devolver um objeto `NotaFiscal` com os dados já mapeados.\n        \n2. **Classe de Modelo (Domain Model)**\n    \n    - Ex.: `NotaFiscal`, `Item`, `Pagamento`\n        \n    - Representam a nota fiscal em memória, sem depender de PDF ou XML.\n        \n3. **Classe de Geração de PDF (Renderer)**\n    \n    - Ex.: `DanfePdfRenderer`\n        \n    - Recebe um `NotaFiscal` e gera o PDF.\n        \n4. **Utilitários de Formatação**\n    \n    - Ex.: `FormatterUtils`\n        \n    - Métodos como `formatCnpj`, `formatAccessKey`, `formatDateTime`.\n        \n5. **Classe Principal (Main)**\n    \n    - Apenas orquestra: carrega o XML → gera o objeto `NotaFiscal` → chama o renderer → salva o arquivo.\n\n### Vantagens de separar:\n\n- **Legibilidade**: cada classe fica menor e mais clara.\n    \n- **Testabilidade**: você pode testar só o parser sem precisar renderizar PDF, ou só o renderer sem XML real.\n    \n- **Reuso**: amanhã pode precisar gerar DANFE em HTML ou JSON → já teria os dados prontos no `NotaFiscal`, sem refazer parsing.\n    \n- **Manutenção**: mudanças no layout do PDF não afetam o parsing de XML.",
+      "styleAttributes": {},
+      "x": 5720,
+      "y": 760,
+      "width": 1040,
+      "height": 2520
+    },
+    {
+      "id": "e51dc286d88b0d36",
+      "type": "file",
+      "file": "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/DanfeGenerator.java",
+      "x": 3280,
+      "y": 1620,
+      "width": 860,
+      "height": 800
     }
   ],
   "edges": [
@@ -235,14 +279,6 @@
       "toSide": "top"
     },
     {
-      "id": "d73189c9a434ea39",
-      "styleAttributes": {},
-      "fromNode": "e16d77bc3e6d44a5",
-      "fromSide": "bottom",
-      "toNode": "e98b22d31ac93dad",
-      "toSide": "top"
-    },
-    {
       "id": "775398b6e072a11a",
       "styleAttributes": {},
       "fromNode": "e98b22d31ac93dad",
@@ -254,9 +290,54 @@
       "id": "2a521734432bbe4a",
       "styleAttributes": {},
       "fromNode": "82b87c92ac4febb6",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "9a6575d233b1b578",
+      "toSide": "top",
+      "label": "REALIZADO"
+    },
+    {
+      "id": "d9b7d1236daab6b2",
+      "styleAttributes": {},
+      "fromNode": "8962b4f309aa77c1",
+      "fromSide": "bottom",
+      "toNode": "e98b22d31ac93dad",
       "toSide": "top"
+    },
+    {
+      "id": "92bd8de862ebab3b",
+      "styleAttributes": {},
+      "fromNode": "e16d77bc3e6d44a5",
+      "fromSide": "bottom",
+      "toNode": "8962b4f309aa77c1",
+      "toSide": "top"
+    },
+    {
+      "id": "1b873fc84c3d378e",
+      "styleAttributes": {},
+      "fromNode": "9a6575d233b1b578",
+      "fromSide": "right",
+      "toNode": "a29899e91f21cb43",
+      "toSide": "left"
+    },
+    {
+      "id": "f76ee857968bb217",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "8962b4f309aa77c1",
+      "fromSide": "bottom",
+      "toNode": "e51dc286d88b0d36",
+      "toSide": "left"
+    },
+    {
+      "id": "fea5d07748de9424",
+      "styleAttributes": {},
+      "fromNode": "e51dc286d88b0d36",
+      "fromSide": "right",
+      "toNode": "09c5b10725b155f5",
+      "toSide": "left",
+      "color": "1",
+      "label": "SEPARAR A CLASSE"
     }
   ],
   "metadata": {}

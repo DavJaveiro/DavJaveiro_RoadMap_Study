@@ -70,8 +70,8 @@
       "type": "text",
       "text": "- [x] Corrigir a seção sobre nós: posicionamento das duas frentes, aplicar espaçamento para melhorar a legibilidade\n- [x] 2025-09-23",
       "styleAttributes": {},
-      "x": 4926,
-      "y": -31,
+      "x": 4163,
+      "y": -80,
       "width": 526,
       "height": 261,
       "color": "4"
@@ -81,8 +81,8 @@
       "type": "text",
       "text": "- [x] Adicionar o texto de duas frentes com as imagens em seguida\n2025-09-23",
       "styleAttributes": {},
-      "x": 4969,
-      "y": 510,
+      "x": 4206,
+      "y": 761,
       "width": 440,
       "height": 220,
       "color": "4"
@@ -190,7 +190,7 @@
       "type": "text",
       "text": "Melhorar a estilização do link compartilhável da página (whatsapp, etc)",
       "styleAttributes": {},
-      "x": 4929,
+      "x": 4166,
       "y": 1040,
       "width": 520,
       "height": 280,
@@ -201,10 +201,21 @@
       "type": "text",
       "text": "- [x] Corrigir os erros ortográficos da página;\n- [ ] 2025-09-22",
       "styleAttributes": {},
-      "x": 4939,
+      "x": 4176,
       "y": -320,
       "width": 500,
       "height": 180,
+      "color": "4"
+    },
+    {
+      "id": "93166f7f391ace61",
+      "type": "text",
+      "text": "Melhorarando nosso Benchmarking Competitivo:\n\nDe: Sobre Nós\nRevolucionando a experiência no caixa\n\nNa **ByeBye Cupom**, estamos redefinindo a jornada do consumidor no ponto de venda. Acreditamos que o cupom fiscal não precisa ser apenas um pedaço de papel, mas sim um **dado integrado, útil e acessível**.\n\nNossa missão é eliminar atritos, digitalizar processos e construir o futuro da comprovação de compra de forma **inteligente e sustentável**. Para isso, atuamos em **duas frentes** de inovação:\n",
+      "styleAttributes": {},
+      "x": 3836,
+      "y": 241,
+      "width": 1180,
+      "height": 460,
       "color": "4"
     }
   ],
@@ -273,7 +284,9 @@
     },
     {
       "id": "17786be878e9119f",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "f0f41629e800db2d",
       "fromSide": "bottom",
       "toNode": "715ba0a76bc5740e",
@@ -313,7 +326,9 @@
     },
     {
       "id": "c57fa8258af89927",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "f0f41629e800db2d",
       "fromSide": "bottom",
       "toNode": "50e0f6ea0ce8f3b5",
@@ -337,10 +352,22 @@
     },
     {
       "id": "406c5334c66cc017",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "f0f41629e800db2d",
       "fromSide": "bottom",
       "toNode": "4b4086eaf559b61e",
+      "toSide": "top"
+    },
+    {
+      "id": "fcbdf20c7aec4871",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "f0f41629e800db2d",
+      "fromSide": "bottom",
+      "toNode": "93166f7f391ace61",
       "toSide": "top"
     }
   ],
