@@ -47,12 +47,18 @@ public class DanfeGenerator {
                 // Adiciona a logo
                 yPosition = drawLogo(contentStream, document, page, yPosition);
 
-                // NOVO: Adiciona a seção de merchandising
+                // Adiciona a seção de merchandising
                 drawMerchandising(contentStream, page, yPosition);
             }
 
-            document.save("danfe_nfce_final2.pdf");
-            System.out.println("DANFE NFC-e final gerado com sucesso! 🚀");
+            // --- ALTERAÇÃO AQUI ---
+            // Gera um nome de arquivo aleatório usando o timestamp atual para garantir que seja único
+            String randomCode = String.valueOf(System.currentTimeMillis());
+            String fileName = "pdfbyebyecupom" + randomCode + ".pdf";
+
+            document.save(fileName);
+            System.out.println("DANFE NFC-e final gerado com sucesso como: " + fileName + " 🚀");
+            // --- FIM DA ALTERAÇÃO ---
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -251,7 +257,7 @@ public class DanfeGenerator {
             logoStream.close();
             PDImageXObject pdImage = PDImageXObject.createFromByteArray(doc, imageBytes, "logo.jpg");
 
-            float desiredWidth = 150;
+            float desiredWidth = 350;
             float scale = desiredWidth / pdImage.getWidth();
             float scaledHeight = pdImage.getHeight() * scale;
 
@@ -270,12 +276,10 @@ public class DanfeGenerator {
         }
     }
 
-    // --- NOVO MÉTODO PARA O MERCHANDISING ---
     private static void drawMerchandising(PDPageContentStream cs, PDPage page, float y) throws IOException {
         // Textos a serem exibidos
-        String title = "Sua Revolução do Cupom Fiscal";
+        String title = "ByeBye Cupom! - Sua Revolução do Cupom Fiscal";
         String description = "Diga adeus aos cupons de papel! Organize suas notas fiscais de forma 100% digital, economize espaço e ajude o meio ambiente.";
-        String url = "Veja mais em: https://byebyecupom.com.br/";
 
         float pageWidth = page.getMediaBox().getWidth();
 
@@ -290,8 +294,6 @@ public class DanfeGenerator {
         drawTextCentered(cs, FONT_REGULAR, 9, pageWidth / 2, y, description);
         y -= 15;
 
-        // Desenha a URL
-        drawTextCentered(cs, FONT_REGULAR, 9, pageWidth / 2, y, url);
     }
 
     // --- MÉTODOS UTILITÁRIOS ---

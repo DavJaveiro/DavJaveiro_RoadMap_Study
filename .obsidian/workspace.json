@@ -54,9 +54,9 @@
               "state": {
                 "file": "ByeByeCupom/Kanban API (Sistema).canvas",
                 "viewState": {
-                  "x": 1935,
-                  "y": 1281,
-                  "zoom": 0
+                  "x": 3250.9798697074625,
+                  "y": 887.1346665443808,
+                  "zoom": -1.314534148939965
                 }
               },
               "pinned": true,
@@ -79,7 +79,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -146,7 +146,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -281,26 +282,29 @@
       "markwhen:Create new Markwhen file": false
     }
   },
-  "active": "4d439fda76685698",
+  "active": "5898fdcdca11c0af",
   "lastOpenFiles": [
-    "Spring Boot 3 and React/nfce_xml_download/mvnw",
-    "Spring Boot 3 and React/nfce_xml_download/danfe_nfce_final2.pdf",
-    "Spring Boot 3 and React/nfce_xml_download/danfe_nfce_final1.pdf",
+    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758671876362.pdf",
     "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download/DanfeGenerator.class",
-    "Spring Boot 3 and React/nfce_xml_download/danfe_nfce_final.pdf",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/DanfeGenerator.java",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/logo.jpg",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/GeradorPdfSimples.java~",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/logo.jpg",
-    "Spring Boot 3 and React/nfce_xml_download/danfe_nfce_completo.pdf",
-    "Spring Boot 3 and React/nfce_xml_download/danfe_nfce.pdf",
+    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758671832313.pdf",
+    "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/DanfeGenerator.java~",
+    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758671797409.pdf",
+    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758671768637.pdf",
+    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758671694405.pdf",
     "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download/NfceXmlDownloadApplication.class",
     "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download/NfceDownloader.class",
+    "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download",
+    "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt",
+    "Spring Boot 3 and React/nfce_xml_download/target/classes/qrcode.jpg",
+    "Spring Boot 3 and React/nfce_xml_download/target/classes/logo.jpg",
+    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/qrcode.jpg",
+    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/qrcode.jpg.png",
+    "ByeByeCupom/Kanban API (Sistema).canvas",
+    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/logo.jpg",
     "ByeByeCupom/Estrutura.md",
     "ByeByeCupom/Diagrama UML Fluxo Geral.md",
     "Spring Boot 3 and React/nfce_xml_download/HELP.md",
     "ByeByeCupom/Diagrama UML API.md",
-    "ByeByeCupom/Kanban API (Sistema).canvas",
     "ByeByeCupom/Brains Storm.canvas",
     "Pasted image 20250923141646.png",
     "ByeByeCupom/Kanban Landing Page.canvas",
@@ -317,7 +321,6 @@
     "().md",
     "Untitled.md",
     "prompt.png",
-    "prompt-1.png",
     "Sem título 3.md",
     "API Design Patterns/Chapter 1 - Introduction to APIs.md",
     "Sem título 5.md",
@@ -330,8 +333,6 @@
     "Spring Boot and Angular/Chapter 4 - Setting Up the Database and Spring Data JPA.md",
     "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md",
     "The Princepton Companion/Preface.md",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts.md",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts/image-2025983652343.png",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts/image-20259718969.png"
+    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 1- Understanding RESTful Core Concepts/1 - Understanding RESTful Core Concepts.md"
   ]
 }

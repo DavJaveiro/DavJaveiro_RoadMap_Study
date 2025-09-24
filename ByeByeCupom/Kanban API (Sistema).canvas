@@ -137,8 +137,31 @@
       "styleAttributes": {},
       "x": 1800,
       "y": 1260,
+      "width": 460,
+      "height": 180,
+      "color": "4"
+    },
+    {
+      "id": "82b87c92ac4febb6",
+      "type": "text",
+      "text": "Usando PDFBox",
+      "styleAttributes": {},
+      "x": 2600,
+      "y": 1260,
       "width": 260,
-      "height": 60
+      "height": 60,
+      "color": "4"
+    },
+    {
+      "id": "9a6575d233b1b578",
+      "type": "text",
+      "text": "Gerar art QrCode do site para anexar ao PDF",
+      "styleAttributes": {},
+      "x": 2560,
+      "y": 1560,
+      "width": 360,
+      "height": 240,
+      "color": "4"
     }
   ],
   "edges": [
@@ -217,6 +240,22 @@
       "fromNode": "e16d77bc3e6d44a5",
       "fromSide": "bottom",
       "toNode": "e98b22d31ac93dad",
+      "toSide": "top"
+    },
+    {
+      "id": "775398b6e072a11a",
+      "styleAttributes": {},
+      "fromNode": "e98b22d31ac93dad",
+      "fromSide": "right",
+      "toNode": "82b87c92ac4febb6",
+      "toSide": "left"
+    },
+    {
+      "id": "2a521734432bbe4a",
+      "styleAttributes": {},
+      "fromNode": "82b87c92ac4febb6",
+      "fromSide": "bottom",
+      "toNode": "9a6575d233b1b578",
       "toSide": "top"
     }
   ],
