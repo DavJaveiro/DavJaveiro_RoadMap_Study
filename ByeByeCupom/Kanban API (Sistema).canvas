@@ -38,16 +38,6 @@
       "color": "3"
     },
     {
-      "id": "aaf5878cd52dbcdb",
-      "type": "file",
-      "file": "ByeByeCupom/ByeByeCupom Logo.png",
-      "styleAttributes": {},
-      "x": -520,
-      "y": -1520,
-      "width": 1146,
-      "height": 400
-    },
-    {
       "id": "a28b2629d7fcd22c",
       "type": "text",
       "text": "Concluído (Done)",
@@ -131,49 +121,12 @@
       "color": "2"
     },
     {
-      "id": "8962b4f309aa77c1",
-      "type": "text",
-      "text": "Criar a parte do sistema responsável por transformar o XML em PDF",
-      "styleAttributes": {
-        "textAlign": "center"
-      },
-      "x": 1380,
-      "y": 370,
-      "width": 560,
-      "height": 240,
-      "color": "5"
-    },
-    {
-      "id": "e98b22d31ac93dad",
-      "type": "text",
-      "text": "iText 7 ou PDF BOX",
-      "styleAttributes": {
-        "textAlign": "center"
-      },
-      "x": 2140,
-      "y": 760,
-      "width": 460,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "82b87c92ac4febb6",
-      "type": "text",
-      "text": "Usando PDFBox",
-      "styleAttributes": {},
-      "x": 2980,
-      "y": 820,
-      "width": 260,
-      "height": 60,
-      "color": "5"
-    },
-    {
       "id": "9a6575d233b1b578",
       "type": "text",
       "text": "Gerar art QrCode do site para anexar ao PDF",
       "styleAttributes": {},
-      "x": 3960,
-      "y": 940,
+      "x": 5240,
+      "y": -160,
       "width": 360,
       "height": 240,
       "color": "4"
@@ -183,8 +136,8 @@
       "type": "text",
       "text": "Otimizar a arte, ainda não ficou padrão",
       "styleAttributes": {},
-      "x": 4700,
-      "y": 1020,
+      "x": 5980,
+      "y": -80,
       "width": 540,
       "height": 100
     },
@@ -193,8 +146,8 @@
       "type": "text",
       "text": "Sua classe `DanfeGenerator` está fazendo **muita coisa ao mesmo tempo**:\n\n- Carrega XML\n    \n- Faz parsing e extração de dados\n    \n- Desenha cada seção do PDF\n    \n- Gerencia layout, fontes e formatação\n    \n- Salva o PDF no disco\n    \n- Tem utilitários de formatação (CNPJ, chave, data, etc.)\n    \n\n👉 Em termos de boas práticas, o ideal seria **separar responsabilidades** (princípio **SRP** do SOLID).\n\n### Como você poderia separar:\n\n1. **Classe de Entrada de Dados (XML Parser)**\n    \n    - Ex.: `NotaFiscalParser`\n        \n    - Responsável apenas por ler o XML e devolver um objeto `NotaFiscal` com os dados já mapeados.\n        \n2. **Classe de Modelo (Domain Model)**\n    \n    - Ex.: `NotaFiscal`, `Item`, `Pagamento`\n        \n    - Representam a nota fiscal em memória, sem depender de PDF ou XML.\n        \n3. **Classe de Geração de PDF (Renderer)**\n    \n    - Ex.: `DanfePdfRenderer`\n        \n    - Recebe um `NotaFiscal` e gera o PDF.\n        \n4. **Utilitários de Formatação**\n    \n    - Ex.: `FormatterUtils`\n        \n    - Métodos como `formatCnpj`, `formatAccessKey`, `formatDateTime`.\n        \n5. **Classe Principal (Main)**\n    \n    - Apenas orquestra: carrega o XML → gera o objeto `NotaFiscal` → chama o renderer → salva o arquivo.\n\n### Vantagens de separar:\n\n- **Legibilidade**: cada classe fica menor e mais clara.\n    \n- **Testabilidade**: você pode testar só o parser sem precisar renderizar PDF, ou só o renderer sem XML real.\n    \n- **Reuso**: amanhã pode precisar gerar DANFE em HTML ou JSON → já teria os dados prontos no `NotaFiscal`, sem refazer parsing.\n    \n- **Manutenção**: mudanças no layout do PDF não afetam o parsing de XML.",
       "styleAttributes": {},
-      "x": 5720,
-      "y": 760,
+      "x": 7000,
+      "y": -340,
       "width": 1040,
       "height": 2520
     },
@@ -202,10 +155,124 @@
       "id": "e51dc286d88b0d36",
       "type": "file",
       "file": "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/DanfeGenerator.java",
-      "x": 3280,
-      "y": 1620,
+      "styleAttributes": {},
+      "x": 4560,
+      "y": 520,
       "width": 860,
       "height": 800
+    },
+    {
+      "id": "6016ac567352388e",
+      "type": "text",
+      "text": "## Proposta de Refatoração\n\n\n",
+      "styleAttributes": {},
+      "x": 7000,
+      "y": 2500,
+      "width": 1040,
+      "height": 2520
+    },
+    {
+      "id": "e98b22d31ac93dad",
+      "type": "text",
+      "text": "iText 7 ou PDF BOX",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 3460,
+      "y": 650,
+      "width": 460,
+      "height": 180,
+      "color": "5"
+    },
+    {
+      "id": "82b87c92ac4febb6",
+      "type": "text",
+      "text": "Usando PDFBox",
+      "styleAttributes": {},
+      "x": 4300,
+      "y": 710,
+      "width": 260,
+      "height": 60,
+      "color": "5"
+    },
+    {
+      "id": "8962b4f309aa77c1",
+      "type": "text",
+      "text": "Criar a parte do sistema responsável por transformar o XML em PDF",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 2700,
+      "y": 260,
+      "width": 560,
+      "height": 240,
+      "color": "5"
+    },
+    {
+      "id": "aaf5878cd52dbcdb",
+      "type": "file",
+      "file": "ByeByeCupom/ByeByeCupom Logo.png",
+      "styleAttributes": {},
+      "x": -720,
+      "y": -2000,
+      "width": 1146,
+      "height": 400
+    },
+    {
+      "id": "574a681b2399a354",
+      "type": "text",
+      "text": "DEPENDÊNCIAS",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 2120,
+      "y": -3270,
+      "width": 260,
+      "height": 60,
+      "color": "5"
+    },
+    {
+      "id": "7a1cf8150dc1abbb",
+      "type": "text",
+      "text": "## Estrutura do Projeto - Monólito Modular (Package-By-Feature)\nsrc/main/java/\n└── br/\n    └── com/\n        └── byebyecupom/  // <-- Este é o seu pacote base (packagename)\n            │\n            ├── ByeByeCupomApiApplication.java // Classe principal da aplicação\n            │\n            ├── ingestion/\n            │   ├── api/\n            │   │   └── IngestionController.java\n            │   └── service/\n            │       └── IngestionService.java\n            │\n            ├── fiscaldocument/\n            │   ├── model/\n            │   │   └── FiscalDocument.java\n            │   └── repository/\n            │       └── FiscalDocumentRepository.java\n            │\n            ├── danfegeneration/\n            │   └── service/\n            │       └── DanfeGeneratorService.java\n            │\n            └── shared/\n                └── infrastructure/\n                    └── storage/\n                        └── FileStorageService.java",
+      "styleAttributes": {},
+      "x": 2280,
+      "y": -1400,
+      "width": 820,
+      "height": 840
+    },
+    {
+      "id": "6e36b1c3ec32ca89",
+      "type": "text",
+      "text": "# [OpenPDF Core Modern](https://mvnrepository.com/artifact/com.github.librepdf/openpdf) » [3.0.0](https://mvnrepository.com/artifact/com.github.librepdf/openpdf/3.0.0)\n\n# Licença\n## 1. LGPL 2.1 (Lesser General Public License)\n\n- **Tipo:** Copyleft “fraco”\n    \n- **Uso em SaaS:** ✅ Permitido, porque você **não está distribuindo o software**, apenas usando internamente.\n    \n- **Distribuição:** Se você **redistribuir o software** (ou uma versão modificada) em outro produto, precisa liberar o código modificado **da biblioteca LGPL**, mas **não precisa liberar seu código próprio** que apenas a utiliza.\n    \n- **Vinculação:** Geralmente, a biblioteca LGPL deve ser linkada dinamicamente (não incorporada estaticamente) para que o copyleft seja respeitado.\n    \n- **Resumo:** Boa para **bibliotecas no backend** de SaaS; não força abrir seu código do serviço.\n    \n\n---\n\n## 2. MPL 2.0 (Mozilla Public License)\n\n- **Tipo:** Copyleft **limitado por arquivo**\n    \n- **Uso em SaaS:** ✅ Permitido. Você pode integrar a biblioteca em seu backend sem abrir seu código, contanto que **arquivos da MPL modificados sejam disponibilizados**.\n    \n- **Distribuição:** Apenas os **arquivos originais/modificados da MPL** precisam ter código aberto; o restante do seu sistema pode ser fechado.\n    \n- **Vantagem sobre LGPL:** Mais flexível, você pode mesclar com código proprietário sem problemas, desde que os arquivos MPL permaneçam sob MPL.",
+      "styleAttributes": {},
+      "x": 3720,
+      "y": -4520,
+      "width": 1080,
+      "height": 880,
+      "color": "5"
+    },
+    {
+      "id": "adfa06e3d389c12f",
+      "type": "text",
+      "text": "# [Jakarta XM L Binding API](https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api) \n\n## Licença\n### 1. O que é a EDL 1.0\n- É uma licença permissiva criada por empresas (geralmente para frameworks ou bibliotecas) para uso **em produtos corporativos e comerciais**.\n- Ela **permite uso, modificação e distribuição**, mas **pode impor restrições sobre redistribuição** e o tipo de produto que você pode criar. \n\n- ### 2. Para uso em SaaS\n- **Uso interno e em SaaS:** Normalmente permitido. Você pode integrar a biblioteca/framework licenciado por EDL 1.0 no seu backend Spring Boot e disponibilizar seu serviço.\n- **Distribuição:** Se você tentar redistribuir a biblioteca EDL como parte de outro produto, algumas restrições podem se aplicar. Geralmente, você **não precisa redistribuir o código modificado** se apenas estiver usando o software como parte do seu serviço (SaaS).\n- **Crédito / atribuição:** Algumas versões da EDL exigem mencionar a biblioteca usada na documentação ou no seu site.",
+      "styleAttributes": {},
+      "x": 3720,
+      "y": -5560,
+      "width": 1080,
+      "height": 880,
+      "color": "5"
+    },
+    {
+      "id": "4cf7b0f423cf39c5",
+      "type": "text",
+      "text": "# [ZXing Core](https://mvnrepository.com/artifact/com.google.zxing/core)\n\n# Licença\n## Apache License 2.0\n- **Tipo:** Licença permissiva (não copyleft)\n- **Uso em SaaS:** ✅ Totalmente permitido. Você pode integrar bibliotecas Apache 2.0 no backend do seu SaaS sem precisar abrir seu código.\n- **Distribuição:**\n    - Se você redistribuir o software, precisa **manter o aviso de copyright e a licença original**.\n    - Não é necessário abrir código fonte do seu próprio software que apenas usa a biblioteca.\n- **Modificações:**\n    - Pode modificar a biblioteca.\n    - Deve manter **avisos de copyright e a licença** nos arquivos modificados.\n- **Patentes:**\n    - A Apache 2.0 inclui uma **cláusula de concessão de patentes**, que protege você de processos de patente relacionados ao software licenciado.",
+      "styleAttributes": {},
+      "x": 3720,
+      "y": -3440,
+      "width": 1080,
+      "height": 880,
+      "color": "5"
     }
   ],
   "edges": [
@@ -338,6 +405,69 @@
       "toSide": "left",
       "color": "1",
       "label": "SEPARAR A CLASSE"
+    },
+    {
+      "id": "fc6f83058b829f29",
+      "styleAttributes": {},
+      "fromNode": "e51dc286d88b0d36",
+      "fromSide": "right",
+      "toNode": "6016ac567352388e",
+      "toSide": "left",
+      "color": "1",
+      "label": "SEPARAR A CLASSE"
+    },
+    {
+      "id": "7e7d5a465c468c0c",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "aaf5878cd52dbcdb",
+      "fromSide": "bottom",
+      "toNode": "7a1cf8150dc1abbb",
+      "toSide": "left",
+      "color": "1",
+      "label": "# ESTRUTURA"
+    },
+    {
+      "id": "eedf313c65ca439c",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "aaf5878cd52dbcdb",
+      "fromSide": "right",
+      "toNode": "574a681b2399a354",
+      "toSide": "left",
+      "color": "5"
+    },
+    {
+      "id": "379dd0448fac6838",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "574a681b2399a354",
+      "fromSide": "right",
+      "toNode": "4cf7b0f423cf39c5",
+      "toSide": "left"
+    },
+    {
+      "id": "0ffed678e2f87283",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "574a681b2399a354",
+      "fromSide": "right",
+      "toNode": "adfa06e3d389c12f",
+      "toSide": "left"
+    },
+    {
+      "id": "46875e9c9f902918",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "574a681b2399a354",
+      "fromSide": "right",
+      "toNode": "6e36b1c3ec32ca89",
+      "toSide": "left"
     }
   ],
   "metadata": {}
