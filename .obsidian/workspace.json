@@ -98,12 +98,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ByeByeCupom/Estrutura.md",
+                "file": "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Estrutura"
+              "title": "Capítulo 1 - Uma Filosofia Pragmática"
             }
           }
         ],
@@ -312,10 +312,10 @@
   },
   "active": "ff8feb88205af1ff",
   "lastOpenFiles": [
-    "ByeByeCupom/Kanban API (Sistema).canvas",
-    "ByeByeCupom/Estrutura.md",
-    "ByeByeCupom/Diagrama UML API.md",
     "n-tranças/Roadmap de Iniciação.md",
+    "ByeByeCupom/Diagrama UML API.md",
+    "ByeByeCupom/Estrutura.md",
+    "ByeByeCupom/Kanban API (Sistema).canvas",
     "Postagens Linkedin.md",
     "ByeByeCupom/Brains Storm.canvas",
     "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/DanfeGenerator.java",

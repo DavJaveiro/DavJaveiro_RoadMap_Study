@@ -148,3 +148,47 @@ das” e discuta com seus colegas quais são os problemas e o que poderia ser fe
 sua reação? Se isso foi resultado da decisão de alguém, ou de uma
 imposição da gerência, o que você pode fazer?
 
+
+## 3 Sopa de pedras e sapos cozidos
+Os três soldados que voltavam da guerra estavam famintos. Quando viram a vila à frente, se animaram – tinham certeza de que os aldeões lhes dariam uma refeição. Mas, quando lá chegaram, encontraram as portas trancadas e as janelas fechadas. Após muitos anos de guerra, os aldeões estavam com pouca comida e estocavam o que tinham. Sem medo, os soldados ferveram água em uma panela e colocaram cuidadosamente três pedras nela. Os aldeões pasmos vieram observar. “Essa é uma sopa de pedras”, os soldados explicaram. “Isso é tudo que vocês colocam nela?” perguntaram os aldeões. “Exatamente – embora algumas pessoas digam que ela fica ainda melhor com algumas cenouras...” Um aldeão pôs-se a correr, voltando rapidamente com uma cesta de cenouras de seu estoque. Alguns minutos depois, os aldeões perguntaram novamente “É só isso?” “Bem,” disseram os soldados, “algumas batatas lhe dão sustância”. Outro aldeão saiu em disparada. Durante a hora que se seguiu, os soldados listaram mais ingredientes que melhorariam a sopa: carne, alho, sal e ervas. A cada vez um aldeão diferente corria para procurar em seus estoques pessoais. Eles acabaram obtendo uma grande panela de sopa fumegante. Os soldados removeram as pedras e se sentaram com a vila inteira para apreciar a primeira refeição reforçada que qualquer um deles tinha comido em meses.
+
+Há algumas lições na história da sopa de pedras. Os aldeões são enganados pelos soldados, que usam a curiosidade daqueles para obter comida. Porém, o mais importante é que os soldados agem como um catalisador, reunindo a vila para para que possam produzir conjuntamente algo que não poderiam ter feito sozinhos, um resultado sinérgico. Todos acabam ganhando. 
+
+Em uma situação fortuita, podemos querer imitar os soldados.
+
+Podemos estar em uma situação em que sabemos exatamente o que precisamos ser feito e como fazê-lo. O sistema inteiro simplesmente se descortina à nossa frente, sabemos que ele está correto. Mas peça permissão para realizá-lo integralmente e enfrentaremos atrasos e olhares vagos. As pessoas formarão comitês, orçamentos precisarão de aprovação e as coisas se complicarão. Todos protegerão seus recursos. Às vezes, isso é chamado de *fadiga inicial*. É hora de usar as pedras. Planeje o que você pode pedir. Desenvolva isso bem. Quando terminar, mostre o que obteve às pessoas e deixe que se admirem. Então diga "é claro que ficaria melhor se adicionássemos...". Finja que não é importante. Sente-se e espere elas começarem a pedir que adicione a funcionalidade que queríamos desde o início. As pessoas acham mais fácil se associar a algo que vem obtendo êxito. Mostre a elas um vislumbre do futuro e fará com que colaborem.
+
+*Dica 5: **Seja um catalisador da mudança***
+
+**O lado dos aldeões**
+Por outro lado, a história da sopa de pedra também é sobre uma ilusão lenta e gradual. É sobre dar muita atenção a algo. Os aldeões se concentram nas pedras e esquecem o resto do mundo. Todos fazemos isso, diariamente. Somos simplesmente envolvidos pelas coisas.
+
+Todos nós já vimos os sintomas. Os projetos saem totalmente de controle de maneira lenta e inexorável. Grande parte da deterioração do software começa em um nível muito baixo para ser notada e quase todos os descontroles em projetos ocorrem dia após dia. Os sistemas se desviam de suas especificações recurso a recurso, enquanto um remendo atrás do outro é adicionado a um trecho de código até que nada sobre do original. Geralmente, é a acumulação de pequenas coisas que desintegra a motivação e as equipes.
+
+**Dica 6 - Lembre-se do cenário em larga escala.**
+
+Nunca tentamos isso, sinceramente. Mas dizem que se você pegar um sapo e jogá-lo em água fervendo, ele saltará imediatamente para fora de novo. No entanto, se você colocar o sapo em uma panela com água fria e aquecê-la gradualmente, o sapo não notará o lento aumento na temperatura e permanecerá quieto até ser cozido.
+
+Observe que o problema do sapo é diferente da questão das janelas quebradas. Na teoria da Janela Quebrada, as pessoas perdem a vontade de combater a entropia porque percebem que ninguém se preocupa. O sapo simplesmente não nota a mudança.
+
+Não seja como o sapo. Não se esqueça do cenário mais abrangente. Verifique constantemente o que está acontecendo ao seu redor e não apenas o que você próprio está fazendo.
+
+## 4 Software Satisfatório
+Há uma piada (bem) antiga sobre uma empresa nos Estados Unidos que faz um pedido de 100.000 circuitos integrados a um fabricante japonês. Parte da especificação era a taxa de defeitos: um chip em 10.000. Algumas semanas depois o pedido chegou: uma grande caixa contendo milhares de circuitos integrados e uma pequena contendo apenas 10. Anexado à pequena caixa, via-se um rótulo com os dizeres: "Estes são os defeituosos".
+
+Se ao menos tivéssemos esse tipo de controle sobre a qualidade. Mas o mundo real não nos permite produzir muita coisa realmente perfeita, principalmente software sem erros. O tempo, a tecnologia e o temperamento, tudo isso conspira contra.
+
+No entanto, isso não precisa ser frustrante. Como Ed Yourdon descreveu em um artigo na IEEE Software, você pode se disciplinar para criar software que seja satisfatório, para seus usuários, para quem fizer futura manutenções, para sua própria paz de espírito. Verá que está sendo mais produtivo e que seus usuários estão mais felizes. E pode acabar descobrindo que seus programas são realmente melhores por seu período menor de incubação.
+
+Antes de prosseguir, temos que qualificar o que estamos para dizer. O termo “satisfatório” não significa código malfeito ou mal produzido. Todos os sistemas devem atender os requisitos de seus usuários para serem bemsucedidos. Estamos defendendo que os usuários tenham a oportunidade de participar do processo de decidir quando o que produzimos atingiu o satisfatório.
+
+**Envolva seus usuários na tomada de decisões**
+Normalmente, criamos software para outras pessoas. Com frequência, lembramos de pedir-lhes requisitos. Mas com que frequência você pergunta a elas o nível de satisfação que desejam que seu software tenha? Às vezes, não há escolha. Se você estiver trabalhando em marca-passos, no ônibus espacial ou em uma biblioteca de baixo nível que será amplamente disseminada, os requisitos serão mais rigorosos e suas opções mais limitadas. No entanto, se estiver trabalhando em um projeto totalmente novo, terá restrições diferentes. Os profissionais de marketing terão promessas a fazer, os eventuais usuários finais podem ter feito planos com base em um prazo de entrega e sua empresa certamente terá restrições de fluxo de caixa. Seria amador ignorar esses requisitos dos usuários simplesmente para adicionar novos recursos ao programa ou para refinar o código mais uma vez. Não estamos defendendo o pânico: é igualmente amador promoter escalas de tempo impossíveis e cortar ângulos de engenharia básicos para atender um prazo. O escopo e a qualidade do sistema que você vai produzir devem ser especificados como parte dos requisitos desse sistema.
+
+**Dica 7 - Torne a qualidade parte dos requisitos**
+Com frequência, veremos situações em que concessões estarão envolvidas. Surpreendentemente, muitos usuários preferem usar software com algumas arestas pendentes hoje do que esperar um ano pela versão multimídia. Muitos departamentos de TI com orçamentos apertados concordariam. Se você der a seus usuários algo para usarem mais cedo, seu feedback pode levá-lo a uma solução melhor (consulte Projéteis Luminosos, página 70).
+
+**Saiba quando parar** 
+Em alguns aspectos, a programação é como a pintura. Você começa com uma tela vazia e certas matérias-primas básicas. Usa uma combinação de ciência, arte e trabalho manual para determinar o que fazer com elas. Esboça uma forma geral, pinta o ambiente subjacente e insere os detalhes. Constantemente, distancia-se com olhar crítico para ver o que fez. De vez em quando, jogará uma tela fora e começará de novo. Mas os artistas lhe dirão que todo o trabalho árduo estará arruinado se você não souber quando parar. Se você adicionar uma camada após a outra, um detalhe após o outro, o tópico retratado se perderá na pintura. Não estrague um programa que funciona perfeitamente enfeitando e aprimorando-o excessivamente. Passe adiante e deixe que seu código fale um pouco por si próprio. Ele pode não ter ficado perfeito. Não se preocupe: nunca teria ficado perfeito. (No Capítulo 6, página 193, discutiremos filosofias para o desenvolvimento de códigos em um mundo imperfeito).
+
+Considere o efeito da modularização na distribuição de software. Demora mais ou menos tempo obter um software monolítico com a qualidade requerida em comparação com um sistema projetado em módulos? Você consegue identificar exemplos comerciais?
