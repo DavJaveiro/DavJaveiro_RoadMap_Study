@@ -1,4 +1,4 @@
-package com.davjaveiro.products_api.products.domain;
+package com.packt.courseapi.domain;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.redis.core.RedisHash;
 
 @Entity
 @Table(name = "COURSES")

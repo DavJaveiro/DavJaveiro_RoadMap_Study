@@ -1,19 +1,16 @@
-package com.davjaveiro.products_api.products.service;
+package com.packt.courseapi.service;
 
-import com.davjaveiro.products_api.products.domain.Course;
-import com.davjaveiro.products_api.products.dtos.products.CourseRequestDTO;
-import com.davjaveiro.products_api.products.dtos.products.CourseResponseDTO;
-import com.davjaveiro.products_api.products.mapper.CourseMapper;
-import com.davjaveiro.products_api.products.repository.CourseJpaRepository;
-import com.davjaveiro.products_api.shared.exception.CourseNotFoundException;
+import com.packt.courseapi.domain.Course;
+import com.packt.courseapi.dtos.CourseRequestDTO;
+import com.packt.courseapi.dtos.CourseResponseDTO;
+import com.packt.courseapi.mapper.CourseMapper;
+import com.packt.courseapi.repository.CourseJpaRepository;
+import com.packt.courseapi.shared.exception.CourseNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,17 +22,11 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     private CourseMapper courseMapper;
 
-    @Autowired
-    private RedisTemplate<UUID, Object> redisTemplate;
-
-    private final String REDIS_KEY = "Course";
 
     @Override
     public CourseResponseDTO createCourse(CourseRequestDTO courseRequestDTO) {
         Course courseEnity = courseMapper.ToEntity(courseRequestDTO);
         Course savedEntity = courseJpaRepository.save(courseEnity);
-
-        redisTemplate.opsForHash().put(UUID.fromString(REDIS_KEY), savedEntity.getId(), savedEntity);
 
         return courseMapper.toResponseDTO(savedEntity);
     }
@@ -68,7 +59,6 @@ public class CourseServiceImpl implements CourseService {
             existingCourse.setCategory(courseRequestDTO.category());
 
             Course savedCourse = courseJpaRepository.save(existingCourse);
-            redisTemplate.opsForHash().put(UUID.fromString(REDIS_KEY), savedCourse.getId(), savedCourse);
             return courseMapper.toResponseDTO(savedCourse);
         });
     }
@@ -79,15 +69,11 @@ public class CourseServiceImpl implements CourseService {
         courseJpaRepository.findById(courseId).orElseThrow(() -> new CourseNotFoundException(String.format("Course with %d not deleted because not found!", courseId)));
         courseJpaRepository.deleteById(courseId);
 
-        redisTemplate.opsForHash().delete(UUID.fromString(REDIS_KEY), courseId);
     }
 
     @Override
     public void deleteCourses() {
         courseJpaRepository.deleteAll();
-
-        redisTemplate.opsForHash().delete(UUID.fromString(REDIS_KEY));
     }
 
 }
-
