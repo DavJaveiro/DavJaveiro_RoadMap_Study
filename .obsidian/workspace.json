@@ -54,8 +54,8 @@
               "state": {
                 "file": "ByeByeCupom/Kanban API (Sistema).canvas",
                 "viewState": {
-                  "x": 7643.179368814418,
-                  "y": 130.13761810528104,
+                  "x": 4807.80836897713,
+                  "y": -5296.408764051986,
                   "zoom": -1.6290682978799298
                 }
               },
@@ -84,30 +84,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ByeByeCupom/Diagrama UML API.md",
+                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Diagrama UML API"
-            }
-          },
-          {
-            "id": "ff8feb88205af1ff",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Capítulo 1 - Uma Filosofia Pragmática"
+              "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -310,26 +296,29 @@
       "markwhen:Create new Markwhen file": false
     }
   },
-  "active": "ff8feb88205af1ff",
+  "active": "523322d9bd1fd6ad",
   "lastOpenFiles": [
-    "n-tranças/Roadmap de Iniciação.md",
-    "ByeByeCupom/Diagrama UML API.md",
-    "ByeByeCupom/Estrutura.md",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/src/main/java/com/davjaveiro/products_api/products/mapper/Course.java",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/domain/Course.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/domain",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/dtos/products/CourseResponseDTO.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/dtos/products/CourseRequestDTO.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/dtos/products",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/dtos",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/service/CourseService.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/service",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/products_api/target/classes/com/davjaveiro/products_api/products/controller/CourseController.class",
     "ByeByeCupom/Kanban API (Sistema).canvas",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+    "ByeByeCupom/Diagrama UML API.md",
+    "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
+    "n-tranças/Roadmap de Iniciação.md",
+    "ByeByeCupom/Estrutura.md",
     "Postagens Linkedin.md",
     "ByeByeCupom/Brains Storm.canvas",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/java/com/packt/nfce_xml_download/DanfeGenerator.java",
-    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758738992243.pdf",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download/NfceXmlDownloadApplication.class",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download/DanfeGenerator.class",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt/nfce_xml_download",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/com/packt",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/com",
-    "Spring Boot 3 and React/nfce_xml_download/pom.xml~",
     "ByeByeCupom/Kanban Landing Page.canvas",
-    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758736684887.pdf",
     "Spring Boot 3 and React/nfce_xml_download/target/classes/qrcode.jpg",
-    "Spring Boot 3 and React/nfce_xml_download/pdfbyebyecupom1758671876362.pdf",
     "Spring Boot 3 and React/nfce_xml_download/target/classes/logo.jpg",
     "Spring Boot 3 and React/nfce_xml_download/src/main/resources/qrcode.jpg",
     "Spring Boot 3 and React/nfce_xml_download/src/main/resources/qrcode.jpg.png",
@@ -337,7 +326,6 @@
     "ByeByeCupom/Diagrama UML Fluxo Geral.md",
     "Spring Boot 3 and React/nfce_xml_download/HELP.md",
     "Pasted image 20250923141646.png",
-    "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
     "Imagem do WhatsApp de 2025-09-23 à(s) 10.28.27_5cd4b7e6.jpg",
     "Pasted image 20250922131718.png",
     "ByeByeCupom/ByeByeCupom Logo.png",
@@ -359,7 +347,6 @@
     "Tá Salgado/Security.md",
     "Tá Salgado/Test.md",
     "Spring Boot and Angular/Chapter 4 - Setting Up the Database and Spring Data JPA.md",
-    "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md",
-    "The Princepton Companion/Preface.md"
+    "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md"
   ]
 }

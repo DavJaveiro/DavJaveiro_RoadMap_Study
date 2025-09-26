@@ -73,6 +73,12 @@ public class Course {
 
 The Course is a Java #POJO that models the course details in the application with fields such as course id, name, category, rating, and description. Next, let's define the *CourseRepository* interface, which lets us manage the courses in the database.
 
+```java
+public interface CourseRepository extends JpaRepository<Course, Long> {  
+    List<Course> findAllByCategory(String description);  
+}
+```
+
 Vamos  agora definir a camada #service de nossa aplicação. Nós definiremos a camada service com uma interface que forneça as operações suportadas em nossa aplicação.
 ```java
 public interface CourseService {
@@ -86,9 +92,9 @@ public interface CourseService {
 }
 ```
 
-Os métodos definidos no trecho 7.3 são autoexplicativos. Eles contêm declarações de métodos que nos permitem realizar as operações CRUD na aplicação. Vamos agora fornecer uma implementação padrão que concretize esses métodos.
+Os métodos definidos no trecho acima são autoexplicativos. Eles contêm declarações de métodos que nos permitem realizar as operações CRUD na aplicação. Vamos agora fornecer uma implementação padrão que concretize esses métodos.
 
-Geralmente, é uma boa prática definir uma interface contendo as operações suportadas pela API. Essa interface estabelece um contrato entre o **controlador** e as **operações disponibilizadas** na camada de serviço. Em seguida, podemos criar uma classe concreta que implemente essas operações. Além disso, na classe controladora (controller), utiliza-se o nome da interface em vez de especificar a classe de implementação concreta. No futuro, caso seja necessário fornecer uma implementação diferente para a camada de serviço, a classe controladora não será afetada, pois ela utiliza a interface e não está vinculada a uma implementação específica. O trecho 7.4 mostra a classe *DefaulttProductRepository*.
+Geralmente, é uma boa prática definir uma interface contendo as operações suportadas pela API. Essa interface estabelece um contrato entre o **controlador** e as **operações disponibilizadas** na camada de serviço. Em seguida, podemos criar uma classe concreta que implemente essas operações. Além disso, na classe controladora (controller), utiliza-se o nome da interface em vez de especificar a classe de implementação concreta. No futuro, caso seja necessário fornecer uma implementação diferente para a camada de serviço, <span style="background:#affad1">a classe controladora não será afetada</span>, pois ela utiliza a interface e não está vinculada a uma implementação específica. O trecho 7.4 mostra a classe *DefaulttProductRepository*.
 
 ```java
 @Service  

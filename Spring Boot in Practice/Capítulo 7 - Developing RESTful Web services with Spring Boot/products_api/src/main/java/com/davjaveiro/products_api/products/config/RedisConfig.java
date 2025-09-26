@@ -1,40 +1,33 @@
 package com.davjaveiro.products_api.products.config;
 
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import java.util.UUID;
+import java.time.Duration;
 
 @Configuration
+@EnableCaching
 public class RedisConfig {
-    @Bean
-    JedisConnectionFactory jedisConnectionFactory() {
-        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        return new JedisConnectionFactory(redisStandaloneConfiguration);
-    }
 
     @Bean
-    public RedisTemplate<UUID, Object> redisTemplate() {
-        RedisTemplate<UUID, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(jedisConnectionFactory());
+    public RedisCacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofSeconds(30)) // TTL de 30 segundos
+                .disableCachingNullValues()
+                .serializeKeysWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(new StringRedisSerializer())) // chave String
+                .serializeValuesWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(RedisSerializer.json())); // valores JSON (não deprecated)
 
-        // Serializers para chaves e hash keys
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setHashKeySerializer(new StringRedisSerializer());
-
-        // Serializer para hash values e values
-        template.setHashValueSerializer(new JdkSerializationRedisSerializer());
-        template.setValueSerializer(new JdkSerializationRedisSerializer());
-
-        template.setEnableTransactionSupport(true);
-        template.afterPropertiesSet();
-
-        return template;
-
+        return RedisCacheManager.builder(redisConnectionFactory)
+                .cacheDefaults(config)
+                .build();
     }
 }
