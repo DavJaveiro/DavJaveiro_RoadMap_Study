@@ -16,7 +16,7 @@ Aqui está uma proposta de cronograma semanal para seu primeiro ano de estudos.
 
 ---
 
-### **1º Trimestre: Fundamentos e Intuição (22 de Setembro de 2025 - 21 de Dezembro de 2025)** 🍂
+### **1º Trimestre: Fundamentos e Intuição (22 de Setembro de 2025 - 21 de Dezembro de 2025)**
 
 **Meta do Trimestre:** Entender a linguagem da criptografia (aritmética modular) e da topologia (nós e movimentos).
 

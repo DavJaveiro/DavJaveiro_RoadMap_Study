@@ -235,7 +235,9 @@ Depois, podemos definir um #ExceptionHandler que intercepte essas classes de exc
 ## 7.3 Testing a RESTful API
 Nas técnicas anteriores, aprendemos a construir uma RESTful API. Depois de concluir o desenvolvimento, a próxima tarefa é testar os endpoints da API para garantir que ela esteja funcionando conforme o esperado. Existem múltiplas formas de testar uma REST API, como mostrado na figura 7.2
 
-Figura 7.2 Opções para testar uma RESTful API. As utilidades de **command line** incluem cURL, HTTPie. As ferramentas baseadas em GUI incluem Postman, SoapUI. O unit testing pode ser feito com Spring Boot MockMVC em conjunto com o JUnit.
+Figura 7.2 Opções para testar uma RESTful API. As utilidades de **command line** incluem cURL, HTTPie. 
+As ferramentas baseadas em GUI incluem Postman, SoapUI. 
+O unit testing (testes unitários) pode ser feito com Spring Boot MockMVC em conjunto com o JUnit.
 
 Até agora, discutimos o uso da ferramenta de command line HTTPie, que pode ser utilizada para acessar os endpoints. Também podemos usar o cURL para testar os endpoints. 
 
@@ -256,11 +258,153 @@ Nesta técnica, vamos mostrar como usar o Spring MockMVC framework em uma aplica
 Vamos começar definindo o primeiro test case, que cria um curso em nossa aplicação Course Tracker.
 
 [[ProductsApiApplicationTests.java]]
-
 - A anotação **@SpringBootTest** indica que a classe anotada executa Spring Boot-based tests e fornece o suporte de ambiente necessário para rodar os test cases. Ela cria o Spring application.context, que instancia os Spring beans necessários para executar os testes.
 - A anotação **@AutoConfigureMockMvc** habilita e auto-configura o **MockMVC** framework. Essa anotação faz o trabalho pesado para fornecer o suporte necessário, permitindo que simplesmente façamos o **autowire** de uma instância de **MockMVC** e a utilizemos no teste.
 - A anotação **@ExtendWith(SpringExtension.class)** integra o **Spring TestContext Framework** com o modelo de programação Jupiter do Junit 5. @ExtendWith é uma anotação do Junit 5 que permite especificar a extension a ser usada para executar o test case.
 - Fizemos o autowire do CourseService e da instância MockMvc na classe.
 - Utilizamos a instância mockMvc para executar uma operação HTTP POST com um curso de exemplo.
 
-Uma vez que a requisição é disparada, usamos o andExpect para verificar vários atributos. Usamos o jsonpath para extrair os valores da resposta JSON. Por fim, validamos o código de status da resposta HTTP. Agora, vamos fornecer o caso de teste para obter o curso pelo ID. A listagem a seguir mostra esse caso de teste.
+
+**A ação e as verificações (O Act e o Assert)**
+```java
+MockHttpServletResponse response = mockMvc.perform(post("/courses/"))
+	.contentType("application/json")
+	.content(objectMapper.writeValueAsString(course)))
+
+```
+
+Uma vez que a requisição é disparada, usamos o **andExpect** para verificar vários atributos. Usamos o jsonpath para extrair os valores da resposta JSON. Por fim, validamos o código de status da resposta HTTP. Agora, vamos fornecer o caso de teste para obter o curso pelo ID. A listagem a seguir mostra esse caso de teste.
+
+**Discussion**
+Spring MockMVC framework provides an excellent way to test Spring MVC-based applications. Moreover, Spring Boot autoconfiguration of MockMVC has simplified defining the test cases even further. O Spring também oferece um cliente de teste alternativo chamado WebTestClient, que permite verificar a resposta de uma forma muito mais eficaz. Demonstraremos o uso do WebTestClient no próximo capítulo.
+
+## 7.4 Documenting a RESTful API
+Como parte do desenvolvimento moderno de aplicações, APIs desempenham um papel crítico no sucesso de uma aplicação. À medida que os recursos da aplicação são consumidos por uma variedade de dispositivos, é importante que as APIs sejam documentadas. Além disso, uma API representa um contrato entre um provedor de API e os seus consumidores. Portanto, uma boa API deve garantir que os detalhes da API estejam disponíveis para seus consumidores, para que eles possam desenvolver seu código de acordo. Esses detalhes incluem a estrutura de HTTP request e response, o HTTP status code que um endpoint retorna, configurações de segurança e vários outros detalhes. Nesta seção, discutiremos a documentação das RESTful APIs por meio do OpenAPI, que é o padrão mais popular e de fato para documentação de RESTful  API.
+
+### 7.4.1 Technique: Documenting a RESTful API with OpenAPI
+In this technique,  we'll learn how to document a RESTful API.
+
+**Problem**
+The Course Tracker API is currently undocumented, e não há meios além da exploração do código-fonte da aplicação para descobrir os detalhes relacionados à API. Precisamos documentar essa API com OpenAPI, para que os consumidores da API possam encontrar as informações necessárias sobre ela.
+
+**Solution**
+A #openapi specification fornece uma abordagem padronizada para documentar RESTful APIs, permitindo que os consumidores da API descubram os detalhes e capacidades da API de forma consistente. A especificação OpenAPI é independente de linguagem (language-agnostic), o que significa que não está limitada apenas ao Spring Boot, estando disponível também para outras linguagens e frameworks. Por exemplos, podemos usar OpenAPI para documentar uma API RESTful desenvolvidaa com uma aplicação Spring Boot, e o mesmo é possível para uma RESTful API desenvolvida com Express JS.
+
+Nesta seção, demonstraremos como documentar a Course Tracker API com OpenAPI. Para isso, vaamos adicionar primeiramente a dependência Maven no arquivo pom.xml:
+```xml
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-ui</artifactId>
+    <version>1.5.9</version>
+</dependency>
+```
+
+A biblioteca *springdoc-openapi* automatiza a geração da documentação da API em um projeto Spring Boot. Ela faz isso inspecionando a aplicação Spring Boot em tempo de execução para inferir a semântica da API com base nas configurações do Spring, estrutura das classes e outras anotações.
+
+A dependência **springdoc-openapi-ui** fornece a integração entre Spring Boot e Swagger UI. Ela implementa automaticamente o **swagger-ui** na aplicação Spring Boot e o disponibiliza em  ``http://{server}:{port}/{context-path}/swagger-ui.html.`` 
+
+Vamos esclarecer as diferenças entre o #Swagger e #openapi:
+- **OpenAPI** é a especificação que dita as diretrizes para a documentação da API.
+- **Swagger** é a ferramenta que implementa essa especificação.
+O Swagger é composto poro vários componentes, como:
+- **Swagger Editor**
+- **Swagger UI**
+- **Swagger Codegen**
+- E outros módulos...
+
+Para documentar a API, anotamos os endpoints com diversas anotações. Essas anotações contêm detalhes personalizados sobre o endpoint, como:
+- A finalidade do entpoin;
+- O código de status HTTP que ele retorna;
+- E outras informações relevantes.
+
+Mostrando o *CourseController* atualizado com as anotações do OpenAPI:
+```java
+@RestController
+@RequestMapping("/courses/")
+@Tag(name = "Course Controller, description = "This REST controller provide services to manage courses in the Course Tracker application")
+public class CourseController {
+		private CourseService courseService;
+		
+		@Autowired
+		public CourseController(CourseService courseService) {
+			this.courseService = courseService;
+		}
+		
+		
+		@GetMapping
+		@ResponseStatus(code = HttpStatus.OK)
+		@Operation(summary = "Provides all courses available in the Course Tracker application")
+		public Iterable<Course> getAllCourses() {
+			return courseService.getCourses();
+		}
+		
+		@GetMapping
+		@ResponseStatus(code = HttpStatus.OK)
+		@Operation(summary = "Provides course details for the supplied course id from the Course Tracker application")
+		public Optional<Course> getCourseById(@PathVariable("id") long courseId)
+		{
+			return courseService.getCourseById(courseId);
+		}
+		
+		@PostMapping()
+		@ResponseStatus(code = HttpStatus.CREATED)
+		@Operation(summary = "Creates a new course in the Course Tracker application")
+		public Course createCourse(@Valid @RequestBody Course course) {return courseService.createCourse(course);}
+		
+		
+		@DeleteMapping("{id}")
+		@ResponseStatus(code = HttpStatus.NO_CONTENT)
+		@Operation(summary = "Delete the course details for the supplied course id from the Course Tracker Application")
+		public void deleteCourseById(@PathVariable("id") long courseId) {
+			courseService.deleteCourseById(courseId);
+		}
+		
+		@DeleteMapping
+		@ResponseStatus(code = HttpStatus.NO_CONTENT)
+		@Operation(summary = "Deletes all courses from the Course Tracker application")
+		public void deleteCourses(){
+			courseService.deteleteCourses();
+		}
+}
+```
+
+Na listagem acima, anotamos a classe com *@Tag* e os endpoints com as anotações *@ResponseStatus* e *@Operation*.
+
+Observe que o código de status HTTP é fundamental para o consumidor da API implementar a lógica da sua aplicação, pois ele define o estado da chamada da API. Por isso, devemos ter cuidado ao determinar o código de status HTTP para os endpoints.
+Por fim, a anotação *@Operation* captura detalhes sobre a finalidade do endpoint.
+
+Agora vamos capturar alguns detalhes personalizados sobre a API, como versão da API, título, descrição, informações de licença e outros. Isso pode ser feito definindo um bean Spring do tipo *OpenAPI*.
+
+O código abaixo mostra a definição do bean *OpenAPI*. Para simplificar, esse bean foi definido na classe principal do Spring Boot, conforme mostrado abaixo. Em uma aplicação típica, o ideal é definir uma classe de configuração Spring separada que contenha essa definição com *@Bean*.
+
+```java
+@Bean  
+public OpenAPI customOpenAPI(@Value("${app.description}") String appDescription,  
+       @Value("${app.version}") String appVersion) {  
+  
+    return new OpenAPI().info(new Info().title("Course Tracker API").version(appVersion)  
+          .description(appDescription).termsOfService("http://swagger.io/terms/")  
+          .license(new License().name("Apache 2.0").url("http://springdoc.org")));  
+  
+}
+```
+Definimos o bean *OpenAPI*, que contém os detalhes personalizados da API.
+Na listagem 7.19, definimos as propriedades **app.description** e **app.version** no arquivo application.properties.
+
+```json
+app.description=Spring Boot Course Tracker API
+app.version=v1
+```
+
+**Discussão**
+O OpenAPI é a escolha padrão (de facto) para documentar RESTful APIs. Como vimos no exemplo anterior, ao adicionar algumas dependências, você obtém uma documentação da API em formato html bastante útil, que captura os detalhes da API.
+
+No entanto, um problema com o HTML é que ele é difícil de compartilhar com os consumidores da API. Para lidar com isso, o **Swagger** também permite extrair a documentação da API em formato JSON.
+
+Podemos recuperar esse JSON acesso a URL:
+`http://localhost:8080/v3/api-docs`
+
+Swagger provides de Swagger Editor, which allows you to import this JSON and renders the same HTML layout.
+
+
+## Implementing RESTful API versioning

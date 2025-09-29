@@ -27,17 +27,6 @@
       "height": 1320
     },
     {
-      "id": "0213234b5b535b49",
-      "type": "text",
-      "text": "Levantamento de Requisitos da API\n",
-      "styleAttributes": {},
-      "x": -1655,
-      "y": 160,
-      "width": 520,
-      "height": 100,
-      "color": "3"
-    },
-    {
       "id": "a28b2629d7fcd22c",
       "type": "text",
       "text": "Concluído (Done)",
@@ -95,51 +84,6 @@
       "y": 2130,
       "width": 2120,
       "height": 1620
-    },
-    {
-      "id": "0c55b34cb3c88c8c",
-      "type": "text",
-      "text": "Levantamento de segurança (como garantir segurança para a API)?\n",
-      "styleAttributes": {
-        "textAlign": "center"
-      },
-      "x": -1080,
-      "y": 160,
-      "width": 680,
-      "height": 100,
-      "color": "3"
-    },
-    {
-      "id": "b6ef94848ccd5450",
-      "type": "text",
-      "text": "ARMAZENAMENTO:\n- Qual banco de dados utilizar?\n  - Quais dados iremos armazenar? XML, JSON, PDF?",
-      "styleAttributes": {},
-      "x": -1720,
-      "y": 500,
-      "width": 640,
-      "height": 220,
-      "color": "2"
-    },
-    {
-      "id": "9a6575d233b1b578",
-      "type": "text",
-      "text": "Gerar art QrCode do site para anexar ao PDF",
-      "styleAttributes": {},
-      "x": 5240,
-      "y": -160,
-      "width": 360,
-      "height": 240,
-      "color": "4"
-    },
-    {
-      "id": "a29899e91f21cb43",
-      "type": "text",
-      "text": "Otimizar a arte, ainda não ficou padrão",
-      "styleAttributes": {},
-      "x": 5980,
-      "y": -80,
-      "width": 540,
-      "height": 100
     },
     {
       "id": "09c5b10725b155f5",
@@ -209,16 +153,6 @@
       "color": "5"
     },
     {
-      "id": "aaf5878cd52dbcdb",
-      "type": "file",
-      "file": "ByeByeCupom/ByeByeCupom Logo.png",
-      "styleAttributes": {},
-      "x": -720,
-      "y": -2000,
-      "width": 1146,
-      "height": 400
-    },
-    {
       "id": "574a681b2399a354",
       "type": "text",
       "text": "DEPENDÊNCIAS",
@@ -230,16 +164,6 @@
       "width": 260,
       "height": 60,
       "color": "5"
-    },
-    {
-      "id": "7a1cf8150dc1abbb",
-      "type": "text",
-      "text": "## Estrutura do Projeto - Monólito Modular (Package-By-Feature)\nsrc/main/java/\n└── br/\n    └── com/\n        └── byebyecupom/  // <-- Este é o seu pacote base (packagename)\n            │\n            ├── ByeByeCupomApiApplication.java // Classe principal da aplicação\n            │\n            ├── ingestion/\n            │   ├── api/\n            │   │   └── IngestionController.java\n            │   └── service/\n            │       └── IngestionService.java\n            │\n            ├── fiscaldocument/\n            │   ├── model/\n            │   │   └── FiscalDocument.java\n            │   └── repository/\n            │       └── FiscalDocumentRepository.java\n            │\n            ├── danfegeneration/\n            │   └── service/\n            │       └── DanfeGeneratorService.java\n            │\n            └── shared/\n                └── infrastructure/\n                    └── storage/\n                        └── FileStorageService.java",
-      "styleAttributes": {},
-      "x": 2280,
-      "y": -1400,
-      "width": 820,
-      "height": 840
     },
     {
       "id": "6e36b1c3ec32ca89",
@@ -273,6 +197,104 @@
       "width": 1080,
       "height": 880,
       "color": "5"
+    },
+    {
+      "id": "327ac2cc89de7aba",
+      "type": "text",
+      "text": "DOCUMENTAÇÃO",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 1160,
+      "y": -1380,
+      "width": 260,
+      "height": 60
+    },
+    {
+      "id": "1c5b7f8dabd1f7ce",
+      "type": "text",
+      "text": "OpenAPI",
+      "styleAttributes": {},
+      "x": 3720,
+      "y": -2240,
+      "width": 1080,
+      "height": 440
+    },
+    {
+      "id": "7a1cf8150dc1abbb",
+      "type": "text",
+      "text": "## Estrutura do Projeto - Monólito Modular (Package-By-Feature)\nsrc/main/java/\n└── br/\n    └── com/\n        └── byebyecupom/  // <-- Este é o seu pacote base (packagename)\n            │\n            ├── ByeByeCupomApiApplication.java // Classe principal da aplicação\n            │\n            ├── ingestion/\n            │   ├── api/\n            │   │   └── IngestionController.java\n            │   └── service/\n            │       └── IngestionService.java\n            │\n            ├── fiscaldocument/\n            │   ├── model/\n            │   │   └── FiscalDocument.java\n            │   └── repository/\n            │       └── FiscalDocumentRepository.java\n            │\n            ├── danfegeneration/\n            │   └── service/\n            │       └── DanfeGeneratorService.java\n            │\n            └── shared/\n                └── infrastructure/\n                    └── storage/\n                        └── FileStorageService.java",
+      "styleAttributes": {},
+      "x": 3720,
+      "y": -1380,
+      "width": 1080,
+      "height": 840
+    },
+    {
+      "id": "aaf5878cd52dbcdb",
+      "type": "file",
+      "file": "ByeByeCupom/ByeByeCupom Logo.png",
+      "styleAttributes": {},
+      "x": -1080,
+      "y": -2560,
+      "width": 1146,
+      "height": 400
+    },
+    {
+      "id": "9a6575d233b1b578",
+      "type": "text",
+      "text": "Gerar art QrCode do site para anexar ao PDF",
+      "styleAttributes": {},
+      "x": 5920,
+      "y": -420,
+      "width": 360,
+      "height": 240,
+      "color": "4"
+    },
+    {
+      "id": "a29899e91f21cb43",
+      "type": "text",
+      "text": "Otimizar a arte, ainda não ficou padrão",
+      "styleAttributes": {},
+      "x": 6660,
+      "y": -340,
+      "width": 540,
+      "height": 100
+    },
+    {
+      "id": "b6ef94848ccd5450",
+      "type": "text",
+      "text": "ARMAZENAMENTO:\n- Qual banco de dados utilizar?\n  - Quais dados iremos armazenar? XML, JSON, PDF?",
+      "styleAttributes": {},
+      "x": -1880,
+      "y": 500,
+      "width": 640,
+      "height": 220,
+      "color": "2"
+    },
+    {
+      "id": "0213234b5b535b49",
+      "type": "text",
+      "text": "Levantamento de Requisitos da API\n",
+      "styleAttributes": {},
+      "x": -1815,
+      "y": 160,
+      "width": 520,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "0c55b34cb3c88c8c",
+      "type": "text",
+      "text": "Levantamento de segurança (como garantir segurança para a API)?\n",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -1160,
+      "y": 160,
+      "width": 680,
+      "height": 100,
+      "color": "3"
     }
   ],
   "edges": [
@@ -355,16 +377,20 @@
     },
     {
       "id": "2a521734432bbe4a",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "82b87c92ac4febb6",
       "fromSide": "right",
       "toNode": "9a6575d233b1b578",
-      "toSide": "top",
+      "toSide": "bottom",
       "label": "REALIZADO"
     },
     {
       "id": "d9b7d1236daab6b2",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "8962b4f309aa77c1",
       "fromSide": "bottom",
       "toNode": "e98b22d31ac93dad",
@@ -372,7 +398,9 @@
     },
     {
       "id": "92bd8de862ebab3b",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "e16d77bc3e6d44a5",
       "fromSide": "bottom",
       "toNode": "8962b4f309aa77c1",
@@ -408,7 +436,9 @@
     },
     {
       "id": "fc6f83058b829f29",
-      "styleAttributes": {},
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
       "fromNode": "e51dc286d88b0d36",
       "fromSide": "right",
       "toNode": "6016ac567352388e",
@@ -467,6 +497,26 @@
       "fromNode": "574a681b2399a354",
       "fromSide": "right",
       "toNode": "6e36b1c3ec32ca89",
+      "toSide": "left"
+    },
+    {
+      "id": "7324c1976c80ede7",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "aaf5878cd52dbcdb",
+      "fromSide": "right",
+      "toNode": "327ac2cc89de7aba",
+      "toSide": "left"
+    },
+    {
+      "id": "80812d94c298e68b",
+      "styleAttributes": {
+        "pathfindingMethod": "square"
+      },
+      "fromNode": "327ac2cc89de7aba",
+      "fromSide": "right",
+      "toNode": "1c5b7f8dabd1f7ce",
       "toSide": "left"
     }
   ],

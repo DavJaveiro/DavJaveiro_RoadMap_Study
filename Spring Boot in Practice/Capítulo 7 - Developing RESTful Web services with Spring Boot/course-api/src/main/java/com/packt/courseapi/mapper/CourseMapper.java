@@ -15,13 +15,14 @@ public class CourseMapper {
         // 2. Copiamos os dados fornecidos pelo DTO par a entidade
         course.setName(courseRequestDTO.name());
         course.setCategory(courseRequestDTO.category());
+        course.setRating(courseRequestDTO.rating());
         course.setDescription(courseRequestDTO.description());
         return course;
     }
 
     // Entidade para DTO
     public CourseResponseDTO toResponseDTO(Course entity) {
-        return new CourseResponseDTO(entity.getId(), entity.getName(), entity.getCategory(), entity.getDescription());
+        return new CourseResponseDTO(entity.getId(), entity.getName(), entity.getCategory(), entity.getRating(), entity.getDescription());
 
     }
 }
