@@ -408,3 +408,27 @@ Swagger provides de Swagger Editor, which allows you to import this JSON and ren
 
 
 ## Implementing RESTful API versioning
+Vamos discutir as abordagens para versionamento de uma API RESTful. Porém, antes de prosseguir com a discussão sobre as diferentes técnicas de versionamento, vamos falar sobre **REST API versioning** e por que ele é necessário.
+
+Em palavras simples, **versioning** de uma REST API significa a capacidade da API de suportar múltiplas versões. É comum que, ao longo do tempo, seja necessário aprimorar ou atualizar as funcionalidades da aplicação. Diversos fatores podem impulsionar essas mudanças. Por exemplo, pode ser a implementação de novas funcionalidades de negócio, a adoção de um novo **tecnology stack**, ou o refinamento das APIs existentes.
+
+Entretanto, o problema de uma **breaking API change** é que ela impacta diretamente os API consumers e quebra a aplicação. Isso também causa um impacto em cascata na **API invocation chain**. Uma forma de resolver esse problema é implementar **versioning** durante o design de nossas APIs. Assim, podemos ter uma versão estável e disponível para nossos **consumidores da API**. 
+
+Nesta seção, vamos discutir as técnicas disponíveis para implementar API versioning. Abordaremos as seguintes técnicas neste capítulo:
+- **URI versioning** - usa um número de versão no URI
+- **Request parameter versioning** - usa um parâmetro em uma **HTTP request** para identificar a versão;
+- **Custom HTTP header versioning** - usa um **HTTP request header** customizado para distinguir a versão;
+- **Media type versioning** - usa o **Accept header** na requisição para identificar a versão.
+
+Vamos demonstrar diferentes técnicas de **versioning** na próxima seção. Vamos utilizar, como modelo, apenas os endpoints **GET / courses /** e **POST / COURSES /** para o versionamento. 
+
+## Technique: implementing versioning in a RESTful API
+Vamos ver sobre  o versionamento na URI. Essa é uma abordagem direta, pois inclui um identificador de versão na URI REST. Por exemplo, */ courses /v1* representa a versão 1 da API, e */ courses / v2* representa a segunda versão de nossa API.
+
+Vamos supor que precisamos aprimorar a Course Tracker API, e ela também precisa suportar um atributo adicional de preço do curso junto com os detalhes anteriores do curso. A introdução do atributo de preço pode significar que podemos ter endpoints REST adicionais, como encontrar cursos dentro de uma faixa de preço ou recuperar cursos com base na ordem de preço.
+
+**NOTA** 
+Por motivos de simplicidade e para fins de demonstração, estamos introduzindo o atributo *price* na entidade *Course* para projetar uma nova versão da API. Em cenários reais, devem existir razões mais apropriadas para o versionamento de API.
+
+Para demonstrar a alteração, precisamos realizar alterações na classe Controller. Renomearemos a classe existente **CourseController** para **LegacyCourseController** e manteremos apenas os endpoints **GET / courses/** e **POST / courses /** nela. 
+

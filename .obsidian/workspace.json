@@ -65,17 +65,17 @@
             }
           },
           {
-            "id": "cb74265dea8491c1",
+            "id": "fd4b87549eca80f5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
+                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 8 - Getting Started With React"
+              "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           }
         ],
@@ -146,7 +146,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.0020217895508
+    "width": 297.0020217895508,
+    "collapsed": true
   },
   "right": {
     "id": "3dc897eb6943f3d5",
@@ -281,12 +282,13 @@
       "markwhen:Create new Markwhen file": false
     }
   },
-  "active": "cb74265dea8491c1",
+  "active": "fd4b87549eca80f5",
   "lastOpenFiles": [
+    "Sem título 1.md",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+    "ByeByeCupom/Kanban API (Sistema).canvas",
     "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
     "FullStack Development React and Spring",
-    "ByeByeCupom/Kanban API (Sistema).canvas",
     "ByeByeCupom/Brains Storm.canvas",
     "ByeByeCupom/Kanban Landing Page.canvas",
     "n-tranças/Roadmap de Iniciação.md",
@@ -331,7 +333,6 @@
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Tá Salgado/Security.md",
     "Tá Salgado/Test.md",
-    "Spring Boot and Angular/Chapter 4 - Setting Up the Database and Spring Data JPA.md",
-    "Spring Boot and Angular/Chapter 3 - Moving into Spring Boot.md"
+    "Spring Boot and Angular/Chapter 4 - Setting Up the Database and Spring Data JPA.md"
   ]
 }
