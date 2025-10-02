@@ -70,12 +70,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+                "file": "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
+              "title": "Chapter 8 - Getting Started With React"
             }
           }
         ],
@@ -284,10 +284,11 @@
   },
   "active": "fd4b87549eca80f5",
   "lastOpenFiles": [
-    "Sem título 1.md",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
-    "ByeByeCupom/Kanban API (Sistema).canvas",
     "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
+    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+    "Sem título 1.md",
+    "ByeByeCupom/Kanban API (Sistema).canvas",
     "FullStack Development React and Spring",
     "ByeByeCupom/Brains Storm.canvas",
     "ByeByeCupom/Kanban Landing Page.canvas",
@@ -332,7 +333,6 @@
     "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Tá Salgado/Security.md",
-    "Tá Salgado/Test.md",
-    "Spring Boot and Angular/Chapter 4 - Setting Up the Database and Spring Data JPA.md"
+    "Tá Salgado/Test.md"
   ]
 }
