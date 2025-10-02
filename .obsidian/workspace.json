@@ -68,14 +68,17 @@
             "id": "fd4b87549eca80f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
-                "mode": "source",
-                "source": false
+                "file": "RoadMap do DavJaveiro/RoadMap.canvas",
+                "viewState": {
+                  "x": -2199.220781839047,
+                  "y": -14913.706635511227,
+                  "zoom": -3.517370899836232
+                }
               },
-              "icon": "lucide-file",
-              "title": "Chapter 8 - Getting Started With React"
+              "icon": "lucide-layout-dashboard",
+              "title": "RoadMap"
             }
           }
         ],
@@ -284,7 +287,10 @@
   },
   "active": "fd4b87549eca80f5",
   "lastOpenFiles": [
+    "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md",
     "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
+    "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures",
+    "Data Structures And Program Design Using Java",
     "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "Sem título 1.md",
@@ -300,8 +306,6 @@
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/test-classes/com/packt",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/test-classes/com",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/dtos/CourseResponseDTO.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/dtos/CourseRequestDTO.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/dtos",
     "ByeByeCupom/Diagrama UML API.md",
     "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
     "ByeByeCupom/Estrutura.md",
@@ -332,7 +336,6 @@
     "Tá Salgado/Dependencys.md",
     "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Tá Salgado/Security.md",
-    "Tá Salgado/Test.md"
+    "Tá Salgado/Security.md"
   ]
 }
