@@ -1,71 +1,14 @@
 {
   "main": {
-    "id": "1646ee6a5d4746ff",
+    "id": "fbdeb26b6ed6fcb0",
     "type": "split",
     "children": [
       {
-        "id": "785ecd5cf36da60f",
+        "id": "942a330c57493968",
         "type": "tabs",
         "children": [
           {
-            "id": "4a6dd6be2bccbce1",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "ByeByeCupom/Kanban Landing Page.canvas",
-                "viewState": {
-                  "x": 4678.0294289586045,
-                  "y": -94.73340463993134,
-                  "zoom": -0.9865550309213954
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-layout-dashboard",
-              "title": "Kanban Landing Page"
-            }
-          },
-          {
-            "id": "6cb2a77a435b799d",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "ByeByeCupom/Brains Storm.canvas",
-                "viewState": {
-                  "x": 1123.4866414400535,
-                  "y": 445.00045612145203,
-                  "zoom": -1.314534148939965
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-layout-dashboard",
-              "title": "Brains Storm"
-            }
-          },
-          {
-            "id": "4d439fda76685698",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "ByeByeCupom/Kanban API (Sistema).canvas",
-                "viewState": {
-                  "x": 3773.842302541287,
-                  "y": -1393.4135958308236,
-                  "zoom": -1.6666666875805776
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-layout-dashboard",
-              "title": "Kanban API (Sistema)"
-            }
-          },
-          {
-            "id": "9a6bd806e25d2004",
+            "id": "fc4ad960cb58826b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,22 +21,21 @@
               "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "04e2629dbdc5aa1f",
+    "id": "64d161829f764c39",
     "type": "split",
     "children": [
       {
-        "id": "6287a133c2062f6c",
+        "id": "320281f72cd822b2",
         "type": "tabs",
         "children": [
           {
-            "id": "0862fa1b506aee5c",
+            "id": "710e67c06d24e05c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -106,7 +48,7 @@
             }
           },
           {
-            "id": "2404e1a026c2209d",
+            "id": "bf6efba2563ca5a4",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -119,11 +61,11 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Procurar"
             }
           },
           {
-            "id": "a02fb52a4e1dc97d",
+            "id": "1e28df825fb845cd",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -133,7 +75,7 @@
             }
           },
           {
-            "id": "f860268544acc827",
+            "id": "e2b4cce5701fed7a",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -146,24 +88,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.0020217895508,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "3dc897eb6943f3d5",
+    "id": "3ca01dc3a2ff5573",
     "type": "split",
     "children": [
       {
-        "id": "4e01607edf0c8862",
+        "id": "3d3b476ecb4ed12b",
         "type": "tabs",
         "children": [
           {
-            "id": "69b21947adb96676",
+            "id": "ae27f2a392a9adbb",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -173,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Capítulo 6 - Implementing additional security with Spring Security"
+              "title": "Links inversos para Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           },
           {
-            "id": "e3d378c7cd7d7765",
+            "id": "108f529b396c5ef4",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 6 - Implementing additional security with Spring Security/Capítulo 6 - Implementing additional security with Spring Security.md",
+                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Capítulo 6 - Implementing additional security with Spring Security"
+              "title": "Links de saída para Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           },
           {
-            "id": "fc8d16d4c47fd105",
+            "id": "39fe115a7e0f2704",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -206,7 +148,7 @@
             }
           },
           {
-            "id": "588f80b96341598e",
+            "id": "ba34feec5a1f18e9",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -220,21 +162,22 @@
             }
           },
           {
-            "id": "d7eff7fd6ad7af76",
+            "id": "c2ea865807e44a0d",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário"
+              "title": "Sumário de Capítulo 7 - Developing RESTful Web services with Spring Boot"
             }
           },
           {
-            "id": "da12e2f551912e38",
+            "id": "3678283681dc3ea2",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -242,23 +185,13 @@
               "icon": "SpacedRepIcon",
               "title": "Fila de Notas para Revisar"
             }
-          },
-          {
-            "id": "4d499966f338e27b",
-            "type": "leaf",
-            "state": {
-              "type": "mermaid-toolbar-view",
-              "state": {},
-              "icon": "trident-custom",
-              "title": "Mermaid Toolbar"
-            }
           }
         ],
         "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 460,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
@@ -271,67 +204,19 @@
       "command-palette:Abrir paleta de comandos": false,
       "audio-recorder:Começar/parar a gravação de áudio": false,
       "bases:Criar nova base": false,
-      "obsidian-spaced-repetition:Revisar flashcards": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "float-search:Search Obsidian In Modal": false,
       "runjs:RunJS": false,
       "obsidian-git:Open Git source control": false,
       "vscode-editor:Create Code File": false,
+      "obsidian-spaced-repetition:Revisar flashcards": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
-      "markwhen:Create new Markwhen file": false
+      "markwhen:Create new Markwhen file": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "9a6bd806e25d2004",
+  "active": "fc4ad960cb58826b",
   "lastOpenFiles": [
-    "ByeByeCupom/Kanban API (Sistema).canvas",
-    "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
-    "RESTful Web Services with Java/Part I - Steps to a Great API/Chapter 2 - Exposing a RESTful API with Spring.md",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
-    "Sem título 1.md",
-    "FullStack Development React and Spring",
-    "ByeByeCupom/Brains Storm.canvas",
-    "ByeByeCupom/Kanban Landing Page.canvas",
-    "n-tranças/Roadmap de Iniciação.md",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper/CourseMapper.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/test-classes/com/packt/courseapi/CourseApiApplicationTests.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/test-classes/com/packt/courseapi",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/test-classes/com/packt",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/test-classes/com",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/dtos/CourseResponseDTO.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/dtos/CourseRequestDTO.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/dtos",
-    "ByeByeCupom/Diagrama UML API.md",
-    "Programador Pragmático/Capítulo 1 - Uma Filosofia Pragmática.md",
-    "ByeByeCupom/Estrutura.md",
-    "Postagens Linkedin.md",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/qrcode.jpg",
-    "Spring Boot 3 and React/nfce_xml_download/target/classes/logo.jpg",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/qrcode.jpg",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/qrcode.jpg.png",
-    "Spring Boot 3 and React/nfce_xml_download/src/main/resources/logo.jpg",
-    "ByeByeCupom/Diagrama UML Fluxo Geral.md",
-    "Spring Boot 3 and React/nfce_xml_download/HELP.md",
-    "Pasted image 20250923141646.png",
-    "Imagem do WhatsApp de 2025-09-23 à(s) 10.28.27_5cd4b7e6.jpg",
-    "Pasted image 20250922131718.png",
-    "ByeByeCupom/ByeByeCupom Logo.png",
-    "API Design Patterns/Chapter 2 - Introduction to API design patterns.md",
-    "ByeByeCupom/Requisitos.md",
-    "ByeByeCupom/Design API.md",
-    "Sem título.md",
-    "The Structure of Evolutionary Theory/Defining and Revising the Structure of Evolutionary Theory.md",
-    "().md",
-    "Untitled.md",
-    "prompt.png",
-    "Sem título 3.md",
-    "API Design Patterns/Chapter 1 - Introduction to APIs.md",
-    "Sem título 5.md",
-    "Sem título 4.md",
-    "Tá Salgado/Dependencys.md",
-    "Spring Boot and Angular/Chapter 5 - Building APIs with Spring.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Tá Salgado/Security.md"
+    "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md"
   ]
 }

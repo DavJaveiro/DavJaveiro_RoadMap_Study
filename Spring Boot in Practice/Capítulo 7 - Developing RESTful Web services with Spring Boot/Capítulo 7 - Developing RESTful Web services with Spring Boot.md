@@ -432,3 +432,13 @@ Por motivos de simplicidade e para fins de demonstração, estamos introduzindo 
 
 Para demonstrar a alteração, precisamos realizar alterações na classe Controller. Renomearemos a classe existente **CourseController** para **LegacyCourseController** e manteremos apenas os endpoints **GET / courses/** e **POST / courses /** nela. 
 
+Let's now discuss the second versioning technique of using an HTTP request parameter to determine the version. We'll use the same Course Tracker application to demonstrate this versioning type.
+
+Para a técnica de versionamento baseada em parâmetro de requisição HTTP, forneceremos um parâmetro de requisição na URI do endpoint REST que determinar qual a versão da API deve ser invocada. 
+
+Neste caso, vamos definir uma nova classe *RestController* chamada *RequestParameterVersioningCourseController*:
+
+
+No controller que nós criamos, observe o uso     dos parâmetros de requisição *version=v1* e *version=v2*,  que determinam qual endpoint será invocado. Também note que usamos a classe **CourseService** para a versão v1 da API e **ModernCourseRepository** para a versão 2 da API. Para fins de simplicidade e demonstração, a gente pulou a etapa de codificação das classes de serviço para a entidade moderna. 
+
+A gente pode agora executar a nossa aplicação e acessar os novos endpoints com a versão 1 e 2 como parâmetro. 
