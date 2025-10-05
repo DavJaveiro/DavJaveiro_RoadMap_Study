@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface CourseJpaRepository extends JpaRepository<Course, Long> {
     List<Course> findAllByCategory(@NotBlank(message = "A categoria não pode ficar em branca.") String category);
+    Iterable<Course> findAllByAuthor(String author);
 }

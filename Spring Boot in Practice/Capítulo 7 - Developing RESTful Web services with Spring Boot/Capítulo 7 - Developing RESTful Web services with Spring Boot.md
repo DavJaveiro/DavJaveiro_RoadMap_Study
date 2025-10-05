@@ -442,3 +442,99 @@ Neste caso, vamos definir uma nova classe *RestController* chamada *RequestParam
 No controller que nós criamos, observe o uso     dos parâmetros de requisição *version=v1* e *version=v2*,  que determinam qual endpoint será invocado. Também note que usamos a classe **CourseService** para a versão v1 da API e **ModernCourseRepository** para a versão 2 da API. Para fins de simplicidade e demonstração, a gente pulou a etapa de codificação das classes de serviço para a entidade moderna. 
 
 A gente pode agora executar a nossa aplicação e acessar os novos endpoints com a versão 1 e 2 como parâmetro. 
+
+## 7.6 Securing a RESTful API
+Em seções anteriores, discutimos vários aspectos do desenvolvimento de uma API RESTful, que incluem desenvolver uma API, sua documentação, seus testes e versionamento. Ainda nos falta outro aspecto central do desenvolvimento de API. E é a segurança da API. Atualmente, nossa API não está segura, e qualquer pessoa que conheça os **endpoints da API pode aceder à API**/
+
+Existem várias maneiras de proteger uma API. A abordagem mais direta é usar a autenticação HTTP básica para proteger a API. Esta é a mais simples de implementar, pois usa um **username** e um password para autenticar os utilizadores. Pode lembrar-se que no capítulo 5, demonstramos como implementar a autenticação HTTP básica para proteger uma aplicação Spring Boot. Pode 
+
+Demos sempre limitar o uso da autenticação HTTP básica tanto quanto possível, devido às suas várias limitações. Considere-a apenas para seus testes internos ou fins de desenvolvimento. Um leitor atento pode perguntar por que a estamos a discutir aqui se não é recomendado usá-la. O uso da autenticação básica ainda é generalizado devido à sua simplicidade e facilidade de uso. Apenas recentemente, algumas organizações estão a depreciar o uso desta estratégia de #authentication.
+
+Vamos discutir brevemente os motivos pelos quais não devemos usá-la numa aplicação em produção, em primeiro lugar. 
+1. Primeiro, a **autenticação HTTP básica** utiliza um **username e password** em formato de texto  simples com codificação Base64 para  autenticar os utilizadores. A codificação Base64 não é uma técnica de #encryption, e é extremamente fácil recuperar as credenciais de uma string codificada em Base64. Assim, sem HTTPS, há uma grande probabilidade de as credenciais poderem ser expostas. 
+2. Em segundo lugar, com a técnica de **autenticação HTTP básica**, tanto a aplicação cliente como a aplicação servidor atuam como guardiãs da senha e gerem as credenciais do usuário para fins de autenticação e autorização. Isto é novamente problemático, pois há possibilidades das credenciais serem comprometidas por qualquer uma das partes.
+
+Uma abordagem preferível seria gerir as credenciais de usuário em um **authorization server** centralizado, em vez de permitir que o servidor ou a aplicação cliente lidem com a senha do utilizado. O authorization server pode emitir um token que poderia ser usado para fins de **authentication** e autorização. 
+
+### 7.6.1 Technique: Using JWT to authorize RESTful API requests
+In this technique, we will discuss how to authorize RESTful API requests using JWT.
+
+With this technique, we'll demonstrate how to secure the endpoint access with the Bearer Token approach. Como mencionado anteriormente, usaremos uma **authorization server** para autorizar o acesso. No entanto, antes de prosseguir com a implementação, vamos fornecer uma visão geral de alto nível do **fluxo de request e response REST** entre o **cliente, servidor da API REST** e o **authorization server**.
+
+1. Um cliente solicitar os detalhes do curso da **Course Tracker REST API** invocando o endpoint GET /COURSES
+2. Como o cliente não está autenticado, a API responde com 401 **Unauthorized** e indica no **header da resposta HTTP** que precisa de se autenticar com um **Bearer Token**.
+3. O cliente então solicita ao **authorization server** para obter um **Bearer Token**.     Ao faazer este request, o cliente fornece os detalhes necessários, como client_id, username, password, scope e outros. 
+4. Para um token request válido, o **authorization server** retorna um **access_token** no formato **JSON Web Token (JWT)**.
+5. A aplicação cliente faz um novo request para a API e fornece o Bearer token no request.
+6. A API valida o token com o authorization server e recebe uma resposta.
+7. Para uma resposta válida, a API retorna os detalhes do curso solicitados. Para uma resposta inválida do authorization server, ela retorna um error response para o cliente.
+
+A primeira coisa que precisa ser feito é configurar o servidor de autorização. Usaremos o #Keycloack como servidor de autorização. Vamos configurar dois usuários, chamados john e steve, no servidor de autorização. 
+
+O #KeyCloack é uma ferramenta Open Source que oferece soluções para a gestão de identidade e controle de acesso. Ele facilita a implementação de autenticação e autorização em sistemas e aplicativos.
+
+Ele também fornece integração com provedores de identidade externos: o Keycloack pode ser integrado com provedores como Google, Facebook, LDAP e outros, permitindo a autenticação de usuários a partir dessas fontes.
+
+O Kecloack também é compatível com protocolos de autenticação como OAuth 2.0, OpenID Connect e SAML, facilitando a integração com diversas plataformas e aplicações.
+
+**Conceitos Básicos do KeyCloak**
+**Realm:** é um repositório centralizado de usuários, constitui a base principal para a configuração e gerenciamento de dados. 
+
+**Client**: o termo client refere-se às aplicações ou clientes configurados dentro do realm, os quais interagem com os recursos e permissões associadas.
+
+**Role:** a role é um conjunto de permissões que podem ser atribuídas de forma específica a um client (quando se requer permissões distintas por aplicação) ou ao realm (quando as permissões devem ser indepentendes das aplicações).
+
+Configurando o KEYCLOACK pelo docker:
+docker run -p 8180:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOACK_ADMIN_PASSWORD=admin123 quay.io/keycloack/kecloack start-dev
+
+
+To keep the example simple, we've simplified the Course Tracker application a bit. The course domain entity now contains only three fields: a course ID, a name, and a author.
+
+We've also simplified the CourseController class, and it has the following endpoints:
+- Get  courses by an author
+- Get course by an ID
+- Create a new course
+- Update an existing course
+
+To enable JSON Web Token (JWT) support, we need to update the pom.xml with the dependencies shown in the following listing.
+
+```json
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-oauth2-jose</artifactId>
+</dependency>
+```
+
+Let's now include the property in the application.properties file shown in the following listing.
+```json
+spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:...
+```
+
+O código abaixo configura the Keycloak JWT issuer URL in our CourseController class, as shown in the following listing.
+```java
+@RestController
+@RequestMapping("/courses/")
+public class CourseController {
+    private CourseRepository courseRepository;     @Autowired
+The user_name is a
+custom claim defined in the
+authorization server. In this
+context, we use it to get the
+author name to look up the
+courses authored by a user.
+    public CourseController(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
+    @GetMapping
+    public Iterable<Course> getAllCourses(@AuthenticationPrincipal Jwt 
+➥ jwt) {                                                
+        String author = jwt.getClaim("user_name");
+        return courseRepository.findByAuthor(author);
+    }
+```
+O *user_name* é um claim personalizado definido no servidor de autorização. Nesse contexto, nós o utilizamos para obter o nome do autor a fim de buscar os cursos criados por esse usuário.
+

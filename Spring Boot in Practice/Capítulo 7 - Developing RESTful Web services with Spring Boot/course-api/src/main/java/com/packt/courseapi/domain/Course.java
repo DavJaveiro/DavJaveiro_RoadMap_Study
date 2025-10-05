@@ -3,6 +3,7 @@ package com.packt.courseapi.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +29,10 @@ public class Course {
     @Column(name = "CATEGORY")
     @NotBlank(message = "A categoria não pode ficar em branca.")
     private String category;
+
+    @NotNull
+    @Column(name = "AUTHOR")
+    private String author;
 
     @Column(name = "RATING")
     private int rating;

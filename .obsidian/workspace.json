@@ -217,6 +217,19 @@
   },
   "active": "3678283681dc3ea2",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/handler/CourseTrackerGlobalExceptionHandler.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/handler",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/CourseNotFoundException.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/service/CourseServiceImpl.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper/CourseMapper.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/CourseApiApplication.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/domain/Course.class",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/domain/Course$CourseBuilder.class",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md"
   ]
 }
