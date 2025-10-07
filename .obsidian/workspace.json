@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 7 - Developing RESTful Web services with Spring Boot"
+              "title": "Chapter 8 - Reactive Spring Boot application development"
             }
           }
         ]
@@ -215,8 +215,24 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3678283681dc3ea2",
+  "active": "fc4ad960cb58826b",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251062249380.png",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251061830250.png",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251062133192.png",
+    "Chapter 11 - Inheritance and Polymorphism.png",
+    "Módulo 3 - Visão geral da infraestrutura global da AWS.png",
+    "Módulo 4 - Segurança na Nuvem AWS-5.png",
+    "Pasted image 20250421102320.png",
+    "Pasted image 20250418164144.png",
+    "Pasted image 20250421115257.png",
+    "Pasted image 20250603090256.png",
+    "Pasted image 20250922131718.png",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/handler/CourseTrackerGlobalExceptionHandler.class",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/handler",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/CourseNotFoundException.class",
@@ -225,11 +241,6 @@
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/service/CourseServiceImpl.class",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper/CourseMapper.class",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/CourseApiApplication.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/domain/Course.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/domain/Course$CourseBuilder.class",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md"
   ]
 }
