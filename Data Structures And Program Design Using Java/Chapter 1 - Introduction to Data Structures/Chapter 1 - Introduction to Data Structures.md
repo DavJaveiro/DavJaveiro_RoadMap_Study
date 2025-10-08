@@ -1,3 +1,4 @@
+#flashcards/Estrutura-De-Dados
 ## Preface
 Estrutura de dados são os blocos de construção da Ciência da Computação. O objetivo deste texto é enfatizar os fundamentos de estrutura de dados como um assunto introdutório. Ele é projetado para iniciantes que gostariam de aprender o básico de estrutura de dados e sua implementação usando a linguagem de programação Java. Com este foco em mente, apresentamos vários fundamentos do assunto, bem suportados com analogias do mundo real para permitir uma rápida compreensão dos conceitos técnicos e para ajudar a identificar estruturas de dados apropriadas para resolver problemas práticos e específicos.
 
@@ -94,4 +95,159 @@ Matemática Discreta -> Estrutura de Dados -> Programação
 ### 1.2 Types of Data Structures
 Data structures are classified into various types.
 ### 1.2.1 Linear and Non-Linear Data Strucutres
-A *linear data structure is one in which the data elements are stored in a linear, or sequential, order;* 
+Uma estrutura de dados linear é aquela na qual os elementos de dados são armazenados em uma <span style="background:#affad1">ordem linear ou sequencial</span>; ou seja, os dados são armazenados em locais de memória consecutivos. Uma estrutura de dados linear pode ser representada de duas maneiras:  ou é representada por uma relação linear entre vários elementos utilizando locais de memória consecutivos, como no caso de *arrays*, pode ser representada por uma relação linear entre os elementos utilizando links de um elemento para outro, como no caso de *linked lists*. Exemplos de estruturas de dados lineares incluem *arrays, linked lists, stacks, queues* e assim por diante.
+
+Uma estrutura de dados não linear é aquela na qual os dados não são armazenados em qualquer ordem sequencial ou locais na memória consecutivos. Os elementos de dados nesta estrutura são representados por uma ordem hierárquica. Exemplos de estrutura de dados não lineares incluem graphs, trees e assim por diante.
+
+### 1.2.2 Estruturas de Dados Estáticas e Dinâmicas
+Uma estrutura de dados estática é uma coleção de dados na memória cujo tamanho é fixo e não pode ser alterado durante o *runtime*. O tamanho da memória deve ser conhecido antecipadamente, pois a memória não pode ser realocada posteriormente em um programa. Um exemplo é um *array*.
+
+Uma estrutura de dados dinâmica é uma coleção de dados na qual a memória pode ser realocada durante a execução do programa, *run time*. O programador pode adicionar ou remover elementos de acordo com sua necessidade. Exemplos incluem *linked lists, graphs, trees* e assim por diante.
+
+### 1.2.3 Estruturas de Dados Homogêneas e Não Homogêneas
+Uma estrutura de dados homogênea é aquela que contém elementos de dados do mesmo tipo, por exemplo, *arrays*. 
+
+Uma estrutura de dados <span style="background:#affad1">não homogênea</span> contém elementos de dados de diferentes tipos, por exemplo, *structures*.
+
+### 1.2.4 Estruturas de Dados Primitivas e Não Primitivas
+Estrutura de dados primitivas são estruturas de dados fundamentais ou predefinidas, que são suportadas por uma linguagem de programação. Exemplos de tipos de estrutura de dados primitivos são *integer*, *float*, *char* e assim por diante.
+
+Estruturas de dados não primitivas são estruturas de dados comparativamente mais complicadas, que são criadas usando estruturas de dados primitivas. Exemplos de estruturas de dados não primitivas *arrays*, *files*, *linked lists*, *stacks*, *queues* e assim por diante.
+
+![image-2025108217817.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-2025108217817.png)
+
+**Qual a diferença entre estruturas de dados primitivas e não primitivas**
+?
+Estruturas de dados primitivas são operadas diretamente por instruções de nível de máquina, ou seja, os tipos de dados fundamentais, como *int*, *float*, *char* e assim por diante.
+**Estruturas de dados não primitivas:** são todas as estruturas de dados que não são fundamentais, mas usamos as estruturas fundamentais para criá-las.
+
+**Qual a diferença entre estruturas de dados lineares e não lineares?**
+1. Estruturas lineares permitem acesso aleatório aos elementos, enquanto as não lineares exigem acesso sequencial.
+2. Estruturas lineares organizam os dados em sequência, enquanto as não lineares conectam elementos com múltiplas relações.
+3. Estruturas lineares são usadas apenas em bancos de dados, enquanto as não lineares são exclusivas de algoritmos de busca.
+4. Estruturas lineares ocupam mais memória que as não lineares.
+5. Estruturas não lineares são mais fáceis de implementar na memória do computador do que as lineares.
+?
+**2. Estruturas lineares organizam os dados em sequência, enquanto as não lineares conectam elementos com múltiplas relações.**
+<!--SR:!2025-10-11,3,250-->
+
+
+### 1.2.5 Arrays
+Um #Array é uma coleção de elementos de dados homogêneos (do mesmo tipo) em memória contígua. Um *array* é uma estrutura de dados linear, porque todos os elementos de um *array* são armazenados em uma ordem linear. Os vários elementos do *array* são referenciados pelo seu valor de índice, também conhecido como #subscript. Em Java, um array é declarado usando a seguinte sintaxe;
+```java
+<data type> name_of_array [lenght]
+```
+Os elementos são armazenados no array conforme mostrado na Figura 1.2:
+![image-2025108483323.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-2025108483323.png)
+
+*Arrays* são usados para armazenar uma grande quantidade de dados de tipo semelhante. Eles têm várias vantagens e limitações.
+
+**Vantagens de usar arrays**
+1. Os elementos são armazenados em locais de memória adjacentes; portanto, a busca é muito rápida, pois qualquer elemento pode ser acessado facilmente.
+2. *Arrays* não suportam alocação dinâmica de memória, portanto, todo o gerenciamento de memória é feito pelo compilador.
+
+**Limitações de se utilizar arrays**
+1. A inserção e a exclusão de elementos em *arrays* são complicadas e consome muito tempo, pois requer o deslocamento dos elementos.
+2. Arrays são estáticos; portanto, o tamanho deve ser conhecido antecipadamente.
+3. Os elementos no *array* são armazenados em locais de memória consecutivos, que podem ou não estar disponíveis.
+
+### 1.2.6 Queues
+Uma fila é uma coleção linear de elementos de dados na qual o elemento inserido primeiro será o elemento removido primeiro; ou seja, uma fila é uma estrutura de dados #FIFO (First in First Out) - primeiro a entrar, primeiro a sair. Uma fila é uma estrutura de dados linear popular na qual o primeiro elemento é inserido a partir de uma extremidade chamada REAR, e a remoção pode ocorrer a partir da outra extremidade chamada #FRONT.
+
+**Aplicação prática**
+Para uma ilustração simples de uma queue, imagine uma fila de pessoas paradas no ponto de ônibus esperando pelo ônibus. Portanto, a primeira pessoa na fila entrará no ônibus primeiro. 
+
+Na memória do computador, as filas podem ser implementadas usando *arrays* ou *linked lists*. 
+![image-20251085830901.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-20251085830901.png)
+
+### 1.2.7 Stack (pilhas)
+Uma pilha é uma coleção linear de elementos de dados na qual a inserção e a exclusão ocorrem apenas no topo da pilha. Uma pilha é uma estrutura de dados LIFO (Last in First Out) - último a entrar, primeiro a sair, porque o último elemento inserido na pilha será o primeiro elemento a ser removido dela. As três operações que podem ser realizadas na pilha incluem as operações **PUSH**, **POP** e **PEEP**.
+
+A operação **PUSH** insere um elemento ao topo da pilha, enquanto a POP remove um elemento da pilha. A operação PEEP retorna o valor do elemento do topo da pilha sem removê-lo. Toda pilha tem uma variável TOP associada a ela. O nó TOP armazena o endereço do elemento mais superior na pilha. O TOP é a posição onde a inserção e a exclusão ocorrem.
+
+**Aplicação Prática**
+Um exemplo da vida real de uma pilha é uma pilha de pratos arrumados em uma mesa. Uma pessoa pegará o primeiro prato do topo da pilha.
+
+Na memória do computador, as pilhas podem ser implementadas usando arrays ou linkedLists.
+```java
+Stack<String> pilha = new Stack<>();
+
+// Add elements (push)
+pilha.push("A");
+pilha.push("B");
+pilha.push("C");
+
+// Remove o topo (pop)
+Sout("Removido: " + pilha.pop());
+
+// Verifica se está vazia
+System.out.println("Está vazia? " + pilha.isEmpty());
+```
+![image-2025108616256.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-2025108616256.png)
+
+### 1.2.8 Linked Lists
+A principal desvantagem do *array* é que o tamanho ou o número de elementos deve ser conhecido antecipadamente. Assim, essa desvantagem deu origem ao novo conceito de *linked list* (lista encadeada). Uma *linked list* é uma coleção linear de elementos de dados. Esses elementos de dados são chamados de *nodes*, e cada nó armazena o endereço do próximo nó.
+
+Um linked list é uma sequência de nós na qual cada nó contém um ou mais campos de dados e um campo de endereço que armazena o endereço do próximo nó. Além disso, as *linked lists* são dinâmicas; ou seja, a memória é alocada conforme a necessidade. 
+
+Na figura anterior, uma linked list na qual cada nó é dividido em dois espaços:
+![image-20251081915541.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-20251081915541.png)
+
+1. O primeiro espaço contém a informação/dado.
+2. O segundo espaço contém o endereço do próximo nó.
+
+**Aplicação Prática**
+Um exemplo simples da vida real é um trem; aqui cada vagão está conectado ao seu vagão anterior e seguinte (exceto o primeiro e o último vagão).
+
+A parte de endereço do último nó armazena um valor especial chamado Null, que denota o fim da *linked list*. A vantagem de uma *linked list* sobre arrays é que agora é mais fácil inserir e excluir elementos de dados, pois não precisamos fazer deslocamentos a cada vez. No entanto, a busca por um elemento tornou-se mais difícil. Além disso, é necessário mais tempo para buscar um elemento, e também requer alto espaço na memória. Portanto, as *linked lists* são usadas onde uma coleção de elementos de dados é necessária, mas o número de elementos de dados na coleção não nos é conhecido antecipadamente.
+
+### 1.2.9 Trees
+Uma tree (árvore) é uma estrutura de dados não linear popular na qual os elementos de dados ou os *nodes* (nós) são representados em uma ordem hierárquica.  Aqui, um dos nós é mostrado como o **root node** (nós raiz) da árvore, e os nós restantes são particionados em dois conjuntos disjuntos, de modo que cada conjunto é parte de uma subtree (subárvore). Uma árvore torna o processo de busca muito fácil e sua programação recursiva torna um programa otimizado e fácil de entender. 
+
+Uma **binary tree** (árvore binária) é a forma mais simples de uma árvore. Uma árvore binária consiste em um nó raiz e duas subárvores conhecidas como **left subtree** (subárvore esquerda) e **right subtree** (subárvore direita), onde ambas as subárvores também são árvores binárias. Cada nó em uma árvore consiste em três partes, ou seja, a parte extrema esquerda armazena o endereço da subárea esquerda, a parte do meio consiste no elemento de dados e a parte extrema direita armazena o endereço da subárvore direita. A raiz é o elemento mais superior da árvore. Quando não há nós em uma árvore, ou seja, quando **ROOT = NULL**, isso é chamado de árvore vazia.
+
+Por exemplo, considere uma árvore binária onde R é o nó raiz da árvore. LEFT e RIGHT são as subárvores esquerda e direita de R, respectivamente. O nó A é designado como o nó raiz da árvore. Os nós B e C são os filhos  esquerdo e direito de A, respectivamente. Os nós B, D, E e G constituem a subárvore esquerda da raiz. Da mesma forma, os nós C, F, H e I constituem a subárvore direita da raiz. 
+
+**Vantagens de uma árvore**
+1. O processo de busca é muito rápido em ávores.
+2. A inserção e a exclusão dos elementos tornaram-se mais fáceis em comparação com outras estruturas de dados. 
+
+Defina corretamente o termo **árvore binária (binary tree)**.
+**A)** Uma árvore binária é uma estrutura de dados onde cada nó pode ter um número ilimitado de filhos, e os dados são organizados de forma linear.
+**B)** Uma árvore binária é uma estrutura de dados hierárquica na qual cada nó tem no máximo **dois filhos**, denominados **filho esquerdo** e **filho direito**.
+**C)** Uma árvore binária é uma estrutura que armazena elementos em sequência, permitindo acesso direto por índice.
+**D)** Uma árvore binária é uma lista encadeada especial onde cada nó aponta para vários nós filhos sem restrição de quantidade.
+?
+
+### 1.2.10 Graphs
+Um graph (grafo) é uma árvore geral sem uma relação pai-filho definida. É uma estrutura de dados não linear que consiste em vértices (vértices), também chamados de nodes, e edges (arestras) que conectam esses vértices. Em um grafo, pode existir qualquer tipo de relação complexa. Um grafo G pode ser definido como um conjunto finito de V vértices e E arestras. Portanto, G = (V, E), onde V é o conjunto  de vértices e E é o conjunto de arestras. Os grafos são usados em várias aplicações da matemática e da ciência da computação. 
+
+Diferente de um nó raiz em árvores, os grafos não têm nós raiz; em vez disso, os nós podem ser conectados a qualquer outro nó no grafo. Dois nós são denominados neighbors (vizinhos) quando estão conectado por meio de uma aresta.
+
+Um exemplo real de um grafo pode ser visto em estações de trabalho onde vários computadores são conectados uns aos outros por meio de conexões de rede.
+
+## 1.3 Operations on Data Structures
+- **Criação**: é o processo de criar uma estrutura de dados. A declaração e inicialização da estrutura de dados são feitas aqui. É a primeira operação.
+- **Inserção**: é o processo de adicionar novos elementos de dados na estrutura de dados. Por exemplo, adicionar os detalhes de um funcionário que recentemente ingressou em uma organização.
+- **Exclusão:** é o processo de remover um elemento de dados específico da coleção fornecida de elementos de dados. Por exemplo, remover o nome de um funcionário que deixou a empresa.
+- **Atualização:** é o processo de modificar os elementos de dados de uma estrutura de dados. Por exemplo, se o endereço de um aluno é alterado, então ele deve ser atualizado.
+- **Busca:** é usada para encontrar a localização de um elemento de dados específico ou de todos os elementos de dados com a ajuda de uma chave fornecida. 
+- **Ordenação:** é o processo de organizar os elementos de dados em alguma ordem, ou seja, em ordem crescente ou decrescente. Um exemplo é organizar os nomes dos alunos de uma classe em ordem alfabética.
+- **Mesclagem:** é o processo de combinar os elementos de dados de duas listas diferentes para formar uma única lista de elementos de dados.
+- **Travessia:** é o processo de acessar cada elemento de dados exatamente uma vez para que ele possa ser processado. Um exemplo é imprimir os nomes de todos os alunos de uma classe.
+- **Destruição:** é o processo de excluir toda a estrutura de dados. É a última operação na estrutura de dados. 
+
+## 1.4 Algorithms
+Um algoritmo é um conjunto sistemático de instruções combinadas para resolver um problema complexo. É uma sequência finita e passo a passo de instruções, cada uma das quais tem um significado claro e pode ser executada com um mínimo de esforço em um tempo finito. Em geral, um algoritmo é um projeto (blueprint) para escrever um programa a fim de resolver o problema. Uma vez que temos um projeto da solução, podemos implementá-lo facilmente em qualquer linguagem de alto nível como C, C++, Java e assim por diante. Ele resolve o problema em um número finito de etapas. Um algoritmo escrito em uma linguagem de programação é conhecido como um programa. Um computador é uma máquina sem cérebro ou inteligência. Portanto, o computador deve ser instruído a executar uma determinada tarefa em etapas não ambíguas. Por conseguinte, um programador deve definir seu problema na forma de um algoritmo escrito em inglês. Assim, tal algortimo deve ter as seguintes características:
+1. Um algoritmo deve ser simples e conciso;
+2. Deve ser eficiente e eficaz
+3. Deve estar livre de ambiguidades; ou seja, a lógica deve ser clara.
+
+Da mesma forma, um algoritmo deve ter as seguintes características:
+- **Entrada (Input)**: lê os dados do problema dado.
+- **Saída (Output)**: o resultado desejado deve ser produzido
+- **Processo/Definitividade**: cada etapa ou instrução deve ser inequívoca.
+- **Efetividade (Effectiveness):** cada etapa deve ser precisa e concisa. O resultado desejado deve ser produzido dentro de um tempo finito.
+- **Finitude (Finiteness):** o número de etapas deve ser finito.
+
+## 1.5 Approaches for Designing an Algorithm

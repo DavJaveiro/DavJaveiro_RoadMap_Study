@@ -1,2 +1,0 @@
-## Circulação, trocas gasosas, excreção e osmorregulação
-Os #cnidários não possuem sistema circulatório independente. O #celêntero atua desempenhando essa função até certo ponto circulando os nutrientes parcialmente digeridos pelo interior do corpo, absorvendo escórias metabólicas da #gastroderme e, por fim, expelindo todos os tipos de produtos indesejados pela boca. As trocas gasosas são realizadas através das superfícies internas e externas do corpo. 
