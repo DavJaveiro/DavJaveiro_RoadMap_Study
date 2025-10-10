@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "942a330c57493968",
+        "id": "fa25e91b9d85931b",
         "type": "tabs",
         "children": [
           {
-            "id": "fc4ad960cb58826b",
+            "id": "83d8ae2fccf483d7",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -212,11 +212,16 @@
       "obsidian-spaced-repetition:Revisar flashcards": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
       "markwhen:Create new Markwhen file": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "fc4ad960cb58826b",
+  "active": "83d8ae2fccf483d7",
   "lastOpenFiles": [
+    "Spring Boot in Practice/Spring Boot in Practice.pdf",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251062249380.png",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251061830250.png",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251062133192.png",
@@ -227,8 +232,6 @@
     "Pasted image 20250418164144.png",
     "Pasted image 20250421115257.png",
     "Pasted image 20250603090256.png",
-    "Pasted image 20250922131718.png",
-    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development",
     "RoadMap do DavJaveiro/RoadMap.canvas",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
@@ -240,7 +243,6 @@
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/service/CourseServiceImpl.class",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper/CourseMapper.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper",
     "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md"
   ]
 }

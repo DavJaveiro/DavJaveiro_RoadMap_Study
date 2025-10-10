@@ -91,3 +91,41 @@ Com #Callback, um método assíncrono recebe um **parâmetro extra** que é **in
 - O **conceito de backpressure** permite que o **consumidor sinalize ao produtor** quando a **taxa de emissão está muito alta**.
 
 ## 8.2 Understanding Project Reactor
+> [!PDF|yellow] [[Spring Boot in Practice.pdf#page=380&selection=9,0,9,74&color=yellow|The Reactor is a fully nonblocking reactive programming model for the JVM.]]
+> > The Reactor is a fully nonblocking reactive programming model for the JVM.
+> O Reactor é um modelo de programação reativa totalmente nonblocking para a JVM. Ele é baseado em Reactive Stream
+
+**Reactive Streams** é um padrão e uma especificação para bibliotecas orientadas a Stream. Ele processa um número potencialmente ilimitado de elementos em uma sequência e também permite a passagem assíncrona de elementos entre **operators** com **nonblocking backpressure**. 
+
+A Reactive Streams API é relativamente simples e fornece quatro interfaces principais, conforme mostrado abaixo:
+```java
+public interface Publisher<T> {
+	public void subscribe(Subscriber<? super T> s);
+}
+
+public interface Subscribe<T> {
+	public void onSubscribe(Subscription s);
+	public void onNext(T t);
+	public void onError(Throwable t);
+	public void onComplete();
+}
+
+public interface Subscription {
+	public void request(long n);
+	public void cancel();
+}
+
+public interfaace Processor<T, R> extends Subscrbier<T>, Publiser<R> {
+}
+```
+
+- **Publisher -** um publisher é um provedor de um número potencialmente ilimitado de elementos sequenciados e  os publica de  acordo com a demanda de seus subscribes. O método subscribe() da interface Publisher permite que os **subscribers** se inscrevam no produto.
+
+- **Subscriber** - um subscriber decide quando e quantos elementos ele é capaz e está disposto a receber. O método **onNext()** permite que o subscriber processe os dados recebidos, onError() trata os erros, onComplete() finaliza as tarefas, e onSubscribe() realiza a inscrição com parâmetros.
+
+- **Subscription** - uma **subscription** representa o relacionamento entre um subscriber e o produtor. O subscriber tem controle sobre quando os elementos são solicitados e quando não são mais necessários. O método **request()** é usado para solicitar os dados, e o método cancel() é usado para cancelar as inscrições. 
+
+- **Processor** - um processor representa uma etapa de processamento e está vinculado tanto às especificações de publisher quanto às de subscriber.
+
+The Figure 8.7 shows the communication between the Subscriber, Publisher, and Subscription interfaces.
+
