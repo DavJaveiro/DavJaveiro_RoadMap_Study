@@ -114,7 +114,7 @@ Estrutura de dados primitivas são estruturas de dados fundamentais ou predefini
 
 Estruturas de dados não primitivas são estruturas de dados comparativamente mais complicadas, que são criadas usando estruturas de dados primitivas. Exemplos de estruturas de dados não primitivas *arrays*, *files*, *linked lists*, *stacks*, *queues* e assim por diante.
 
-![image-2025108217817.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-2025108217817.png)
+![image-2025108217817.png](image-2025108217817.png)
 
 **Qual a diferença entre estruturas de dados primitivas e não primitivas**
 ?
@@ -138,7 +138,7 @@ Um #Array é uma coleção de elementos de dados homogêneos (do mesmo tipo) em 
 <data type> name_of_array [lenght]
 ```
 Os elementos são armazenados no array conforme mostrado na Figura 1.2:
-![image-2025108483323.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-2025108483323.png)
+![image-2025108483323.png](image-2025108483323.png)
 
 *Arrays* são usados para armazenar uma grande quantidade de dados de tipo semelhante. Eles têm várias vantagens e limitações.
 
@@ -158,7 +158,7 @@ Uma fila é uma coleção linear de elementos de dados na qual o elemento inseri
 Para uma ilustração simples de uma queue, imagine uma fila de pessoas paradas no ponto de ônibus esperando pelo ônibus. Portanto, a primeira pessoa na fila entrará no ônibus primeiro. 
 
 Na memória do computador, as filas podem ser implementadas usando *arrays* ou *linked lists*. 
-![image-20251085830901.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-20251085830901.png)
+![image-20251085830901.png](image-20251085830901.png)
 
 ### 1.2.7 Stack (pilhas)
 Uma pilha é uma coleção linear de elementos de dados na qual a inserção e a exclusão ocorrem apenas no topo da pilha. Uma pilha é uma estrutura de dados LIFO (Last in First Out) - último a entrar, primeiro a sair, porque o último elemento inserido na pilha será o primeiro elemento a ser removido dela. As três operações que podem ser realizadas na pilha incluem as operações **PUSH**, **POP** e **PEEP**.
@@ -183,7 +183,7 @@ Sout("Removido: " + pilha.pop());
 // Verifica se está vazia
 System.out.println("Está vazia? " + pilha.isEmpty());
 ```
-![image-2025108616256.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-2025108616256.png)
+![image-2025108616256.png](image-2025108616256.png)
 
 ### 1.2.8 Linked Lists
 A principal desvantagem do *array* é que o tamanho ou o número de elementos deve ser conhecido antecipadamente. Assim, essa desvantagem deu origem ao novo conceito de *linked list* (lista encadeada). Uma *linked list* é uma coleção linear de elementos de dados. Esses elementos de dados são chamados de *nodes*, e cada nó armazena o endereço do próximo nó.
@@ -191,7 +191,7 @@ A principal desvantagem do *array* é que o tamanho ou o número de elementos de
 Um linked list é uma sequência de nós na qual cada nó contém um ou mais campos de dados e um campo de endereço que armazena o endereço do próximo nó. Além disso, as *linked lists* são dinâmicas; ou seja, a memória é alocada conforme a necessidade. 
 
 Na figura anterior, uma linked list na qual cada nó é dividido em dois espaços:
-![image-20251081915541.png](Data%20Structures%20And%20Program%20Design%20Using%20Java/Chapter%201%20-%20Introduction%20to%20Data%20Structures/Chapter%201%20-%20Introduction%20to%20Data%20Structures/image-20251081915541.png)
+![image-20251081915541.png](image-20251081915541.png)
 
 1. O primeiro espaço contém a informação/dado.
 2. O segundo espaço contém o endereço do próximo nó.
@@ -251,3 +251,50 @@ Da mesma forma, um algoritmo deve ter as seguintes características:
 - **Finitude (Finiteness):** o número de etapas deve ser finito.
 
 ## 1.5 Approaches for Designing an Algorithm
+Um algoritmo complexo é dividido em unidades menores, que são chamados de **módulos**. Em seguida, esses módulos são divididos em submódulos. Dessa forma, um algoritmo complexo pode ser resolvido com facilidade. O processo de dividir um algoritmo em módulos é chamado de modularização. Existem duas abordagens populares para projetar um algoritmo:
+- Abordagem Top-Down (de cima para baixo)
+- Abordagem Bottom-Up (de baixo para cima)
+
+Agora, vamos entender ambas as abordagens.
+
+**1. Abordagem Top-Down (de cima para baixo)**: uma abordagem *top-down* afirma que o problema/algoritmo complexo/complicado deve ser dividido em módulos menores. Esses módulos menores são então divididos em submódulos. Este processo de decomposição é repetido até atingirmos a complexidade de módulo desejada para o resultado. Uma abordagem *top-down* começa a partir do módulo de nível mais alto, e os módulos são incrementados correspondentemente até que seja alcançado um nível onde não são necessários mais submódulos, ou seja, quando o nível desejado de complexidade é atingido.
+![image-2025109166945.png](image-2025109166945.png)
+
+**2. Bottom-Up**: uma abordagem de design de algoritmo *bottom-up* é o oposto da abordagem *top-down*. Neste tipo de abordagem, começamos primeiro projetando os módulos básicos e prosseguimos em direção ao design de módulos de nível mais alto. Os submódulos são agrupados para formar um módulo de um nível superior. Da mesma forma, todos os módulos de alto nível são agrupados para formar módulos ainda mais complexos. Assim, este processo de combinar os submódulos é repetido até obtermos o resultado desejado do algoritmo.
+
+## 1.6 Analyzing an Algorithm
+Um algoritmo pode ser analisado por dois fatores: **espaço e tempo**. Nosso objetivo é desenvolver um algoritmo que faça o melhor uso desses dois recursos. Analisar um algoritmo mede a sua eficiência. A eficiência do algoritmo é medida em termos de velocidade e complexidade de tempo.
+
+A **complexidade** de um algoritmo é uma função que mede o espaço e o tempo utilizados por um algoritmo em função do tamanho da entrada.
+
+- **Complexidade de Tempo:** a complexidade de tempo de um algoritmo é a **quantidade de tempo necessária para executar o programa completamente**. É o tempo de execução do programa. A complexidade de tempo é comumente representada pela notação Big O. Por exemplo, a complexidade de tempo de uma busca linear é O(n).
+- **Complexidade de Espaço:** a complexidade de espaço de um algoritmo é a quantidade de espaço de memória necessária para executar o programa completamente. A complexidade de espaço de um algoritmo também depende do tamanho da entrada.
+
+A complexidade de tempo é categorizada em três tipos:
+1. **Melhor Tempo de Execução (Best-Case):** o desempenho do algoritmo será o melhor sob condições ótimas. Por exemplo, o melhor caso para uma busca binária ocorre quando o elemento desejado é o elemento do meio da lista. Outro exemplo pode ser a ordenação; ou seja, se os elementos já estão ordenados em uma lista, então o algoritmo será executado no melhor tempo.
+2. **Caso Médio de Execução (Average-Case):** denota o comportamento de um algoritmo quando a entrada é retirada aleatoriamente de uma determinada coleção ou distribuição. É uma estimativa do tempo de execução para uma entrada *média*. Geralmente assume-se que todas as entradas de um determinado tamanho são igualmente prováveis de ocorrer.
+
+3. Pior Tempo de Execução (Worst-Case): o comportamento do algoritmo neste caso refere-se ao pior cenário possível de instância de entrada. O tempo de execução do pior caso de um algoritmo é um limite superior para o tempo de execução de qualquer entrada. Por exemplo, o pior caso para uma busca linear ocorre quando o elemento desejado é o último elemento da lista ou quando o elemento não existe na lista.
+
+### 1.6.1 Time-Space Trade-Off
+Na ciência da computação, o *trade-off* tempo-espaço é uma forma de resolver um problema específico usando menos tempo e mais espaço de memória, ou mais tempo e menos espaço de memória. Mas, falando em termos práticos, projetar um algoritmo no qual seja possível economizar tanto espaço quanto tempo é uma tarefa desafiadora. Portanto, podemos usar mais de um algoritmo para resolver um problema. Um pode requerer menos tempo, e o outro pode requerer menos espaço de memória para ser executado. Dessa forma, sacrificamos uma coisa pela outra. Portanto, existe um *trade-off* tempo-espaço ou tempo-memória entre os algoritmos.
+
+Assim, esse *trade-off* tempo-espaço oferece ao programador uma escolha racional a partir de um ponto de vista informado. Então, se o tempo é uma grande preocupação para um programador, ele pode escolher um programa que leve menos ou o mínimo de tempo para ser executado. Por outro lado, se o espaço é a principal preocupação para um programador, então, nesse caso, ele pode escolher um programa que ocupe  menos espaço de memória para ser executado, ao custo de mais tempo.
+
+## 1.8 Notação Big O
+O desempenho de um algoritmo, ou seja, seus requisitos de tempo e espaço, pode ser facilmente comparado com outros algoritmos concorrentes usando notações assintóticas, como a notação Big O, a notação Omega e a notação Theta.
+
+A complexidade algorítmica pode ser facilmente aproximada usando notações assintóticas, simplesmente ignorando os fatores dependentes da implementação. Por exemplo, podemos comparar vários algoritmos de ordenação disponíveis usando a notação Big O ou qualquer outra notação assintótica.
+
+A notação Big O é um dos esquemas de caracterização de análise mais populares, pois fornece um limite superior para a complexidade de um algoritmo. Em Big O, O(g) é representativo da classe de todas as funções que crescem não mais rápido que *g*. Portanto, se f(n) = O(g(n)), então, f(n) <= c* g(n) para todo n > n0, onde n- representa um limiar e c representa uma constante.
+
+- Um algoritmo com complexidade O(1) é denominado algoritmo de tempo de computação costante.
+- Um algoritmo de complexidade O(n) é denominado algoritmo linear.
+- O(n²) para algoritmos quadráticos
+- O(2^n) para algoritmos de tempo exponencial
+- O (n<sup>k</sup>) para algoritmos de tempo polinomial
+- O (log n) para algoritmos de tempo logarítmico.
+
+Um algoritmo com complexidade da ordem de **O(log₂n)** é considerado um dos melhores algoritmos, enquanto um algoritmo com complexidade da ordem de **O(2ⁿ)** é considerado o pior algoritmo. A complexidade das computações ou o número de iterações necessárias em vários tipos de funções pode ser comparada da seguinte forma:
+
+**O(log₂n) < O(n) < O(n log₂n) < O(n²) < O(n³) < O(2ⁿ)**
