@@ -129,3 +129,85 @@ public interfaace Processor<T, R> extends Subscrbier<T>, Publiser<R> {
 
 The Figure 8.7 shows the communication between the Subscriber, Publisher, and Subscription interfaces.
 
+![image-202510102746843.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%208%20-%20Reactive%20Spring%20Boot%20application%20development/Chapter%208%20-%20Reactive%20Spring%20Boot%20application%20development/image-202510102746843.png)
+
+Vamos discutir como essas APIs se comunicam entre si:
+1. Um #subscriber usa o método **subscribe()** da interface **Publisher** para adicionar uma **subscription** a um publisher.
+2. Um publisher usa o método **onSubscribe()** da interface Subscriber para enviar a Subscription ao subscribe.
+3. Um subscribe usa os métodos **request()** ou **cancel()** da interface **Subscription** para solicitar ou cancelar dados do publisher.
+4. O publisher usa os métodos **onNext()**, **onComplete()** e **onError()** da interface **Subscriber** para enviar dados ou um erro a um subscriber por meio da subscription.
+
+O principal componente da biblioteca #Reactor é o módulo **reactor-core**, que é construído sobre as especificações de **Reactive Stream** e voltado para o Java 8. O #reactor fornece tipos reativos componíveis, como **Flux** e **Mono**, que implementam a interface **Publisher**.
+
+Um #Flux é um publisher padrão que representa uma sequência assíncrona de 0 a N itens emitidos, opcionalmente terminada por um erro ou um sinal de conclusão.
+
+Um #Mono é um publisher especializado que emite no máximo um item através do sinal **onNext**, que é então finalizado por um **onComplete** (Mono bem-sucedido) ou emite apenas um único sinal **onError**.
+
+
+---
+Modelo de caso para a geração de  cupons via API:
+
+Quando um cliente realizar a compra, o nosso sistema precisa:
+1. Gerar o cupom fiscal
+2. Salvar no banco de dados
+3. Gerar o QR code
+4. Retornar o link de download do pdf
+
+Em um modelo #reativo, cada uma dessas etapas pode ser um **Publisher** emitindo dados (cupom -> QR -> PDF), e o sistema reage conforme os dados chegam, sem bloquear a thread principal. 
+
+```java
+public Mono<CupomResponse> processarCupom(Pedido pedido) {
+	return gerarCupom(pedido)
+		.flatMap(this::salvarNoBanco)
+		.flatMap(this::gerarQRCode)
+		.flatMap(this::gerarPDF)
+		.map(this::enviarLinkCliente);
+}
+```
+
+
+No exemplo de código, acima, cada etapa retorna um **Mono** (um resultado assíncrono).  O Reactor (por trás) gerencia as assinaturas (subscribe()), garantindo que tudo flua naturalmente sem bloquear o servidor. Se algo der errado (ex: erro no QR), o Reactor chama onError automaticamente.
+
+**Caso 2: Notificações ou streaming em tempo real**
+Se quisermos mostrar em tempo real o status da geração de cupons, podemos usar um Flux:
+```java
+Flux<StatusProcessamento> statusTream = cupomService.streamStatusGeracao();
+```
+
+Cada evento novo ("Cupom gerado", "QR Code Criado", "PDF pronto"), seria emitido por esse Flux, e os clientes conectados via **WebSocket ou SSE (Server-Sent Events)** receberiam as atualizações imediatamente, sem precisar ficar recarregando a página.
+
+**Caso 3: Escalabilidade**
+O modelo reativo baseado em Publisher e Subscriber permite que a aplicação lide com **milhares de requisições simultâneas** de forma leve. Enquanto o modelo tradicional usa **threads bloqueadas** (esperando resposta do banco, API etc.), o modelo reativo libera a thread  e só reage quando o dado realmente chega, economizando recursos do servidor...
+
+
+
+
+
+## 8.3 Introducing Spring WebFlux
+O Spring Framework 5. introduziu um novo framework que oferece suporte ao desenvolvimento de aplicações **Web reativas** no Spring. Isso é feito por meio do Spring WebFlux. É uma biblioteca totalmente nonblocking e baseada no Project Reactor. Seu foco são servidores Web como Netty, undertow e Servlet 3.1+ containers.
+
+O **Spring WebFlux** fornece dois modelos de programação:
+1. **Annotated Controllers** - modelo consistente com o framework Spring MVC, permitindo o uso do mesmo conjunto de anotações disponíveis no Spring MVC;
+2. **Functional Endpoints -** modelo leve baseado em **lambda** e em **programação funcional.** Esse modelo oferece um pequeno conjunto de bibliotecas que uma aplicação pode usar para rotear e manipular requisições HTTP.
+
+### 8.3.1 Technique: Developing a reactive RESTful API with annotated controllers
+In this technique, we'll discuss how to develop a reactive RESTful API with annotated controllers.
+
+The Course Tracker REST API developed previously is a blocking API and uses Spring MVC. We need to use reactive stack to build a nonblocking, scalable API with Spring WebFlux.
+
+**Solution**
+To develop a reactive nonblocking RESTful API, in this techninque, we'll use Spring WebFlux annotated controller model. As we've discussed previosuly, this approach uses the same Spring MVC  to build the API. Thus, you can use the familiar *@GetMapping*, @PostMapping, and other annotations to design the API. 
+
+**Using MongoDB database**
+In this chapter, we'll use a reactive MongoDB database. You need not install and configure MongoDB to continue with this technique, as we'll usa embedded MongoDB database. We only require the Spring Data Reactive MongoDB and Embedded MongoDB dependencies for MongoDB support. Note that  you can also continue to use the H2 database along with de <span style="background:#affad1">Spring Data R2DBC dependenc</span>y if you don't want to use MongoDB. 
+
+The `spring-boot-starter-webflux` dependency provides necessary support for Spring WebFlux framework. Lastly, the `reactor-test` dependency provides necessary support (classes and methods) to test reactive applications. Next, we'll define the *CourseRepository* interfaces shown in the following sniped code:
+```java
+@Repository
+public interface CourseRepository extends ReactiveCrudRepository<Course, string> {
+	Flux<Course> findAllByCategory(String category);
+}
+```
+
+We've also defined a custom method *findAllByCategory(Stirng category)* that returns a *Flux* of courses that matches the supplied category. Let's noew define the Course domain model shown in the following listing.
+

@@ -1,32 +1,24 @@
 {
   "main": {
-    "id": "91c2c12cd8bd719f",
+    "id": "8d4170e7975b4964",
     "type": "split",
     "children": [
       {
-<<<<<<< HEAD
-        "id": "fa25e91b9d85931b",
+        "id": "f78b80c04203c7c4",
         "type": "tabs",
         "children": [
           {
-            "id": "83d8ae2fccf483d7",
-=======
-        "id": "b993572471d075ff",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "bde3d0afa78584ff",
->>>>>>> d6abd97c473200316bde3786b1c804ad6bba1fa0
+            "id": "a4878bf86c4253e9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md",
+                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Object-Oriented Programming and Class Hierarchies"
+              "title": "Chapter 8 - Reactive Spring Boot application development"
             }
           }
         ]
@@ -35,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "9eea0cab994acc83",
+    "id": "7a0d190becd615b2",
     "type": "split",
     "children": [
       {
-        "id": "d8a328865861f3af",
+        "id": "a33bcab693d89d87",
         "type": "tabs",
         "children": [
           {
-            "id": "17ff814b0b91c973",
+            "id": "8485dae3c33c7346",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,7 +48,7 @@
             }
           },
           {
-            "id": "4e0e68573041a61d",
+            "id": "7a2cf08c08425fdd",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -73,7 +65,7 @@
             }
           },
           {
-            "id": "2c58c1ac4543081f",
+            "id": "973d38475b9d5678",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -83,7 +75,7 @@
             }
           },
           {
-            "id": "d485208f2ed90031",
+            "id": "c30aa6d73322b66f",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -100,20 +92,20 @@
     "collapsed": true
   },
   "right": {
-    "id": "6e12466035e2155b",
+    "id": "c2c1483ce4fe11a7",
     "type": "split",
     "children": [
       {
-        "id": "2c7364417fb6b314",
+        "id": "aa9c77eb177898e6",
         "type": "tabs",
         "children": [
           {
-            "id": "557721f3f4917efe",
+            "id": "30aa24b427596eec",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md",
+                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Chapter 1 - Object-Oriented Programming and Class Hierarchies"
+              "title": "Links inversos para Chapter 8 - Reactive Spring Boot application development"
             }
           },
           {
-            "id": "c0585926b9f7638f",
+            "id": "2f33df4d6afa0b40",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md",
+                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Chapter 1 - Object-Oriented Programming and Class Hierarchies"
+              "title": "Links de saída para Chapter 8 - Reactive Spring Boot application development"
             }
           },
           {
-            "id": "3a0c095260c2e0bc",
+            "id": "29fd79c005054b21",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -156,7 +148,7 @@
             }
           },
           {
-            "id": "f8364d9ba34c1519",
+            "id": "cbb5f5f739b759f3",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -170,22 +162,22 @@
             }
           },
           {
-            "id": "dbd8a4f79360b584",
+            "id": "c4440f96e35283c5",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md",
+                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Chapter 1 - Object-Oriented Programming and Class Hierarchies"
+              "title": "Sumário de Chapter 8 - Reactive Spring Boot application development"
             }
           },
           {
-            "id": "0198dd6aab9d93d5",
+            "id": "5746593c3c65aeb0",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -226,41 +218,12 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-<<<<<<< HEAD
-  "active": "83d8ae2fccf483d7",
+  "active": "a4878bf86c4253e9",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Spring Boot in Practice.pdf",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/pom.xml~",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
-    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251062249380.png",
-    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251061830250.png",
-    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-20251062133192.png",
-    "Chapter 11 - Inheritance and Polymorphism.png",
-    "Módulo 3 - Visão geral da infraestrutura global da AWS.png",
-    "Módulo 4 - Segurança na Nuvem AWS-5.png",
-    "Pasted image 20250421102320.png",
-    "Pasted image 20250418164144.png",
-    "Pasted image 20250421115257.png",
-    "Pasted image 20250603090256.png",
-    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
-    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/handler/CourseTrackerGlobalExceptionHandler.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/handler",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception/CourseNotFoundException.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared/exception",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/shared",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/service/CourseServiceImpl.class",
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/target/classes/com/packt/courseapi/mapper/CourseMapper.class",
-    "Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md"
-=======
-  "active": "bde3d0afa78584ff",
-  "lastOpenFiles": [
-    "Estrutura de Dados e Algoritmos/Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures.md",
-    "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md",
-    "Estrutura de Dados e Algoritmos/Data Structures Abstrations",
-    "Estrutura de Dados e Algoritmos",
-    "Estrutura de Dados e Algoritmos/Data Structures And Program Design Using Java/Chapter 1 - Introduction to Data Structures/Chapter 1 - Introduction to Data Structures/image-2025109166945.png"
->>>>>>> d6abd97c473200316bde3786b1c804ad6bba1fa0
+    "Sem título 2.md",
+    "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-202510102746843.png",
+    "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md"
   ]
 }
