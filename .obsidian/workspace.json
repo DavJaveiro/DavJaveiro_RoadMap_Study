@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
+                "file": "Computação em Nuvem/Anhanguera/Aula 1 - Conceitos Básicos em Computação em Nuvem.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 8 - Reactive Spring Boot application development"
+              "title": "Aula 1 - Conceitos Básicos em Computação em Nuvem"
             }
           }
         ]
@@ -220,8 +220,14 @@
   },
   "active": "a4878bf86c4253e9",
   "lastOpenFiles": [
-    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/pom.xml~",
+    "Computação em Nuvem/Anhanguera/Aula 1 - Conceitos Básicos em Computação em Nuvem",
+    "Computação em Nuvem/Anhanguera/Aula 1 - Conceitos Básicos em Computação em Nuvem/image-2025101393131.png",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
+    "Computação em Nuvem/Anhanguera/Aula 1 - Conceitos Básicos em Computação em Nuvem.md",
+    "Computação em Nuvem/Anhanguera",
+    "Computação em Nuvem",
+    "Sem título",
+    "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/pom.xml~",
     "Sem título 2.md",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development/image-202510102746843.png",
     "Estrutura de Dados e Algoritmos/Data Structures Abstrations/Chapter 1 - Object-Oriented Programming and Class Hierarchies.md"
