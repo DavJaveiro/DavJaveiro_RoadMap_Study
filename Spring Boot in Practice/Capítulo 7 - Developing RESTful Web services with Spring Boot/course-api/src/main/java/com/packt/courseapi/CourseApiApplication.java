@@ -1,7 +1,7 @@
 package com.packt.courseapi;
 
 import com.packt.courseapi.domain.Course;
-import com.packt.courseapi.repository.CourseJpaRepository;
+import com.packt.courseapi.repository.CourseRepsitory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +17,7 @@ public class CourseApiApplication {
 
 
 	@Bean
-	CommandLineRunner createCurse(CourseJpaRepository courseJpaRepository) {
+	CommandLineRunner createCurse(CourseRepsitory courseJpaRepository) {
 		return args -> {
 			Course spring = Course.builder()
 					.name("Spring Boot in Practice")

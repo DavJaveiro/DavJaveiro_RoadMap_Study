@@ -181,8 +181,6 @@ O modelo reativo baseado em Publisher e Subscriber permite que a aplicação lid
 
 
 
-
-
 ## 8.3 Introducing Spring WebFlux
 O Spring Framework 5. introduziu um novo framework que oferece suporte ao desenvolvimento de aplicações **Web reativas** no Spring. Isso é feito por meio do Spring WebFlux. É uma biblioteca totalmente nonblocking e baseada no Project Reactor. Seu foco são servidores Web como Netty, undertow e Servlet 3.1+ containers.
 
@@ -211,3 +209,113 @@ public interface CourseRepository extends ReactiveCrudRepository<Course, string>
 
 We've also defined a custom method *findAllByCategory(Stirng category)* that returns a *Flux* of courses that matches the supplied category. Let's noew define the Course domain model shown in the following listing.
 
+**Recordando alguns conceitos**
+#ReactiveCrudRepository: é uma **interface base do Spring Data** projetada para trabalhar de forma **reativa e não bloqueante** com banco de dados. Enquanto o **CrudRepository** (tradicional) retorna listas ou entidades diretamente, o **ReactiveCrudRepository** retorna **Publishers reativos**, ou seja, tipos do **Project Reactor** (Mono e Flux).
+
+Portanto, **ReactiveCrudRepository** trabalha com #streams reativas.
+
+**Tipos reativos usados:**
+- *Mono< T>* representa 0 ou 1 elemento (buscar um curso por ID);
+- *Flux< T>* representa 0, 1 ou muitos elementos (ex: listas cursos);
+
+```java
+Flux<Course> findAllByCategory(String category);
+Flux<Course> findAllByAuthor(String author);
+```
+
+Esses métodos retornam **streams reativas de cursos**,. os cursos serão emitidos de forma assíncrona e sob demanda conforme o assinante (subscriber) os consome.
+
+**Na prática:**
+```java
+@GetMapping("/courses")
+public Flux<Course> getCourseByCategory(@RequestParams String Category) {
+	return courseRepository.findAllByCategory(category);
+}
+```
+Quando o cliente fizer uma requisição, o servidor não vai precisar carregar todos os cursos de uma vez na memória.
+O Flux vai emitindo cada curso conforme o banco de dados e a rede permitem. Isso torna a aplicação altamente escalável e eficiente para cenários com muitas conexões simultâneas...
+
+Mas quem é responsável por controlar o ritmo? Backpressure (contrapressão), é basicamente um **fluxo sob demanda.** O consumidor (subscriber) é quem pede quantos elementos quer receber de cada vez. O produtor (repository/banco) só envia o que foi solicitado. 
+
+Podemos também definir **limites explícitos**, diretamente no **Flux**:
+```java
+Flux<Course> limitedCourses = courseRepository.findAllByCategory("Java")
+	.take(10);
+	
+Flux<Course> paginated = courseRepository.findAll()
+						.skip(20) // pula 20
+						.take(10) // pega os próximos 10
+```
+
+
+Essa operações, #take, #skip, #limitRequest, fazem parte **Project Reactor** e permitem controlar manualmente sobre a quantidade de dados.
+
+Tudo isso só funciona de verdade se o driver do banco for reativo, também.
+- MongoDB - usa Reactive MongoDB Driver;
+- PostgreSQL - R2DBC
+- MySQL - R2DBC MySQL Driver
+
+Se o banco **não tiver driver reativo**, o comportamento continua reativo na API, mas internamente será bloqueante, o que elimina parte da vantagem. 
+
+---
+
+Let's now define the Course domain model shown in the following listing:
+
+```java
+@Data
+@Builder
+...
+@Document
+@NoArgsConstructor
+@AllArgsConstructor
+public class Course {
+	...
+}
+```
+
+This is the same #POJO class we used previously, except this time we are using the **@Document** annotation in place of the @Entity annotation, as we are using MongoDB database instead of the H2 database. MongoDB stores data records in a document. Thus, a course detail in MongoDB is a document. Let's now define the Course Controller class, as shown in the following listing.
+
+---
+No lugar do MongoDB, eu estou usando o R2BC-H2, o R2DBC (Reactive Relational Database Connectivity) é a **versão reativa do JDBC.** Ele permite comunicação **não bloqueante** com bancos **relacionais** (como H2, PostgreSQL, MySQL, etc). 
+
+Essa dependência habilita o Spring a falar reativamente com o banco via R2DBC. Então o nosso repositório:
+```java
+@Repository
+public interface CourseJpaRepository extends ReactiveCrudRepository<Course, Long> {
+	Flux<Course> findAllByCategory(String category);
+	Flux<Course> findAllByAuthor(String author);
+}
+```
+vai executar consultas SQL assíncronas e sob demanda, via R2DBC; vai retornar os resultados como **Flux< Course>**
+Só executa a query quando alguém se inscrever no Flux.
+
+
+---
+
+**Course  Controller Class**
+```java
+@slf4j
+@RestController
+@RequestMapping("/courses/")
+public class CourseController {
+	private CourseRepository courseRepository
+	
+	@Autowired
+	public CourseController(CourseRepository courseRepository) {
+		this.courseRepository = courseRepository;
+}
+
+	/* This endpoint return a Flux of courses. Recall that Flux can emit 0..N elements. Alse, notice the use of @GetMapping annotation to define the endpoint route, which is similar to what we've used in Spring MVC */
+	@GetMapping
+	public Flux<Course> getAllCourses() {
+		return courseRepository.findAll();
+	}
+	
+	
+	/* This endpoint return a Mono <ResponseEntity<Course>>. As we are getting a course by ID, we may or may not find a course with the supplied course ID. Recall that a Mono can emit 0..1 element. We are using ResponseEntity to wrap the response with HTTP status 200 OK for a successful response or HTTP status 404 Not Found if the course is not found   */
+	@GetMapping
+	public Mono<ReponseEntity<Course>> getCourseById(@PathVariable("id") String courseId) {
+		return courseRepository.findById(courseId) Mono<Course>.map(course -> ResponseEntity.ok(course)).defaultIfEmpty(ResponseEntity.notFound().build());
+	}
+}
+```

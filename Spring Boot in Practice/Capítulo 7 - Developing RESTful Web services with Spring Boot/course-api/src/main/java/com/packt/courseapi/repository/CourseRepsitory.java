@@ -6,10 +6,8 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
-import java.util.List;
-
 @Repository
-public interface CourseJpaRepository extends ReactiveCrudRepository<Course, Long> {
+public interface CourseRepsitory extends ReactiveCrudRepository<Course, Long> {
     Flux<Course> findAllByCategory(@NotBlank(message = "A categoria não pode ficar em branca.") String category);
     Flux<Course> findAllByAuthor(String author);
 }

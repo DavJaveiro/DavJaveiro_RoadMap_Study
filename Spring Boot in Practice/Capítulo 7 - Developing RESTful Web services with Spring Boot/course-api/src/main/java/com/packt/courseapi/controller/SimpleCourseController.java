@@ -1,12 +1,12 @@
 package com.packt.courseapi.controller;
 
 import com.packt.courseapi.domain.Course;
-import com.packt.courseapi.repository.CourseJpaRepository;
+import com.packt.courseapi.repository.CourseRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 import java.util.Optional;
 
@@ -15,17 +15,17 @@ import java.util.Optional;
 public class SimpleCourseController {
 
     @Autowired
-    private CourseJpaRepository courseJpaRepository;
+    private CourseRepsitory courseRepsitory;
 
     @GetMapping
-    public Iterable<Course> getAllCourses(@AuthenticationPrincipal Jwt jwt) {
+    public Flux<Course> getAllCourses(@AuthenticationPrincipal Jwt jwt) {
         String author = jwt.getClaim("author");
-        return courseJpaRepository.findAllByAuthor(author);
+        return courseRepsitory.findAllByAuthor(author);
     }
 
     @GetMapping("{id}")
     public Optional<Course> getCourseById(@PathVariable("id") long courseId) {
-        return courseJpaRepository.findById(courseId);
+        return courseRepsitory.findById(courseId);
     }
 
     @PostMapping
@@ -35,7 +35,7 @@ public class SimpleCourseController {
                 .name(name)
                 .author(jwt.getClaimAsString("user_name"))
                 .category(category).build();
-        return courseJpaRepository.save(course);
+        return courseRepsitory.save(course);
     }
 
 }
