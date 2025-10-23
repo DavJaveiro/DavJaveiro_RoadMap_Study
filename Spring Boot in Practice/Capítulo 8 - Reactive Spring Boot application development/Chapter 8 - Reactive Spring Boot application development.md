@@ -317,5 +317,55 @@ public class CourseController {
 	public Mono<ReponseEntity<Course>> getCourseById(@PathVariable("id") String courseId) {
 		return courseRepository.findById(courseId) Mono<Course>.map(course -> ResponseEntity.ok(course)).defaultIfEmpty(ResponseEntity.notFound().build());
 	}
+	
+	
+	// Finds all courses for the supplied category and return a Flux of courses.
+	@GetMapping("category/{name}")
+	public Flux<Course> getCourseByCategory(@PathVariable("name") String category) {
+		return courseRepository.findAllByCategory(category)
+						.doOnError(e -> log.error("Failed to create course", e.getMessage()));
+	}
+	
+	@PutMapping("{id}")
+	public Mono<ResponseEntity<Course> updateCourse(@PathVariable("id")
+		String courseId, @RequestBody Course course) {
+			return this.courseRepository.findById(courseId).flatMap(existingCourse -> {
+			existingCourse.setName(course.getName());
+			existingCourse.setRating(course.getRating());
+			existingCourse.setCategory(course.getCategory());
+			existingCourse.setDescription(course.getDescription());
+			return this.courseRepository.save(existingCourse);
+			}).map(updateCourse -> ResponseEntity.ok(updateCourse)).defaultIfEmpty(ResponseEntity.notFound.build())
+					.doOnError(e -> log.error("Failed to update course", ().build()));
+		
+		}
+	)
+	
+}
+
+```
+
+The listing 8.6, up, contains the endpoints to  perform the CRUD operations in our application. The endpoints are the same as we defined when we created a REST API with Spring MVC. Notice the declarative style of coding in the endpoints and how various operators are composed (e.g., how the map is used or the doOnSucess and doOnError are composed). Lastyle, let's define a new Spring @Configuration file and a *CommandLineRunner* bean definition to create a few courses, as shown in the following listing.
+
+```java
+@Configuration
+public Class CourseConfig {
+	
+	@Bean
+	public CommandLineRunner init(CourseRepository courseRepository) {
+		return args -> {
+			Course course1 = Course.builder().name("Mastering Spring Boot").category("Spring").rating(4).description("Mastering Spring Boot").build();
+			Course course2 = Course.builder().name("Mastering Spring Python").category("Python").rating(5);
+			Course course3 = Course.builder().name("Mastering Go").category("Go").rating(3).description("Mastering Go").build();
+			
+			
+			Flux.just(course1, course2, course3).flatMap(courseRepository::save).thenMany(courseRepository.findAll()).subscribe(System.out::println);
+		}
+	}
+
 }
 ```
+
+In listing 8.7, we created three sample courses. We then used the static methods just(...) from the Fllux class to create a flux with the sample courses. Next, we used the flatMap(...) operator to save the courses and then the thenMany(...) to find all the courses. Lastly, we subscribed to Flux to start the processing and print each course in the console. Note that reactive programming is lazy, and nothing happens until we invoke the *subscribe()* method.
+
+Next, we need to specify the spring.mongodb.embedded.version=3.6.2 properti in the application.properties files. 
