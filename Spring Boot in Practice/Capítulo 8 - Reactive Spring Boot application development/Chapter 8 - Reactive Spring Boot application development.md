@@ -286,7 +286,7 @@ public interface CourseJpaRepository extends ReactiveCrudRepository<Course, Long
 	Flux<Course> findAllByAuthor(String author);
 }
 ```
-vai executar consultas SQL assíncronas e sob demanda, via R2DBC; vai retornar os resultados como **Flux< Course>**
+vai executar consultas SQL assíncronas e sob demanda, via R2DBC; vai retornar os resultados como **Flux< Course >**
 Só executa a query quando alguém se inscrever no Flux.
 
 
@@ -368,4 +368,18 @@ public Class CourseConfig {
 
 In listing 8.7, we created three sample courses. We then used the static methods just(...) from the Fllux class to create a flux with the sample courses. Next, we used the flatMap(...) operator to save the courses and then the thenMany(...) to find all the courses. Lastly, we subscribed to Flux to start the processing and print each course in the console. Note that reactive programming is lazy, and nothing happens until we invoke the *subscribe()* method.
 
-Next, we need to specify the spring.mongodb.embedded.version=3.6.2 properti in the application.properties files. 
+## Technique: developing a reactive RESTful API with functional endpoints
+In this technique, we'll discuss how to develop a reactive RESTful API with functional endpoints.
+
+**Problem**
+Another technique for transforming our blocking REST API in a reactive fashion is the adoption of functional endpoints.We need to build a reactive REST API based on functional endpoints.
+
+In the previous technique, we explored building a reactive REST API with Spring WebFlux using the annotated controller approach. Spring WebFlux provides a lambda-based, lightweight, and functional programming model. This is a different model than what we've used previoslyy with the Spring MVC and WebFlux annotated controller-based approach. The functional model provides a set of utilities (Java methods), so we can define the routes to handle requests.
+
+To explore the uso of the functional endpoints further, let's build a REST API with functional endpoints. With this technique, we'll continue with our Corse Tracker applcation to build a REST API with the functional endpoint.
+
+For the Spring Boot project in this technique, we can continue with the Spring Boot project used in the previous technique. We can also create a new project with de same set of dependencies as those specified in listing 8.3 and continue with the technique. Create the *CourseRepository* interface and Course domain class, as shown in listing 8.4 and 8.5, respectively.
+
+We'll begin by defining the routes. The routes are the URLs to perform the CRUD operations. The following listing shows the *RouterContext* class.
+
+
