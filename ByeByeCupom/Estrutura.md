@@ -13,18 +13,18 @@ O processo é uma conversa direta entre o PDV e a SEFAZ (Secretaria da Fazenda d
 
 ---
 
-### Parte 2: Onde sua API "ByeBye Cupom!" Entra na Jogada
+### Parte 2: Onde sua API "ByeByeCupom!" Entra na Jogada
 
 Excelente! A sua análise do problema e a decisão de adotar uma arquitetura de "package-by-feature" (ou fatia vertical) já colocam o projeto ByeByeCupom em um caminho de sucesso, escalabilidade e manutenibilidade.
 
 
 ### A Mudança de Paradigma: Do "Como" para o "O Quê"
 
-|Nome Técnico (O Como)|Propósito de Negócio (O Quê)|Novo Módulo Sugerido|
-|---|---|---|
-|`xml`|É o ato de receber e processar o documento fiscal que chega.|`ingestion` (Ingestão)|
-|`pdf`|É a geração da representação visual e legível do cupom. O nome oficial disso é DANFE.|`danfegeneration` (Geração de DANFE)|
-|`qrcode`|É o mecanismo de entrega/acesso para o cliente final.|`distribution` (Distribuição)|
+| Nome Técnico (O Como) | Propósito de Negócio (O Quê)                                                          | Novo Módulo Sugerido                 |
+| --------------------- | ------------------------------------------------------------------------------------- | ------------------------------------ |
+| `xml`                 | É o ato de receber e processar o documento fiscal que chega.                          | `ingestion` (Ingestão)               |
+| `pdf`                 | É a geração da representação visual e legível do cupom. O nome oficial disso é DANFE. | `danfegeneration` (Geração de DANFE) |
+| `qrcode`              | É o mecanismo de entrega/acesso para o cliente final.                                 | `distribution` (Distribuição)        |
 
 Com base nessa tradução, podemos criar uma estrutura de pacotes que conta a história do seu negócio.
 
@@ -48,7 +48,7 @@ com
     │   │       ├── IngestionRequest.java  (Contém o XML como String ou Base64)
     │   │       └── IngestionResponse.java (Contém a imagem do QR Code e/ou a URL)
     │   ├── service/                  // Lógica de Negócio da Ingestão
-    │   │   └── IngestionService.java
+    │   │   └── IngestionService.java 
     │   └── exception/
     │       └── InvalidXmlException.java
     │
@@ -114,7 +114,6 @@ Este é o portão de entrada do seu sistema.
 #### 2. `fiscaldocument` (Documento Fiscal)
 
 Este é o coração do seu domínio de negócio.
-
 - **Propósito:** Representar o cupom fiscal como uma entidade central e persistente no sistema.
     
 - **`FiscalDocument.java`:** É a classe que mapeia para o seu banco de dados (SQL ou NoSQL). Conteria campos como `id` (UUID), `accessKey` (chave de acesso), `xmlStorageUrl`, `pdfStorageUrl`, `issueDate`, `totalAmount`, etc.

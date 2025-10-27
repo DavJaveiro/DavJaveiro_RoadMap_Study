@@ -177,17 +177,6 @@
       "color": "5"
     },
     {
-      "id": "adfa06e3d389c12f",
-      "type": "text",
-      "text": "# [Jakarta XM L Binding API](https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api) \n\n## Licença\n### 1. O que é a EDL 1.0\n- É uma licença permissiva criada por empresas (geralmente para frameworks ou bibliotecas) para uso **em produtos corporativos e comerciais**.\n- Ela **permite uso, modificação e distribuição**, mas **pode impor restrições sobre redistribuição** e o tipo de produto que você pode criar. \n\n- ### 2. Para uso em SaaS\n- **Uso interno e em SaaS:** Normalmente permitido. Você pode integrar a biblioteca/framework licenciado por EDL 1.0 no seu backend Spring Boot e disponibilizar seu serviço.\n- **Distribuição:** Se você tentar redistribuir a biblioteca EDL como parte de outro produto, algumas restrições podem se aplicar. Geralmente, você **não precisa redistribuir o código modificado** se apenas estiver usando o software como parte do seu serviço (SaaS).\n- **Crédito / atribuição:** Algumas versões da EDL exigem mencionar a biblioteca usada na documentação ou no seu site.",
-      "styleAttributes": {},
-      "x": 3720,
-      "y": -5560,
-      "width": 1080,
-      "height": 880,
-      "color": "5"
-    },
-    {
       "id": "4cf7b0f423cf39c5",
       "type": "text",
       "text": "# [ZXing Core](https://mvnrepository.com/artifact/com.google.zxing/core)\n\n# Licença\n## Apache License 2.0\n- **Tipo:** Licença permissiva (não copyleft)\n- **Uso em SaaS:** ✅ Totalmente permitido. Você pode integrar bibliotecas Apache 2.0 no backend do seu SaaS sem precisar abrir seu código.\n- **Distribuição:**\n    - Se você redistribuir o software, precisa **manter o aviso de copyright e a licença original**.\n    - Não é necessário abrir código fonte do seu próprio software que apenas usa a biblioteca.\n- **Modificações:**\n    - Pode modificar a biblioteca.\n    - Deve manter **avisos de copyright e a licença** nos arquivos modificados.\n- **Patentes:**\n    - A Apache 2.0 inclui uma **cláusula de concessão de patentes**, que protege você de processos de patente relacionados ao software licenciado.",
@@ -295,6 +284,17 @@
       "width": 680,
       "height": 100,
       "color": "3"
+    },
+    {
+      "id": "adfa06e3d389c12f",
+      "type": "text",
+      "text": "# [Jakarta XM L Binding API](https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api) \n\n## Licença\n### 1. O que é a EDL 1.0\n- É uma licença permissiva criada por empresas (geralmente para frameworks ou bibliotecas) para uso **em produtos corporativos e comerciais**.\n- Ela **permite uso, modificação e distribuição**, mas **pode impor restrições sobre redistribuição** e o tipo de produto que você pode criar. \n\n- ### 2. Para uso em SaaS\n- **Uso interno e em SaaS:** Normalmente permitido. Você pode integrar a biblioteca/framework licenciado por EDL 1.0 no seu backend Spring Boot e disponibilizar seu serviço.\n- **Distribuição:** Se você tentar redistribuir a biblioteca EDL como parte de outro produto, algumas restrições podem se aplicar. Geralmente, você **não precisa redistribuir o código modificado** se apenas estiver usando o software como parte do seu serviço (SaaS).\n- **Crédito / atribuição:** Algumas versões da EDL exigem mencionar a biblioteca usada na documentação ou no seu site.\n\n## O que É o Jakarta XML Binding API (antigo JAXB)\nO Jakarta XML Binding API, conhecido historicamente como JAXB (Java Architecture for XML Binding), é uma API oficial da plataforma Java EE, ele serve para:\n- Converter (fazer o #binding) entre objetos Java e documentos XML.\n\nOu seja, ele:\n- Transforma um XML em objetos Java (processo chamado #unmarshalling)\n- E também é capaz de gerar XML a partir de objetos Java (processo chamado #marshaling)\n\nImagine que tenhamos um XML assim:\n",
+      "styleAttributes": {},
+      "x": 3720,
+      "y": -6400,
+      "width": 1080,
+      "height": 1640,
+      "color": "5"
     }
   ],
   "edges": [
