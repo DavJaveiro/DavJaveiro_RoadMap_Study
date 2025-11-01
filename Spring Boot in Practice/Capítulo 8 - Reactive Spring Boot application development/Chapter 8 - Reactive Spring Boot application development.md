@@ -1,3 +1,5 @@
+#flashcards/ReactiveSpringBoot
+
 This chapter covers
 - Introducing reactive programming with Spring WebFlux;
 - Developing reactive RESTful APIs with annotated controller and functional endpoints;
@@ -368,7 +370,7 @@ public Class CourseConfig {
 
 In listing 8.7, we created three sample courses. We then used the static methods just(...) from the Fllux class to create a flux with the sample courses. Next, we used the flatMap(...) operator to save the courses and then the thenMany(...) to find all the courses. Lastly, we subscribed to Flux to start the processing and print each course in the console. Note that reactive programming is lazy, and nothing happens until we invoke the *subscribe()* method.
 
-## Technique: developing a reactive RESTful API with functional endpoints
+## 8.3.2 Technique: developing a reactive RESTful API with functional endpoints
 In this technique, we'll discuss how to develop a reactive RESTful API with functional endpoints.
 
 **Problem**
@@ -376,10 +378,149 @@ Another technique for transforming our blocking REST API in a reactive fashion i
 
 In the previous technique, we explored building a reactive REST API with Spring WebFlux using the annotated controller approach. Spring WebFlux provides a lambda-based, lightweight, and functional programming model. This is a different model than what we've used previoslyy with the Spring MVC and WebFlux annotated controller-based approach. The functional model provides a set of utilities (Java methods), so we can define the routes to handle requests.
 
-To explore the uso of the functional endpoints further, let's build a REST API with functional endpoints. With this technique, we'll continue with our Corse Tracker applcation to build a REST API with the functional endpoint.
+To explore the use of the functional endpoints further, let's build a REST API with functional endpoints. With this technique, we'll continue with our Corse Tracker application to build a REST API with the functional endpoint.
+
+
 
 For the Spring Boot project in this technique, we can continue with the Spring Boot project used in the previous technique. We can also create a new project with de same set of dependencies as those specified in listing 8.3 and continue with the technique. Create the *CourseRepository* interface and Course domain class, as shown in listing 8.4 and 8.5, respectively.
 
 We'll begin by defining the routes. The routes are the URLs to perform the CRUD operations. The following listing shows the *RouterContext* class.
 
+
+#### Resumo
+Uma API com *Functional Endpoints* (ou Programação Funcional de Endpoints) é uma **forma alternativa de construir APIs REST em Spring, sem usar anotações como** *@RestrController* e *@RequestMapping*. Em vez disso, definimos nossas rotas e manipuladores (handlers) de forma **funcional**, ou seja, usando **funções puras** que recebem uma requisição e retornam uma resposta.
+
+**Contextualizando:**
+Tradicionalmente, no Spring MVC, criamos controladores assim:
+```java
+@RestController
+@RequestMapping("/tasks")
+public class TaskController {
+	
+	@GetMapping
+	public List<Task> getAAll() {
+		return service.findAll();p
+	}
+	
+	@PostMapping
+	public Task create(@RequestBody Task task) {
+		return service.save(task);
+	}
+
+}
+```
+
+Esse método é #imperativo e baseado em anotações.
+
+Mas a partir do Spring WebFlux, surgiu uma abordagem **reativa e funcional**, que evita o uso dessas anotações e define as rotas de forma programática.
+
+**Exemplo da API com Functional Endpoints**
+```java
+@Configuration
+public class TaskRouter {
+	
+	@Bean
+	public RouterFunction<ServerResponse> route(TaskHandler handler) {
+		return RouterFunctions
+		.route(RequestPredicates.GET("/tasks"), handler::getAll)
+		.andRoute(RequeestPredicates.POST("/tasks"), handler::create);
+	
+	}
+}
+```
+
+E o #handler (em vez do controller) seria:
+```java
+@Component
+public class TaskHandler {
+	private final TaskService service;
+	
+	public TaskHandler(TaskService service) {
+		this.service = service;
+	}
+	
+	public Mono<ServerResponse> getAll(ServerRequest request) {
+		return  ServerResponse.ok()
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(service.findAll(), Task.class);
+	}
+	
+	public Mono<ServerResponse> create(ServerRequest request) {
+		return request.bodyToMono(Task.class)
+			.flatMap(service::save)
+			.flatMap(task -> ServerResponse.ok()
+				.contentType(MediaType.APPLICATION_JSON)
+				.bodyValue(task));
+			)
+	}
+	
+}
+```
+
+
+**O que caracteriza uma API construída com Functional Endpoints no Spring?**
+1. Uso intensivo de anotações como *@RestController* e *@GetMapping*
+2. Definição de rotas e manipuladores por funções (*RouterFunction* e *HandlerFunctiion*)
+3. Base em **spring-webmvc** e operações bloqueantes
+4. Utilização exclusiva de classes abstratas para os endpoints.
+?
+**2. Definição de rotas e manipuladores por funções (RouterFunction e HandlerFunction)**
+
+**Qual biblioteca do Spring é geralmente usada para implementar APIs com Functional Endpoints?**
+A) `spring-data-jpa`  
+B) `spring-webmvc`  
+C) `spring-webflux`  
+D) `spring-security`
+?
+**C) spring-webflux**
+
+**Qual das alternativas abaixo representa uma vantagem dos Functional Endpoints?**
+A) Menor legibilidade e mais acoplamento entre rotas e lógica  
+B) Desempenho inferior em aplicações reativas  
+C) Maior controle funcional sobre o fluxo de requisição e resposta  
+D) Exige obrigatoriamente o uso de `@RequestMapping`
+?
+**C) Maior controle funcional sobre o fluxo de requisição e resposta**
+
+---
+
+We'll begin by defining the routes. The routes are the URLs to perform the CRUD operations. The following listing shows the *RouterContext* class.
+
+```java
+@configuration
+public class RouterContext {
+	
+	@Bean
+	RouterConfiguration<ServerResponse> routes(CourseHandler courseHandler) {
+		return routue(GET"/courses").and(accept(APPLICATION_JSON)),
+			courseHandler::findAllCourses)
+				.andRoute(GET"/courses/{id}").and(accept(APPLICATION_JSON)),
+				courseHandler::findCourseById)
+				.andRoute(Get"/courses").and(accept(APPLICATION_JSON)),
+				courseHandler::createCourse)
+				...
+	}
+}
+```
+
+The code above is a Spring @Configuration class with *RouterFunction* bean definition. The *RouterFunction* defines the routes to perform the CRUD operation in the reactive REST API. This bean definition requires the *CourseHandler* instance, <span style="background:#d4b106">so once there is a request to any of the routes,</span> it can be forwarded to the handler to handle the request (será encaminhado para o handler que será responsável por processar a requisição. We have defined two routes with HTTP GET requests, one for each of the POST, PUT requests and two for DELETE requests. For each of the routes, we've delegated the request processing to the appropriate methods of the *CourseHandler* class. 
+
+**Em uma aplicação Spring WebFlux que utiliza Functional Endpoints, como a classe `RouterContext`, qual é o papel do `CourseHandler` nesse processo?**
+A) A `RouterContext` é responsável por processar diretamente todas as requisições HTTP e o `CourseHandler` atua apenas como um repositório de dados.
+B) A `RouterContext` define as rotas e vincula cada requisição HTTP (GET, POST, PUT, DELETE) a um método específico do `CourseHandler`, que contém a lógica para manipular e responder às requisições.
+C) A `RouterContext` cria automaticamente os endpoints REST com base nas entidades do banco de dados e o `CourseHandler` serve como adaptador para o ORM.
+D) A `RouterContext` gerencia o ciclo de vida das conexões reativas e o `CourseHandler` atua como um proxy para o servidor HTTP.
+?
+<span style="background:#affad1">B) A `RouterContext` define as rotas e vincula cada requisição HTTP (GET, POST, PUT, DELETE) a um método específico do `CourseHandler`, que contém a lógica para manipular e responder às requisições.  </span>
+<!--SR:!2025-11-01,1,230-->
+
+**No exemplo da Listing 8.10, o `RouterFunction<ServerResponse>` é o núcleo da configuração funcional da API. O que ele faz exatamente durante o processamento de uma requisição e por que ele é fundamental em uma aplicação reativa com Spring WebFlux?**
+A) Ele intercepta as requisições antes do dispatcher servlet e transforma todas em chamadas síncronas.  
+B) Ele define um mapeamento funcional entre os tipos de requisições HTTP e os métodos do `CourseHandler`, permitindo que as requisições sejam processadas de forma não bloqueante e reativa.  
+C) Ele substitui o uso do `ResponseEntity` por `ModelAndView`, garantindo compatibilidade com o Spring MVC tradicional.  
+D) Ele cria dinamicamente controladores anotados e delega as chamadas ao contexto de servlet padrão.
+?
+<span style="background:#affad1">B) Ele define um mapeamento funcional entre os tipos de requisições HTTP e os métodos do `CourseHandler`, permitindo que as requisições sejam processadas de forma não bloqueante e reativa.  </span>
+
+In the Next, let's define the **CourseHandler** class, as shown in the following listing. This class contains the logic to perform the CRUD operations.
 
