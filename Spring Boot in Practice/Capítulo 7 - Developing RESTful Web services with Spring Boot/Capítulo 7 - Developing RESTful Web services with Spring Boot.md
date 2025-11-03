@@ -407,7 +407,7 @@ Podemos recuperar esse JSON acesso a URL:
 Swagger provides de Swagger Editor, which allows you to import this JSON and renders the same HTML layout.
 
 
-## Implementing RESTful API versioning
+## 7.5 Implementing RESTful API versioning
 Vamos discutir as abordagens para versionamento de uma API RESTful. Porém, antes de prosseguir com a discussão sobre as diferentes técnicas de versionamento, vamos falar sobre **REST API versioning** e por que ele é necessário.
 
 Em palavras simples, **versioning** de uma REST API significa a capacidade da API de suportar múltiplas versões. É comum que, ao longo do tempo, seja necessário aprimorar ou atualizar as funcionalidades da aplicação. Diversos fatores podem impulsionar essas mudanças. Por exemplo, pode ser a implementação de novas funcionalidades de negócio, a adoção de um novo **tecnology stack**, ou o refinamento das APIs existentes.
@@ -422,7 +422,7 @@ Nesta seção, vamos discutir as técnicas disponíveis para implementar API ver
 
 Vamos demonstrar diferentes técnicas de **versioning** na próxima seção. Vamos utilizar, como modelo, apenas os endpoints **GET / courses /** e **POST / COURSES /** para o versionamento. 
 
-## Technique: implementing versioning in a RESTful API
+ **Technique: implementing versioning in a RESTful API**
 Vamos ver sobre  o versionamento na URI. Essa é uma abordagem direta, pois inclui um identificador de versão na URI REST. Por exemplo, */ courses /v1* representa a versão 1 da API, e */ courses / v2* representa a segunda versão de nossa API.
 
 Vamos supor que precisamos aprimorar a Course Tracker API, e ela também precisa suportar um atributo adicional de preço do curso junto com os detalhes anteriores do curso. A introdução do atributo de preço pode significar que podemos ter endpoints REST adicionais, como encontrar cursos dentro de uma faixa de preço ou recuperar cursos com base na ordem de preço.
@@ -439,9 +439,25 @@ Para a técnica de versionamento baseada em parâmetro de requisição HTTP, for
 Neste caso, vamos definir uma nova classe *RestController* chamada *RequestParameterVersioningCourseController*:
 
 
+
+
 No controller que nós criamos, observe o uso     dos parâmetros de requisição *version=v1* e *version=v2*,  que determinam qual endpoint será invocado. Também note que usamos a classe **CourseService** para a versão v1 da API e **ModernCourseRepository** para a versão 2 da API. Para fins de simplicidade e demonstração, a gente pulou a etapa de codificação das classes de serviço para a entidade moderna. 
 
-A gente pode agora executar a nossa aplicação e acessar os novos endpoints com a versão 1 e 2 como parâmetro. 
+A gente pode agora executar a nossa aplicação e acessar os novos endpoints com a versão 1 e 2 como parâmetro.
+
+---
+Com relação ao versionamento de API via URI, a versão deve vir logo após o prefixo base da API, e antes do nome do recurso.
+
+**Forma recomendada:**
+*@RequestMapping("/v1/ingestion")*
+
+Colocar o */v1* logo após a raiz da API deixa evidente qual versão o cliente está consumindo.
+
+Ferramentas como API Gateway, Nginx e Kong esperam esse padrão ( /v1 logo no início) para rotear versões corretamente.
+
+O cliente sabe, logo no início da URL, **qual versão da API está usando**, sem precisar ler o final do endpoint.
+
+Se usamos Spring Boot + Swagger (OpenAPI 3), esse padrão (v1) ajuda o #Swagger a **gerar a documentação** separada por versão automaticamente, o que é ótimo para manutenção de APIs em produção.
 
 ## 7.6 Securing a RESTful API
 Em seções anteriores, discutimos vários aspectos do desenvolvimento de uma API RESTful, que incluem desenvolver uma API, sua documentação, seus testes e versionamento. Ainda nos falta outro aspecto central do desenvolvimento de API. E é a segurança da API. Atualmente, nossa API não está segura, e qualquer pessoa que conheça os **endpoints da API pode aceder à API**/
