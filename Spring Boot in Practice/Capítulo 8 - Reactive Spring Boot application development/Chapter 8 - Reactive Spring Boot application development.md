@@ -465,22 +465,25 @@ public class TaskHandler {
 4. Utilização exclusiva de classes abstratas para os endpoints.
 ?
 **2. Definição de rotas e manipuladores por funções (RouterFunction e HandlerFunction)**
+<!--SR:!2025-11-06,2,248-->
 
 **Qual biblioteca do Spring é geralmente usada para implementar APIs com Functional Endpoints?**
-A) `spring-data-jpa`  
-B) `spring-webmvc`  
-C) `spring-webflux`  
+A) `spring-data-jpa`
+B) `spring-webmvc`
+C) `spring-webflux`
 D) `spring-security`
 ?
 **C) spring-webflux**
+<!--SR:!2025-11-06,2,248-->
 
 **Qual das alternativas abaixo representa uma vantagem dos Functional Endpoints?**
-A) Menor legibilidade e mais acoplamento entre rotas e lógica  
-B) Desempenho inferior em aplicações reativas  
-C) Maior controle funcional sobre o fluxo de requisição e resposta  
+A) Menor legibilidade e mais acoplamento entre rotas e lógica
+B) Desempenho inferior em aplicações reativas
+C) Maior controle funcional sobre o fluxo de requisição e resposta
 D) Exige obrigatoriamente o uso de `@RequestMapping`
 ?
 **C) Maior controle funcional sobre o fluxo de requisição e resposta**
+<!--SR:!2025-11-06,2,248-->
 
 ---
 
@@ -512,15 +515,16 @@ C) A `RouterContext` cria automaticamente os endpoints REST com base nas entidad
 D) A `RouterContext` gerencia o ciclo de vida das conexões reativas e o `CourseHandler` atua como um proxy para o servidor HTTP.
 ?
 <span style="background:#affad1">B) A `RouterContext` define as rotas e vincula cada requisição HTTP (GET, POST, PUT, DELETE) a um método específico do `CourseHandler`, que contém a lógica para manipular e responder às requisições.  </span>
-<!--SR:!2025-11-01,1,230-->
+<!--SR:!2025-11-06,2,230-->
 
 **No exemplo da Listing 8.10, o `RouterFunction<ServerResponse>` é o núcleo da configuração funcional da API. O que ele faz exatamente durante o processamento de uma requisição e por que ele é fundamental em uma aplicação reativa com Spring WebFlux?**
-A) Ele intercepta as requisições antes do dispatcher servlet e transforma todas em chamadas síncronas.  
-B) Ele define um mapeamento funcional entre os tipos de requisições HTTP e os métodos do `CourseHandler`, permitindo que as requisições sejam processadas de forma não bloqueante e reativa.  
-C) Ele substitui o uso do `ResponseEntity` por `ModelAndView`, garantindo compatibilidade com o Spring MVC tradicional.  
+A) Ele intercepta as requisições antes do dispatcher servlet e transforma todas em chamadas síncronas.
+B) Ele define um mapeamento funcional entre os tipos de requisições HTTP e os métodos do `CourseHandler`, permitindo que as requisições sejam processadas de forma não bloqueante e reativa.
+C) Ele substitui o uso do `ResponseEntity` por `ModelAndView`, garantindo compatibilidade com o Spring MVC tradicional.
 D) Ele cria dinamicamente controladores anotados e delega as chamadas ao contexto de servlet padrão.
 ?
 <span style="background:#affad1">B) Ele define um mapeamento funcional entre os tipos de requisições HTTP e os métodos do `CourseHandler`, permitindo que as requisições sejam processadas de forma não bloqueante e reativa.  </span>
+<!--SR:!2025-11-06,2,248-->
 
 In the Next, let's define the **CourseHandler** class, as shown in the following listing. This class contains the logic to perform the CRUD operations.
 
