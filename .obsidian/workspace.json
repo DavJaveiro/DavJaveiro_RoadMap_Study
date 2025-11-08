@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications.md",
+                "file": "OCP Java SE21/Chapter 1 - Building Blocks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 9 - Deploying Spring Boot applications"
+              "title": "Chapter 1 - Building Blocks"
             }
           }
         ]
@@ -220,10 +220,13 @@
   },
   "active": "3aa1b8d7f2a77010",
   "lastOpenFiles": [
+    "OCP Java SE21/Chapter 1 - Building Blocks.md",
+    "RoadMap do DavJaveiro/RoadMap.md",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
+    "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications.md",
     "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications",
     "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications/image-20251152049341.png",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
-    "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications.md",
     "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "ByeByeCupom/Kanban API (Sistema).canvas",

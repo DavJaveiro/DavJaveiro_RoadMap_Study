@@ -71,3 +71,8 @@ In this technique, we'll discuss how to package a Spring Boot application as a W
 We have developed a Spring Boot application and need to package it as a WAR file and deploy it in the WildFly application server.
 
 **Solution**
+In this section, we'll demonstrate how to package a Spring Boot application and deploy it in the WildFly server. 
+
+To package the components as WAR files, we need to make two changes:
+1. In the pom.xml file, the packaging type should be war, as shown in the following listing.
+2. 
