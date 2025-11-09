@@ -11,72 +11,135 @@ In this chapter, we present the basics of Java packages, classes, variables, and
 The exam expects you to know and understand the rules behind theses principles. While most of this chapter should be review, there may be aspects of the Java language that are new to you since they don't come up in practical use often. 
 
 ## Learning About the Environment
-The environment consist of a number of technologies. In the following sections, we go over the key terms and acronyms you need to know and then discuss what <span style="background:#d4b106">software you need to study for the exam</span>.
+The Java environment consists of a number of technologies. In the following sections, we go over the key terms and acronyms you need know and then discuss what software you need to study for the exam.
 
 ## Major Components of Java
-The *Java Development Kit (JDK)* contains the minimum software you need to do Java development. Key commands include the following:
-- #javac: Converts *.java* source files into *.class* bytecode
+The *Java Development Kit (JDK)* contains the minimum software we need to do Java development. Key commands include the following:
+- #javac: converts .java source files into .class bytecode
 - #java: Executes the program
 - #jar: packages files together
-- #Javadoc: generates documentation
+- #javadoc: generates documentation
 
-The *javac* program generates instructions in a special format called *bytecode* that the **java** command can run. Then **java** launches the *Java Virtual Machine (JVM)* before running the code. The JVM knows how to run bytecode on the actual machine it is on. <span style="background:#b1ffff">You can think of the JVM as a special magic box on your machine that knows to run you</span> *.class* file within your particular operating system and hardware.
+The *.javac* program generates instructions in a special format called *bytecode* that the *java* command can run. Then *java* launches the *Java Virtual Machine (JVM)* before running the code. The #JVM knows how to run bytecode on the actual machine it is on. You can think of the JVM as a special magic box on your machine that knows how to run your .class file whtin your particular operating system and hardware.
 
----
-## Where Did the JRE Go?
-In Java 8 and earlier, you could download a Java Runtime Environment (JRE) instead of the full JDK. The JRE was a subset of the JDK  that was used for running a program but could not compile one. Now, people can use the full JDK when running a Java program. Alternatively, developers can supply as executable that contains the required pieces that would have bean in the JRE.
-
-Portanto, o JRE continha apenas os componentes necessários para rodar aplicações Java, mas não permitia compilá-las.
-
-Agora, o JRE não é mais distribuído separadamente. Em vez disso, qualquer pessoa pode usar o JDK completo para rodar programas Java. Além disso, os desenvolvedores têm a opção de fornecer executáveis que incluam apenas os elementos essenciais que antes estavam no JRE, garantindo que os programas funcionem sem exigir a instalação do JDK inteiro.
-
-Isso reflete uma tendência de modularização no Java, tornando sua distribuição mais flexível e adaptável às necessidades dos desenvolvedores e usuários.
-
----
-
-You might have noticed that we said the JDK contains the minimum software you need. Many developers use an IDE to make writing and running code easier. <span style="background:#d4b106">While we do not recommend using one while studying for the exam</span>, it is still good to know that they exist. 
-
-## Downloading a JDK
-Every six months, Oracle releases a new version of Java. Java 21 came out in September 2023. This means Java 21 will not be the latest version when you download the JDK to study for the exam. However, you should still user Java 21 to study with since this is a Java 21 exam. The rules and behavior can change with later versions of Java. You wouldn't want to get a question wrong because you studied with a different version of Java!
-
-**Check your Version of Java**
-Before we go any further, please take this opportunity to ensure you have the right version of Java on your path.
+You might have noticed that we said the JDK contains the minimum software you need. Many developers use an *integrated development environment* (IDE) to make writing and running code easier. While we do not recommend using one while studying for the exam, it is still good to know that they exist. Common Java IDEs...
 
 ## Understanding the Class Structure
-In Java programs, classes are the basic building blocks. When defining a *class*, you describe all the parts and characteristics of one of those building blocks. In later chapters, <span style="background:#affad1">you see other building blocks</span> such as #interfaces, #records, and #enums. 
+In Java programs, class are the basic building blocks. When defining a *class*, we describe all the parts and characteristics of on of those building blocks. In later chapters, you see other <span style="background:#affad1">building blocks</span> such as interfaces, records, and enums.
 
-To use most classes, <span style="background:#b1ffff">you have to create objects</span>. An #object is a runtime instance of a class in memory. An object if often referred to as an #instance since it represents a single representation of the class (um objeto é referenciado como uma instância desde que ele seja uma simples representação de uma classe). All the various objects of all the different classes represents the state of your program. A *reference* is a variable that points to an object (uma referência é uma variável que aponta para um objeto). 
+Building Blocks: #class, #interfaces, #records and #enums.
+
+To use most classes, you have to create objects. An #object is a **runtime instance of a class in memory.** 
+
+All the various objects of all the different classes represent the state of your program. A *reference is* a variable that points to an object.
 
 In the following sections, we look at fields, methods, and comments. We also explore the relationship between classes and files.
+(Nós iremos explorar a relação entre classes e arquivos).
 
 ## Fields and Methods
-Java classes have <span style="background:#b1ffff">two primary elements</span>: *methods*, often called functions or procedures in other languages, and *fields*, more generally know as variables. Together these are called the *members* of the class or atributes. Variables hold the state of the program, and methods operate on that state. If the change is important to remember, a variable stores that change. That's all classes really do. It's the programmer's job to create and arrange these elements in such a way that the resulting code is useful and, ideally, easy for other programmers to understand. 
+Java classes have two primary elements: #methods, often called functions or #procedures in other languages, and #fields more generally known as variables. Together these are called the *members* of the class. Variables hold the state of the program, and methods operate on that state. If the change is important to remember, a variable stores that change. That's all classes really do. It's the programmer's job to create and arrange these elements in such a way that the resulting code is useful and, ideally, easy for other programmers to understand. 
 
 The simplest Java class you can write looks like this:
 ```java
 public class Animal {
 }
 ```
-Java call a word with special meaning a *keyword*, which we've marked bold in the previous snippet. Throughout the book, we often bold parts of code snippets to call attention to them. Line 1 includes the **public** keyword, which allows other classes to use it. The **class** keyword indicates you're defining a class. **Aninal** gives the name of the class. Granted, this isn't an interesting class, so let's add your first field.
+
+Java calls a word with special meaning a #keyword, which we've marked bold in the previous snippet. Throughout the book, we ofeten bold partes of code snippets to call attention to them. Line 1 includes the #public keyword, which allows other classes to use it. The *class* keyword indicates you're defining a class.  *Animal* gives the name of the class. Granted, this isn't an interesting class, so let's add your first field.
 ```java
 public class Animal {
 	String name;
 }
 ```
+On line 2, we define a variable named *name*. We also declare the type  of that variable to be #String. A #String is a value that we can put text into, such as "this is a string". #String is also a class supplied with Java. 
+Supplied = fornecido.
 
-**Note**: The line numbers aren't part of the program; they're just there to make the code easier to talk about.
-
-On line 2, we define a variable named *name*. We also declare the type of that variable to be *String*. A *String* is a value that we can put text into, such as "this is a string". *String* is also a class supplied with Java. Next we can add methods.
+Next we can add methods
 ```java
 public class Animal {
-	String name;
+	String name,
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String newName) {
 		name = newName;
 	}
 }
 ```
+On lines 3-5, we define a method. A method is an operation that can be called (Um método é uma operação que pode ser chamada/invocada). Again, *public* <span style="background:#b1ffff">is used to signify that this method may be called from other classes</span>. Next comes the return type in this case, the method returns a String. On lines 6-8 is another method. This one has a special return type called *void*. The #void keyword means that no value at all is returned. This method requires that information be supplied to it from the calling method; this information is called a *parameter*. The *setName()* method has one #parameter named newName, and it is of type String. This means the caller should pass in one String parameter and expect nothing to be returned. 
 
-On lines 3-5, we define a method. 
+The method name and parameter types are called the *method signature*. In this example, can you identify the method name and parameters?
+```java
+public int numberVisitors(int month) {
+	return 10;
+}
+```
+**numberVisitors** is the method name
+**month**  is the parameter;
+
+There's one parameter named month, which is of type int, which is a numeric type.  Therefore, the method signature is *numberVisitors*(int);
+Therefore = portanto
+
+## Comments
+Another common part of the code is called a *comment*. Because comments aren't executable code, you can place them in many places. Comments can make your code easier to read. While the exam creators are trying to make the code harder to read, they still use comments to call attention to line numbers. We hope you use comment in your own code. There are three types of comments in Java. The first is a single-line comment.
+```java
+// comment until end of line
+```
+A single-line comment begins with two slashes. The compiler ignores anything you type after that on the same line. Next comes the multiple-line comment.
+
+```java
+/* Multiple
+ * line comment
+ */
+```
+A multiple-line comment (also known as a multline comment) inclues anything starting from the symbol /* untul the symbol * /. People often type an asterisk (* ) at the beginning of each line of a multine commento to make it easer to read, but  you don't have to. Finlly, this is Javadoc comment:
+```java
+/**
+* Javadoc multiple-line comment
+* @author Jeanne and Scott
+*/
+```
+This comment is similar to a multiline comment, except it starts with / ** . This special syntax tells the Javadoc tool to pay attention to the comment. Javadoc comments have a specific structure that the Javadoc tools knows how to read. You probably won't see a Javadoc comment on the exam. Just remember it exists, so you can read up on it online when you start writing programs for others to use.
+
+As a bit of practice, can you identify which type of comment each of the following six words is in? Is each a single-line or a multline comment?
+
+## Classes and Source Files
+Most of the time, each Java class is defined in its own .java file. In this chapter, the only top-level type is a class. A top-level type is a data structure that can be defined independently within a source file. For the majority of the book, we work with classes as the top-level type, 
+
+**O que é um tpo-level type (tipo de nível superior)?**
+É simplesmente uma classe (ou interface, ou enum) que não está dentro de outra classe.
+
+Exemplo de tipo *top-level:*
+```java
+public class Pessoa {
+}
+```
+
+Exemplo de **tipo não top-level** (classe de dentro de outra classe):
+```java
+public class Pessoa {
+	class Endereco { // classe interna (inner class), não é top-level
+	}
+}
+```
+- **Pessoa é top-level**
+- Endereço é classe interna (não top-level)
+
+For the majority of the book, we work with classes as the top-level type, but in **chapter 7**, "Beyond Classes", we present other top-level types, as well as nested types.
+
+A top-level class is often (geralmente) *public*, which means any code can call it. Interestingly, Java does not require that the type be *public*. For example, this class is just fine:
+```java
+class Animal {
+	String name;
+}
+```
+You can even put two types in the same file. When you do so, at most one of the top-level types in the file is allowed to be public. That means a file containing the following is also fine:
+```java
+public class Animal {
+	private String name;
+}
+class Animal12 {}
+```
+If you do have a public type, it needs to match the filename. The declaration *public class Animal12* would not compile in a file named *Animal.java*. In Chapter 5, "Methods," we discuss what access options are available other than public.
+
