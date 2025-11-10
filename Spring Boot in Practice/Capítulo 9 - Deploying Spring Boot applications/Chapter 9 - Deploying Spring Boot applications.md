@@ -73,6 +73,52 @@ We have developed a Spring Boot application and need to package it as a WAR file
 **Solution**
 In this section, we'll demonstrate how to package a Spring Boot application and deploy it in the WildFly server. 
 
-To package the components as WAR files, we need to make two changes:
+To <span style="background:#affad1">package the components as WAR </span>files, we need to make two changes:
 1. In the pom.xml file, the packaging type should be war, as shown in the following listing.
-2. 
+2. Define an instance of a *WebApplicationInitializer* to run the application from a #WAR deployment. The *WebApplicationInitializer* allows us to configure the #servletContext programmatically in servlet 3.0+ environment. If we create our Spring Boot application through Spring Initializr... then by default Spring Boot provides a class called *ServletInitializer*. This class extends the #SpringBootServletInitializer class, which is an instance of #WebApplicationInitializer implementation provide by Spring Boot to run a Spring Boot application in a WAR deployment. If our are not creating the Spring Boot application from Spring Initializr, we have to perform this step manually.
+
+The following listing shows the #ServletInitializer class:
+```java
+public class ServletInitializer extends SpringBootServletInitializer {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(CourseTrackerSpringBootApplication.class);
+	}
+}
+```
+
+We added the *CourseTrackerSpringBootApplication* class in **SpringApplicationBuilder**. Later on, this SpringApplicationBuilder is used to build an instance of SpringApplication, which is run to start the Spring Boot application.
+
+Next, let's exclude the *logback-starter* dependency form the *spring-boot-starte-web dependency* in the pom.xml, as shown in the following listing.
+
+We excluded this dependency, as it conflicts with the *slf4j-jboos-logmanager-1.1.0.Final.jar* of the WildFly server. O wildfly já possui seu próprio gerenciador de logs. Se levarmos outra implementação de SLF4J dentro da nossa aplicação, (no WAR), o servidor vai ter duas versões competindo. 
+
+Next, let's define the context root of the application to "/". 
+O context root é o nome que aparece na URL para acessar a aplicação. 
+http://localhost:8080/meuapp, meu app é o contexto root.
+
+Se definirmos para "/"
+http://localhost:8080/
+A nossa aplicação fica na raiz, sem nome extra no caminho.
+
+```xml
+<jboss-web>  
+    <context-root>/app</context-root>  
+</jboss-web>
+```
+
+After successfully building, we'll notice that the application is packaged as a WAR file. We can deploy this WAR file on the WildFly server.
+
+Before starting deployment, we need to ensure an instance of the WildFly application server is running. Open the browser window and access the http://localhost:9990 URL, and you'll notice the WildFly server  management console. Click on the Deployments menu and then the Upload Deployment button.
+
+## 9.5 Running Spring Boot applications as Docker containers
+In this section, we'll shift our attention to containers and use the most popular container implementation Docker to run the Course Tracker application as a containerized application. However, before we proceed to containerize the Cours Tracker application, let's understand what a container is and why **you should care** about it. 
+
+A container image is a lightweight, standalone, executable software package that includes everything the application requires to run itself. These include application componentes, runtime, system tools, settings, and libraries. A container image turns into a container at its runtime, as shown in figure 9.6.
+
+A container image can be used to create one or more containers.
+![image-2025119156278.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%209%20-%20Deploying%20Spring%20Boot%20applications/Chapter%209%20-%20Deploying%20Spring%20Boot%20applications/image-2025119156278.png)
+
+The various componentes to run a container are shown in figure 9.7
+
+One of the most importante reasons to use a container in the first place is due to its promise of reliable execution from one environment to another environment.
