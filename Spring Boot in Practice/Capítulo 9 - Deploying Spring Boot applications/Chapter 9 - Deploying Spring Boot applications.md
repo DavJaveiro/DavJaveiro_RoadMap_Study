@@ -121,4 +121,21 @@ A container image can be used to create one or more containers.
 
 The various componentes to run a container are shown in figure 9.7
 
-One of the most importante reasons to use a container in the first place is due to its promise of reliable execution from one environment to another environment.
+One of the most importante reasons to use a container in the first place is due to its promise of reliable execution from one environment to another environment. It is a relatively common occurrence that in a typical infrastructure, applications may behave differently. For isntance, we often found that applications working perfectly in the Dev environment may have some issues while running in UAT. Containers remove this problem, as it is a standalone package that contains everything the application requires to run. Thus, if the same image is used to run the application in Dev or UAT, it is expected to run uniformly.
+
+Docker is the most popular and dominant container technology platform and can be used to deal with container and container images. Docker is so popular that it is almost synonymous with containers and container technology. 
+
+### 9.5.1 Technique: creating a container image and running a Spring Boot application as a container
+
+**Problem**
+You are running the Course Tracker application in your Unix server through the WildFly application server. However, you've heard a lot of good things about containers and want to run the application as a container.
+
+**Solution**
+To proceed with the next technique, we need to install and configure Docker. You can refer to Docker documentation...
+
+In this section, we'll explore the following approaches to *Dockerize* the Course Tracker application:
+1. Use #dockerfile to create the #container image and then run the image to create the container.
+2. Use Spring Boot built-in containerization (requires Spring Boot version >=2.3). This use the **Paketo builpacks** to build the image.
+
+In these approaches, we'll use H2 in-memory database with the application to keep the examples simple.
+
