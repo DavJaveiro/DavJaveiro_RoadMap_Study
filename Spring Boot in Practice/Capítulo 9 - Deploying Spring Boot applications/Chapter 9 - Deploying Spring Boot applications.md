@@ -139,3 +139,46 @@ In this section, we'll explore the following approaches to *Dockerize* the Cours
 
 In these approaches, we'll use H2 in-memory database with the application to keep the examples simple.
 
+Let's begin with the first approach. We'll use a Dockerfile to create the Docker image. Before we define the Dockerfile, let's execute the *mvn clean install* commando to generate the JAR file of the Course Tracker applicaation. 
+
+---
+Pois o Docker file normalmente precisa do artefato final da nossa aplicação, o .jar para copiá-lo para dentro da imagem. 
+
+*mvn clean install* faz duas coisas importantes:
+1. **Compila o projeto  e executa os testes** para garantir que o código está funcionando.
+2. **Empacota o resultado em um .jar** dentro de *target/*
+No Dockerfile, geralmente temos uma linha como:
+```bash
+COPY target/meu-app.jar app.jar
+```
+
+Se não executaarmos *mvn clean isntall* antes, o arquivo *target/jar* simplesmente não existe, portanto, o docker build vai falhar porque não terá o artefato para copiar.
+
+**Resumo direto:**
+- **mvn clean install**, cria o .jar
+- Dockerfile, copia o .jar para a imagem
+- Sem o .jar não há o que rodar dentro do container
+
+---
+
+Let's now define the *Dockerfile* for the Course Tracker application. A *Dockerfile* is a text file that contains all the commands needed to assemble and create the image. This file is located under the root directory of the application.
+
+FROM adoptopenjdk:11-jre-hotspot
+ADD target/*.jar application.jar
+ENTRYPOINT ["java", "-jar","application.jar"]
+EXPOSE 8080
+
+In listing 9.26, the Dockerfile contaains the following:
+- FROM - we are using adoptopenjdk:11-jre-hotspot as the base image for our image. A base image is an image upon which your application Docker image is built. Essa imagem já vem com o Java 11 JRE instalado. Não precisamos instalar o java manualmente dentro do Docker.
+Qual usar? E como atualizar no seu Dockerfile
+Como você trabalha com Java, Spring Boot e contêineres, minha recomendação:
+- Se você estiver confortável e seu projeto permitir, **migre para uma imagem baseada em Java 17** (ou superior, se já estiver compatível) — muitas bibliotecas (inclusive Spring Boot) já suportam Java 17 ou acima.
+- Use uma imagem oficial e bem mantida, por exemplo `eclipse-temurin:17-jre` ou `openjdk:17-jdk-slim`.
+- Em seu Dockerfile, substituir a linha base por algo como:
+    `FROM eclipse-temurin:17-jre`
+    ou
+    `FROM openjdk:17-jdk-slim`
+
+    dependendo de seus requisitos (runtime apenas ou JDK completo).
+    
+- Verifique se todas as dependências do seu projeto, bem como o Spring Boot que você está usando, são compatíveis com Java 17 ou a versão que você escolher.
