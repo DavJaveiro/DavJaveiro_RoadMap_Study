@@ -54,7 +54,7 @@ Before containerization and Kubernates, deploying applications into a Web server
 
 The figure above shows a high-level diagram with the use of application server clustering to deploy Spring Boot applications. This cluster deployment provides capabilities, such as load balancing and high availability. 
 
-![image-20251152049341.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%209%20-%20Deploying%20Spring%20Boot%20applications/Chapter%209%20-%20Deploying%20Spring%20Boot%20applications/image-20251152049341.png)
+![image-20251152049341.png](image-20251152049341.png)
 
 **Alguns recursos do Loadbalancer**
 1. Aumento de disponibilidade: se uma instância cair, o Load Balancer para de enviar requisições para ela e continua usando as outras. 
@@ -117,7 +117,7 @@ In this section, we'll shift our attention to containers and use the most popula
 A container image is a lightweight, standalone, executable software package that includes everything the application requires to run itself. These include application componentes, runtime, system tools, settings, and libraries. A container image turns into a container at its runtime, as shown in figure 9.6.
 
 A container image can be used to create one or more containers.
-![image-2025119156278.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%209%20-%20Deploying%20Spring%20Boot%20applications/Chapter%209%20-%20Deploying%20Spring%20Boot%20applications/image-2025119156278.png)
+![image-2025119156278.png](image-2025119156278.png)
 
 The various componentes to run a container are shown in figure 9.7
 
@@ -182,3 +182,30 @@ Como você trabalha com Java, Spring Boot e contêineres, minha recomendação:
     dependendo de seus requisitos (runtime apenas ou JDK completo).
     
 - Verifique se todas as dependências do seu projeto, bem como o Spring Boot que você está usando, são compatíveis com Java 17 ou a versão que você escolher.
+
+- **ADD** - We then add the JARs from the target directory as application.jar in the image.
+- **ENTRYPOINT** - This is the entry point where we run the image.
+- **EXPOSE** - We expose HTTP port 8080 in the container.
+
+Next, let's execute the command, as shown in listing 9.27 to create the image. You need to execute the command from the location where the *Dockerfile* is located.
+
+`docker build --tag course-tracher:v1 .`
+
+In listing 9.27, note the period (.) at the end of the command. This indicates that the docker files is available in the current directory. Besides, we tag the imagem with the name *courser-tracker:v1* to refer to the image, while creating a container from the image.
+
+Once you execute the command, it will take a while to build the image. Once the image is successfully built, we can list the image using the command, a shown in the following listing.
+`docker image ls`
+
+We can run the image, and a Docker container will be created. The following listing shows the command to run the image.
+
+`docker run -p 8080:8080 course-tracker:v1`
+
+We've used the *docker run* command to run the container image. We've also used a port mapping of local machine HTTP port 8080 to the container's HTTP port 8080. The ensures the HTTP request to the port 8080 in the local machine is forwarded to the container's port 8080.
+
+Once the command runs successfully, you'll notice the console log of the Course Tracker Application. Open a browser window, and access the application in the URL.
+
+Let's now briefly discuss the container image structure we've created in listing 9.26. Your Docker container image consist of multiple layers. If you recall, we started with the base image. In our Dockerfile, we performed additional activities, such as adding the JAR file from the target location to the image. This has created an additional layer on top of the base image. 
+
+In the Dockerfile, we've added the fat JAR inside the image. However, we could write a better Dockerfile for Spring Boot applications. Instead of adding the complete JAR, we could add the layers from the generated JAR file. Recall from section 9.1 that Spring Boot provides a means to layer the JAR file through the layers.xml file. 
+
+In this technique, we've learned how to build a Docker image from a Spring Boot application and run the image as a Docker container. Containers provide excellent portability support, as the container images can be run anywhere reliably.

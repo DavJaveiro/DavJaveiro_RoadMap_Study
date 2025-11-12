@@ -168,7 +168,7 @@ Outro ponto importante a destacar é o uso de substantivos ao definir os caminho
 Vamos agora apresentar um diagrama de fluxo de alto nível que mostra o processamento de requisições e respostas em uma API REST em uma aplicação Spring Boot. A figura 7.1 mostra esse diagrama.
 
 
-![image-2025971654326.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%207%20-%20Developing%20RESTful%20Web%20services%20with%20Spring%20Boot/Cap%C3%ADtulo%207%20-%20Developing%20RESTful%20Web%20services%20with%20Spring%20Boot/image-2025971654326.png)
+![image-2025971654326.png](image-2025971654326.png)
 Figura 7.1 Diagrama de fluxo de comunicação em uma API REST. Um usuário invoca um endpoint REST, que é tratado pelo Controlador REST. O controlador, então, utiliza a camada de serviço para processar a requisição. A camada de serviço depende do repositório para se comunicar com o banco de dados. Após receber uma resposta do repositório, ela é processada pela camada de serviço e encaminhada ao controlador. O controlador pode realizar processamentos adicionais, e a resposta final é fornecida ao cliente da API.
 
 No trecho 7.5, utilizamos a anotação *@RestController* no lugar da anotação *@Controller* usada anteriormente. A anotação *@RestController* é uma anotação de conveniência que é meta-anotada com as anotações *@Controller* e *@ResponseBody*. A anotação *@ResponseBody* indica que o valor de retorno de um método deve ser vinculado diretamente ao corpo da resposta HTTP. 

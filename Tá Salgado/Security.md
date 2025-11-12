@@ -3,7 +3,7 @@
 - Evitar expor tech stack em nossa API (devemos tratar todos os erros de nossa API quanto possíveis, usando EXCEPTION HANDLING):
 
 - [ ] **400 Bad Request** - evitar #payload incompleto/incorreto ao criar algum produto: podemos realizar essas validações utilizando o *Jakarta Validation*, utilizando as anotações *@NotNull, @NotBlank, @MinSize...* Adicionamos o *@Valid* no nosso PostMapping e depois adicionamos o código para capturar as exceções em nosso Global Exception Handler:
-[[CourseTrackerGlobalExceptionHandler.java]]
+[[🚀 Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/course-api/src/main/java/com/packt/courseapi/shared/exception/handler/CourseTrackerGlobalExceptionHandler.java]]
 
 As validações @NotNull, @NotBlank, são adicionadas nos DTOs. 
 

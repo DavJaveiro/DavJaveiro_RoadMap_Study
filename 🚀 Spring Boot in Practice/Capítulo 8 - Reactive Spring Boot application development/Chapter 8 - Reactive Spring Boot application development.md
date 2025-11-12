@@ -17,14 +17,14 @@ Neste capítulo, veremos os protocolos **RSocket** e **WebSOCKET**, que oferecem
 Um fluxo de dados refere-se a uma sequência de dados em que as informações são **emitidas**, uma após a outra, dentro de um **intervalo de tempo**. Esse fluxo pode ser criado a partir de diversas fontes: **entradas de usuário**, **propriedades**, **caches**, **bancos de dados**, entre outros.
 Vamos entender melhor esse conceito por meio de uma comparação entre o **processamento de dados tradicional** e o **processamento baseado em fluxos** (*stream processing*). 
 
-![image-20251064126891.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%208%20-%20Reactive%20Spring%20Boot%20application%20development/Chapter%208%20-%20Reactive%20Spring%20Boot%20application%20development/image-20251064126891.png)
+![image-20251064126891.png](image-20251064126891.png)
 Na figura, temos o método tradicional de processamento de dados, onde uma requisição do usuário é recebida pela aplicação, e os dados solicitados são recuperados do banco de dados pela aplicação. Em seguida, esses dados recuperados são **processados** e **retornados ao usuário**.
 
 Já, ao lado direito, demonstramos o **processamento de fluxo (stream processing).** Nesse modelo, a aplicação se inscreve (subscribe) em um **fluxo de dados** (data stream) e recebe os dados assim que eles estão disponíveis. A aplicação então processa os dados e publica o resultado em outro fluxo. Na figura, há um fluxo de números ao qual a aplicação está inscrita. À medida que a aplicação recebe o fluxo de dados, ela processa cada elemento multiplicando por dois, e os resultados são publicados em outro fluxo.
 
 Agora, vamos discutir o conceito de **processamento assíncrono**. O termo assíncrono significa que, para uma requisição, a resposta associada é retornada apenas quando estiver pronta, sem que a thread chamadora precisar aguardar por ela. A figura 8.2 mostra uma comparação entre o **processamento síncrono (syncronous)** e o **assíncrono**":
 
-![image-20251062133192.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%208%20-%20Reactive%20Spring%20Boot%20application%20development/Chapter%208%20-%20Reactive%20Spring%20Boot%20application%20development/image-20251062133192.png)
+![image-20251062133192.png](image-20251062133192.png)
 
 Antes de prosseguirmos, vamos discutir um **exemplo do mundo real** de **fluxos de dados assíncronos**. Os **eventos de clique do mouse** são um exemplo clássico. Os usuários de uma aplicação podem **clicar em um botão** e **gerar um evento**, que pode ser observado e reagido através de alguma ação na aplicação. Podemos imaginar esses eventos como um fluxo contínuo de eventos assíncronos. 
 
@@ -55,13 +55,13 @@ Vamos aprender outro conceito importante na programação reativa: o #backpressu
 No entanto, antes de discutir esse conceito, é importante entender as noções de métodos push e pull em uma relação de produtor e consumidor. 
 
 Um consumidor se inscreve (subscribes) para receber dados de um **produtor**, e o **produtor envia (pushes)** esses dados ao consumidor. 
-![image-20251061830250.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%208%20-%20Reactive%20Spring%20Boot%20application%20development/Chapter%208%20-%20Reactive%20Spring%20Boot%20application%20development/image-20251061830250.png)
+![image-20251061830250.png](image-20251061830250.png)
 
 Na figura cima, um produtor    envia (pushes) eventos para o consumidor inscrito (subscribed  consumer). Essa configuração funciona bem quando a taxa de consumo do consumidor é igual à taxa de envio do produtor. 
 
 No entanto, o que acontece se o consumidor processar os eventos mais lentamente do que o produtor os envia? Nesse caso, o consumidor pode colocar os eventos em uma fila (buffer) para armazená-los temporariamente.
 
-![image-20251062249380.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%208%20-%20Reactive%20Spring%20Boot%20application%20development/Chapter%208%20-%20Reactive%20Spring%20Boot%20application%20development/image-20251062249380.png)
+![image-20251062249380.png](image-20251062249380.png)
 
 O consumidor pode escolher entre um **buffer limitado** (bounded) ou um buffer ilimitado (unbounded) para armazenar os eventos adicionais.
 
@@ -131,7 +131,7 @@ public interfaace Processor<T, R> extends Subscrbier<T>, Publiser<R> {
 
 The Figure 8.7 shows the communication between the Subscriber, Publisher, and Subscription interfaces.
 
-![image-202510102746843.png](Spring%20Boot%20in%20Practice/Cap%C3%ADtulo%208%20-%20Reactive%20Spring%20Boot%20application%20development/Chapter%208%20-%20Reactive%20Spring%20Boot%20application%20development/image-202510102746843.png)
+![image-202510102746843.png](image-202510102746843.png)
 
 Vamos discutir como essas APIs se comunicam entre si:
 1. Um #subscriber usa o método **subscribe()** da interface **Publisher** para adicionar uma **subscription** a um publisher.
