@@ -209,3 +209,45 @@ Let's now briefly discuss the container image structure we've created in listing
 In the Dockerfile, we've added the fat JAR inside the image. However, we could write a better Dockerfile for Spring Boot applications. Instead of adding the complete JAR, we could add the layers from the generated JAR file. Recall from section 9.1 that Spring Boot provides a means to layer the JAR file through the layers.xml file. 
 
 In this technique, we've learned how to build a Docker image from a Spring Boot application and run the image as a Docker container. Containers provide excellent portability support, as the container images can be run anywhere reliably.
+
+---
+Review
+O arquivo #Dockerfile é um arquivo de texto usado para definir as instruções de construção de uma imagem Docker. Ele descreve passo a passo **como o Docker deve montar o ambiente da aplicação**, incluindo o sistema operacional base, dependência, variáveis de ambiente, portas expostas, comandos e próprio aplicativo que será executado.
+
+### Estrutura básica de um Dockerfile
+```dockerfile
+# Etapa 1: Escolher a imagem base (sistema + Java)
+FROM eclipse-temurin:17-jdk
+
+# Etapa 2: Definir o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Etapa 3: Copiar o JAR da aplicação para dentro da imagem
+COPY target/applicação.jar app.jar
+
+# Etapa 4: definir o comando para rodar a aplicação
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Etapa 5: expor a porta (opcional)
+EXPOSE 8080
+```
+
+**Exemplo de build (multi-stage build)**
+Podemos realizar o processo de compilar e rodar a nossa aplicação dentro do Docker em duas etapas:
+```dockerfile
+# Etapa 1: Build da aplicação
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Etapa 2: Imagem final para rodar o app
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY --from=builder /app/target/minha-app.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+EXPOSE 8080
+```
+
+A vantagem de realizar dessa forma é que a imagem final ficar menor, pois não leva o Maven nem os arquivos de build.
+
