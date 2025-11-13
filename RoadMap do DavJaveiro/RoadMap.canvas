@@ -156,36 +156,6 @@
       "height": 1526
     },
     {
-      "id": "02383c611ce857f1",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/Mock Book.png",
-      "styleAttributes": {},
-      "x": 965,
-      "y": 9579,
-      "width": 1707,
-      "height": 2021
-    },
-    {
-      "id": "c5e1c8ff56cae39b",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/JMeter 3 Book.png",
-      "styleAttributes": {},
-      "x": 2990,
-      "y": 9620,
-      "width": 1600,
-      "height": 1980
-    },
-    {
-      "id": "4042faad3634a1c3",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/TDD Book.png",
-      "styleAttributes": {},
-      "x": 4107,
-      "y": 5782,
-      "width": 1973,
-      "height": 2797
-    },
-    {
       "id": "94fea0c1ba163b51",
       "type": "file",
       "file": "RoadMap do DavJaveiro/Covers/Pasted image 20250119183643.png",
@@ -597,16 +567,6 @@
       "height": 2565
     },
     {
-      "id": "477e31911125fada",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/JUnit Book.png",
-      "styleAttributes": {},
-      "x": -274,
-      "y": 6016,
-      "width": 1860,
-      "height": 2330
-    },
-    {
       "id": "1be170aa70ec5557",
       "type": "file",
       "file": "RoadMap do DavJaveiro/Covers/Modern.png",
@@ -841,6 +801,36 @@
       "y": -5287,
       "width": 2059,
       "height": 2911
+    },
+    {
+      "id": "477e31911125fada",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/JUnit Book.png",
+      "styleAttributes": {},
+      "x": 3373,
+      "y": 6048,
+      "width": 1860,
+      "height": 2330
+    },
+    {
+      "id": "02383c611ce857f1",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/Mock Book.png",
+      "styleAttributes": {},
+      "x": 1280,
+      "y": 9920,
+      "width": 1707,
+      "height": 2021
+    },
+    {
+      "id": "c5e1c8ff56cae39b",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/JMeter 3 Book.png",
+      "styleAttributes": {},
+      "x": 5920,
+      "y": 9941,
+      "width": 1600,
+      "height": 1980
     }
   ],
   "edges": [
@@ -1512,26 +1502,6 @@
       "color": "4"
     },
     {
-      "id": "39d780a5c5d2a2d3",
-      "styleAttributes": {
-        "pathfindingMethod": "square"
-      },
-      "fromNode": "94fea0c1ba163b51",
-      "fromSide": "left",
-      "toNode": "4042faad3634a1c3",
-      "toSide": "right"
-    },
-    {
-      "id": "d1d2ff066efdc538",
-      "styleAttributes": {
-        "pathfindingMethod": "square"
-      },
-      "fromNode": "4042faad3634a1c3",
-      "fromSide": "left",
-      "toNode": "477e31911125fada",
-      "toSide": "right"
-    },
-    {
       "id": "0a40ee3ff0908251",
       "styleAttributes": {
         "pathfindingMethod": "square",
@@ -1716,6 +1686,14 @@
       "toNode": "1f704a86abaf0841",
       "toSide": "left",
       "color": "4"
+    },
+    {
+      "id": "9791db1ee1c9543b",
+      "styleAttributes": {},
+      "fromNode": "94fea0c1ba163b51",
+      "fromSide": "left",
+      "toNode": "477e31911125fada",
+      "toSide": "right"
     }
   ],
   "metadata": {}

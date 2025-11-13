@@ -1,7 +1,0 @@
-com\davjaveiro\products_api\products\controller\CourseController.class
-com\davjaveiro\products_api\products\dtos\products\CourseRequestDTO.class
-com\davjaveiro\products_api\products\config\RedisConfig.class
-com\davjaveiro\products_api\products\dtos\products\CourseResponseDTO.class
-com\davjaveiro\products_api\products\service\CourseService.class
-com\davjaveiro\products_api\ProductsApiApplication.class
-com\davjaveiro\products_api\products\domain\Course.class

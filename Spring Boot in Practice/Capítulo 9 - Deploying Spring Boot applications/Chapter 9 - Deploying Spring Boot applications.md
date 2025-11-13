@@ -251,3 +251,27 @@ EXPOSE 8080
 
 A vantagem de realizar dessa forma é que a imagem final ficar menor, pois não leva o Maven nem os arquivos de build.
 
+Todo #contianer possuí uma rede.
+
+docker network ls
+$ docker network ls
+NETWORK ID     NAME                   DRIVER    SCOPE
+d0f9854a8a4b   bridge                 bridge    local
+af761ab69065   gestao_vagas_default   bridge    local
+4b66b469b096   host                   host      local
+dc45f11fb20c   none                   null      local
+
+Se não especificarmos uma rede, o container será associado ao #bridge. Driver, é a rede padrão para qualquer container. Fornecerá uma interface que vai fazer a ponde com o docker0, do host. Neste caso, vamos conseguir realizar comunicação TCP por default. O ideal é que tenhamos as nossas redes com cada projeto.
+
+- #none = isola o nosso container; podemos associar uma rede none para o container que não vai ter contato com o ambiente externo;
+- #host: entregar todas as interfaces existentes; 
+
+Para especificar o driver de criação da rede:
+`docker network create --driver bridge second-network`
+
+Nesta aula, foi abordado como associar uma rede a um container Docker. Foram apresentadas duas formas de fazer essa associação: utilizando o comando `docker network connect` para containers já em execução e definindo a rede no momento da criação do container com o parâmetro `--network`. Foi explicado como verificar a associação da rede ao container utilizando os comandos `docker network inspect` e `docker container inspect`. Também foi mencionado que um container pode estar associado a várias redes.
+
+
+- docker run --rm -> isso garante que o container será apagado ao final do ciclo de uso do mesmo.
+
+- docker run -p 8080:8080: referente a porta, logo, precisamos mapear uma porta que vai apontar para uma porta que esteja rodando o processo dentro do container;
