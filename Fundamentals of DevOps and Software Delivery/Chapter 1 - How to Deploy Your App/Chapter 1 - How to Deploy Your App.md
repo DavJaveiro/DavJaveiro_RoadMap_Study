@@ -85,4 +85,4 @@ There are two main cloud offerings: *infrastructure as a service (IaaS)* which g
 Popular PaaS providers include #Heroku, Render, fly.ip, and Vercel. Heroku was on of the first PaaS providers, and it used to be my go-to choice, but it discontinued its free tier in 2022. Therefore, for the examples in this book, we'll be using Render, which offers a free Hobby tier and suport running apps in many languages and frameworks (including Node.js) without having to set up a build system or frameworks (topics you'll learn about later in the book). Render also has a good reputation in the community and is often described as the spiritual successor to Heroku. To deploy the sample app by using Render, go through the following steps:
 
 **Steap 1: Sign up for a Render account**
-Create a new account on *render.com.*
+Create a new account on *render.com.* 
