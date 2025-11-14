@@ -20,17 +20,18 @@ Manipulação de listas, eventos e formulários com React
 
 ## Creating React components
 
-O React é uma biblioteca JavaScript para interfaces do usuário (UIs). A partir da versão 15, o React tem sido desenvolvido sob a licença MIT. O React é baseado em componentes, e esses componentes são independentes e reutilizáveis. Os componentes são os blocos fundamentais do React.
+O React é uma biblioteca JavaScript para interfaces do usuário (UIs). A partir da versão 15, o React tem sido desenvolvido sob a licença MIT. **O React é baseado em componentes, e esses componentes são independentes e reutilizáveis.** Os componentes são os blocos fundamentais do React.
 
 Quando começamos a desenvolver uma interface com React, é recomendável iniciar criando interfaces simuladas (mock interfaces). Dessa forma, fica mais fácil identificar quais tipos de componentes serão necessários e como eles interagem entre si.
 
 A partir da seguinte interface simulada, podemos ver como a UI pode ser dividida em componentes. Nesse caso, haverá um componente raiz da aplicação, um componente de barra de pesquisa, um componente de tabela e um componente de linha da tabela:
 
 The components podem ser organizados de forma hierárquica, como mostrado na figura abaixo:
+!![image-202511134147682.png](FullStack%20Development%20React%20and%20Spring/Chapter%208%20-%20Getting%20Started%20With%20React/image-202511134147682.png)
 
 The root componente possuí dois componentes filhos: the search componente e a tabela componente. A tabela componente tem apenas um único filho, the table row componente.
 
-O ponto importante a entender sobre o React é que o fluxo de dados ocorre do componente pai para o componente filho. Mais adiante, aprenderemos como os dados podem ser passados de um componente pai para um componente filho utilizando props.
+O ponto importante a entender sobre o React é que <span style="background:#b1ffff">o fluxo de dados ocorre do componente pai para o componente filho</span>. Mais adiante, aprenderemos como os dados podem ser passados de um componente pai para um componente filho utilizando props.
 
 O React utiliza o modelo de objeto de documento virtual (Virtual Document Object Model - VDOM) para a re-renderização seletiva da interface do usuário, o que torna o processo mais eficiente. O modelo de objeto de documento (DOM) é uma interface de programação para documentos web que representa a página da web como uma árvore estruturada de objetos. Cada objeto na árvore corresponde a uma parte do documento. Usando o DOM, programadores podem criar documentos, navegar por sua estrutura e adicionar, modificar ou excluir elementos e conteúdos. O VDOM é uma cópia leve do DOM, e a manipulação do VDOM é muito mais rápida do que a manipulação do DOM real. Após a atualização do VDOM, o React o compara com uma captura anterior (snapshot) do VDOM tomada antes das alterações. Após essa comparação, o React identifica quais partes foram modificadas e somente essas partes serão atualizadas no DOM real.
 
@@ -223,9 +224,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 ```
 No início do arquivo, existem declarações *import* que carregam componentes e recursos para nosso arquivo. Por exemplo, a segunda linha importa o pacote *react-dom* da pasta *node_modules*, e a terceira linha importa o componente App (do arquivo App.jsx) na pasta src.  A quarta linha importa a folha de estilos index.css, que está na mesma pasta do arquivo main.jsx.
 
-O pacote *react-dom* fornece métodos específicos do DOM para nós. Para renderizar o componente React no DOM, podemos usar o método render do pacote *react-dom*. O *React.StrictMode* é usado para encontrar problemas potenciais em nossa aplicação React e estes são impressos no console do navegador.
+O pacote #react-dom fornece métodos específicos do DOM para nós. Para renderizar o componente React no DOM, podemos usar o método render do pacote *react-dom*. O *React.StrictMode* é usado para encontrar problemas potenciais em nossa aplicação React e estes são impressos no console do navegador.
 
-O Strict Mode executa apenas em modo de desenvolvimento e renderiza seus componentes uma vez extra, para que tenha tempo de encontrar bugs.
+O #StrictMode executa apenas em modo de desenvolvimento e renderiza seus componentes uma vez extra, para que tenha tempo de encontrar bugs.
 
 A API root é usada para renderizar componentes React dentro de um nó DOM do navegador. No exemplo a seguir, primeiro criamos uma root passando o elemento DOM para o método **createRoot**. A root chama o método *render* para renderizar um elemento na root:
 ```js
@@ -259,3 +260,34 @@ O main é como nossa classe de configuração ou ponto de inicialização do apl
 
 O container na raiz da API é o elemento < div id="root">< / div>, que pode ser encontrado no arquivo index.html na pasta raiz do projeto.
 
+#App-jsx. 
+
+The following example shows how to import default and named exports:
+```js
+import React from 'react' // Import default value
+import { name } from ...
+```
+
+The exports look like this:
+```js
+export default React // Default expor
+export { name } // Named export
+```
+
+## Useful ES6 features
+#ECMAScript é uma linguagem de script padronizada, e o #JavaScript é uma implementação dela. 
+
+**Constants and variables**
+Constants, or immutable variables, can be defined by using a const keyword, as shown in the following code snippet. When using the #const keyword, the variable content cannot be reassigned:
+```run-js
+const PI = 3.14159;
+console.log(PI);
+```
+
+Now, we'll get an error if we try to reassign the PI value, as indicated in the following.
+
+```run-js
+const PI = 3.14159
+console.log(PI);
+PI = 4;
+```
