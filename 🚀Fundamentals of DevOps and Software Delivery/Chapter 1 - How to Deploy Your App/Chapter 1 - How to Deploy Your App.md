@@ -81,8 +81,33 @@ This stated to change in 2006 with de launch of Amazon Web Services  (AWS), the 
 
 There are two main cloud offerings: *infrastructure as a service (IaaS)* which gives you access to low-level computing resources (servers, hard drivers, networks), and leaves it up to you put them together into a software delivery process, and *platform as a service* (PaaS), which gives you access to higher-level primitives, including an opinionated software delivery process. To get a feel for the difference, you'll use a PaaS in the next section and an IaaS in the section after that.
 
-## Example: Deploy an App via PaaS (Render)
+### Example: Deploy an App via PaaS (Render)
 Popular PaaS providers include #Heroku, Render, fly.ip, and Vercel. Heroku was on of the first PaaS providers, and it used to be my go-to choice, but it discontinued its free tier in 2022. Therefore, for the examples in this book, we'll be using Render, which offers a free Hobby tier and suport running apps in many languages and frameworks (including Node.js) without having to set up a build system or frameworks (topics you'll learn about later in the book). Render also has a good reputation in the community and is often described as the spiritual successor to Heroku. To deploy the sample app by using Render, go through the following steps:
 
 **Steap 1: Sign up for a Render account**
 Create a new account on *render.com.* 
+
+**Step 2: Deploy a new web service**
+Head to the Render Dashboard and click the Deploy a Web Service button. On the next page, select the Public Git Repository tab and enther the URL of this book's. This repo contains the Node.js code from **Example 1-1** in the ch1/sample-app folder, so this lets you deploy the app without creating your own GitHub repo.
+
+When you're done experimenting with Render, undeploy your app by clicking the Settings tab, scrolling to the bottom, and clicking the Delete Web Service button.
+
+Using a PaaS typically means you get not just a server, but a lot of powerful functionality out of the box: 
+- scaling to multiple servers;
+- domain names < NAME>.onrender.com
+- encryption (HTTPS URLs)
+- Monitoring (logs and metrics), and more...
+This is the power of PaaS: is a matter of minutes, a good PaaS can take care of so many software delivery concerns for us. It's like magic (i don't believe in magic and nonsense). And that's the greatest strength of PaaS: it just works.
+
+As a result, while many projects start on PaaS, if they grow big enough and require more control, they end up migrating to IaaS.
+
+### Example: Deploy an App via IaaS (AWS)
+Broadly speaking, the IaaS space falls into three buckets: (buckets = categorias)
+- **Virtual private server**: Some companies primarily focus on giving you access to a *virtual private server* (VPS) for as cheap as possible (pelo melhor preço possível). These companies might offer a few other features (e.g., networking, storage) as well, but the main reason...
+
+- **Content delivery networks**: other companies primarily focus on *content delivery network* (CDNs), which are server that are distributed all over the world, typically for serving and caching content. Again, these companies might offer a few other features (e.g., protection against attacks), but the main reason you'd go with one of these providers is that your user base is greographically distributed, and you need a fast and reliable way to serve them content with low latency. We'll learn all about CDNs in Chatper 9
+
+- **Cloud providers**: finally, a handful of large companies are trying to provide general-purpose cloud solutions that offer overything: VPS, CDN, containers, serverless, data storage, file storage, machine learning, natural language processing, edge computing, and more. The big players in this space include AWS, Google Cloud, and Microsft Azure.
+In general, the VPS and CDN providers are specialists in their respective areas, so in those areas, they will typically beat a general-purpose cloud provider in terms of features, pricing, and user experience.
+
+For the examples in this book, the IaaS provider we'll be using is AWS, 
