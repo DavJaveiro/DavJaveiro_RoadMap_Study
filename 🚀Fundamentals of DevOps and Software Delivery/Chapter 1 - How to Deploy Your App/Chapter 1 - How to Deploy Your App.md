@@ -107,7 +107,273 @@ Broadly speaking, the IaaS space falls into three buckets: (buckets = categorias
 
 - **Content delivery networks**: other companies primarily focus on *content delivery network* (CDNs), which are server that are distributed all over the world, typically for serving and caching content. Again, these companies might offer a few other features (e.g., protection against attacks), but the main reason you'd go with one of these providers is that your user base is greographically distributed, and you need a fast and reliable way to serve them content with low latency. We'll learn all about CDNs in Chatper 9
 
-- **Cloud providers**: finally, a handful of large companies are trying to provide general-purpose cloud solutions that offer overything: VPS, CDN, containers, serverless, data storage, file storage, machine learning, natural language processing, edge computing, and more. The big players in this space include AWS, Google Cloud, and Microsft Azure.
+- **Cloud providers**: finally, a handful of large companies are trying to provide general-purpose cloud solutions that offer overything: <span style="background:#affad1">VPS, CDN, containers, serverless, data storage, file storage, machine learning, natural language processing, edge computing, and more.</span> The big players in this space include AWS, Google Cloud, and Microsft Azure.
 In general, the VPS and CDN providers are specialists in their respective areas, so in those areas, they will typically beat a general-purpose cloud provider in terms of features, pricing, and user experience.
 
-For the examples in this book, the IaaS provider we'll be using is AWS, 
+For the examples in this book, the IaaS provider we'll be using is AWS.
+
+---
+## Serverless
+É um modelo de computação em nuvem onde não gerenciamos servidores, toda a infraestrutura é gerenciada automaticamente pelo *cloud provider* (AWS, Azure, GCP).
+
+Só escrevemos o código da função ou o serviço, fazemos o deploy, e o cloud provider cuida de todo o resto:
+- Criação de servidores;
+- Escalabilidade automática; etc
+
+---
+
+Id addition, AWS is widely recognized as the dominant cloud provider - it has a 31 % share of the market and has been the leader in the Gartner Magic Quadrant for the last 13 years. 
+
+
+To deploy the sample app in AWS, go through the following steps:
+- **Setp 1: Choose an AWS region**
+AWS has data center all over the world, grouped into regions and availability zones. An *AWS region* is a separate geographic area, such as *us-east-2* (Ohio), eu-west-1 (Ireland), and *ap-southeast-2* (Sydney). Within each region are multiple isolated data centers know as availability zones (AZs). Just about all the examples in this book will use the us-east-2 (Ohio) region, so go into the AWS Console, and in the top right, pick us-east-2 as the region to use, as shown in Figure about:
+!![image-202511171859446.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511171859446.png)
+
+**Step 2: deploy an EC2 instance**
+To deploy a server in AWS, called an *Amazon Elastic Compute Cloud (EC2) instance*, head over to the EC2 Console and click the "Launch instance" button. This will take you to a page for configuring our EC2 instance in Figure 1-4.
+
+!![image-202511172341534.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511172341534.png)
+
+Fill in a name for the instance, such as "sample-app". Below that, we need to pick the *Amazon Machine Image (AMI)* to use, which specifies what OS and other software will be installed (you'll learn more about machine images in Chapter 2). For now, stick with de default, which should be Amazon Linux.
+
+**Step 3: Configure the EC2 instance**
+Configure the instance type and key pair, as shown about:
+!![image-202511172931384.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511172931384.png)
+
+The *instance type* specifies the type of server to use: that is, what sort of CPU, memory, hard drive, etc. it'll have. For this quick test, you can use the default, which should be something like *t2.micro* or *t3.micro*, small instances (1 CPU 1G of memory) that are part of the AWS free tier. The *key pair* can be used to connect to the EC2 instance via Secure Shell (SSH), a topic we'll learn more about in Chapter 7. We're not going to be using SSH for this example, so select "Proceed without a key pair."
+
+**Step 4; Configure the network settings**
+Scroll down to the network settings, as shown in Figure 1-6. You'll learn about networking in Chapter 7. For now, we can leave most of these settings at their defaults: 
+- Network should be set to our default VPC;
+- Subnet should be set to "No preference";
+- Auto-assign public IP should be set to Enable;
+
+The only thing we should change is the Firewall (security groups) setting
+select the "Create security group" radio button, disable the "Allow SSH traffic from" checkbox, and enable the "Allow HTTP traffic from the internet" checkbox, as shown in Figure 1-6. By default, EC2 instances have firewalls, called *security groups*, that don't allow any network traffic in or out.. Allowing HTTP traffic tells the security group to allow inbound TCP traffic on port 80 so that the sample app can receive requests.
+
+!![image-202511174934330.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511174934330.png)
+
+**Step 5: Configure advanced details**
+Open the "Advanced details" section and scroll down to "User data," as shown in Figure 1-7.
+!![image-202511173219129.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511173219129.png)
+
+*User data* is a script that the EC2 instance will execute the first time it boots up. Copy and paste the script shown in... 
+
+**Step 6: Lauch the EC2 instance**
+Leave all the other settings at their defaults and click "Launch instance". Once the EC2 instance has launched , you should see its ID on the page (something like i....). Click the ID to go the EC2 instances page, where you should see our EC2 instance booting up (you' ll see the isntance state change from Pending to Running), which typically takes 1-2minutes, click the row with your instance. In a drawer that pops up at the bottom of the page, you should see more details about our EC2 instance, including its public IP address...
+
+## Comparing Deployment Options
+You've now seen several options for hosting our application; you could go with on prem (local) or the cloud, and if you go with the cloud, you could go with IaaS or PaaS. This section compares these options, starting with on prem versus the cloud, followed by IaaS versus PaaS.
+
+**On Prem versus the Cloud**
+When should you go with on prem, and when should you use the cloud? To start answering these questions, let's look at the key reasons to go with the cloud.
+
+**When to go with the cloud**
+If you're starting somethin new, in the majority of cases you should go with the cloud. Here are just a few of the advantages:
+
+*Elasticity and pay as you go*
+On prem, you pay up-front for capacity that may go unused; for example, if you need 10 servers most of the time but anticipate traffic spikes, you may have yo buy 50 servers. The cloud offers *pay-as-you-go* princing, which start out cheap or free, increases only with usage, and allows you to scale *elastically*; for example, you pay for 10 servers most of the time, and pay 50 servers only while there's a traffic spike (pico de tráfico).
+
+*Speed*
+Getting new hardware takes weeks on prem but just minutes in the cloud.
+
+*Maintenance and expertise*
+Data centers require a lot of expertise (in hardware, cooling, and power) and maintenance (replacing broken or obsolete equipment), all of which the cloud handles for us.
+
+*Managed services*
+With the cloud, we get not only servers but also services such as managed databases, load balancers, filo stores, networking, analytics, and machine learning.
+
+*Security*
+Despite the myth that on prem is more secure, the world's most secure data center belong to the cloud providers; for example, AWS complies with 143 security standards (e.g., PCI DSS, HIPAA, and NIST 800-171) and has dozens of *third-party audits and attestations* (e.g., SOC, ISO, and FedRAMP).
+
+*Global reach*
+The cloud gives you instant access to dozens of data centers around the world.
+
+*Scale*
+Major cloud providers can invest more than almost anyone else in data centers. For example, AWS made $107 billion in 2014, and it's still growing.
+
+For all these reasons, the cloud is the facto option for most new startups, as well as new projects in many established companies.
+
+**When to go with on prem**
+Running servers yourself is the better option in the following cases:
+*You already have an on-prem presence*
+If our company already has its own data centers and they are working well for you, stick with them! If it ain't broke, don't fix it.
+
+*We have usage patterns that are a better fit for on prem*
+Certain usage patterns may be a better fit for on prem, for instance, steady, predictable usage that doesn't benefit from elasticity (see Basecamp for an example) or usage that requires lots of bandwidth...
+
+
+## IaaS versus PaaS
+If we're using the cloud, when should you go with IaaS, and when should you go with PaaS? To start answering this question, let's look at the key reasons to go with PaaS.
+
+**When to go with PaaS**
+This many seem like a strange thing to say in a book about DevOps and software delivery, but if you can create a great product without having to invest much in DevOps and software delivery, *that's a good thing*. Your customers don't care what kind of deployment pipelines you have, or whether you are running a fancy Kubernetes cluster or the newest type of database. All that matter is that you ca create a product that meets your customers' needs.
+
+That's precisely what a good PaaS offers: out-of-the-box software delivery. If we can find a PaaS that meets your requirements, you should use it, stick with it for as long as you can, and avoid having to re-create all those software delivery pieces until you absolutely have to. PaaS is a good choice in these cases:
+
+*Side projects*
+If you're working on a **side project** (projeto paralelo), the last thing you want to do is kill you passion for that project by spending all you time fighting with builds or pipelines or networking. Instead, **let a PaaS to the heavy lifting** (deixe o trabalho pesado para PaaS). 
+
+*Startups and small companies*
+If you're building  a new company, you should almost always start with a PaaS. Startups are a race against time: can you build something the market wants before you run out of money? As you saw earlier in this chapter, you can get live on a PaaS in *minutes*, and for most startups, the scalability, availability, security, and compliance needs are minimal, so you can keep running on a PaaS for years before you run into the limitations. It's only when you find product/market fit and start hitting the problem of having to scale your company, which is a good problem to have, that you many need to move off PaaS.
+
+*New and experimental projects*
+If you're at an established company that has a slow software delivery process, using a PaaS can be a great way to quickly try ou new and experimental projects, especially if those projects don't have the same scalability, availability, security, and compliance needs as your company's more mature products.
+
+As a general rule, you want to use a **PaaS whenever you can**, and move on to IaaS only when a PaaS can no longer meet your requirements. 
+
+**É possível iniciar com PaaS, mas deixando o campo preparado para migrarmos para IaaS?**
+
+**When to go with IaaS**
+In the following cases, an IaaS is usually a better fit:
+*Load*
+If we're dealing with a lot of traffic, PaaS pricing may become prohibitively expensive.  Moreover, PaaS usually limits the types of apps and architectures you can use, so you may have to migrate to IaaS to scale your systems.
+
+*Company size*
+As you shift from a handful of developers to dozens of teams with hundreds of developers, not only can PaaS pricing become untenable, but you may also hit limits with governance and access controls (e.g., allowing some teams to make some types of changes but not others).
+
+*Availability*
+Your business may need to provide uptime guarantees that are higher than what your PaaS can provide. Moreover, when your app has an outage or a bug, PaaS offerings are often limited in the type of visibility and connectivity options they provide (e.g., Herokut doesn't let you connect to server over SSH), so you may have to migrate to IaaS to improve your ability to debug and introspect your systems.
+
+*Security and compliance*
+One of the most common reasons to move off PaaS is that most of them (with the notable exception of Aptible) do not provide sufficient visibility, access, or control to meet security and compliance requirements (e.g., SOC2, ISO 27001, PCI DSS).
+
+You go with IaaS whenever you need more control, more performance, and/or more security. If your company gets big enough, one or more of these needs will likely push you from PaaS to IaaS; that's jutst the price of success.
+
+## The Evolution of DevOps
+One thing that struck me is that the architecture and software delivery processes at just about every one hf these software companies evolved along similar lines. They had individual differences here and there, but far more similarities than differences, and the broad shape of the evolution repeated again and again. In this section, I share this evolutionary process, broken into time high-level steps.
+
+If you're new to DevOps and software delivery, you may be unfamiliar with some of the terms used here. Don't panic. The ideia is to start with a top-down overview, a bit like a high-level map, to help we understand the various ingredientes and how they fit together. You can think of this content as a high-level preview of the topics you'll cover in the following chapters. As you go through each chapter, you'll zoom in on each of these topics, study each one in detail, and try most of them out with real examples. You can then zoom back out and revisit this high-level map at any time to see the big picture and get your bearings again. 
+
+Let's begin with step 1, as shown Figure 1-10, which is where most projects start, including including new startups, new initiatives at established companies, and side projects.
+
+![image-202511185452350.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511185452350.png)
+
+*Single server*
+All your application code runs on a single server.
+
+*ClickOps*
+You manage all your infrastructure and deployments manually.
+
+Does this familiar? It's what you just did earlier in this chapter, using Render and AWS. So congrats, you've complete step 1! But this is only the beginning. As traffic and team sized grow, you move on to step 2, shown in Figure 1-11.
+
+!![image-202511185956910.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511185956910.png)
+
+*Standalone database*
+As your database increasingly becomes the bottleneck, you move it onto a separate server. 
+
+*Version control*
+As your teams grows, you use a version-control system to collaborate on your code and track all changes.
+
+*Continuous integration*
+To reduce bugs and outages, you set up automated tests (Chapter 4) and continuous integration (Chapter 5).
+
+As traffic continues to grow, you move on to step 3, shown in Figure 1-12:
+!![image-20251118716739.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-20251118716739.png)
+
+*Multiple servers*
+As traffic increases further, a single server is no longer enough, so you run your app across multiple servers (chapter 3).
+
+*Load balancing*
+You distribute traffic across the servers by using a *load balancer*.
+
+*Networking*
+To protect your servers, you put them into a private network (Chapter 7).
+
+*Data management*
+You set up schema migrations and backups for your data stores.
+
+*Monitoring*
+To get better visibility into ours systems, you set up monitoring (chapter 10).
+
+Most software projects never need to make it past these first three steps. If you're one of them, don't fret: this is a good thing. The first three steps are relatively simple. The technologies involved are fast to learn, easy to set up, and fun to work with. If you're forced into the subsequent steps, it's because you're facing new problemas that require more-complex architectures and processes to solve, and this additional complexity has a considerable cost. If you aren't facing those problemas, you can, and should, avoid that cost. 
+
+That said, larger, more established companies, with more users, may have to move on to step 4, shown in Figure 1-13:
+!![image-20251118432382.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-20251118432382.png)
+
+*Caching for data stores*
+Your database continues to be a bottleneck, so we add read replicas and caches (Chapter 9).
+
+*Caching for static content*
+As traffic continues to grow, you add a content delivery network (CDN) to cache content that doesn't change often (chapter 9).
+
+At this point, our team size if often the biggest problem, so you have to move on to step 5, shown in Figure 1-14:
+![image-202511185053429.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-202511185053429.png)
+
+*Multiple environments*
+To help teams do better testing, you set up multiple environments (e.g., stage, prod), each of which has a full copy of our infrastructure.
+
+*Continuous delivery*
+To make deployments faster and more realiable, you set up continuous delivery (chapter 5).
+
+*Secure communication and storage*
+To keep all the new environments secure, we work on secrets management and encrypting all data at rest and in transit (Chapter 8).
+
+As our team keep growing, to be able to keep moving quickly, we'll need to update our architecture and processes to step 6, as shown in Figure 1-15.
+
+!![image-20251118561414.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-20251118561414.png)
+
+*Microservices*
+To allow teams to work more independently, you break your monolith into multiple microservices, each with its own data store and caches (Chapter 6).
+
+*Infrastructure as Code*
+Maintaining this many environments manually is hard, so we start to manage our infrastructure as code. 
+
+These steps representes a significant increase in complexity: our architecture has more moving parts, our processes are more complicated, and we most likely need a dedicated infrastructure team to manage all this. For a small percentage of companies, typically, large enterprises with massive user bases, even this ins't engoughm and we are forced to move on to step 7.
+
+!![image-20251118595423.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-20251118595423.png)
+
+*Service discovery*
+As the number of microservices increases, you set up a service discovery system to help them communicate with one another.
+
+*Observability*
+To get even more visibility into our microservices, we start using structured events, tracing, and observability tools (chapter 10).
+
+*Hardening*
+To meet various compliance standards (e.g., NIST, CIS, PCI) we work on server and network hardening,
+
+*Microservish mesh*
+With even more microservices, we start using service mesh tools are a unified solution for the preceding items (observability, service discovery, hardening), as well as for traffic control and erros handling.
+
+Large companies produce a lot of data, and the need to analyze and leverage this data leads to step 8, shown in Figure 1-17.
+
+!![image-20251118553821.png](%F0%9F%9A%80Fundamentals%20of%20DevOps%20and%20Software%20Delivery/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/Chapter%201%20-%20How%20to%20Deploy%20Your%20App/image-20251118553821.png)
+
+*Analytics tools*
+To able to process and analyze your company's data, we set up data warehouse, big data systems, and fast data systems.
+
+*Event streams*
+With even more microservices communication and more data to move around, we set up an event-streaming platform and move around, we set up an event-streaming platform and move to an event-driven architecture.
+
+*Feature toggles*
+We start using feature toggles in our code to A/B test new features and to make deployments more reliable.
+
+Finally, as our user base and employee base keeps growing, we move on to step 9, shown in Figure 1.18.
+
+*Multiple data centers*
+To handle a global user base, we set up multiple data centers around the world.
+*Advanced networking*
+We connect all our data centers together over the network.
+
+*Internal developer platform*
+To help boost developer productivity and to standardize coding practices, we set up an internal developer platform (chapter 11). 
+
+The last three steps are for companies that face the toughest problems and have to deal with the most complexity: global deployments, thousands of developers, millions of customers. Even the architecture you see in step 9 is still a simplification comparad to what the top 0.1% of companies face, but if that's where you're at, we'll need more than this introductory book!
+
+
+*All models are wrong, but some are useful!*
+
+**Adopting DevOps Practices**
+As we read through the nine steps, the ideia is to match our company to one of the steps and to porsue the architecture and processes in that step. What we don't want to do is to immediately jump to the end and use the architecture and processes of the largest companies. Let's be honest here: our company probably isn't Google or Netflix; we don't have the same scale, we don't have the same problems do solve, and therefore, the same solutions won't be a good fit. 
+
+I've learned in my career is that most large software projects fail. Whereas rougly 3 out of 4 small it projects (less than $1 million) are completed successfully, only 1 ou of 10 large projects (greater than $10 million) are completed on time and on budget, and more than one-third of large projects are never completed at all.
+
+To understand why this is so important, consider the opposite, suppose that we have a huge migration project, broken into the following steps:
+1. Redesign the UI.
+2. Rewrite the backend
+3. Migrate the data.
+
+We complete the first step, but we can't launch the UI because it relies on the new backend in the second step.
+
+p
