@@ -1,0 +1,19 @@
+{
+  "defaultSetting": "default",
+  "imageNamePattern": "{{fileName}}",
+  "dupNumberAtStart": false,
+  "dupNumberDelimiter": "-",
+  "dupNumberAlways": false,
+  "autoRename": false,
+  "handleAllAttachments": false,
+  "excludeExtensionPattern": "",
+  "disableRenameNotice": false,
+  "IsShowCustomPath": false,
+  "PasteImageOption": "current",
+  "CustomPath": "./",
+  "IsEscapeUriPath": true,
+  "IsAddRelativePath": true,
+  "IsApplyLocalImage": true,
+  "IsApplyNetworklImage": true,
+  "IsRelativePath": false
+}

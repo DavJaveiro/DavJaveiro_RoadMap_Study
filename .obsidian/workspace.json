@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
+                "file": "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - The AWS Well-Architected Framework/The AWS Well-Architected Framework.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03"
+              "title": "The AWS Well-Architected Framework"
             }
           }
         ]
@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 573.0080299377441
+    "width": 573.0080299377441,
+    "collapsed": true
   },
   "right": {
     "id": "c2c1483ce4fe11a7",
@@ -217,12 +218,21 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5746593c3c65aeb0",
+  "active": "0bf599cd8a36e606",
   "lastOpenFiles": [
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - Identify and Access Management in AWS/Chapter 2 - Identify and Access Management in AWS.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - The AWS Well-Architected Framework/The AWS Well-Architected Framework.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - The AWS Well-Architected Framework",
+    "Sem título",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - Identify and Access Management in AWS",
+    "xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA.png",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA-202511191719734.png",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA.png",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-202511193623850.png",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-20251118036602.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03",
     "🚀AWS Certified Solutions Architect Associate Exam Guide",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
@@ -231,11 +241,7 @@
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118561414.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511185053429.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118432382.png",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118716739.png",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511185956910.png",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511185452350.png",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511173219129.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App",
     "🚀DevOps Rocketseat/Containers.md",
     "🚀DevOps Rocketseat/Containers",
@@ -243,12 +249,8 @@
     "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
     "FullStack Development React and Spring/Chapter 8 - Getting Started With React",
     "RoadMap do DavJaveiro/RoadMap.canvas",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies",
-    "🚀Data Structures Abstraction and Design",
     "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications.md",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App",
-    "🚀Fundamentals of DevOps and Software Delivery",
     "java_web.agent.md",
     "Sem título.md",
     "RoadMap do DavJaveiro/RoadMap.md",
