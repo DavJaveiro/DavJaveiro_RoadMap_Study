@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
+                "file": "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 2. How to Manage Your Infrastructure as Code"
+              "title": "Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03"
             }
           }
         ]
@@ -219,8 +219,13 @@
   },
   "active": "5746593c3c65aeb0",
   "lastOpenFiles": [
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-20251118036602.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide",
+    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118553821.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118595423.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118561414.png",
@@ -231,7 +236,6 @@
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511185452350.png",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511173219129.png",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-202511174934330.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App",
     "🚀DevOps Rocketseat/Containers.md",
     "🚀DevOps Rocketseat/Containers",
@@ -247,9 +251,7 @@
     "🚀Fundamentals of DevOps and Software Delivery",
     "java_web.agent.md",
     "Sem título.md",
-    "The Quick Python Book",
     "RoadMap do DavJaveiro/RoadMap.md",
-    "Spring Boot in Practice/Capítulo 9 - Deploying Spring Boot applications/Chapter 9 - Deploying Spring Boot applications",
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "ByeByeCupom/Kanban API (Sistema).canvas",
