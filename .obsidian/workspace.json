@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Angular/Essentials.md",
+                "file": "🚀Data Science do Zero/Capítulo 1- Introdução.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Essentials"
+              "title": "Capítulo 1- Introdução"
             }
           }
         ]
@@ -218,10 +218,17 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5746593c3c65aeb0",
+  "active": "d979987c16757e3a",
   "lastOpenFiles": [
-    "🚀Angular/WebCurrículo/Sem título.md",
+    "🚀Data Science do Zero/Data Science Do Zero -- Joel Grus -- 2021 -- Alta Books -- 9951112c92fe42177dfb95aeb605bfea -- Anna’s Archive.pdf",
+    "🚀The Quick Python Book/Parte 1 - Starting out/Chapter 2 - Getting Start.md",
+    "🚀Data Science do Zero/Capítulo 1- Introdução.md",
+    "Data Science do Zero/Chapter 1",
+    "🚀Data Science do Zero",
     "🚀Angular/Essentials.md",
+    "🚀The Quick Python Book/Parte 1 - Starting out",
+    "Sem título 2",
+    "🚀Angular/WebCurrículo/Sem título.md",
     "🚀Angular/WebCurrículo",
     "🚀Angular/Components.md",
     "image-20251120461028.png",
@@ -240,16 +247,12 @@
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - The AWS Well-Architected Framework",
     "Sem título",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - Identify and Access Management in AWS",
     "xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA.png",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA-202511191719734.png",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA.png",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-202511193623850.png",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-20251118036602.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App/image-20251118553821.png",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
@@ -264,9 +267,6 @@
     "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
     "Spring Boot in Practice/Capítulo 7 - Developing RESTful Web services with Spring Boot/Capítulo 7 - Developing RESTful Web services with Spring Boot.md",
     "ByeByeCupom/Kanban API (Sistema).canvas",
-    "Top Java Interviews/Estudo e Revisão.md",
-    "Spring Start Here/PART 2/Capítulo 7 - Understanding Spring Boot and Spring MVC/Capítulo 7 - Understanding Spring Boot and Spring MVC.md",
-    "ByeByeCupom/Diagrama UML Fluxo Geral.md",
-    "ByeByeCupom/Design API.md"
+    "Top Java Interviews/Estudo e Revisão.md"
   ]
 }
