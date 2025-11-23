@@ -36,3 +36,13 @@ can edit, run, and experiment with the code, as shown in figure 2.3.
 
 ## 2.3 Writing and running code in Colaboratory
 A Jupyter notebook consists of two types of cells: text cells and code cells. The text cells are meant to contain text, which can be formatted using the Markdown text formating language 
+
+
+### 2.3.1 Hello, World
+Let's start with the traditional Hello, World program, which is a one-liner in Python:
+```run-python
+print("Hello, World")
+```
+
+
+Note that throughout this book, i will show the code that is entered into a code cell in Jupyter (or a Pyhton )
