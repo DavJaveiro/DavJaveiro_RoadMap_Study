@@ -150,4 +150,57 @@ Na prática, encontraremos pelo menos seis maneiras comuns de agrupar métodos:
 - Sequencial
 - Temporal
 
-Se os métodos que estamos agrupando são fracamente relacionados, teremos uma baixa coesão.
+**Se os métodos que estamos agrupando são fracamente relacionados, teremos uma baixa coesão.**
+
+**Functional**
+A abordagem que adotamos ao escrever a classe BankStatementCSVParser foi agrupar os métodos funcionalmente. Os métodos *parseFrom()* e *parseLinesFrom()* estão resolvendo uma tarefa definida: analisar (fazer o *parse*) as linhas no formato CSV. De fato, o método **parseLines()** utiliza o método parseFrom().
+
+Quando os métodos trabalham juntos, estamos "garantindo" uma boa coesão, fazendo com que o agrupamento deles facilite a localização e o entendimento.
+
+A atenção que precisamos ter com relação a coesão funcional é que pode ser tentador criar uma profusão de classes excessivamente simplistas, que agrupam um único método. 
+
+**Informacional**
+Outra razão para agruparmos os métodos é o fato de trabalharem sobre os mesmos dados ou objeto de domínio. Digamos que precisemos de uma forma de criar, ler, atualizar e excluir objetos *BankTransaction* (operações CRUD); podemos desejar ter uma classe dedicada a essas operações.
+
+Cada método, lança uma *UnsopportedOperationException* para indicar que o corpo não está implementado no momento, servindo apenas para o propósito do exemplo:
+```java
+public class BankTransactionDAO {
+	public BankTransaction create(final LocalDate date, final double amount, final String description) {
+		throw new UnsupportedOperationException();
+	}
+	
+	public BankTransaction read(final long id) {
+		// ...
+		throw new UnsupportedOperationException();
+	}
+	
+	public BankTransaction update(final long id) {
+		// ...
+		throw new UnsupportedOperationException();
+	}
+	
+	public void delete(final BankTransaction BankTransaction) {
+		// ...
+		throw new UnsupportedOperationException();
+	}
+
+}
+```
+
+A lógica aqui não é agrupar métodos porque eles fazem "a mesma coisa", pois não fazem... mas sim porque eles lidam com a "mesma entidade". Isso cria um ponto central de verdade para qualquer interação com aquele tipo de dados específico (**BankTransaction**).
+
+*Gerenciamento de mesmo recurso*.
+
+*Insight Prático:* uma classe com coesão informacional deve focar em manipular a entidade. Se começarmos a colocar regras de validação de negócio complexas dentro do DAO, podemos estar violando a coesão e criando uma classe inchada. O ideal é manter o DAO focado no CRUD puro e deixar as regras para uma camada de serviço.
+
+NOTE: This is a typical pattern that we see often when interfacing with a database thaat mantains a table for a specific domain object. This pattern is usually called *Data Access Object (DAO)* and requires some kind of ID to identify the objects. DAOs essentially abstract and encapsulate access to a data source, such as a persistent database or an in-memory database.
+
+**UTILITY**
+Podemos acabar com uma classe utilitária que é um pouco de faz-tudo.
+
+Isso deve ser evitado porque acabamos com **baixa coesão**. Os métodos não são relacionados, então a classe como um todo é mais difícil de raciocinar sobre.
+
+Além disso, classes utilitárias exibem uma característica de **baixa descoberta** *discoverability*. Queremos que o nosso código seja fácil de encontrar e fácil de entender como deve ser usado. <span style="background:#affad1">As classes utilitárias vão contra esse princípio porque contêm métodos diferentes que não são relacionados, sem uma categorização clara.</span>
+
+**LOGICAL**
+
