@@ -285,12 +285,13 @@ An ADT is defined by two parts: ==abstract data (not directly accessible)== and 
 In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
 
 **Why is an interface considered a contract in Java?**
-A) Because it automatically provides default implementations to all classes.  
-B) Because it forces any implementing class to follow the method signatures it defines.  
-C) Because it exposes its internal data structure to subclasses.  
+A) Because it automatically provides default implementations to all classes.
+B) Because it forces any implementing class to follow the method signatures it defines.
+C) Because it exposes its internal data structure to subclasses.
 D) Because it allows multiple inheritance of state.
 ?
-B) Because it forces any implementing class to follow the method signatures it defines.  
+B) Because it forces any implementing class to follow the method signatures it defines.
+<!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
 
