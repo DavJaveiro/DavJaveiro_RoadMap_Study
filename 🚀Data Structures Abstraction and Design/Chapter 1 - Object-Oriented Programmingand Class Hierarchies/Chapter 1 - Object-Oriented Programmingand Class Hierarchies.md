@@ -1,4 +1,4 @@
-#flashcards/Java/Data-Structures/chapter1 
+#flashcards/Java/Data-Structures/chapter1/chapter1
 *Chapter Objectives*
 - To learn about #interfaces and their role in Java
 - To understand #inheritance and how it facilitates code reuse
@@ -262,27 +262,31 @@ C) _Dados abstratos_ (modelo lógico) e _operações_
 D) Interface e implementação
 ?
 C) _Dados abstratos_ (modelo lógico) e _operações_
-<!--SR:!2025-11-26,1,230-->
+<!--SR:!2025-11-28,2,230-->
 
-**Qual parte do ADT é acessível ao usuário?**  
-A) Os dados internos (atributos)  
-B) Somente o construtor  
-C) As operações (métodos definidos na interface)  
+**Qual parte do ADT é acessível ao usuário?**
+A) Os dados internos (atributos)
+B) Somente o construtor
+C) As operações (métodos definidos na interface)
 D) A estrutura concreta usada para armazenar os dados
 ?
 **C) As operações (métodos definidos na interface)**
+<!--SR:!2025-11-28,2,248-->
 
-**Q3 — What best describes the relationship between ADTs, interfaces, and classes in Java?**  
-A) An interface implements an ADT and classes just use it.  
-B) A class defines the ADT and the interface implements it.  
-C) An ADT is specified by an interface, and a class provides the concrete implementation.  
+**Q3 — What best describes the relationship between ADTs, interfaces, and classes in Java?**
+A) An interface implements an ADT and classes just use it.
+B) A class defines the ADT and the interface implements it.
+C) An ADT is specified by an interface, and a class provides the concrete implementation.
 D) ADT, interface, and class mean the same thing
 ?
-**C) An ADT is specified by an interface, and a class provides the concrete implementation.**  
+**C) An ADT is specified by an interface, and a class provides the concrete implementation.**
+<!--SR:!2025-11-28,2,248-->
 
 An ADT is defined by two parts: ==abstract data (not directly accessible)== and ==operations (accessible to the user)==.
+<!--SR:!2025-11-28,2,248!2025-11-28,2,248-->
 
 In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
+<!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-28,2,248-->
 
 **Why is an interface considered a contract in Java?**
 A) Because it automatically provides default implementations to all classes.
@@ -291,9 +295,14 @@ C) Because it exposes its internal data structure to subclasses.
 D) Because it allows multiple inheritance of state.
 ?
 B) Because it forces any implementing class to follow the method signatures it defines.
+<<<<<<< HEAD
 <!--SR:!2025-11-27,2,248-->
+=======
+<!--SR:!2025-11-28,2,248-->
+>>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
+<!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-27,1,228-->
 
 
 Why is this interface considered a "contract"?
@@ -304,6 +313,7 @@ public interface PaymentProcessor {
 ```
 ?
 Because any class implementing *PaymentProcessor* must provide the method `process(double amount)` exactly as declared, fulfilling the required behavior — like signing a contract and agreeing to its terms.
+<!--SR:!2025-11-28,2,248-->
 
 3. Correct each of the following statements that is incorrect, assuming that class PDGUI and class PDConsoleUI implement interface PDUserInterface and neither is a subclass of the other.
 
@@ -323,7 +333,229 @@ PDUserInterface p1 = new PDGUI();
 - PDGUI p5 = new PDUserInterface(); -> PDUserInterface p5 = new PDGUI();
 PDUserInterface p6 = p5;
 PDUserInterface p7;
+
+4. What are two different uses of the term *interface* in programming?
+Interface como a forma de se definir os métodos e dados abstratos e interface como forma de interação entre usuários (command line interface and Application Programming Interface) e GUI (Graphical User Interface.)
 ## 1.2 Introduction to OOP
+In this course, we will learn to use features of Java that facilitate the practice of OOP. A major reason for the popularity of OOP is that **it enables programmers to reuse previously written code saved as classes**, reducing the time required to code new applications. Because previously written code has already been tested and debugged, the new applications should also be more reliable and therefore easier to test and debug.
+
+However, OOP provides additional capabilities beyond the reuse of existing classes. If an application needs a new class that is similar to an existing class but not exactly the same, the programmer can create it by extending, or inheriting from, the existing class. **The new class (called the subclass) can have additional data fields and methods for increased functionality.** Its objects also inherit the data fields and methods of the original class (called the superclass). 
+
+Inheritance in OOP is analogous to inheritance in humans. We all inherit genetic traits from our parents. If we are fortunate, we may even have some earlier ancestors who have left us an inheritance of monetary value. As we grow up, we benefit from ours ancestors' resources, knwoledege, and experiences, but our experiences will not affect how our parents or ancestors developed. Although we have two parents to inherit from, Java classes can have only one parent.
+
+Inheritance and hierarchical organization allow we to capture the ideia that one thing may be a refinement or a extension of another. For example, an object that is a *Human* is a Mammal (the superclass of Human). This means that an object of type Human has all the data fields and methods defined by class **Mammal** (e.g., methods **drinkMothersMilk**), but it may also have more data fields and methods that are not contained in class **Mammal** (e.g., methods *thinkCreatively*). Figure 1.3 shows this simple hierarchy. The solid line in the UML class diagram shows that **Human** is a subclass of Mammal, and, therefore, Human objects can use methods **drinkMothersMilk** and **thinkCreatively**. Objects farther down the hierarchy are more complex and less general than those farther up. 
+
+**A Superclass and Subclass Example**
+To illustrate the concepts of inheritance and class hierachies, let's consider a simple case of twi classes: **Computed** and **Notebook**. A **Computed** object has a *manufacturer*, processor, Random Acess Memory(Ram), and disk. A notebook computer is a kind of computer, so it has all the properties of a computer plus some additional features (screen size and weight). There may be other subclasses, such as tablet computer or game computer, but we will ignore them for now. We can define class **Notebook** as a subclass of class **Computer**. Figure 1.4 shows the class hiearachy.
+
+**Class *Computer***
+Listing 1.2 shows class **Computer.Java**. It is defined like any other class. It contains a constructor, several accessors, a **toString** method, and a method **computePower**, which returns the product of its RAM size and processor speed as a simple measure of its power.
+
+```java
+public class Computer {
+	//Data Fields
+	private String manufacturer;
+	private String processor;
+	private int ramSize;
+	private int diskSize;
+	private double processorSpeed;
+	
+	// Methods
+	public Computer(String man, String processor, int ram, int disk, double procSpeed) {
+		manufacturer = man;
+		this.processor = processor;
+		ramSize = ram;
+		diskSize = disk;
+		processorSpeed = procSpeed;
+	}
+	
+	public double computePower() {
+		return ramSize * processorSpeed;}
+		
+		public int getRamSize() {
+			return ramSize;
+		}
+		
+		public double getProcessorSpeed() {
+			return processorSpeed;
+		}
+		
+		public int getDiskSize() {
+			return diskSize
+;		}
+
+		public String toString() {
+			String result = "Manufacturer: " + manufacturer +
+			"\nCPU: " + processor +
+			"\nRAM: " + ramSize + " gigabytes" +
+			"\nDisk: " + diskSize + " gigabytes" +
+			"\nProcessor speed: " + processorSpeed + " gigahertz";
+			return result;
+}
+	}
+}
+```
+
+**Use of this.**
+In the constructor for the **Computer** class, the statement
+*this.processor = processor;*
+sets data field *processor* in the object under construction to reference the same string as parameter processor. The prefix this. makes data field processor visible in the constructor. This is necessary because the declaration of processor as a parameter hides the data field declaration.
+
+**PITFALL**
+**Not Using this. to Access a Hidden Data Field**
+If we write the preceding statement as processor = processor; we will not get an error, but the data field processor in the computer object under construction will not be initialized and will retain its default value(null). If we later attempt to use data field **processor**, we may get an error or just a unexpected result. Some integrated Development Environments (DIEs) will provide a warning if this. is comitted.
+
+**Class *Notebook***
+In the Notebook class diagram in Figure 1.4, we show just the data fields declared in class **Notebook**; however, **Notebook** objects also have the data fields that are inherited from class Computer (processor, ramSize, and so forth). The first line in class Notebook (Listing 1.3):
+```java
+public class Notebook extends Computer {
+	// indicates that class Notebook extends class Computer and inherits its data and methods. Next, we define any additional data fields
+	// Data Fields
+	private double screenSize;
+	private double weight;
+}
+```
+
+**Initializing Data Fields in a Subclass**
+The constructor for class Notebook must begin by initializing the for data fields inherited from class **Computer**. Because those date fields are private to the superclass, Java requires that they be initialized by a superclass constructor. Therefore, a superclass constructor must be invoked as the first statement in the constructor body using a statement such as
+super(man, proc, ram, disk, procSpeed);
+
+This statement invokes the superclass constructor with the signature **Computer(String, String, double, int, double)**, passing the four arguments listed to the constructor. (A method signature consist of the method's name followed by its parameter types). The following constructor for Notebook also initializes the data fields that are not inherited. Listing 1.3 shows class **Notebook**.
+public Notebook(String man, String proc, double ram, int disk, double procSpeed, double screen, double wei) {
+	super(man, proc, ram, disk, procSpeed);
+	screenSize = screen;
+	weight = wei;
+}
+
+**SYNTAX super(...);**
+FORM
+super();
+super(argumentList);
+
+Example:
+super(man, proc, ram, disk, procSpeed);
+
+Meaning:
+The supper() call in a class constructor invokes the superclass's constructor that has the corresponding *argumentList*. The superclass constructor initializes the inherited data fields as specified by its *argumentList*. The **super()** call must be the first statement in a constructor.
+
+**Class Notebook**
+```java
+public class Notebook extends Computer {
+	// Data Fields
+	private double screenSize;
+	private double weight;
+	
+	// Methods
+	public Notebook(String man, String proc, int ram, int disk, double procSpeed, double screen, double wei) {
+		super(man, proc, ram, disk, procSpeed);
+		screenSize = screen;
+		weight = wei;
+	}
+}
+```
+
+**The No-Parameter Constructor**
+If the execution of any constructor in a subclass does not invoke a superclass constructor, Java automatically invokes the no-parameter constructor for the superclass before the subclass starts to initialize its part of the object. Otherwise, the part of the object that is inherited would remain uninitialized.
+
+**PITFALL**
+**Not Defining the No-Parameter Constructor**
+If no constructors are defined for a class, the no-parameter constructor for that class **will be provided by default**. However, if any constructors are defined, the no-parameter constructor must also be defined explicitly if it needs to be invoked. Java does not provide it automatically because it may not make sense to create a new object of that type without providing initial data fields values. No entanto, se qualquer construtor for definido, o construtor sem parâmetros deverá também ser definido **explicitamente** caso precise ser utilizado. O Java não o fornece automaticamente nesse caso, pois pode não fazer sentido criar um novo objeto desse tipo sem fornecer valores iniciais para os atributos. Ele não foi definido na classe *Notebook* ou *Computer* porque queremos que o cliente especifique alguma informação sobre um objeto *Computer* quando esse objeto é criado.
+
+If the no-parameter constructor is defined in a subclass but is not defined in the superclass, we will get a syntax erros constructor not defined. We can also get this erros if a subclass constructor does not explicitly call a superclass constructor. There will be an implicit call to the no-parameter superclass constructor, so it must be defined. 
+
+**Protected Visibility for Superclass Data Fields**
+The data fields inherited from class **Computer** have private visibility. Therefore, they can be accessed only within class Computer. Because it is fairly common for a subclass method to reference data fields declared in its superclass, Java provides a less restrictive form of visiibility called *protected visibility*. A data field (or method) with protected visibility can be accessed in the class defining it, in any subclass of that class, or in any class in the same package. Therefore, if we had used the declaration 
+*protected* **String** manufacturer;
+
+in class Computer, the following assignment statement would be valid in class Notebook:
+manufacturer = man;
+
+We will use protected visibility on occasion when we are writing a class that we intend to extend. However, in general, it is better to use private visibility because subclassses may be writeen by different programmers, and it is always a good practice to restrict and control access to the superclass data fields. We discuss visibility further in Section 1.7.
+
+**Is-a versus Has-a Relationships**
+One misuse of inheritance is confugsing: the *has-a* relationship with the *ias-a* relationship.
+
+- *is-a* relationship between classes means that one class is a subclass of the other class. For example, a game box is not really a computer (it is a kind of entertainment device), but it has a computer as a component. 
+
+- *has-a* relationship is achieved by declaring a Computer data field in the game box class. class car { private Engine engine;} // Car has-a Engine 
+### Exercises for section 1.2
+1. Explain the effect of each valid statement in the following fragment. Indicate any invalid statements.
+	- Computer c1 = new Computer(); **não compila, a classe Computer não tem um construtor sem parâmetros**. *constructor Computer() is undefined*
+	- Computer c2 = new Computer("Ace", "AMD", 16, 1536, 4.1);
+	- Notebook c3 = new Notebook("Ace", "AMD", 32, 3584, 3.8); **gera erro de compilação, o construtor parametrizado exige 7 valores.**
+
+
+	- System.out.println(c2.manufacturer + ", " + c4.processor); **não compila, pois precisamos utilizar os métodos acessadores.**
+
+	- System.out.println(c2.getDiskSize() + ", " + c4.getRamSize());
+
+	- System.out.println(c2.toString() + "/n" + c4.toString()); **herda de Computer e exibe apenas os valores repassados**
+
+Can we add the following constructor to class Notebook? If so, what would we need to do to class Computer?
+**public** *Notebook()* {} 
+**Não compila, pois Java insere automaticamente super(), ou seja, ele tenta chamar o construtor sem parâmetros da superclasse (Computer)**.
+
+Receberemos o erro Computer() is undefined. 
+What does an _is-a_ relationship represent in OOP?
+A) Composition  
+B) Inheritance  
+C) Overloading  
+D) Encapsulation
+?
+B) Inheritance
+
+What does a *has-a* relationship represent in OOP?
+A) Inheritance  
+B) Polymorphism  
+C) Composition  
+D) Abstraction
+?
+C) Composition
+
+Which class is more general in inheritance?
+A) Subclass  
+B) Superclass  
+C) Interface  
+D) Object instance
+?
+B)Superclass
+
+**If a class defines a constructor with parameters, what happens to the no-argument constructor?**  
+A) It is still generated automatically  
+B) It is removed from Java  
+C) It must be written explicitly if needed  
+D) It becomes `protected`
+?
+C) It mus be written explicitly if needed
+
+
+**Where must `super(...)` appear inside a subclass constructor?**  
+A) Anywhere  
+B) Second line  
+C) Last line  
+D) First line
+?
+D) First Line
+
+**If a subclass does not explicitly call super(...) in its constructor:**
+A) Java inserts `super()` automatically  
+B) The code will not compile  
+C) The subclass fields become `null`  
+D) Private fields become accessible
+?
+A) Java inserts super() automatically.
+
+**`Computer c = new Computer();` fails to compile when:**  
+A) `Computer` has only constructors with parameters  
+B) `Computer` is abstract  
+C) Private fields exist  
+D) Getters are not implemented
+?
+A) Computer has only constructors with paramters
+
+
+
+
 
 ## 1.3 Method Overriding, Method Overloading, and Polymorphism
 ## 1.4 Abstract Classes
