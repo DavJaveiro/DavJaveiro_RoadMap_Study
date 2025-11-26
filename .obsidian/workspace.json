@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "8d4170e7975b4964",
+    "id": "d329234219e9ca47",
     "type": "split",
     "children": [
       {
-        "id": "8ed0cd39c1c780bc",
+        "id": "a47506949ca84bbc",
         "type": "tabs",
         "children": [
           {
-            "id": "d979987c16757e3a",
+            "id": "2bd37ec15c56aab8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/Chapter 2 - The Bank Statements Analyzer.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 2 - The Bank Statements Analyzer"
+              "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "7a0d190becd615b2",
+    "id": "538a1ebf4a71683a",
     "type": "split",
     "children": [
       {
-        "id": "a33bcab693d89d87",
+        "id": "8ffbda0bc066e141",
         "type": "tabs",
         "children": [
           {
-            "id": "8485dae3c33c7346",
+            "id": "239536dcf9ba7bd1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,12 +48,12 @@
             }
           },
           {
-            "id": "7a2cf08c08425fdd",
+            "id": "2bfba2f4ff0cdb46",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "bucket",
+                "query": "tag:#flashcards/Java/Data-Structures/chapter1/interface",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "973d38475b9d5678",
+            "id": "11ec455de412217c",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,7 +75,7 @@
             }
           },
           {
-            "id": "c30aa6d73322b66f",
+            "id": "7ffce30d7b812161",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -84,28 +84,29 @@
               "title": "RunJS Codelist"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 573.0080299377441,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "c2c1483ce4fe11a7",
+    "id": "b582b87badec6c30",
     "type": "split",
     "children": [
       {
-        "id": "aa9c77eb177898e6",
+        "id": "b25ee0db1ea61d30",
         "type": "tabs",
         "children": [
           {
-            "id": "30aa24b427596eec",
+            "id": "1aeabdb3487c8958",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,25 +116,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Chapter 8 - Reactive Spring Boot application development"
+              "title": "Links inversos para Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           },
           {
-            "id": "2f33df4d6afa0b40",
+            "id": "2e923d64751ee92b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Chapter 8 - Reactive Spring Boot application development"
+              "title": "Links de saída para Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           },
           {
-            "id": "29fd79c005054b21",
+            "id": "24704221e0c43adb",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -148,7 +149,7 @@
             }
           },
           {
-            "id": "cbb5f5f739b759f3",
+            "id": "9b6bc3d260a60a99",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -162,22 +163,22 @@
             }
           },
           {
-            "id": "c4440f96e35283c5",
+            "id": "fc75592e29a30eea",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spring Boot in Practice/Capítulo 8 - Reactive Spring Boot application development/Chapter 8 - Reactive Spring Boot application development.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Chapter 8 - Reactive Spring Boot application development"
+              "title": "Sumário de Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           },
           {
-            "id": "5746593c3c65aeb0",
+            "id": "26f1eac30bbf2802",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -218,58 +219,9 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5746593c3c65aeb0",
+  "active": "2bd37ec15c56aab8",
   "lastOpenFiles": [
-<<<<<<< HEAD
-    "Java Interview/Perguntas/Perguntas que podem cair.md",
-    "Java Interview/Básico de Java/Básico de Java.md",
-    "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
-    "Introduction to Bioinformatics - Lesk/Chapter 3 - Scientific publications and archives, media, content, and access/Chapter 3 - Scientific publications and archives, media, content, and access.md",
-=======
-    "Real-World Software Develop/Chapter 1 - Starting the Journey.md",
->>>>>>> d7886bba9a497bc7953624aea4276f70cc33db95
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
-    "image-202511242935695.png",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/ATM.java",
-    "1 Amazon Web Services In Action/Chapter 1 - What is Amazon Web Services.md",
-    "Pós Graduação - Unicamp/prompt.md",
-    "1 Amazon Web Services In Action",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/Chapter 2 - The Bank Statements Analyzer.md",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/target/classes/br/com/byebyecupom/Main.class",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/target/classes/br/com/byebyecupom/BankStatementProcessor.class",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/src/main/java/br/com/byebyecupom/BankStatementProcessor.java",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/target/classes/br/com/byebyecupom/BankTransaction.class",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/target/classes/br/com/byebyecupom/BankStatementCSVParser.class",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/src/main/java/br/com/byebyecupom/BankTransaction.java",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/src/main/java/br/com/byebyecupom/BankStatementCSVParser.java",
-    "Excalidraw/Drawing 2025-11-23 13.04.29.excalidraw.md",
-    "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/target/classes/br/com/byebyecupom",
-    "🚀Data Science do Zero/Capítulo 1- Introdução.md",
-    "🚀The Quick Python Book/Parte 1 - Starting out/Chapter 2 - Getting Start.md",
-    "🚀Angular/Essentials.md",
-    "🚀Angular/WebCurrículo/Sem título.md",
-    "🚀Angular/Components.md",
-    "image-20251120461028.png",
-    "image-20251120747445.png",
-    "🚀Angular/Philosophy.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
-    "image-202511193921644.png",
-    "image-202511194754543.png",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Estratégia.md",
-    "Sem título 1.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - The AWS Well-Architected Framework/The AWS Well-Architected Framework.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 2 - Identify and Access Management in AWS/Chapter 2 - Identify and Access Management in AWS.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03.md",
-    "xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA.png",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA-202511191719734.png",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/xDkTAqhNf5fVFw3ejn2YpdMYxWyk-Gpjd4Pfp1lGt5dQL3II-281ieCEQBj4CXttkYUtAkIJLRmVs50Ue9vGltUpMcUWwxMpP-4f6Y4i9PPPU5JwVlQfeWBuek4CBL3J-HnSDeYbTCwQxHoqEA.png",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-202511193623850.png",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/Chapter 1 - Introduction to Cloud Computing, AWS, and AWS SAA C-03/image-20251118036602.png",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
-    "🚀DevOps Rocketseat/Containers.md",
-    "FullStack Development React and Spring/Chapter 8 - Getting Started With React.md",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "ByeByeCupom/Kanban API (Sistema).canvas"
+    "Excalidraw/Drawing 2025-11-26 14.20.27.excalidraw.md"
   ]
 }
