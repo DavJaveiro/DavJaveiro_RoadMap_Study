@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "Chapter 2 - The Bank Statements Analyzer"
             }
+          },
+          {
+            "id": "8c641f1034605ff8",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "Notas de Lançamento 1.10.6"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -218,7 +231,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "d979987c16757e3a",
+  "active": "5746593c3c65aeb0",
   "lastOpenFiles": [
     "Real-World Software Develop/Chapter 1 - Starting the Journey.md",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
