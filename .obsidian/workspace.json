@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
+                "file": "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/Chapter 2 - The Bank Statements Analyzer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
+              "title": "Chapter 2 - The Bank Statements Analyzer"
             }
           }
         ]
@@ -220,10 +220,14 @@
   },
   "active": "5746593c3c65aeb0",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "Java Interview/Perguntas/Perguntas que podem cair.md",
     "Java Interview/Básico de Java/Básico de Java.md",
     "Introduction to Bioinformatics - Lesk/Chapter 4 - Archives and information retrieval/Chapter 4 - Archives and information retrieval.md",
     "Introduction to Bioinformatics - Lesk/Chapter 3 - Scientific publications and archives, media, content, and access/Chapter 3 - Scientific publications and archives, media, content, and access.md",
+=======
+    "Real-World Software Develop/Chapter 1 - Starting the Journey.md",
+>>>>>>> d7886bba9a497bc7953624aea4276f70cc33db95
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "image-202511242935695.png",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/ATM.java",
@@ -240,7 +244,6 @@
     "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/src/main/java/br/com/byebyecupom/BankStatementCSVParser.java",
     "Excalidraw/Drawing 2025-11-23 13.04.29.excalidraw.md",
     "Real-World Software Develop/Chapter 2 - The Bank Statements Analyzer/bank-chapter-2/target/classes/br/com/byebyecupom",
-    "Real-World Software Develop/Chapter 1 - Starting the Journey.md",
     "🚀Data Science do Zero/Capítulo 1- Introdução.md",
     "🚀The Quick Python Book/Parte 1 - Starting out/Chapter 2 - Getting Start.md",
     "🚀Angular/Essentials.md",
