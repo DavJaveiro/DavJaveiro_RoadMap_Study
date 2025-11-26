@@ -1,3 +1,4 @@
+#flashcards/Java/Data-Structures/chapter1 
 *Chapter Objectives*
 - To learn about #interfaces and their role in Java
 - To understand #inheritance and how it facilitates code reuse
@@ -245,12 +246,82 @@ Em Java, um ADT é normalmente descrito por uma *interface*, que especifica apen
 As classes que implementam a interface fornecem a implementação concreta dessas operações, incluindo suas próprias variáveis de instância e estruturas internas, que não são visíveis ao usuário.
 
 2. Explain how an interface is like a contract.
+An interface acts like a *contract* because it defines a set of abstract operations that any implementing class is #obligated to provide. In Java, an interface is often used to describe an Abstract Data Type (ADT): it specifies *what* operations exist, but not *how* they are implemented.
+
+Any class that implements the interface must provide concrete implementations for all of its abstract methods and must follow the exact method signatures defined. Because of this enforced obligation and consistency, we say an interface works like a contract between the ADT specification and the classes that implement it.
+
+A interface age como um contrato pois ela define um conjunto de operações abstratas que qualquer classe que implementá-la deverá obrigatoriamente fornecer. 
 
 
 
 
+**Q1 — Quais são as duas partes de um Abstract Data Type (ADT)?**
+A) Métodos públicos e construtor
+B) Estrutura de dados interna e herança
+C) _Dados abstratos_ (modelo lógico) e _operações_
+D) Interface e implementação
+?
+C) _Dados abstratos_ (modelo lógico) e _operações_
+<!--SR:!2025-11-26,1,230-->
+
+**Qual parte do ADT é acessível ao usuário?**  
+A) Os dados internos (atributos)  
+B) Somente o construtor  
+C) As operações (métodos definidos na interface)  
+D) A estrutura concreta usada para armazenar os dados
+?
+**C) As operações (métodos definidos na interface)**
+
+**Q3 — What best describes the relationship between ADTs, interfaces, and classes in Java?**  
+A) An interface implements an ADT and classes just use it.  
+B) A class defines the ADT and the interface implements it.  
+C) An ADT is specified by an interface, and a class provides the concrete implementation.  
+D) ADT, interface, and class mean the same thing
+?
+**C) An ADT is specified by an interface, and a class provides the concrete implementation.**  
+
+An ADT is defined by two parts: ==abstract data (not directly accessible)== and ==operations (accessible to the user)==.
+
+In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
+
+**Why is an interface considered a contract in Java?**
+A) Because it automatically provides default implementations to all classes.  
+B) Because it forces any implementing class to follow the method signatures it defines.  
+C) Because it exposes its internal data structure to subclasses.  
+D) Because it allows multiple inheritance of state.
+?
+B) Because it forces any implementing class to follow the method signatures it defines.  
+
+An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
 
 
+Why is this interface considered a "contract"?
+```java
+public interface PaymentProcessor {
+    void process(double amount);
+}
+```
+?
+Because any class implementing *PaymentProcessor* must provide the method `process(double amount)` exactly as declared, fulfilling the required behavior — like signing a contract and agreeing to its terms.
+
+3. Correct each of the following statements that is incorrect, assuming that class PDGUI and class PDConsoleUI implement interface PDUserInterface and neither is a subclass of the other.
+
+PDGUI implements PDUserInterface
+PDConsoleUI implements PDUserInterface
+
+*Podemos precisar declarar uma variável que seja do tipo de uma interface e usá-la para referenciar um objeto.* Podemos realizar isso se a variável referenciar um objeto do tipo de classe que implementa a interface.
+
+- PDGUI p1 = new PDConsoleUI();
+PDUserInterface p1 = new PDGUI();
+
+- PDGUI p2 = new PDUserInterface(); ->
+   PDUserInterface p2 = new PDGUI();
+
+- PDUserInterface p3 = new PDUserInterface(); A forma correta, seria utilizar uma classe implementa a interface...
+- PDUserInterface p4 = new PDConsoleUI(); (Correto)
+- PDGUI p5 = new PDUserInterface(); -> PDUserInterface p5 = new PDGUI();
+PDUserInterface p6 = p5;
+PDUserInterface p7;
 ## 1.2 Introduction to OOP
 
 ## 1.3 Method Overriding, Method Overloading, and Polymorphism
