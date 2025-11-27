@@ -1,44 +1,24 @@
 {
   "main": {
-<<<<<<< HEAD
-    "id": "52901b8b84557267",
+    "id": "4c86c74df3c624b3",
     "type": "split",
     "children": [
       {
-        "id": "294d6b86f0a3a4c0",
+        "id": "9d392ddf1442605a",
         "type": "tabs",
         "children": [
           {
-            "id": "0727d4baea86c5ac",
-=======
-    "id": "d329234219e9ca47",
-    "type": "split",
-    "children": [
-      {
-        "id": "a47506949ca84bbc",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "2bd37ec15c56aab8",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "7e753c758a63a196",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-=======
                 "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
-              "title": "Chapter 1 - What is Amazon Web Services"
-=======
               "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
             }
           }
         ]
@@ -47,27 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-<<<<<<< HEAD
-    "id": "05e1464d932aec4a",
+    "id": "187898b91c18a154",
     "type": "split",
     "children": [
       {
-        "id": "f448869e770e6420",
+        "id": "940af3e9e0dacb0b",
         "type": "tabs",
         "children": [
           {
-            "id": "a0d8761555b90037",
-=======
-    "id": "538a1ebf4a71683a",
-    "type": "split",
-    "children": [
-      {
-        "id": "8ffbda0bc066e141",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "239536dcf9ba7bd1",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "f9589c659110214e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -80,20 +48,12 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "d0fc80ccf9624588",
-=======
-            "id": "2bfba2f4ff0cdb46",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "832157e3f3fd9f29",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-<<<<<<< HEAD
                 "query": "",
-=======
-                "query": "tag:#flashcards/Java/Data-Structures/chapter1/interface",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -105,11 +65,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "07302eeff5d90f58",
-=======
-            "id": "11ec455de412217c",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "daa00e0165b02848",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -119,11 +75,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "a08d00722a6a8af2",
-=======
-            "id": "7ffce30d7b812161",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "73b398a53ece8e21",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -132,8 +84,7 @@
               "title": "RunJS Codelist"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -141,36 +92,20 @@
     "collapsed": true
   },
   "right": {
-<<<<<<< HEAD
-    "id": "5e4489f2c09280f2",
+    "id": "2284325e30fcbcb5",
     "type": "split",
     "children": [
       {
-        "id": "e76d3fd203eb8ea7",
+        "id": "0629f63ea43925ed",
         "type": "tabs",
         "children": [
           {
-            "id": "389cad52b855b0fa",
-=======
-    "id": "b582b87badec6c30",
-    "type": "split",
-    "children": [
-      {
-        "id": "b25ee0db1ea61d30",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "1aeabdb3487c8958",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "2e41ce95f78a375c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
-                "file": "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-=======
                 "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -180,45 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-<<<<<<< HEAD
-              "title": "Links inversos para Chapter 1 - What is Amazon Web Services"
-            }
-          },
-          {
-            "id": "729d0cc6c49733a3",
-=======
               "title": "Links inversos para Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           },
           {
-            "id": "2e923d64751ee92b",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "36f299d97b751e7f",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< HEAD
-                "file": "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-=======
                 "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-<<<<<<< HEAD
-              "title": "Links de saída para Chapter 1 - What is Amazon Web Services"
-            }
-          },
-          {
-            "id": "a67348c83fde87cd",
-=======
               "title": "Links de saída para Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           },
           {
-            "id": "24704221e0c43adb",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "17b216ea3d88d201",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -233,11 +148,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "e5013ee545546986",
-=======
-            "id": "9b6bc3d260a60a99",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "bd03774ea8dc9ae6",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -251,38 +162,22 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "c7e132042e3e2c49",
-=======
-            "id": "fc75592e29a30eea",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "df832d31759c92cc",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-<<<<<<< HEAD
-                "file": "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-=======
                 "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-<<<<<<< HEAD
-              "title": "Sumário de Chapter 1 - What is Amazon Web Services"
-            }
-          },
-          {
-            "id": "76f548b0b684e6a5",
-=======
               "title": "Sumário de Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           },
           {
-            "id": "26f1eac30bbf2802",
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+            "id": "98a477cdb0f66618",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -323,28 +218,9 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-<<<<<<< HEAD
-  "active": "0727d4baea86c5ac",
+  "active": "7e753c758a63a196",
   "lastOpenFiles": [
-    "image-202511255334872.png",
-    "image-202511253641391.png",
-    "image-20251125295527.png",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-    "🚀 Amazon Web Services In Action/Getting Started/Sem título",
-    "🚀 Amazon Web Services In Action/Getting Started",
-    "🚀Angular/WebCurrículo/Sem título.md",
-    "🚀Angular/WebCurrículo",
-    "🚀Angular/Essentials.md",
-    "🚀Angular/Philosophy.md",
-    "🚀Angular/Components.md",
-    "🚀Angular",
-    "🚀 Amazon Web Services In Action",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md"
-=======
-  "active": "2bd37ec15c56aab8",
-  "lastOpenFiles": [
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
-    "Excalidraw/Drawing 2025-11-26 14.20.27.excalidraw.md"
->>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
   ]
 }

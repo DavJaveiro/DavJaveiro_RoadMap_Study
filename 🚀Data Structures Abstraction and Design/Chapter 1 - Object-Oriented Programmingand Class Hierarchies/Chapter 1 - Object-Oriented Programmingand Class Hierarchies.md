@@ -296,10 +296,11 @@ D) Because it allows multiple inheritance of state.
 ?
 B) Because it forces any implementing class to follow the method signatures it defines.
 <<<<<<< HEAD
-<!--SR:!2025-11-27,2,248-->
+
 =======
-<!--SR:!2025-11-28,2,248-->
+
 >>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
+<!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
 <!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-27,1,228-->
@@ -558,6 +559,12 @@ A) Computer has only constructors with paramters
 
 
 ## 1.3 Method Overriding, Method Overloading, and Polymorphism
+In the preceding section, we discussed inherited data fields. We found that we could not access an inherited data field in a subclass object if tis visibility was private. 
+### Method Overriding
+### Method Overloading
+### Polymorphism
+### Methods with Class Paarameters
+### Exercises for Section 1.3
 ## 1.4 Abstract Classes
 ## 1.5 Class Object and Casting
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
