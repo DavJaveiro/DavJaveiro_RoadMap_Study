@@ -182,6 +182,8 @@ Como este capítulo é teórico, seu "Lab" será administrativo. Não pule isso!
 - [ ] Criei pelo menos 15-20 cards no Anki cobrindo IaaS/PaaS, NIST e Modelo Compartilhado.
 - [ ] Configurei MFA e Billing Alarm na AWS.
 - [ ] Entendi a diferença entre "Rehost" e "Refactor".
-- [ ] 
 
-
+### Operational Benefits of AWS
+Operating in the public AWS cloud has certain benefits provided by the previosuly discussed NIST five essential characteristics. Unlimited access to the many cloud services available at AWS may make it easier then expected to operate and manage workloads in the AWS cloud. Consider the following:
+- **Servers**: underutilized servers in our data center are expensive to run and maintain. Moving applications to the public cloud can reduce the size of our on-premises data center. When we no longer host as many physical servers, our total hosting costs (racking, powering, heating, and cooling) could be lower as well. We algo don't have to pay for software licenses at the processer level because we're not responsible for running hypervisor services; that's now Amazon's job. We might think that moving to the AWS cloud means virtualized resources and only virtualization. However, with AWS, we can get an ever-increasing verity of EC2 isntances, including dedicated virutal servers or bare-metal servers. Sizes range from a single-core CPU with 512 MB of RAM to hundreds of CPU cores and terabytes of RAM.
+- 

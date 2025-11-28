@@ -296,14 +296,16 @@ D) Because it allows multiple inheritance of state.
 ?
 B) Because it forces any implementing class to follow the method signatures it defines.
 <<<<<<< HEAD
+<!--SR:!2025-11-29,2,247-->
 
 =======
+<!--SR:!2025-11-29,2,247-->
 
 >>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
 <!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
-<!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-27,1,228-->
+<!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-29,2,228-->
 
 
 Why is this interface considered a "contract"?
@@ -496,63 +498,70 @@ Can we add the following constructor to class Notebook? If so, what would we nee
 **public** *Notebook()* {} 
 **Não compila, pois Java insere automaticamente super(), ou seja, ele tenta chamar o construtor sem parâmetros da superclasse (Computer)**.
 
-Receberemos o erro Computer() is undefined. 
+Receberemos o erro Computer() is undefined.
 What does an _is-a_ relationship represent in OOP?
-A) Composition  
-B) Inheritance  
-C) Overloading  
+A) Composition
+B) Inheritance
+C) Overloading
 D) Encapsulation
 ?
 B) Inheritance
+<!--SR:!2025-11-29,2,247-->
 
 What does a *has-a* relationship represent in OOP?
-A) Inheritance  
-B) Polymorphism  
-C) Composition  
+A) Inheritance
+B) Polymorphism
+C) Composition
 D) Abstraction
 ?
 C) Composition
+<!--SR:!2025-11-29,2,247-->
 
 Which class is more general in inheritance?
-A) Subclass  
-B) Superclass  
-C) Interface  
+A) Subclass
+B) Superclass
+C) Interface
 D) Object instance
 ?
 B)Superclass
+<!--SR:!2025-11-29,2,247-->
 
-**If a class defines a constructor with parameters, what happens to the no-argument constructor?**  
-A) It is still generated automatically  
-B) It is removed from Java  
-C) It must be written explicitly if needed  
+**If a class defines a constructor with parameters, what happens to the no-argument constructor?**
+A) It is still generated automatically
+B) It is removed from Java
+C) It must be written explicitly if needed
 D) It becomes `protected`
 ?
 C) It mus be written explicitly if needed
+<!--SR:!2025-11-29,2,247-->
 
 
-**Where must `super(...)` appear inside a subclass constructor?**  
-A) Anywhere  
-B) Second line  
-C) Last line  
+**Where must `super(...)` appear inside a subclass constructor?**
+A) Anywhere
+B) Second line
+C) Last line
 D) First line
 ?
 D) First Line
+<!--SR:!2025-11-29,2,247-->
 
 **If a subclass does not explicitly call super(...) in its constructor:**
-A) Java inserts `super()` automatically  
-B) The code will not compile  
-C) The subclass fields become `null`  
+A) Java inserts `super()` automatically
+B) The code will not compile
+C) The subclass fields become `null`
 D) Private fields become accessible
 ?
 A) Java inserts super() automatically.
+<!--SR:!2025-11-29,2,247-->
 
-**`Computer c = new Computer();` fails to compile when:**  
-A) `Computer` has only constructors with parameters  
-B) `Computer` is abstract  
-C) Private fields exist  
+**`Computer c = new Computer();` fails to compile when:**
+A) `Computer` has only constructors with parameters
+B) `Computer` is abstract
+C) Private fields exist
 D) Getters are not implemented
 ?
 A) Computer has only constructors with paramters
+<!--SR:!2025-11-29,2,247-->
 
 
 
