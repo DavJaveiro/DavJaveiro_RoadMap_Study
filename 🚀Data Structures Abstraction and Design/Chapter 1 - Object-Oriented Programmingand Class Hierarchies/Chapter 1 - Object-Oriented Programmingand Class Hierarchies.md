@@ -262,7 +262,7 @@ C) _Dados abstratos_ (modelo lógico) e _operações_
 D) Interface e implementação
 ?
 C) _Dados abstratos_ (modelo lógico) e _operações_
-<!--SR:!2025-11-28,2,230-->
+<!--SR:!2025-12-03,5,230-->
 
 **Qual parte do ADT é acessível ao usuário?**
 A) Os dados internos (atributos)
@@ -271,7 +271,7 @@ C) As operações (métodos definidos na interface)
 D) A estrutura concreta usada para armazenar os dados
 ?
 **C) As operações (métodos definidos na interface)**
-<!--SR:!2025-11-28,2,248-->
+<!--SR:!2025-12-03,5,248-->
 
 **Q3 — What best describes the relationship between ADTs, interfaces, and classes in Java?**
 A) An interface implements an ADT and classes just use it.
@@ -280,13 +280,13 @@ C) An ADT is specified by an interface, and a class provides the concrete implem
 D) ADT, interface, and class mean the same thing
 ?
 **C) An ADT is specified by an interface, and a class provides the concrete implementation.**
-<!--SR:!2025-11-28,2,248-->
+<!--SR:!2025-12-03,5,248-->
 
 An ADT is defined by two parts: ==abstract data (not directly accessible)== and ==operations (accessible to the user)==.
-<!--SR:!2025-11-28,2,248!2025-11-28,2,248-->
+<!--SR:!2025-12-03,5,248!2025-12-05,7,268-->
 
 In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
-<!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-28,2,248-->
+<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-11-29,1,228-->
 
 **Why is an interface considered a contract in Java?**
 A) Because it automatically provides default implementations to all classes.
@@ -305,7 +305,7 @@ B) Because it forces any implementing class to follow the method signatures it d
 <!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
-<!--SR:!2025-11-28,2,248!2025-11-28,2,248!2025-11-29,2,228-->
+<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-11-29,2,228-->
 
 
 Why is this interface considered a "contract"?
@@ -316,7 +316,7 @@ public interface PaymentProcessor {
 ```
 ?
 Because any class implementing *PaymentProcessor* must provide the method `process(double amount)` exactly as declared, fulfilling the required behavior — like signing a contract and agreeing to its terms.
-<!--SR:!2025-11-28,2,248-->
+<!--SR:!2025-12-03,5,248-->
 
 3. Correct each of the following statements that is incorrect, assuming that class PDGUI and class PDConsoleUI implement interface PDUserInterface and neither is a subclass of the other.
 
@@ -568,11 +568,239 @@ A) Computer has only constructors with paramters
 
 
 ## 1.3 Method Overriding, Method Overloading, and Polymorphism
-In the preceding section, we discussed inherited data fields. We found that we could not access an inherited data field in a subclass object if tis visibility was private. 
+In the preceding section, we discussed inherited data fields. We found that we could not access an inherited data field in a subclass object if tis visibility was private.  Methods generally have public visibility, so we should be able to access a method that is inherited. However, whet if there are multiple methods with the same name in a  class hierarchy? <span style="background:#affad1">How does Java determine which one to invoke?</span> We answer this question next.
 ### Method Overriding
+Let's use the following main method to test our class hierarchy.
+```java
+// Tests classes Computer and Notebook. Creates an object of each and displays them.
+// @paragm args[] No control paramters
+public static void main(String[] args) {
+	Computer myComputer = new Computer("Acme", "Intel", 32, 2560, 4.7);
+	Notebook ourComputer = new Notebook("DellGate", "AMD", 8, 256, 3.4, 13.3, 2.94);
+	System.out.println("My computer is :\n" + myComputer.toString());
+	System.out.println("\nYour computer is:\n" + ourComputer.toString());
+}
+```
+
+In the second call to println, the method call *ourComputer.toString()* applies method toString to object ourComputer (type Notebook). Because class Notebook doesn't define its own toString method, class Notebook inherits the toString method defined in class Computer. Executing this method displays the following output lines:
+My computer is:
+Manufacturer: Acme
+CPU: Intel
+RAM: 32 gigabytes
+Disk: 2560 gigabytes
+Speed: 4.7 gigahertz
+
+Your computer is:
+Manufacturer: DellGate
+CPU: AMD
+RAM: 8 gigabytes
+Disk: 256 gigabytes
+Speed: 3.4 gigahertz
+
+Unfortunately, this output doesn't show the complete state of object ourComputer.  To show the complete state of a notebook computer, we need to define a *toString* method for class Notebook. If class Notebook has its own toString method, it will override the inherited method and will be invoked by the method call ourComputer.toString(). We define method toString for class Notebook next.
+```java
+public String toString() {
+	public String toString() {
+		String result = super.toString() +
+			"\nScreen size: " + screenSize + " inches" +
+			"\nWeight: " + weight + " pounds";
+		return result;
+	}
+}
+```
+
+This method Notebook.toString return a string representation of the state of a Notebook object. The first line String result = super.toString() uses method call **super**.toString() to invoke the toString method of the superclass (method Computer.toString) to get the string representation of the four data fields that are inherited from the superclass. The next two lines append the data fields defined in class Notebook to this string.
+
+FORM:
+super.methodName()
+super.methodName(argumentList)
+
+EXAMPLE:
+super.toString()
+
+**MEANING**
+Using the prefix *super.* in a call to method *methodName* class the method with that name defined in the superclass of the current class.
+
+**RESUMO:** estamos explicitamente chamando a implementação do método que está na superclasse, mesmo que esse método tenha sido sobrescrito (override) na subclasse.
+
+**PROGRAM STYLE**
+*Calling Method toString() Is Optional*
+In the println statement shown earlier, System.out.println("My computer is:\n" + myComputer.toString()); the explicit call to method toString is not required. The statement could be written as *System.out.println("My computer is:\n" + myComputer*; Java auomatically applies the toString method to an object referenced in a String expression. Normally, we will note explicitly call *toString*.
 ### Method Overloading
+Let's assume we have decided to standardize and purchase our notebook computers from only one manufacturer. We could then introduce a new constructor with one less parameter for class **Notebook**.
+public Notebook(String proc, int ram, int disk, double procSpeed, double screen, double wei) {
+	this(DEFAULT_NB_MAN, proc, ram, disk, procSpeed, screen, we);
+}
+
+The method call
+this(DEFAULT_NB_MAN, proc, ram, disk, procSpeed, screen, wei);
+invokes six-parameter constructor begins by calling the superclass constructor, satisfying the requirement that it be classed first. We now have two constructors with different signatures in class Notebook. Having multiple methods with the same name but different signatures in a class is called *method overloading*.
+
+Now we have two ways to create new Notebook objects. Both of the following statement are valid:
+*Notebook 1TP1 = new Notebook("Intel", 16, 512, 4.6, 13.3, 3.18);*
+*Notebook 1TP2 = new Notebook("MicroSys", "AMD", 8, 256, 3.9, 17, 5.4);*
+
+Listing 1.4 shows the complete class Notebook. Figure 1.5 shows the UML diagram, revised to show that Notebook has a toString method and a constant data field. The next Pitfall discusses the reason for the @Override annotation preceding method toString.
+
+```java
+public class Notebook extends Computer {
+	private static final String DEFAULT_NB_MAN = "MyBrand";
+	private double screenSize;
+	private double weight;
+	
+	public Notebook(String man, String proc, int ram, int disk, double procSpeed, double screen, double wei) {
+		super(man, proc, ram, disk, procSpeed);
+		screenSize = screen;
+		weight = wei;
+	}
+	
+	// Initializes a Notebook object with 6 properties specified.
+	public Notebook(String man, String proc, int ram, int disk, double procSpeed, double screen, double wei) {
+		super(man, proc, ram, disk, procSpeed);
+		screenSize = screen;
+		weight = wei;
+	}
+
+	@Override
+	public String toString() {
+		String result = super.toString() + ...
+		return result;
+	}
+}
+```
+
+**PITFALL**
+*Overloading a Method When Intending to Override It*
+To override a method, we must use the same name and the same number and types of the parameters as the superclass method that is being overridden. If the name is the same but the number or types of the parameters are different, then the method is overloaded instead. Normally, the compiler will note detect this as an error. However, it is a sufficientyle common error that a feature was added to the Java compiler so that programmers can indicate that they intend to override a method. If we preced the declaration of the method with the annotation *@Override*, the compiler will issue an error message if the method is overloaded instead of overridden.
+
+**Por que usar @Overridade é importante?**
+Porque o compilador **confirma** que realmente estamos sobrescrevendo um método existente. 
+
+Sem a anotação, se cometermos um erro, como digitar o nome errado, ou mudar a assinatura do método, o compilador não avisa, e acabamos criando um método novo sem perceber.
+
 ### Polymorphism
+An important advantage of OOP is that it supports a feature called *polymorfphism*, which means many forms or many shapes.  #Polymorphism ou #Polimorfismo enable the JVM to determine at run time which of the classes in a hierarchy is referenced by a superclass variable or parameter. Next, we will see how this simplifies the programming process.
+
+Suppose we are not sure whether a computer referenced in a program will be a notebook or a regular computer. IF we declare the reference variable 
+*Computer theComputer*
+
+we can use it to reference an object of either type because a type Notebook object can be referenced by a type Computer. In Java, a variable of a superclass type (general) can reference an object of a subclass type (specific). Notebook objects are Computer objects with more features. When the following statements are executed,
+theComputer = new Computer("Acme", "Intel", 2, 160, 2.6);
+System.out.println(theComputer.toString());
+
+we would see for output lines, representing the state of the object referenced by theComputer.
+Now suppose we have purchased a notebook computer instead. What happens when the following statements are executed,
+theComputer = new Notebook("Bravo", "Intel", 4, 240, 2.4, 15.0, 7.5);
+System.out.println(theComputer.toString());
+
+Recall that theComputer is type Computer. Will the theComputer.toString() method call return a string with all seven data fields or just the five data fields defined for a Computer object? The answer is a string with all seven data fields. The reason is that the type of the object receiving the toStgring message determines which toString method is called. Even though variable theComputer is type Computer, it references a type Notebook object, and the Notebook object receives the toString message. Therefore, the method toString for class Notebook is the one called.
+
+This is an example of polymorphism. Varible theComputer references a Computer object at one time and a Notebook object another time. At compile time, the Java compiler can't determine what type of object theComputer will reference, but at run time, the JVM knows the type of the object that receives the toString message and can call the appropriate toString method.
+
+**Example 1.2** If we declare the array labComputers as follows:
+*Computer[] labComputers = new Computer[10];*
+each subscripted variable labComputers[i] can reference either a Computer object or a Notebook object because Notebook is a subclass of Computer. For the method call labComputer[i]. toString(), polymorphism ensures that the correct toString method is called. For each value or subscript i, the actual type of the object referenced by **labComputers[i]** determines which toString method will execute (Computer.toString or Notebook.toString).
+
+
+Polymorphism & Method Invocation. Consider the following class hierarchy based on the text:
+```java
+class Computer {
+    public String getDescription() { return "Generic Computer"; }
+}
+
+class Notebook extends Computer {
+    public String getDescription() { return "Notebook Model"; }
+}
+```
+Given the code snippet below:
+```java
+Computer myDevice = new Notebook();
+System.out.println(myDevice.getDescription());
+```
+Which of the following statements explains the output and the mechanism used by the JVM?
+A) Output: "Generic Computer". The compiler determines the method call based on the reference type (`Computer`).
+B) Output: "Notebook Model". The JVM determines the method to call at runtime based on the actual object type (Dynamic Binding).
+C) Output: "Notebook Model". The compiler modifies the reference type to `Notebook` during compilation.
+D) Compilation Error. You cannot assign a `Notebook` object to a `Computer` reference variable.
+?
+**B) Output: "Notebook Model". The JVM determines the method to call at runtime based on the actual object type (Dynamic Binding).**
+**Explanation:** This is the definition of **Polymorphism**. While the compiler checks if the method exists in the reference type (`Computer`), the JVM invokes the method implementation corresponding to the actual object in memory (`Notebook`) at runtime. Durante a compilação, o compilador verifica apenas o tipo de referência, se a classe *Tiver* um método **getDescription()**, o código será compilado. E durante a execução, a JVM verifica o tipo real do objecto. Esse objeto é um Notebook, então usarei o método sobrescrito dele. Isso é chamado de *Dynamic Binding* ou *Late Binding*.
+<!--SR:!2025-11-30,2,247-->
+
+Covariant Return Types (Overriding Rules). You are refactoring the `Computer` and `Notebook` classes. 
+```java
+class Computer {
+    public Computer produce() { return new Computer(); }
+}
+
+class Notebook extends Computer {
+    // INSERT CODE HERE
+}
+```
+Which of the following implementations for the **produce** method in the **Notebook** class is valid for **Method Overriding** in Java SE 21?
+A) `public Object produce() { return new Notebook(); }`
+B) `public Computer produce() { return new Notebook(); }`
+C) `public Notebook produce() { return new Notebook(); }`
+D) Both B and C are valid.
+?
+D) Both B and C are valid.
+**Explanation:**
+- **B** is valid because the return type is exactly the same.
+- **C** is valid because of **Covariant Return Types**. Since Java 5, an overridden method in a subclass can return a subtype (subclass) of the return type declared in the superclass method. `Notebook` is a subclass of `Computer`.
+- **A** is invalid because `Object` is a superclass, not a subclass, of `Computer`.
+
+Constructor Chaining (`this` vs `super`). Review the following constructor logic intended for the `Notebook` class:
+```java
+public class Notebook extends Computer {
+    private String manufacturer;
+    private int ram;
+
+    public Notebook(String man, int ram) {
+        super(man, ram); // Line 1
+        this.manufacturer = man;
+    }
+
+    public Notebook(int ram) {
+        this("DefaultBrand", ram); // Line 2
+        super("DefaultBrand", ram); // Line 3
+    }
+}
+```
+Assuming the **Computer** class has a matching constructor, what is the result of compiling this code?
+A) Compilation succeeds.
+B) Compilation fails at Line 2 because `this()` cannot be used with arguments.
+C) Compilation fails at Line 3 because the call to `super()` (or `this()`) must be the first statement in a constructor.
+D) Compilation fails at Line 1 because `super` cannot be called if `this` is used in other constructors.
+?
+**C) Compilation fails at Line 3 because the call to `super()` (or `this()`) must be the first statement in a constructor.**
+**Explanation:** In Java, a constructor can call `super(...)` OR `this(...)`, but **not both**, because whichever one is called must be the very first executable statement. Line 2 correctly calls another constructor in the same class, but Line 3 attempts to call the super constructor afterwards, which is illegal.
+
+### The `@Override` Annotation
+**Front (Question):** In the provided text, the author recommends using `@Override` before the `toString` method in the `Notebook` class. What is the primary technical benefit of adding this annotation regarding the Java compiler?
+A) It ensures the method is executed faster at runtime by the JVM.
+B) It allows the method to access `private` fields of the superclass.
+C) It instructs the compiler to generate an error if the method does not correctly override a method declared in a superclass (e.g., due to a typo in the name).
+D) It is mandatory; the code will not compile without it if the method exists in the parent class.
+?
+**Back (Answer):** **C) It instructs the compiler to generate an error if the method does not correctly override a method declared in a superclass.**
+**Explanation:** The annotation is not mandatory, but it serves as a compile-time check. If you misspell the method name (e.g., `tostring()` instead of `toString()`) or get the arguments wrong, the compiler will throw an error explicitly stating "method does not override or implement a method from a supertype," preventing accidental overloading or new method creation.
+
+Card 7: Polymorphism with Arrays. Review the following array declaration mentioned in the text:
+```java
+Computer[] labComputers = new Computer[10];
+labComputers[0] = new Computer("Acme", ...);
+labComputers[1] = new Notebook("Dell", ...);
+```
+If `Notebook` has a method `getScreenSize()` that `Computer` does **not** have, what happens if you execute: `System.out.println(labComputers[1].getScreenSize());` 
+A) It prints the screen size because `labComputers[1]` is holding a `Notebook` object.
+B) It prints `0.0` (default value).
+C) Runtime Exception: `ClassCastException`.
+D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.
+?
+**D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.**
+**Explanation:** Even though the object at index 1 is technically a `Notebook`, the **reference type** of the array is `Computer`. The compiler only knows about methods defined in the `Computer` class. To access `getScreenSize()`, you would need to explicitly cast the reference: `((Notebook)labComputers[1]).getScreenSize()`.
 ### Methods with Class Paarameters
+
 ### Exercises for Section 1.3
 ## 1.4 Abstract Classes
 ## 1.5 Class Object and Casting
