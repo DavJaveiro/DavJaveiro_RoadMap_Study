@@ -286,7 +286,7 @@ An ADT is defined by two parts: ==abstract data (not directly accessible)== and 
 <!--SR:!2025-12-03,5,248!2025-12-05,7,268-->
 
 In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
-<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-11-29,1,228-->
+<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-12-02,2,228-->
 
 **Why is an interface considered a contract in Java?**
 A) Because it automatically provides default implementations to all classes.
@@ -296,16 +296,16 @@ D) Because it allows multiple inheritance of state.
 ?
 B) Because it forces any implementing class to follow the method signatures it defines.
 <<<<<<< HEAD
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 =======
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 >>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
 <!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
-<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-11-29,2,228-->
+<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-12-05,5,228-->
 
 
 Why is this interface considered a "contract"?
@@ -506,7 +506,7 @@ C) Overloading
 D) Encapsulation
 ?
 B) Inheritance
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 What does a *has-a* relationship represent in OOP?
 A) Inheritance
@@ -515,7 +515,7 @@ C) Composition
 D) Abstraction
 ?
 C) Composition
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 Which class is more general in inheritance?
 A) Subclass
@@ -524,7 +524,7 @@ C) Interface
 D) Object instance
 ?
 B)Superclass
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 **If a class defines a constructor with parameters, what happens to the no-argument constructor?**
 A) It is still generated automatically
@@ -533,7 +533,7 @@ C) It must be written explicitly if needed
 D) It becomes `protected`
 ?
 C) It mus be written explicitly if needed
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 
 **Where must `super(...)` appear inside a subclass constructor?**
@@ -543,7 +543,7 @@ C) Last line
 D) First line
 ?
 D) First Line
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 **If a subclass does not explicitly call super(...) in its constructor:**
 A) Java inserts `super()` automatically
@@ -552,7 +552,7 @@ C) The subclass fields become `null`
 D) Private fields become accessible
 ?
 A) Java inserts super() automatically.
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 **`Computer c = new Computer();` fails to compile when:**
 A) `Computer` has only constructors with parameters
@@ -561,7 +561,7 @@ C) Private fields exist
 D) Getters are not implemented
 ?
 A) Computer has only constructors with paramters
-<!--SR:!2025-11-29,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
 
 
@@ -725,9 +725,9 @@ D) Compilation Error. You cannot assign a `Notebook` object to a `Computer` refe
 ?
 **B) Output: "Notebook Model". The JVM determines the method to call at runtime based on the actual object type (Dynamic Binding).**
 **Explanation:** This is the definition of **Polymorphism**. While the compiler checks if the method exists in the reference type (`Computer`), the JVM invokes the method implementation corresponding to the actual object in memory (`Notebook`) at runtime. Durante a compilação, o compilador verifica apenas o tipo de referência, se a classe *Tiver* um método **getDescription()**, o código será compilado. E durante a execução, a JVM verifica o tipo real do objecto. Esse objeto é um Notebook, então usarei o método sobrescrito dele. Isso é chamado de *Dynamic Binding* ou *Late Binding*.
-<!--SR:!2025-11-30,2,247-->
+<!--SR:!2025-12-05,5,247-->
 
-Covariant Return Types (Overriding Rules). You are refactoring the `Computer` and `Notebook` classes. 
+Covariant Return Types (Overriding Rules). You are refactoring the `Computer` and `Notebook` classes.
 ```java
 class Computer {
     public Computer produce() { return new Computer(); }
@@ -748,6 +748,7 @@ D) Both B and C are valid.
 - **B** is valid because the return type is exactly the same.
 - **C** is valid because of **Covariant Return Types**. Since Java 5, an overridden method in a subclass can return a subtype (subclass) of the return type declared in the superclass method. `Notebook` is a subclass of `Computer`.
 - **A** is invalid because `Object` is a superclass, not a subclass, of `Computer`.
+<!--SR:!2025-12-02,2,247-->
 
 Constructor Chaining (`this` vs `super`). Review the following constructor logic intended for the `Notebook` class:
 ```java
@@ -774,6 +775,7 @@ D) Compilation fails at Line 1 because `super` cannot be called if `this` is use
 ?
 **C) Compilation fails at Line 3 because the call to `super()` (or `this()`) must be the first statement in a constructor.**
 **Explanation:** In Java, a constructor can call `super(...)` OR `this(...)`, but **not both**, because whichever one is called must be the very first executable statement. Line 2 correctly calls another constructor in the same class, but Line 3 attempts to call the super constructor afterwards, which is illegal.
+<!--SR:!2025-12-02,2,247-->
 
 ### The `@Override` Annotation
 **Front (Question):** In the provided text, the author recommends using `@Override` before the `toString` method in the `Notebook` class. What is the primary technical benefit of adding this annotation regarding the Java compiler?
@@ -784,6 +786,7 @@ D) It is mandatory; the code will not compile without it if the method exists in
 ?
 **Back (Answer):** **C) It instructs the compiler to generate an error if the method does not correctly override a method declared in a superclass.**
 **Explanation:** The annotation is not mandatory, but it serves as a compile-time check. If you misspell the method name (e.g., `tostring()` instead of `toString()`) or get the arguments wrong, the compiler will throw an error explicitly stating "method does not override or implement a method from a supertype," preventing accidental overloading or new method creation.
+<!--SR:!2025-12-02,2,247-->
 
 Card 7: Polymorphism with Arrays. Review the following array declaration mentioned in the text:
 ```java
@@ -791,7 +794,7 @@ Computer[] labComputers = new Computer[10];
 labComputers[0] = new Computer("Acme", ...);
 labComputers[1] = new Notebook("Dell", ...);
 ```
-If `Notebook` has a method `getScreenSize()` that `Computer` does **not** have, what happens if you execute: `System.out.println(labComputers[1].getScreenSize());` 
+If `Notebook` has a method `getScreenSize()` that `Computer` does **not** have, what happens if you execute: `System.out.println(labComputers[1].getScreenSize());`
 A) It prints the screen size because `labComputers[1]` is holding a `Notebook` object.
 B) It prints `0.0` (default value).
 C) Runtime Exception: `ClassCastException`.
@@ -800,6 +803,7 @@ D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.
 **D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.**
 **Explanation:** Even though the object at index 1 is technically a `Notebook`, the **reference type** of the array is `Computer`. The compiler only knows about methods defined in the `Computer` class. To access `getScreenSize()`, you would need to explicitly cast the reference: `((Notebook)labComputers[1]).getScreenSize()`.
 ### Methods with Class Paarameters
+<!--SR:!2025-12-02,2,247-->
 
 ### Exercises for Section 1.3
 ## 1.4 Abstract Classes
