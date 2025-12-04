@@ -802,11 +802,185 @@ D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.
 ?
 **D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.**
 **Explanation:** Even though the object at index 1 is technically a `Notebook`, the **reference type** of the array is `Computer`. The compiler only knows about methods defined in the `Computer` class. To access `getScreenSize()`, you would need to explicitly cast the reference: `((Notebook)labComputers[1]).getScreenSize()`.
-### Methods with Class Paarameters
 <!--SR:!2025-12-02,2,247-->
+### Methods with Class Parameters
+Polymorphism also simplifies programming when we write methods that have class parameters. For example, if we want to compare the power of two computers without polymorphism, we will need to write overloaded *comparePower* methods in class *Computer*, one for each subclass parameter and one with a class **Computer** paramter. However, polymorphism enables us to write one method with a **Computer** parameter. 
+
+Method Computer.comparePowers compares the power of the **Computer** object it is applied to with the **Computer** object passed as its argument. It returns -1, 0, or +1 depending on which computer has more power. It does not matter wheter this or aComputer references a Computer or a Notebook object.
+
+```java
+// Compares power of this computer and its argument computer
+public int comparePower(Computer aComputer) {
+	if (this.computerPower() < aComputer.computePower())
+	return -1;
+	else if (this.computePower() == aComputer.computePower())
+	return 0;
+	else return 1;
+}
+```
 
 ### Exercises for Section 1.3
+a) Explain the effect of each of the following statements. Which one(s) would we find in class Computer? Which one(s) would we find in class Notebook?
+*super*(man, proc, ram, disk, procSpeed);
+*this*(man, proc, ram, disk, procSpeed);
+
+When must *super()* or *this()* be placed inside a constructor?
+A) Anywhere inside the constructor;
+B)As the first statement in the constructor;
+C) Only after initializing instance variables;
+D) It is optional and Java inserts it automatically anywhere
+?
+**B) As the first statement in the constructor**
+
+What is the main difference between this() and super() in constructors?
+A) this() calls a superclass constructor, super() calls a subclass constructor
+B) this() calls another construtor in the same class, super() calls a superclass constructor;
+C) `this()` can only be used in static methods  
+D) `super()` can only be used in private constructors
+?
+B) this() calls another construtor in the same class, super() calls a superclass constructor;
+
+Given:
+```java
+class Computer {
+	Computer(String type) {}
+}
+
+class Notebook extends Computer {
+	Notebook() {}
+}
+```
+What will happen?
+A) Code compiles normally  
+B) Runtime error only if Notebook is instantiated  
+C) Compilation error: superclass constructor not called explicitly  
+D) Java inserts a default call to a matching constructor automatically
+?
+**C) Compilation error: superclass constructor not called explicitly**
+
+b) For the loop body in the following fragment, indicate which method is invoked for each value of i. What is printed?
+```java
+Computer com[] = new Computer[3];
+comp[0] = new Computer("Ace", "AMD", 16, 1024, 3.5);
+comp[1] = new Notebook("Dell", "Intel", 8, 512, 2.2, 15.5, 4.5);
+com[2] = comp[1];
+for (int i = 0; i < com.length; i++) {
+	System.out.println(comp[i].getRamSize() + "\n" + com[i].toString());
+}
+```
+
+Consider the following classes:
+```java
+class Computer {
+	private int ram = 8;
+	public int getRamSize() {
+		return ram;
+	}
+	public String toString() {
+		return "Computer with RAM: " + ram;
+	}
+}
+
+class Notebook extends Computer {
+	private int ram = 16;
+	public int getRamSize() {
+		return ram;
+	}
+}
+```
+```java
+Computer c1 = new Computer();
+Computer c2 = new Notebook();
+System.out.println(c1.getRamSize() + ", " + c2.toString());
+```
+What is the output?
+A) `8, Computer with RAM: 8`  
+B) `8, Computer with RAM: 16`  
+C) `8, Notebook with RAM: 16`  
+D) Compilation error  
+E) `16, Computer with RAM: 8`
+?
+A) `8, Computer with RAM: 8`  
+
+**Question 2**
+```java
+class Computer {
+	Computer() { System.out.println("Computer-1");}
+	Computer(String model) { System.out.println(model);}
+}
+
+class Notebook extends Computer {
+	Notebook() {
+		this("Dell");
+		System.out.println("Notebook-1");
+	}
+	Notebook(String model) {
+		super();
+		System.out.println(model);
+	}
+}
+
+new Notebook();
+```
+What is printed?
+A) Dell
+B) Computer-1 then Dell
+C) Computer-1, Dell, Notebook-1
+D) Dell, Notebook-1
+E) Compilation fails due to recursive constructor call
+?
+C) Computer-1, Dell, Notebook-1
+
+**Question 3**
+```java
+class Computer {
+	public String getType() { return "Generic";}
+}
+
+class Notebook extends Computer {
+	public String getType() { return "Laptop";}
+}
+
+Computer[] comps = {
+	new Computer(),
+	new Notebook(),
+	new Notebook()
+};
+
+for (Computer c : comps) {
+	System.out.print(c.getType() + " ");
+}
+```
+What is printed?
+A) `Generic Laptop Laptop`  
+B) `Laptop Laptop Laptop`  
+C) `Generic Generic Generic`  
+D) Compilation error  
+E) `Generic Laptop` and then throws ArrayIndexOutOfBoundsException
+?
+A) `Generic Laptop Laptop`  
+Java usa *dynamic dispatch* para chamadas de método não estáticos. Isso significa que a versão do método que é executada depende do tipo real do objeto em tempo de execução, não do tipo de referência. Super só seria usado dentro de Notebook.getType() se quiséssemos invocar explicitamente o comportamento da superclass (por exemplo, return super.getType() + " Laptop"). 
+
+c) When does Java determine which toString method to execute for each value of i in the for statement in the preceding question: at compile time or at run time? Explain our answer.
+Em tempo de execução, at run time, not compile time. Because toString() is an instance (non-static) method and Java uses dynamic method dispatch, also known as runtime polymorphism. At run time, the JVM checks the actual object type and calls the overridden method accordignly.
+
+When does Java decide which overridden instance method (e.g., `toString()`) to execute?
+A) At compile time, based on the reference type  
+B) At run time, based on the actual object type  
+C) Before main() starts executing  
+D) It always calls the superclass method first  
+E) During JVM class loading
+?
+B) At run time, based on the actual object type.
+Java uses **dynamic method dispatch,** meaning overridden instance methods are determined at run time, based on the actual object stored in memory, not the reference type.
 ## 1.4 Abstract Classes
+### Referencing Actual Objects
+### Initializing Data Fields in an Abstract Class
+### Abstract Class Number and the Java Wrapper Classes
+### Summary of Features of Actual Classes, Abstract Classes, and Interfaces
+### Implementing Multiple Interfaces
+### Extending an Interface
+### Exercises for Section 1.4
 ## 1.5 Class Object and Casting
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
 ## 1.7 Packages and Visibility
