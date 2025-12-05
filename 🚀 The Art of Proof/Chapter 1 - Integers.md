@@ -93,4 +93,22 @@ You can prove the next propositions in a similar way; try it.
 **Proposition 1.7.** *If m is an integer, then* $0+m = m$ and $1*m = m$.
 
 **Proposition 1.8.** *If m is an integer, then (-m) + m = 0.*
-Pelo axioma (i): (-m)+m=m+(-m); e, pelo axioma 1.4, para cada m pertencente aos inteiros, sempre vai existir um inteiro, denotado por -m, tal que m+(-m)=0; portanto: (-m)+m=m+(-m)=0
+Pelo axioma (i): (-m)+m=m+(-m); e, pelo axioma 1.4, para cada m pertencente aos inteiros, sempre vai existir um inteiro, denotado por -m, tal que m+(-m)=0; portanto: $(-m)+m=m+(-m)=0$.
+
+
+**Proposition 1.9.** *Let m, n, and p be integers. If m + n = m + p, then n = p*.
+
+**O que dizer e o que omitir**
+Dê uma olhada cuidadosa nas demonstrações que apresentamos até agora, as das Proposições 1.6 e 1.9. Na primeira, declaramos cada uso dos axiomas explicitamente. Na segunda, indicamos quais axiomas e proposições estávamos usando, mas deixamos para você, o leitor, ver exatamente como.
+
+Isso sugere a pergunta: "Quanto eu preciso dizer nas minhas demonstrações?",
+
+Não há uma pergunta fácil de responder, pois depende de duas variáveis: o nível de entendimento matemática de (a) quem escreve e (b) quem lê. Como uma questão prática, o leitor das suas demonstrações neste curso será o instrutor, de quem se pode presumir um profundo domínio da matemática.
+
+Você, o escritor, está aprendendo, então, no início, isto é, para demonstrações neste Capítulo 1, aconselha-se que digamos tudo; em outras palavras, forneça os detalhes como na nossa demonstração da Proposição 1.6.
+
+Ao realizarmos isso, veremos que é demorado e entendiante. Pensaremos: "Muito do que estou fazendo decorre obviamente dos axiomas e proposições, então eu não deveria ter que explicar tudo detalhadamente."
+
+Você está certo a longo prazo, mas (como um de nossos professores nos disse uma vez) "**na matemática, você tem que ganhar o direito de ser vago**".
+
+Portanto, aconselhamos que você pratique com os detalhes até que fique claro para você e seu instrutor o que pode ser omitido. Mas esta regra permanece: você deve dizer o suficiente para que tanto você (o escritor) quanto seu leitor possam ver que seu argumento está correto e devidamente pensado. Essa parte nunca mudará.
