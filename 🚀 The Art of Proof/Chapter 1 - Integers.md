@@ -67,7 +67,7 @@ De agora em diante, usaremos a notação comum *mn* para denotar *m * n* . Come�
 (m + n)p = p(m +n) = pm + pn = mp + np
 isto é, (m +n)p = mp + np  $\square$.
 
-**O que é verdade? Isso é para os filósofos discutirem. Os matemáticos tentam evitar tais questões pelo método axiomático: na matemática, uma afirmação é considerada verdadeira se segue logicamente dos axiomas acordados.**
+**O que é verdade? Isso é para os filósofos discutirem. Os matemáticos tentam evitar tais questões pelo método axiomático: na matemática, uma afirmação é considerada verdadeira se segue logicamente os axiomas acordados.**
 
 Usamos $\square$ para marcar o fim de uma demonstração.
 
@@ -75,7 +75,7 @@ Tudo o que usamos foram algumas afirmações que sabemos ser verdadeiras (Axioma
 
 Podemos dar uma olhada na estrutura desta demonstração: assumimos que nos foram dados inteiros *m, n, p* e, usando os axiomas, chegamos à afirmação $(m+n)p = mp+np$. Pensando na última linha da demonstração como o objetivo do nosso trabalho, e geralmente é uma boa ideia escrever este objetivo antes de mostrar como chegar do que é dado ao que deve ser provado.
 
-O que significa "provar se ~ então |"? A afirmação "se ~então|" pode ser verdadeira, mas não óbvia; a questão é como vamos de ~ até |. Essa jornada é chamada de demonstração da afirmação "se ~então |". 
+O que significa "provar se ♡ então ♣"? A afirmação "se ~então|" pode ser verdadeira, mas não óbvia; a questão é como vamos de ♡ até ♣. Essa jornada é chamada de demonstração da afirmação "se ~então |". 
 
 ---
 A frase do livro usa símbolos gráficos (coração e paus) como *variáveis proposicionais*, algo que alguns autores fazem quando querem dar um exemplo totalmente abstrato de lógica proposicional, sem usar letras como *P* e *Q*. 
@@ -92,3 +92,5 @@ You can prove the next propositions in a similar way; try it.
 
 **Proposition 1.7.** *If m is an integer, then* $0+m = m$ and $1*m = m$.
 
+**Proposition 1.8.** *If m is an integer, then (-m) + m = 0.*
+Pelo axioma (i): (-m)+m=m+(-m); e, pelo axioma 1.4, para cada m pertencente aos inteiros, sempre vai existir um inteiro, denotado por -m, tal que m+(-m)=0; portanto: (-m)+m=m+(-m)=0
