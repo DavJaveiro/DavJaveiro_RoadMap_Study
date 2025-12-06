@@ -112,3 +112,77 @@ Ao realizarmos isso, veremos que é demorado e entendiante. Pensaremos: "Muito d
 Você está certo a longo prazo, mas (como um de nossos professores nos disse uma vez) "**na matemática, você tem que ganhar o direito de ser vago**".
 
 Portanto, aconselhamos que você pratique com os detalhes até que fique claro para você e seu instrutor o que pode ser omitido. Mas esta regra permanece: você deve dizer o suficiente para que tanto você (o escritor) quanto seu leitor possam ver que seu argumento está correto e devidamente pensado. Essa parte nunca mudará.
+
+---
+
+**Insight do Instrutor:**
+**Cenário Rigoroso (Onde estamos agora):** pelos axiomas que lemos, a adição é uma operação *binária*. Ela só sabe somar **dois** números por vez. Se pedirmos para somar $A+B+C$, estritamente falando, essa expressão **não existe**. É ilegal. Só podemos fazer:
+1. $(a+b)+c$
+2. $a+(b+c)$
+**O trabalho "chato":** em breve, teremos que provar (ou aceitar a prova) de que (a + b) + c é sempre igual a $a+(b+c)$.
+
+**A Recompensa ("Ganhar o Direito")**: uma vez que isso é provado, a distinção entre as duas formas irrelevante para o resultado final. Só nesse momento ganhamos o "direito" de escrever $a+b+c$ sem parênteses. A sua "vagueza" ( a falta de parênteses) é permitida porque garantimos que a ambiguidade não altera a verdade. 
+
+Ser vago na matemática não é ser impreciso; é omitir detalhes que **provavelmente** não afetam o resultado. Se pularmos passos antes de entender isso, não estamos sendo eficiente, estamos correndo o risco de assumir verdades que não existem (como tentar fazer isso com a subtração, onde $(a-b)-c \neq a -(b-c)$).
+
+---
+
+### Proposição 1.10: Sejam $m,x_{1},x_{2} \in \mathbb{Z}$. Se $m,x_{1},x_{2}$ satisfazem as equações $m+x_{1}=0$ e $m+x_{2}=0$, então $x_{1}=x_{2}$.
+
+**Nota Lateral:** Isso significa que, dado $m \in \mathbb{Z}$, o inteiro $-m$ mencionado no Axioma 1.4 é a solução única da equação $m+x=0$.
+
+### Proposição 1.11. Se $m, n, p, q$ são inteiros, então:
+(i) $(m+n)(p+q)=(mp+np)+(mq+nq)$
+(ii) $m+(n+(p+q))=(m+n)+(p+q)=((m+n)+p)+q$.
+(iii) $m+(n+p)=(p+m)+n$
+(iv) $m(np)=p(mn)$
+(v) $m(n+(p+q))=(mn+mp)+mq$
+(vi) $(m(n+p)q)=(mn)q+m(pq)$
+
+**Por que nos importamos com demonstrações?** Provar uma afirmação significa convencer a si mesmo ou ao seu público, além de qualquer dúvida, de que a afirmação é verdadeira. <span style="background:#affad1">Uma afirmação provada é um fato novo</span>. A matemática é como um edifício em construção: cada novo fato provado é um novo tijolo. Você não quer tijolos defeituosos.
+
+Aqui estão algumas proposições que refinam nosso conhecimento sobre 0 e 1:
+
+**Proposição 1.12.** Seja $x \in \mathbb{Z}$. Se x tem a propriedade de que para **cada** inteiro m, $,+x=m$, então $x=0$.
+
+**Nota Lateral:** A proposição 1.12 diz que o inteiro 0 mencionado no axioma 1.2 é a solução única da equação m+x=m.
+
+**Proposição 1.13.** Seja $x\in\mathbb{Z}$. Se $x$ tem a propriedade de que existe **um** inteiro *m* tal que $m+x=m$, então $x=0$.
+
+**Proposição 1.14.** Para todo $m\in\mathbb{Z}$, $m*0=0=0*m$
+
+As proposições neste capítulo devem ser provadas na ordem em que são apresentadas aqui.
+
+Quando *m* e *n* são inteiros, dizemos que *m* é **divisível** por *n* (ou alternativamente, *n* divide m) se existe $j\in\mathbb{Z}$ tal que $m=jn$. Usamos a notação $n|m$.
+
+> **Nota Lateral:** Não confunda isso com as notações $n/m$ e $n \div m$ para frações.
+
+**Insight do Instrutor: A Sutileza do Óbvio**
+Chamando a atenção para a **Proposição 1.14**. Podemos pensar: *mas isso não é óbvio? Zero vezes qualquer coisa é zero.*
+
+Cuidado! Nos axiomas que vimos até agora, o 0 foi definido apenas como o elemento neutro da **adição** $(m+0=m)$. Não há nenhum axioma dizendo como o 0 se comporta na **multiplicação**.
+
+**O Desafio Matemático:** Você deve provar que $m \cdot 0 = 0$ usando apenas a distributividade (Axioma 1.1-iii) para conectar a adição com a multiplicação. A prova geralmente segue essa linha lógica (o truque do "adicionar zero"):
+$m.0=m.(0+0)=m.0+m.0$
+E então, cancelamos um m.0 de ambos os lados (usando o inverso aditivo ) para chegar a 0=m.0.
+
+**O Insight do Programador Hard: Otimização Algébrica em Compiladores**
+Olhe para a **Proposição 1.11(v)**: $m(n+(p+q)) = (mn+mp)+mq$.
+Matematicamente, é uma igualdade. Computacionalmente, o lado esquerdo e o direito tem **custos** diferentes.
+1. **Lado Esquerdo:** `m * (n + p + q)`
+- Operações: 2 adições, 1 multiplicação.
+
+2. **Lado Direito:** `m*n + m*p + m*q`
+- Operações: 2 adições, 3 multiplicações.
+
+Em processadores modernos, a multiplicação geralmente consome mais ciclos de clock e energia do que a adição. Um compilador otimizador (como o GCC ou o JIT do Java) usa essas identidades matemáticas para realizar **Strenght Reduction** e **Common Subexpression Elimination**.
+
+Se escrevermos o código do lado direito, o compilador reconhecerá a estrutura algébrica (fator comum m) e reescreverá o nosso código em Assembly para a forma do lado esquerdo, economizando 2 multiplicações caras. Entender essas propriedades permite que escrevamos código legível sabendo que a matemática garante a otimização, o que a gente otimize manualmente em loops críticos onde o compilador falha.
+
+Além disso, a #divisibilidade (m=jn) é a base da operação de módulo %. Em criptografia RSA, verificar a divisibilidade e trabalhar com restos de números gigantes é 90% do trabalho. A definição forma m = jn é exatamente o que o algoritmo de Euclides estendido explora para quebrar chaves de segurança.
+
+**Exemplo 1.15.** Pensamos sobre divisibilidade no ensino fundamental (antes de saber dividir dois números). Muito provavelmente, o primeiro exemplo foi dado pelos números inteiros pares, que são definidos como aqueles inteiros que são divisíveis por 2.
+
+> **Nota Lateral:** Aqui definimos $2 = 1+1$. Falaremos mais sobre isso no próximo capítulo.
+
+**Proposição 1.16:** Se *m* e *n* são inteiros pares, então *m + n* e *mn* também o são. 
