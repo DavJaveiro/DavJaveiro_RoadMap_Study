@@ -186,3 +186,28 @@ Além disso, a #divisibilidade (m=jn) é a base da operação de módulo %. Em c
 > **Nota Lateral:** Aqui definimos $2 = 1+1$. Falaremos mais sobre isso no próximo capítulo.
 
 **Proposição 1.16:** Se *m* e *n* são inteiros pares, então *m + n* e *mn* também o são. 
+
+**Proposição 1.17.**. (i) 0 é divisível por todo inteiro; (ii) se *m* é um inteiro diferente 0, então *m* não é divisível por 0.
+
+**Insight do Programador Hard**:
+Olhemos para a **Proposição 1.17 (ii):** "Se $m\neq0$", então *m* não é divisível por 0.
+
+Isso é a definição formal do erro mais famoso da computação: **DivisionByZero**.
+
+O tipo int segue estritamente os axiomas de $\mathbb{Z}$ apresentados neste livro.
+
+No nível do hardware (ALU - Arithmetic Logic Unit), a divisão não é uma operação mágica; ela é definida como o inverso da multiplicação. Quando pedimos ao processador para calcular int result 10 /0, o processador busca um número *q* tal que: 0.q=10.
+
+Pela **Proposição 1.14** que vimos antes, o 0.q é sempre 0. Logo, a equação se torna 0 = 10. Isso é uma contradição lógica, o processador não tem como resolver uma contradição, então ele dispara uma interrupção de hardware, que o SO captura e o Java transforma em *java.lang.AritmeticException*
+
+**Proposição 1.18.** Seja $x\in\mathbb{Z}$. Se $x$ tem a propriedade de que para **todo**  $m \in \mathbb{Z}$, $mx = m$, então $x = 1$.
+
+> Nota Lateral: Assim, o inteiro 1 mencionado no Axioma 1.3 é a solução **única** da equação $mx=m$.
+
+**Proposição 1.19.** Seja $x\in\mathbb{Z}$. Se x tem a propriedade de que para algum $m$ não nulo em $\mathbb{Z}$, $mx=m$, então $x=1$.
+
+Essa é outra afirmação do tipo "se-então" se a afirmação *P* for verdadeira, então a afirmação $Q$ é verdadeira também. A afirmação $P$ aqui é "x tem a propriedade de que para algum *m* não nulo em $\mathbb{Z}$", para o qual $mx=m$. Primeiro usamos o Axioma 1.3:
+$m.x=m=m.1$
+e então aplicamos o Axioma 1.5 aos lados esquerdo e direito desta última equação (note que $m\neq0$) para deduzir que $x=1$. Em resumo, assumindo que $x$ tem a propriedade de que $mx=m$ para algum $m$ não nulo $\in \mathbb{Z}$, concluímos que $x = 1$, e isso prova nossa afirmação se–então. 
+
+Aqui estão mais algumas proposições sobre inversos e cancelamento:
