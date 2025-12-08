@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀 The Art of Proof/Chapter 1 - Integers.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Integers"
+              "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           }
         ]
@@ -218,16 +218,18 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "98a477cdb0f66618",
+  "active": "3abe63a867d646d0",
   "lastOpenFiles": [
+    "Quick Book Python/Chapter One -.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
+    "Quick Book Python",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "🚀 The Art of Proof/Chapter 1 - Integers.md",
     "🚀 The Art of Proof/Preface.md",
     "🚀 The Art of Proof/The Art of Proof_ Basic Training for Deeper Mathematics, -- Matthias Beck, Ross Geoghegan -- Undergraduate Texts in Mathematics, 1, 2010 -- Springer -- 9781441970220 -- d8c800a73d67071c7349c3784080e1e5 -- An.pdf",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "🚀 The Art of Proof",
     "🚀Números Inteiros Uma Introdução a Matemática/Número Inteiros.md",
     "🚀Números Inteiros Uma Introdução a Matemática",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md"
   ]
 }

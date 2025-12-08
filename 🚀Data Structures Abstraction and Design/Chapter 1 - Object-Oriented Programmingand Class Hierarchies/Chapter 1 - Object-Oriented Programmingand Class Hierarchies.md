@@ -262,7 +262,7 @@ C) _Dados abstratos_ (modelo lógico) e _operações_
 D) Interface e implementação
 ?
 C) _Dados abstratos_ (modelo lógico) e _operações_
-<!--SR:!2025-12-03,5,230-->
+<!--SR:!2025-12-20,12,230-->
 
 **Qual parte do ADT é acessível ao usuário?**
 A) Os dados internos (atributos)
@@ -271,7 +271,7 @@ C) As operações (métodos definidos na interface)
 D) A estrutura concreta usada para armazenar os dados
 ?
 **C) As operações (métodos definidos na interface)**
-<!--SR:!2025-12-03,5,248-->
+<!--SR:!2025-12-19,11,248-->
 
 **Q3 — What best describes the relationship between ADTs, interfaces, and classes in Java?**
 A) An interface implements an ADT and classes just use it.
@@ -283,10 +283,10 @@ D) ADT, interface, and class mean the same thing
 <!--SR:!2025-12-03,5,248-->
 
 An ADT is defined by two parts: ==abstract data (not directly accessible)== and ==operations (accessible to the user)==.
-<!--SR:!2025-12-03,5,248!2025-12-05,7,268-->
+<!--SR:!2025-12-20,12,248!2025-12-05,7,268-->
 
 In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
-<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-12-02,2,228-->
+<!--SR:!2025-12-19,11,248!2025-12-03,5,248!2025-12-02,2,228-->
 
 **Why is an interface considered a contract in Java?**
 A) Because it automatically provides default implementations to all classes.
@@ -296,7 +296,7 @@ D) Because it allows multiple inheritance of state.
 ?
 B) Because it forces any implementing class to follow the method signatures it defines.
 <<<<<<< HEAD
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-19,11,247-->
 
 =======
 <!--SR:!2025-12-05,5,247-->
@@ -305,7 +305,7 @@ B) Because it forces any implementing class to follow the method signatures it d
 <!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
-<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-12-05,5,228-->
+<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-12-18,10,228-->
 
 
 Why is this interface considered a "contract"?
@@ -316,7 +316,7 @@ public interface PaymentProcessor {
 ```
 ?
 Because any class implementing *PaymentProcessor* must provide the method `process(double amount)` exactly as declared, fulfilling the required behavior — like signing a contract and agreeing to its terms.
-<!--SR:!2025-12-03,5,248-->
+<!--SR:!2025-12-19,11,248-->
 
 3. Correct each of the following statements that is incorrect, assuming that class PDGUI and class PDConsoleUI implement interface PDUserInterface and neither is a subclass of the other.
 
@@ -515,7 +515,7 @@ C) Composition
 D) Abstraction
 ?
 C) Composition
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-20,12,247-->
 
 Which class is more general in inheritance?
 A) Subclass
@@ -524,7 +524,7 @@ C) Interface
 D) Object instance
 ?
 B)Superclass
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-21,13,247-->
 
 **If a class defines a constructor with parameters, what happens to the no-argument constructor?**
 A) It is still generated automatically
@@ -533,7 +533,7 @@ C) It must be written explicitly if needed
 D) It becomes `protected`
 ?
 C) It mus be written explicitly if needed
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-20,12,247-->
 
 
 **Where must `super(...)` appear inside a subclass constructor?**
@@ -552,7 +552,7 @@ C) The subclass fields become `null`
 D) Private fields become accessible
 ?
 A) Java inserts super() automatically.
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-21,13,247-->
 
 **`Computer c = new Computer();` fails to compile when:**
 A) `Computer` has only constructors with parameters
@@ -725,7 +725,7 @@ D) Compilation Error. You cannot assign a `Notebook` object to a `Computer` refe
 ?
 **B) Output: "Notebook Model". The JVM determines the method to call at runtime based on the actual object type (Dynamic Binding).**
 **Explanation:** This is the definition of **Polymorphism**. While the compiler checks if the method exists in the reference type (`Computer`), the JVM invokes the method implementation corresponding to the actual object in memory (`Notebook`) at runtime. Durante a compilação, o compilador verifica apenas o tipo de referência, se a classe *Tiver* um método **getDescription()**, o código será compilado. E durante a execução, a JVM verifica o tipo real do objecto. Esse objeto é um Notebook, então usarei o método sobrescrito dele. Isso é chamado de *Dynamic Binding* ou *Late Binding*.
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-21,13,247-->
 
 Covariant Return Types (Overriding Rules). You are refactoring the `Computer` and `Notebook` classes.
 ```java
@@ -775,7 +775,7 @@ D) Compilation fails at Line 1 because `super` cannot be called if `this` is use
 ?
 **C) Compilation fails at Line 3 because the call to `super()` (or `this()`) must be the first statement in a constructor.**
 **Explanation:** In Java, a constructor can call `super(...)` OR `this(...)`, but **not both**, because whichever one is called must be the very first executable statement. Line 2 correctly calls another constructor in the same class, but Line 3 attempts to call the super constructor afterwards, which is illegal.
-<!--SR:!2025-12-02,2,247-->
+<!--SR:!2025-12-13,5,247-->
 
 ### The `@Override` Annotation
 **Front (Question):** In the provided text, the author recommends using `@Override` before the `toString` method in the `Notebook` class. What is the primary technical benefit of adding this annotation regarding the Java compiler?

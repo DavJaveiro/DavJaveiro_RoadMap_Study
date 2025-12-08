@@ -211,3 +211,125 @@ $m.x=m=m.1$
 e então aplicamos o Axioma 1.5 aos lados esquerdo e direito desta última equação (note que $m\neq0$) para deduzir que $x=1$. Em resumo, assumindo que $x$ tem a propriedade de que $mx=m$ para algum $m$ não nulo $\in \mathbb{Z}$, concluímos que $x = 1$, e isso prova nossa afirmação se–então. 
 
 Aqui estão mais algumas proposições sobre inversos e cancelamento:
+
+**Proposição 1.20.** Para todos $m, n \in \mathbb{Z},(-m)(-n)=mn$.
+Demonstração. Sejam $m, n \in \mathbb{Z}$. Pelo Axioma 1.4,
+
+$$m + (-m) = 0 \quad \text{e} \quad n + (-n) = 0.$$
+
+Multiplicando ambos os lados da primeira equação (à direita) por $n$ e a segunda equação (à esquerda) por $-m$, obtemos, após aplicar a Proposição 1.14 nos lados direitos:
+
+$$(m + (-m))n = 0 \quad \text{e} \quad (-m)(n + (-n)) = 0.$$
+
+Com o Axioma 1.1(iii) e a Proposição 1.6, deduzimos:
+
+$$mn + (-m)n = 0 \quad \text{e} \quad (-m)n + (-m)(-n) = 0.$$
+Resta usar o Axioma 1.1(i) à esquerda e, em seguida, a Proposição 1.10 para concluir:
+
+$$mn = (-m)(-n). \quad \blacksquare$$
+**Corolário 1.21.** $$(-1)(-1)=1$$
+*Nota Lateral: a palavra corolário é usada para uma afirmação que é uma consequência direta da proposição anterior.*
+
+**Proposição 1.22.** Para todo $m\in \mathbb{Z},-(-m)=m$, (ii)$-0=0$.
+**Proposição 1.23.** Dados $m, n \in \mathbb{Z}$, existe um e apenas um $x \in \mathbb{Z}$ tal que $m + x = n$.
+
+>Nota lateral: Mais tarde (uma vez que tenhamos introduzido a subtração), chamaremos esta solução de $n-m$.
+
+Essa proposição é uma afirmação de **existência e unicidade**, expressa pela frase "um e apenas um". Para inteiros dados *m* e *n*, ela diz que uma solução, *x*, da equação $m+x=n$ existe (esta é a parte da existência), e que se parecer haver duas soluções, elas devem ser iguais (a parte da unicidade). 
+
+> _Nota lateral:_ A palavra **único** (unique) tem conotações fortes na linguagem comum. Em matemática, unicidade significa simplesmente que se ambos se encaixam, eles devem ser iguais.
+
+**Demonstração da Proposição 1.23**. O inteiro $x = (-m) + n$ é uma solução, pois
+
+$$m + ((-m) + n) = (m + (-m)) + n = 0 + n = n$$
+
+(aqui usamos os Axiomas 1.1 e 1.4, e a Proposição 1.7).
+
+são ambas soluções para $m + x = n$, isto é,
+
+$$m + x_1 = n \quad \text{e} \quad m + x_2 = n.$$
+
+**Proposição 1.24.** Seja $x \in \mathbb{Z}$. Se $x \cdot x = x$, então $x = 0$ ou $1$
+
+**Proposição 1.25.** Para todos $m, n \in \mathbb{Z}$: (i) $-(m + n) = (-m) + (-n)$. (ii) $-m = (-1)m$. (iii) $(-m)n = m(-n) = -(mn)$.
+
+As Proposições 1.24 e 1.26 contêm a palavra de aparência **ou**. Na linguagem cotidiana, o significado de "ou" nem sempre é claro. Pode significar um *ou exclusivo* (como em "ou... ou... mas não ambos") ou um "ou inclusivo" (como em "ou... ou... ou ambos"). Em matemática, a palavra "ou", sem qualificação adicional, é sempre inclusiva. Por exemplo, na proposição 1.26, pode muito bem acontecer que tanto *m* quanto *n* sejam zero. 
+
+Isto é tão importante que diremos novamente: **Em matemática, "A ou B" sempre significa A, ou B, ou ambos A e B**. 
+
+**Demonstração da Proposição 1.26.** Novamente temos uma afirmação _se-então_, então assumimos que os inteiros $m$ e $n$ satisfazem $mn = 0$. Precisamos provar que ou $m = 0$ ou $n = 0$ (ou ambos). Uma ideia que você pode ter é reescrever 0 no lado direito da equação $mn = 0$ como $m \cdot 0$ (usando a Proposição 1.14):
+
+$$m.n=m.0$$
+
+Essa nova equação sugere que usemos o Axioma 1.5 para cancelar *m* em ambos os lados. Temos que ter cuidado aqui: só podemos fazer isso se $m\neq_{0}$. Mas isso não é o problema:  se $m = 0$ terminamos, pois então a afirmação "$m = 0$ ou $n = 0$" é verdadeira (note que, nesse caso, ainda pode acontecer que $n = 0$). Se $m \neq 0$, cancelamos $m$ em (1.1) para deduzir $n = 0$, o que novamente significa que a afirmação "$m = 0$ ou $n = 0$" se sustenta. Em resumo, mostramos que se $mn = 0$ então $m = 0$ ou $n = 0$. $\quad \blacksquare$
+
+> _Nota lateral:_ Em uma prova específica, pode ser vantajoso trocar os papéis de $\mathcal{A}$ e $\mathcal{B}$ (o que você pode fazer livremente, já que a afirmação "$\mathcal{A}$ ou $\mathcal{B}$" é simétrica em $\mathcal{A}$ e $\mathcal{B}$).
+
+Nossa prova ilustra como abordar uma afirmação "ou": se nosso objetivo é provar "$A ou B$", basta provar um entre $A e B$.  Em nossa prova, A era a afirmação $m = o$ e realmente só precisávamos nos preocupar com o caso em que A é falsa e então precisávamos provar que $B$ é verdadeira.
+
+Em contraste, quando precisamos provar uma afirmação "e", devemos provar duas afirmações.
+
+Aqui está algo que podemos mostrar: assumindo os axiomas 1.1-1.5, provamos a Proposição 1.26. Por outro lado, se assumirmos os axiomas 1.1-1.4 e a afirmação da Proposição 1.26, podemos provar a afirmação do Axioma 1.5. Em outras palavras, poderíamos ter tomado a Proposição 1.26 como um axioma no lugar do Axioma 1.5.
+
+
+---
+**Insight Computacional (Java e Lógica de Programação)**
+**Unicidade e Determinismo de Funções**
+A Proposição 1.23 $(m+x=n)$ tem solução única, é a base teórica para tratarmos a subtração como uma **função**. Em Java, considere o método:
+```java
+// Contrato: retorna o único x tal que m+x==n
+public static int solveForX(int m, int n) {
+	return n-m; // A existência e unicidade garantem que este retorno é válido
+}
+```
+
+Se a solução não fosse única, esse método não poderia retornar um simples *int*; teria que retornar um *List< Integer >* ou **Set< Integer >**. A unicidade matemática é o que nos permite usar tipos primitivos simples como valores de retorno. 
+
+**"Ou" Inclusivo e Short-Circuit**
+O texto discute o "Ou Inclusivo". Em Java, o operador || (OR lógico) mapeia exatamente essa ideia, mas com uma característica computacional chamada **Short-Circuit evaluation**.
+
+```java
+// Proposição 1.26: se mn = 0, então m = 0 OU n = 0
+if (m == 0 || n == 0) {
+	// Entramos aqui se m for 0, se n for 0, ou se ambos forem 0
+}
+```
+- **Matemática:** a ordem não importa $A \lor B$ é igual a $B \lor A$ .
+- **Java:** A ordem importa para performance e segurança. Se *m == 0* for verdadeiro, o Java nem avalia n == 0 .
+
+**Invariantes e Assertions (Propriedades do Produto Zero)**
+A proposição 1.26 é crucial para a integridade de dados. Se temos um produto que resultou em zero, sabemos um fato imutável sobre os operandos.
+```java
+public void processFactors(int m, int n) {
+	int product = m * n;
+	
+	if (product == 0) {
+		// Invariante Matemática: Pelo menos um deve ser zero.
+		// Se m não for zero, n OBRIGATORIAMENTE deve ser zero
+		if (m != 0) {
+			assert n == 0 : "Violação da Propriedade do Produto zero: Impossível em Z";
+		}
+	}
+}
+```
+
+Isso é útil em **análise estatística** e **testes unitários**. Se o nosso código encontrar um caso onde *product == 0*, *m != 0* e *n != 0*, descobrimos um bug grave (provavelmente overflow, já que em computação int tem tamanho fixo, diferente de $\mathbb{Z}$ matemático que é infinito).
+
+**Atenção ao Overflow:** Em Java, `int` é limitado (32-bit). É possível que `m * n` seja 0 mesmo que $m, n \neq 0$ se o resultado for múltiplo de $2^{32}$ (comportamento de wrap-around). A matemática do livro assume $\mathbb{Z}$ infinito. Ao programar, o axioma "se $mn=0 \implies m=0 \lor n=0$" só é verdadeiro se não houver overflow.
+
+**Teste de Propriedade (Property-Baased Testing)**
+Como testaríamos a Proposição 1.20 $(-m)(-n) == mn$ em Java? Não basta fazer $(-2)*(-3)$. Devemos usar uma ferramenta como #jqwik para testar a propriedade para *todos* os inteiros gerados:
+```java
+@Property
+void negativeTimesNegativeIsPositive(@ForAll int m, @ForAll int n) {
+	// Cuidado com Integer.MIN_VALUR devido ao overflow na negação
+	Assume.that(m != Integer.MIN_VALUE && n != Integer.MIN_VALUE);
+	
+	int leftSide = (-m) * (-n);
+	int rightSide = m * n;
+	
+	Assertions.assertEquals(leftSide, rightSide);
+}
+```
+
+## 1.3 Subtraction

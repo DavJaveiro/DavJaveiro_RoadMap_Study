@@ -1,3 +1,4 @@
+#flashcards/AWS/chapter1
 Capítulo conceitual, não há muita configuração técnica, mas é a base do *vocabulário AWS*. Se não entendermos a diferença entre IaaS e PaaS agora, erraremos questões sobre #RDS vs #EC2 lá na frente.
 
 ---
@@ -186,4 +187,75 @@ Como este capítulo é teórico, seu "Lab" será administrativo. Não pule isso!
 ### Operational Benefits of AWS
 Operating in the public AWS cloud has certain benefits provided by the previosuly discussed NIST five essential characteristics. Unlimited access to the many cloud services available at AWS may make it easier then expected to operate and manage workloads in the AWS cloud. Consider the following:
 - **Servers**: underutilized servers in our data center are expensive to run and maintain. Moving applications to the public cloud can reduce the size of our on-premises data center. When we no longer host as many physical servers, our total hosting costs (racking, powering, heating, and cooling) could be lower as well. We algo don't have to pay for software licenses at the processer level because we're not responsible for running hypervisor services; that's now Amazon's job. We might think that moving to the AWS cloud means virtualized resources and only virtualization. However, with AWS, we can get an ever-increasing verity of EC2 isntances, including dedicated virutal servers or bare-metal servers. Sizes range from a single-core CPU with 512 MB of RAM to hundreds of CPU cores and terabytes of RAM.
-- 
+	- **Dimensionamento Correto (Right-sizing):** <span style="background:#b1ffff">a prova pode cobrar cenários onde devemos escolher o tipo e tamanho de instância mais adequado para uma carga de trabalho específica</span>, visando otimizar custos e desempenho.
+	- **Tipos de Instâncias:** entenda a diferença entre instâncias virtuais, dedicadas e *baremetal*, e quando usar cada uma (ex: bare-metal para aplicações que precisam de acesso direto ao hardware ou não suportam visualização.)
+	- **Modo de Responsabilidade Compartilhada:** lembre-se que a AWS gerencia a infraestrutura física e o hypervisor, enquanto o cliente gerencia o sistema operacional e as aplicações. #Hypervisor é um software ou firmware que permite criar e gerenciar **máquinas virtuiais (VMs)** em um servidor físico. Ele atua como uma camada entre o **hardware físico** e os **sistemas operacionais convidados**, controlando como os recursos CPU, memória, armazenamento, rede, são distribuídos entre as VMs. **Na AWS:** é a parte da infraestrutura que a Amazon gerencia. O cliente não interage diretamente com o hypervisor, mas sim com as instâncias virtuais que ele possibilita.
+
+- **Armazenamento:** O uso de armazenamento em nuvem tem grandes benefícios, incluindo ter quantidades ilimitadas de armazenamento. A Amazon possui soluções de arquivos compartilháveis para cargas de trabalho Linux e Windows Server. Discos rígidos virtuais estão disponíveis usando o Amazon EBS para criar os volumes necessários. Armazenamento ilimitado e armazenamento de arquivamento de longo prazo são fornecidos por buckets do Amazon S3 e armazenamento de arquivamento S3 Glacier.
+	- **Insights para o Exame:**
+	- **Escolha do Serviço de Armazenamento:** precisaremos saber sobre escolher S3 (objetos), EBS (bloco), EFS (arquivos Linux) e FSx (arquivos Windows/Lustre) com base nos requisitos de acesso, desempenho e custo.
+	- **Classes de Armazenamento S3:** o exame cobra profundamente o conhecimento sobre as diferentes classes do S3 (Standard, Intelligent-Tiering, Glacier, etc.) e como transacionar dados entre elas para economizar custos. 
+	- **Durabilidade e Disponibilidade:** entenda como a AWS garante a durabilidade dos dados no S3 e EBS e como configurar para alta disponibilidade.
+
+3. **Serviços Gerenciados na Nuvem**
+- **Tradução:** os serviços gerenciados pela AWS podem substituir ou complementar serviços e utilitários existentes usados localmente após a mudança para a nuvem AWS.
+	- **Insights para o Exame:**
+	- **Monitoramento (CloudWatch):** essencial para o exame. Saiba como o CloudWatch monitora os recursos, coleta de logs e dispara alarmes. Entenda a diferença entre métricas padrão e personalizadas. 
+	- **Backup (AWS Backup e Storage Gateway):** o exame pode apresentar cenários híbridos onde o Storage Gateway é usado para estender o armazenamento local para a nuvem ou para backups. O AWS Backup centraliza a gestão de backups.
+	- **Escalabilidade (Auto Scaling):** um conceito central. Saiba como configurar grupos de Auto Scaling para EC2 e contêineres para ajustar a capacidade automaticamente com base na demanda, garantindo desempenho e economia.
+	- **Testes e Desenvolvimento:** a facilidade de provisionar e desprovisionar ambientes de teste (e o uso do Free Tier) é um benefício chave. 
+	-  **Gestão de Identidade (Directory Service & SSO):** Entenda como integrar o Active Directory local com a AWS usando o AWS Directory Service e como gerenciar o acesso unificado com o IAM Identity Center (antigo AWS SSO).
+
+
+Uma empresa precisa migrar um aplicativo legado que requer acesso direto ao hardware do servidor e não suporta virtualização. Qual tipo de instância EC2 é mais adequado para atender a esse requisito na AWS? A) Instâncias Reservadas 
+B) Instâncias Dedicadas (Dedicated Instances) 
+C) Instâncias Bare Metal 
+D) Instâncias Spot
+?
+C) **Instâncias Bare Metal**
+- *As instâncias Bare Metal oferecem acesso direto ao processador e à memória do servidor físico subjacente, sem a sobrecarga de virtualização. Elas são ideais para cargas de trabalho que precisam de acesso a recursos de hardware e de baixo nível ou para aplicações que não são virtualizáveis.*
+
+Você está projetando a arquitetura para um novo aplicativo web que terá tráfego variável. Para otimizar custos e garantir que você não pague por capacidade ociosa como faria em um data center on-premises, qual característica das instâncias EC2 você deve aproveitar? 
+A) A capacidade de escolher entre diferentes famílias de processadores (Intel, AMD). 
+B) A variedade de tamanhos de instância, permitindo escalar verticalmente (mudar para um tamanho maior) ou horizontalmente (adicionar mais instâncias) conforme a demanda. 
+C) O uso obrigatório de hosts dedicados para todas as instâncias. 
+D) O pagamento antecipado de todas as instâncias por um período de 3 anos.
+?
+**B) A variedade de tamanhos de instância, permitindo escalar verticalmente (mudar para um tamanho maior) ou horizontalmente (adicionar mais instâncias) conforme a demanda.** 
+- A AWS oferece uma grande variedade de tipos e tamanhos de instâncias. Isso permite o "right-sizing" (dimensionamento correto) e o uso de *Auto Scaling* para ajustar a capacidade à demanda real, evitando o custo de manter servidores subutilizados, comum em ambientes on-premises.
+
+Uma empresa precisa de uma solução de armazenamento para compartilhar arquivos entre várias instâncias EC2 Linux. A solução deve ser elástica, crescendo e diminuindo automaticamente conforme arquivos são adicionados ou removidos. Qual serviço AWS deve ser utilizado? 
+A) Amazon EBS 
+B) Amazon S3 
+C) Amazon EFS 
+D) Amazon S3 Glacier
+?
+**C) Amazon EFS**
+- *O Amazon EFS (Elastic File System) fornece armazenamento de arquivos compartilhado, elástico e escalável para uso com instâncias EC2 Linux. O EBS é armazenamento em bloco (geralmente para uma única instância), e o S3 é armazenamento de objetos.*
+
+Você precisa armazenar dados de backup de longo prazo que raramente serão acessados, mas que devem ser mantidos por vários anos para fins de conformidade. Qual serviço de armazenamento AWS oferece o menor custo para esse cenário? 
+A) Amazon S3 Standard 
+B) Amazon EBS HDD (sc1) 
+C) Amazon S3 Glacier Deep Archive 
+D) Amazon EFS Infrequent Access
+?
+**C) Amazon S3 Glacier Deep Archive** 
+*Explicação: O Amazon S3 Glacier e o S3 Glacier Deep Archive são projetados especificamente para arquivamento de dados de longo prazo e oferecem os custos de armazenamento mais baixos na AWS. O Deep Archive é a opção mais econômica para dados acessados muito raramente (uma ou duas vezes por ano).*
+
+Uma empresa deseja monitorar a utilização de CPU de suas instâncias EC2 e configurar um alarme para ser notificada se a utilização exceder 80% por 5 minutos consecutivos. Qual serviço AWS deve ser usado para coletar essas métricas e configurar o alarme? 
+A) AWS CloudTrail 
+B) Amazon CloudWatch 
+C) AWS Config 
+D) Amazon Inspector
+?
+**B) Amazon CloudWatch**
+- *O Amazon CloudWatch é o serviço de monitoramento que fornece métricas para serviços AWS (como EC2) e permite a criação de alarmes baseados nessas métricas.*
+
+Sua organização possui um ambiente híbrido e deseja estender seu armazenamento local para a nuvem AWS, permitindo que servidores on-premises armazenem backups no Amazon S3 através de protocolos de arquivo padrão (NFS/SMB). Qual serviço AWS facilita essa integração híbrida? 
+A) AWS Direct Connect 
+B) AWS Storage Gateway 
+C) AWS DataSync 
+D) Amazon S3 Transfer Acceleration
+?
+**B) AWS Storage Gateway**
+- *O AWS Storage Gateway é um serviço de armazenamento em nuvem híbrida que permite conectar aplicativos on-premises ao armazenamento em nuvem da AWS (como o S3) usando protocolos de armazenamento padrão, mantendo cache local para baixa latência.*
