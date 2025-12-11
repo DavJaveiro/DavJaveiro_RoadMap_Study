@@ -65,3 +65,44 @@ A abordagem do agente racional tem duas vantagens sobre as outras abordagens. Pr
 Devemos ter em mente um ponto importante: logo veremos que alcançar a racionalidade perfeita — sempre fazer a coisa certa — não é algo viável em ambientes complicados. As demandas computacionais são demasiado elevadas. Porém, na maior parte do livro, adotaremos a hipótese de trabalho de que a racionalidade perfeita é um bom ponto de partida para a análise. Ela simplifica o problema e fornece a configuração apropriada para a maioria do material básico na área. Os Capítulos 5 e 17 lidam explicitamente com a questão da racionalidade limitada — **agir de forma apropriada quando não existe tempo suficiente para realizar todas as computações que gostaríamos de fazer**
 
 ## 1.2 Os Fundamentos da Inteligência Artificial
+### 1.2.1 Filosofia
+- Regras formais podem ser usadas para obter conclusões válidas?
+- Como a mente (o intelecto) se desenvolve a partir de um cérebro físico?
+- De onde vem o conhecimento?
+- Como o conhecimento conduz à ação?
+
+Aristóteles (384-322 a.C.), cujo busto aparece na capa deste livro, foi o primeiro a formular um conjunto preciso de leis que governam a parte racional da mente. Ele desenvolveu um sistema informal de silogismos para raciocínio apropriado que, em princípio, permitiam gerar conclusões mecanicamente, dadas as premissas inicias. Muito mais tarde, Ramon Lull (1315) apresentou a ideia de que o raciocínio útil poderia na realidade ser conduzido por um artefato mecânico. Thomas Hobbes (1588-1679) propôs que o raciocínio era semelhante à computação numérica, ou seja, que "efetuamos somas e subtrações em nossos pensamentos silenciosos". A automação da própria computação já estava bem próxima; por volta de 1500, Leonardo da Vinci (1452-1519) projetou, mas não construiu, uma calculadora mecânica; reconstruções recentes mostraram que o projeto era funcional. A primeira máquina de calcular conhecida foi construída em torno de 1623 pelo cientista alemão Wilhelm Schickard (1592-1635), embora a Pascaline, construída em 1642 por Blaise Pascal (1623-1662), seja mais famosa. Pascal escreveu que “a máquina aritmética produz efeitos que parecem mais próximos ao
+pensamento que todas as ações dos animais”. Gottfried Wilhelm Leibnitz (1646-1716)
+construiu um dispositivo mecânico destinado a efetuar operações sobre conceitos, e não sobre números, mas seu escopo era bastante limitado. Leibnitz superou Pascal através da
+construção de uma calculadora que podia somar, subtrair, multiplicar e extrair raízes,
+enquanto a Pascaline só podia adicionar e subtrair. Alguns especularam que as máquinas não
+poderiam fazer apenas cálculos, mas realmente ser capazes de pensar e agir por conta
+própria. Em seu livro de 1651, Leviatã, Thomas Hobbes sugeriu a ideia de um “animal
+artificial”, argumentando: “Pois o que é o coração, senão uma mola; e os nervos, senão tantas
+cordas; e as articulações, senão tantas rodas.”
+
+Dizer que a mente opera, pelo menos em parte, de acordo com regras lógicas e construir
+sistemas físicos que emulam algumas dessas regras é uma coisa; outra é dizer que a mente em si é esse sistema físico. René Descartes (1596-1650) apresentou a primeira discussão clara da distinção entre mente e matéria, e dos problemas que surgem dessa distinção. Um dos problemas relacionados com uma concepção puramente física da mente é o fato de que ela parece deixar pouco espaço para o livre-arbítrio: se a mente é governada inteiramente por leis físicas, então ela não tem mais livre-arbítrio que uma pedra que “decide” cair em direção ao centro da Terra. Descartes advogava fortemente a favor do poder da razão em entender o mundo, uma filosofia hoje chamada racionalismo, e que tinha Aristóteles e Leibnitz como membros. Descartes também era um proponente do **dualismo**. Ele sustentava que havia uma parte da mente humana (ou alma, ou espírito) que transcende a natureza, isenta das leis físicas. Por outro lado, os animais (ou alma, ou espírito) que transcende a natureza, isenta das leis físicas. Por outro lado, os animais não possuem essa qualidade dual; eles podiam ser tratados como máquinas. Uma alternativa para o dualismo é o **materialismo**. O materialismo sustenta que a operação do cérebro de acordo com as leis da física *constitui* a mente. O livre-arbítrio é simplesmente o modo como a percepção das escolhas disponíveis se mostra para a entidade que escolhe. 
+
+Dada uma mente física que manipula o conhecimento, o próximo problema é estabelecer a origem do conhecimento. O movimento chamado empirismo, iniciado a partir da obra de
+Francis Bacon (1561-1626), Novum Organum,2 se caracterizou por uma frase de John Locke
+(1632-1704): “Não há nada na compreensão que não estivesse primeiro nos sentidos.” 
+
+Hume dizia que não nascemos sabendo regras gerais, nós a construímos a partir da repetição de experiências. **Nenhuma regra científica baseada em observação é 100% garantida, apenas habituamos nossa mente a esperá-la**.  Não existe demonstração lógica de que o amanhã seguirá as mesmas leis de hoje. 
+
+A resposta moderna a Hume vem principalmente de Karl Popper (século XX):
+**A ciência não "prova" teorias; ela tenta falseá-las**. Ou seja, a indução não pode ser justificada; então a ciência avança tentando refutar, não confirmar. Se uma teoria resiste a muitas tentativas de refutação, torna-se confiável.
+
+Com base no trabalho de Ludwig Wittgenstein (1889-1951) e Bertrand Russell (1872-1970), o famoso Círculo de Viena, liderado por Rudolf Carnap (1891-1970), desenvolveu a doutrina do positivismo lógico. Essa doutrina sustenta que todo conhecimento pode ser caracterizado por teorias lógicas conectadas, em última
+análise, a sentenças de observação que correspondem a entradas sensoriais; desse modo, o positivismo lógico combina o racionalismo e o empirismo. A **teoria da confirmação** de Carnap e Carl Hempel (1905-1997) tentava compreender a aquisição do conhecimento através da experiência. O livro de Carnap, *The Logical Structure of the World (1928)*, definiu um procedimento computacional explícito para extrair conhecimento de experiências elementares. Provavelmente, foi a primeira teoria da mente como um processo computacional. 
+
+O último elemento no quadro filosófico da mente é a conexão entre conhecimento e ação. Essa questão é vital para a IA porque a **inteligência exige ação**, bem como raciocínio. Além disso, apenas pela compreensão de como as ações são justificadas podemos compreender como construir um agente cujas ações sejam justificáveis (ou racionais). Aristóteles
+argumentava (no De Motu Animalium) que as ações se justificam por uma conexão lógica
+entre metas e conhecimento do resultado da ação (a última parte deste extrato também
+aparece na capa deste livro, no original em grego):
+*Porém, como explicar que o pensamento às vezes esteja acompanhado pela ação e às vezes não, às vezes esteja acompanhado pelo movimento e outras vezes não? Aparentemente, acontece quase o mesmo no caso do raciocínio e na realização de inferências sobre objetos imutáveis. Contudo, nesse caso o fim é uma proposição especulativa (...) enquanto aqui a conclusão que resulta das duas premissas é uma ação. (...) Preciso me cobrir; um casaco é uma coberta. Preciso de um casaco. O que eu preciso, tenho de fazer; preciso de um casaco. Tenho de fazer um casaco. E a conclusão, “tenho de fazer um casaco”, é uma ação.*
+
+GPS - General Problem Solver, foi de fato inspirado diretamente na ideia aristotélica descrita na Ética a Nicômaco.
+
+
+### 1.2.2 Matemática
