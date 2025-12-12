@@ -19,4 +19,4 @@ Esse livro não resolverá a questão da ambiguidade, mas queremos destacar desd
 
 A **primeira parte** deste livro introduz os conceitos e fundamentos matemáticos necessários para discutir os três componentes principais de um sistema de aprendizado de máquina: **dados**, **modelos** e **aprendizado**. Vamos esboçar brevemente esses componentes aqui, e revisitá-los novamente no Capítulo 8, uma vez que tenhamos discutidos os conceitos matemáticos necessários. 
 
-Embora nem todos os dados sejam numéricos, muitas vezes é útil consiedar os dados em formato numérico
+Embora nem todos os dados sejam numéricos, muitas vezes é útil considerar os dados em formato numérico. 

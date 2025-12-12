@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "2284325e30fcbcb5",
@@ -218,7 +217,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "93d835187802e7cc",
+  "active": "98a477cdb0f66618",
   "lastOpenFiles": [
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
