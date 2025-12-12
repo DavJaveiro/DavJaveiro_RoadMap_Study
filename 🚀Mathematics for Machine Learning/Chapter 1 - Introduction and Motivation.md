@@ -19,6 +19,7 @@ Esse livro não resolverá a questão da ambiguidade, mas queremos destacar desd
 
 A **primeira parte** deste livro introduz os conceitos e fundamentos matemáticos necessários para discutir os três componentes principais de um sistema de aprendizado de máquina: **dados**, **modelos** e **aprendizado**. Vamos esboçar brevemente esses componentes aqui, e revisitá-los novamente no Capítulo 8, uma vez que tenhamos discutidos os conceitos matemáticos necessários. 
 
+<<<<<<< HEAD
 Embora nem todos os dados sejam numéricos, muitas vezes é útil considerar os dados em formato numérico. Vamos considerar que os dados já foram devidamente convertidos para uma representação numérica adequada para leitura em um programa. Pensaremos nos dados como vetores, existem (pelo menos) três maneiras diferentes de pensar sobre vetores:
 1. um vetor como um **array de números** (visão da ciência da computação);
 2. um vetor como uma **seta com direção e magnitude** (visão da física);
@@ -34,3 +35,6 @@ Recebemos um conjunto de dados e um modelo adequado. Treinar o modelo significa 
 - Representamos os dados como vetores;
 - Escolhemos um modelo apropriado, usando a abordagem probabilística ou a abordagem de otimização;
 - Aprendemos a partir dos dados disponíveis usando métodos de otimização numérica, com o objetivo de que o modelo tenha um bom desempenho em dados que **não** foram usados no treinamento.
+=======
+Embora nem todos os dados sejam numéricos, muitas vezes é útil considerar os dados em formato numérico. 
+>>>>>>> 0cfed6b65ee98d453d14e25a3520ba11122e5b03
