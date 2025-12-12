@@ -106,3 +106,61 @@ GPS - General Problem Solver, foi de fato inspirado diretamente na ideia aristot
 
 
 ### 1.2.2 Matemática
+- Quais são as regras formais para obter conclusões válidas?
+- O que pode ser computado?
+- Como raciocinamos com informações incertas?
+
+Os filósofos demarcaram a maioria das ideias importantes sobre a IA, mas o salto para uma ciência formal exigiu certo nível de formalização matemática em três áreas fundamentais: lógica, computação e probabilidade.
+
+A ideia de lógica formal pode ser traçada até os filósofos da Grécia antiga, mas seu desenvolvimento matemática começou realmente com o trabalho de George Boole (1815-1864), que definiu os detalhes da lógica proposicional ou lógica booleana (Boole, 1847).  Em 1879, Gottlob Frege (1848-1925) estendeu a lógica de Boole para incluir objetos e relações, criando a lógica de primeira ordem que é utilizada hoje. Alfred Tarski (1902-1983) introduziu uma teoria de referência que mostra como relacionar os objetos de uma lógica a objetos do mundo real.
+
+A próxima etapa foi determinar os limites do que poderia ser feito com a lógica e a computação. Acredita-se que o primeiro **algoritmo** não trivial seja o algoritmo de Euclides para calcular o maior divisor comum. A palavra algoritmo (e a ideia de estudá-lo) vem de Ai-Kwhowarazmi, um matemática persa do século IX, cujos escritos também introduziram os numerais arábicos e a álgebra na Europa. Boole e outros discutiram algoritmos para dedução lógica e, no final do século XIX, foram empreendidos esforços para formalizar o raciocínio matemática geral como dedução lógica. Em 1930, Kurt Godel (1906-1978) mostrou que existe um procedimento efetivo para provar qualquer afirmação verdadeira na lógica de primeira ordem de Frege e Russel, mas essa lógica não poderia captar o princípio de indução matemática necessário para caraterizar os números naturai . 
+
+Em 1931, Godel mostrou que existem de fato limites sobre dedução. Seu **teorema da incompletude** mostrou que, em qualquer teoria formal tão forte como a aritmética de Peano (a teoria elementar dos números naturais), existem afirmações verdadeiras que são indecidíveis no sentido de que não existem provas na teoria. 
+
+Esse resultado fundamental também pode ser interpretado como a demonstração de que existem algumas funções sobre os inteiros que não podem ser representadas por um algoritmo, isto é, não podem ser calculadas. Isso motivou Alan Turing (1912-1954) a tentar caracterizar exatamente que funções são **computáveis**, capazes de ser computáveis. Na realidade, essa noção é ligeiramente problemática porque a noção de computação ou de procedimento efetivo realmente não pode ter uma definição formal. No entanto, a tese de Church-Turing, que afirma que a máquina de Turing (Turing, 1936) é capaz de calcular qualquer função computável, em geral é aceita como definição suficiente. <font color="#ffff00">Turing também mostrou que existiam algumas funções que nenhuma máquina de Turing poderia calcular. </font> Por exemplo, nenhuma máquina pode determinar, de forma geral, se dado programa retornará uma resposta sobre certa entrada ou se continuará funcionando para sempre.
+
+Embora a decidibilidade e computabilidade sejam importantes para a compreensão da computação, a noção de **tratabilidade** teve um impacto muito maior. Em termos gerais, um problema é chamado de intratável se o tempo necessário para resolver instâncias dele cresce exponencialmente como o tamanho das instâncias. A distinção entre crescimento polinomial e exponencial da complexidade foi enfatizada primeiro em meados da década de 1960 (Cobham, 1964; Edmonds, 1965). Ela é importante porque o crescimento exponencial significa que até mesmo instâncias moderadamente grandes não podem ser resolvidas em qualquer tempo razoável. Portanto, devemos procurar dividir o problema global de geração de comportamento inteligente em subproblemas tratáveis, em vez de subproblemas intratáveis.
+
+Como é possível reconhecer um problema intratável? A teoria da **NP-completude**, apresentada primeiro por Steven Cook (1971) e Richard Karp (1972), fornece um método. fornece um método. Cook e Karp demonstraram a existência de grandes classes de problemas canônicos de busca combinatória e de raciocínio que são NP-completos fornece um método. Cook e Karp demonstraram a existência de grandes classes de problemas canônicos de busca combinatória e de raciocínio que são NP-completos.
+
+Esses resultados contrastam com o otimismo com
+que a imprensa popular saudou os primeiros computadores — “Supercérebros
+eletrônicos” que eram “Mais rápidos que Einstein!”. Apesar da crescente
+velocidade dos computadores, o uso parcimonioso de recursos é que
+caracterizará os sistemas inteligentes.
+
+*Grosso modo*, o mundo é uma instância de um problema *extremamente* grande!b Trabalhar com IA ajudou a explicar por que algumas instâncias de problemas NP-completos são difíceis, enquanto outras são fáceis.
+
+Além da lógica e da computação, a terceira grande contribuição da
+matemática para a IA é a teoria da probabilidade. O italiano Gerolamo Cardano
+(1501-1576) foi o primeiro a conceber a ideia de probabilidade, descrevendo-a
+em termos dos resultados possíveis de jogos de azar. Em 1654, Blaise Pascal
+(1623-1662), numa carta para Pierre Fermat (1601-1665), mostrou como
+predizer o futuro de um jogo de azar inacabado e atribuir recompensas médias
+aos jogadores. A probabilidade se transformou rapidamente em uma parte
+valiosa de todas as ciências quantitativas, ajudando a lidar com medidas incertas
+e teorias incompletas. James Bernoulli (1654-1705), Pierre Laplace (1749-1827)
+e outros pesquisadores aperfeiçoaram a teoria e introduziram novos métodos
+estatísticos. Thomas Bayes (1702-1761), que aparece na capa deste livro, propôs
+uma regra para atualizar probabilidades à luz de novas evidências. A regra de
+Bayes e o campo resultante chamado análise bayesiana formam a base da
+maioria das abordagens modernas para raciocínio incerto em sistemas de IA.
+
+### 1.2.3 Economia
+- Como devemos tomar decisões para maximizar a recompensa?
+- Como devemos fazer isso quando outros não podem nos acompanhar?
+- Como devemos fazer isso quando a recompensa pode estar distante no futuro?
+
+A maioria das pessoas pensa que a economia trata de dinheiro, mas os economistas dirão que, na realidade, a economia estuda como as pessoas fazem escolhas que levam a resultados preferenciais. Quando o McDonalds oferece um hambúrguer por um dólar, está afirmando que prefere o dólar e espera que os clientes prefiram o hambúrguer. 
+
+### 1.2.4 Neurociência
+- Como o cérebro processa informações
+A **neurociência** é o estudo do sistema nervoso, em particular do cérebro. Apesar de o modo exato como o cérebro habilita o pensamento ser um dos grandes mistérios da ciência, o fato de ele habilitar o pensamento foi avaliado por milhares de anos devido à evidência de que pancadas fortes na cabeça podem levar à incapacitação mental. Também se sabe há muito tempo que o
+cérebro dos seres humanos tem algumas características diferentes; em
+aproximadamente 335 a.C., Aristóteles escreveu: “De todos os animais, o
+homem é o que tem o maior cérebro em proporção ao seu tamanho.”6 Ainda
+assim, apenas em meados do século XVIII o cérebro foi amplamente
+reconhecido como a sede da consciência. Antes disso, acreditava-se que a sede
+da consciência poderia estar localizada no coração e no baço.
+
