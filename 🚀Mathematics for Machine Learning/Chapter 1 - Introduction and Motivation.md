@@ -19,4 +19,18 @@ Esse livro não resolverá a questão da ambiguidade, mas queremos destacar desd
 
 A **primeira parte** deste livro introduz os conceitos e fundamentos matemáticos necessários para discutir os três componentes principais de um sistema de aprendizado de máquina: **dados**, **modelos** e **aprendizado**. Vamos esboçar brevemente esses componentes aqui, e revisitá-los novamente no Capítulo 8, uma vez que tenhamos discutidos os conceitos matemáticos necessários. 
 
-Embora nem todos os dados sejam numéricos, muitas vezes é útil consiedar os dados em formato numérico
+Embora nem todos os dados sejam numéricos, muitas vezes é útil considerar os dados em formato numérico. Vamos considerar que os dados já foram devidamente convertidos para uma representação numérica adequada para leitura em um programa. Pensaremos nos dados como vetores, existem (pelo menos) três maneiras diferentes de pensar sobre vetores:
+1. um vetor como um **array de números** (visão da ciência da computação);
+2. um vetor como uma **seta com direção e magnitude** (visão da física);
+3. e um vetor como um **objeto que obedece às operações de adição e multiplicação por escalar** (visão matemática).
+
+**Modelo**
+Um modelo é tipicamente usado para descrever um processo de geração de dados, semelhante ao conjunto de dados em questão. Um bom modelo pode ser usado para prever o que aconteceria no mundo real sem realizar experimentos reais. 
+
+**Learning (aprendizado)**
+Recebemos um conjunto de dados e um modelo adequado. Treinar o modelo significa usar os dados disponíveis para otimizar alguns parâmetros do modelo, com respeito a uma função de utilidade que avalia quão bem o modelo prevê os dados de treinamento. Na prática, estamos interessados em que o modelo tenha um bom desempenho em **dados não vistos**. Ir bem apenas nos dados que já vimos (dados de treinamento) pode significar apenas que encontramos uma boa maneira de memorizar os dados. Porém, isso pode não se generalizar bem para dados desconhecidos, e, em aplicações práticas, frequentemente precisamos expor nosso sistema de *machine learning* a situações que ele ainda não encontrou. 
+
+**Vamos resumir os principais conceitos de machine learning que abordamos neste livro:**
+- Representamos os dados como vetores;
+- Escolhemos um modelo apropriado, usando a abordagem probabilística ou a abordagem de otimização;
+- Aprendemos a partir dos dados disponíveis usando métodos de otimização numérica, com o objetivo de que o modelo tenha um bom desempenho em dados que **não** foram usados no treinamento.
