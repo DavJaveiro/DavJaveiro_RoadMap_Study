@@ -280,13 +280,13 @@ C) An ADT is specified by an interface, and a class provides the concrete implem
 D) ADT, interface, and class mean the same thing
 ?
 **C) An ADT is specified by an interface, and a class provides the concrete implementation.**
-<!--SR:!2025-12-03,5,248-->
+<!--SR:!2025-12-26,12,248-->
 
 An ADT is defined by two parts: ==abstract data (not directly accessible)== and ==operations (accessible to the user)==.
-<!--SR:!2025-12-20,12,248!2025-12-05,7,268-->
+<!--SR:!2025-12-20,12,248!2026-01-02,19,268-->
 
 In Java, an ADT is typically described by ==an interface==, and classes that implement this interface provide ==the concrete implementation== while ==hiding internal details==.
-<!--SR:!2025-12-19,11,248!2025-12-03,5,248!2025-12-02,2,228-->
+<!--SR:!2025-12-19,11,248!2025-12-27,13,248!2025-12-19,5,228-->
 
 **Why is an interface considered a contract in Java?**
 A) Because it automatically provides default implementations to all classes.
@@ -299,13 +299,13 @@ B) Because it forces any implementing class to follow the method signatures it d
 <!--SR:!2025-12-19,11,247-->
 
 =======
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-27,13,247-->
 
 >>>>>>> 609e0c1c0d71724b50d2de29049903857fbdc6f5
 <!--SR:!2025-11-27,2,248-->
 
 An interface is considered a ==contract== because any class that implements it is ==obligated== to provide concrete implementations for all of its abstract methods and follow the ==exact method signatures== defined by the interface.
-<!--SR:!2025-12-03,5,248!2025-12-03,5,248!2025-12-18,10,228-->
+<!--SR:!2025-12-25,11,248!2025-12-26,12,248!2025-12-18,10,228-->
 
 
 Why is this interface considered a "contract"?
@@ -506,7 +506,7 @@ C) Overloading
 D) Encapsulation
 ?
 B) Inheritance
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-27,13,247-->
 
 What does a *has-a* relationship represent in OOP?
 A) Inheritance
@@ -543,7 +543,7 @@ C) Last line
 D) First line
 ?
 D) First Line
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-25,11,247-->
 
 **If a subclass does not explicitly call super(...) in its constructor:**
 A) Java inserts `super()` automatically
@@ -561,7 +561,7 @@ C) Private fields exist
 D) Getters are not implemented
 ?
 A) Computer has only constructors with paramters
-<!--SR:!2025-12-05,5,247-->
+<!--SR:!2025-12-26,12,247-->
 
 
 
@@ -748,7 +748,7 @@ D) Both B and C are valid.
 - **B** is valid because the return type is exactly the same.
 - **C** is valid because of **Covariant Return Types**. Since Java 5, an overridden method in a subclass can return a subtype (subclass) of the return type declared in the superclass method. `Notebook` is a subclass of `Computer`.
 - **A** is invalid because `Object` is a superclass, not a subclass, of `Computer`.
-<!--SR:!2025-12-02,2,247-->
+<!--SR:!2025-12-19,5,247-->
 
 Constructor Chaining (`this` vs `super`). Review the following constructor logic intended for the `Notebook` class:
 ```java
@@ -775,7 +775,7 @@ D) Compilation fails at Line 1 because `super` cannot be called if `this` is use
 ?
 **C) Compilation fails at Line 3 because the call to `super()` (or `this()`) must be the first statement in a constructor.**
 **Explanation:** In Java, a constructor can call `super(...)` OR `this(...)`, but **not both**, because whichever one is called must be the very first executable statement. Line 2 correctly calls another constructor in the same class, but Line 3 attempts to call the super constructor afterwards, which is illegal.
-<!--SR:!2025-12-13,5,247-->
+<!--SR:!2025-12-25,11,247-->
 
 ### The `@Override` Annotation
 **Front (Question):** In the provided text, the author recommends using `@Override` before the `toString` method in the `Notebook` class. What is the primary technical benefit of adding this annotation regarding the Java compiler?
@@ -786,7 +786,7 @@ D) It is mandatory; the code will not compile without it if the method exists in
 ?
 **Back (Answer):** **C) It instructs the compiler to generate an error if the method does not correctly override a method declared in a superclass.**
 **Explanation:** The annotation is not mandatory, but it serves as a compile-time check. If you misspell the method name (e.g., `tostring()` instead of `toString()`) or get the arguments wrong, the compiler will throw an error explicitly stating "method does not override or implement a method from a supertype," preventing accidental overloading or new method creation.
-<!--SR:!2025-12-02,2,247-->
+<!--SR:!2025-12-19,5,247-->
 
 Card 7: Polymorphism with Arrays. Review the following array declaration mentioned in the text:
 ```java
@@ -802,9 +802,10 @@ D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.
 ?
 **D) Compilation Error: Cannot find symbol `getScreenSize` in class `Computer`.**
 **Explanation:** Even though the object at index 1 is technically a `Notebook`, the **reference type** of the array is `Computer`. The compiler only knows about methods defined in the `Computer` class. To access `getScreenSize()`, you would need to explicitly cast the reference: `((Notebook)labComputers[1]).getScreenSize()`.
-<!--SR:!2025-12-02,2,247-->
+
 ### Methods with Class Parameters
-Polymorphism also simplifies programming when we write methods that have class parameters. For example, if we want to compare the power of two computers without polymorphism, we will need to write overloaded *comparePower* methods in class *Computer*, one for each subclass parameter and one with a class **Computer** paramter. However, polymorphism enables us to write one method with a **Computer** parameter. 
+Polymorphism also simplifies programming when we write methods that have class parameters. For example, if we want to compare the power of two computers without polymorphism, we will need to write overloaded *comparePower* methods in class *Computer*, one for each subclass parameter and one with a class **Computer** paramter. However, polymorphism enables us to write one method with a **Computer** parameter.
+<!--SR:!2025-12-19,5,247--> 
 
 Method Computer.comparePowers compares the power of the **Computer** object it is applied to with the **Computer** object passed as its argument. It returns -1, 0, or +1 depending on which computer has more power. It does not matter wheter this or aComputer references a Computer or a Notebook object.
 
@@ -851,12 +852,13 @@ class Notebook extends Computer {
 }
 ```
 What will happen?
-A) Code compiles normally  
-B) Runtime error only if Notebook is instantiated  
-C) Compilation error: superclass constructor not called explicitly  
+A) Code compiles normally
+B) Runtime error only if Notebook is instantiated
+C) Compilation error: superclass constructor not called explicitly
 D) Java inserts a default call to a matching constructor automatically
 ?
 **C) Compilation error: superclass constructor not called explicitly**
+<!--SR:!2025-12-16,2,247-->
 
 b) For the loop body in the following fragment, indicate which method is invoked for each value of i. What is printed?
 ```java
@@ -965,23 +967,297 @@ c) When does Java determine which toString method to execute for each value of i
 Em tempo de execução, at run time, not compile time. Because toString() is an instance (non-static) method and Java uses dynamic method dispatch, also known as runtime polymorphism. At run time, the JVM checks the actual object type and calls the overridden method accordignly.
 
 When does Java decide which overridden instance method (e.g., `toString()`) to execute?
-A) At compile time, based on the reference type  
-B) At run time, based on the actual object type  
-C) Before main() starts executing  
-D) It always calls the superclass method first  
+A) At compile time, based on the reference type
+B) At run time, based on the actual object type
+C) Before main() starts executing
+D) It always calls the superclass method first
 E) During JVM class loading
 ?
 B) At run time, based on the actual object type.
 Java uses **dynamic method dispatch,** meaning overridden instance methods are determined at run time, based on the actual object stored in memory, not the reference type.
 ## 1.4 Abstract Classes
+Uma classe abstrata é denotada usando a palavra-chave #abstract em seu cabeçalho:
+```java
+visbilidade abstract class nomeDaClasse
+```
+
+Uma classe abstrata difere de uma classe real (às vezes chamada de classe concreta) em dois aspectos:
+- Uma classe abstrata não pode ser instanciada;
+- Uma classe abstrata pode declarar métodos abstrados.
+
+Assim como em uma interface, um método abstrato é declarado por meio de um cabeçalho de método na definição da classe abstrata. Essa cabeçalho indica o tipo de resultado (retorno), o nome do método e os parâmetros, especificando assim a forma que qualquer declaração de método real deve assumir:
+
+`public abstract String nomeMetodo(listaParametros);`
+
+No entanto, a definição completa do método, incluindo o corpo do método (implementação), não aparece na definição da classe abstrata.
+
+Para compilar sem erros, uma classe real (concreta) que seja uma subclasse de uma classe abstrata, deve fornecer uma implementação para cada método abstrato de sua superclasse abstrata. O cabeçalho de cada método real deve corresponder ao cabeçalho do método abstrato correspondente. 
+
+Introduzimos uma classe abstrata em uma hierarquia de classes quando precisamos de uma classe base para duas ou mais classes reais que compartilham alguns atributos. Podemos querer declarar alguns dos atributos e definir alguns dos métodos que são comuns a essas classes base. Se, além disso, quisermos exigir que as subclasses reais implementem certos métodos, podemos conseguir isso tornando a classe base uma classe abstrata e declarando esses métodos como abstratos.
+
+**Exemplo 1.4**: a pirâmide alimentar fornece uma recomendação do que comer todos os dias com base em diretrizes dietéticas estabelecidas. Existem seis categorias de alimentos na pirâmide:
+- Gorduras, óleos e doces
+- Carnes, aves, peixes e nozes
+- Leite, iogurte e queijo
+- vegetais
+- frutas
+- pão, cereais e massas
+
+Se quiséssemos modelar a Pirâmide Alimentar, poderíamos ter cada uma dessas categorias como subclasses reais de uma classe abstrata chamada Food (Alimento):
+
+```java
+public abstract class Food {
+	// Data Field
+	private double calories;
+	
+	// Abstract Methods
+	/** Calculates the percent of protein in a Food object. */
+	public abstract double percentProtein();
+	
+	public abstract double percentFat();
+	
+	public abstract double percentCarbohydrates();
+	
+	public double getCalories() {return calories;}
+	public void setCalories(double cal) {
+		calories = cal;
+	}
+
+}
+```
+
+As três declarações de métodos abstratos `public abstract double percentProtein()`
+`public abstract double percentFat();`
+`public abstract double percentCarbohydrates()`
+
+impõem a exigência de que **todas as subclasses reais implementem esses três métodos**. Esperaríamos uma definição de método diferente para cada tipo de alimento. A palavra-chave **abstract** deve aparecer em todas as declarações de métodos abstratos dentro de uma classe abstrata. 
+
+**Armadilha**
+Se escrevermos a classe *Vegetable* e esquecemos de definir o método *percentProtein*, receberemos o erro de sintaxe: *class Vegetable should be declared abstract, it does not define method percentProtin in class Food*. Embora essa mensagem de erro possa nos enganar (não pretendemos que *Vegetable* fosse abstrata), qualquer classe com métodos indefinidos é abstrata por definição. A lógica do compilador é que o método não definido é intencional, portanto, `Vegetable` deve ser uma classe abstrata, com uma subclasse que defina `percentProtein`.
+
+**Referenciando Objetos Reais** Como a classe `Food` é abstrata, não podemos criar objetos do tipo `Food`. No entanto, podemos usar uma variável do tipo Food para referencia um objeto real que pertença a uma subclasse do tipo Food. Por exemplo, um objeto do tipo **Vegetable** pode se referenciado por uma variável **Vegetable** ou **Food**, porque **Vegetable** é uma subclasse de **Food** (ou seja, um objeto **Vegetable** também é um objeto **Food**). 
+
+```java
+abstract class Food {
+    private int baseCalories;
+
+    public Food(int cal) { 
+        this.baseCalories = cal; 
+        System.out.print("F(" + cal + ") ");
+    }
+    
+    // Método abstrato obrigatório
+    abstract int calculateEnergy();
+    
+    public int getCalories() { return baseCalories; }
+}
+
+abstract class ProcessedFood extends Food {
+    public ProcessedFood(int cal) { 
+        super(cal); 
+    }
+    // Nota: Não implementa calculateEnergy() aqui
+    abstract void packaging(); 
+}
+
+class EnergyBar extends ProcessedFood {
+    public EnergyBar() { 
+        super(200); 
+    }
+
+    // Implementação de packaging
+    void packaging() { 
+        System.out.print("Pack "); 
+    }
+    // Omissão deliberada de calculateEnergy() para análise
+}
+
+public class DietSystem {
+    public static void main(String[] args) {
+        // Tentativa 1
+        Food snack = new Food(100) {
+            int calculateEnergy() { return getCalories() * 2; }
+        };
+        System.out.print("E:" + snack.calculateEnergy() + " ");
+
+        // Tentativa 2
+        try {
+            ProcessedFood bar = new EnergyBar();
+            bar.packaging();
+        } catch (Error e) {
+            System.out.print("Error");
+        }
+    }
+}
+```
+Qual das opções abaixo descreve corretamente o comportamento deste código ao tentar ser compilado e executado?
+A) **Erro de Compilação na classe `DietSystem` (Tentativa 1):** Não é possível instanciar `new Food(100)` porque `Food` é uma classe abstrata e não pode ser instanciada diretamente, mesmo com corpo de método fornecido.
+B) **Erro de Compilação na classe `EnergyBar`:** A classe `EnergyBar` não é abstrata e não sobrescreve o método abstrato `calculateEnergy()` herdado indiretamente de `Food`. O compilador exigirá que `EnergyBar` seja declarada abstrata ou implemente o método.
+C) **Sucesso na Execução:** O código imprime `F(100) E:200 F(200) Pack`. A classe `EnergyBar` herda a natureza abstrata de `ProcessedFood` implicitamente, permitindo que o programa rode, mas lançará uma exceção em tempo de execução se `calculateEnergy` for chamado na instância `bar`.
+D) **Erro de Compilação na classe `ProcessedFood`:** Uma classe abstrata que estende outra classe abstrata (`Food`) é obrigada a implementar todos os métodos abstratos da superclasse (`calculateEnergy`) ou redeclará-los explicitamente.
+?
+**Resposta Correta: B**
+**Explicação Detalhada:**
+1. **Análise da Tentativa 1 (Classe Anônima):** A construção `new Food(100) { ... }` na classe `Main` é **válida**. Embora o texto diga "Uma classe abstrata não pode ser instanciada", em Java, essa sintaxe cria uma **classe interna anônima** (uma subclasse sem nome) que estende `Food` e fornece a implementação do método abstrato `calculateEnergy`. Portanto, a opção A está incorreta.
+2. **Análise da classe `ProcessedFood`:** Uma classe abstrata (`ProcessedFood`) que estende outra classe abstrata (`Food`) **não** é obrigada a implementar os métodos abstratos da mãe. Ela apenas repassa a "dívida" de implementação para a primeira subclasse concreta. Portanto, a opção D está incorreta.
+3. **Análise da classe `EnergyBar` (O foco do problema):** `EnergyBar` é declarada como uma classe concreta (`class EnergyBar` sem `abstract`). Ela estende `ProcessedFood`.
+    - `ProcessedFood` herda `abstract int calculateEnergy()` de `Food`.
+    - `ProcessedFood` declara seu próprio `abstract void packaging()`.
+    - Para `EnergyBar` compilar, ela **deve** implementar **ambos** os métodos: `packaging()` E `calculateEnergy()`.
+    - No código, `EnergyBar` implementa `packaging()`, mas omite `calculateEnergy()`.
+
 ### Referencing Actual Objects
+
 ### Initializing Data Fields in an Abstract Class
+Uma classe abstrata não pode ser instanciada. No entanto, uma classe abstrata pode ter construtores que inicializam seus campos de dados quando um novo objeto de subclasse é criado. O construtor da subclasse usará `super(...)` para chamar tal construtor.
 ### Abstract Class Number and the Java Wrapper Classes
+A classe abstrata #Number é predefinida na hierarquia de classes do Java. Ela tem como subclasses todas as #wrappers classes (classes de empacotamento) para tipos numéricos primitivos (por exemplo, #Byte, #Double, #Integer, #Long e #Short). Uma classe #wrapper é usada para armazenar um valor de tipo primitivo dentro de um tipo de objeto. 
+
+Uma classe wrapper contém um método de fábrica (factory method) estático chamado *valueOf*, que é usado para criar um objeto daquela classe. Os métodos #valueOf recebem um valor primitivo ou uma String numérica e retornam um objeto que armazena o valor correspondente do tipo primitivo. Por exemplo, Integer.valueOf(35) ou Integer.valueOf("35") retornando um objeto do tipo Integer que armazena o int 35. Uma classe wrapper também possuí métodos para converter o valor armazenado em um objeto para um tipo numérico diferente. 
+
+A figura 1.6 mostra uma parte da hierarquia de classes com a classe base **Number**. O uso de itálico no nome da classe #Number em sua caixa indica que #Number é uma classe abstrata e, portanto, não pode ser instanciada. 
+
+A Listagem 1.5 mostra parte da definição da classe #Number. Dois métodos abstratos são declarados (intValue e doubleValue), e um método real #byteValue é definido.
+```java
+public abstract class Number {
+	// Abstract methods
+	// returns the value of the specified number as an int.
+	public abstract int intValue();
+	
+	public abstract double doubleValue();
+	
+	public byte byteValue() {}
+}
+```
+
+```java
+// Arquivo: CustomMath.java
+
+abstract class AbstractMesoNumber extends Number {
+    private final double value;
+
+    // Construtor da classe abstrata
+    public AbstractMesoNumber(double v) {
+        this.value = v;
+        System.out.print("M(" + (int)v + ") ");
+    }
+
+    // Apenas para fins deste exercício, assuma que 'Number' exige apenas 
+    // a implementação de intValue e doubleValue (como simplificado no texto).
+    public double doubleValue() { return value; }
+    
+    // Método abstrato adicional
+    public abstract String getType();
+}
+
+class MesoInteger extends AbstractMesoNumber {
+    public MesoInteger(int v) {
+        // LINHA A
+        super(v);
+    }
+
+    public int intValue() { return (int) doubleValue(); }
+    public String getType() { return "Int"; }
+}
+
+class MesoFactory {
+    // Método Factory similar ao valueOf
+    public static AbstractMesoNumber valueOf(String s) {
+        int parsed = Integer.parseInt(s);
+        // LINHA B
+        return new MesoInteger(parsed) {
+             // Classe anônima sobrescrevendo comportamento
+             public String getType() { return "Anon"; }
+        };
+    }
+}
+
+public class CustomMath {
+    public static void main(String[] args) {
+        AbstractMesoNumber num1 = new MesoInteger(10);
+        System.out.print("| ");
+        
+        AbstractMesoNumber num2 = MesoFactory.valueOf("20");
+        
+        System.out.print("| " + num1.getType() + "-" + num2.getType());
+    }
+}
+```
+Analise as afirmações abaixo e determine qual descreve corretamente o comportamento do código, considerando as regras de construtores e classes abstratas.
+A) **Erro de Compilação na LINHA A:** O construtor de `MesoInteger` não pode chamar `super(v)` porque `AbstractMesoNumber` é abstrata e não pode ser instanciada, logo seu construtor não pode ser invocado.
+B) **Sucesso na Execução:** O código imprime: `M(10) | M(20) | Int-Anon`. A classe anônima criada dentro do método `valueOf` herda corretamente de `MesoInteger`, executa o encadeamento de construtores até a classe abstrata e sobrescreve o método `getType`.
+C) **Erro de Compilação na LINHA B:** Não é possível estender `MesoInteger` com uma classe anônima dentro do método estático porque `MesoInteger` não é uma interface nem uma classe abstrata.
+D) **Erro de Tempo de Execução (Runtime Error):** Ocorre um erro ao tentar instanciar a classe anônima em `valueOf`, pois classes anônimas não podem acessar o construtor da superclasse (`MesoInteger`) se este receber parâmetros.
+?
+**Resposta Correta: B**
+1. **Construtores em Classes Abstratas:** o texto afirma explicitamente:  "<span style="background:#b1ffff">Uma classe abstrata pode ter construtores que inicializam seus campos... </span>O construtor da subclasse usará super(....) para chamar tal construtor."
+	- Portanto, a Opção A está incorreta. Embora a classe abstrata não possa ser instanciada com `new AbstractMesoNumber()`, seu construtor **deve** ser chamado pelas subclasses via **super()** para inicializar o estado value.
+2. Na linha B, o código cria uma classe anônima: `new MesoInteger(parsed) {...}`. É perfeitamente legal em Java criar uma classe anônima a partir de uma classe concreta (MesoInteger), desde que exista um construtor visível.
+
 ### Summary of Features of Actual Classes, Abstract Classes, and Interfaces
+It is easy to confuse abstract classes, *interfaces*, and *actual classes (concrete classes).* Table 1.1 summarizes some important points about these constructs.
+!![image-20251214517696.png](/image-20251214517696.png)
+
+- *This can define constants:* Actual class, abstract class, interface. Em Java, constantes são variáveis declaradas com *final*, cujo valor não pode ser alterado após a inicialização; quando declaradas com *static final*, pertencem à classe e representam valores fixos compartilhados.
+- *The can extend another class:* actual class, abstract class and interface.
+- *This can declare abstract methods:* abstract class and interface.
+
+A class (abstract or actual) can extends only one other class; however, there is no restriction on the number of interfaces a class can implement. An interface cannot extend a class.
+
+Uma classe abstrata pode <span style="background:#d3f8b6">implementar uma interface</span> da mesma forma que uma classe concreta faz, mas, diferentemente de uma classe concreta, <span style="background:#fdbfff">ela não é obrigada a definir todos os métodos declarados na interface</span>. Ela pode deixar a implementação de alguns desses métodos abstratos para suas subclasses. 
+
+Tanto classes abstratas quanto interfaces <span style="background:#d3f8b6">declaram métodos abstratos</span>. No entanto, ao contrário de uma interface, uma classe abstrata também pode ter campos de dados e métodos que não são abstratos. 
+
+Podemos pensar em uma classe abstrata como uma combinação das propriedades de uma classe concreta, por fornecer campos de dados e métodos herdados para suas subclasses, e de uma interface, por especificar requisitos para suas subclasses por meio da declaração de métodos abstratos.
+
 ### Implementing Multiple Interfaces
+Uma classe pode estender apenas uma outra classe, mas pode implementar mais de uma interface. Por exemplo, suponha que a interface EmployeeInt especifique os métodos exigidos para classes do tipo funcionário. O seguinte cabeçalho para a classe **StudentWorker:**
+```java
+public class StudentWorker implements StudentInt, EmployeeInt
+```
+
+A classe StudentWorker oferece suporte às operações exigidas pelas duas interfaces.
 ### Extending an Interface
+Interfaces também podem estender (extend) outras interfaces. No capítulo 2, será apresentado o Java Collection Framework. Essa hierarquia de classe contém várias **interfaces** e **classes** que gerenciam coleções de objetos.
+
+No topo dessa hierarquia está a interface #Iterable, que declara o método #iterator. No nível imediatamente abaixo está a interface #Collection, que estende #Iterable.
+
+Isso significa que **todas as classes que implementam Collection também devem implementar Iterable** e, portanto, devem definir o método iterator.
+
+Uma interface pode estender mais de uma outra interface. Nesse caso, a interface resultante inclui a **união dos métodos definidos nas superinterfaces**.
+
+---
+**Interface pode estender outra interface**
+Quando realizamos:
+```java
+public interface FiscalDocumentRepository extends JpaRepository<FiscalDocument, Long> {}
+```
+A nossa interface está estendendo a interface #JpaRepository.
+
+Não somos obrigados a implementar nada. E isso é por design no Spring Data JPA. 
+
+Quem realiza a implementação desses métodos é o próprio Spring, em tempo de execução, usando:
+- **Proxy dinâmico**
+- **Reflection**
+- **Geração automática de implementação**
+
+Quando a aplicação sobe, o Spring cria uma **classe concreta invisível para nós**. 
+✔️ Ao estender `JpaRepository`, sua interface herda todos os métodos dela.  
+❌ Você **não precisa implementar nenhum método**.  
+✔️ O Spring Data JPA gera automaticamente a implementação em tempo de execução.
+
+---
+
+Por exemplo, podemos definir a interface ComparableCollection, que estende tanto Comparable quanto Collection, da seguinte forma:
+```java
+public interface ComparableCollecton extends Comparable, Collection {
+}
+```
+
+Observamos que essa interface não define nenhum método próprio, mas exige que qualquer classe que a implemente implemente todos os métodos exigidos por Comparable e por Collection.
 ### Exercises for Section 1.4
 ## 1.5 Class Object and Casting
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
 ## 1.7 Packages and Visibility
 ## 1.8 A Shape Class Hierarchy
+<!--SR:!2025-12-16,2,247-->
