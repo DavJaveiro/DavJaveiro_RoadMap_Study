@@ -36,3 +36,58 @@ A primeira abordagem que podemos considerar para gerenciar a nossa infraestrutur
 
 **Exemplo: implantar uma instância ec2 usando um Script Bash**
 Como exemplo, vamos criar um script Bash que automatiza todas as etapas manuais que fizemos no Capítulo 1 para implantar um aplicativo Node.js simples na AWS. Vá para a pasta *fundamentals-of-devops* que criamos no Capítulo 1 para trabalhar nos exemplos deste livro e cria uma nova subpasta para este capítulo e para o script Bash:
+
+Configurando o nosso arquivo *bootstrap.py*:
+
+```python
+import subprocess
+import sys
+import os
+from pathlib import Path
+
+def run(cmd):
+	print(f"Executando: {cmd}")
+	subprocess.run(cmd, shell=True, check=True)
+	
+def install_python_and_pip():
+	run("sudo yum install -y python3 python3-pip")
+	
+def create_app_file():
+	app_code = """\
+	from flask import Flask
+	
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+	return "Hello, World! Python Flask Rodando na EC2"
+	
+if __name__="__main__":
+	app.run(host="0.0.0.0", port=80)
+"""
+	Path("main.py").write_text(app_code)
+	print("main.py criado")
+	
+def install_dependencies():
+	run("pip3 install flask gunicorn")
+	
+def start_app():
+	run("nohup gunicorn -w 2 -b 0.0.0.0:80 main:app &")
+	
+def main():
+	install_python_and_pip()
+	create_app_file()
+	install_dependencies()
+	start_app()
+	print("Aplicação Python iniciada em background")
+	
+if __name__ = "__main__":
+	main()
+```
+
+Em seguida, vamos criar um script Bash chamado *deploy-ec2-instance.sh*, com o conteúdo que será responsável por definir as variáveis, ler o user-data, criar um security Group, autorizar tráfego na porta 80, busca a imagem AMI mais recente do Amazon Linux, executar a instância EC2 e exibir os IDs e IP público resultantes. 
+
+O Script usa a AWS CLI para automatizar os passos exatos que realizamos manualmente no console da AWS no Capítulo 1:
+1. Cria um grupo de segurança (security group);
+2. Atualiza o grupo de segurança para permitir requisições HTTP de entrada na porta 80;
+3. 
