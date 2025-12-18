@@ -1257,6 +1257,46 @@ public interface ComparableCollecton extends Comparable, Collection {
 Observamos que essa interface não define nenhum método próprio, mas exige que qualquer classe que a implemente implemente todos os métodos exigidos por Comparable e por Collection.
 ### Exercises for Section 1.4
 ## 1.5 Class Object and Casting
+ A classe #Object é uma classe especial em Java porque é a raiz da hierarquia de classes, e toda classe possui #object como superclasse. Todas as classes herdam os métodos definidos na classe #Object; no entanto, esses métodos podem ser sobrescritos na classe atual ou em uma superclasse (se houver). A tabela 1.2 mostra alguns dos métodos da classe #Object. 
+
+**Método toString:** devemos sempre sobrescrever o método #toString se quisermos representar o estado de um objeto (informações armazenadas). Se não sobrescrevê-lo, o método *toString* da classe object será executado e retornará uma string, mas não o que estamos esperando.
+
+**TABELA 1.2 A Classe Object**
+
+| **Método**                   | **Comportamento**                                             |
+| ---------------------------- | ------------------------------------------------------------- |
+| `boolean equals(Object obj)` | Compara este objeto com seu argumento.                        |
+| `int hashCode()`             | Retorna um valor de código hash inteiro para este objeto.     |
+| `String toString()`          | Retorna uma string que representa textualmente o objeto.      |
+| `Class<?> getClass()`        | Retorna um objeto único que identifica a classe deste objeto. |
+ **Exemplo 1.6**: Se não tivéssemos um método #toString na classe *Computer* ou *Notebook*, a chamado do método aComputer.toString() chamaria o método #toString herdado da classe #Object. Este método retornaria uma string como #Computer#Ef08879, que mostra o nome da classe do objecto e um valor inteiro especial que é seu "hash code", não seu estado. O método #hashCode será discutido mais a fundo no capítulo 7.
+
+## Operations Determined by Type of Reference Variable
+Uma variável pode referenciar um objeto cujo tipo é uma subclasse do tipo da variável. Como #object é uma *superclasse* da classe #Integer, a instrução: *Object aThing = Integer.valueOf(25);* compilará sem erro, criando a seguinte referência de objeto:
+!![image-20251218656916.png](/image-20251218656916.png)
+
+Embora *aThing* referencia um objeto do tipo *Integer*, não podemos processar esse objeto como outros objetos #Integer. Por exemplo, a chamada de método *aThing.intValue()* causaria o erro de sintaxe:
+*The method intValue() is undefined for the type Object*
+
+Em Java, o **compilador olha apenas par ao tipo da variável**, não para o objeto real em tempo de execução. 
+
+Como dito, o **o tipo de referência**, e não o tipo do objeto referenciado, determina quais operações podem ser realizadas, e a classe *Object* não possui um método *intValue*. Durante a compilação, o Java não consegue determinar que tipo de objeto será referenciado por uma variável do tipo Object, então as únicas operações permitidas são aquelas definidas para a classe #Object. Os métodos de instância do tipo #Integer não definidos na classe Object, não podem ser invocados.
+
+A chamada de método *aThing.equals(Integer.valueOf("25"))* compilará porque a classe #Object possui um método *equals*, e um objeto de subclasse tem tudo o que está definido em sua superclasse. Durante a execução, o método *equals* para a classe Integer é invocado, não o da classe #Object. #Polimorfismo.
+
+Outro resultado surpreendente é que a instrução de atribuição: *Integer aNum = aThing;* são tipos incompatíveis. Mesmo que *aThing* referencie um objeto do tipo Integer, o erro de sintaxe "incompatible types: found: Java.lang.Object, requried: Java.lang.Integer" indica que o tipo da expressão está incorreta./ (Object, não tipo Integer). 
+Java é uma linguagem **fortemente tipada**, então o compilador Java sempre verifica se o tipo da expressão *aThing* é do tipo #Object, sendo atribuída e se é compatível com o tipo da variável aNum é do tipo Integer. 
+
+**Conceito de design: a importância da Tipagem Forte**
+Se o Java não verificasse o tipo da expressão e simplesmente realizasse a atribuição: *Integer aNum = aAthing*. Mais adiante, poderíamos tentar aplicar um método de Integer ao objeto referenciado por aNum. Como aNum é to tipo *Integer*, o compilador permitiria isso. Se #aNum estivesse referenciando um objeto do tipo Integer, realizar essa operação não causaria danos. Mas se aNum estivesse referenciado um objeto que não fosse to tipo Integer, realizar essa operação causaria um erro em tempo de execução ou um erro de lógica não detectado. É muito melhor ter o compilador nos dizendo que a atribuição é inválida. 
+
+- **O "Map" Invisible:** ao utilizarmos HashMap ou HashSet, a estrutura de dados usa internamente hashCode() e equals() para armazenar e recuperar chaves. Se criarmos uma classe customizada (ex: Point(x, y)) e não sobrescrevermos esses métodos de #Object, o map usará o endereço de memória. Resultado: o mapa nunca encontrará a nossa chave, mesmo que os valores de x e y sejam idênticos.
+
+**Java e Tipagem**
+- **Segurança vs. Flexibilidade:** Em Java, o compilador joga na defesa. Podemos colocar qualquer coisa dentro do *List< Object>*, mas para tirar e usar (chamar um método específico), somos obrigados a fazer o #downcasting explícito. 
+
+- **Comparação com == :** muitas vezes esquecemos que a implementação padrão de #equals na classe #Object é comparar endereços de memória. Para comparar conteúdo (valor), a sobrescrita é obrigatória. 
+ ,
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
 ## 1.7 Packages and Visibility
 ## 1.8 A Shape Class Hierarchy

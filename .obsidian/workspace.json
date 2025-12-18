@@ -4,31 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "01bc79c9b809c78b",
+        "id": "cf76df1fe62648fc",
         "type": "tabs",
         "children": [
           {
-            "id": "9537ea60618bdc1a",
+            "id": "0f44e5a541f6d934",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Quick Book Python/Chapter One - About Python.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter One - About Python"
-            }
-          },
-          {
-            "id": "ebb5061050821329",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           }
         ]
@@ -207,7 +197,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -238,8 +228,10 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "9537ea60618bdc1a",
+  "active": "0f44e5a541f6d934",
   "lastOpenFiles": [
+    "image-20251218656916.png",
+    "🚀Quick Book Python/2 - Getting started.md",
     "🚀Quick Book Python/Chapter One - About Python.md",
     "Descomplicando o Docker/1. O que é um container.md",
     "ByeByeCupom/Design API.md",
