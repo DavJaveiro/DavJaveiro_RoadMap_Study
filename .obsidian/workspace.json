@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "cf76df1fe62648fc",
+        "id": "01bc79c9b809c78b",
         "type": "tabs",
         "children": [
           {
-            "id": "0f44e5a541f6d934",
+            "id": "9537ea60618bdc1a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -228,11 +228,17 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "0f44e5a541f6d934",
+  "active": "9537ea60618bdc1a",
   "lastOpenFiles": [
-    "image-20251218656916.png",
-    "🚀Quick Book Python/2 - Getting started.md",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_8.java",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_8",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_7.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_7.java",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_8.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples",
     "🚀Quick Book Python/Chapter One - About Python.md",
+    "🚀Quick Book Python/2 - Getting started.md",
+    "image-20251218656916.png",
     "Descomplicando o Docker/1. O que é um container.md",
     "ByeByeCupom/Design API.md",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
@@ -250,15 +256,10 @@
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/ATM.java",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
     "Filosofia da Matemática/Interessante (Para um Filosofo).md",
-    "Filosofia da Matemática",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
-    "🚀Quick Book Python",
     "🚀 The Art of Proof/Chapter 1 - Integers.md",
     "🚀 The Art of Proof/Preface.md",
-    "🚀 The Art of Proof/The Art of Proof_ Basic Training for Deeper Mathematics, -- Matthias Beck, Ross Geoghegan -- Undergraduate Texts in Mathematics, 1, 2010 -- Springer -- 9781441970220 -- d8c800a73d67071c7349c3784080e1e5 -- An.pdf",
-    "🚀 The Art of Proof",
     "🚀Números Inteiros Uma Introdução a Matemática/Número Inteiros.md",
-    "🚀Números Inteiros Uma Introdução a Matemática",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md"
   ]
 }

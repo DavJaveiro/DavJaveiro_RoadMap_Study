@@ -1296,8 +1296,82 @@ Se o Java não verificasse o tipo da expressão e simplesmente realizasse a atri
 - **Segurança vs. Flexibilidade:** Em Java, o compilador joga na defesa. Podemos colocar qualquer coisa dentro do *List< Object>*, mas para tirar e usar (chamar um método específico), somos obrigados a fazer o #downcasting explícito. 
 
 - **Comparação com == :** muitas vezes esquecemos que a implementação padrão de #equals na classe #Object é comparar endereços de memória. Para comparar conteúdo (valor), a sobrescrita é obrigatória. 
- ,
+
+**Using instanceof to Guard a Casting Operation**
+Na armadilha anterior, mencionamos que uma ClassCastException ocrre se tentarmos uma operação de casting inválida. O Java fornece o operador #instanceof, que podemos usar para nos proteger contra esse tipo de erro.
+
+**Exemplo 1.7** O array #stuff a seguir pode armazenar 10 objetos de qualquer tipo de dado, pois todo tipo de objeto é uma subclasse de #Object.
+```java
+Object[] stuff = new Object[10];
+```
+[[example1_8.java]]
+
+Assumimos que o array #stuff foi carregado com dados e queremos encontrar a soma de todos os números que estão "embrulhados" (wrapped) em objetos. 
+
+A condição *if (stuff[i] instanceof Number)* é verdadeira se o objeto referenciado por *stuff[i]* for uma subclasse de *Number*. Ela seria falsa se *stuff[i]* referenciasse uma String ou outro objeto não numérico. A instrução: *Number next = (Number) stuff[i];* faz o cast (converte) o objeto referenciado por stuff[i] (tipo Object) para o tipo Number e, em seguida, o referencia através da variável next (Tipo Number). A variável next contém uma referência para o mesmo objeto que *stuff[i]*, mas o tipo de referência é diferente (tipo Number em vez de tipo Object). Então, a instrução
+*sum += next.doubleValue()*, invoca o método **doubleValue** apropriado para extrair o valor numérico e adicioná-lo à soma. Em vez de declarar next, podemos escrever a instrução if como 
+*if (stuff[i] isntanfeceof Number) sum += ((Number) stuff[i].doubleValue();*
+
+**Estilo de Programação: polimorfismo Elimina Declarações if Aninhadas**: Se o Java não suportasse polimorfismo, a declaração *if* no exemplo 1.7 seria muito mais complicada. Precisaríamos escrever algo como o seguinte:
+```java
+if (stuff[i] isntanceof Integer)
+	sum += ((Integer) stuff[i]).doubleValue();
+else if (stuff[i] instanceof Double)
+	sum += ((Double) stuff[i].doubleValue();
+else if (stuff[i] instaceof Float)
+	sum += ((Float) stuff[i]).doubleValue();
+```
+
+Cada condição aqui usa o operador *instanceof* para determinar o tipo de dado do objeto real referenciado por *stuff[i]*. Uma vez que o tipo é conhecido, fazemos o cast para esse tipo e chamamos seu método *doubleValue*. Obviamente, esse código é muito trabalhoso e mais propenso a falhas do que a instrução *if* original. Mas importante, se uma nova classe wrapper for definida para números, precisaríamos modificar a instrução *if* para processar objetos desse novo tipo de classe. Portanto, desconfie de instruções de seleção como a mostrada aqui; a presença delas frequentemente indica que não estamos aproveitando polimorfismo.
+
+*Insights Valiosos*
+- **Pattern Matching for instanceof:**  o texto mostra o jeito "antigo" de fazer as coisas. Desde o Java 16, não precisamos fazer o cast manual dentro do *if*.
+	- Antigo: *if (obj instanceof String) { String s = (String) obj; ... }*
+	- Novo: *if (obj instanceof String s) {...}* (o Java já cria a variável s tipada automaticamente). 
+
+- **Coleções Heterogêneas:** Em Java, *ArrayList< Object>* é possível, mas raramente usado em algoritmos eficientes porque o custo do casting ((Type) obj) e da verificação (instance of) degrada a performance se feito milhões de vezes. Estruturas de dados eficientes geralmente são homogêneas (todos os itens do mesmo tipo).
+
+- **Hierarquia de Interfaces:** o exemplo usa *Number*. Em problemas de LeetCode, muitas vezes lidamos com interfaces gráficas. Saber que Integer, Double e Long herdam de Number permite escrevermos algoritmos que somam valores sem se importar com o tipo específico, economizando linhas de código.
+
+**Exemplo 1.8**: suponhamos que temos uma classe *Employee* (funcionário) com os seguintes campos de dados:
+```java
+public class Employee {
+	// Campos de Dados
+	private String name;
+	private double hours;
+	private double rate;
+	private Address address;
+}
+```
+Para determinar se dois objetos **Employee** são iguais, poderíamos comparar todos os quatro campos de dados. No entanto, faz mais sentido determinar se dois objetos são o mesmo funcionário comparando seus campos de nome e endereço. Abaixo, mostramos um método *equals* que sobrescreve o método *equals* definido na classe **Object**.
+
+Ao sobrescrever este método, garantimos que o método *equals* da classe #Employee será sempre chamado quando o método **equals** for aplicado a um objeto Employee. Se tivéssemos declarado o tipo do parâmetro para `Employee.equals` como do tipo `Employee` em vez de `Object`, então o método `Object.equals` seria chamado se o argumento fosse qualquer tipo de dado exceto `Employee` (isso seria sobrecarga, não sobrescrita).
+
+[[example1_8.java]]
+Se o objeto referenciado por obj não for do tipo Employee, retornamos false. Se for do tipo **Employee**, fazemos o *downcast* desse objeto para o tipo *Employee*. Após o *downcast*, a instrução de retorna chama o método *String.equals* para comparar o campo de nome do objeto atual com o campo de nome do objeto **other**, e o método Addres.equals para comparar os dois campos de dados de endereço. Portanto, o método **equals** também deve estar definido na 
+**Address**. O resultado do método é **true** se ambos os campos, nome e endereço, correspondem, e é **false** se um ou ambos os campos não corresponderem. O resultado do método também é **false** se o *downcast* não puder ser realizado porque o argumento é um tipo incorreto ou nulo.
+
+**Algoritmos e Performance**
+- **Curto-circuito de Performance:** Note na primeira linha: *if (obj == this) return true;* Em algoritmos complexos, comparar referências é $O(1)$, enquanto comparar campos (como Strings longas ou objetos aninhados) pode ser custoso. Sempre comece verificando a identidade da memória.
+- **Strictness (Rigor):** o código usar **getClass()** em vez de *intanceof*. #getClass exige que seja exatamente a mesma classe.
+- Para o LeetCode, geralmente **getClass()** é mais seguro para evitar comportamentos estranhos de herança, a menos que o problema especifique o contrário. 
+
+**A classe Class**
+Toda classe possui um objeto do tipo **Class** que é criado automaticamente quando a classe é carregada em uma aplicação. A classe **Class** fornece métodos que, em sua maioria, estão além do escopo deste texto.
+
+O ponto importante é que **cada objeto** Class **é único para a sua classe**, e o método **getClass** (um membro da classe **Object**) retorna uma referência para esse objeto único.
+
+Assim, se a expressão:
+```java
+this.getClass() == obj.getClass()
+```
+no Exemplo 1.8 for verdadeira, então sabemos que **obj** e **this** são ambos da classe **Employee**.
+
+
+
+
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
+
 ## 1.7 Packages and Visibility
 ## 1.8 A Shape Class Hierarchy
 <!--SR:!2025-12-16,2,247-->
