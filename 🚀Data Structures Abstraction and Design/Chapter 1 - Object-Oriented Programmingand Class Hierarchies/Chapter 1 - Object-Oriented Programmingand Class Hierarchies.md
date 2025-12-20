@@ -1367,9 +1367,6 @@ this.getClass() == obj.getClass()
 ```
 no Exemplo 1.8 for verdadeira, então sabemos que **obj** e **this** são ambos da classe **Employee**.
 
-
-
-
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
 
 ## 1.7 Packages and Visibility
