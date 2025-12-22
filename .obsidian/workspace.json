@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Programming AWS Lambda/Chapter One - Introduction to Serverless, Amazon Web Services, and AWS Lambda.md",
+                "file": "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter One - Introduction to Serverless, Amazon Web Services, and AWS Lambda"
+              "title": "Chapter 3 - Programming AWS Lambda Functions"
             }
           }
         ]
@@ -228,10 +228,14 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "9537ea60618bdc1a",
+  "active": "98a477cdb0f66618",
   "lastOpenFiles": [
-    "🚀 Amazon Web Services In Action/Chapter 2 - Using virtual machines EC2.md",
+    "🚀Programming AWS Lambda/Chapter 2 - Getting Started with AWS Lambda.md",
+    "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
+    "content.png",
     "🚀Programming AWS Lambda/Chapter One - Introduction to Serverless, Amazon Web Services, and AWS Lambda.md",
+    "image-202512213055146.png",
+    "🚀 Amazon Web Services In Action/Chapter 2 - Using virtual machines EC2.md",
     "🚀Programming AWS Lambda",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
     "🚀 Amazon Web Services In Action/Sem título",

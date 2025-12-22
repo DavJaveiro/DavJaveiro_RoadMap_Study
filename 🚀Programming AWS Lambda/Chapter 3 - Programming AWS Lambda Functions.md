@@ -1,0 +1,2 @@
+## Programando Funções AWS Lambda
+Este capítulo trata de aprofundar o que significa construir funções Lambda - como elas se parecem, como configuramos a execução e como especificamos nossa própria configuração ambiental. Aprenderemos sobre esses tópicos examinando os conceitos centrais para ambientes de execução Lambda, entrada e saída, *timeout*, memória e CPU e, finalmente, como Lambda usa variáveis de ambiente para configuração da aplicação. 

@@ -85,3 +85,153 @@ Existem cinco critérios principais que diferenciam o serviços serverless, tant
 - **"No concern for runtime management" (Nenhuma preocupação com runtime):** Isso é uma meia-verdade perigosa para Java. Você _precisa_ se preocupar com a versão do Java (8, 11, 17, 21) no Lambda, pois versões mais novas trazem melhorias de performance e Garbage Collectors mais eficientes para serverless. Você não gerencia o SO, mas gerencia a escolha da JVM.
 
 
+## O que é o AWS Lambda?
+O Lambda é a plataforma FaaS da Amazon. Mencionamos FaaS brevemente antes, mas agora é hora de nos aprofundarmos com mais detalhes.
+
+**Funções como Serviço (FaaS)**
+FaaS é uma nova maneira de construir e implantar software no lado do servidor, orientada em torna da implantação de funções ou operações individuais. É do FaaS que vem muito do burburinho sobre *serverless*; de fato, muitas pessoas acham que *serverless* é apenas FaaS, mas elas estão perdendo a visão completa. Embora este livro foque em FaaS, encorajamos você a considerar o BaaS também ao construir aplicações maiores.
+
+Quando implantamos software *serverless* tradicional, começamos com uma instância de host, tipicamente uma instância de VM ou um contêiner. Então, implantamos nossa aplicação, que geralmente roda como um processo do sistema operacional, dentro do host. Geralmente, nossa aplicação contém código para várias operações diferentes, mas relacionadas; por exemplo, um serviço web pode permitir tanto a recuperação quanto a atualização de recursos. Do ponto de vista de propriedade, nós, como usuários, somos responsáveis por todos os três aspectos dessa configuração, instância do host, processo da aplicação e, claro, operações do programa.
+
+O FaaS muda esse modelo de implantação e propriedade. Nós removemos tanto a instância do host quanto o processo da aplicação do nosso modelo. <span style="background:#affad1">Em vez disso, focamos apenas nas operações ou funções individuais que expressam a lógica da nossa aplicação.</span> Fazemos o upload dessas funções individualmente para uma plataforma FaaS, que em si é responsabilidade do provedor de nuvem e não nossa.
+
+As funções não ficam constantemente ativas em um processo de aplicação, ficando ociosas até precisarem ser executadas, como fariam em um sistema tradicional. <span style="background:#affad1">A plataforma FaaS é configurada para escutar um evento específico para cada operação</span>. Quando esse evento ocorre, a plataforma instancia a função FaaS e então a chama, passando o evento acionador. Uma vez que a função tenha terminado a execução, a plataforma FaaS está livre para derrubá-la (encerrá-la). Alternativamente, como uma otimização, ela pode manter a função ativa por um curto período até que haja outro evento a ser processado.
+
+**FaasS Implementado pelo Lambda**
+O AWS Lambda foi lançado em 2014 e continua a crescer em escopo, maturidade e uso. Algumas funções Lambda podem ter um rendimento (_throughput_) muito baixo — talvez executando apenas uma vez por dia, ou até menos frequentemente que isso. Mas outras podem ser executadas bilhões de vezes por dia. O Lambda implementa o padrão  FaaS instanciando ambientes Linux efêmeros e gerenciados para hospedar cada uma das nossas instâncias de função. O Lambda garante que apenas um evento é processado por ambiente de cada vez. <span style="background:#affad1">No momento da escrita deste texto, O Lambda também exige que a função complete o processamento do eventro dentro de 15 minutos; caso contrário, a execução é abortada. </span>
+
+O Lambda fornece um modelo de programação e implantação excepcionalmente leve, nós apenas fornecemos uma função, e dependências associadas, **em um arquivo ZIP ou JAR**, e o Lambda gerencia totalmente o ambiente de execução *runtime*. O Lambda é fortemente integrado com muitos outros serviços AWS. Isso corresponde a muitos tipos diferentes de fontes de evento que podem acionar funções Lambda, e isso leva à capacidade de construir muitos tipos diferentes de aplicações usando Lambda.
+
+O Lambda é um serviço totalmente *serverless*, conforme definido pelos nossos critérios de diferenciação anteriores, especificamente:
+**Não requer gerenciamento de um host ou instância de aplicação de longa duração** Com o Lambda, somos totalmente abstraídos do host subjacente executando nosso código. Além disso, não gerenciamos uma aplicação de longa duração — uma vez que nosso código terminou de processar um evento particular, a AWS está livre para encerrar o ambiente de execução.
+
+**Autoescalável e autoprovisionável, dependente da carga** Este é um dos principais benefícios do Lambda — o gerenciamento de recursos e o escalonamento são completamente transparentes. Uma vez que fazemos o upload do nosso código de função, a plataforma Lambda criará ambientes suficientes apenas para lidar com a carga em qualquer momento específico. Se um ambiente for suficiente, o Lambda criará o ambiente quando for necessário. Se, por outro lado, centenas de instâncias separadas forem necessárias, o Lambda escalará rapidamente e sem qualquer esforço da nossa parte.
+
+**Possui custos baseados no uso preciso, desde zero até o pico** A AWS cobra pelo Lambda apenas pelo tempo que nosso código está executando por ambiente, com uma precisão de até 100 ms [Nota: agora é 1ms]. Se nossa função está ativa por 200 ms a cada 5 minutos, seremos cobrados apenas por 2,4 segundos de uso por hora. Essa estrutura de custo de uso preciso é a mesma, seja exigida uma instância da nossa função ou mil.
+
+**Possui capacidades de desempenho definidas em termos que não sejam tamanho/quantidade de host** Como somos totalmente abstraídos do host subjacente com o Lambda, não podemos especificar um número ou tipo de instâncias EC2 subjacentes para usar. Em vez disso, especificamos quanta memória RAM nossa função requer (até um máximo de 3GB [Nota: agora é 10GB]), e outros aspectos de desempenho estão ligados a isso também. Exploraremos isso em mais detalhes mais tarde no livro.
+
+**Possui alta disponibilidade implícita** Se um host subjacente específico falhar, o Lambda iniciará automaticamente ambientes em um host diferente. Da mesma forma, se um data center/Zona de Disponibilidade (AZ) específico falhar, o Lambda iniciará automaticamente ambientes em uma AZ diferente na mesma região. Note que cabe a nós, como clientes da AWS, lidar com uma falha em toda a região.
+
+**Por que Lambda?** Os benefícios básicos da nuvem, como descrevemos anteriormente, aplicam-se ao Lambda — muitas vezes é mais barato executar em comparação com outros tipos de plataforma de host; requer menos esforço e tempo para operar uma aplicação Lambda; e a flexibilidade de escalonamento do Lambda supera qualquer outra opção de computação dentro da AWS. <span style="background:#affad1">No entanto, o principal benefício da nossa perspectiva é a rapidez com que você pode construir aplicações com Lambda quando combinado com outros serviços AWS.</span> Frequentemente ouvimos falar de empresas construindo aplicações totalmente novas, implantadas em produção, em apenas um ou dois dias. Ser capaz de nos remover de tanto código relacionado à infraestrutura que costumamos escrever em aplicações regulares é um grande economizador de tempo.
+
+- **A Mudança:** Na AWS, a ideia de "Lego" significa desmontar seu Monolito Spring. O agendamento sai do `@Scheduled` do Spring e vai para o **Amazon EventBridge Scheduler**. O cache sai da memória da JVM e vai para o **Amazon ElastiCache (Redis)**. O Spring passa a ser o orquestrador dos Legos da AWS (via SDK), e não o dono de toda a infraestrutura lógica.
+
+**O JAR, o ZIP e a "Gordura" do Java:**
+- O texto menciona upload de "ZIP ou JAR".
+- **Insight Prático:** No mundo Java Serverless, o tamanho do artefato importa para o _Cold Start_. Um "Fat JAR" (Uber Jar) de 150MB com todas as dependências do Spring Boot demora para ser baixado e descompactado pelo Lambda.
+- **Ação:** Use técnicas de **Layered JAR** do Spring Boot ou, melhor ainda, use **Docker (Container Images)** para o **Lambda**. O Docker permite **cacheamento** de camadas, tornando o deploy de atualizações muito mais rápido do que subir um ZIP gigante a cada mudança.
+
+**Memória e CPU: O Acoplamento Crucial:**
+- O texto diz: "especificamos quanta memória RAM... outros aspectos [CPU/Rede] estão ligados a isso".
+- **O Erro Comum em Java:** Tentar economizar dinheiro configurando o Lambda com 128MB de RAM.
+- **A Realidade:** Java precisa de CPU para inicializar a JVM e o Contexto do Spring. Com 128MB, a AWS te dá uma fração minúscula de vCPU. <span style="background:#b1ffff">Sua função vai demorar _muito_ mais para rodar e você vai pagar _mais_ caro por isso (porque paga por tempo).</span>
+- **Regra de Ouro:** Para Spring Boot, comece testando com **1024MB ou 1512MB** (o ponto onde você ganha 1 vCPU completa). Frequentemente, mais memória = execução mais rápida = custo menor.
+
+**O Limite de 15 Minutos e `@Transactional`:**
+- **Insight:** Se você tem um processo longo (`@Transactional`) que estoura os 15 minutos, o Lambda morre abruptamente. Não há "graceful shutdown" garantido para rollback de banco de dados nesse cenário de timeout da plataforma.
+- **Ação:** Se o processo Java demorar mais que alguns minutos, Lambda provavelmente é a ferramenta errada. Use **AWS Step Functions** para orquestrar transações longas ou divida o processamento em Lambdas menores.
+
+**Concorrência por Instância (Single Event Processing):**
+- O texto diz: "apenas um evento é processado por ambiente de cada vez".
+- **Diferença do Spring MVC tradicional:** No Tomcat (EC2), uma JVM atende 200 threads simultâneas. No Lambda, uma JVM atende 1 requisição. <span style="background:#d3f8b6">Se chegarem 50 requisições simultâneas, a AWS sobe 50 JVMs (50 Cold Starts potenciais).</span>
+- **Implicação:** Variáveis estáticas (`static`) não são compartilhadas entre usuários concorrentes (cada um está em sua JVM isolada), mas são compartilhadas entre requisições _sequenciais_ da mesma instância. Cuidado com vazamento de dados em variáveis estáticas (ThreadLocal, por exemplo).
+
+**Limite de Memória (3GB vs 10GB):**
+
+- O texto cita "máximo de 3GB".
+- **Atual:** O Lambda suporta até **10GB de RAM** e **6 vCPUs**. Isso viabiliza rodar aplicações Spring Boot pesadas ou processamento de dados em Java que antes eram impossíveis.
+
+**Suporte a Imagens de Container:**
+- O texto foca apenas em ZIP/JAR.
+- **Atual:** O suporte a **Container Images (OCI)** é fundamental hoje, permitindo usar o ecossistema Docker/Kubernetes no build e deployar no Lambda, facilitando a vida de quem já usa containers.
+
+**SnapStart:**
+- O texto não menciona (pois é novo), mas para Java, o **AWS Lambda SnapStart** é o "game changer". Ele tira uma "foto" da memória da JVM inicializada e restaura em milissegundos, eliminando quase todo o problema de _Cold Start_ do Spring Boot.
+
+
+### Como é uma Aplicação Lambda?
+Aplicações de servidor tradicionais de longa duração geralmente possuem pelo menos uma de duas formas de iniciar o trabalho para um estímulo específico: ou elas abrem um socket TCP/IP e aguardam por conexões de entrada, ou possuem um mecanismo de agendamento interno que faz com que elas consultem um recurso remoto para verificar se há novo trabalho. Como o Lambda é fundamentalmente uma plataforma orientada a eventos e como o Lambda impõe um limite de tempo (_timeout_), nenhum desses padrões é aplicável a uma aplicação Lambda. Então, como construímos uma aplicação Lambda?
+
+O primeiro ponto a considerar é que, no nível mais baixo, as funções Lambda podem ser invocadas (chamadas) de uma destas duas maneiras:
+
+- **Sincronamente** — chamada de _RequestResponse_ pela AWS. Neste cenário, um componente chamador (_upstream_) chama a função Lambda e aguarda qualquer resposta que a função gerar.
+- **Assincronamente** — chamada de _Event_ pela AWS. Desta vez, a solicitação do chamador é respondida imediatamente pela plataforma Lambda, enquanto a função Lambda prossegue com o processamento da solicitação. Nenhuma resposta adicional é retornada ao chamador neste cenário.
+
+Esses dois modelos de invocação possuem vários outros comportamentos, nos quais entraremos mais tarde, começando em “Tipos de Invocação”. Por enquanto, vamos ver como eles são usados em alguns exemplos de aplicações.
+
+**Web API** 
+Uma pergunta óbvia a se fazer é se o Lambda pode ser usado na implementação de uma API HTTP e, felizmente, a resposta é sim! Embora as funções Lambda não sejam servidores HTTP em si, podemos usar outro componente da AWS, o API Gateway, para fornecer o protocolo HTTP e a lógica de roteamento que tipicamente temos dentro de um serviço web.
+
+!![image-202512213055146.png](/image-202512213055146.png)
+
+O diagrama acima mostra uma API típica usada por uma _single-page application_ (SPA) ou por um aplicativo móvel. O cliente do usuário faz várias chamadas, via HTTP, para o backend para recuperar dados e/ou iniciar solicitações. No nosso caso, o componente que lida com os aspectos HTTP da solicitação é o Amazon API Gateway — ele é um servidor HTTP.
+
+Configuramos o API Gateway com um mapeamento de solicitação para manipulador (por exemplo, se um cliente faz uma solicitação `GET /restaurants/123`, podemos configurar o API Gateway para chamar uma função Lambda chamada `RestaurantsFunction`, passando os detalhes da solicitação). O API Gateway invocará a função Lambda de forma síncrona e aguardará que a função avalie a solicitação e retorne uma resposta.
+
+Como a instância da função Lambda não é em si uma API remotamente chamável, o API Gateway na verdade faz uma chamada para a plataforma Lambda, especificando a função Lambda a ser invocada, o tipo de invocação (_RequestResponse_) e os parâmetros da solicitação. A plataforma Lambda então instancia uma instância da `RestaurantsFunction` e a invoca com os parâmetros da solicitação.
+
+A plataforma Lambda possui algumas limitações, como o tempo limite máximo que já mencionamos, mas fora isso, é praticamente um ambiente Linux padrão. Na `RestaurantsFunction`, podemos, por exemplo, fazer uma chamada a um banco de dados — o Amazon DynamoDB é um banco de dados popular para usar com Lambda, em parte devido às capacidades de escalabilidade semelhantes dos dois serviços.
+
+Uma vez que a função tenha terminado seu trabalho, ela retorna uma resposta, já que foi chamada de forma síncrona. Essa resposta é passada pela plataforma Lambda de volta ao API Gateway, que transforma a resposta em uma mensagem de resposta HTTP, que por sua vez é passada de volta ao cliente.
+
+Tipicamente, uma API web atenderá a múltiplos tipos de solicitações, mapeadas para diferentes caminhos e verbos HTTP (como GET, PUT, POST, etc.). Ao desenvolver uma API web baseada em Lambda, você geralmente implementará diferentes tipos de solicitações como funções Lambda diferentes, embora não seja forçado a usar tal design — você pode lidar com todas as solicitações como uma única função, se preferir, e alternar a lógica dentro da função com base no caminho e verbo da solicitação HTTP original.
+
+**Processamento de Arquivos** Um caso de uso comum para o Lambda é o processamento de arquivos. Vamos imaginar um aplicativo móvel que pode fazer upload de fotos para um servidor remoto, que então queremos disponibilizar para outras partes da nossa suíte de produtos, mas em tamanhos de imagem diferentes.
+
+O S3 é o _Simple Storage Service_ da Amazon — o mesmo que foi lançado em 2006. Aplicativos móveis podem fazer upload de arquivos para o S3 via API da AWS, de forma segura.
+
+O S3 pode ser configurado para invocar a plataforma Lambda quando o arquivo é carregado, especificando a função a ser chamada e passando o caminho para o arquivo. Assim como no exemplo anterior, a plataforma Lambda instancia a função Lambda e a chama com os detalhes da solicitação passados desta vez pelo S3. A diferença agora, porém, é que esta é uma invocação assíncrona (o S3 especificou o tipo de invocação _Event_) — nenhum valor é retornado ao S3, nem o S3 espera por um valor de retorno.
+
+Desta vez, nossa função Lambda existe apenas com o propósito de um efeito colateral — ela carrega o arquivo especificado pelo parâmetro da solicitação e cria novas versões redimensionadas do arquivo em um bucket S3 diferente. Com os efeitos colaterais completos, o trabalho da função Lambda está feito. Como ela criou arquivos em um bucket S3, podemos optar por adicionar um gatilho Lambda a esse bucket também, invocando outras funções Lambda que processam esses arquivos gerados, criando um pipeline de processamento.
+
+**Outros exemplos de aplicações Lambda** Os dois exemplos anteriores mostram dois cenários, com duas fontes de eventos Lambda diferentes. Existem muitas outras fontes de eventos que nos permitem construir muitos outros tipos de aplicações. Apenas algumas delas são as seguintes:
+- Podemos construir aplicações de processamento de mensagens, usando barramentos de mensagens como _Simple Notification Service_ (SNS), _Simple Queue Service_ (SQS), EventBridge ou Kinesis como fonte de eventos.
+- Podemos construir aplicações de processamento de e-mail, usando o _Simple Email Service_ (SES) como fonte de eventos.
+- Podemos construir aplicações de tarefas agendadas, semelhantes a programas cron, usando _CloudWatch Scheduled Events_ como gatilho.
+
+Note que muitos desses serviços, além do Lambda, são serviços BaaS e, portanto, também _serverless_. Combinar FaaS e BaaS para produzir arquiteturas _serverless_ é uma técnica extraordinariamente poderosa devido às suas características semelhantes de escalabilidade, segurança e custo. De fato, são essas combinações de serviços que estão impulsionando a popularidade da computação _serverless_.
+
+**"API Gateway é necessário para HTTP":**
+- O texto sugere que para ter HTTP, você precisa do API Gateway.
+- **Atualização:** Para casos de uso simples (microservices internos, webhooks), agora existe a **Lambda Function URL**. Ela fornece um endpoint HTTPS direto para a função, sem o custo e a complexidade de configuração do <span style="background:#affad1">API Gateway</span>. É mais barato e mais rápido de configurar.
+
+## **AWS Lambda no Mundo Java**
+O AWS Lambda suporta nativamente um grande número de linguagens. JavaScript e Python são linguagens muito populares "para começar" no Lambda (bem como para aplicações de produção significativas), em parte devido à sua natureza dinamicamente tipada e não compilada, permitindo ciclos de desenvolvimento muito rápidos.
+Nós dois começamos, no entanto, usando Lambda com Java. O Java ocasionalmente tem uma má reputação no mundo Lambda — parte da qual é justa, e parte não. Se o que você precisa em uma função Lambda pode ser expresso em 10 linhas ou algo assim, normalmente é mais rápido montar algo em JavaScript ou Python. No entanto, para aplicações maiores, existem muitas razões excelentes para implementar funções Lambda em Java, algumas das quais são as seguintes:
+
+- **Reaproveitamento de Skills:** Se você ou sua equipe estão mais familiarizados com Java do que com as outras linguagens suportadas pelo Lambda, então vocês terão a capacidade de reutilizar essas habilidades e bibliotecas em uma nova plataforma de runtime. O Java é tanto uma "linguagem de primeira classe" no ecossistema Lambda quanto JavaScript, Python, Go, etc. — o Lambda não está limitando você se você usar Java. Além disso, se você já tem muito código implementado em Java, portar parte disso para o Lambda pode ser uma vantagem significativa de _time-to-market_ (tempo de lançamento), em comparação com a reimplementação em uma linguagem diferente.
+- **Performance em Alta Vazão:** Em sistemas de mensageria de alto rendimento (_throughput_), o benefício típico de desempenho de tempo de execução do Java sobre JavaScript ou Python pode ser significativo. Não apenas "mais rápido" é normalmente "melhor" em qualquer sistema, mas com o Lambda, "mais rápido" também pode resultar em benefícios de custo tangíveis devido ao modelo de preços do Lambda.
+
+Para cargas de trabalho na JVM, o Lambda suporta nativamente, no momento desta escrita, os runtimes Java 8 e Java 11. A plataforma Lambda instanciará uma versão do _Java Runtime Environment_ (JRE) dentro de seu ambiente Linux e, em seguida, executará nosso código dentro dessa Java VM.
+
+Nosso código, portanto, deve ser compatível com esse ambiente de execução, mas não estamos restritos apenas ao uso da linguagem Java. Scala, Clojure, Kotlin e mais, podem todos ser executados no Lambda.
+
+A plataforma Lambda fornece algumas bibliotecas básicas com o runtime (por exemplo, um pequeno subconjunto da biblioteca AWS Java), mas quaisquer outras bibliotecas que seu código precise devem ser fornecidas com seu próprio código. Você aprenderá como fazer isso em "Build and Package".
+
+Finalmente, embora o Java tenha o construto de programação de "Expressões Lambda", estas não têm relação com as funções AWS Lambda. Você é livre para usar expressões Lambda do Java dentro de sua função AWS Lambda se desejar (já que o AWS Lambda suporta Java 8 e posteriores) ou não.
+
+Aqui está a munição técnica para defender o Java no Serverless e alinhar com o Spring moderno:
+
+- **A "Má Reputação" vs. Realidade (Cold Start):**
+    - O texto admite a má fama. Historicamente, o Java sofria muito com _Cold Starts_ (tempo para subir a JVM + Carregar Classes).
+        
+    - **Insight Spring Boot 3:** O Spring Boot 3 introduziu suporte nativo a **GraalVM Native Images**. Isso compila seu código Java em um executável binário nativo (AOT - Ahead of Time). O _Cold Start_ cai de segundos para milissegundos.
+    - **Insight AWS SnapStart:** Se você não quiser usar GraalVM (que tem limitações com reflection), a AWS lançou o **Lambda SnapStart** para Java 11+. Ele inicializa sua função, tira um _snapshot_ da memória e, nas próximas execuções, restaura desse estado. É a "bala de prata" para Java no Lambda hoje.
+
+**SDKs e Dependências (O "Dependency Hell"):**
+
+- O texto avisa: _"quaisquer outras bibliotecas... devem ser fornecidas"_.
+- **Boas Práticas:**
+    - Não confie nas libs da AWS que já vêm no runtime (elas ficam desatualizadas).
+    - Use o **Spring Cloud Function** para empacotar apenas o necessário.
+    - Utilize o plugin **Maven Shade** ou o **Spring Boot Thin Layout** para evitar criar JARs gigantescos desnecessariamente, o que aumenta o tempo de download do código pela AWS.
+
+
+### O que está desatualizado
+O texto final do capítulo entrega sua idade em alguns pontos cruciais para quem estuda hoje:
+
+1. **Versões do Java (8 e 11):**
+    - **Atualização:** O Java 8 no AWS Lambda está obsoleto/depreciado em muitas regiões ou em modo de suporte estendido. O padrão atual para novos projetos deve ser **Java 17** ou **Java 21**. O Java 21 (LTS) traz melhorias massivas de Garbage Collection (ZGC/Generational ZGC) e Threads Virtuais (Project Loom) que são fantásticas para I/O no Lambda.
+2. **Atualização:** Hoje, grandes empresas preferem empacotar a função Lambda como uma **Imagem Docker (OCI)**. Isso facilita o pipeline de CI/CD, permitindo rodar a imagem localmente para testes mais fiéis e contornar o limite de tamanho de 250MB do ZIP (imagens podem ter até 10GB).
+
