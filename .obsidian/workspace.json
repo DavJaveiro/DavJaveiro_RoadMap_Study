@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
+                "file": "🚀Quick Book Python/Chapter 3 - The quick Python overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
+              "title": "Chapter 3 - The quick Python overview"
             }
           }
         ]
@@ -230,6 +230,10 @@
   },
   "active": "4463597bd6027bcc",
   "lastOpenFiles": [
+    "🚀Quick Book Python/2 - Getting started.md",
+    "🚀Quick Book Python/Chapter 3 - The quick Python overview.md",
+    "OCP Java SE21/Chapter 1 - Building Blocks.md",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_9.class",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/Employee.class",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_8.class",
@@ -240,8 +244,6 @@
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/examples.iml",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_9.class",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_9.java",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "image-202512224829401.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
     "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
@@ -256,7 +258,6 @@
     "image-202512202345430.png",
     "image-202512205441207.png",
     "image-202512203413108.png",
-    "🚀Quick Book Python/2 - Getting started.md",
     "🚀Quick Book Python/Chapter One - About Python.md",
     "image-20251218656916.png",
     "Descomplicando o Docker/1. O que é um container.md",
