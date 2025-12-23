@@ -90,4 +90,4 @@ Em seguida, vamos criar um script Bash chamado *deploy-ec2-instance.sh*, com o c
 O Script usa a AWS CLI para automatizar os passos exatos que realizamos manualmente no console da AWS no Capítulo 1:
 1. Cria um grupo de segurança (security group);
 2. Atualiza o grupo de segurança para permitir requisições HTTP de entrada na porta 80;
-3. 
+

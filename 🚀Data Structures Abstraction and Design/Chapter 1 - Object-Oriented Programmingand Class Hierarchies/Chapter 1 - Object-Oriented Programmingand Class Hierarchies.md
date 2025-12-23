@@ -1368,6 +1368,67 @@ this.getClass() == obj.getClass()
 no Exemplo 1.8 for verdadeira, então sabemos que **obj** e **this** são ambos da classe **Employee**.
 
 ## 1.6 A Java Inheritance Example - The Exception Class Hierarchy
+A seguir, mostraremos como o Java utiliza herança para construir uma hierarquia de classes que é fundamental para detectar e corrigir erros durante a execução do programa (erros de tempo de execução). Um erro de **tempo de execução** ocorre quando a JVM detecta uma operação que sabe ser incorreta.
+
+Esse erro fará com que a JVM lance uma exceção, isto é, crie um objeto de um tipo de exceção que identifica o tipo de operação incorreta e interrompa o processamento normal. A tabela 1.3 mostrar alguns exemplos de exceções que são erros de tempo de execução. Todas são subclasses da classe *RuntimeException*.
+!![image-202512224829401.png](/image-202512224829401.png)
+
+### Divisão por Zero
+Se *count* represente um número de itens sendo processados e é possível que *count* seja zero, a instrução de atribuição *avarege = sum /count;* pode causar um erro de divisão por zero. Se sum e count forem variáveis int, esse erro é indicado pela JVM lançando uma #ArithmeticException. Podemos facilmente nos prevenir contra tal divisão com uma instrução *if*, para que a operação não seja realizada quando *count* for zero. Normalmente, ao calcular uma média como double, o erro não é lançado; em vez disso, o resultado seria Infinity ou NaN.
+```java
+if (count == 0)
+	average = 0;
+else
+	average = sum / count;
+```
+
+### Array Index Out of Bounds
+Uma `ArrayIndexOutOfBoundsException` é lançada pela JVM quando um valor de índice (subscrito) usado para acessar um elemento em um array é menor que zero ou maior ou igual ao comprimento do array. Por exemplo, suponha que definimos o array `scores` da seguinte forma:
+`int[] scores = new int[500];`
+A variável indexada scores[i] usa i (tipo int) como o índice do array. A exceção será lançada se i for menor do que zero ou maior que 499.
+
+Erros de índice fora dos limites podem ser evitados verificando cuidadosamente os valores de limite para um índice que também é uma variável de controle de loop. Um erro comum é usar o tamanho do array como o limite superior, em vez do tamanho do array menos 1.
+
+**Exemplo 1.9:** o loop a seguir causaria um *ArrayIndexOutOfBoundsException* na última iteração, quando *i* é igual a *x.lenght*.
+```java
+for (int i = 0; i <= x.lenght; i++)
+	x[i] = i * i;
+```
+
+O teste de repetição do loop deveria ser i < x.lenght.
+
+```run-java
+public class example1_9 {
+    public static void main(String[] args) {
+        int[] scores = new int[500];
+        for (int i = 0; i < scores.length; i++) {
+            scores[i] = i + i;
+        }
+    }
+}
+```
+
+**NumberFormatException** e **InputMistmatchException**
+A #NumberFormatException é lançada quando um programa tenta converter uma string não numérica (geralmente um valor de entrada) para um valor numérico. Por exemplo, se o usuário digitar a string "2.6e", o método **parseDouble** no código a seguir:
+```java
+String speedStr = JOptionPane.showInputDialog("Enter speed");
+double speed = Double.parseDouble(speedStr);
+```
+lançaria uma `NumberFormatException` porque `"2.6e"` não é uma string numérica válida (não tem um expoente após o `e`). Não há uma forma geral de evitar essa exceção, pois é impossível se proteger contra todos os possíveis erros de entrada de dados que o usuário pode cometer.
+
+Um erro similar pode ocorrer se estivermos usando um objeto *Scanner* para entrada de dados. Se *scan* é um *Scanner*, a declaração:
+```java
+double speed = scan.nextDouble();
+```
+Lançara uma InputMismatchException se o próximo token escaneado for "2.6e".
+
+## Null Pointer
+A *NullPointerException* é lançada quando há uma tentativa de acessar um objeto que não existe; isto é, a variável de referência sendo acessada contém um valor especial, conhecido como *null*. Podemos nos prevenir contra isso testando se o valor é *null* antes de invocar um método.
+
+### The Exception Class Hierarchy
+As exceções na Tabela 1.3 são todas subclasses de *RuntimeException*. Todas as classes Exception são definidas dentro de uma hierarquia de classes que tem a classe #Throwable como sua superclasse (veja o diagrama UML na Figura 1.8). O diagrama UML mostra que as classes Error e Exception são subclasses de *Throwable*. Cada uma dessas classes possui subclasses mostradas na figura. Focaremos na classe #Exception e suas subclasses neste capítulo. Como RuntimeException é uma subclasse de #Exception, ela também é uma subclasse de #Throwable (a relação de subclasse é transitiva).
+
+### A Classe Throwable
 
 ## 1.7 Packages and Visibility
 ## 1.8 A Shape Class Hierarchy

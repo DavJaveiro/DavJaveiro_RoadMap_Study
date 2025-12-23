@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "01bc79c9b809c78b",
+        "id": "ba500b9a833f449a",
         "type": "tabs",
         "children": [
           {
-            "id": "9537ea60618bdc1a",
+            "id": "4463597bd6027bcc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
+                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 3 - Programming AWS Lambda Functions"
+              "title": "Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
             }
           }
         ]
@@ -228,43 +228,44 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "9537ea60618bdc1a",
+  "active": "4463597bd6027bcc",
   "lastOpenFiles": [
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_9.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/Employee.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_8.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_7.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/examples.iml",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/examples.iml",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_9.class",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_9.java",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
+    "image-202512224829401.png",
+    "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
+    "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
     "image-202512223636620.png",
     "🚀Programming AWS Lambda/Chapter 2 - Getting Started with AWS Lambda.md",
-    "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
     "content.png",
     "🚀Programming AWS Lambda/Chapter One - Introduction to Serverless, Amazon Web Services, and AWS Lambda.md",
     "image-202512213055146.png",
     "🚀 Amazon Web Services In Action/Chapter 2 - Using virtual machines EC2.md",
-    "🚀Programming AWS Lambda",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-    "🚀 Amazon Web Services In Action/Sem título",
     "Pasted image 20251220132507.png",
     "image-202512202345430.png",
     "image-202512205441207.png",
     "image-202512203413108.png",
     "🚀Quick Book Python/2 - Getting started.md",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_8.java",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_8",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_7.class",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_7.java",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/example1_8.class",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples",
     "🚀Quick Book Python/Chapter One - About Python.md",
     "image-20251218656916.png",
     "Descomplicando o Docker/1. O que é um container.md",
     "ByeByeCupom/Design API.md",
     "🚀Angular/Essentials.md",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "Sem título",
     "image-20251214517696.png",
     "🚀Mathematics for Machine Learning/Chapter 1 - Introduction and Motivation.md",
-    "image-202512133132170.png",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
-    "🚀Artificial Intelligence - A Modern Approach/Inteligência Artificial (Em Portuguese do Brasil) -- Peter Norvig, Stuart J_ Russell -- 3, 2013 -- Pearson Education -- 9788535237016 -- 3447c26bb7666c62fe64c8732f0abf87 -- Anna’s Archive.pdf",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
     "Filosofia da Matemática/Interessante (Para um Filosofo).md",
     "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
