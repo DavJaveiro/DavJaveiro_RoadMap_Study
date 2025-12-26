@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
+                "file": "AWS Cloud Practioner/Chapter 3 - Design Principles of the AWS Cloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction to Building AI Applications With Foundation Models"
+              "title": "Chapter 3 - Design Principles of the AWS Cloud"
             }
           }
         ]
@@ -88,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 487.00802993774414,
     "collapsed": true
   },
   "right": {
@@ -230,12 +230,18 @@
   },
   "active": "4463597bd6027bcc",
   "lastOpenFiles": [
-    "🚀Quick Book Python/Chapter 3 - The quick Python overview.md",
+    "RoadMap do DavJaveiro/RoadMap.canvas",
+    "AWS Cloud Practioner/Chapter 3 - Design Principles of the AWS Cloud.md",
+    "Sem título 2.md",
+    "AWS Cloud Practioner/Chapter 2 - Some Benefits of the AWS Cloud.md",
+    "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
+    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
+    "AWS Cloud Practioner",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
+    "🚀Quick Book Python/Chapter 3 - The quick Python overview.md",
     "AI Engineering",
     "🚀Quick Book Python/2 - Getting started.md",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_9.class",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/Employee.class",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples/example1_8.class",
@@ -244,7 +250,6 @@
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production/examples",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out/production",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/out",
-    "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/examples/examples.iml",
     "image-202512224829401.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
     "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
@@ -270,9 +275,6 @@
     "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
     "Filosofia da Matemática/Interessante (Para um Filosofo).md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
-    "🚀 The Art of Proof/Chapter 1 - Integers.md",
-    "🚀 The Art of Proof/Preface.md",
-    "🚀Números Inteiros Uma Introdução a Matemática/Número Inteiros.md"
+    "🚀 The Art of Proof/Chapter 1 - Integers.md"
   ]
 }

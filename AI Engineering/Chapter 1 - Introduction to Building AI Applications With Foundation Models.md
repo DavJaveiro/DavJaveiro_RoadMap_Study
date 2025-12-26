@@ -1,0 +1,21 @@
+O aumento da escala dos modelos de IA tem duas consequências principais:
+- Primeiro, os modelos de IA estão se tornando mais poderosos e capazes de realizar mais tarefas, viabilizando mais aplicações. Mais pessoas e equipes utilizam a IA para aumentar a produtividade, criar valor econômico e melhorar a qualidade de vida.
+- Segundo, treinar grandes modelos de linguagem (LLMs) requer dados, recursos computacionais e talentos especializados que apenas poucas organizações podem custear. 
+Isso levou ao surgimento do "modelo como serviço": modelos desenvolvidos por essas poucas organizações são disponibilizados para que outros os utilizem como um serviço. Qualquer pessoa que deseja utiliza AI para construir aplicações pode agora usar esses modelos sem precisar investir antecipadamente na construção de um modelo próprio.
+
+Em suma, a <span style="background:#affad1">demanda por aplicações de IA aumento enquanto</span> a <span style="background:#affad1">barreira de entrada para a construção</span> dessas aplicações diminuiu. Isso transformou a engenharia de IA — o processo de construir aplicações sobre modelos prontamente disponíveis — em uma das disciplinas de engenharia de crescimento mais rápido.
+
+Construir aplicações sobre modelos de aprendizado de máquina (ML) não é novidade. Muito antes de os LLMs se tornarem proeminentes, a IA já impulsionava muitas aplicações, incluindo recomendações de produtos, detecção de fraude e previsão de churn. Embora muitos princípios de colocação de aplicações de IA em produção permaneçam os mesmos, a nova geração de modelos de larga escala e prontamente disponíveis traz novas possibilidades e novos desafios, que são o foco deste livro.
+
+Este capítulo começa com uma visão geral dos modelos fundacionais, o principal catalisador por trás da explosão da engenharia de IA. Em seguida, discutirei uma série de casos de uso de IA bem-sucedidos, cada um ilustrando no que a IA é boa e no que ainda não é. À medida que as capacidades da IA se expandem diariamente, prever suas possibilidades futuras torna-se cada vez mais desafiador. No entanto, os padrões de aplicação existentes podem ajudar a descobrir oportunidades hoje e oferecer pistas sobre como a IA poderá continuar a ser usada no futuro.
+
+*Insights*
+O conceito de "escala" mencionado no texto está intrinsecamente ligado à complexidade computacional da arquitetura #Transformer. O custo de treinamento e inferência escala com o número de parâmetros ($\theta$) e o tamanho dos dados de treinamento (D). As leis de escala (Scaling Laws) sugerem que a performance do modelo (L) segue uma lei de potência em relação à computação: ($C$): $L(C) \propto C^{-\alpha}$. Na prática, isso significa que a multiplicação de matrizes massivas (GEMM - General Matrix Multiplication) é a operação dominante. Para um engenheiro de Cloud/ML, entender que o custo de inferência cresce quadraticamente com o comprimento do contexto ($O(N^2)$) em arquiteturas de atenção padrão é crucial para otimização de custos em produção. 
+
+**A escassez de dados** Embora fosse uma preocupação válida até 2023/2024, em 2025 a indústria superou parcialmente essa barreira através de **dados sintéticos**. Modelos de fronteira agora são treinados utilizando dados de alta qualidade gerados por outros modelos ("distillation" e "self-play"), além de currículos de aprendizado mais eficientes. A dependência exclusiva de "raspagem da web" diminuiu em favor de dados curados e sintéticos para raciocínio complexo.
+
+**A dicotomia estrita "Poucas organizações podem treinar" vs "Outros usam API"** O texto sugere que apenas gigantes treinam modelos e o resto consome via API. Em 2025, o ecossistema de **Modelos Abertos (Open Weights)** amadureceu drasticamente (ex: Llama 4, Mistral, Qwen).
+
+- **Realidade Atual:** Com técnicas de _Fine-tuning_ eficientes (QLoRA) e hardware especializado (LPUs, NPUs), empresas médias já realizam _fine-tuning_ de modelos menores (SLMs - Small Language Models) _in-house_ por questões de privacidade e custo, não dependendo apenas de APIs de terceiros.
+    
+- **Edge AI:** A execução de modelos locais em dispositivos (laptops, celulares) já é viável, contrariando a ideia de que tudo deve ser um serviço em nuvem centralizado.
