@@ -7,16 +7,17 @@ No Capítulo 2, criamos uma classe Java, fizemos o upload para o serviço Lambda
 !![image-202512223636620.png](/image-202512223636620.png)
 
 ## O Ambiente de Execução Lambda
-Como mencionamos no Capítulo 2, tanto o gerenciamento da AWS quanto as operações da função (frequentemente referidos como plano de controle e plano de dados, respectivamente) fazem uso extensivo de APIs. O Lambda não é diferente e oferece uma API tanto para o gerenciamento de funções quanto para a execução delas. Uma função é executada, ou invocada, sempre que o comando *invoke* da API do AWS Lambda é chamado. Isso acontece nos seguintes momentos:
+Como mencionamos no Capítulo 2, tanto o gerenciamento da AWS quanto as operações da função (frequentemente referidos como plano de controle e plano de dados, respectivamente) fazem uso extensivo de APIs. <span style="background:#d3f8b6">O Lambda não é diferente e oferece uma API tanto para o gerenciamento de funções quanto para a execução delas</span>. Uma função é executada, ou invocada, sempre que o comando *invoke* da API do AWS Lambda é chamado. Isso acontece nos seguintes momentos:
 - Quando uma função é acionada por uma fonte de eventos (*event source*);
 - Quando usamos a ferramenta de teste no console web;
 - Quando chamamos *invoke* da API Lambda por conta própria, tipicamente via CLI ou SDK, a partir do nosso próprio código ou scripts;
 
-Invocar uma função pela primeira vez iniciará a seguinte cadeia de atividade que terminará na execução do nosso código. Primeiro, o serviço Lambda criará um ambiente Linux hospedeiro, uma micro máquina leve. Tipicamente não precisaremos nos preocupar com a natureza precisa de que tipo de ambiente é esse (qua kernel, qual distribuição, etc.), mas caso precisemos, a Amazon torna essa informação pública. 
+Invocar uma função pela primeira vez iniciará a seguinte cadeia de atividade que terminará na execução do nosso código. 
+1. Primeiro, o serviço Lambda criará um ambiente Linux hospedeiro, uma micro máquina leve. Tipicamente não precisaremos nos preocupar com a natureza precisa de que tipo de ambiente é esse (qua kernel, qual distribuição, etc.), mas caso precisemos, a Amazon torna essa informação pública. 
 
-Uma vez que o ambiente hospedeiro tenha sido criado, o Lambda iniciará um runtime de linguagem dentro dele, em nosso caso, uma Máquina Virtual Java (JVM). 
+2. Uma vez que o ambiente hospedeiro tenha sido criado, o Lambda iniciará um runtime de linguagem dentro dele, em nosso caso, uma Máquina Virtual Java (JVM). 
 
-A  JVM é iniciada com um conjunto de flags de ambiente que não podemos alterar. 
+3. A  JVM é iniciada com um conjunto de flags de ambiente que não podemos alterar. 
 
 A aplicação Java de nível superior é o próprio servidor de aplicação Java da Amazon, ao qual nos referiremos como **Lambda Java Runtime**. Esse é o próximo componente a ser iniciado. O runtime é responsável pelo tratamento de erros de nível superior, logs e muito mais. A principal preocupação do Lambda Java Runtime é executar nosso código. Os passos finais da cadeia de invocação são:
 1. carregar nossas classes Java
@@ -30,7 +31,7 @@ Quando chamamos *invoke*, especificamos --invocation-type RequestResponse, isso 
 Agora, vamos mudar a flag para *--invocation-type Event*
 O resultado agora retorna um *StatusCode: 202*. Dessa vez, chamamos a função de forma *assíncrona*. O runtime Lambda chama nosso código precisamente como antes, mas não espera nem utiliza o valor retornado pelo nosso código, esse valor é descartado. O objetivo da execução assíncrona é que possamos realizar um "efeito colateral" em outra função ou serviço (como fazer upload de um arquivo para o S3).
 
-De forma assíncrona, estamos **disparando (triggering)** a execução da Lambda de forma **assíncrona**. 
+<span style="background:#d3f8b6">De forma assíncrona, estamos **disparando (triggering)** a execução da Lambda de forma **assíncrona**. </span>
 
 ## Introdução a Logging
 O runtime Lambda captura qualquer coisa escrita pela nossa função nos fluxos de processo de saída padrão ou erro padrão. Em termos de Java, isso corresponde a *System.out* e *System.err*. Uma vez que o runtime Lambda capturou esses dados, ele os envia para o **CloudWatch Logs**. Nenhum programador Java bom e que se preze faz log de produção real *System.out.println*, no entanto, frameworks de logging dão muito mais flexibilidade e controle sobre o comportamento de log.
@@ -50,7 +51,28 @@ Onde:
 
 O #Context permite que a função Lambda acesse informações sobre a execução, como request ID, tempo restante, limites de memórias e logs, sem depender do evento de entrada.
 
-Ele não é payload de entrada, **não vem do cliente**, não é parte do evento. 
+Ele não é payload de entrada, **não vem do cliente**, não é parte do evento. Portanto, ele é **injetado automaticamente pela AWS** e contém informações da execução atual da função, como identificador da requisição, tempo restante, nome da função, versão, limites de memória e métricas básicas.
+
+Em Java, isso é o contrato padrão do handler da Lambda. O primeiro parâmetro é o payload (JSON já desserializado para um objeto ou #Map), e o segundo é o ambiente de execução fornecido pela plataforma.
+
+**Mapeamento**: Quando mapeamentos o JSON para um **Objeto (DTO/POJO)**, ganhamos tipagem forte, validação em tempo de compilação, código mais legível e manutenção mais segura. É o melhor caminho para APIs, eventos com schema definido e qualquer fluxo de negócio que controlamos. Em Java backend sério, esse é o padrão.
+
+Usar **Map<String, Object>** faz sentido quando o formato varia, quando estamos criando uma função genérica (por exemplo, uma Lambda que recebe eventos diferentes), quando estamos apenas repassando dados ou fazendo inspeção parcial do payload. É comum em integrações, webhooks externos ou POCs rápidas.
+
+O custo do #Map é perder contrato: dependemos de casts, chaves em string e erros só aparecem em runtime. Por isso, ele deve ser exceção, não a regra.
+
+Quando estamos realizando **integração e repasse de dados**, não precisamos mapear esse JSON em objeto para depois transformá-lo novamente em JSON.
+
+Mapear tudo para DTO **só irá adicionar custo e complexidade**, sem ganho real.
+
+Devemos usar objeto apenas se:
+- precisarmos aplicar regra de negócio
+- precisarmos validar campos
+- transformar significativamente a estrutura
+- garantir contrato estável
+- versionar a resposta
+
+
 
 Evento (input-type) = dados
 
@@ -100,7 +122,14 @@ public String handleRequest(final Object input, final Context context)
 1. *input:* dados que recebemos quando a função é invocada.
 	- Pode ser um *String*, *Map*, *List*, ou qualquer outro objeto.
 	- No exemplo: Object (aceita qualquer coisa).
+	- O #final no parâmetro garante que a referência não possa ser reassociada dentro do método.
 - *Contexto:* objeto com informações sobre a execução. Contém ID da execução, tempo restante, nome da função, etc.
+
+Em handler de Lambda, o *final* é usado para:
+- deixar claro que o parâmetro é **somente leitura**
+- evitar reassociação acidental
+- reforçar intenção e clareza
+- permitir uso em classes internas/lambda (quando aplicável)
 **Retorno** é o que a nossa função responde. 
 
 **Exemplo 1: Chamada Simples**
