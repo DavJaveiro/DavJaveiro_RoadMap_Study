@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
+                "file": "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
                 "mode": "source",
                 "source": false
               },
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 487.00802993774414,
-    "collapsed": true
+    "width": 487.00802993774414
   },
   "right": {
     "id": "2284325e30fcbcb5",
@@ -228,10 +227,12 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "b24baba21ade790a",
+  "active": "f9589c659110214e",
   "lastOpenFiles": [
+    "programmingAWSLambda/examples",
+    "image-20251227173794.png",
     "Sem título 3.md",
-    "🚀Programming AWS Lambda/Chapter 3 - Programming AWS Lambda Functions.md",
+    "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
     "🚀Artificial Intelligence - A Modern Approach/Inteligência Artificial (Em Portuguese do Brasil) -- Peter Norvig, Stuart J_ Russell -- 3, 2013 -- Pearson Education -- 9788535237016 -- 3447c26bb7666c62fe64c8732f0abf87 -- Anna’s Archive.pdf",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "AWS Cloud Practioner/Chapter 3 - Design Principles of the AWS Cloud.md",
@@ -255,9 +256,9 @@
     "image-202512224829401.png",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
     "image-202512223636620.png",
-    "🚀Programming AWS Lambda/Chapter 2 - Getting Started with AWS Lambda.md",
+    "programmingAWSLambda/Chapter 2 - Getting Started with AWS Lambda.md",
     "content.png",
-    "🚀Programming AWS Lambda/Chapter One - Introduction to Serverless, Amazon Web Services, and AWS Lambda.md",
+    "programmingAWSLambda/Chapter One - Introduction to Serverless, Amazon Web Services, and AWS Lambda.md",
     "image-202512213055146.png",
     "🚀 Amazon Web Services In Action/Chapter 2 - Using virtual machines EC2.md",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
@@ -270,12 +271,10 @@
     "Descomplicando o Docker/1. O que é um container.md",
     "ByeByeCupom/Design API.md",
     "🚀Angular/Essentials.md",
-    "image-20251214517696.png",
     "🚀Mathematics for Machine Learning/Chapter 1 - Introduction and Motivation.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
     "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
-    "Filosofia da Matemática/Interessante (Para um Filosofo).md",
-    "🚀 The Art of Proof/Chapter 1 - Integers.md"
+    "Filosofia da Matemática/Interessante (Para um Filosofo).md"
   ]
 }

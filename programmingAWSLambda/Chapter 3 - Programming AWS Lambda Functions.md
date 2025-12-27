@@ -236,3 +236,54 @@ Se pensamos como **engenheiro de software**, escolhemos SCF.
 Se pensamos como **engenheiro de plataforma**, escolhermos handler puro.
 
 **Serialização:** o texto diz "O Runtime está desserializando...". No ecossistema Java, quem faz isso geralmente é o **Jackson**. 
+
+---
+**AWS X-Ray** 
+É o serviço de **tracing distribuído da AWS**.
+Ele serve para:
+- Acompanha uma **requisição ponta a ponta**
+- Medir **latência**
+- Identificar **gargalos**
+- Encontrar **falhas em dependências** (DB, HTTP, S3, DynamoDB etc).
+
+Quando optamos por ativar o X-Ray na Lambda, permitimos *AwsRAYWriteOnlyAccess*, fazendo a Lambda **emitir traces automaticamente**.
+
+No *template.yaml*, isso vira algo como:
+Tracing: **Active**
+
+Ganhamos na prática a visualização do fluxo da requisição:
+API Gateway
+   ↓
+Lambda
+   ↓
+DynamoDB
+   ↓
+S3
+
+Com tempos de cada etapa.
+
+Conseguimos, a partir dessas métricas, responder perguntas como:
+- O Cold Start está custando quanto?
+- A lentidão está no meu código ou numa chamada externa?
+- O problema é DNS, rede, SDK da AWS ou meu handler?
+
+Diferença de Zip para Image: !![image-20251227173794.png](/image-20251227173794.png)
+
+**Zip** é o modelo clássico de Lambda. Empacotamos o código + dependências (JAR), fazemos o upload para a Lambda, a AWS executa direto no runtime gerenciado (java17). Características:
+- Runtime gerenciado pela AWS
+- Sem docker
+- Build rápido
+- Menos controle do SO
+**Vantagens:**
+- Cold start menor
+- build simples (*sam build*)
+- Menos infra para manter
+- Ideal para Java puro
+
+**Image** a Lambda roda dentro de um **container Docker**.
+Criamos um #Dockerfile, buildamos a nossa imagem, subimos no ECR e lambda executa a imagem. 
+**Vantagens:**
+- Runtime somos nós que definimos
+- Total controle do ambiente
+- Limite maior de tamanho (até 10 Gb)
+
