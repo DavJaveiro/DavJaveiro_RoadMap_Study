@@ -201,3 +201,38 @@ Na configuração da Lambda, precisamos especificar:
 - Handler: example.Hello::handlerRequest
 - Formato: `pacote.Classe::método`
 ## Configurando a Função Handler no Template SAM
+Até agora, fizemos apenas uma mudança no arquivo de template do SAM, *template.yaml*, para alterar o nome da função. Antes de avançarmos muito, precisamos analisar outra propriedade nesse arquivo: *Handler*.
+
+bra o arquivo `template.yaml` e você verá que `Handler` está atualmente definido como `book.HelloWorld::handler`. O que isso significa é que, para esta função Lambda, a plataforma Lambda tentará encontrar um método chamado *handler* em uma classe HelloWrold, dentro do pacote chamado *book*.
+
+Se criarmos uma nova classe chamada *Cow* em um pacote chamado *old.macdonal.farm*, e tivermos um método chamado *moomoo* que seja a nossa função Lambda, então deveríamos definir o *Handler* como *old.macdonald.farm.Cow::moomoo*.
+
+**Tipos Básicos:**
+O Exemplo 3.1 mostra uma classe com três funções handler **Lambda** diferentes (sim, dissemos há pouco que não costumamos usar múltiplas funções Lambda por classe no uso real, mas faremos aqui por brevidade).
+
+**Exemplo 3.1 - Serialização e desserialização de tipos básicos**
+```java
+package book;
+public class StringIntegerBooleanLambda {
+	public void handlerString(String s) {
+		System.out.println("Hello, " + s);
+	}
+	public boolean handlerBoolean(boolean input) {
+		return !input;
+	}
+	
+	public boolean handlerInt(int input) {
+		return input > 100;
+	}
+```
+
+ No terceiro exemplo, estamos usando um tipo primitivo (int), mas podemos usar tipos encapsulados (*boxed types*) se preferirmos. Por exemplo, somos livres para usar *java.lang.Integer* ao invés de *int*.
+
+O que acontece em todos os casos é que o Runtime Lambda está desserializando a entrada JSON para um tipo simples em nosso nome. Se o evento passado não puder ser desserializado para o tipo de parâmetro especificado, teremos uma falha, com uma mensagem:
+`An error occurred during JSON parsing: java.lang.RuntimeException`
+
+- **Spring Cloud Function vs. Handler puro:** o texto ensina a configuração "nativa" (`Pacote.Classe::metodo`). Porém, ao usar **Spring Cloud Function**, raramente apontamos para o nosso método de negócio diretamente no YAML. O Handler no template geralmente aponta para um adaptador genérico do Spring, como *org.springframework.cloud.function.adapteer.aws.FunctionInvoker::handleRequest*. O Spring se encarrega de rotear para o nosso @Bean (Function, Consumer ou Supplier) correto. Isso desaclopa nossa infraestrutura YAML da lógica de código (Java)
+Se pensamos como **engenheiro de software**, escolhemos SCF.
+Se pensamos como **engenheiro de plataforma**, escolhermos handler puro.
+
+**Serialização:** o texto diz "O Runtime está desserializando...". No ecossistema Java, quem faz isso geralmente é o **Jackson**. 
