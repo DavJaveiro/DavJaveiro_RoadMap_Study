@@ -287,3 +287,10 @@ Criamos um #Dockerfile, buildamos a nossa imagem, subimos no ECR e lambda execut
 - Total controle do ambiente
 - Limite maior de tamanho (até 10 Gb)
 
+
+---
+
+## List and Maps
+O JSON também inclui arrays e objetos/propriedades. O Runtime Java da Lambda desserializará esses elementos automaticamente para *Lists* e *Maps* do Java, respectivamente, e também serializará #Lists e #Maps de saída para arrays e objetos JSON. 
+
+**Exemplo 3.2** - Serialização e desserialização de List e Map
