@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
+                "file": "Design Patern/1. Soluções Abstratas para problemas recorrentes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 3 - Programming AWS Lambda Functions"
+              "title": "1. Soluções Abstratas para problemas recorrentes"
             }
           }
         ]
@@ -84,7 +84,8 @@
               "title": "RunJS Codelist"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -230,6 +231,9 @@
   },
   "active": "b24baba21ade790a",
   "lastOpenFiles": [
+    "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
+    "Design Patern/1. Soluções Abstratas para problemas recorrentes.md",
+    "Design Patern",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/original-HelloWorld-1.0.jar",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/HelloWorld-1.0-shaded.jar",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/HelloWorld-1.0.jar",
@@ -239,12 +243,9 @@
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/generated-test-sources/test-annotations",
     "programmingAWSLambda/examples/chapterTwo/README.md",
     "image-20251227173794.png",
     "Sem título 3.md",
-    "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
     "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
     "AWS Cloud Practioner/Chapter 3 - Design Principles of the AWS Cloud.md",
     "RoadMap do DavJaveiro/RoadMap.canvas",
