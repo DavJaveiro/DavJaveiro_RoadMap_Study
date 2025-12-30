@@ -1,2 +1,5 @@
 helloworld\ListMapLambda.class
+helloworld\PojoLambda$PojoInput.class
+helloworld\PojoLambda$PojoResponse.class
 helloworld\StringLambda.class
+helloworld\PojoLambda.class

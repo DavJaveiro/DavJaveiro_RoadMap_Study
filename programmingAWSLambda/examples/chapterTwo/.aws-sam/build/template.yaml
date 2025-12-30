@@ -16,7 +16,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: HelloWorldFunction
-      Handler: helloworld.ListMapLambda::handleRequest
+      Handler: helloworld.PojoLambda::handlerPojo
       Runtime: java21
       Architectures:
       - x86_64

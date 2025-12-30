@@ -10,15 +10,17 @@
           {
             "id": "b24baba21ade790a",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design Patern/1. Soluções Abstratas para problemas recorrentes.md",
+                "file": "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
-              "title": "1. Soluções Abstratas para problemas recorrentes"
+              "title": "Chapter 3 - Programming AWS Lambda Functions"
             }
           }
         ]
@@ -84,13 +86,11 @@
               "title": "RunJS Codelist"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 487.00802993774414,
-    "collapsed": true
+    "width": 487.00802993774414
   },
   "right": {
     "id": "2284325e30fcbcb5",
@@ -231,18 +231,19 @@
   },
   "active": "b24baba21ade790a",
   "lastOpenFiles": [
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/classes/helloworld/ContextLambda.class",
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/src/main/java/helloworld/ContextLambda.java",
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/classes/helloworld/WhatIsMyLambdaEvent.class",
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/src/main/java/helloworld/WhatIsMyLambdaEvent.java",
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/classes/helloworld/StreamLambda.class",
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/src/main/java/helloworld/StreamLambda.java",
+    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/src/main/java/helloworld/PojoLambda.java",
     "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
-    "Design Patern/1. Soluções Abstratas para problemas recorrentes.md",
-    "Design Patern",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/original-HelloWorld-1.0.jar",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/HelloWorld-1.0-shaded.jar",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/HelloWorld-1.0.jar",
     "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-archiver/pom.properties",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-archiver",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/test-classes",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst",
-    "programmingAWSLambda/examples/chapterTwo/HelloWorldFunction/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile",
+    "Design Patern/1. Soluções Abstratas para problemas recorrentes.md",
     "programmingAWSLambda/examples/chapterTwo/README.md",
     "image-20251227173794.png",
     "Sem título 3.md",
@@ -276,7 +277,6 @@
     "🚀Angular/Essentials.md",
     "🚀Mathematics for Machine Learning/Chapter 1 - Introduction and Motivation.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
-    "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md"
+    "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md"
   ]
 }

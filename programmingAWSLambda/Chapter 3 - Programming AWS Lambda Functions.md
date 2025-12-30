@@ -294,3 +294,89 @@ Criamos um #Dockerfile, buildamos a nossa imagem, subimos no ECR e lambda execut
 O JSON também inclui arrays e objetos/propriedades. O Runtime Java da Lambda desserializará esses elementos automaticamente para *Lists* e *Maps* do Java, respectivamente, e também serializará #Lists e #Maps de saída para arrays e objetos JSON. 
 
 **Exemplo 3.2** - Serialização e desserialização de List e Map
+
+*O Perigo do* Map< String, Object>: embora seja possível receber um *Map*, em Spring Boot e aplicações robustas, isso é considerado um "code smell" para lógica de negócios.
+- **Por que evitar:** Mapas são fracamente tipados ("Stringly typed"). Perdemos o autocomplete da IDE, a segurança em tempo de compilação e a capacidade de refatoração segura. 
+- **Solução:** sempre prefira criar um **DTO (Data Transfer Object)** ou um **Java Record**. O Jackson (biblioteca que o Spring usa por baixo dos panos) mapeia JSON para objetos melhor do que para Mapas, permitindo validações.
+
+**Segurança**: receber dados como **Mapo** ou **Object** é um risco de segurança.
+- **Mass Assignment:** se aceitamos um Mapa genérico e depois o salvamos em um banco de dados, um usuário malicioso pode injetar campos que não esperávamos.
+- **Validação:** com POJOS/DTOs, podemos usar anotações do **Bean Validation** (@NotNull, @Size, @Email). Com Map, teríamos que escrever a validação de forma manual ("if keys exists..."), o que é propenso a erros.
+
+- **Documentação (OpenAPI/Swagger)**: se usamos ferramentas para gerar documentação da nossa API Serverless, um *Map<String, String>* será documentado como um objeto genérico sem esquema definido. Um POJO *UserAddress* gerará uma documentação rica com todos os campos esperados. 
+
+## POJOs And Ecosystem Types
+Os tipos de entradas anteriores funcionam bem para entradas razoavelmente simples. Uma alternativa para tipos mais complexos é usar a serialização automática de POJO (*Plain Old Java Object*) do Runtime Java da Lambda. O exemplo 3-3 mostra um exemplo onde usamos isso tanto para entrada quanto para saída:
+[[PojoLambda.java]]
+
+Podemos usar o exemplo de código acima e enviar os seguintes dados dentro do event.json `"b" : "Input was Hello Lambda"}`. 
+
+Olhando um pouco mais nossa função handler:
+*handlerPojo()*. Ela recebe como entrada o tipo *PojoInput*, que é uma classe POJO que definimos. As classes de POJO de entrada podem ser classes estáticas aninhadas (*static nested classes*), como escrevemos aqui, ou classes regulares (externas). O importante é que elas precisam ter um construtor vazio e ter métodos *set* (setters) que sigam a nomenclatura dos campos esperados para serem desserializados a partir do JSON de entrada. Se nenhum campo JSON for encontrado com o mesmo nome de um *setter*, então o campo do POJO será deixado como *null*. 
+
+Os objetos POJO de entrada precisam ser **mutáveis**, já que o runtime irá modificá-los após terem sidos instanciados.
+
+Nossa função handler interroga o objeto POJO e cria uma nova instância da classe *PojoResponse*, que passamos de volta ao runtime da Lambda. O runtime da Lambda a serializa para JSON usando reflexão em todos os métodos get... Há menos limitações nas classes de saídas POJO, já que elas não são criadas ou modificadas pelo runtime da Lambda, somos livres para construí-las como quisermos e livre para torná-las imutáveis. E, assim como as classes de entrada, as classes de saída POJO podem ser classes estáticas aninhadas ou classes regulares.
+
+Tanto para classes POJO de entrada quanto de saída, podemos aninhar outras classes POJO, usando as mesmas regras, para serializar/desserializar objetos JSON aninhados. Além disso, podemos misturar POJOs e os tipos de coleção que discutimos (Listas e Maps) em nossa entrada e saída.
+
+O exemplo que demos anteriormente segue a maior parte da documentação que veremos online: usando uma convenção JavaBean para campos. No entanto, se não quisermos usar *setters* em nossa classe de entrada ou *getters* em nossa classe de saída, estamos livres para usarmos campos públicos. 
+
+Um dos principais usos para desserialização de entrada POJO é quando vinculamos nossa função Lambda a uma das fontes de eventos do ecossistema AWS Lambda. Aqui está um exemplo de uma função handler que processaria o evento de um objeto carregado no serviço de armazenamento S3:
+```java
+public void handler(S3Event input) {
+	//...
+}
+```
+
+*S3Event* é um tipo que acessamos de uma dependência de biblioteca da AWS,.
+
+---
+- **Lombok é Obrigatório**: O texto mostra getters e Setters manuais. No mundo real Spring/Java, isso gera muito ruído visual.
+	- **Prática:** utilizar o Projeto Lombok. Anote o nosso DTO de entrada com *@Data* (ou *@Getter* e @Setter) e *@NoArgsConstructor*. Isso mantém o código limpo e legível, essencial para manutenção.
+
+- **Java Records (Modernização):** o texto afirma que objetos de entrada "precisam ser mutáveis" e ter "construtor vazio". 
+	- Insigh Spring Boot 3 + / Java 17+: isso mudou. O Jackson agora suporta **Java Records**
+
+
+---
+## Streams
+Se tivermos uma estrutura bastante dinâmica e/ou complicada para a qual não podemos, ou não queremos, usar nenhum dos métodos de desserialização padrão?
+
+A resposta é usar a opção 3 ou 4 da lista de assinaturas válidas, fazendo uso de *java.io.InputStream* para o parâmetro do evento. Isso nos fornece acesso aos bytes brutos passados para a nossa função Lambda.
+
+
+A assinatura para uma Lambda usando um *InputStream* é um pouco diferente, pois ela sempre tem um tipo de retorno *void*. Se recebermos um *InputStream* como parâmetro, também devemos receber um *java.io.OutputStream* como segundo parâmetro. Para retornar um resultado de tal função handler, precisamos escrever ele no *OutputStream*.
+
+O exemplo abaixo mostra um handler que pode processar streams:
+Se executarmos esse handler com a entrada "Hello World", ele escreverá "Hello World" no fluxo de saída, que se torna o resultado da função.
+
+Podemos usar o próprio código de manipulação JSON se estivermos usando um *InputStream*, mas deixaremos isso como um exercício. Nós também devemos praticar uma boa "higiene de stream", verificação de erros, fechamento de recursos, etc.
+
+Um uso particularmente prático desse tipo de função Lambda é em tempo de desenvolvimento, quando não conhecemos a estrutura do evento para o qual estamos codificando. O Exemplo 3-6 registrará o evento recebido nos CloudWatch Logs para que a gente possa ver o que ele é.
+
+**Insight Valiosos**
+Usar #InputStream é a maneira mais leve de executar Java na Lambda. Evitamos o overhead de reflexão *Reflection* que bibliotecas como Jackson ou Gson usam para converter JSON em POJO.
+
+#Reflection é um recurso do Java que permite ao programa *inspecionar* e manipular classes em tempo de execução, mesmo sem conhecer essas classes em tempo de compilação.
+
+> `O código consegue olhar para si mesmo enquanto está rodando`.
+
+Com o #Reflection a gente consegue, em runtime:
+- Descobrir nomes de classes
+- Listar atributos, métodos e construtores
+- Criar objetos sem usar *new*
+- Invocar métodos dinamicamente
+- Acessar campos *private* (se permitido)
+
+Se a nossa Lambda precisa de latência baixíssima (millissegundos contam) ou se ela apenas repassa sem ler o conteúdo (ex: um proxy), use Streams.
+
+**Gerenciamento de Memória (Large Payloads)**: o texto menciona "estruturas complicadas", mas o maior trunfo aqui é o volume de dados:
+- **Erro Comum:** carregar um arquivo de 50MB (vindo do S3, por exemplo) em uma **String** ou POJO pode estourar a memória da Lambda ( #OutOfMemoryError). 
+- **Solução:** com *InputStream*, processamos o arquivo byte a byte ou linha a linha (streaming), mantendo o uso de RAM baixo e constante, não importa o tamanho da entrada.
+
+- **Try-with-resources**: use sempre para garantir que os streams sejam fechados, mesmo se houver exceção.                                                                                                                                                                                                                     
+## Context
+O que é o objeto Context?
+Podemos adicionar um parâmetro *com.amazonaws.services.lambda.runtime.Context* ao final de qualquer lista de parâmetros do handler, e o runtime passará um objeto interessante que podemos usar. Vamos ver um exemplo:
+![[ContextLambda.java]]
