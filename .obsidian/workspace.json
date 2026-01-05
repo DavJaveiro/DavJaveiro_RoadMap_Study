@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "4c86c74df3c624b3",
+    "id": "a51a47e9741ca2e5",
     "type": "split",
     "children": [
       {
-        "id": "abf71ab03a15cd3c",
+        "id": "6f2126557aabd07a",
         "type": "tabs",
         "children": [
           {
-            "id": "6edaefa579460e1c",
+            "id": "674245253815b6fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ByeByeCupom/Estrutura.md",
+                "file": "QuickBookPython/Chapter 3 - The quick Python overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Estrutura"
+              "title": "Chapter 3 - The quick Python overview"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "187898b91c18a154",
+    "id": "b751bf3b0ecbcbad",
     "type": "split",
     "children": [
       {
-        "id": "940af3e9e0dacb0b",
+        "id": "69c5499b0f2519dc",
         "type": "tabs",
         "children": [
           {
-            "id": "f9589c659110214e",
+            "id": "6136cc8f1266176f",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "832157e3f3fd9f29",
+            "id": "3d1dc3be2c76559f",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "daa00e0165b02848",
+            "id": "38d96fa75fcf8aa4",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,7 +75,7 @@
             }
           },
           {
-            "id": "73b398a53ece8e21",
+            "id": "3bb4b34cfcbec444",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -88,23 +88,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 487.00802993774414
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "2284325e30fcbcb5",
+    "id": "984721fe4348cb8c",
     "type": "split",
     "children": [
       {
-        "id": "0629f63ea43925ed",
+        "id": "8842a360a27ef9e7",
         "type": "tabs",
         "children": [
           {
-            "id": "2e41ce95f78a375c",
+            "id": "10a3cad488721a76",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,25 +114,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "36f299d97b751e7f",
+            "id": "1466de8b78122461",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
+              "title": "Links de saída"
             }
           },
           {
-            "id": "17b216ea3d88d201",
+            "id": "86ce54b3e3ffe537",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -147,7 +146,7 @@
             }
           },
           {
-            "id": "bd03774ea8dc9ae6",
+            "id": "e06fd8c8d4d780c4",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -161,38 +160,27 @@
             }
           },
           {
-            "id": "df832d31759c92cc",
+            "id": "1ab4a4e59ad9faeb",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "🚀Data Structures Abstraction and Design/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Chapter 1 - Object-Oriented Programmingand Class Hierarchies"
+              "title": "Sumário"
             }
           },
           {
-            "id": "98a477cdb0f66618",
+            "id": "93fcded38d55daf8",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
               "state": {},
               "icon": "SpacedRepIcon",
               "title": "Fila de Notas para Revisar"
-            }
-          },
-          {
-            "id": "78905f90923673d2",
-            "type": "leaf",
-            "state": {
-              "type": "mermaid-toolbar-view",
-              "state": {},
-              "icon": "trident-custom",
-              "title": "Mermaid Toolbar"
             }
           }
         ],
@@ -217,8 +205,8 @@
       "float-search:Search Obsidian In Modal": false,
       "runjs:RunJS": false,
       "obsidian-git:Open Git source control": false,
-      "obsidian-spaced-repetition:Revisar flashcards": false,
       "vscode-editor:Create Code File": false,
+      "obsidian-spaced-repetition:Revisar flashcards": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
       "markwhen:Create new Markwhen file": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
@@ -227,59 +215,14 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-<<<<<<< HEAD
-  "active": "98a477cdb0f66618",
-=======
-  "active": "6edaefa579460e1c",
->>>>>>> 18bdea27789e5da8238dc4d16108c8cf291eb292
+  "active": "674245253815b6fa",
   "lastOpenFiles": [
-    "ByeByeCupom/Diagrama UML Fluxo Geral.md",
-    "ByeByeCupom/Design API.md",
-    "ByeByeCupom/Kanban API (Sistema).canvas",
-    "ByeByeCupom/Estrutura.md",
+    "QuickBookPython/myfiale",
+    "QuickBookPython/myfile",
+    "QuickBookPython/chapter3/objects.py",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
-    "QuickBookPython/chapter2/list.py",
-    "QuickBookPython/chapter2",
-    "QuickBookPython/Nova pasta",
-    "AWS Cloud Practioner/Chapter 3 - Design Principles of the AWS Cloud.md",
-    "Pasted image 20260104104055.png",
-    "AWS Cloud Practioner/Chapter 4 - Strategies for Migration to the AWS Cloud.md",
-    "B.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/CartaoCredito.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Pagamento.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/UsuarioRepositoryJpa.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/UsuarioRepository.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/UserRepostiory.java",
-    "Sem título 4.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/areDifferent.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/example2_2.java",
-    "RoadMap do DavJaveiro/RoadMap.canvas",
-    "DataStructuresAbstractionandDesign/Chapter 1 - Object-Oriented Programmingand Class Hierarchies/Chapter 1 - Object-Oriented Programmingand Class Hierarchies.md",
-    "programmingAWSLambda/Chapter 3 - Programming AWS Lambda Functions.md",
-    "programmingAWSLambda/Chapter 4 - Operating AWS Lambda Functions.md",
-    "Design Patern/1. Soluções Abstratas para problemas recorrentes.md",
-    "programmingAWSLambda/examples/chapterTwo/README.md",
-    "image-20251227173794.png",
-    "Sem título 3.md",
-    "Sem título 2.md",
-    "AWS Cloud Practioner/Chapter 2 - Some Benefits of the AWS Cloud.md",
-    "🚀AWS Certified Solutions Architect Associate Exam Guide/Capítulo 1 - Understanding the Foundations of AWS Architecture/Capítulo 1 - Understanding the Foundations of AWS Architecture.md",
-    "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
-    "QuickBookPython/2 - Getting started.md",
-    "OCP Java SE21/Chapter 1 - Building Blocks.md",
-    "image-202512224829401.png",
-    "🚀Fundamentals of DevOps and Software Delivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "image-202512223636620.png",
-    "programmingAWSLambda/Chapter 2 - Getting Started with AWS Lambda.md",
-    "content.png",
-    "programmingAWSLambda/Chapter 1 - Introduction to Serverless, Amazon Web Services, and AWS Lambda.md",
-    "image-202512213055146.png",
-    "🚀 Amazon Web Services In Action/Chapter 2 - Using virtual machines EC2.md",
-    "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-    "Pasted image 20251220132507.png",
-    "image-202512202345430.png",
-    "image-202512205441207.png",
-    "image-202512203413108.png"
+    "QuickBookPython/chapter3/list.py",
+    "QuickBookPython/chapter3",
+    "QuickBookPython/2 - Getting started.md"
   ]
 }

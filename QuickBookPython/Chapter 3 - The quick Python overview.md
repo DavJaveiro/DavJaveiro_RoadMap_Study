@@ -166,7 +166,212 @@ x
 - **Abordagem 2025:** Use `lista.append()` (que é amortizado O(1)) ou, melhor ainda, **List Comprehensions** (`[x for x in dados]`). Para operações numéricas, use broadcasting de Tensores, nunca concatenação de listas em loop.
 
 **3. Ordenação Manual**
-
 - **Por que desatualizado:** O texto menciona `sort`. Em aplicações de RAG (Busca Vetorial), raramente ordenamos listas manualmente.
 - **Abordagem 2025:** A ordenação é feita por **similaridade de cosseno** diretamente no banco de dados vetorial (como Pinecone, Weaviate ou FAISS). Recebemos a lista já ordenada ("Top-K results") da API, em vez de processar a ordenação bruta no Python.
 
+### 3.2.3 Tuplas
+#Tuplas são semelhantes a listas, mas são imutáveis, ou seja, não podem ser modificadas após terem sido criadas.  Os operadores (in, + e * ) e as funções embutidas (len, max e min) operam nelas da mesma maneira que fazem listas, pois nenhum deles modifica o original. As anotações de índice e fatiamento funcionam da mesma maneira para obter elementos ou fatias, mas não podem ser usadas para adicionar, remover ou substituir elementos. Além disso, existem apenas dois métodos de tupla: *count* e index. Um propósito importante das tuplas é o uso como chaves para dicionários. Elas também são mais eficientes de usar quando não precisamos de modificabilidade:
+```python
+()
+(1,)
+(1, 2, 3, 4, 5, 6, 7, 8, 12)
+(1, "two", 3, 4.0, ["a", "b"], (5, 6))
+```
+Uma tupla de um elemento precisa de uma vírgula. Uma tupla, assim como uma lista, pode conter uma mistura de outros tipos como seus elementos, incluindo strings, tuplas, listas, dicionários, funções, objetos de arquivo e qualquer tipo de número.
+
+Uma lista pode ser convertida em uma tupla usando a função embutida #tuple
+```run-python
+x = [1, 2, 3, 4]
+tuple(x)
+print(x)
+```
+
+Inversamente, uma tupla pode ser convertida em uma lista usando a função embutida #list:
+```python
+x = (1, 2, 3, 4)
+list(x)
+[1, 2, 3, 4]
+```
+
+### 3.2.4 Strings
+O processamento de strings é um dos pontos fortes do Python. Existem muitas opções para delimitar strings:
+```python
+"Uma string em aspas duplas pode conter caracteres de 'aspas simples'."
+'Uma string em aspas simples pode conter caracteres de "aspas duplas".'
+'''\tUma string que começa com um tab; termina com um caractere de nova linha.\n'''
+"""Está é uma string de aspas triplas duplas - strings de apas triplas (simples ou duplas) são o único tipo que pode conter novas linhas reais."""
+```
+
+Strings podem ser delimitadas por aspas simples (' '), duplas (" "), triplas simples (''' ''') ou triplas (""" """) e podem conter caracteres de tabulação (\t) e nova linha (\n).
+
+Strings também são imutáveis. Os operadores e funções que funcionam com elas retornam novas strings derivadas da original. Os operadores (in, + e * ) e as funções embutidas (len, max e min) operam em strings assim como fazem em listas e tuplas. A notação de índice e fatiamento funciona da mesma maneira para obter elementos ou fatias, mas não pode ser usada para adicionar, remover ou substituir elementos.
+
+Comparação em Java: A classe String é **imutável por definição**, também.
+```java
+String s = "Java";
+s = s.toUpperCase();
+```
+
+- "Java" continua existindo
+- "JAVA" é uma nova string
+- s apenas passa a referenciar o novo objeto
+
+**Métodos de String sempre retornam novas strings**
+**Exemplos clássicos**
+```java
+String s = "programador";
+
+String a = s.toUpperCase();
+String b = s.replace("a", "o");
+String c = s.substring(0, 5);
+```
+
+Portanto, a comparação direta com Python, verificamos a mesma situação presente.
+
+
+---
+Strings possuem vários métodos para trabalhar com seu conteúdo, e o módulo de biblioteca *re* também contém funções para trabalhar com strings:
+```run-python
+x = "live and let \t \tlive"
+x.split()
+print(x)
+['live', 'and', 'let, 'live']
+x.replace("let \t \tlive", "enjoy life")
+'live and enjoy life'
+import re
+regexpr = re.compile(r"[\t ]+")
+regexpr.sub(" ", x)
+'lives and let live'
+```
+
+#Split dividi uma string em várias substrings. Ele quebra uma string em parte, usando um separador (delimitador), e retorna uma coleção dessas partes, sem alterar a string original.
+
+Em Java:
+```java
+String[] partes = texto.split(delimitador);
+
+```
+O #Split retorna um **array de String**.
+
+
+O módulo #re fornece funcionalidade de expressões regulares. Ele oferece capacidades de extração e substituição de padrões mais sofisticados do que o módulo string.
+
+A função #print exibe strings na saída. Outros tipos de dados Python podem ser facilmente convertidos para strings e formatados:
+```python
+e = 2.718
+x = [1, "two", 3, 4.0, ["a", "b"], (5, 6)]
+print("A constante e é:", e, "e a lista x é:", x)
+```
+Objetos são automaticamente convertidos para representação de string para impressão. O operador % fornece capacidade de formatação semelhante à do *sprintf* em C.
+
+**Insights valiosos**
+**Tuplas: Segurança e Configuração de Modelos**
+- **Imutabilidade como Garantia:** Em *pipelines* de dados complexos (ex: PyTorch DataLoader), usamos tuplas para garantir que certos metadados ou configurações de hiperparâmetros não sejam alterados acidentalmente durante o treinamento. Se fosse uma lista, um bug poderia alterar o *learning rate* no meio do processo sem aviso.
+- **Chaves de Cache (Memoization)**: como tuplas são "hashable" (por serem imutáveis), elas podem ser chaves de dicionário. Isso é crucial para sistemas de #caching. Exemplo: `cache[(model_name, prompt_id)] = response`. Não podemos fazer isso com listas. 
+- **Unpacking de Retorno:** a maioria das bibliotecas de IA retorna tuplas.
+	- Ex: `loss, logits = model(**inputs)` no Hugging Face Transformers. Entender o unpacking de tuplas é vital para escrever loops de treinamentos limpos.
+
+**Strings: A Matéria-Prima dos LLMs**
+
+- **Prompt Engineering é Manipulação de String:** A construção de prompts nada mais é do que injeção de strings em templates. O uso de **f-strings** (`f"Contexto: {contexto}. Pergunta: {pergunta}"`) é o padrão ouro para construir prompts dinâmicos, sendo mais performático e legível que concatenação.
+- **Limpeza (Sanitization) vs. Tokenização:** O exemplo de `re.sub` e `replace` ilustra a etapa de _pré-tokenização_. Antes de enviar texto para o GPT-4 ou Llama-3, precisamos limpar caracteres invisíveis (`\t`, espaços duplos) que "comem" tokens valiosos e podem confundir a atenção do modelo.
+- **Regex na Extração de Respostas:** Quando pedimos a um LLM para gerar código ou JSON, ele frequentemente coloca texto extra em volta ("Aqui está seu código..."). Expressões regulares (`re`) são fundamentais para extrair apenas o bloco de código ou o objeto JSON da resposta bruta do modelo antes de processá-lo na aplicação.
+
+### 3.2.5 Dicionários
+O tipo de dado embutido dicionário do Python fornece funcionalidade de array associativo implementada usando tabelas hash. A função embutida #len retorna o número de pares chave-valor em um dicionário. A instrução #del pode ser usada para excluir um par chave-valor. Assim como no caso das listas, vários métodos de dicionário (clear, copy, get, items, keys, update e values) estão disponíveis:
+```python
+x = {1: "one", 2: "two"}
+x["first"] = "one"
+x[("Delorme", "Ryan", 1995)] = (1, 2, 3)
+list(x.keys())
+[1, 2, 'first', ('Delorme', 'Ryan', 1995)]
+x[1]
+'one'
+x.get(1, "not available")
+'one'
+x.get(4, "note available")
+'not available'
+```
+As chaves devem ser de um tipo imutável, incluindo números, strings e tuplas. Os valores podem ser qualquer tipo de objeto, incluindo tipos mutáveis, como listas e dicionários. Se tentarmos acessar o valor de uma chave que não está no dicionário, uma exceção `KeyError` é levantada. Para evitar esse erro, o método de dicionário #get retorna opcionalmente um valor definível pelo usuário quando uma chave não está no dicionário.
+
+### 3.2.6 Sets (Conjuntos), frozensets
+Um conjunto #set em Python é uma coleção não ordenada de objetos, usada em situações onde a pertinência e a unicidade no conjunto são as principais coisas que precisamos saber sobre aquele objeto. Conjuntos se comportam como coleções de chaves de dicionário sem quaisquer valores associados:
+```python
+x = set([1, 2, 3, 1, 3, 5])
+x
+{1, 2, 3, 5}
+1 in x
+True
+4 in x
+False
+```
+Podemos criar um conjunto usando #set em uma sequência, como uma lista. <span style="background:#ff4d4f">Quando uma sequência é transformada em um conjunto, as duplicatas são removidas</span>. A plavra-chave #in é usada para verificar a pertinência de um objeto em um conjunto.
+
+Um #frozenset é um conjunto que é imutável. Isso significa que após o conjunto ter sido criado com código como `x = frozenset([1, 2, 3, 1, 3, 5])`, ele não pode ser alterado, portanto nenhum elemento pode ser adicionado ou removido.
+
+#Set em Java e Python
+- Ambos não permitem elementos duplicados
+- Não mantêm ordem (por padrão)
+- Operações rápidas (O(1) médio para add, remove e contains)
+- Baseados em **tabela hash**
+
+**Outras implementações equivalentes em Java**
+set - Python | HashSet Não ordenado
+set (ordem de inserção a partir do Python 3.7) | **LinkedHashSet** mantém ordem de inserção
+
+set + sorted() | TreeSet Ordenado automaticamente
+
+### 3.2.7 Objetos de arquivo
+Um arquivo é acessado através de um objeto de arquivo Python:
+```python
+f = open("myfile", "w")
+f.write("First line with necessary newline character\n")
+44
+f.write("Second line to write to the file\n")
+33
+f.close()
+f = open("myfile", "r")
+line1 = f.readline()
+line2 = f.readline()
+
+```
+
+Esse código cria (ou sobrescreve) um arquivo de texto e escreve uma linha dentro dele.
+
+`f = open("myfile", "w")`
+Abre (ou cria) o arquivo *myfile*
+Modo *w* (write)
+
+O modo write "w" permite escrita e apaga todo o conteúdo anterior, se o arquivo existir. Se o arquivo não existir ele escreve em cima.
+
+`f.write("First line with necessary newline character\n")`
+
+Escreve o texto no arquivo. O \n é o caractere de nova linha. O conteúdo ficará assim no arquivo:
+`First line with necessary newline character`
+
+Write() não pula linha automaticamente, por isso, o \n é necessário.
+
+A instrução #open cria um objeto de arquivo. Aqui, o arquivo #myfile no diretório de trabalho atual está sendo aberto em modo de escrita "w". Após escrever duas linhas nele e fechá-lo, você abre o mesmo arquivo novamente, desta vez em modo de leitura ("r"). O módulo *os* fornece várias funções para navegar pelo sistema de arquivos e trabalhar com os nomes de caminho de arquivos e diretórios. Aqui, se nos movermos para outro diretório. Mas ao referirmos ao arquivo por um nome de caminho absoluto, ainda somos capazes de acessá-lo. 
+
+Várias outras capacidades de entrada/saída estão disponíveis. Como veremos mais tarde, podemos usar a função #input para solicitar e obter uma string do usuário. O módulo de biblioteca #sys permite acesso a #stdin, #stdout e #stderr. O módulo de biblioteca #struct fornece suporte para leitura e escrita de arquivos que foram gerados por, ou devem ser usados por, programas em C. O módulo de biblioteca #Pickle entrega persistência de dados através da capacidade de facilmente ler e escrever os tipos de dados Python de e para arquivos.
+
+Toda interação com APIs de LLM (OpenAI, Anthropic) trafega dados em formato JSON, que o Python converte para dicionários. Saber manipular dicionários aninhados (dict[str, Any]) é a habilidade número 1 de um Engenheiro de IA Backend.
+
+## Type hints in Python
+Ao contrário de muitas linguagens de programação, o Python, por design, não utiliza #type variables, nem typed return values. Embora isso torne a linguagem mais flexível e legível, significa que, em muitos casos, o **type** de um objeto referenciado por uma variável, ou exigido como um **parameter**, ou retornado por uma **function** ou **method**, nem sempre é imediatamente óbvio. Embora misturar inadvertidamente tipos de objetos incompatíveis causem uma **runtime exception** em Python, isso não gera um erro em tempo de compilação. Particularmente em projetos grandes, há muitas situações em que ter os types dos objetos disponíveis de forma mais explícita seria útil. Para isso, o Python adicionou #type-hints.
+
+Com isso, podemos indicar explicitamente os tipos de dados das variáveis e dos retornos de funções. Diferente de outras linguagens de programação, Python não obriga o uso de type hints (dicas de tipos), mas eles podem ser extremamente úteis para guiar quem está lendo o código.
+
+```python
+x: int = 10
+y: float = 5.5
+nome: str = 'Juliano'
+```
+
+Para funções, podemos indicar tanto o tipo dos parâmetros quanto o tipo do retorno:
+```python
+def somar(a: int, b: int) -> int: return a + b
+```
+A notação de **type hinting** pode ser lida por ferramentas de **type-checking** como *mypy*, *pyright*, *pyre* ou *pytype*, assim como por várias IDEs comuns, para sinalizar o uso de um **incompatible** ou **unexpected type**. Embora essas ferramentas possam reportar o erro, o próprio Python não lança um **runtime error** caso os types hints não sejam seguidos.
+
+## 3.4 Control flow Structures

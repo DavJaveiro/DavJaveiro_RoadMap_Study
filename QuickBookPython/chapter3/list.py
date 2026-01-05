@@ -7,3 +7,7 @@ print(y)
 
 y.reverse()
 print(y)
+
+# Convert list to tuple
+tuple(x)
+print(x)
