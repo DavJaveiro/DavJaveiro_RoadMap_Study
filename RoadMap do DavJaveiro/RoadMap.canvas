@@ -11,26 +11,6 @@
       "height": 2366
     },
     {
-      "id": "da5f8260f20d0c57",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/Desmistificando.png",
-      "styleAttributes": {},
-      "x": -11236,
-      "y": -24059,
-      "width": 1060,
-      "height": 1523
-    },
-    {
-      "id": "9debe4abf3e87081",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/Algoritmos.png",
-      "styleAttributes": {},
-      "x": -13557,
-      "y": -24056,
-      "width": 1141,
-      "height": 1520
-    },
-    {
       "id": "a80a977a8a4d8f6e",
       "type": "file",
       "file": "RoadMap do DavJaveiro/Covers/Introdução a Programação.png",
@@ -231,26 +211,6 @@
       "color": "1"
     },
     {
-      "id": "eedf3f261de1f486",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/Software Requiriments Book 2.png",
-      "styleAttributes": {},
-      "x": -349,
-      "y": -8711,
-      "width": 950,
-      "height": 1322
-    },
-    {
-      "id": "b8ec00a111066ee9",
-      "type": "file",
-      "file": "RoadMap do DavJaveiro/Covers/Software Requirements Book1.png",
-      "styleAttributes": {},
-      "x": -349,
-      "y": -7153,
-      "width": 960,
-      "height": 1259
-    },
-    {
       "id": "6588a7d0a1456b92",
       "type": "file",
       "file": "RoadMap do DavJaveiro/Covers/Engenharia de Software Moderna Book.png",
@@ -279,18 +239,6 @@
       "y": -2971,
       "width": 400,
       "height": 400
-    },
-    {
-      "id": "f6cee17867fd0cab",
-      "type": "text",
-      "text": "# 3° Semestre: **Engenharia de Requisitos**",
-      "styleAttributes": {
-        "textAlign": "center"
-      },
-      "x": -1200,
-      "y": -7625,
-      "width": 730,
-      "height": 80
     },
     {
       "id": "52fb6750a549dbdf",
@@ -831,6 +779,58 @@
       "y": 9941,
       "width": 1600,
       "height": 1980
+    },
+    {
+      "id": "b8ec00a111066ee9",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/Software Requirements Book1.png",
+      "styleAttributes": {},
+      "x": -423,
+      "y": -7242,
+      "width": 960,
+      "height": 1259
+    },
+    {
+      "id": "eedf3f261de1f486",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/Software Requiriments Book 2.png",
+      "styleAttributes": {},
+      "x": -423,
+      "y": -8800,
+      "width": 950,
+      "height": 1322
+    },
+    {
+      "id": "f6cee17867fd0cab",
+      "type": "text",
+      "text": "# 3° Semestre: **Engenharia de Requisitos**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -1274,
+      "y": -7714,
+      "width": 800,
+      "height": 236
+    },
+    {
+      "id": "da5f8260f20d0c57",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/Desmistificando.png",
+      "styleAttributes": {},
+      "x": -11264,
+      "y": -24320,
+      "width": 1060,
+      "height": 1523
+    },
+    {
+      "id": "9debe4abf3e87081",
+      "type": "file",
+      "file": "RoadMap do DavJaveiro/Covers/Algoritmos.png",
+      "styleAttributes": {},
+      "x": -13585,
+      "y": -24317,
+      "width": 1141,
+      "height": 1520
     }
   ],
   "edges": [

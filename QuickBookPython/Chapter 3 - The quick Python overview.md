@@ -145,6 +145,8 @@ x
 [9, 8, 7, 6, 5, 4, 3, 2, 1]
 ```
 
+#reverse modifica a lista em memória e retorna None. Ou seja, y.reverse() inverte a lista, mas não retorna a lista invertida. Por isso z recebe None.
+
 - **Pipeline de Dados:** em Deep Learning, raramente treinamos modelos diretamente com listas Python. No entanto, as listas são a estrutura fundamental de coleta e pré-processamento. Agregamos dados brutos (logs, textos, imagens) em listas antes de convertê-los em Tensores (torch.tensor ou numpy.array).
 
 - **Heterogeneidade:** o testo mostra [1, "two", 3]. Isso é ótimo para flexibilidade, mas **péssimo para performance numérica**. Tensores exigem tipos homogêneos. Tentar converter essa lista mista para um tensor PyTorch resultará em erro ou coerção indesejada.

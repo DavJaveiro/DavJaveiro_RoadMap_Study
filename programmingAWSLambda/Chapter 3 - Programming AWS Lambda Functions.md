@@ -380,3 +380,127 @@ Se a nossa Lambda precisa de latência baixíssima (millissegundos contam) ou se
 O que é o objeto Context?
 Podemos adicionar um parâmetro *com.amazonaws.services.lambda.runtime.Context* ao final de qualquer lista de parâmetros do handler, e o runtime passará um objeto interessante que podemos usar. Vamos ver um exemplo:
 ![[ContextLambda.java]]
+
+Este é o primeiro exemplo completo onde precisamos usar um tipo fora da biblioteca padrão do Java. Veremos com mais detalhes as dependências e o empacotamento no próximo capítulo... precisamos adicionar o `aws-lambda-java-core` ao nosso pom.xml.
+
+Ao adicionarmos o Context, o `mvn package` compilará o nosso código usando a biblioteca core da Lambda fornecida pela AWS, permitindo utilizarmos a interface #Context.
+
+O objeto #Context nos fornece informações sobre a invocação atual da Lambda. Podemos usar essa informação durante o processamento de um evento Lambda. Quando invocamos o exemplo (passando qualquer coisa como evento de entrada, ele não será usado). 
+
+Todos os diferentes campos do Context são descritos na documentação da AWS.
+
+A maioria desses campos permanecerá o mesmo sempre que os chamarmos durante o processamento de um evento específico, mas *getReamainigTimeInMillis()* é uma exceção notável. Ele está relacionado ao timeout, que é o que veremos a seguir.
+
+*aws-lambda-java-core* de estar no pom.xml com o escopo *provided*. A AWS já fornece nativamente no ambiente deles. O pacote pode ficar atoa, o que piora o tempo de inicialização (Cold Start). 
+
+## Timeout (Tempo Limite)
+As funções Lambda estão sujeitas a um timeout configurável. Podemos especificar esse tempo limite ao criar a função ou atualizá-lo posteriormente na configuração da função.
+
+O timeout no momento da escrita do material é de 15 minutos. Isso significa que a duração máxima de uma única invocação de uma função Lambda é de 15 minutos. Essa restrição é algo que a AWS pode aumentar no futuro (prevalece o tempo máximo de 900 segundos). 
+
+Em nossos exemplos até agora, não especificamos uma configuração de timeout, então ele assume o padrão de 3 segundos. <span style="background:#affad1">Isso significa que, se nossa função não terminar a execução em 3 segundos, o Java Runtime da Lambda o abortará. </span>
+
+Na seção anterior, analisamos o objeto Contexet. Chamar *context.getRaminingTimeInMillis()* informará quanto tempo de execução ainda temos em qualquer ponto durante a execução antes que a função seja abortada pelo runtime. Isso é útil se quisermos salvar algum estado antes que o timeout ocorra.
+
+---
+**No nosso caso:**   "getRemainingTimeInMillis": "19314":
+- restavam ~19 segundos de execução no momento em que o Context foi lido.
+- Timeout padrão da Lambda na AWS = 3 segundos
+- NO SAM Local: o timeout assume um valor maior (normalmente 20 segundos).
+
+---
+Por que não configurar sempre o timeout para o máximo de 900 segundos (15 minutos)? Os custos da Lambda se baseiam-se significativamente no tempo de execução das funções. Se a nossa função deveria rodar por, no máximo, 10 segundos, não querermos que um bilhão de invocações levem 90 vezes mais tempo, pois seremos cobrados 90 vezes mais do que o planejado.
+
+O timeout não inclui o tempo em que nossa função está sendo instanciada, em outras palavras, o período de timeout não começa a contar durante o *cold start*. O timeout se aplica apenas ao tempo a partir do momento em que a Lambda chama nosso método handler. Discutiremos *cold starts* mais a fundo em *Colds Starts*...
+
+O máximo de 15 minutos é uma restrição significativa para funções Lambda, se estivermos escrevendo uma funcionalidade que precisa de mais de 15 minutos, precisaremos dividi-la em múltiplas funções Lambda orquestradas ou não usar Lambda. 
+
+**Timeout de Banco de Dados vs. Timeout da Lambda:**
+- **Regra de Ouro:** O timeout da sua conexão JDBC/JPA (Spring Data) deve ser **sempre menor** que o timeout da Lambda.
+- **Exemplo:** Se a Lambda morre em 10s, configure o timeout da query do banco para 7s.
+- **Por quê?** Você precisa de tempo (os 3s restantes) para capturar a `QueryTimeoutException`, logar o erro corretamente e enviar uma resposta tratada ou uma mensagem para uma _Dead Letter Queue_. Se os dois timeouts forem iguais, a Lambda é "assassinada" pela AWS antes de você conseguir logar o que aconteceu.
+
+**Custo e o Princípio "Fail Fast":** O texto avisa sobre custos.
+- **Cenário Real:** Uma integração com API de terceiro trava. Se seu timeout é 900s (15 min), sua thread Java fica parada esperando. Você paga por 15 minutos de memória RAM alocada.
+- **DevOps:** Configure timeouts agressivos. Se uma operação leva normalmente 500ms, um timeout de 5 segundos é mais que suficiente. É melhor falhar rápido e retentar do que queimar dinheiro esperando um processo zumbi.
+
+**Cold Start e Timeout:**
+- O texto diz que o timeout não inclui a instanciação (Cold Start). Isso é tecnicamente verdade para o timeout de _execução_.
+- **Porém:** Existe um timeout implícito de inicialização. Se o seu Spring Boot demorar mais de 10 segundos apenas para subir o contexto (Init Phase), a AWS pode matar o processo antes mesmo de chamar o `handler`, gerando um erro de "Init Duration". Com **AWS SnapStart**, isso muda drasticamente, pois a inicialização acontece no deploy, não na execução.
+
+## Memory and CPU
+As funções Lambda não têm quantidades infinitas de RAM e, de fato, cada função é configurada com uma definição de *memory-size*. A configuração padrão são 128MB, mas isso raramente é suficiente para uma função Lambda em Java de produção, então devemos tratar o tamanho da memória como algo a ser pensado ativamente para cada função.
+
+O *memory-size* pode ser tão pequeno quanto 64MB, embora para funções Lambda em Java, provavelmente vamos usar pelo menos 256MB. O tamanho da memória deve ser um múltiplo de 64MB.
+
+Um ponto muito importante a saber é que a configuração de *memory-size* não define apenas  quanta RAM nossa função possa usar, ela também específica quanto poder de CPU nós recebemos. De fato, o poder de processamento (CPU) de uma função Lambda escala linearmente de 64MB até 1792MB. Portanto, uma função Lambda configurada com 1024MB de RAM tem o dobro do poder de CPU de uma com 512MB de RAM.
+
+Uma função Lambda com 1792MB de RAM recebe um núcleo de vCPU completo, configurações de RAM maiores que isso habilitam frações de um segundo núcleo virtual. Vale a pena saber disso se o nosso código não for multithread, podemos não ver uma melhoria de CPU para configurações de memória superiores a 1792MB  nesse caso.
+
+Por qual motivo não podemos simplesmente definir sempre o *memory-size* para o máximo? A razão é custo. A AWS cobra pelas funções Lambda baseando-se em dois fatores principais:
+1. Quanto tempo a função roda;
+2. Quanta memória a função está especificada para usar.
+
+Em outras palavras, dado o mesmo tempo de execução, uma função Lambda que tem 2GB de RAM custa o dobro para executar do que uma com 1GB de RAM. Ou, uma com 512MB de RAM custa 17% de uma com 3008MB. Isso, em escala, pode fazer uma tremenda diferença na conta de luz no final do mês.
+
+Devemos sempre usar a menor quantidade de memória possível? Não, nem sempre essa é a melhor escolha. Como uma função com o dobro de memória de uma função menor também tem o dobro de poder de CPU, ela pode levar metade do tempo para executar, o<span style="background:#affad1"> que significa que o custo é o mesmo, e ela termina o trabalho mais rapidamente</span>.
+
+O dimensionamento correto (Right-sizing) de funções Lambda é uma arte. A recomendação é que iniciemos com algo entre 512MB e 1GB e então ajustemos conforme nossas funções cresçam ou conforme precisemos escalá-las.
+
+
+O código pode ser executado por até 15 minutos em uma única invocação, e uma única função pode usar até 10.240MB de memória, em incrementos de 1MB.
+
+<iframe
+  src="https://docs.aws.amazon.com/pt_br/lambda/latest/dg/gettingstarted-limits.html"
+  style="width: 100%; height: 800px;"
+></iframe>
+
+
+**Quão cara é a Lambda?**
+Ela é ótima para tarefas pequenas, com coisas que não rodam com muita frequência, mas é muito cara para aplicações "de grande porte" que atendem aplicações multiusuário em tempo real.
+Vamos olhar para alguns exemplos.
+Primeiro, vamos relembrar o redimensionador de fotos. Vamos dizer que configuramos essa função para usar 1.5GB de RAM, ela leva em média 10 segundos para rodar e processa 10.000 fotos por dia. A precificação da Lambda consiste em duas partes: preço por requisição, que é $\$0.20$ por milhão de requisições, e preço por duração, que é $\$0.0000166667$ por gigabyte-segundo. Portanto, precisamos calcular ambas as partes para estimar o custo do nosso redimensionador de fotos:
+
+- O custo de requisição é $\$0.20 \times 0.01 = \$0.002$/dia, ou $\$0.06$/mês.
+- O custo de duração é $10 \text{ (segundos)} \times 10,000 \text{ (invocações)} \times 1.5 \text{ (GB)} \times \$0.0000166667 = \$2.50$/dia, ou $\$75$/mês.
+
+Obviamente, o custo de duração é a vasta maioria aqui.
+
+$\$75$/mês é aproximadamente o mesmo custo de uma instância EC2 "m5.large" — que custa $\$70$/mês. Uma instância EC2 m5.large tem 8GB de RAM e duas CPUs, então provavelmente seria uma alternativa adequada para hospedar nosso redimensionador. No entanto, a Lambda tem benefícios significativos como solução, mesmo que os custos pareçam à primeira vista quase os mesmos:
+- A Lambda não requer o custo operacional de gerenciar uma instância EC2 — não há necessidade de pensar em patches de sistema operacional, gerenciamento de usuários, etc. Portanto, nosso Custo Total de Propriedade (TCO) é menor para a Lambda.
+- - A Lambda já gerencia a natureza "orientada a eventos" da aplicação, então não precisamos construir isso na versão que rodaríamos em um servidor regular.
+- A Lambda fará auto-scaling sem esforço e lidará, sem preocupação, com quaisquer picos de tráfego. Uma solução baseada em servidor pode ficar sobrecarregada ou precisar ser construída para incluir buffer. De fato, quanto mais "picos" tiver a carga da sua aplicação, mais custo-efetiva a Lambda é como solução.
+- A Lambda já é altamente disponível através de Zonas de Disponibilidade (AZs) — para garantir essa disponibilidade com uma solução baseada em servidor, precisaríamos dobrar ou triplicar nossos custos para duas ou três zonas.
+
+
+ Insights Valiosos (Foco: Java + Spring)
+- **O Mito dos 128MB para Java:** O texto sugere que 128MB é pouco. Para Spring Boot, 128MB é **proibitivo**.
+    
+    - **Por quê?** A JVM precisa de memória para o Heap (seus objetos), Metaspace (suas classes), Stack de Threads e o próprio compilador JIT. Se você sufocar a Lambda com pouca memória, o Garbage Collector vai rodar o tempo todo ("Stop the world"), causando timeouts e lentidão extrema.
+        
+    - **Recomendação:** Para Spring Boot 3, comece com **1024MB (1GB)**. Isso não é só por espaço, mas por CPU (ver abaixo).
+        
+- **Memória = CPU (O Segredo do Cold Start):** O texto explica que 1792MB = 1 vCPU completa.
+    
+    - **Insight Crítico para Spring:** O Spring Boot gasta muita CPU na inicialização (scan de componentes, criação de beans).
+    - **Estratégia:** se o *Cold Start* está lento, **aumento a memória**. Frequentemente, aumentar de 512MB para 2GB faz a função inicializar 4X mais rápido. Como pagamos por tempo, o custo final pode ficar igual ou menor, mas com uma performance muito superior.
+    - **Ferramenta:** Utilize o **AWS Lambda Power Tuning**. É uma ferramenta open-source que roda sua função com várias configurações de memória e plota um gráfico de "Custo vs. Performance" para você escolher o melhor ponto. A função entrada é executa em nossa conta da AWS, realizando chamadas HTTP e interagindo com o SDK em tempo real para medir a provável performance em um cenário de produção real. Também podemos implementar um processo de CI/CD para usar essa ferramenta para medir automaticamente a performance das novas funções que implantarmos.
+- **Processamento de Imagens (Java vs Node/Python):**
+	- Java é extremamente rápido para processamento de imagens após o aquecimento (JIT compilation), muitas vezes batendo Python. Porém o Cold Start é o mínimo.
+- **vCPUs Máximas:**
+	- Com o aumento da memória para 10GB, agora você pode ter até **6 vCPUs** disponíveis para sua função, o que torna o multithreading do Java extremamente poderoso.
+
+## Variáveis de Ambiente
+As duas seções anteriores trataram da configuração do próprio sistema da Lambda, mas e se quisermos usar configurações para a nossa própria aplicação?
+
+Podemos especificar variáveis de ambiente para nossas funções Lambda. Isso nos permite alterar como nossa função é executada em diferentes contextos usando o mesmo código. É muito comum, por exemplo, especificar configurações de conexão para processos externos, ou configurações de segurança, através de variáveis de ambiente.
+
+Somos livres para atualizar a configuração do ambiente tanto quanto quisermos. Ao usar variáveis de ambiente, frequentemente vamos querer armazenar dados sensíveis, por exemplo, chaves de acesso a serviços remotos. Existem várias maneiras de fazermos isso de forma segura com a Lambda, e elas são explicadas na documentação da Amazon.
+
+- **Segurança:**
+	- Erro Grave: nunca coloque senhas de banco ou API Keys direto na seção *Environment* do *Template.yaml*. Isso fica visível no console da AWS para qualquer um com acesso de leitura, e fica gravado no histórico do GIT.
+	- **Solução moderna:** (Parameter Store/Secrets Manager): use o AWS Systems Manager (SSM) Parameter Store. 
+	- No Template: Environment: Variables: DB_PASSWORD: '{{resolve:ssm:/my-app/prod/db-password}}'
+
+<span style="background:#affad1">Ou, podemos usar o Spring Cloud AWS para carregar essas configurações direto do SSM na inicialização da aplicação, sem passarmos por variáveis de ambiente expostas.</span>
+

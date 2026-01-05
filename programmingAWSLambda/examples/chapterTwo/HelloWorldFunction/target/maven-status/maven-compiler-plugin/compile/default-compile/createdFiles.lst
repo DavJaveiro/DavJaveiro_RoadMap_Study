@@ -1,5 +1,9 @@
 helloworld\ListMapLambda.class
 helloworld\PojoLambda$PojoInput.class
+helloworld\TimeoutLambda.class
+helloworld\WhatIsMyLambdaEvent.class
 helloworld\PojoLambda$PojoResponse.class
 helloworld\StringLambda.class
+helloworld\ContextLambda.class
+helloworld\StreamLambda.class
 helloworld\PojoLambda.class
