@@ -254,3 +254,157 @@ a. Simplicity
 b. Performance efficiency
 c. Security
 d. Reliability
+
+
+## Resumo
+O capítulo 3 foca nos princípios fundamentais para arquitetar soluções na nuvem AWS, centrando-se principalmente no **AWS Well-Architected Framework**.
+
+O AWS Well-Architected Framework
+
+Ele foi desenvolvido com base na experiência da AWS e na análise de implementações reais de clientes de sucesso. O objetivo é ajudar arquitetos a construir infraestruturas *seguras*, de *alto desempenho*, *resilientes* e *eficientes*.
+
+O framework é organizado em **seis pilares:**
+1. Excelência Operacional
+2. Segurança
+3. Confiabilidade
+4. Eficiência de Performance
+5. Otimização de Custos
+6. Sustentabilidade
+
+Além dos pilares, o framework oferece **recomendações gerais de design**:
+- **Pare de adivinhas suas necessidades de capacidades:** utilize a elasticidade da nuvem para escalar conforme a demanda real, evitando o desperdício de recursos.
+- **Teste sistema em escala de produção:** a nuvem permite criar ambientes de teste idênticos aos de produção sob demanda e descartá-los após o uso.
+- **Automatize para facilitar a experimentação:** a automação permite testar mudanças e reverter rapidamente se necessário.
+- **Considere arquiteturas evolutivas:** permita que o design evolua com o tempo para aproveitar novas tecnologias;
+- **Guie arquiteturas usando dados:** utilize logs e monitoramento para tomar decisões baseadas em fatos.
+- **Melhore através de "game days":** simule eventos de falha ou picos de carga para testar a resiliência do sistema.
+
+*Nota:* existe também a **AWS Well-Architected Tool**, uma ferramenta gratuita no console da AWS para ajudar a avaliar nossas cargas de trabalho em relação a esses pilares.
+
+**Os 6 pilares do Framework**
+<span style="background:#ff4d4f">Excelência Operacional (Operational Excellence): </span>o foco é executar e monitorar sistemas para entregar valor ao negócio e melhorar continuamente processos e procedimentos. **Princípios de Design**:
+- **Realize Operações como código (IaC)**: defina toda a infraestrutura através de código para evitar erros humanos e garantir consistência.
+- **Faça mudanças frequentes, pequenas e reversíveis:** isso facilita a identificação e correção de problemas.
+- **Refine procedimentos operacionais frequentemente:** mantenha os processos atualizados e realize testes regulares
+- **Antecipe falhas:** teste suas respostas a falhas para garantir que os procedimentos de recuperação funcionem;
+- **Aprenda com todas as falhas operacionais:** use eventos de falha para melhorar a arquitetura
+
+<span style="background:#ff4d4f">Segurança (Security)</span>: este pilar protege informações, sistemas ativos, além de auxiliar na avaliação e mitigação de riscos. **Princípios de Design:**
+- **Implemente uma forte identidade:** utilize o princípio do privilégio mínimo e centralize o gerenciamento de identidade (ex: AWS IAM).
+- **Habilite rastreabilidade (Traceability):** monitore, alerte e audite ações e alterações no ambiente (ex: AWS CloudTrail e CloudWatch).
+- **Aplique segurança em todas as camadas:** utilize uma abordagem de defesa em profundidade; protegendo rede, computação, armazenamento, etc.
+- **Automatize as melhores práticas de segurança:** a automação melhora a escala e reduz erros humanos na segurança.
+- **Proteja dados em repouso e em trânsito:** utilize criptografia e controle de acesso adequados para dados armazenados e em movimento.
+- **Mantenha as pessoas longe dos dados:** evite acesso direto manual aos dados para reduzir riscos de erro ou perda
+- **Prepara-se para eventos de segurança:** tenha políticas de gerenciamento de incidentes e realize simulações.
+
+<span style="background:#ff4d4f">Confiabilidade (Realibility)</span>
+Garanta que a carga de trabalho desempenhe sua função corretamente e consistente, recuperando-se de falhas e mitigando interrupções. **Princípios de Design:**
+- **Automatize a recuperação de falhas:** use monitoramento para acionar automações (como Auto Scaling) que recuperam o sistema sem intervenção humana.
+- **Teste os procedimentos de recuperação:** teste não apenas backups, mas o processo de restauração e a resposta a falhas.
+- **Escale horizontalmente:** em vez de aumentar uma única máquina (escalar verticalmente), adicione mais instâncias pequenas (horizontalmente) para reduzir o impacto de uma falha única.
+- **Pare de  adivinhar a capacidade:** evite a saturação de recursos ou o desperdício por superprovisionamento usando ferramentas de nuvem.
+- **Gerencie mudanças via automação:** as alterações na infraestrutura devem ser automatizadas para serem consistentes e rastreáveis.
+
+<span style="background:#ff4d4f">Eficiência de Performance (Performance Efficiency)</span>
+Foca no uso eficiente de recursos de computação para atender aos requisitos do sistema e manter essa eficiência conforme a demanda e as tecnologias evoluem. **Princípios de Design:**
+- **Democratize tecnologias avançadas:** a nuvem permite usar tecnologias complexas (como Machine Learning) como serviços consumíveis, sem necessidade de expertise profunda na infraestrutura delas.
+- **Torna-se global em minutos**: implante sistemas em várias regiões da AWS para reduzir a latência para usuários finais.
+- **Use arquiteturas serverless:** elimine a sobrecarga de gerenciar servidores físicos ou virtuais.
+- **Experimente com frequência:** teste diferentes tipos de instâncias e configurações rapidamente.
+- **Simpatia mecânica (Mechanical Sympathy)**: use a ferramenta ou serviço certo para o trabalho certo, alinhando a tecnologia aos objetivos de negócio.
+
+<span style="background:#ff4d4f">Otimização de Custos (Cost Optimization)</span>
+O objetivo é evitar gastos desnecessários e entregar valor comercial ao menor preço possível. **Princípios de Design:**
+- **Implemente Gerenciamento Financeiro na Nuvem (CCFM)**: invista tempo e recursos para gerenciar e otimizar custos.
+- **Adote um modelo de consumo:** pague apenas pelos recursos que utilizar e desligue o que não for necessário (ex: ambientes de teste).
+- **Meça a eficiência geral:** acompanhe o retorno financeiro de suas cargas de trabalho.
+- **Pare de gastar dinheiro com "heavy lifting" indiferenciado:** deixe a AWS gerenciar a infraestrutura física (racks, servidores, energia).
+- **Analise e atribua despesas:** use ferramentas de etiquetagem (tagging) para identificar quem está gastando o quê e otimizar custos específicos.
+
+<span style="background:#ff4d4f">Sustentabilidade (Sustainability)</span>
+Este é o pilar mais novo, focado em minimizar os impactos ambientais da execução de cargas de trabalho na nuvem. **Princípios de Design:**
+- **Entenda seu impacto:** meça o impacto ambiental de suas cargas de trabalho e projete o futuro.
+- **Estabeleça metas de sustentabilidade:** crie objetivos de longo prazo, como reduzir recursos de computação por transação.
+- **Maximize a utilização:** otimize o uso de recursos (right-sizing) para evitar desperdício de energia em recursos ociosos.
+- **Adote novas ofertas de hardware e software:** use tecnologias mais novas e eficientes fornecidas pela AWS.
+- **Use serviços gerenciados:** serviços compartilhados (como S3 ou Lambda) maximizam a utilização de recursos físicos, reduzindo o impacto ambiental total.
+- **Reduza o impacto downstream:** diminua a quantidade de energia ou recursos necessários para que os clientes utilizem seus serviços.
+
+Um `game day` é uma simulação de eventos do mundo real, como picos de tráfego ou falhas de componentes, em um ambiente controlado para testar a resposta e a resiliência do sistema e da equipe.
+
+Ao usarmos a computação em nuvem, podemos alcançar um custo variável menor do que conseguiríamos sozinhos. Como o uso de centenas de milhares de clientes é agregado na nuvem, provedores com a AWS podem alcançar maiores economias de escala, o que se traduz em preços mais baixos de pagamento conforme o uso.
+
+Os recursos da AWS são lançados na Infraestrutura Global da AWS começando pela data center. É aqui que o nosso hardware está localizado. Normalmente, ele abriga milhares de servidores.
+
+Os data centers da AWS são projetados para antecipar e tolerar falhas enquanto mantêm os níveis de serviço. Em caso de falha, processos automatizados desviam o tráfego da área afetada. As aplicações principais são implantadas sob um padrão N+1 para que, no caso de falha de um data center, haja capacidade suficiente para que o tráfego seja balanceado de carga para os locais restantes.
+## AWS Compute Services
+![[Pasted image 20260104104055.png]]
+
+**AWS Fargate**: é um serviço da AWS que permite **rodar containers (Docker)** sem precisar gerenciar servidores. Com o uso do #Fargate, só definimos a Imagem Docker, CPU, Memória, Porta, Variáveis de Ambiente. A AWS faz todo o resto. 
+**Como o Fargate funciona (fluxo)**: 
+1. Criamos um container (Docker)
+2. Definimos CPU e memória
+3. Escolhemos ECS (Elastic Container Service) ou EKS (Elastic Kubernetes Service)
+4. O Fargate executa o container
+5. Pagamos pelo uso.
+
+#Graviton
+Rodar uma EC2 em Graviton significa que a nossa máquina virtual da AWS está usando processadores ARM desenvolvidos pela própria AWS, chamados AWS Graviton, em vez de processadores tradicionais Intel (x86) ou AMD.
+
+O que muda na prática com o seu uso:
+- Até 20-40% mais barato
+- Melhor custo/performance
+- Ideal para containers, APIs e microsserviços
+- Excelente para Java, Node, Python, Go.
+**Graviton + Docker (muito comum)**
+Se usamos **containers:**
+- Basta usar imagem **multi-arch**
+- Ou imagem ARM64
+Exemplo:
+`FROM eclipse-temurin:21-jre`, essa imagem já funciona em x86 e ARM.
+Fargate com ARM costuma ser ainda mais barato.
+
+**Instâncias otimizadas para memória** são úteis quando o foco está na memória. Quando o recurso mais crítico é a RAM (memória), podemos escolher instâncias dentro dessa família. Bancos de dados open-source, caches em memória e análises de big data em tempo real, poderiam ser executados nessas instâncias.
+
+**Instâncias de computação** acelerada são úteis quando o foco está na unidade de processamento gráfico (GPU). Executar modelos de ML, dinâmica de fluidos computacional, cargas de trabalho gráficas ou outras cargas que necessitam de GPU são casos de uso para esse tipo de instância.
+
+**Instâncias otimizadas para** armazenamento são úteis quando se foca em maximizar o número de **transações por segundo (TPS) para cargas de trabalho intensivas em I/O e críticas para o negócio.**
+
+**Instâncias de uso geral** fornecem um equilíbrio entre recursos de computação, memória e rede, e podem ser usadas para uma variedade de cargas de trabalho diversas, essas instâncias são ideais para aplicações que utilizam esses recursos em proporções iguais, como **servidores web e repositórios de código**.
+
+### Amazon EC2 Auto Scaling
+Ajuda a mantermos a disponibilidade de aplicativos e a adicionar ou remover automaticamente instâncias EC2 usando políticas de escalabilidade que definirmos. 
+- Com **capacidades de escalonamento dinâmico**, o serviço será capaz de atender à demanda de **forma ativa**, entendendo quando os recursos estão sobre-provisionados ou sub-provisionados com base na utilização da CPU ou tais métricas.
+- Com o Amazon EC2, podemos adicionar ou remover instâncias EC2. 
+- Escale horizontalmente para corresponder exatamente à demanda atual e evite o excesso ou o subprovisionamento. Todo o processo é feito automaticamente.
+- O Amazon EC2 Auto Scaling **detecta instâncias EC2 prejudicadas e aplicações prejudicadas**, substituindo-as sem intervenção.
+- O Amazon EC2 auto Scaling oferece várias **opções de scaling: manual, agendado, dinâmico ou sob demanda, e preditivo.** Quando soubermos que teremos tráfego significativo (ou insuficiente) em um determinado período, podemos **agendar** o serviço para lançar os recursos com antecedência e estarmos pronto para tender o tráfego.
+
+## Serverles
+Construímos e rodamos aplicações e serviços sem gerenciar servidores. Serveless não roda recursos ociosos. Com recursos serverless, economizamos tempo na configuração dos servidores, cuidamos da escalabilidade da capacidade conforme o uso e possuímos disponibilidade e tolerância falhas embutidas.
+
+Serviços serverless não rodam recursos ociosos, então pagamos apenas pelo que precisamos.
+
+O AWS Lambda é um serviço de computação serverless totalmente gerenciado. Os benefícios incluem o seguinte:
+- Ele suporta múltiplos idiomas;
+- Ele roda código sem estado;
+- Quando realizamos upload do código na linguagem que preferimos, o Lambda pode rodar seu código em um cronograma ou em resposta a eventos, como alterações em dados em um bucket do Amazon Simple Storage Service (Amazon S3) ou tabela Amazon DynamoDB.
+
+**Alexa Skills Kit (ASK)**
+O Alexa Skills Kit é o conjunto de ferramentas da Amazon para criar skills, como se fossem "apps da Alexa".
+Ele define:
+- Intents (intenções)
+- Utterances (frases do usuário)
+- Slots
+
+A AWS **Lambda:**
+- Recebe o evento da Alexa
+- Processa a intenção
+- Executa a lógica da aplicação
+- Retorna a resposta para a Alexa
+Tudo isso sem servidor, pagando só pelo uso. 
+
+
+
+

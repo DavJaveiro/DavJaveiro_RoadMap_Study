@@ -5,7 +5,7 @@ Description: >
 
   Sample SAM Template for chapterTwo
 
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+
 Globals:
   Function:
     Timeout: 20
@@ -19,7 +19,7 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: HelloWorldFunction
-      Handler: helloworld.ListMapLambda::handleRequest
+      Handler: helloworld.TimeoutLambda::handler
       Runtime: java21
       Architectures:
       - x86_64

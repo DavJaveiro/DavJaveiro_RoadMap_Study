@@ -8,5 +8,4 @@ public class StringLambda implements RequestHandler<String, String>{
     public String handleRequest(String input, Context context) {
         return "Hello, " + input;
     }
-
 }

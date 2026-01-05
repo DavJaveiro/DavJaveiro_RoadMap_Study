@@ -1429,7 +1429,33 @@ A *NullPointerException* é lançada quando há uma tentativa de acessar um obje
 As exceções na Tabela 1.3 são todas subclasses de *RuntimeException*. Todas as classes Exception são definidas dentro de uma hierarquia de classes que tem a classe #Throwable como sua superclasse (veja o diagrama UML na Figura 1.8). O diagrama UML mostra que as classes Error e Exception são subclasses de *Throwable*. Cada uma dessas classes possui subclasses mostradas na figura. Focaremos na classe #Exception e suas subclasses neste capítulo. Como RuntimeException é uma subclasse de #Exception, ela também é uma subclasse de #Throwable (a relação de subclasse é transitiva).
 
 ### A Classe Throwable
+A classe *Throwable* é a superclasse de todas as exceções. Os métodos que usaremos da classe *Throwable* estão resumidos na Tabela 1.4. Como todas as classes #Exception são subclasses de #Throwable, elas podem chamar qualquer um de seus métodos, incluindo #getMessage, #printStackTrace e #toString. Se ex for um objeto Exception, a chamada `ex.printStackTrace();` exibe um rastreamento de pilha (stack trace), discutido no Apêndice A (Seção A.11). A instrução `System.err.println(ex.getMessage(());` exibe uma mensagem detalhada (ou mensagem de erro) descrevendo a exceção. A instrução *System.err.println(ex.toString());* exibe o nome da exceção seguido pela mensagem detalhada.
 
+**Tabela 1.4: Resumo dos Métodos Comumente Usados da Classe java.lang.Throwable**
+- String getMessage(): retorna a mensagem detalhada
+- void printStackTrace(): imprime o rastreamento de pilha em *System.err*.
+- String toString(): retorna o nome da exceção seguido pela mensagem detalhada.
+
+**Exceções Verificadas (Checked) e Não Verificadas (Unchecked)**
+Uma exceção verificada é um erro que normalmente não se deve a um erro do programador e está além do controle do mesmo. Todas as exceções causadas por erros de entrada/saída são consideradas exceções verificadas. Por exemplo, se o programador tentar acessar um arquivo de dados que não está disponível devido a um erro do usuário ou do sistema, uma *FileNotFoundException* é lançada. A classe #IOException e suas subclasses são exceções verificadas. Embora as exceções verificadas estejam além do controle do programador, ele deve estar ciente delas e deve tratá-las de alguma forma (discutido mais adiante). Todas as exceções verificadas são subclasses de Exception, mas não são subclasses de #RuntimeException. A figura 1.9 é um diagrama mais completo da hierarquia de Exceções.
+
+As **Exceções não verificadas** representam condições de erro que podem ocorrer como resultado de erro do programador ou de condições externas graves consideradas irrecuperáveis. Por exemplo, exceções como #NullPointerException ou #ArrayIndexOutOfException são exceções não verificadas que geralmente se devem a erros do programador. Todas essas exceções por meio do programação defensiva, é impraticável tentar prevenir todas elas ou fornecer tratamento de exceção para todas. 
+
+A classe #Error e suas subclasses representam erros devidos a condições externas graves. Um exemplo de tal erro é o #OutOfMemoryError, que é lançado quando não há memória disponível. Podemos não prever ou nos proteger contra esses tipos de erros. 
+
+Como sabemos quais exceções são verificadas e quais são não verificadas? Classes de exceção que são subclasses de #RuntimeException e #Error são não verificadas. Todas as outras classes #Exception são exceções verificadas.
+
+Discutimos exceções Java mais detalhadamente no Apêndice A. 
+
+**Tabela 1.5: Classe java.io.IOException e Algumas Subclasses**
+
+- `IOException`: Algum tipo de erro de entrada/saída.
+- `EOFException`: Tentativa de ler além do fim dos dados com um `DataInputStream`.
+- `FileNotFoundException`: Incapacidade de encontrar um arquivo.
+
+**Insights valiosos (foco em Algoritmos e LeetCode)**
+- **Try-Catch é "Anti-Pattern" no LeetCode:** em desafios de algoritmos, o uso de *try-catch* para controle de fluxo é ineficiente e desencorajado. Se estamos capturando uma *ArrayIndexOutOfBoundsException*, o nosso algoritmo está errado. A solução correta é usar **Programação Defensiva:** verifique os limites (index < array.length) e nulidade (node != null) explicitamente com if.
+- **OutOfMemoryError em BFS e DP:** Em problemas de grafos (BFS) ou Programação Dinâmica, um `OutOfMemoryError` indica que você estourou o Heap do Java. Isso geralmente significa que você está armazenando estados duplicados desnecessariamente (esqueceu do `visited set`?) ou sua tabela de DP é dimensionalmente inviável para o problema.
 ## 1.7 Packages and Visibility
 ## 1.8 A Shape Class Hierarchy
 <!--SR:!2025-12-16,2,247-->
