@@ -4,21 +4,29 @@
     "type": "split",
     "children": [
       {
-        "id": "6f2126557aabd07a",
+        "id": "1c16758b5f14ec58",
         "type": "tabs",
         "children": [
           {
-            "id": "674245253815b6fa",
+            "id": "20129041329e8af5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "ByeByeCupom/Requisitos.md",
+=======
+                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
+>>>>>>> 3d4abe656ee69bd76d5fdd2fa95bf53eb37c63d1
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "Requisitos"
+=======
+              "title": "Visão geral da arquitetura"
+>>>>>>> 3d4abe656ee69bd76d5fdd2fa95bf53eb37c63d1
             }
           }
         ]
@@ -215,8 +223,9 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "674245253815b6fa",
+  "active": "20129041329e8af5",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "ByeByeCupom/Estrutura.md",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "QuickBookPython/myfiale",
@@ -224,6 +233,24 @@
     "QuickBookPython/chapter3/objects.py",
     "QuickBookPython/chapter3/list.py",
     "QuickBookPython/chapter3",
+=======
+    "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
+    "ByeByeCupom/2026/Scraping",
+    "ByeByeCupom/2026",
+    "programmingAWSLambda/Chapter 4 - Operating AWS Lambda Functions.md",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes/helloworld/AppTest.class",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes/helloworld",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes/helloworld/App.class",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes/helloworld",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes",
+    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target",
+    "programmingAWSLambda/examples/chapterThree/chapter3/samconfig.toml",
+    "programmingAWSLambda/examples/chapterThree/chapter3/README.md",
+    "ByeByeCupom/ByeByeCupom 2026.md",
+    "image-2026163516290.png",
+    "QuickBookPython/Chapter 3 - The quick Python overview.md",
+>>>>>>> 3d4abe656ee69bd76d5fdd2fa95bf53eb37c63d1
     "QuickBookPython/2 - Getting started.md"
   ]
 }
