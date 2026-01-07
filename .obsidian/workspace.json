@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QuickBookPython/Chapter 3 - The quick Python overview.md",
+                "file": "ByeByeCupom/Requisitos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 3 - The quick Python overview"
+              "title": "Requisitos"
             }
           }
         ]
@@ -217,10 +217,11 @@
   },
   "active": "674245253815b6fa",
   "lastOpenFiles": [
+    "ByeByeCupom/Estrutura.md",
+    "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "QuickBookPython/myfiale",
     "QuickBookPython/myfile",
     "QuickBookPython/chapter3/objects.py",
-    "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "QuickBookPython/chapter3/list.py",
     "QuickBookPython/chapter3",
     "QuickBookPython/2 - Getting started.md"
