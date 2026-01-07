@@ -1,0 +1,2 @@
+Este capítulo apresentará um método mais avançado de construção (build) e empacotamento de funções AWS Lambda baseadas em Java. Também entraremos em mais detalhes sobre a versão orientada a serverless da ferramenta de infraestrutura como código da AWS, o SAM, que utilizamos já no capítulo 2. Finalmente, veremos como as funções Lambda e as aplicações serverless são afetadas pelo modelo de segurança da AWS e como usar o SAM para aplicar automaticamente um modelo de segurança de privilégio mínimo para nossa aplicação.
+
