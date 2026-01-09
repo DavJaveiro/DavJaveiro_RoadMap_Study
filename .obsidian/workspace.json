@@ -1,32 +1,24 @@
 {
   "main": {
-    "id": "a51a47e9741ca2e5",
+    "id": "d1cd3059fab42f09",
     "type": "split",
     "children": [
       {
-        "id": "1c16758b5f14ec58",
+        "id": "0134e7c62b9ebf7d",
         "type": "tabs",
         "children": [
           {
-            "id": "20129041329e8af5",
+            "id": "fbfc86e14e5cad8e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "ByeByeCupom/Requisitos.md",
-=======
                 "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
->>>>>>> 3d4abe656ee69bd76d5fdd2fa95bf53eb37c63d1
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
-              "title": "Requisitos"
-=======
               "title": "Visão geral da arquitetura"
->>>>>>> 3d4abe656ee69bd76d5fdd2fa95bf53eb37c63d1
             }
           }
         ]
@@ -35,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "b751bf3b0ecbcbad",
+    "id": "6d4deb9fefedb5b6",
     "type": "split",
     "children": [
       {
-        "id": "69c5499b0f2519dc",
+        "id": "9b36e19a4b200ab1",
         "type": "tabs",
         "children": [
           {
-            "id": "6136cc8f1266176f",
+            "id": "3efe1726ad76b011",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,7 +48,7 @@
             }
           },
           {
-            "id": "3d1dc3be2c76559f",
+            "id": "779a4b83d8194ffc",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -73,7 +65,7 @@
             }
           },
           {
-            "id": "38d96fa75fcf8aa4",
+            "id": "52b5bec179961557",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -83,7 +75,7 @@
             }
           },
           {
-            "id": "3bb4b34cfcbec444",
+            "id": "aee41255c801a74a",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -100,19 +92,20 @@
     "collapsed": true
   },
   "right": {
-    "id": "984721fe4348cb8c",
+    "id": "258db1438f88823c",
     "type": "split",
     "children": [
       {
-        "id": "8842a360a27ef9e7",
+        "id": "1aac690ea95b32d9",
         "type": "tabs",
         "children": [
           {
-            "id": "10a3cad488721a76",
+            "id": "e6ebd8d802a815ec",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,24 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Links inversos para Visão geral da arquitetura"
             }
           },
           {
-            "id": "1466de8b78122461",
+            "id": "55f13e9e6e1717c2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída"
+              "title": "Links de saída para Visão geral da arquitetura"
             }
           },
           {
-            "id": "86ce54b3e3ffe537",
+            "id": "32cb0c3ee8394ffb",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -154,7 +148,7 @@
             }
           },
           {
-            "id": "e06fd8c8d4d780c4",
+            "id": "052854d8bac81a21",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -168,21 +162,22 @@
             }
           },
           {
-            "id": "1ab4a4e59ad9faeb",
+            "id": "dff9e4acf496b414",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário"
+              "title": "Sumário de Visão geral da arquitetura"
             }
           },
           {
-            "id": "93fcded38d55daf8",
+            "id": "5389b0672a80c477",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -223,34 +218,6 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "20129041329e8af5",
-  "lastOpenFiles": [
-<<<<<<< HEAD
-    "ByeByeCupom/Estrutura.md",
-    "QuickBookPython/Chapter 3 - The quick Python overview.md",
-    "QuickBookPython/myfiale",
-    "QuickBookPython/myfile",
-    "QuickBookPython/chapter3/objects.py",
-    "QuickBookPython/chapter3/list.py",
-    "QuickBookPython/chapter3",
-=======
-    "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
-    "ByeByeCupom/2026/Scraping",
-    "ByeByeCupom/2026",
-    "programmingAWSLambda/Chapter 4 - Operating AWS Lambda Functions.md",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes/helloworld/AppTest.class",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes/helloworld",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes/helloworld/App.class",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes/helloworld",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target",
-    "programmingAWSLambda/examples/chapterThree/chapter3/samconfig.toml",
-    "programmingAWSLambda/examples/chapterThree/chapter3/README.md",
-    "ByeByeCupom/ByeByeCupom 2026.md",
-    "image-2026163516290.png",
-    "QuickBookPython/Chapter 3 - The quick Python overview.md",
->>>>>>> 3d4abe656ee69bd76d5fdd2fa95bf53eb37c63d1
-    "QuickBookPython/2 - Getting started.md"
-  ]
+  "active": "5389b0672a80c477",
+  "lastOpenFiles": []
 }
