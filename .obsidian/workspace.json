@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+                "file": "📈Atitude Mental do Tradding de Sucesso/O fascínio (e os perigos) do trading.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter Two - Lists and the Collections Framework"
+              "title": "O fascínio (e os perigos) do trading"
             }
           }
         ]
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "8722206ef944111f",
@@ -218,10 +217,13 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "00627e25631eb93e",
+  "active": "871fb1bc8989a100",
   "lastOpenFiles": [
-    "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
+    "📈Atitude Mental do Tradding de Sucesso/Capítulo 1 - O Caminho Para o Sucesso - Análise Fundamental, análise técnica ou análise mental.md",
+    "📈Atitude Mental do Tradding de Sucesso/O fascínio (e os perigos) do trading.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+    "📈Atitude Mental do Tradding de Sucesso",
+    "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
     "Princípios Integrados de Zoologia/26. A origem dos Amniota e os Répteis Não aves.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "Fundamentals of Software Engineering",
