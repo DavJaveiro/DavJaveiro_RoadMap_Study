@@ -1,46 +1,24 @@
 {
   "main": {
-    "id": "d1cd3059fab42f09",
+    "id": "c2839f373eb2c672",
     "type": "split",
     "children": [
       {
-<<<<<<< HEAD
-        "id": "0134e7c62b9ebf7d",
+        "id": "8fc53d724aa8a791",
         "type": "tabs",
         "children": [
           {
-            "id": "fbfc86e14e5cad8e",
-=======
-        "id": "0fcf6242955a8f60",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "4c8044bc12490ff9",
->>>>>>> 342f35664f34f88aa8951da934ff28f433b26105
+            "id": "00627e25631eb93e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
+                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 2 - Intelligent Agents"
-            }
-          },
-          {
-            "id": "7eae77c85b985a70",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction"
+              "title": "Chapter Two - Lists and the Collections Framework"
             }
           }
         ]
@@ -49,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6d4deb9fefedb5b6",
+    "id": "a6ba6d09326a2f64",
     "type": "split",
     "children": [
       {
-        "id": "9b36e19a4b200ab1",
+        "id": "726c7a5fbaf7642d",
         "type": "tabs",
         "children": [
           {
-            "id": "3efe1726ad76b011",
+            "id": "871fb1bc8989a100",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -70,7 +48,7 @@
             }
           },
           {
-            "id": "779a4b83d8194ffc",
+            "id": "4318985b9530055e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -87,7 +65,7 @@
             }
           },
           {
-            "id": "52b5bec179961557",
+            "id": "f1a8b3530f813ec5",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -97,7 +75,7 @@
             }
           },
           {
-            "id": "aee41255c801a74a",
+            "id": "8a6561cf1d341b2b",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -114,20 +92,20 @@
     "collapsed": true
   },
   "right": {
-    "id": "258db1438f88823c",
+    "id": "8722206ef944111f",
     "type": "split",
     "children": [
       {
-        "id": "1aac690ea95b32d9",
+        "id": "0eff7ea0d46073ce",
         "type": "tabs",
         "children": [
           {
-            "id": "e6ebd8d802a815ec",
+            "id": "1508e64939667e4e",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
+                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,25 +115,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Visão geral da arquitetura"
+              "title": "Links inversos para Chapter 2 - Intelligent Agents"
             }
           },
           {
-            "id": "55f13e9e6e1717c2",
+            "id": "136823b6c705f4d2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
+                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Visão geral da arquitetura"
+              "title": "Links de saída para Chapter 2 - Intelligent Agents"
             }
           },
           {
-            "id": "32cb0c3ee8394ffb",
+            "id": "a77a2b0f13677c51",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -170,7 +148,7 @@
             }
           },
           {
-            "id": "052854d8bac81a21",
+            "id": "0e7b1465b418ab7c",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -184,22 +162,22 @@
             }
           },
           {
-            "id": "dff9e4acf496b414",
+            "id": "7ceb8c930a5780ff",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
+                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Visão geral da arquitetura"
+              "title": "Sumário de Chapter 2 - Intelligent Agents"
             }
           },
           {
-            "id": "5389b0672a80c477",
+            "id": "cd4b9a38ac1093ad",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -240,33 +218,13 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-<<<<<<< HEAD
-  "active": "5389b0672a80c477",
-  "lastOpenFiles": []
-=======
-  "active": "4c8044bc12490ff9",
+  "active": "00627e25631eb93e",
   "lastOpenFiles": [
-    "🚀Artificial Intelligence - A Modern Approach/Chapter 1 - Introduction.md",
+    "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+    "Princípios Integrados de Zoologia/26. A origem dos Amniota e os Répteis Não aves.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
-    "🚀Artificial Intelligence - A Modern Approach/Inteligência Artificial (Em Portuguese do Brasil) -- Peter Norvig, Stuart J_ Russell -- 3, 2013 -- Pearson Education -- 9788535237016 -- 3447c26bb7666c62fe64c8732f0abf87 -- Anna’s Archive.pdf",
-    "Prompt.md",
-    "image-202619224322.png",
-    "ByeByeCupom/2026/Scraping/Visão geral da arquitetura.md",
-    "ByeByeCupom/2026/Scraping",
-    "ByeByeCupom/2026",
-    "programmingAWSLambda/Chapter 4 - Operating AWS Lambda Functions.md",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes/helloworld/AppTest.class",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes/helloworld",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes/helloworld/App.class",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes/helloworld",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/test-classes",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target/classes",
-    "programmingAWSLambda/examples/chapterThree/chapter3/HelloWorldFunction/target",
-    "programmingAWSLambda/examples/chapterThree/chapter3/README.md",
-    "ByeByeCupom/ByeByeCupom 2026.md",
-    "image-2026163516290.png",
-    "QuickBookPython/Chapter 3 - The quick Python overview.md",
-    "QuickBookPython/2 - Getting started.md"
+    "Fundamentals of Software Engineering",
+    "image-202619243498.png"
   ]
->>>>>>> 342f35664f34f88aa8951da934ff28f433b26105
 }
