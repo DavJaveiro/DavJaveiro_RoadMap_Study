@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "8fc53d724aa8a791",
+        "id": "3dd35a95493bfa99",
         "type": "tabs",
         "children": [
           {
-            "id": "00627e25631eb93e",
+            "id": "50f6af017863f947",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "📈Atitude Mental do Tradding de Sucesso/O fascínio (e os perigos) do trading.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "O fascínio (e os perigos) do trading"
+              "title": "Nova aba"
             }
           }
         ]
@@ -217,7 +213,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "871fb1bc8989a100",
+  "active": "cd4b9a38ac1093ad",
   "lastOpenFiles": [
     "📈Atitude Mental do Tradding de Sucesso/Capítulo 1 - O Caminho Para o Sucesso - Análise Fundamental, análise técnica ou análise mental.md",
     "📈Atitude Mental do Tradding de Sucesso/O fascínio (e os perigos) do trading.md",
