@@ -69,4 +69,43 @@ Obviamente, não há uma medida de desempenho fixa para todas as tarefas e agent
 Mesmo que as armadilhas óbvias sejam evitadas, ainda existem algumas questões complexas para desembaraçar. Por exemplo, a noção de "chão limpo" no parágrafo anterior se baseia na limpeza média ao longo do tempo. Ainda assim, a mesma limpeza média pode ser alcançada por dois agentes diferentes, um dos quais faz o trabalho tedioso de limpeza o tempo todo, enquanto o outro limpa energicamente, mas faz longas pausas. A estratégia preferível pode parecer um detalhe secundário da ciência do trabalho doméstico, mas de fato é uma profunda questão filosófica com extensas implicações. O que é melhor: uma vida aventureira, cheia de altos e baixos, ou uma existência segura, porém monótoma? O que é melhor: uma economia em que todos vivam em pobreza moderada ou aquela em que alguns vivem em plena riqueza enquanto outros são muito pobres? 8 ou 80
 
 ### 2.2.1 Racionalidade
+A definição do que é racional em qualquer instante dado depende de quatro fatores:
+- A medida de desempenho que define o critério de sucesso;
+- O conhecimento prévio que o agente tem do ambiente;
+- As ações que o agente pode executar
+- A sequência de percepções do agente até o momento
 
+Isso conduz a uma **definição de um agente racional:**
+Para cada sequência de percepções possível, um agente racional deve selecionar uma ação que se espera venha a maximizar sua medida de desempenho, dada a evidência fornecida pela sequência de percepções e por qualquer conhecimento interno do agente.
+
+Consideramos o agente aspirador de pó simples que limpa um quadrado se ele estiver sujo e passa para o outro quadrado se o primeiro não estiver sujo; essa é a função do agente tabulada na Figura 2.3. Esse é um agente racional? Depende! Primeiro, precisamos dizer o que é a medida de desempenho, o que se conhece sobre o ambiente e quais são os sensores e atuadores que o agente tem. Vamos supor que:
+- A medida que desempenho ofereça o prêmio de um ponto para cada quadrado limpo em cada período de tempo, ao longo de um "tempo de vida" de 1.000 passos de tempo;
+- A "geografia" do ambiente seja conhecida *a priori*, mas a distribuição da sujeira e a posição inicial do agente não sejam previamente conhecidas. Quadrados limpos permanecem limpos, e a aspiração limpa o quadrado atual. As ações Esquerda e Direita movem o agente para fora do ambiente; nesse caso, o agente permanece onde está;
+- As únicas ações disponíveis são *Esquerda, Direita e Aspirar*
+- O agente percebe corretamente sua posição e se essa posição contém sujeira.
+
+Afirmamos que, sob essas circunstâncias, o agente é de fato racional; espera-se que seu desempenho seja pelo menos tão alto quanto o de qualquer outra agente. 
+
+Podemos ver facilmente que o mesmo agente seria irracional sob circunstâncias diferentes. Por exemplo, uma vez que toda a sujeira seja limpa, o agente oscila desnecessariamente de um lado para outro; se a medida de desempenho incluir uma penalidade de um ponto para cada movimento à esquerda ou à direita, o agente ficará em má situação. Um agente melhor para esse caso não faria nada se tivesse certeza de que todos os quadrados estão limpos. Se quadrados limpos puderem ficar sujos novamente, o agente deve ocasionalmente verificar e voltar a limpá-los, se necessário. Se a geografia do ambiente for desconhecida, o agente precisará explorá-la. 
+
+### 2.2.2 Onisciência, aprendizado e autonomia
+Precisamos ter o cuidado de distinguir entre racionalidade e **onisciência**. 
+
+Um agente onisciente sabe o resultado real de suas ações e pode agir de acordo com ele; porém, a onisciência é impossível na realidade. 
+
+A racionalidade não é o mesmo que perfeição. A racionalidade maximiza o **desempenho** esperado, enquanto a perfeição maximiza o desempenho real. Fugir à exigência de perfeição não é apenas uma questão de ser justa com os agentes. Se esperarmos que um agente realize aquela que virá a ser a melhor ação após o fato, será impossível projetar um agente para satisfazer essa especificação, a menos que melhoremos o desempenho de bolas de cristal ou máquinas do tempo.
+
+**Coleta de Informações** é uma parte importante da racionalidade e é abordada em profundidade no Capítulo 16. Um segundo exemplo de coleta de informações é dado pela exploração que tem de ser empreendida por um agente aspirador de pó em um ambiente inicialmente desconhecido. 
+
+Nossa definição exige um agente racional não apenas para coletar informações, mas também para **aprender** tanto quanto possível a partir do que ele percebe. A configuração inicial do agente poderia refletir algum conhecimento prévio do ambiente, mas, à medida que o agente ganha experiência, isso pode ser modificado e ampliado. 
+
+Quando um agente se baseia no conhecimento anterior de seu projetista e não em suas próprias percepções, dizemos que o agente não tem **autonomia**. Um agente racional deve ser autônomo, ele deve aprender o que puder para compensar um conhecimento prévio parcial ou incorreto. 
+
+Do mesmo modo que a evolução fornece aos animais reflexos internos suficientes para que eles possam sobreviver pelo tempo necessário para aprenderem por si mesmos, seria razoável fornecer a um agente de inteligência algum conhecimento inicial, bem como habilidade para aprender.
+
+Depois de adquirir experiência suficiente sobre seu ambiente, o comportamento de um agente racional pode se tornar efetivamente *independente* de seu conhecimento anterior. Em consequência disso, a incorporação do aprendizado permite projetar um único agente racional que terá sucesso em ampla variedade de ambientes.
+
+## 2.3 A Natureza dos Ambientes
+Precisamos pensar em ambientes de tarefas, que são essencialmente os "problemas" para os quais os agentes racionais são as "solucções". Começamos mostrando como especificar um ambiente de tarefa ilustrando o processo com vários exemplos. Em seguida, mostrando que há vários tipos de ambientes de tarefas. O tipo de ambiente de tarefa afeta diretamente o projeto apropriado para o programa do agente.
+
+### 2.3.1 Especificando o ambiente de tarefa

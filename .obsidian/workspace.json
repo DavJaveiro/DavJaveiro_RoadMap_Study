@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "📈Atitude Mental do Tradding de Sucesso/O fascínio (e os perigos) do trading.md",
+                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "O fascínio (e os perigos) do trading"
+              "title": "Chapter 2 - Intelligent Agents"
             }
           }
         ]
@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 414.00499725341797,
+    "collapsed": true
   },
   "right": {
     "id": "8722206ef944111f",
@@ -217,15 +218,17 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "871fb1bc8989a100",
+  "active": "00627e25631eb93e",
   "lastOpenFiles": [
+    "Biologia de Campbell/Capítulo 37 - Solo e Nutrição Vegetal.md",
+    "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
+    "Biologia de Campbell",
+    "📈Atitude Mental do Tradding de Sucesso/Capítulo 2 - O fascínio (e os perigos) do trading.md",
     "📈Atitude Mental do Tradding de Sucesso/Capítulo 1 - O Caminho Para o Sucesso - Análise Fundamental, análise técnica ou análise mental.md",
-    "📈Atitude Mental do Tradding de Sucesso/O fascínio (e os perigos) do trading.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "📈Atitude Mental do Tradding de Sucesso",
     "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
     "Princípios Integrados de Zoologia/26. A origem dos Amniota e os Répteis Não aves.md",
-    "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "Fundamentals of Software Engineering",
     "image-202619243498.png"
   ]
