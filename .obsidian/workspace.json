@@ -1,22 +1,16 @@
 {
   "main": {
-    "id": "c2839f373eb2c672",
+    "id": "5a73c61e8f8554cb",
     "type": "split",
     "children": [
       {
-        "id": "3dd35a95493bfa99",
+        "id": "e100bd1a37cfde24",
         "type": "tabs",
         "children": [
           {
-            "id": "50f6af017863f947",
+            "id": "b7d4528293bd5d96",
             "type": "leaf",
             "state": {
-<<<<<<< HEAD
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Nova aba"
-=======
               "type": "markdown",
               "state": {
                 "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
@@ -25,7 +19,6 @@
               },
               "icon": "lucide-file",
               "title": "Chapter 2 - Intelligent Agents"
->>>>>>> 58fdb11c947e5095cb8d03e1480f90c69c677209
             }
           }
         ]
@@ -34,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "a6ba6d09326a2f64",
+    "id": "595ced5d00cfe0de",
     "type": "split",
     "children": [
       {
-        "id": "726c7a5fbaf7642d",
+        "id": "e94d17e5bbb15677",
         "type": "tabs",
         "children": [
           {
-            "id": "871fb1bc8989a100",
+            "id": "bc57c3762b0b7be0",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -55,7 +48,7 @@
             }
           },
           {
-            "id": "4318985b9530055e",
+            "id": "b6e599405fd0c57a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -72,7 +65,7 @@
             }
           },
           {
-            "id": "f1a8b3530f813ec5",
+            "id": "472662f819d3ae89",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -82,7 +75,7 @@
             }
           },
           {
-            "id": "8a6561cf1d341b2b",
+            "id": "71b7575217408679",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -95,19 +88,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 414.00499725341797,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "8722206ef944111f",
+    "id": "d899ce6ae60b2c92",
     "type": "split",
     "children": [
       {
-        "id": "0eff7ea0d46073ce",
+        "id": "e3243dd56289ec90",
         "type": "tabs",
         "children": [
           {
-            "id": "1508e64939667e4e",
+            "id": "02aa6f7a3ec46b63",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -126,7 +119,7 @@
             }
           },
           {
-            "id": "136823b6c705f4d2",
+            "id": "fb106616f2ca596b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -140,7 +133,7 @@
             }
           },
           {
-            "id": "a77a2b0f13677c51",
+            "id": "3f9fa38b10761efd",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -155,7 +148,7 @@
             }
           },
           {
-            "id": "0e7b1465b418ab7c",
+            "id": "ec7fd5b9db1167e8",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -169,7 +162,7 @@
             }
           },
           {
-            "id": "7ceb8c930a5780ff",
+            "id": "579730c54e7ca06e",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -184,7 +177,7 @@
             }
           },
           {
-            "id": "cd4b9a38ac1093ad",
+            "id": "8287cd4694777937",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -225,22 +218,8 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-<<<<<<< HEAD
-  "active": "cd4b9a38ac1093ad",
-=======
-  "active": "00627e25631eb93e",
->>>>>>> 58fdb11c947e5095cb8d03e1480f90c69c677209
+  "active": "b7d4528293bd5d96",
   "lastOpenFiles": [
-    "Biologia de Campbell/Capítulo 37 - Solo e Nutrição Vegetal.md",
-    "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
-    "Biologia de Campbell",
-    "📈Atitude Mental do Tradding de Sucesso/Capítulo 2 - O fascínio (e os perigos) do trading.md",
-    "📈Atitude Mental do Tradding de Sucesso/Capítulo 1 - O Caminho Para o Sucesso - Análise Fundamental, análise técnica ou análise mental.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-    "📈Atitude Mental do Tradding de Sucesso",
-    "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
-    "Princípios Integrados de Zoologia/26. A origem dos Amniota e os Répteis Não aves.md",
-    "Fundamentals of Software Engineering",
-    "image-202619243498.png"
+    "image-2026113544955.png"
   ]
 }

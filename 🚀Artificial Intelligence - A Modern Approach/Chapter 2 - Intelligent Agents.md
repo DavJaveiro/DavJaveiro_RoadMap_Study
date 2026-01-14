@@ -109,3 +109,51 @@ Depois de adquirir experiência suficiente sobre seu ambiente, o comportamento d
 Precisamos pensar em ambientes de tarefas, que são essencialmente os "problemas" para os quais os agentes racionais são as "solucções". Começamos mostrando como especificar um ambiente de tarefa ilustrando o processo com vários exemplos. Em seguida, mostrando que há vários tipos de ambientes de tarefas. O tipo de ambiente de tarefa afeta diretamente o projeto apropriado para o programa do agente.
 
 ### 2.3.1 Especificando o ambiente de tarefa
+Ao projetarmos um agente, a primeira etapa deve ser sempre especificar o ambiente de tarefa de forma tão completa quanto possível. 
+
+O mundo do nosso aspirador de pó foi um exemplo bem simples; vamos considerar um problema mais complexo: um <span style="background:#b1ffff">motorista de táxi</span> automatizado. Utilizaremos este exemplo no restante do capítulo. A tarefa completa de dirigir é extremamente *aberta*. Não existe nenhum limite para as novas combinações de circunstâncias que podem surgir.
+
+A figura abaixo, 2.4, resume a descrição PEAS para o ambiente de tarefa do táxi. 
+!![image-2026113544955.png](/image-2026113544955.png)
+
+**Medida de desempenho:** são as qualidades desejáveis, como chegar ao destino correto, minimizar o consumo de combustível e desgaste, minimizar o tempo e/ou o custo de viagem, minimizar as violações às leis de trânsito e as perturbações a outros motoristas, maximizar a segurança e o conforto dos passageiros e maximizar os lucros. Provavelmente alguns destes objetivos irão conflitar-se, sendo necessário realizarmos uma escolha.
+
+**Ambiente:** local de direção onde o táxi atuará e irá interagir. Qualquer motorista de táxi lida com diversos tipos de estradas, que contém outros tipos de tráfego, pedestres, animais perdidos etc. Quanto mais restrito o nosso ambiente, mais fácil se torna o problema de projetar.
+
+**Atuadores:** são os mesmos para um motorista, controle sobre o motor através do acelerador e controle sobre a direção e a frenagem. Além de alguma forma de se comunicar com o passageiro, e outros meios de comunicação com outros veículos, <span style="background:#b1ffff">de forma educada ou não</span>.
+
+**Sensores:** pode incluir uma ou mais câmeras de TV controláveis para que o operador observe a estrada; velocímetro, acelerômetro. Sensores de motor para conhecer o estado do motor, combustível e sistema elétrico. Um sistema de posicionamento global por satélite (GPS), e um teclado ou microfone para que o passageio solicite um destino. 
+
+### 2.3.2 Propriedades de ambientes de tarefas
+A variedade de ambientes de tarefas que podem surgir em IA é sem dúvida vasta. 
+
+**Completamente observável** *versus* **parcialmente observável**: se os sensores de um agente permitem acesso ao estado completo do ambiente em cada instante, dizemos que o ambiente de tarefa é completamente observável. Portanto, quando **os sensores detectam todos os aspectos que são relevantes** para a escolha da ação; o agente não precisa manter qualquer **estado interno** para acompanhar as mudanças do mundo.
+
+**Parcialmente observável:** os sensores são incapazes de obter os dados do ambiente em um intervalo de tempo, devido a um ruído ou por contas dos sensores imprecisos. 
+
+#### Agente único *versus* multiagente
+Um agente que resolve um jogo de palavras cruzadas sozinho está claramente em um ambiente de *agente único*; enquanto um agente que joga xadrez está em um ambiente de *dois agentes*... 
+
+Agente único não depende de outros agentes para interagir para cumprir o seu objetivo;
+Enquanto multiagente, exige claramente uma interação bidirecional.
+
+#Determinístico: estado completamente determinado pelo momento/estado atual;
+#Estocástico: estado que não está determinado, aberto a variedades ou novidades;
+
+O nosso agente de Táxi, é claramente estocástico, existem situações imprevisíveis no seu trajeto que tornam quase impossível prever essas variantes em um dado trajeto. 
+
+O ambiente é incerto caso não seja totalmente observável ou determinístico. Se houver possibilidade de uma nova variável surgir, então, ele é incerto. 
+
+**Episódicos**: 
+- Experiência atômica;
+- Agente recebe uma informação e então toma uma ação;
+- Sem dependência entre os episódios (ação escolhia com base no seu momento)
+**Sequencial**
+- Ação atual pode afetar ações futuras;
+- Jogar Xadrez e dirigir um táxi são exemplos
+
+**Ambiente dinâmico**
+- Quando o ambiente altera, no momento em que o agente faz uma análise;
+- Estáticos são mais fáceis de manipular;
+- Estático não requer observação constante;
+
