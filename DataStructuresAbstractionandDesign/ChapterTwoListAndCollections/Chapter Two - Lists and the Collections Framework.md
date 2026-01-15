@@ -158,4 +158,178 @@ Instrução Simples 7
 Instrução Simples 30
 ```
 
-Vamos assumir que cada instrução Simples leva uma unidade de tempo e que as instruções *for* são gratuitas.
+Vamos assumir que cada instrução Simples leva uma unidade de tempo e que as instruções *for* são gratuitas. O loop aninhado executa uma instrução Simples n² vezes. Em seguida, cinco Instruções Simples são executadas *n* vezes no loop com a variável de controle *k*. 
+
+Em seguida, temos cinco instruções simples sendo executadas *n* vezes no loop com a variável de controle k. 
+
+Finalmente, 25 instruções simples são executadas após este loop. 
+
+Concluiríamos então que a expressão $T(n)=n² +5n +25$ mostra a relação entre o tempo de processamento de *n* (o número de itens de dados processados no loop), onde $T(n)$ representa o tempo de processamento como uma função de $n$. Deve ficar claro que o termo $n²$ domina à medida que *n* se torna grande. 
+
+Em termos de $T(n)$, formalmente, a notação Big-O $T(n) = O(f(n))$ significa que existem duas constantes, $n_0$ e $c$, maiores que zero, e uma função, $f(n)$, tal que para todo $n > n_0$, $cf(n) \ge T(n)$. Em outras palavras, à medida que $n$ fica suficientemente grande (maior que $n_0$), existe alguma constante $c$ para a qual o tempo de processamento será sempre menor ou igual a $cf(n)$, então $cf(n)$ é um limite superior para o desempenho. O desempenho nunca será pior que $cf(n)$ e pode ser melhor.
+
+Se pudermos determinar como o valor de $f(n)$ aumenta com $n$, saberemos como o tempo de processamento aumentará com $n$. A taxa de crescimento de $f(n)$ será determinada pela taxa de crescimento do termo de crescimento mais rápido (aquele com o maior expoente), que, neste caso, é o termo $n^2$. Isso significa que o algoritmo neste exemplo é um algoritmo $O(n^2)$ em vez de um algoritmo $O(n^2 + 5n + 25)$. <span style="background:#ff4d4f">Em geral, é seguro ignorar todas as constantes e descartar os termos de ordem inferior ao determinar a ordem de grandeza de um algoritmo.</span>
+
+**Exemplo 2.5:** Dado $T(n) = n^2+5n+25$, queremos que isso é de fato $O(n^2)$. Portanto, queremos demonstrar que existem constantes $n_0$ e $c$ tais que, para todo $n > n_0$, $cn^2>n^2+5n+25. Uma maneira de fazer isso é encontrar um ponto onde $cn^2=n^2+5n+25$. Se deixarmos $n$ ser $n_0$ e resolvemos para $c$, obtemos $c = 1 + \frac{5}{n_0} + \frac{25}{n_0^2}$ Podemos avaliar a expressão à direita facilmente quando $n_0$ é 5 ($1 + 5/5 + 25/25$). Isso nos dá um $c$ de 3. Então $3n^2 > n^2 + 5n + 25$ para todo $n$ maior que 5, conforme mostrado na Figura 2.1.
+
+```java
+for (int i=0; i<n-1; i++) {
+	for (int j=i+1; j<n; j++) {
+		// 3 instruções simples
+	}
+}
+```
+Na primeira passagem pelo loop externo, o loop interno é executado $n - 1$ vezes; na próxima, $n - 2$; e na última vez, uma vez. O loop externo é executado $n$ vezes. Então obtemos a seguinte expressão para $T(n)$: $3(n - 1) + 3(n - 2) + \dots + 3(2) + 3(1)$ Podemos colocar o 3 em evidência para obter $3 \times [(n - 1) + (n - 2) + \dots + 2 + 1]$ A soma $1 + 2 + \dots + (n - 2) + (n - 1)$ (entre parênteses acima) é igual a $\frac{n^2 - n}{2}$ Assim, nosso $T(n)$ final é $T(n) = 1.5n^2 - 1.5n$
+
+Este polinômio é zero quando $n$ é 1. Para valores maiores que 1, $1.5n^2$ é sempre maior que $1.5n^2 - 1.5n$. Portanto, podemos usar 1 para $n_0$ e 1.5 para $c$ para concluir que nosso $T(n)$ é $O(n^2)$ (veja a Figura 2.2).
+
+Se $T(n)$ é a forma de um polinômio de grau $d$ (o maior expoente), então ele é $O(n^d)$. Uma prova matematicamente rigorosa disso está além do escopo deste texto. Uma prova intuitiva é demonstrada nos dois exemplos anteriores. Se os termos restantes tiverem coeficientes positivos, encontre um valor de $n$ onde o primeiro termo é igual aos termos restantes. Conforme $n$ fica maior que este valor, o termo $n^d$ sempre será maior que os termos restantes.
+
+Usamos a expressão $O(1)$ para representar uma taxa de crescimento constante. Este é um valor que não muda com o número de entradas. Os passos simples representam todos $O(1)$. Qualquer número finito de passos $O(1)$ ainda é considerado $O(1)$.
+
+Um loop dentro do outro gera uma curva quadrática, o $O(n^2)$. Mas o conceito mais poderoso é o $O(1)$, ou Tempo Constante. É o nirvana dos algoritmos. Significa que, não importa se você tem dez usuários ou dez milhões, seu código roda na mesma velocidade. Em Java, atingimos isso sabendo usar Arrays ou HashMaps corretamente. O segredo não é decorar a fórmula, mas olhar para o código e identificar: isso vai explodir se o meu cliente crescer, ou vai se manter estável?
+
+---
+*Insight*
+Imaginemos que o tempo que o nosso código leva para rodar é o dinheiro que temos que pagar. A fórmula do texto era: $T(n)=n²+5n+25$.
+Supondo que *n* seja o número de usuários do nosso site, considerando como 1 milhão.
+
+- N² (o termo quadrático): 1.000.000 x 1.000.000 = 1 trilhão de reais;
+- 5n (o termo linear): 5x1.000.000 = 5 milhões de reais
+- 25 (a constante): 25 reais
+
+Se devemos 1 trilhão de reais ao banco, você se importaria com os 25 reais da conta do bar? Não. Você se importa com os 5 milhões? Também não, é troco de pinga perto de 1 trilhão.
+- **Matemática:** "Quando n cresce, ignoramos os termos menores"
+- **Prática:** só olharmos para a potência maior. Se tem n², o algoritmo é lento.
+
+**O que é $O(1) (o interruptor de Luz)**
+Tempo Constante ou $O(1)$. 
+- Pense num interruptor de luz. Não importa se a sala tem 10m² ou um estádio de futebol de 10.000m². Quando você clica, a luz acende na hora. O esforço não muda com o tamanho da sala.
+- Em Java, acessar um array arr[5] é como o interruptor. É instantâneo, não importa se o array tem 10 ou 1 bilhão de posições.
+
+Exercício Básico (O(1) - Instantâneo)
+Array Access. Temos uma lista de 1 milhão de produtos ordenados por ID (0 a 999.999). O cliente pede o produto de ID 500.
+**Solução:** não procuramos um por um. Vamos direto na gaveta 500 *arr[500]*. Complexidade $O(1)$. Não importa o tamanho da loja. 
+
+
+### O Poder dos Algoritmos O(log n)
+Há um grande potencial de melhoria ao usar um algoritmo $O(log n)$ para processar um grande conjunto de dados em comparação com um algoritmo $O(n)$. Por exemplo, se o tamanho dos dados tem 1024 elementos, haverá apenas 512 elementos restantes para processar após o primeiro teste, 256 elementos após o terceiro teste [nota: o texto original diz 'third' mas o contexto lógico seria 'second']. 
+
+A sequência 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1 mostra o tamanho do conjunto de dados restante para processar após cada teste. Portanto, exigirá 10 testes para determinar que um elemento específico não estava presente em um conjunto de dados de tamanho 1024 usando um algoritmo $O(log n)$. Veremos vários exemplos de algoritmos $O(log n)$ neste livro. Portanto, exigirá 10 testes para determinar que um elemento específico não estava presente em um conjunto de dados de tamanho 1024 usando um algoritmo $O(log n)$. Veremos vários exemplos de algoritmos $O (log n) neste livro.
+
+**Regra de Ouro para reconhecer algoritmos O(log n)**
+Sempre que virmos algo assim:
+- "Divide ao meio"
+- "Descarta metade"
+- "Árvore balanceada"
+- "Busca binária"
+- "altura da árvore"
+Devemos pensar imediatamente em O(log n).
+
+Portanto, um algoritmo $O(log_n)$ é quando cada iteração reduz o tamanho do problema de forma proporcional (normalmente pela metade). Isso acontece independente da linguagem, mas em Java, veremos isso principalmente em:
+- busca binária
+- árvores balanceadas
+- Estruturas ordenadas
+- Algoritmos "divide and conquer"
+
+Exemplo canônico: busca binária em Java
+*Pré-requisito:* dados ordenados
+```java
+public static int buscaBinaria(int[] arr, int alvo) {
+	int inicio = 0;
+	int fim = arr.length -1;
+	
+	while (inicio <= fim) {
+		int meio = inicio + (fim - inicio) /2;
+		
+		if(arr[meio] == alvo) {
+			return meio;
+		}
+		
+		if (arr[meio] > alvo) {
+			fim = meio - 1; // descarta metade direita
+		}else {
+			fim = meio + 1;
+		}
+	}
+	
+	return -1; // não encontrado
+}
+```
+
+**Padrões que indicam logaritmo**
+1. **Variável que divide por 2**
+```java
+n = n / 2;
+```
+
+2. **Laço que cresce exponencialmente**
+```java
+for (int i = 1; i < n; i *= 2)
+```
+
+3. **Estrutura de decisão que elimina metade**
+```java
+if (...) {
+	// metade
+} else {
+	// outra metade
+}
+```
+**Estruturas Java que usam O(log n)**
+Implementadas como Red-Black Tree.
+```java
+TreeSet<Integer> set = new TreeSet<>();
+set.add(10);
+set.add(5);
+set.add(20);
+
+set.contains(10);
+```
+
+**Operações**
+- **add** -> O(log n)
+- **remove** -> O(log n)
+- **contains** -> O(log n)
+
+**Algoritmos com Taxas de Crescimento Exponencial e Fatorial**
+Algoritmos com taxas de crescimento exponencial e fatorial (ainda mais rápidas) têm um limite superior prático efetivo no tamanho do problema para o qual podem ser usados, mesmo com computadores cada vez mais rápidos. Por exemplo, se temos um algoritmo $O(2^n)$ que leva uma hora para 100 entradas, adicionar a 101ª.
+
+Essa relação é a base para algoritmos criptográficos, algoritmos que encriptam texto usando uma chave especial para torná-lo ilegível por qualquer um que o intercepte e não conheça a chave. A encriptação é usada para fornecer segurança para dados sensíveis enviados pela internet. Alguns algoritmos criptográficos podem ser quebrados em tempo $O(2^n)$, onde *n* é o número de bits na chave. Um comprimento de chave de 40 bits é considerado quebrável por um computador pessoal moderno, mas um comprimento de chave de 100 (60 bits a mais) não é, porque a chave com comprimento de 100 bits levará aproximadamente bilhão de bilhões (10^18) de vezes mais tempo que a chave de 40 bits para ser quebrada. Supercomputadores modernos podem quebrar chaves muito mais longas em tempo razoável, então atualmente comprimentos de chave de 2048 ou maiores são recomendados.
+
+## 2.2 The List Interface and ArrayList Class
+Um array é uma estrutura de dados indexada, o que significa que podemos selecionar nossos elementos em ordem arbitrária conforme determinado pelo valor do subscrito (índice). Você também pode acessar os elementos em sequência usando um loop que incremente o índice. No entanto, não podemos fazer o seguinte com um objeto array:
+- Aumentar ou diminuir seu comprimento, que é fixo;
+- Adicionar um elemento em uma posição especificar sem deslocar os outros elementos para abrir espaço; 
+- Remover um elemento em uma posição especificada sem deslocar os outros elementos para preencher a lacuna restante;
+
+As classes que implementam a interface Java #List (parte da API *java.util*) fornecem métodos para fazer essas operações e mais. A tabela 2.4 mostra alguns dos métodos na interface Java #List. Esses métodos realizam as seguintes operações:
+- Retornar uma referência a um elemento em um local especificado (método *get*);
+- Encontrar um valor alvo especificado (método *indexOf*, embora o texto diga #get erroneamente na lista de bullets, a tabela corrige).
+- Adicionar um elemento ao final da lista (método **add**);
+- Inserir um elemento em qualquer lugar na lista (método add);
+- Remover um elemento (método #remove)
+- Substituir um elemento na lista por outro (método #set)
+- Retornar o tamanho da lista (método #size)
+- Acessar sequencialmente todos os elementos da lista sem ter que manipular um índice;
+
+O símbolo *E* na Tabela 2.4 é um parâmetro de tipo. Parâmetros de tipo são análogos a parâmetros de método. Na declaração de uma interface ou classe, o parâmetro de tipo representa o tipo de dados de todos os objetos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
