@@ -47,3 +47,9 @@ Assim que se localizar, execute a aplicação. O que ela faz? Encontre um elemen
 ## O Exemplo do Spring PetClinic
 Ao clonarmos e rodarmos a aplicação, veremos que ela permite buscar proprietários. Se explorarmos os templates, veremos um chamado *findOwners.html*, que referencia um *endpoint* */owners*. Buscar no projeto por */owners* retorna vários resultados, mas a intuição o levará à anotação *@GetMapping("/owners")* no método *processFindForm* no arquivo *OwnerController*. Coloque um breakpoint, execute a busca e veja o que acontece.
 
+Não devemos presumir o que o código faz; nomes de variáveis e métodos podem não refletir mais a realidade à medida que o código evolui. 
+
+Devemos tomar cuidado com as exceções: elas podem enganar. Capturar exceções de alto nível (genéricas) tende a ofuscar problemas reais. 
+
+Devemos olhar o histórico de alterações: o que muda com frequência? O comando git log pode mostrar as classes mais modificadas, os "hotspots". Ferramentas como *git blame* ajudam a visualizar quem fez as mudanças mais recentes. 
+

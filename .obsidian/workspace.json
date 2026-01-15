@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 2 - Reading Code.md",
+                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 2 - Reading Code"
+              "title": "Chapter Two - Lists and the Collections Framework"
             }
           }
         ]
@@ -88,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 287.00802993774414,
     "collapsed": true
   },
   "right": {
@@ -220,6 +220,7 @@
   },
   "active": "fa0bb0da503d4068",
   "lastOpenFiles": [
+    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
     "Fundamentals of Software Engineering/Chapter 2 - Reading Code.md",
     "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
