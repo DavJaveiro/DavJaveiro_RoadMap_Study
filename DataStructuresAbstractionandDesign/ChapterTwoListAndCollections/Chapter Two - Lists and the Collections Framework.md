@@ -375,28 +375,21 @@ Utilizamos #set para armazenar um valor em um ArrayList. A chamada do método *m
 # 🧠 Exercício 1 — Criando e exibindo uma lista
 
 **Dificuldade:** Fácil
-
 ### 📘 Descrição
-
 Crie um método que recebe um inteiro `n` e retorna um `ArrayList<Integer>` contendo os números de `1` até `n`.
-
 ### 🧩 Exemplo
-
 ```java
 Input: n = 5
 Output: [1, 2, 3, 4, 5]
 ```
-
 ### 🎯 O que se espera
-
 - Uso de `ArrayList`
-    
 - Uso de `add`
-    
-
 ### 💡 Dica
-
 Use um `for` simples de `1` até `n`.
+
+
+
 
 ---
 
