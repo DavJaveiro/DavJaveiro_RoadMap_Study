@@ -313,23 +313,364 @@ As classes que implementam a interface Java #List (parte da API *java.util*) for
 - Retornar o tamanho da lista (método #size)
 - Acessar sequencialmente todos os elementos da lista sem ter que manipular um índice;
 
-O símbolo *E* na Tabela 2.4 é um parâmetro de tipo. Parâmetros de tipo são análogos a parâmetros de método. Na declaração de uma interface ou classe, o parâmetro de tipo representa o tipo de dados de todos os objetos
+O símbolo *E* na Tabela 2.4 é um parâmetro de tipo. Parâmetros de tipo são análogos a parâmetros de método. Na declaração de uma interface ou classe, o parâmetro de tipo representa o tipo de dados de todos os objetos  armazenados em uma coleção. Embora todas as classes suportem as operações da Tabela 2.4, elas não as realizam com o mesmo grau de eficiência. Os tipos de operações que pretendemos realizar em uma aplicação específica devem influenciar a nossa decisão sobre qual classe de #List utilizar.
 
+!![image-20261154717426.png](/image-20261154717426.png)
 
+#RandomAccess: é uma interface marcador *marker interface*. Ela não possuí métodos, ela serve para indicar uma característica da classe, ou seja, que a lista permite acesso rápido (O(1)) a qualquer posição pelo índice. 
 
+Se uma classe **implementa** *RandomAccess*, ela está dizendo para a JVM e para os frameworks: 
+*Pode acessar meus elementos por índice*.
 
+Exemplo:
+```java
+List<String> list = new ArrayList<>();
 
+list.get(500_000);
+```
 
+Uma funcionalidade que a estrutura de dados array fornece que essas classes não fornecem é a capacidade de armazenar valores de tipos primitivos. As classes *List* armazenam referências a #Objects, portanto, todos os valores de tipo primitivo devem ser encapsulados #wrapped em objetos. 
 
+A classe #Vector foi depreciada...
 
+## The ArrayList Class
+A classe mais simples que implementa a interface *List* é a classe #ArrayList. Um objeto #ArrayList é uma melhoria em relação a um objeto array, pois suporta todas as operações recém-listadas. Objetos ArrayList são usados com mais frequência quando um programador deseja ser capaz de aumentar uma lista adicionando novos elementos ao final, mas ainda precisa da capacidade de acessar os elementos armazenados na lista em ordem arbitrária. O tamanho de um ArrayList aumenta automaticamente conforme novos elementos são adicionados a ele, e o tamanho diminui conforme elementos são removidos. Um objeto ArrayList possui um método de instância #size que retorna o seu tamanho atual. Cada objeto ArrayList tem uma capacidade, que é o número de elementos que ele pode armazenar. Se adicionarmos um novo elemento a um #ArrayList cujo tamanho atual é igual à sua capacidade, <span style="background:#affad1">a capacidade é aumentada automaticamente</span> (a eficiência diminui, essa operação de redimensionamento é custosa (O(N)))
 
+> A classe #list do Python é semelhante à classe ArrayList. Ambas podem armazenar uma coleção de objetos e ambas se expandem automaticamente quando o espaço extra é necessário. Ambas possuem métodos para adicionar elementos, inserir elementos e obter o comprimento da lista. Mas não podemos usar a notação de índice de array scores[3] com um ArrayList, mas podemos com uma lista Python.
 
+**Exemplo 2.8** [[ArrayListStudy.java]]
 
+As listas referenciadas por myList e yourList são objetos `ArrayList<String>`. A variável *youtList* é declarada como tipo List na primeira instrução...
 
+Se removermos um elemento de um objeto ArrayList, o tamanho diminui automaticamente, e os elementos seguintes ao removido deslocam-se para preencher o espaço vago. Isso é o mesmo que quando alguém sai de uma fila de ingressos; as pessoas atrás movem-se todas para frente. 
 
+Embora um ArrayList seja uma coleção indexada, não podemos acessar seus elementos usando um subscrito colchetes. Em vez disso, devemos utilizar o método #get para acessar seus elementos. Por exemplo, a instrução *String dwarf = myList.get(2)* armazena uma referência ao objeto string "Jumpy" na variável dwarf, sem alterar myList.
 
+Utilizamos #set para armazenar um valor em um ArrayList. A chamada do método *myList.set(2, "Sneezy")* armazena uma referência à String "Sneezy" no índice 2, substituindo a referência à String. No entanto, a variável ainda é referenciada...
 
+*Insights*
+- **Capacidade vs. Tamanho (Otimização Oculta):** o texto menciona a "capacidade inicial de 10". No LeetCode, se sabemos que vamos inserir 10.000 elementos, nunca devemos fazer *New ArrayList<>()*. Isso forçará o Java a redimensionar o array interno múltiplas vezes... A prática recomendada é usar *new ArrayList<>(1000)*. Isso alocará a memória de uma vez só, garantindo complexidade $O(N)$ pura na construção, sem overhead de cópia.
 
+**Exercícios para amanhã: (16/01/2026)**
+- **1 → 7**: constroem a base (operações, iteração, lógica)
+    
+- **8 → 10**: nível **LeetCode real** (pensamento algorítmico + uso correto de `ArrayList`)
+    
+- Todos com:
+    
+    - 📘 **Descrição**
+        
+    - 🧩 **Exemplo**
+        
+    - 🎯 **O que se espera**
+        
+    - 💡 **Dicas**
+        
+
+> **Regra do jogo:**  
+> Use `ArrayList` sempre que possível (não usar Streams nos primeiros exercícios).
+
+---
+
+# 🧠 Exercício 1 — Criando e exibindo uma lista
+
+**Dificuldade:** Fácil
+
+### 📘 Descrição
+
+Crie um método que recebe um inteiro `n` e retorna um `ArrayList<Integer>` contendo os números de `1` até `n`.
+
+### 🧩 Exemplo
+
+```java
+Input: n = 5
+Output: [1, 2, 3, 4, 5]
+```
+
+### 🎯 O que se espera
+
+- Uso de `ArrayList`
+    
+- Uso de `add`
+    
+
+### 💡 Dica
+
+Use um `for` simples de `1` até `n`.
+
+---
+
+# 🧠 Exercício 2 — Soma dos elementos
+
+**Dificuldade:** Fácil
+
+### 📘 Descrição
+
+Dado um `ArrayList<Integer>`, retorne a soma de todos os elementos.
+
+### 🧩 Exemplo
+
+```java
+Input: [1, 2, 3, 4]
+Output: 10
+```
+
+### 🎯 O que se espera
+
+- Percorrer a lista corretamente
+    
+- Entender `get(i)` e `size()`
+    
+
+### 💡 Dica
+
+Comece a soma com `0`.
+
+---
+
+# 🧠 Exercício 3 — Remover números pares
+
+**Dificuldade:** Fácil → Média
+
+### 📘 Descrição
+
+Dado um `ArrayList<Integer>`, remova **todos os números pares**.
+
+### 🧩 Exemplo
+
+```java
+Input: [1, 2, 3, 4, 5, 6]
+Output: [1, 3, 5]
+```
+
+### 🎯 O que se espera
+
+- Remoção correta
+    
+- Não pular elementos
+    
+
+### 💡 Dica
+
+Iterar de trás para frente evita erros.
+
+---
+
+# 🧠 Exercício 4 — Contar ocorrências
+
+**Dificuldade:** Média
+
+### 📘 Descrição
+
+Dado um `ArrayList<String>` e uma `String alvo`, conte quantas vezes ela aparece.
+
+### 🧩 Exemplo
+
+```java
+Input: ["java", "python", "java", "go"], alvo = "java"
+Output: 2
+```
+
+### 🎯 O que se espera
+
+- Uso correto de `equals`
+    
+- Lógica de contagem
+    
+
+### 💡 Dica
+
+Nunca use `==` para comparar `String`.
+
+---
+
+# 🧠 Exercício 5 — Inverter a lista
+
+**Dificuldade:** Média
+
+### 📘 Descrição
+
+Implemente um método que inverte um `ArrayList<Integer>` **sem usar Collections.reverse()**.
+
+### 🧩 Exemplo
+
+```java
+Input: [1, 2, 3, 4]
+Output: [4, 3, 2, 1]
+```
+
+### 🎯 O que se espera
+
+- Manipulação de índices
+    
+- Troca de elementos
+    
+
+### 💡 Dica
+
+Use dois ponteiros: início e fim.
+
+---
+
+# 🧠 Exercício 6 — Remover duplicados
+
+**Dificuldade:** Média → Alta
+
+### 📘 Descrição
+
+Dado um `ArrayList<Integer>`, retorne uma nova lista **sem elementos duplicados**, mantendo a ordem.
+
+### 🧩 Exemplo
+
+```java
+Input: [1, 2, 2, 3, 1]
+Output: [1, 2, 3]
+```
+
+### 🎯 O que se espera
+
+- Lógica de verificação
+    
+- Preservar ordem
+    
+
+### 💡 Dica
+
+Use `contains()` ou uma lista auxiliar.
+
+---
+
+# 🧠 Exercício 7 — Interseção de duas listas
+
+**Dificuldade:** Alta
+
+### 📘 Descrição
+
+Dadas duas listas `ArrayList<Integer>`, retorne uma nova lista contendo apenas os elementos comuns.
+
+### 🧩 Exemplo
+
+```java
+Input: [1, 2, 3], [2, 3, 4]
+Output: [2, 3]
+```
+
+### 🎯 O que se espera
+
+- Comparação entre listas
+    
+- Evitar duplicatas no resultado
+    
+
+### 💡 Dica
+
+Itere na menor lista para otimizar.
+
+---
+
+# 🚀 Exercício 8 — Two Sum (LeetCode clássico)
+
+**Dificuldade:** LeetCode Easy → Medium
+
+### 📘 Descrição
+
+Dado um `ArrayList<Integer>` e um inteiro `target`, retorne os **índices** de dois números que somam `target`.
+
+### 🧩 Exemplo
+
+```java
+Input: nums = [2, 7, 11, 15], target = 9
+Output: [0, 1]
+```
+
+### 🎯 O que se espera
+
+- Manipular índices corretamente
+    
+- Não usar o mesmo elemento duas vezes
+    
+
+### 💡 Dica
+
+Primeiro resolva com dois loops (`O(n²)`), depois pense em otimização.
+
+---
+
+# 🚀 Exercício 9 — Remove Element (in-place)
+
+**Dificuldade:** LeetCode Medium
+
+### 📘 Descrição
+
+Remova todas as ocorrências de um valor `val` **in-place** e retorne o novo tamanho da lista.
+
+### 🧩 Exemplo
+
+```java
+Input: nums = [3,2,2,3], val = 3
+Output: 2
+Lista final: [2,2]
+```
+
+### 🎯 O que se espera
+
+- Manipulação direta da lista
+    
+- Controle de índices após remoção
+    
+
+### 💡 Dica
+
+Itere de trás para frente.
+
+---
+
+# 🚀 Exercício 10 — Merge Sorted Lists
+
+**Dificuldade:** LeetCode Medium → Hard
+
+### 📘 Descrição
+
+Dadas duas listas **ordenadas**, mescle ambas em uma única lista ordenada.
+
+### 🧩 Exemplo
+
+```java
+Input: [1,2,4], [1,3,4]
+Output: [1,1,2,3,4,4]
+```
+
+### 🎯 O que se espera
+
+- Uso eficiente de índices
+    
+- Complexidade O(n + m)
+    
+
+### 💡 Dica
+
+Use dois ponteiros, um para cada lista.
+
+---
+
+## 🧩 Caminho de aprendizado (importante)
+
+- **1–3** → fundamentos de ArrayList
+    
+- **4–5** → comparação e manipulação
+    
+- **6–7** → lógica + controle de duplicatas
+    
+- **8–10** → pensamento algorítmico real (LeetCode)
+    
+
+Se quiser, no próximo passo eu posso:
+
+- resolver **apenas o 1 ao 3**
+    
+- criar **testes no estilo LeetCode**
+    
+- ou corrigir suas soluções como se fosse um code review profissional 💻
 
 
 
