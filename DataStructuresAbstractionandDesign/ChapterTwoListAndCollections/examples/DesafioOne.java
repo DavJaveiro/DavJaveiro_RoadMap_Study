@@ -14,8 +14,6 @@ public class DesafioOne {
             
         }
         System.out.println(numeros);
-
-
     }
 
     

@@ -396,27 +396,18 @@ Use um `for` simples de `1` até `n`.
 # 🧠 Exercício 2 — Soma dos elementos
 
 **Dificuldade:** Fácil
-
 ### 📘 Descrição
-
 Dado um `ArrayList<Integer>`, retorne a soma de todos os elementos.
-
 ### 🧩 Exemplo
-
 ```java
 Input: [1, 2, 3, 4]
 Output: 10
 ```
 
 ### 🎯 O que se espera
-
 - Percorrer a lista corretamente
-    
 - Entender `get(i)` e `size()`
-    
-
 ### 💡 Dica
-
 Comece a soma com `0`.
 
 ---
@@ -424,7 +415,6 @@ Comece a soma com `0`.
 # 🧠 Exercício 3 — Remover números pares
 
 **Dificuldade:** Fácil → Média
-
 ### 📘 Descrição
 
 Dado um `ArrayList<Integer>`, remova **todos os números pares**.
@@ -439,7 +429,6 @@ Output: [1, 3, 5]
 ### 🎯 O que se espera
 
 - Remoção correta
-    
 - Não pular elementos
     
 
