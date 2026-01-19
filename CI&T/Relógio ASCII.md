@@ -61,9 +61,7 @@ Antes de qualquer código, você precisa decidir **qual problema está resolvend
 - foco em:
     
     - strings
-        
     - formatação
-        
     - atualização em tempo real
         
 
@@ -120,29 +118,23 @@ Se tudo ficar misturado, o código vira caos.
 Conceito teórico:
 
 - o sistema operacional fornece a hora
-    
+    `LocalDateTime now = LocalDateTime.now();`
 - você trabalha com:
-    
     - horas
-        
     - minutos
-        
     - segundos
-        
+Para isso, vamos formatar usando o estilo de modelo local com base no ambiente de execução:
+`DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM);
 
 ⚠️ Importante:
 
 - **tempo é estado**
-    
 - o relógio é apenas uma **visualização desse estado**
     
 
 Perguntas que você deve se fazer:
-
 - vou atualizar a cada segundo?
-    
 - preciso mostrar milissegundos?
-    
 - preciso converter formato?
     
 
@@ -155,23 +147,17 @@ Você **substitui caracteres em posições específicas**
 
 Conceitos essenciais:
 
-- largura fixa
-    
+- largura fix
 - altura fixa
-    
 - preenchimento com espaço `" "`
-    
 - sobrescrita de posições
     
 
 📌 Normalmente você:
 
 1. cria uma matriz vazia
-    
 2. preenche com espaços
-    
 3. escreve símbolos específicos
-    
 4. imprime tudo
     
 
