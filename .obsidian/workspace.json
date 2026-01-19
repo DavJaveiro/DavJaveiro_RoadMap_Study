@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+                "file": "CI&T/Relógio ASCII.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter Two - Lists and the Collections Framework"
+              "title": "Relógio ASCII"
             }
           }
         ]
@@ -218,8 +218,14 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "8287cd4694777937",
+  "active": "fa0bb0da503d4068",
   "lastOpenFiles": [
+    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
+    "CI&T/Relógio ASCII.md",
+    "CI&T",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/FiveJava.java",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/FourJava.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Three.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/TwoSum.class",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/TwoSum.java",
@@ -227,12 +233,8 @@
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/DesafioOne.class",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/DesafioOne.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ArrayListStudy.class",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ArrayListStudy.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ArrayList.java",
     "image-20261154717426.png",
     "Sem título 5.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
     "Fundamentals of Software Engineering/Chapter 2 - Reading Code.md",
     "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",

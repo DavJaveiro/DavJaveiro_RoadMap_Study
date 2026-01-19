@@ -452,16 +452,11 @@ Dado um `ArrayList<String>` e uma `String alvo`, conte quantas vezes ela aparece
 Input: ["java", "python", "java", "go"], alvo = "java"
 Output: 2
 ```
-
 ### 🎯 O que se espera
 
 - Uso correto de `equals`
-    
-- Lógica de contagem
-    
-
+- Lógica de contagens
 ### 💡 Dica
-
 Nunca use `==` para comparar `String`.
 
 ---
@@ -469,11 +464,8 @@ Nunca use `==` para comparar `String`.
 # 🧠 Exercício 5 — Inverter a lista
 
 **Dificuldade:** Média
-
 ### 📘 Descrição
-
 Implemente um método que inverte um `ArrayList<Integer>` **sem usar Collections.reverse()**.
-
 ### 🧩 Exemplo
 
 ```java
@@ -484,12 +476,8 @@ Output: [4, 3, 2, 1]
 ### 🎯 O que se espera
 
 - Manipulação de índices
-    
 - Troca de elementos
-    
-
 ### 💡 Dica
-
 Use dois ponteiros: início e fim.
 
 ---
