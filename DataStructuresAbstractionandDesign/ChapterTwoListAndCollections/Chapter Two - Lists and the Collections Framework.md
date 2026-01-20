@@ -334,7 +334,7 @@ Uma funcionalidade que a estrutura de dados array fornece que essas classes não
 A classe #Vector foi depreciada...
 
 ## The ArrayList Class
-A classe mais simples que implementa a interface *List* é a classe #ArrayList. Um objeto #ArrayList é uma melhoria em relação a um objeto array, pois suporta todas as operações recém-listadas. Objetos ArrayList são usados com mais frequência quando um programador deseja ser capaz de aumentar uma lista adicionando novos elementos ao final, mas ainda precisa da capacidade de acessar os elementos armazenados na lista em ordem arbitrária. O tamanho de um ArrayList aumenta automaticamente conforme novos elementos são adicionados a ele, e o tamanho diminui conforme elementos são removidos. Um objeto ArrayList possui um método de instância #size que retorna o seu tamanho atual. Cada objeto ArrayList tem uma capacidade, que é o número de elementos que ele pode armazenar. Se adicionarmos um novo elemento a um #ArrayList cujo tamanho atual é igual à sua capacidade, <span style="background:#affad1">a capacidade é aumentada automaticamente</span> (a eficiência diminui, essa operação de redimensionamento é custosa (O(N)))
+A classe mais simples que implementa a interface *List* é a classe #ArrayList. Um objeto #ArrayList <span style="background:#d3f8b6">é uma melhoria em relação a um objeto array</span>, pois suporta todas as operações recém-listadas. Objetos ArrayList são usados com mais frequência quando um programador deseja ser capaz de aumentar uma lista adicionando novos elementos ao final, mas ainda precisa da capacidade de acessar os elementos armazenados na lista em ordem arbitrária. O tamanho de um ArrayList aumenta automaticamente conforme novos elementos são adicionados a ele, e o tamanho diminui conforme elementos são removidos. Um objeto ArrayList possui um método de instância #size que retorna o seu tamanho atual. Cada objeto ArrayList tem uma capacidade, que é o número de elementos que ele pode armazenar. Se adicionarmos um novo elemento a um #ArrayList cujo tamanho atual é igual à sua capacidade, <span style="background:#affad1">a capacidade é aumentada automaticamente</span> (a eficiência diminui, essa operação de redimensionamento é custosa (O(N)))
 
 > A classe #list do Python é semelhante à classe ArrayList. Ambas podem armazenar uma coleção de objetos e ambas se expandem automaticamente quando o espaço extra é necessário. Ambas possuem métodos para adicionar elementos, inserir elementos e obter o comprimento da lista. Mas não podemos usar a notação de índice de array scores[3] com um ArrayList, mas podemos com uma lista Python.
 
@@ -388,7 +388,9 @@ Output: [1, 2, 3, 4, 5]
 ### 💡 Dica
 Use um `for` simples de `1` até `n`.
 
+Geralmente, no leetcode, precisamos implementar apenas o **método solicitado**, sem main, Scanner ou tratamento de entrada/saída... eles já fornecem a estrutura base.
 
+Podemos usar um tipo mais genérico, por exemplo, um 
 
 
 ---
@@ -643,4 +645,159 @@ Se quiser, no próximo passo eu posso:
 - ou corrigir suas soluções como se fosse um code review profissional 💻
 
 
+
+## Generic Collections
+The statement
+`List<String> myList = new ArrayList<>();`
+
+uses a language feature introduced in Java 5.0 called *generic collections* (or *generics*). #Generics allow we to define a collection that contains references of objetos of a specific type. The declaration for *myList* specifies that it is a #List of #String where String is a *type parameter*. Furthermore (Além disso), *myList* references an ArrayList< String> object. Therefore, only references to objects of type **String** can be stored in myList, and all items retrieved would be of type String.
+
+*Syntax*: creating a Generic Collection
+**Form:**
+*CollectionClassName< E> variable = new CollectionClassName<>();*
+*CollectionClassName< E> variable = new CollectionClassName< E>()*;
+*var variable = new CollectionClassName< E>() *;
+
+**Example:**
+*List< Person> people = new ArrayList<>();*
+*ArrayList< Integer> numList1 = new ArrayList<>();*
+*var numList2 = new ArrayList< Integer>();*
+
+**MEANING:**
+Inicialmente, um objeto *CollectionClassName< E>* vazio pode ser usado para armazenar referências a objetos do tipo E (o parâmetro type). O tipo de objeto real armazenado em um objeto do tipo *CollectionClassName< E>* é especificado quando o objeto é criado. Se a CollectionClassName à esquerda for uma interface, a *CollectionClassName* à direita deverá ser uma classe que a implemente. Caso contrário, deverá ser a mesma classe ou uma subclasse da classe à esquerda.
+
+The examples above show different ways to create an *ArrayList*. In this text, we often specify the interface name on the left of the = operator and the implementing class name on the right as shown in the first example. Como o parâmetro de tipo E deve ser o mesmo em ambos os lados do operador de atribuição, o Java 7 introduziu o operador de diamante <>, que elimina a necessidade de especificar o parâmetro de tipos duas vezes. Seguiremos essa convenção. Em alguns casos, declararemos o tipo de variável em uma instrução e a criaremos em uma instrução posterior.
+
+O compilador Java infere o tipo da expressão à esquerda e aplica ao lado direito.
+
+**Antes do Java 7 (sem diamante)**
+`ArrayList<Integer> list = new ArrayList<Integer>();`
+                                            **Tínhamos que repetir**
+
+
+**Atenção Importante**
+Não funciona com classes anônimas
+
+Java 10 introduced the #keyword #var, which allows us to simplify statements as shown in the declaration of *numList2* above. The keyword var can be use for local variable declarations when the data type of the variable can be inferred by the compiler as discussed in the syntax display at the end of Appendix Section A.1. 
+
+**Program Style**
+The examples above show different ways to create an *ArrayList*. In this text, we normally specify the interface name on the left of the = operator and the implementing class name on the right as shown in the first example in the Syntax box Creating a Generic Collection. Since the type parameter E must be the same on both sides of the assignment operator (=), we will also use <> rather than specify the type parameter twice. If we use var to declare an ArrayList, then the type paramter appears on the righ side of =.
+
+**PitFall**
+The advantage of generics is that the compiler can ensure that all operations involving objects referenced by a generic ArrayList are "safe" and will not cause exceptions during run time. Any type of incompatibility will be detected during compilation. If *myList* is type ArrayList< String>, the statement *myList.add(35);* will not compile because 35 (type int) is not compatbile withn type String. 
+
+Além de uma verificação de tipo mais rigorosa, outra vantagem dos genéricos é que eles nos permitem escrever classes cujos métodos podem ser usados para fazer as mesmas operações em objetos de tipos diferentes. Por exemplo, se UnBox< E> for uma classe genérica com parâmetro de tipo E, poderemos usá-la para processar uma coleção de objetos Integer passando a ela o parâmetro de tipo Integer ou processar uma coleção de objetos String passando a ela o parâmetro de tipo String.
+
+
+**Exercícios for Section 2.2**
+2. For each statement(s) below, indicate whether it is valid in Java. If not, indicate how you might change it so that it will compile without error.
+C. `ArrayList<Integer> them = new ArrayList<String>;` o correto é passarmos o tipo de dado como Integer do lado direito da declaração do ArrayList< Integer> 
+
+3. Show three declaration statements that create a reference *myClowns* to an ArrayList of Clown objects. Use a #List interface in one, var in one, and <> where applicable.  Assume the class Clown has been previously declared.
+```java
+public class teste{
+	ArrayList<Clown> myClowns = new ArrayList<>();
+	List<Clown> myClowns = new ArrayList<>();
+	var myClowns = new ArrayList<Clown>();
+}
+```
+## 2.3 Applications of ArrayList
+We illustrate two applications of ArrayList objects next. We also introduce a different version of the for statement.
+
+**Example 2.9** The following statements create an *ArrayList< Integer>* object and load it with the values stored in a type int[] array.
+
+```java
+var some = new ArrayList<Integer>();
+int[] nums = {5, 7, 2, 15};
+for (int numsNext : nums) {
+	some.add(numsNext);
+	System.out.println(some);
+}
+```
+
+A instrução *some.add(numsNext)*
+
+recupera um valor da matriz nums (tipo int[]), envolve-o automaticamente em um objeto Integer e armazena uma referência a esse objeto em some (tipo ArrayList< Integer>). A instrução println mostra como a lista cresce à medida que cada número é inserido.
+
+Loop exit occurs after the last Integer object is stored in some. The output displayed by this fragment follows:
+[5]
+[5, 7]
+[5, 7, 2]
+[5, 7, 2, 15]
+
+A instrução for no Exemplo 2.9 usa a instrução for aprimorada (for each). O cabeçalho do loop for (int numsNext: nums) fornece acesso sequencial a cada elemento da matriz nums, começando com nums[0]. A instrução for aprimorada também pode ser usada para acessar elementos de uma lista. 
+
+The following fragment computes and displays the sum (29) of the Integer object values in ArrayList some.
+```java
+int sum = 0;
+for (Integer someNext : some) {
+	sum += someNext;
+}
+System.out.println("sum is " + sum);
+```
+Embora possa parecer um desperdício executar essas operações quando já temos uma matriz de ints, o objetivo deste exemplo é ilustrar as etapas necessárias para processar uma coleção de objetos Integer referenciados por um ArrayList< Integer >.
+
+**Syntax** The Enhanced for Loop (for each)
+FORM:
+for (formalParameter : expression) {...}
+
+**EXAMPLE:**
+for (String nextStr : myList) {...}
+for (int nextInt : aList) {...}
+
+**MEANING:**
+During each repetition of the loop, the variable specified by *formamParameter* accesses the next element of *expression*, starting with the first elemento and ending with the last.
+
+**A Phone Directory Application**
+Se quisermos escrever um programa para armazenar uma lista de nomes e números de telefone, podemos usar a classe **DirectoryEntry** para representar cada item em nossa lista telefônica.
+
+```java
+public class DirectoryEntry {
+	String name;
+	String number;
+}
+```
+Podemos declarar um objeto ArrayList< DirectoryEntry> para armazenar uma lista telefônica (theDirectory) com os nomes e números de telefone de nossos amigos:
+
+```java
+private List<DirectoryEntry> theDirectory = new ArrayList<>();
+```
+We can use the statement
+```java
+theDirecotry.add(new DirectoryEntry("Jane Smith", "555-549-1234"));
+```
+to add an entry to theDirectory. If we want to retrieve the entry for a particular name (String aName), we can use the statements
+```java
+int index = theDirecotry.indexOf(new DirectoryEntry(aName, ""));
+```
+to locate the entry for the person referenced by aName. Method indexOf searches theDirectory by applying the equals method for class DirectoryEntry to each element of theDirectory. We are assuming that method DirectoryEntre.equals compares the name field of each element to the name field of the argument of indexOf (an anonymous object with the desired name). The statement
+```java
+if (index != -1)
+	dE = theDirectory.get(index);
+else
+	dE = null;
+```
+uses ArrayList.get to retrieve the desired entry (name and phone number) if found and stores a reference to it in dE(type DirectoryEntry). Otherwise, null is stored in dE.
+
+**Exercises for Section 2.3**
+1. What does the following code fragment do?
+List< Double> myList = new ArrayList<>(); cria um ArrayList genérico, diretamente da interface List com tipo Double, ou, número de ponto flutuante. O compilador garante que só valores #Double podem ser adicionados #Type-safe, com #autoboxing, podendo adicionarmos tanto #double primitivo quanto objetos #Double.
+
+
+myList.add(3.4); adiciona um elemento com valor 3.4 ao ArrayList criado anteriormente; através do **autoboxing automático**, o compilador Java automaticamente converte #double primitivo 3.4 em um objeto Double.
+
+
+
+myList.add(5.0); - realiza o auto autoboxing, adicionando um valor 5.0
+
+myList.add(myList.get(0) + myList.get(1));
+
+
+double result = myList.get(2); - realiza o unboxing para que a variável do tipo primitivo double, result, possa retornar o valor do elemento de índice 2 em nossa lista.
+
+
+System.out.println("Result is " + result);
+
+2. **Soma de Elementos em índices Pares**
+Você recebe uma lista `myList` contendo números reais (tipo `Double`). Escreva uma função que calcule e retorne a soma de todos os elementos que estão em **posições de índice par** na lista.
 
