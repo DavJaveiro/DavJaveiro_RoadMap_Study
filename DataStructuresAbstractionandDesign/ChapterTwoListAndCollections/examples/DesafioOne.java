@@ -6,18 +6,16 @@ public class DesafioOne {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite um número inteiro:");
         int n = scanner.nextInt();
-
-        ArrayList<Integer> numeros = new ArrayList<>();
-
+    
+        ArrayList<Integer> numeros = returnNewArray();
         for ( int i = 1; i <= n; i++) {
             numeros.add(i);
-            
         }
         System.out.println(numeros);
     }
 
-    
-
-
-
+    private static ArrayList<Integer> returnNewArray() {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        return numbers;
+    }
 }
