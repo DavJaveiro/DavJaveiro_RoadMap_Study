@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3c117f20a8a04494",
+        "id": "ca6e146ff190f15c",
         "type": "tabs",
         "children": [
           {
-            "id": "6ba3aa58552b4a13",
+            "id": "b730f9c38305d397",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -218,10 +218,21 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "6ba3aa58552b4a13",
+  "active": "b730f9c38305d397",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ElementsSum.java",
+=======
+    "⭐LeetCode/Sem título.canvas",
+>>>>>>> 1026f8151ea9df3eb969e36f5577fa5a9c75be8e
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+    "⭐LeetCode",
+    "SoftSkills/Livros.md",
+    "SoftSkills/As 48 Leis do Poder.md",
+    "SoftSkills",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaPar.class",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaPar.java",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaPar.ava",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.class",
     "CI&T/Relógio ASCII.md",
@@ -229,11 +240,6 @@
     "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
     "CI&T",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/FiveJava.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/FourJava.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Three.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/TwoSum.class",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/TwoSum.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/TwoS",
     "image-20261154717426.png",
     "Sem título 5.md",
     "Fundamentals of Software Engineering/Chapter 2 - Reading Code.md",

@@ -1,0 +1,472 @@
+{
+  "nodes": [
+    {
+      "id": "2ba377d3e4a88262",
+      "type": "text",
+      "text": "**Arrays & Hashing **",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -320,
+      "y": -300,
+      "width": 360,
+      "height": 80,
+      "color": "4"
+    },
+    {
+      "id": "f8cf9a098b2f95d4",
+      "type": "text",
+      "text": "**Two Pointers**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -600,
+      "y": -20,
+      "width": 260,
+      "height": 60
+    },
+    {
+      "id": "0c60cf75928f8558",
+      "type": "text",
+      "text": "**Stack**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -130,
+      "y": -20,
+      "width": 260,
+      "height": 60
+    },
+    {
+      "id": "76d264ec982f3745",
+      "type": "text",
+      "text": "**Trees**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -540,
+      "y": 580,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "16307458ae268981",
+      "type": "text",
+      "text": "| Status | Star | Problem                                                                                                                                                                                    | Difficulty | Solution                                         |\n| ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------ |\n|        |      | [Contains Duplicate](https://neetcode.io/problems/duplicate-integer/question?list=neetcode150)   [](https://leetcode.com/problems/contains-duplicate/)                                     | Easy       | https://neetcode.io/solutions/contains-duplicate |\n|        |      | [Valid Anagram](https://neetcode.io/problems/is-anagram/question?list=neetcode150)   [](https://leetcode.com/problems/valid-anagram/)                                                      | Easy       |                                                  |\n|        |      | [Two Sum](https://neetcode.io/problems/two-integer-sum/question?list=neetcode150)   [](https://leetcode.com/problems/two-sum/)                                                             | Easy       |                                                  |\n|        |      | [Group Anagrams](https://neetcode.io/problems/anagram-groups/question?list=neetcode150)   [](https://leetcode.com/problems/group-anagrams/)                                                | Medium     |                                                  |\n|        |      | [Top K Frequent Elements](https://neetcode.io/problems/top-k-elements-in-list/question?list=neetcode150)   [](https://leetcode.com/problems/top-k-frequent-elements/)                      | Medium     |                                                  |\n|        |      | [Encode and Decode Strings](https://neetcode.io/problems/string-encode-and-decode/question?list=neetcode150)   [](https://leetcode.com/problems/encode-and-decode-strings/)                | Medium     |                                                  |\n|        |      | [Product of Array Except Self](https://neetcode.io/problems/products-of-array-discluding-self/question?list=neetcode150)   [](https://leetcode.com/problems/product-of-array-except-self/) | Medium     |                                                  |\n|        |      | [Valid Sudoku](https://neetcode.io/problems/valid-sudoku/question?list=neetcode150)   [](https://leetcode.com/problems/valid-sudoku/)                                                      | Medium     |                                                  |\n|        |      | [Longest Consecutive Sequence](https://neetcode.io/problems/longest-consecutive-sequence/question?list=neetcode150)   [](https://leetcode.com/problems/longest-consecutive-sequence/)      | Medium     |                                                  |\n|        |      | https://leetcode.com/problems/rotate-image/description/                                                                                                                                    | Medium     |                                                  |\n",
+      "styleAttributes": {},
+      "x": 540,
+      "y": -850,
+      "width": 1460,
+      "height": 590
+    },
+    {
+      "id": "d8d4c9d6ac211b51",
+      "type": "text",
+      "text": "**O que Aprender**\n- Manipulação de *int[]* e *String*;\n- #ArrayList<>: como funciona o redimensionamento dinâmico;\n- #HashMap< K, V> e #HashSet< E>: entender o contrato *hasCode()* e *equals()*;\n- Complexidade de tempo: Busca $O(1)$ vs $O(n)$;\n- *Technique*: Fixed-size Arrays vs Dynamic Arrays",
+      "styleAttributes": {
+        "textAlign": null
+      },
+      "x": 540,
+      "y": -1680,
+      "width": 480,
+      "height": 560
+    },
+    {
+      "id": "212bb824847d8473",
+      "type": "file",
+      "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+      "styleAttributes": {},
+      "x": 1200,
+      "y": -1680,
+      "width": 540,
+      "height": 560
+    },
+    {
+      "id": "53fde3fefda9bb16",
+      "type": "text",
+      "text": "**Sliding Window**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -400,
+      "y": 320,
+      "width": 260,
+      "height": 60
+    },
+    {
+      "id": "1b9a773744a782ff",
+      "type": "text",
+      "text": "**Linked List**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -50,
+      "y": 320,
+      "width": 260,
+      "height": 60
+    },
+    {
+      "id": "bef1160deb2b0e70",
+      "type": "text",
+      "text": "**Binary Search**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -780,
+      "y": 320,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "3e42e5f02552bb87",
+      "type": "text",
+      "text": "**Heap / Priority Queue**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -610,
+      "y": 1040,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "c0ead99180c78861",
+      "type": "text",
+      "text": "**Intervals**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -940,
+      "y": 1340,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "3b46ed4cf9f16492",
+      "type": "text",
+      "text": "**Greedy**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -537,
+      "y": 1340,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "b30d667344d2fe72",
+      "type": "text",
+      "text": "**Advanced Graphs**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -160,
+      "y": 1340,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "05d4c2b0a6c29dc5",
+      "type": "text",
+      "text": "**Graphs**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -50,
+      "y": 1040,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "82744320d29e09dd",
+      "type": "text",
+      "text": "**1-D DP**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 470,
+      "y": 1040,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "b991003b4c0f0ad2",
+      "type": "text",
+      "text": "**2-D DP**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 270,
+      "y": 1340,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "2ce9b5b8a7541567",
+      "type": "text",
+      "text": "**Bit Manipulation**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 650,
+      "y": 1340,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "426a171a900b2618",
+      "type": "text",
+      "text": "**Math & Geometry**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 190,
+      "y": 1620,
+      "width": 280,
+      "height": 60
+    },
+    {
+      "id": "17cba7d51eb1a3a4",
+      "type": "text",
+      "text": "**Tries**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": -870,
+      "y": 800,
+      "width": 260,
+      "height": 60
+    },
+    {
+      "id": "d2d411a4bbec2acf",
+      "type": "text",
+      "text": "**Backtracking**",
+      "styleAttributes": {
+        "textAlign": "center"
+      },
+      "x": 90,
+      "y": 800,
+      "width": 280,
+      "height": 60
+    }
+  ],
+  "edges": [
+    {
+      "id": "e2c656e3f947e9cf",
+      "styleAttributes": {
+        "path": "short-dashed"
+      },
+      "fromNode": "2ba377d3e4a88262",
+      "fromSide": "right",
+      "toNode": "d8d4c9d6ac211b51",
+      "toSide": "left",
+      "color": "4"
+    },
+    {
+      "id": "15a76d7a387945e8",
+      "styleAttributes": {},
+      "fromNode": "2ba377d3e4a88262",
+      "fromSide": "bottom",
+      "toNode": "f8cf9a098b2f95d4",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "5c66f5043f70df37",
+      "styleAttributes": {},
+      "fromNode": "2ba377d3e4a88262",
+      "fromSide": "bottom",
+      "toNode": "0c60cf75928f8558",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "50a5999ebbd8407b",
+      "styleAttributes": {},
+      "fromNode": "f8cf9a098b2f95d4",
+      "fromSide": "bottom",
+      "toNode": "bef1160deb2b0e70",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "fa20a1e17e78435a",
+      "styleAttributes": {},
+      "fromNode": "f8cf9a098b2f95d4",
+      "fromSide": "bottom",
+      "toNode": "53fde3fefda9bb16",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "c23f19c749fa95b5",
+      "styleAttributes": {},
+      "fromNode": "d8d4c9d6ac211b51",
+      "fromSide": "right",
+      "toNode": "212bb824847d8473",
+      "toSide": "left"
+    },
+    {
+      "id": "0db39ed526d07b29",
+      "styleAttributes": {},
+      "fromNode": "f8cf9a098b2f95d4",
+      "fromSide": "bottom",
+      "toNode": "1b9a773744a782ff",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "1fe82ac02b26357c",
+      "styleAttributes": {},
+      "fromNode": "bef1160deb2b0e70",
+      "fromSide": "bottom",
+      "toNode": "76d264ec982f3745",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "9b88283dc8cbd199",
+      "styleAttributes": {},
+      "fromNode": "1b9a773744a782ff",
+      "fromSide": "bottom",
+      "toNode": "76d264ec982f3745",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "9ede68235b261fb9",
+      "styleAttributes": {},
+      "fromNode": "76d264ec982f3745",
+      "fromSide": "bottom",
+      "toNode": "17cba7d51eb1a3a4",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "9dfb1f2484c3126f",
+      "styleAttributes": {},
+      "fromNode": "2ba377d3e4a88262",
+      "fromSide": "right",
+      "toNode": "16307458ae268981",
+      "toSide": "left"
+    },
+    {
+      "id": "0920643a38cf554b",
+      "styleAttributes": {},
+      "fromNode": "76d264ec982f3745",
+      "fromSide": "bottom",
+      "toNode": "3e42e5f02552bb87",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "ac78bf990fe44643",
+      "styleAttributes": {},
+      "fromNode": "76d264ec982f3745",
+      "fromSide": "bottom",
+      "toNode": "d2d411a4bbec2acf",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "56a80602f5b76e84",
+      "styleAttributes": {},
+      "fromNode": "3e42e5f02552bb87",
+      "fromSide": "bottom",
+      "toNode": "c0ead99180c78861",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "9e2fe46c7e49203c",
+      "styleAttributes": {},
+      "fromNode": "3e42e5f02552bb87",
+      "fromSide": "bottom",
+      "toNode": "3b46ed4cf9f16492",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "134a58c6b77b515e",
+      "styleAttributes": {},
+      "fromNode": "3e42e5f02552bb87",
+      "fromSide": "bottom",
+      "toNode": "b30d667344d2fe72",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "0f87abfca46fcd7a",
+      "styleAttributes": {},
+      "fromNode": "d2d411a4bbec2acf",
+      "fromSide": "bottom",
+      "toNode": "05d4c2b0a6c29dc5",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "6ebb44982a910930",
+      "styleAttributes": {},
+      "fromNode": "d2d411a4bbec2acf",
+      "fromSide": "bottom",
+      "toNode": "82744320d29e09dd",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "74f8ccc22cacbc39",
+      "styleAttributes": {},
+      "fromNode": "05d4c2b0a6c29dc5",
+      "fromSide": "bottom",
+      "toNode": "b30d667344d2fe72",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "b56a104e5e635bbc",
+      "styleAttributes": {},
+      "fromNode": "05d4c2b0a6c29dc5",
+      "fromSide": "bottom",
+      "toNode": "b991003b4c0f0ad2",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "05a88a667dbf807d",
+      "styleAttributes": {},
+      "fromNode": "82744320d29e09dd",
+      "fromSide": "bottom",
+      "toNode": "b991003b4c0f0ad2",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "7697d6f6d70ca722",
+      "styleAttributes": {},
+      "fromNode": "82744320d29e09dd",
+      "fromSide": "bottom",
+      "toNode": "2ce9b5b8a7541567",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "cec8bbd05ed7ce2c",
+      "styleAttributes": {},
+      "fromNode": "05d4c2b0a6c29dc5",
+      "fromSide": "bottom",
+      "toNode": "426a171a900b2618",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "86ed4279f6d462ab",
+      "styleAttributes": {},
+      "fromNode": "2ce9b5b8a7541567",
+      "fromSide": "bottom",
+      "toNode": "426a171a900b2618",
+      "toSide": "top",
+      "color": "1"
+    }
+  ],
+  "metadata": {}
+}

@@ -801,3 +801,12 @@ System.out.println("Result is " + result);
 2. **Soma de Elementos em índices Pares**
 Você recebe uma lista `myList` contendo números reais (tipo `Double`). Escreva uma função que calcule e retorne a soma de todos os elementos que estão em **posições de índice par** na lista.
 
+3. Explique por que o uso de um loop *for* indexado na Questão 2 é mais eficiente do que usar um loop *for aprimorado* para encontrar a soma desejada. Como podemos usar um *loop for aprimorado* para encontrar a soma desejada?
+	1. Loop for *indexado* possuí como variável do tipo int para percorrer o index por padrão;
+	2. Já o loop for *aprimorado* obtém o valor de cada elemento de nosso ArrayList, precisamos de uma maneira de obter o index de cada elemento dentro do loop for aprimorado;
+
+4. Escreva o código de nossa solução 2 usando um loop for aprimorado (for each)
+
+**Programming**
+
+## 2.4 Implementation of an ArrayList Class
