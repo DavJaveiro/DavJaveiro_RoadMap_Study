@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "5a73c61e8f8554cb",
+    "id": "4492628815d278a5",
     "type": "split",
     "children": [
       {
-        "id": "ca6e146ff190f15c",
+        "id": "77cfd42e0d830b78",
         "type": "tabs",
         "children": [
           {
-            "id": "b730f9c38305d397",
+            "id": "3ba4bf9ce54b9f55",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Chapter Two - Lists and the Collections Framework"
+              "title": "Nova aba"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "595ced5d00cfe0de",
+    "id": "b6749163adde1262",
     "type": "split",
     "children": [
       {
-        "id": "e94d17e5bbb15677",
+        "id": "b252f19a1cf577db",
         "type": "tabs",
         "children": [
           {
-            "id": "bc57c3762b0b7be0",
+            "id": "eb2f45f431938c62",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +44,7 @@
             }
           },
           {
-            "id": "b6e599405fd0c57a",
+            "id": "8ff341f202025ee2",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "472662f819d3ae89",
+            "id": "b5c8226e9beb48a7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,7 +71,7 @@
             }
           },
           {
-            "id": "71b7575217408679",
+            "id": "29df36aaf2950c00",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -88,24 +84,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 287.00802993774414,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "d899ce6ae60b2c92",
+    "id": "3db3f49db975a7e2",
     "type": "split",
     "children": [
       {
-        "id": "e3243dd56289ec90",
+        "id": "d82906b547d42db6",
         "type": "tabs",
         "children": [
           {
-            "id": "02aa6f7a3ec46b63",
+            "id": "4ac6f78bccaff732",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,25 +109,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Chapter 2 - Intelligent Agents"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "fb106616f2ca596b",
+            "id": "d2b83ffea62d5462",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Chapter 2 - Intelligent Agents"
+              "title": "Links de saída"
             }
           },
           {
-            "id": "3f9fa38b10761efd",
+            "id": "3e6f2dfcd80903cc",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -148,7 +141,7 @@
             }
           },
           {
-            "id": "ec7fd5b9db1167e8",
+            "id": "4fff91b3a6516976",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -162,22 +155,21 @@
             }
           },
           {
-            "id": "579730c54e7ca06e",
+            "id": "0780b5e1720bdee8",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Chapter 2 - Intelligent Agents"
+              "title": "Sumário"
             }
           },
           {
-            "id": "8287cd4694777937",
+            "id": "5e0f3570fdd5d7e9",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -218,33 +210,9 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "b730f9c38305d397",
+  "active": "5e0f3570fdd5d7e9",
   "lastOpenFiles": [
-<<<<<<< HEAD
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ElementsSum.java",
-=======
-    "⭐LeetCode/Sem título.canvas",
->>>>>>> 1026f8151ea9df3eb969e36f5577fa5a9c75be8e
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-    "⭐LeetCode",
-    "SoftSkills/Livros.md",
-    "SoftSkills/As 48 Leis do Poder.md",
-    "SoftSkills",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaPar.class",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaPar.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaPar.ava",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.java",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.class",
-    "CI&T/Relógio ASCII.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/AscClock.java",
-    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
-    "CI&T",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/FiveJava.java",
-    "image-20261154717426.png",
-    "Sem título 5.md",
-    "Fundamentals of Software Engineering/Chapter 2 - Reading Code.md",
-    "Fundamentals of Software Engineering/Chapter 1 - Programmer to Engineer.md",
-    "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
-    "image-2026113544955.png"
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SevenSegmentify.java",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Clock.java"
   ]
 }
