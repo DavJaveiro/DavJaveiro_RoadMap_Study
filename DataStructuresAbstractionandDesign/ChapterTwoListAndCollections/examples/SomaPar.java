@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Math;
 
 public class SomaPar{
     public static void main(String args[]) {
@@ -9,6 +10,16 @@ public class SomaPar{
 
         Double listaSomada = somaParAprimorado(myList);
         System.out.println(listaSomada);
+    }
+
+    public static Double somaIndicePar(ArrayList<Double> listaNumeros) {
+        Double total = 0.0;
+        for (int i = 0; i < listaNumeros.size(); i++){
+            if (i % 2 == 0 && i != 0) {
+                total += listaNumeros.get(i);
+            }
+        }
+        return total;
     }
 
     public static Double somaParAprimorado(ArrayList<Double> listNumerosDois) {

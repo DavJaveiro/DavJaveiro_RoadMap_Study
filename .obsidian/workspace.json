@@ -11,10 +11,14 @@
             "id": "3ba4bf9ce54b9f55",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Chapter Two - Lists and the Collections Framework"
             }
           }
         ]
@@ -84,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -210,8 +215,10 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5e0f3570fdd5d7e9",
+  "active": "3ba4bf9ce54b9f55",
   "lastOpenFiles": [
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSum2201.class",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSum2201.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SevenSegmentify.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Clock.java"
   ]
