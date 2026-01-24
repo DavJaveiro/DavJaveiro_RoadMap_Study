@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+                "file": "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter Two - Lists and the Collections Framework"
+              "title": "Capítulo 1 - Computer Abstractions and Technology"
             }
           }
         ]
@@ -217,6 +217,17 @@
   },
   "active": "5e0f3570fdd5d7e9",
   "lastOpenFiles": [
+    "image-20261232350698.png",
+    "image-2026123470742.png",
+    "image-20261233628262.png",
+    "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
+    "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
+    "Sem título",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Four2301.class",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/Four2301.java",
+    "DataStructuresAndAlgorithsmJavaScript/Using JavaScript - chapter 1.md",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+    "DataStructuresAndAlgorithsmJavaScript",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSum2201.class",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSum2201.java",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SevenSegmentify.java",
