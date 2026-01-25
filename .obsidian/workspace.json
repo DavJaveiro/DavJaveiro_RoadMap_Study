@@ -6,7 +6,7 @@
       {
         "id": "77cfd42e0d830b78",
         "type": "tabs",
-        "dimension": 75.76470588235294,
+        "dimension": 58.82352941176471,
         "children": [
           {
             "id": "3ba4bf9ce54b9f55",
@@ -27,7 +27,7 @@
       {
         "id": "f278adfd65223829",
         "type": "tabs",
-        "dimension": 24.235294117647058,
+        "dimension": 41.17647058823529,
         "children": [
           {
             "id": "a875c2b7936a8630",
@@ -52,10 +52,10 @@
               "type": "pdf",
               "state": {
                 "file": "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
-                "page": 72,
-                "left": 50,
-                "top": 607,
-                "zoom": 1.1
+                "page": 77,
+                "left": -12,
+                "top": 659,
+                "zoom": 1.3
               },
               "icon": "lucide-file-text",
               "title": "Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li"

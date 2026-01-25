@@ -164,4 +164,179 @@ Contratos orientados ao consumidor são uma parte vital de software confiável e
 Muitas linguagens e frameworks têm projetos que podemos (e devemos!) aproveitar em nossas aplicações. Desde Spring Cloud Contract até versões do Pact para quase todas as plataformas, você tem opções.
 
 ### Avoid Clever Code
-Software é difícil, e os domínios em que trabalhamos são complexos. Mas nem toda complexidade é igual. 
+Software é difícil, e os domínios em que trabalhamos são complexos. Mas nem toda complexidade é igual. Em seu amplamente citado ensaio *No Silver Bullet* (sem bala de prata), o essencial Fred Brooks faz a distinção entre complexidade **acidental** e **essencial**.
+
+A complexidade **essencial** é inerente ao software, desde as nuances das regras de negócio, até a comunicação com a nossa equipe, passando pela natureza em constante mudança de uma base de código. Não há nada que possamos fazer para remover essa complexidade do software; ela vem com o salário.
+
+A complexidade **acidental** são as maneiras pelas quais os desenvolvedores tornam as coisas mais difíceis do que precisam ser, desde tecnologias ruidosas até ferramentas pesadas. Em caso de dúvida, mantenha simples.
+
+O software não está imune ao proverbial "óleo de cobra" (*snake oil*). Muitas empresas tentam vender produtos ou processos que revolucionarão a entrega de software. Vale a pena ser cético. É claro que sempre há oportunidades de melhoria, mas o método científico nos lembra que alegações extraordinárias requerem evidências extraordinárias.  
+
+Você deve estar vigilante sobre a remoção da complexidade acidental sempre que possível. 
+
+Linguagens e frameworks frequentemente têm formas propensas a erros. Por exemplo, dê uma olhada no seguinte código Java. Você consegue identificar o problema?
+```java
+if (condition)
+	doFoo();
+	doBar();
+```
+
+O problema: doBar() será executado SEMPRE, independentemente da condição, porque sem colchetes, apenas a primeira declaração pertence ao *if*, ou seja, o *if* controle apenas uma única instrução quando não há bloco {};
+```java
+if (condition) {
+	doFoo();
+	doBar();
+}
+```
+Agora, se *conition* for true, executará os dois, se *condition* for false, não executará nenhum.
+
+Se tem amis de uma linha, use sempre os colchetes {};
+
+A regra é não ter medo de atualizar (ou estabelecer) padrões de codificação para cobrir estes casos. Existem várias ferramentas de análise estática que podemos adicionar ao nosso pipeline de implantação para evitar que a nossa equipe introduzam inadvertidamente esses tipos de problemas. 
+
+**Use ferramentas de linting/formatação**
+- **Python:** Black, flake8
+- **JavaScript/TypeScript:** ESLint, Prettier
+- **Java:** Checkstyle, PMD
+- **C#:** StyleCop, Roslyn Analyzers
+
+### Code Reviews
+A revisão pode variar desde um ou mais feedback a um colega sobre o que ele acha do método desenvolvido, até *walk-throughts* de várias horas com diversos desenvolvedores. Independentemente dos detalhes específicos de implementação, as revisões de código são uma excelente forma de se aprender, compartilhar experiências e socializar conhecimento. Mais olhos no código são proveitosas, e muitas empresas aprovam a <span style="background:#affad1">ideia de programação em par</span>. Sendo formal ou não, algumas práticas podem melhorar a nossa revisão de código.
+
+**Primeiro e mais importante: não seja sarcástico**
+Evite sarcasmo. Pedir feedback pode ser estressante para muitas pessoas, e muitas levam críticas para o lado pessoal. Seja sempre empático com seus colegas de equipe. Objetivo é sempre melhorar o código, não exibir a sua aparência técnica. 
+*A única maneira de fazer algo grande é reconhecer que talvez ainda não esteja bom o bastante. O nosso objetivo é encontrar a melhor solução, não medir o nosso valor pessoal por ela."* - Jonas Downey, designer de software...
+
+Foque a sua atenção nas coisas mais importantes. Podemos automatizar questões de formatação e estilo, deixando que o computador lide com esse trabalho. O nosso tempo e esforço deve ser gasto nas coisas que os computadores não conseguem detectar para a gente.
+
+**Algumas perguntas-chave para uma revisão eficaz**
+Clareza e Legibilidade:
+- Os nomes de métodos e variáveis são claros e concisos?
+- O código é legível?
+- Há duplicação?
+
+**Qualidade e Manutenibilidade:**
+- O código tem o *logging*, rastreamento e métricas apropriados?
+- As interfaces são consistentes com o resto do código?
+- O desenvolvedor usou alguma forma propensa a erros?
+
+**Design e Arquitetura**
+- O modelo de negócio está correto?
+- Eles escolheram a abstração errada?
+
+**Práticas Recomendadas:**
+- O código segue os princípios SOLID?
+- As responsabilidades estão bem separadas?
+- Os testes cobrem os casos importantes?
+
+**Dicas práticas para revisões construtivas:**
+1. **Comente com contexto:** em vez de "isso está errado", diga "Sugiro usar X porque Y"...
+2. **Reconheça o que está bom:** destaque acertos antes de apontar melhorias.
+3. **Seja específico:** em vez de "Isso é confuso", explique por que e sugira alternativas.
+4. **Ofereça ajuda:** posso te mostrar como fizemos algo similar no módulo X...
+5. **Limite o escopo:** pequenas revisões frequentes são mais eficazes que grandes maratonas...
+6. **Use ferramentas:** GitHub/GitLab Reviews, Pull Requestes com verificações automatizadas.
+
+O objetivo final é sempre **melhorar o código e a equipe**, não provar quem sabe mais.
+
+### Avoid the Checkbox Code Review
+Em alguns casos, as revisões de código não passam de uma simples caixa de seleção *checkbox* no sistema de gerenciamento de código-fonte. Algumas organizações exigem que todo código seja revisado antes de ser mesclado na linha principal (*mainline*). Embora este objetivo seja admirável, na maioria das vezes resulta apenas em um desenvolvedor pedindo a outro para revisar o código, o que geralmente significa apenas marcar a caixa para o seu colega.
+
+Trabalhar em pequenos lotes torna as revisões mais simples e eficazes. <span style="background:#d3f8b6">Mudanças menores são</span>:
+- Mais fáceis de entender e revisar;
+- Menos propensas a erros não detectados;
+- Mais rápidas para aprovar ou solicitar ajustes;
+- Menos intimidadoras para revisores;
+
+Algumas organizações usam *pull requests* (PRs) como forma de garantir qualidade de código. Embora possam ser mais confortáveis do que passar a tarde em uma chamada de vídeo discutindo código, os PRs nem sempre são propícios para construir coesão e confiança na equipe.
+**Problemas comuns com PRs**:
+- #Nitpicking: alguns desenvolvedores usam PRs como oportunidade para criticar detalhes insignificantes;
+- **Batalhas de território:** disputas sobre "como as coisas devem ser feitas";
+- Reabertura de questões: reacender problemas previamente resolvidos;
+- **Respostas LFTM:** Looks Fine to Me (parece bom para mim), uma revisão superficial;
+
+Comentários baseados em texto carecem do tom e linguagem corporal das conversas presenciais. Podemos desviar as nossas reais intenções, e um comentário pode soar de maneira ácida e cortante, mas pode ser assim interpretado por uma pessoa do outro lado da solicitação.
+
+Não devemos nos surpreender se alguns dos nossos colegas de equipe, especialmente aqueles com menos experiência, temerem um PR. 
+
+
+Os membros seniores da equipe devem liderar pelo exemplo:
+
+### It is Hard to Be Criticized
+É muito difícil não levar o feedback para o lado pessoa, muitos desenvolvedores investem muito de si mesmos em seu trabalho. Revisões de código não são uma oportunidade para constranger alguém porque não conhecia algum novo recurso da linguagem ou não viu imediatamente uma maneira mais simples de resolver um problema. Ninguém é perfeito; todo mundo comete erros.
+
+Revisões de código são sobre construir aplicações melhores e são sobre o **código**, não sobre o codificador. Não seja pessoal em uma revisão de código. Seja humilde e faça perguntas úteis. As críticas são mais digeríveis quando são "sanduíches" por elogios, então certifique-se de apontar as coisas boas também.
+
+Compartilhe suas experiências. Histórias pessoais carreguem um peso imenso e dissipam a resistências natural das pessoas à mudança. Ofereça assistência em coisas que você encontrou em projetos anteriores. Tenha cuidado com proclamações gerais. Certifique-se de ter todos os detalhes antes de declarar que algo não funcionará, pois podemos estar perdendo uma informação contextual importante. Há algum contexto que você não tem? Talvez haja restrições das quais você não esteja ciente.
+
+*Cada um de nós está fazendo absolutamente o melhor que pode, dado nosso estado de consciência. - Deepak Chopra*
+
+Se algo no código de alguém lhe preocupa, não tenha medo de falar diretamente com o desenvolvedor. As pessoas podem ser muito defensivas, especialmente em situações em grupo. Uma discussão rápida individual pode ser a resposta. Não embosque um colega de equipe; ninguém ganha nessas interações.
+
+As revisões são uma chance de aprender, uma oportunidade de ensinar.
+
+┌─────────────────────────────────────────┐
+│  Camada Superior: **ELOGIOS**               │
+│  • "Gostei da forma como você organizou"│
+│  • "Essa solução é criativa"            │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│  Recheio: **CONSTRUÇÃO**                    │
+│  *• "Que tal considerar esta alternativa?"│*
+*│  • "Aqui há uma oportunidade de melhoria"*│
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│  Camada Inferior: **ENCORAJAMENTO**         │
+│  • *"Estou animado para ver a versão final"│*
+*│  • "Você está no caminho certo"*         │
+└─────────────────────────────────────────┘
+
+### Fostering Trust
+Independente do nosso processo de revisão de código, não perca de vista o nosso propósito. Devemos compartilhar experiências, aprender a crescer como uma equipe,, evitando práticas problemáticas confusas ou abordagens obsoletas.
+
+Incentive seus colegas de equipe a fazer perguntas e fornecer feedback construtivo. Revisões de código devem promover a propriedade coletiva do código e fomentar a confiança entre a equipe. Promover um bug da semana ou reservar um tempo para compartilhar algo com que você se deparou pode ser incrivelmente poderoso.
+
+Uma reunião regular em que as pessoas são incentivadas a falar sobre um defeito interessante que resolveram é uma técnica de aprendizado inestimável. Podemos presumir que todos sabem o que fazer quando se deparam com um problema específico, mas discutir essas situações com seus colegas de equipe dissemina o conhecimento. O simples ato de reservar um tempo durante a reunião de sexta-feira para discutir algo interessante que as pessoas experimentam durante a semana pode render dividendos.
+
+Não é preciso dizer, mas trate seus colegas de equipe com respeito. Seja gentil, faça o que é certo, faça o que funciona. Não tenha medo de parar para analisar sua abordagem e perguntar se há uma maneira melhor. Quer esteja seguindo uma metodologia de desenvolvimento ágil ou não, você deve se adaptar e se ajustar regularmente. Se algo não estiver funcionando, mude!
+
+### Learning New Languages
+Se você quer melhorar sua capacidade de escrever código, você precisa, escrever código. Podemos acelerar essas habilidades aprendendo novas linguagens de programação. Pense em aprender um idioma estrangeiro. Durante meses, até mesmo anos, traduziremos esse idioma para a nossa língua nativa. Eventualmente, pensaremos, e até sonharemos com o novo idioma. As linguagens de programação não são diferentes. Bem, elas têm regras gramaticais muito exigentes e muito menos palavras-chave.
+
+O segredo é a imersão. Aprender uma nova linguagem de programação é praticamente a mesma coisa. Crie um aplicativo na nova linguagem que resolva um problema que o atormenta no trabalho ou em casa. Siga a comunidade nas mídias, ouça podcasts relacionados ou assista vídeos da última conferência voltada para a linguagem. 
+
+Os desenvolvedores tendem a se apegar muito ao seu primeiro idioma. Tenha cuidado com isso. As linguagens de programação são apenas ferramentas. Assim como um martelo é uma ferramenta melhor para bater em um prego do que uma chave de fenda, algumas linguagens são mais adequadas para determinados problemas do que outras. Por exemplo, muitos sistemas incorporados são escritos em C, pois é altamente portátil e confiável e poder ser altamente otimizado para plataformas específicas. Algumas pessoas influentes sugerem aprender uma nova linguagem a cada um ou dois anos. A linguagem não é o fim em si mesma.
+
+---
+**Programming is Fundamentally About Communication**
+A programação é fundamentalmente uma questão de comunicação Antes de os departamentos de ciência da computação começarem a surgir nas universidades de todo o mundo, a programação geralmente ficava no departamento de matemática, e muitos presumiam que a aptidão matemática era um pré-requisito para o sucesso no software. Em alguns casos, as universidades ainda usam exames de matemática para recrutar alunos! Apesar dessa suposição, as pesquisas mostram que a aptidão para a linguagem é um indicador muito melhor da rapidez com que alguém aprende uma nova linguagem de programação do que a habilidade em matemática. Embora certos domínios possam ser muito pesados em termos de matemática, a arte da programação não é. A programação é, antes de tudo, uma atividade de comunicação - e não entre o programador e o compilador. Não se esqueça de que o computador entende qualquer código (pelo menos se estiver sintaticamente correto), mas isso não significa que um ser humano entenderá o que você está tentando realizar. Os melhores engenheiros de software se concentram na pessoa que está lendo o código. Os bons escritores (de qualquer tipo) sempre têm o público em mente
+
+---
+Aprender um novo idioma leva tempo. Como você justifica o investimento necessário para aprender algo que talvez não use diariamente no trabalho? Aprender uma nova linguagem mudará a forma como você codifica, mesmo que não use a nova ferramenta todos os dias. Ao buscar um novo desafio de linguagem, tente escolher algo que seja diferente do que você usa no trabalho. Se você for um desenvolvedor Java experiente, procure outras linguagens semelhantes ao C, como o C# (não que haja algo de errado em aprender C#, veja bem), em direção a paradigmas diferentes. Em vez disso, considere uma linguagem dinâmica como Ruby ou uma linguagem funcional como Haskell. Confie em nós, mesmo que seja apenas um exame superficial de uma linguagem fora de sua vizinhança normal, isso alterará fundamentalmente sua abordagem à programação. Talvez você passe a apreciar mais a sua linguagem habitual ou passe a escrever código de uma maneira diferente. Reserve um tempo para aprender coisas novas.
+
+Aprender novos idiomas fica mais fácil com o tempo. Quanto mais idiomas você conhece, mais você tem o que comparar. 
+
+No início de nossas carreiras, devemos nos concentrar em se aprofundar o máximo possível nas linguagens e estruturas que usamos diariamente. Entretanto, não deixe de explorar outras opções. 
+
+### Wrapping Up
+Os desenvolvedores escrevem código; isso é parte integrante do trabalho. 
+Evitar formulários propensos a erros e códigos excessivamente inteligentes pode ser a diferença entre uma base de código que é um prazer trabalhar e uma que os desenvolvedores evitam como uma praga. 
+De revisões de código a ferramentas de análise, há muitas maneiras de ajudá-lo a escrever um código melhor. Prefira escrever testes em vez de fazer comentários extensos. 
+Ao criticar o código, seja empático. Nunca se esqueça de que o código deve ser escrito para ser lido por seres humanos; aderir a esse princípio ajuda muito a garantir que você escreva um código que será carimbado por outras pessoas com o elusivo rótulo de "bom"! Escrever um bom código é um processo de aprendizado contínuo. 
+Esteja aberto para aprender novas habilidades e aprimorar as que você já desenvolveu. 
+Manter-se atualizado sobre as práticas recomendadas em engenharia de software é fundamental para seu sucesso de longo prazo na área.
+
+### Putting It into Practice
+Não há atalhos; se você quiser melhorar como desenvolvedor, precisará escrever código! Como diz a velha piada: Um pedestre na 57th Street vê um músico saindo de um táxi e pergunta: "Como você chega ao Carnegie Hall?" Sem pausa, o artista responde cansativamente: "Pratique". Se quiser ser um desenvolvedor melhor, você precisa praticar.
+
+Considere a possibilidade de acrescentar um estudo intenso à sua rotina. Periodicamente, digamos, a cada dois meses, reserve algumas horas para estudar um código kata. Nas artes marciais, os katas são uma série de bloqueios, chutes e socos que os alunos estudam e repetem inúmeras vezes. Os katas de código trazem essa ideia para o software, fornecendo problemas simples que lhe dão a chance de praticar sua arte e trabalhar em coisas que talvez você não encontre no seu dia a dia de codificação.
+
+Você pode aproveitar os katas de código de várias maneiras. Você pode escolher um e resolvê-lo em duas ou três linguagens de programação. Você pode formar uma dupla com um amigo ou colega para trabalhar em um kata. Há várias maneiras de resolver um determinado kata; desafie-se a resolver o mesmo kata de duas ou três maneiras. Faça uma revisão de código em um kata que você resolveu há alguns meses (ou anos!) - o que você faria diferente hoje? 
+
+Mais uma vez, você pode aproveitar o universo do software de código aberto. Reserve algumas horas para contribuir com uma biblioteca de código aberto que você usa (ou deseja usar). Se não tiver certeza de por onde começar, dê uma olhada nos repositórios de tendências no GitHub. Contribuir com o código-fonte aberto é um excelente laboratório de aprendizado e não é tão difícil de começar quanto você imagina.
+
+Você ainda pode aprender muito sobre como escrever um bom código sem contribuir. Escolha um projeto e passe algumas horas lendo o código. Do que você gosta? Do que você não gosta? O que você faria diferente? Execute um analisador de código-fonte no código: o que isso lhe diz sobre o projeto? Se você vir algum problema evidente, não tenha medo de levantá-lo ou contribuir com um PR.
+
+Acompanhar as mudanças é um componente essencial para uma carreira bem-sucedida em software; crie o hábito de atualizar seus conhecimentos sobre suas principais linguagens e estruturas. Talvez você não encontre organicamente novos recursos em seu trabalho diário, portanto, dedique algumas horas uma ou duas vezes por ano para ver o que foi adicionado ao seu kit de ferramentas. A maioria das tecnologias tem defensores ou campeões, portanto, siga ou se inscreva para ficar a par das mudanças. Nem todas as novidades brilhantes funcionarão para seus aplicativos, pelo menos hoje, mas é mais simples digerir periodicamente um pequeno punhado de atualizações do que tentar aprender sobre dezenas ou centenas de novidades a cada poucos anos.
+
+Por último, mas não menos importante, considere a possibilidade de oferecer seu talento em programação para uma instituição de caridade local ou sem fins lucrativos. Muitas organizações merecedoras estão constantemente procurando ajuda da comunidade técnica. O voluntariado pode dar a você a chance de praticar seu ofício, talvez usando uma linguagem ou estrutura que esteja tentando aprender, e ao mesmo tempo ajudar uma causa com a qual você se importa.
