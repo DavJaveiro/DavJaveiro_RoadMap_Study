@@ -6,7 +6,7 @@
       {
         "id": "77cfd42e0d830b78",
         "type": "tabs",
-        "dimension": 58.82352941176471,
+        "dimension": 65.08240705251053,
         "children": [
           {
             "id": "3ba4bf9ce54b9f55",
@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
+                "file": "Testes/Mini-Curso JUNIT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 3 - Writing Code"
+              "title": "Mini-Curso JUNIT"
             }
           }
         ]
@@ -27,7 +27,7 @@
       {
         "id": "f278adfd65223829",
         "type": "tabs",
-        "dimension": 41.17647058823529,
+        "dimension": 34.91759294748946,
         "children": [
           {
             "id": "a875c2b7936a8630",
@@ -54,8 +54,8 @@
                 "file": "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
                 "page": 77,
                 "left": -12,
-                "top": 659,
-                "zoom": 1.3
+                "top": 568,
+                "zoom": 1.4345238095238095
               },
               "icon": "lucide-file-text",
               "title": "Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li"
@@ -258,8 +258,11 @@
   },
   "active": "3ba4bf9ce54b9f55",
   "lastOpenFiles": [
-    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
+    "Sem título 7.md",
+    "Testes/Mini-Curso JUNIT.md",
     "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
+    "Testes",
+    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
     "Sem título 6.md",
     "Fundamentals of Software Engineering/[The Morgan Kaufmann Series in Computer Architecture and Design ] David Patterson_ - libgen.li.pdf",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
@@ -272,7 +275,6 @@
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.js",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.js.map",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/tsconfig.json",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/prompt-sync.d.ts",
     "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
@@ -293,7 +295,6 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/istio/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/sample-app-backend/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/live/lambda-sample/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/live/lambda-sample-with-config/README.md",
     "image-20261232350698.png",
     "image-2026123470742.png",
     "image-20261233628262.png"
