@@ -374,4 +374,17 @@ def somar(a: int, b: int) -> int: return a + b
 ```
 A notação de **type hinting** pode ser lida por ferramentas de **type-checking** como *mypy*, *pyright*, *pyre* ou *pytype*, assim como por várias IDEs comuns, para sinalizar o uso de um **incompatible** ou **unexpected type**. Embora essas ferramentas possam reportar o erro, o próprio Python não lança um **runtime error** caso os types hints não sejam seguidos.
 
-## 3.4 Control flow Structures
+## 3.7 Entrada de dados
+
+### 3.7.1 Conversão da entrada de dados
+A função #input sempre retorna valores do tipo string, ou seja, não importa se digitamos números, o resultado sempre será do tipo string. Para resolver esse pequeno problema, vamos utilizar a função *int* para converter o valor retornado em um número inteiro, e a função #float para convertê-lo em um número decimal ou de ponto flutuante. Vejamos outro exemplo usando essas funções:
+```run-python
+anos = int(input("Anos de serviço: "))
+valor_por_ano = float(input("Valor por ano: "))
+bonus = anos * valor_por_ano
+print(f"Bônus de R$ {bonus:5.2f}")
+print(anos)
+```
+
+> Exercício 3.7: Faça um programa que peça dois números inteiros. Imprima a soma desses dois números na tela.
+
