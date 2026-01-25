@@ -6,6 +6,7 @@
       {
         "id": "77cfd42e0d830b78",
         "type": "tabs",
+        "dimension": 75.76470588235294,
         "children": [
           {
             "id": "3ba4bf9ce54b9f55",
@@ -13,15 +14,55 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QuickBookPython/Chapter 3 - The quick Python overview.md",
+                "file": "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 3 - The quick Python overview"
+              "title": "Chapter 3 - Writing Code"
             }
           }
         ]
+      },
+      {
+        "id": "f278adfd65223829",
+        "type": "tabs",
+        "dimension": 24.235294117647058,
+        "children": [
+          {
+            "id": "a875c2b7936a8630",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "QuickBookPython/Introdução à Programação com Python - Algoritmos e Lógica de Programação para Iniciantes (Nilo Ney Coutinho Menezes) (Z-Library).pdf",
+                "page": 115,
+                "left": -38,
+                "top": 547,
+                "zoom": 0.7191844587884807
+              },
+              "icon": "lucide-file-text",
+              "title": "Introdução à Programação com Python - Algoritmos e Lógica de Programação para Iniciantes (Nilo Ney Coutinho Menezes) (Z-Library)"
+            }
+          },
+          {
+            "id": "d17be0658049e622",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
+                "page": 72,
+                "left": 50,
+                "top": 607,
+                "zoom": 1.1
+              },
+              "icon": "lucide-file-text",
+              "title": "Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li"
+            }
+          }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -88,7 +129,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -214,11 +256,15 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5e0f3570fdd5d7e9",
+  "active": "3ba4bf9ce54b9f55",
   "lastOpenFiles": [
+    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
+    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
+    "Sem título 6.md",
+    "Fundamentals of Software Engineering/[The Morgan Kaufmann Series in Computer Architecture and Design ] David Patterson_ - libgen.li.pdf",
+    "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "QuickBookPython/Introdução à Programação com Python - Algoritmos e Lógica de Programação para Iniciantes (Nilo Ney Coutinho Menezes) (Z-Library).pdf",
     "QuickBookPython/chapter3/list.py",
-    "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.d.ts",
@@ -227,13 +273,10 @@
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.js.map",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/tsconfig.json",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/prompt-sync.d.ts",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.ts",
     "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
     "fundamentalsofDevOpsSoftwareDelivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/lambda-rds/src/migrations/20240828131226_create_customers_tables.js",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/static-website/content/styles.css",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/static-website/content/cover.png",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/s3-website/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/cloudfront-s3-website/README.md",
@@ -251,8 +294,6 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/sample-app-backend/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/live/lambda-sample/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/live/lambda-sample-with-config/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/live/child-accounts/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/modules/aws-organizations/README.md",
     "image-20261232350698.png",
     "image-2026123470742.png",
     "image-20261233628262.png"

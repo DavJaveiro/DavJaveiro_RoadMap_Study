@@ -92,3 +92,76 @@ Os métodos devem fazer uma coisa e somente uma coisa, e devem fazê-la bem, tra
 Em geral, devemos buscar bases de código menores e mais gerenciáveis para melhorar a compreensão e a produtividade do desenvolvedor.
 
 ### Write Code to Be Read
+Algum desenvolvedor seguira os nossos passos, ele precisará ler o nosso código. Como poderíamos escrever o código para melhorar a vida do desenvolvedor que o lê? Existem diversas diretrizes que podemos aplicar quando se trata do comprimento correto de uma função, até a escolha do número de linhas arbitrárias. 
+
+Martin Fowler oferece um conselho sábio: preste a atenção na separação entre intenção e implementação. 
+
+Quanto tempo levamos para entender o que uma função está fazendo? Devemos conseguir entender o que a função faz, apenas lendo o seu nome, sem a necessidade de investigar o método a fundo. 
+
+Devemos tornar as intenções claras, isso por si, tenderá a reduzir o tamanho da função. 
+
+A classe fornecerá um contexto geral, e os nomes dos métodos vão dizer exatamente o que a classe faz.
+
+
+**Nomear Coisas é Difícil**
+Todo desenvolvedor fica lutando quando precisa nomear uma variável, um método ou uma classe. Criar nomes significativos pode consumir tempo. Não tenha pressa, leve o tempo que for necessário agora, para economizar tempo futuramente. Vale o esforço para criar bons nomes. Às vezes, ao explicar o que estamos fazendo, pode ser o suficiente para inspirar o apelido/nome perfeito para a nossa classe ou método.
+
+Não hesite em refatorar código mal nomeado. 
+
+Quando estamos trabalhando inicialmente no domínio, podemos inventar uma palavra e depois de fazer algumas análises adicionais, podemos ir em frente e substituir o nonsense por palavras reais. É provável que tenhamos chegado a algo muito diferente e mais claro do que a nossa primeira reação. 
+
+### The problem with Code Comments
+Comentar código liberalmente é um *code smell*. Comentários de código violam o princípio #DRY (Don't Repeat Yourself - Não se repita).
+
+Enquanto veremos frequentemente o DRY sendo violado com código copiado e colado ou repleto de duplicação de lógica, os comentários também podem ser problemáticos. Na maioria dos casos, escrevemos o código e depois escrevemos novamente sobre o código. 
+
+Atualizamos o código, temos tempo para atualizar o comentário também?
+
+Os comentários podem frequentemente adicionar outra camada de "sedimento" aos desenvolvedores que encontram o código meses ou anos depois.
+
+O código deve ser escrito para ser legível. O nosso tempo é mais bem gasto tornando o código o mais simples de ler do que o documentando. 
+
+Linguagens mais expressivas definitivamente ajudam a alcançar um código legível, e podemos querer evitar os recursos mais sutis e "mágicos" da linguagem de nossa escolha. Bons nomes de métodos e variáveis são melhores do que comentários; 
+
+Antes de escrevermos um comentário, a recomendação é que se tente renomear o método ou uma variável, fazer isso constantemente elimina a necessidade de um comentário.
+
+Podemos usar comentários para explicar o motivo daquele uso e não o que fizemos. Com isso, quando estamos diante de uma situação onde não ficou tão claro os nossos objetivos, ou que não conseguimos transformar a ideia em um código tão óbvio com relação as nossas intenções, o comentário pode servir de ajuda em um momento futuro.
+
+Resumindo: se o código precisa ser explicado, reescreva-o.
+
+Comentários podem servir como lembretes para nossos futuros eus, ou como um aviso de que uma solução alternativa funciona, mas não entendemos (ainda) por que funciona. 
+
+Alguns desenvolvedores deixam comentários como avisos para desenvolvedores futuros, como no exemplo a seguir:
+```js
+// Querido mantenedor:
+//
+// Quando você terminar de tentar
+// "otimizar" esta rotina,
+// e tiver percebido que erro terrível
+// isso foi,
+// por favor, incremente o seguinte
+// contador como um aviso
+// para a próxima pessoa:
+//
+// total_horas_despedicadas_aqui = 42
+```
+
+### Tests as Documentation
+Ao invés de usarmos comentários, o correto é escrevermos testes. Testes, especialmente aqueles escritos em estilos mais fluidos, são especificações executáveis que evoluem junto com o código de produção. 
+
+As documentações, sejam comentários de código, READMEs ou especificações, tende a divergir do código assim que é escrita. Testes escritos enquanto a gente escreve o código permite que refatoremos livremente e aumentemos a confiança na qualidade de nossa aplicação. Eles também atuam como sinalizações para os desenvolvedores que nos seguem. 
+
+Adicionar testes a código existente permite que capturemos o que estamos aprendendo sobre como o código funciona e desbloqueia o nosso conhecimento de forma que outros desenvolvedores possam se beneficiar o nosso trabalho. Conforme renomeamos um método ou variável e removemos código morto, estamos ativamente deixando o código melhor do que encontramos. 
+
+Testes servem como um mecanismo de documentação mais resiliente.
+
+Utilizar *contratos orientados ao consumidor* (consumer-driven contracts) permite que transmitamos o que o nosso serviço faz, enquanto também nos da confiança para iterar conforme o necessário. Desde que não tenhamos violado o contrato, podemos evoluir o nosso código livremente da preocupação de quebrar inadvertidamente um sistema downstream.
+
+O conjunto de testes simula o comportamento esperado do nosso código. 
+
+Contratos orientados ao consumidor são uma parte vital de software confiável e resiliente.
+
+Muitas linguagens e frameworks têm projetos que podemos (e devemos!) aproveitar em nossas aplicações. Desde Spring Cloud Contract até versões do Pact para quase todas as plataformas, você tem opções.
+
+### Avoid Clever Code
+Software é difícil, e os domínios em que trabalhamos são complexos. Mas nem toda complexidade é igual. 

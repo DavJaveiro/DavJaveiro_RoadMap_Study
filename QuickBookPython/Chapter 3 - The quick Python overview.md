@@ -388,3 +388,48 @@ print(anos)
 
 > Exercício 3.7: Faça um programa que peça dois números inteiros. Imprima a soma desses dois números na tela.
 
+```run-python
+numberOne = int(input("Digite o primeiro valor: "))
+numberTwo = int(input("Digite o segundo valor: "))
+print(numberOne + numberTwo)
+```
+
+>Exercício 3.8 Escreva um programa que leia um valor em metros e o exiba em milímetros.
+
+1 m = 100 cm = 1000 mm
+```run-python
+intMetros = int(input("Digite o valor em metros: "))
+conversao = intMetros * 1000
+print(conversao)
+```
+
+>3.9
+```run-python
+intDias = int(input("Digite a quantidade de dias"))
+intHours = int(input("Digite a quantidade de horas"))
+intMinutos = int(input("Digite a quantidade de minutos"))
+intSegundos = int(input("Digite os seguntos"))
+
+diasForSeconds = ((intDias * 24) * 60) * 60
+hoursForSeconds = (intHours * 60) * 60
+minutesForSeconds = intMinutos * 60
+totalInSeconds = diasForSeconds + hoursForSeconds + minutesForSeconds + intSegundos
+
+print(totalInSeconds)
+
+```
+
+>Exercício 3.10 Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor do salário e a porcentagem do aumento. Exiba o valor do aumento e do novo salário.
+
+```run-python
+salario = float(input("Digite o salário: "))
+porcentagemAumento = int(input("Digite a porcentagem de aumento: "))
+
+aumento = float(salario * (porcentagemAumento / 100))
+print(salario + aumento)
+
+```
+
+
+>Exercício 3.11 Faça um programa que solicite o preço de uma mercadoria e o percentual de desconto. Exiba o valor do desconto e o preço a pagar.
+>
