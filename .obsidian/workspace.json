@@ -4,65 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "77cfd42e0d830b78",
+        "id": "4ac76af9da2913c4",
         "type": "tabs",
-        "dimension": 65.08240705251053,
         "children": [
           {
-            "id": "3ba4bf9ce54b9f55",
+            "id": "bb7c54883c24197b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Testes/Mini-Curso JUNIT.md",
+                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mini-Curso JUNIT"
+              "title": "Chapter 7 - Single-Dimensional Arrays"
             }
           }
         ]
-      },
-      {
-        "id": "f278adfd65223829",
-        "type": "tabs",
-        "dimension": 34.91759294748946,
-        "children": [
-          {
-            "id": "a875c2b7936a8630",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "QuickBookPython/Introdução à Programação com Python - Algoritmos e Lógica de Programação para Iniciantes (Nilo Ney Coutinho Menezes) (Z-Library).pdf",
-                "page": 115,
-                "left": -38,
-                "top": 547,
-                "zoom": 0.7191844587884807
-              },
-              "icon": "lucide-file-text",
-              "title": "Introdução à Programação com Python - Algoritmos e Lógica de Programação para Iniciantes (Nilo Ney Coutinho Menezes) (Z-Library)"
-            }
-          },
-          {
-            "id": "d17be0658049e622",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
-                "page": 77,
-                "left": -12,
-                "top": 568,
-                "zoom": 1.4345238095238095
-              },
-              "icon": "lucide-file-text",
-              "title": "Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li"
-            }
-          }
-        ],
-        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -129,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 526.0041847229004,
     "collapsed": true
   },
   "right": {
@@ -256,10 +215,19 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "3ba4bf9ce54b9f55",
+  "active": "bb7c54883c24197b",
   "lastOpenFiles": [
-    "Sem título 7.md",
+    "image-20261263211557.png",
+    "image-202612650143.png",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Testes/Mini-Curso JUNIT.md",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaElementosPares2601.class",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaElementosPares2601.java",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaElementosPares.java",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaDosElementos26.class",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaDosElementos26.java",
+    "Sem título 7.md",
     "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
     "Testes",
     "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
@@ -267,14 +235,8 @@
     "Fundamentals of Software Engineering/[The Morgan Kaufmann Series in Computer Architecture and Design ] David Patterson_ - libgen.li.pdf",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "QuickBookPython/Introdução à Programação com Python - Algoritmos e Lógica de Programação para Iniciantes (Nilo Ney Coutinho Menezes) (Z-Library).pdf",
-    "QuickBookPython/chapter3/list.py",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.d.ts",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.d.ts.map",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.js",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/exampleOne.js.map",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/tsconfig.json",
     "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
@@ -293,8 +255,6 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/tofu/live/ec2-dns/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/sample-app-frontend/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/istio/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/sample-app-backend/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch6/tofu/live/lambda-sample/README.md",
     "image-20261232350698.png",
     "image-2026123470742.png",
     "image-20261233628262.png"
