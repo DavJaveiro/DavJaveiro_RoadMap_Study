@@ -143,3 +143,129 @@ class Animal12 {}
 ```
 If you do have a public type, it needs to match the filename. The declaration *public class Animal12* would not compile in a file named *Animal.java*. In Chapter 5, "Methods," we discuss what access options are available other than public.
 
+### Writing a *main()* Method
+A Java program begins execution with its *main()* method. In this section, we learn how to create one, pass a parameter, and run a program. The *main()* method is often called an entry point into the program, beacause it is the starting point that the JVM looks for when it begins running a new program. 
+
+### Creating a main() method
+The main() method lets the JVM call our code. The simples possible class with a main() method looks like this:
+```java
+public class Zoo {
+	public static void main(String[] args) {
+	System.out.println("Hello World");
+	}
+}
+```
+This code prints *Hello World*. To compile and execute this code, type it into a file called Zoo.java and execute the following:
+`javac Zoo.java`
+`java Zoo`
+
+If its prints *Hello World*, we're successful. If we do get error messages, check that you've installed the Java 21 JDK, that we have added it to the PATH, and that we didn't make any typos in the example. 
+
+To compile Java code with the *javac* command, the file must have the extension .java. The name of the file must match the name of the public class. The result is a file of bytecode with the same name but with a *.class* filename extension. Remeber that bytecode consists of instructions that the JVM knows how to execute. Notice que we must omite the .class extension to run Zoo.class.
+
+The rules for what a Java file contains, and and in what order, are more detailed than what we have explained so far (there is more on this topic later in the chapter). To keep things simple for now, we follow this subset of the rules:
+- Each file can contain only one *public* class;
+- The filename must match the class name, including case, and have a .java extension;
+- If the Java class is a entry point for the program, it must contain a valid *main()* method.
+
+Let's first review the words in the main() method's signature, one at a time. The keyword *public* is what's called an *access modifier*. It declares this method's level of exposure to potential callers in the program. Naturally, *public* means full access from anywhere in the program. We learn more about access modifiers in **Chapter 5**.
+
+The keyword *static* binds (vincula) a method to its class so it can be called by just the class name. Java doesn't need to create an object to call the *main()* method, which is good since we haven't learned about creating objects yet.
+
+In fact, the JVM does this, more or less, when loading the class name given to it. If a main() method doesn't have the right keywords, we'll get an error trying to run it. 
+
+We see *static* again in chapter 6, "Class Design".
+
+The keyword *void* represents the return type. A method that returns no data returns control to the caller silently. In general, it's good practice to use void for methods that change an object's state. In that sense, the main() method changes the program state from started to finished. We explore return types in chapter 5 as well. 
+
+Finally, we arrive at the main() method's parameter list, represented as an array of *java.lang.String* Objects. We can use any valid variable name along with any of these three formats:
+String[] args
+String options[]
+String... friends
+
+The compiler accepts any of these. The variable name *args* is common because it hints that this list contains values that were read in (arguments) when the JVM started. The characters [] are brackets and represent an array. An array is fixed-size list of items that are all of the same type. The characteres... are called varargs (variable arguments lists). We learn about String in this chapter. Arrays are in Chapter 4, "Core APIs," and varargs are in Chapter 5 .
+
+**Optional Modifiers in main() Methods**
+While most modifiers, such as public and static, are required for main() methods, there are some optional modifiers allowed.
+*public final static void main(final String[] args {}*
+In this example, both final modifiers are optional, and the main() method is a valid entry point with or without them. We cover the meaning of **final**
+methods and parameters in chapter 6.
+
+### Passing Parameters to a Java Program
+Let's see how to send data to our program's main() method. First, we modify the *Zoo* program to print out the first two arguments passed in
+```java
+puiblic class Zoo {
+	public static void main(String[] args) {
+	System.out.println(args[0]);
+	System.out.println(args[1]);	
+}
+}
+```
+The code args[0] access the first element of the array. That's right: array indexes begin with 0 in Java. To run it, type this:
+*javac Zoo.java*
+*java Zoo Bronx Zoo*
+
+The output is what we might expect.
+*Bronx*
+*Zoo*
+
+The program correctly identifies the first two "words" as the arguments. Spaces are used to separate the arguments. If we want spaces insides an argument, we need to use quotes as in this example:
+*javac Zoo.java*
+*java Zoo "San Diego" Zoo*
+
+Now we have a space in the output.
+*San Diego*
+*Zoo*
+
+Finally, what happens if we don't pass in enough arguments?
+*javac Zoo.java*
+*java Zoo Zoo*
+
+Reading args[0] goes fine, and Zoo is printed out. Then Java panics. There's no second argument! What to do? Java prints out an exception telling we it has no ideia what to do with this argument at position 1. We learn about exceptions in Chapter 11, "Exceptions and Localization."
+
+To review, the JDK contains a compiler. Java class files run on the JVM and therefore run on any machine with Java rather than just the machine or operating system they happened to have been compiled on.
+
+*Single-File Source Code*
+If we get tired of typing both javac and java every time we want to try a code example, there's a shortcut. We can instead run this:
+*java Zoo.java Bronx Zoo*
+
+There is a key difference here. When compiling first, we omitted the file extension when running java. When skipping the explicit compilation step, we include this extension. This feature is called lauching single-file source code programs. 
+
+**Understanding Package Declarations and Imports**
+Java comes with thousands of built-in classes, and there are countless more from developers like you. With all those classes, Java needs a way to organize them. It handles this in a way similar to a file cabinet. We put all our pieces of paper in folders. Java put classes in *packages*. There are logical groupings for classes.
+
+We wouldn't put in front of a file cabinet and tell we to find a specific paper. Instead, we'd tell you which folder to look in. Java works the same way. It needs we to tell it which packages to look in to find code.
+
+Suppose we try to compile this code:
+```java
+public class NumberPicker {
+	public static void main(String[] args) {
+		Random r = new Random(); // DOEST NOT COMPILE
+		System.out.println(r.nextInt(100));
+	}
+}
+```
+The Java compiler helpfully gives an error that looks like this:
+*error: cannot find symbol*
+This error could mean we made a typo in the name of the class.
+We double-check and discover that we didn't. The other cause os this erros is omitting a needed import statement. 
+
+A *statement* is an instruction, and import statements tell java which packages to look in for classes. Since we didnt' tell Java where to look for Random, it has no clue.
+
+Trying this again with the *import* allows the code to compile.
+
+```java
+import java.util.Random;
+
+public class NumberPicker {
+	Random r = new Random();
+	System.out.prinln(r.nextInt(10));
+}
+```
+Now the code runs; it prints out a random number betweeen 0 and 9. Just like arrays, Java likes to begin counting with 0.
+
+In chapter 5, we cover another type of import referred to as a *static* import. It allows we to make *static* members of a class known, often so we can use variables and method names without having to keep specifying the class name. 
+
+### Packages
+
+
