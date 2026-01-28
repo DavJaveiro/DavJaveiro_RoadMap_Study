@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
+                "file": "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 7 - Single-Dimensional Arrays"
+              "title": "Chapter 4 - Modeling"
             }
           }
         ]
@@ -217,6 +217,7 @@
   },
   "active": "a60919a6c59fef69",
   "lastOpenFiles": [
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "image-20261282345691.png",
     "image-20261283419384.png",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ShiftingElements.class",
@@ -235,7 +236,6 @@
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSumvsEnhanced2601.class",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSumvsEnhanced2601.java",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "image-20261263211557.png",
     "image-202612650143.png",
     "Testes/Mini-Curso JUNIT.md",
@@ -261,7 +261,6 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/lambda-rds/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch8/tofu/live/ec2-dns-tls/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch8/packer/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/tofu/modules/vpc/README.md",
-    "image-20261232350698.png"
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/tofu/modules/vpc/README.md"
   ]
 }

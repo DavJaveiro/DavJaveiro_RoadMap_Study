@@ -86,3 +86,34 @@ Diagramas de sequência são usados ao longo de todo o projeto. No início, eles
 
 !![image-20261273620248.png](/image-20261273620248.png)
 ## Deployment Diagrams
+Diagramas de implantação fornecem uma visão de tempo de execução (runtime) do nosso sistema. Eles mostram os nós físicos de hardware, bem como o software que está sendo executado neles. Frequentemente, eles exibem como o hardware está conectado e mostram tanto os protocolos quanto a cardinalidade.
+
+Os diagramas de implantação destinam-se a um público mais técnico, como arquitetos, desenvolvedores, profissionais DevOps e suporte de produção, além de arquitetos de infraestrutura, segurança e sua equipe de middleware.
+
+Os diagrams de implantação podem ser lógicos ou físicos e devem ser rotulados apropriadamente. Por exemplo, um diagrama de implantação lógico pode representar um *cluster* como uma única entidade, enquanto um diagrama de implantação físico mostraria a quantidade de um determinado balanceador de carga ou servidor executando em um dado momento no referido *cluster*.
+
+Eles são utilizados no início de um projeto para validar atributos de qualidade. Sistemas que exigem suporte 24/7 terão uma implantação muito diferente daqueles que possuem <span style="background:#d3f8b6">requisitos de tempo de atividade</span> (*uptime*) menos rigorosos. Diagramas de implantação podem nos ajudar a entender se uma aplicação atenderá às nossas necessidades de escalabilidade, além de validar a continuidade dos negócios. Eles também podem nos ajudar a encontrar uma implantação mais econômica.
+
+Para sistemas Java, o diagrama físico ajuda a dimensionar os limites de memória (Xmx, Xms) e CPU. Saber se o software roda em instâncias ARM (Graviton) ou x86 impacta diretamente a performance e o custo da JVM.
+
+Muitas organizações possuem um template padrão para suas implantações. A maioria das empresas terá ambientes de nuvem padronizados ou abordagens locais *on-premises*. De muitas formas, diagramas de implantação são como blocos de Lego. Sua empresa pode ter um conjunto definido de ferramentas e tecnologias que podemos usar, na maioria das vezes, teremos que encaixá-las. 
+
+Muitas organizações já possuem arquiteturas de referência padronizadas que descrevem aplicações típicas e, ao mesmo tempo, estabelecem limites para as nossas opções de implantação. 
+
+Também podemos encontrar uma especialização do diagrama de implantação conhecida como **diagrama de segurança**. Este modelo mais detalhado descreve os mecanismos de segurança de uma aplicação. 
+
+Os de segurança, frequentemente incluem protocolos e podem aproveitar uma visão de tecnologia ou de implantação do sistema. Eles são destinados a um público mais técnico, como desenvolvedores, arquitetos e profissionais de segurança.
+
+Diagramas de segurança são usados ao longo de todo o projeto. Eles podem definir um padrão, bem como validar se a solução atende às necessidades de segurança do projeto. É importante considerar **informações de identificação pessoal (PII)** ao interagir com um sistema, bem como quaisquer regulamentações ou leis aplicáveis. 
+
+## Data Models
+Estes modelos mostram entidades de dados, bem como seus relacionamentos. Eles podem estar em diferentes níveis de granularidade, desde o conceitual ao lógico, chegando até o layout físico do armazenamento de dados. Essencialmente, eles progridem do nível mais alto para a implementação concreta.
+
+Modelos conceituais são de altíssimo nível e não são normalizados. Modelos lógicos exibem termos de negócio, geralmente em uma forma normal. Modelos de dados físicos mostram detalhes de implementação, incluindo tipos de dados. 
+
+O público para modelos de dados pode variar de clientes a arquitetos de informação e administradores de bancos de dados (DBAs), bem como arquitetos de software, desenvolvedores e pessoal de suporte. Modelos de dados são frequentemente criados bem no início de um projeto para ilustrar o domínio, embora sejam refinados ao longo do ciclo de vida do projeto. 
+
+## Modeling Best Practices
+Um diagrama informal é relativamente rápido de rascunhar, o que pode ser tanto uma bênção quanto uma maldição! Diagramas podem sair do controle. 
+
+### Mantenha a Simplicidade
