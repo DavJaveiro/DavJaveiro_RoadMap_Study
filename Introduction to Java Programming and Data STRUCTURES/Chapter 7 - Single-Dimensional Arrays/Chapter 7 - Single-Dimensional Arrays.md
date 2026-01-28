@@ -213,4 +213,238 @@ for (int i = 0; i < myList.length -1; i++) {
 
 !![image-20261263211557.png](/image-20261263211557.png)
 
-8. *Shifting elements:*
+8. *Shifting elements:* sometimes we need to shift (deslocar) the elements left or right. Here is an example of shifting (deslocamento) the elements one position to the left and filling the last element with the first element:
+```java
+double temp = myList[0]; // Retain the first element
+
+// Shift elements left
+for (int i = 1; i < myList.length; i++) {
+	myList[i - 1] = myList[i]
+}
+
+myList[myList.length - 1] = temp; 
+//
+```
+
+9. *Simplifying coding:* arrays can be used to greatly simplify coding for certain tasks. For example, suppose we wish to obtain the English name of a given month by its numbers. If the month names are stored in an array, the month name for a given month can be accessed simply via the index. The following code prompts the user to enter a month number and displays its month name:
+```java
+String[] months = {"January", "February", ..., "December"};
+System.out.println("Enter a month number (1 to 12): ");
+int monthNumber = input.nextInt();
+System.out.println("The month is " + months[monthNumber - 1]);
+```
+
+If we didn't use the **months** array, we would have to determine the month name using a lengthy multiway if-else statement as follows:
+
+### 7.2.7 Foreach Loops
+Java supports a convenient *for* loop, knows as a *foreach loop*, which enables we to traverse the array sequentially without using an index variable. For example, the following code displays all the elements in the array myList:
+```java
+for (double e: myList) {
+	System.out.println(e);
+}
+```
+We can read the code as "for each element e in myList, do the following." Note that the variable, e, must be declared as the same type as the elements in myList.
+
+In general, the syntax for a foreach loop is
+```java
+for (elementType element: arrayRefVar) {
+	// Porcess the element;
+}
+```
+We still have to use an index variable if we wish to traverse the array in a different order or change the elements in the array. 
+
+> Caution
+> Access an array out of bounds is a common programming error that throws a runtime ArrayIndexOutOfBoundsException. To avoid it, make sure we do not us an index beyond arrayRefVar.length - 1 or simplify using a foreach loop if possible.
+
+Programmer often mistakenly reference the first element in a array with index 1, but it should be 0. 
+
+7.2.3 Indicate true or false for the following statements:
+a. Every element in an array has the same type (correct);
+b. The array size is fixed after an array reference variable is declared; (false)
+c. The array size is fixed after it is created (correct)
+d. The elements in an array must be of a primitive data type (false)
+
+- 7.2.8 Write statements to do the following:
+a. Create an array to hold 10 double values.
+```java
+double[] teenDoubles = new double[10];
+```
+
+b. Assign the value 5.5 to the last element in the array.
+```java
+teenDoubles[teenDoubles.length -1] = 5.5;
+```
+
+c. Display the sum of the first two elements
+```java
+System.out.println(teenDoubles[0] + teenDoubles[1]);
+```
+
+d. Write a loop that computes the sum of all elements in the array
+```java
+double total = 0.0;
+for (double numbers: teenDoubles) {
+	total += numbers;
+}
+```
+
+e.  Write a loop that finds the minimum element in the array.
+```java
+double minElement = teenDoubles[0];
+for (double number : teenDoubles) {
+	if (number < element)
+		minElement = number;
+}
+```
+
+f. Randomly generate an index and display the element of this index in the array.
+```java
+ {
+int j = (int)(Math.random() * teenDoubles.length);
+System.out.println(teenDoubles[j]);
+}
+```
+g. Use an array initializer to create another array with the initial values 3.5, 5.5, 4.52, and 5.6:
+```java
+
+```
+## 7.3 Case Study: Analyzing Numbers
+*The problem is to write a program that finds the number of items above the average of all items*
+
+Now we can write a program using arrays to solve the problem proposed at the beginning of this chapter. The problem is to read 100 numbers, get the average of these numbers, and find the number of the items  greater than the average. To be flexible for handling any number of inputs, we will let the user enter the number of inputs, rather than fixing it to 100. Listing 7.1 gives a solution
+
+#### Listing 7.1 AnalyzeNumbers.java
+```java
+public class AnalyzeNumber {
+	public static void main(String[] args) {
+		java.util.Scanner input = new java.util.Scanner(System.in);
+		System.out.prin("Enter the number of items: ");
+		int n = input.nextInt();
+		double[] numbers = new double[n];
+		double sum = 0;
+		
+		System.out.prin("Enter the numbers: ");
+		for (int i = 0; i < n; i++) {
+		numbers[i] = input.nextDouble();
+		sum += numbers[i];
+		}
+		
+		double average = sum / n;
+		
+		int count = 0; // The number of elements above average
+		for (int i = 0; i < n; i++)
+		if(numbers[i] > average)
+			cont++
+			
+		System.out.println("Average is " + average);
+System.out.println("Number of elements above the average is " + count);
+		
+	}
+}
+```
+
+Enter the number of items : 10
+Enter the numbers: 3.4, 5, 5...
+Average is 5.75
+Numbers of elements above the average is 6
+
+The program prompts the user to enter the array size (line 5) and creates an array with the specified size (line 6). The program reads the input, stores numbers into the array (line 11), adds each number to **sum** in line 12, and obtains the average (line 15). It then compares each number in the array with the average to count the numbers of values above the average (lines 7-20).
+
+## 7.4 Case Study: Deck of Cards
+*The problem is to create a program that will randomly select four cards from a deck of cards.*
+Say you want to write a program that will pick four cards at random from a deck of 52 cards.
+All the cards can be represented using an array name *deck*, filled with initial values 0-51, as follows:
+```java
+int[] deck = new int[52];
+
+// Initialize cards
+for (int i = 0; i < deck.length; i++)
+	deck[i] = i;
+```
+Card numbers 0-12, 13-25, 26-38, and 39-51 represent 13 Spades, 13 Hearts, 13 Diamonds, and 13 Clubs, respectively, as show in Figure 7.2. **cardNumber / 13** determines the suit of the card, and *cardNumber % 13* determines the rank of the card, as shown in Figure 7.3.
+
+After shuffling the array *deck*, pick the first four cards from *deck*. The program displays the cards from these four card numbers.
+
+!![image-20261283419384.png](/image-20261283419384.png)
+
+#### 7.2 DeckOfCards.java
+```java
+public class DeckOfCards {
+	public static void main(String[] args) {
+		int[] deck = new int[52];
+		String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
+		String[] ranks = {"Ace", "2", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+		
+		// Initialize the cards
+		for (int i = 0; i < deck.length; i++) {
+		deck[i] = i;
+		}
+		
+		// shuffle the cards
+for (int i = 0; i < deck.length; i++) {
+	// Generate an index randomly
+	int index = (int)(Math.random() * deck.length);
+	int temp = deck[i];
+	deck[i] = deck[index];
+	deck[index] = temp;
+}
+
+// Display the first four cards
+for (int i = 0; i < 4; i++) {
+	String suit = suits[deck[i] / 13];
+	String rank = ranks[deck[i] % 13];
+	System.out.println("Card number " + deck[i] + ": " + rank + " of " + suit);
+}
+	}
+}
+```
+
+The program creates an array suits for four suits (line 4) and an array ranks for 13 cards in a suit (lines 5 and 6). Each element in these arrays is a string. 
+
+The program initializes deck with values 0-51 in lines 9 and 10. The deck value 0 representes the Ace of Spades, 1 representes de card 2 of Spaces, 13 represents the Ace of Hearts, and 14 representes the 2 of Hearts.
+
+Lines 13-19 randomly shuffle the deck. After a deck is shuffled, deck[i] contains an arbitrary value. deck[i] / 13 is 0, 1, 2, or 3, which determines the suit (line 23). deck[i] % 13 is a value between 0 and 12, which determines the rank (line 24). If the suits array is not defined, we would have to determine the suit usingin a lengthy multiway if-else statments as follows:
+if (deck[i] / 13 == 0)
+	System.out.print("suit is Spades");
+else if (deck[i] / 13 == 1)
+	System.out.print("Suit is Hearts");
+
+## 7.5 Copying Arrays
+*To copy the contents of one array into another, we have to copy the array's individual elements into the other array.*
+Often, in a program, we need to duplicate an array or part of an array. In such cases, we could attempt to use the assignment statement (=), as follows:
+*list2 = list1*;
+
+However, this statement does not copy the contents of the array referenced by *list1* to *list2*, but instead merely copies the reference value from *list1* to *list2*. After this statement, *list1* and *list2* reference the same array, as show in Figure 7.4. The array previously referenced by *list2* is no longer referenced; it becomes garbare, which will be automatically collected by the Java Virtual Machine. This process is called *garbare collection*.The array previously
+referenced by list2 is no longer referenced; it becomes garbage, which will be automatically
+collected by the Java Virtual Machine. This process is called garbage collection.
+
+!![image-20261282345691.png](/image-20261282345691.png)
+O array list2, após a referência, se torna lixo, ou seja, ele será automaticamente coletado pela JVM.
+
+In Java, we can use assignment statements to copy primitive to copy primitive data type variables, but not arrays. Assigning one array variable to another array variable actualy copies one reference to another and makes both variables point to the same memory location.
+
+There are three ways to copy arrays:
+1. Use a loop to copy individual elements one by one;
+2. Use the static *arrayCopy* method in the System class.
+3. Use the *clone* method to copy arrays; this will be introduced in Chapter 13, Abstract Classes and Interfaces.
+We can write a loop to copy every element from the source array to the corresponding element in the target array. The following code, for instance, copies *sourceArray* to *targetArray* using a *for* loop:
+```java
+int[] sourceArray = {2, 3, 1, 5, 10};
+int[] targetArray = new int[sourceArray.length];
+for (int i = 0; i < sourceArray.length; i++)
+	targetArray[i] = sourceArray[i];
+```
+
+Another approach is to use the **arrayCopy** method in the java.lang.System class to copy *arrayCopy* method arrays instead of using a loop. The syntax for **arraycopy** is:
+```java
+System.arraycopy(sourceArray, 0, targetArray, 0, sourceArray.length);
+```
+The *arrayCopy* method does not allocate memory space for the target array. The target array must have already been created with its memory space allocated. After the copying takes place, *targetArray* and *sourceArray* have the same content but independent memory locations.
+
+>Note the *arrayCopy* method violates the Java naming convention. By convention, this method should name **arrayCopy** (i.e., with an uppercase C).
+
+7.5.1 Use the *arrayCopy* method to copy the following array to a target array t: 
+int[] source = {3, 4, 5};
+
+7.5.2 Once an array is created, its size cannot be changed. Does the following code resize the array?
+

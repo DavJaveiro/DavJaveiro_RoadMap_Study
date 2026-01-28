@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4ac76af9da2913c4",
+        "id": "fba34cbd4317f012",
         "type": "tabs",
         "children": [
           {
-            "id": "bb7c54883c24197b",
+            "id": "a60919a6c59fef69",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
+                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 4 - Modeling"
+              "title": "Chapter 7 - Single-Dimensional Arrays"
             }
           }
         ]
@@ -215,8 +215,13 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "bb7c54883c24197b",
+  "active": "a60919a6c59fef69",
   "lastOpenFiles": [
+    "image-20261282345691.png",
+    "image-20261283419384.png",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ShiftingElements.class",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/ShiftingElements.java",
+    "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
     "image-20261273620248.png",
     "image-2026127293593.png",
     "image-2026127249331.png",
@@ -227,7 +232,6 @@
     "Sem título.md",
     "Sem título 1.md",
     "Sem título 7.md",
-    "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSumvsEnhanced2601.class",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/IndexedSumvsEnhanced2601.java",
@@ -242,8 +246,6 @@
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaDosElementos26.class",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/examples/SomaDosElementos26.java",
     "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
-    "Testes",
-    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
     "Sem título 6.md",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
@@ -260,8 +262,6 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch8/tofu/live/ec2-dns-tls/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch8/packer/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch7/tofu/modules/vpc/README.md",
-    "image-20261232350698.png",
-    "image-2026123470742.png",
-    "image-20261233628262.png"
+    "image-20261232350698.png"
   ]
 }
