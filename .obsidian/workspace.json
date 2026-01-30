@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 526.0041847229004
+    "width": 526.0041847229004,
+    "collapsed": true
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -214,7 +215,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "a60919a6c59fef69",
+  "active": "5e0f3570fdd5d7e9",
   "lastOpenFiles": [
     "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
