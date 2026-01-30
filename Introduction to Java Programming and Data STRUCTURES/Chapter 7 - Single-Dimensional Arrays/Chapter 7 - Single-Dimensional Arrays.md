@@ -447,4 +447,12 @@ The *arrayCopy* method does not allocate memory space for the target array. The 
 int[] source = {3, 4, 5};
 
 7.5.2 Once an array is created, its size cannot be changed. Does the following code resize the array?
+```java
+int[] myList;
+myList = new int[10];
+// Sometime later you want to assign a new array to myList
+myList = new int[20];
+```
 
+## 7.6 Passing Arrays to Methods
+*When passing an array to a method, the reference of the array is passed to the method*

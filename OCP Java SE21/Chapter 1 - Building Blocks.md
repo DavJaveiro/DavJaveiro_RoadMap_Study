@@ -267,5 +267,211 @@ Now the code runs; it prints out a random number betweeen 0 and 9. Just like arr
 In chapter 5, we cover another type of import referred to as a *static* import. It allows we to make *static* members of a class known, often so we can use variables and method names without having to keep specifying the class name. 
 
 ### Packages
+as we saw in the previous example, Java classes are grouped into packages. The *import* statement tells the compilar which package to look in to find a class. 
+This is similar to how mailing a letter works. Imagine we are mailing a letter to 123 Main Street, Apartment 9. The mail carrier looks for the mailbox for apartment 9. The address is like the package name in Java. The apartment number is like the class name in Java. Just as the mail carrier only looks at apartment numbers in the building, Java only looks for class names in the package.
 
+Package names are hierarchical like the mail as well. The postal service starts with the top level, looking at our country first. We start reading a package name at the beginning too. For example, if it begins with Java, this means it came with the JDK. If it starts with something else, it likely shows where it came from using the website name in reverse. For example, com.wiley.javabook tells us the code is associated with the wiley.com website or organization. After the website name, we can add whatever we want. For example, 
+*com.wiley.java.my.name* alse came from *wiley.com*. Java calls more detailed packages *child packages*. The package *com.wiley.javabook* is a child package of *com.wiley.javabook*. is a child package of *com.wiley*. We can tell because it's longer and thus more specific.
+
+We'll see package names on the exam that don't follows this convention. Don't be surprised to see packages names like a.b.c. 
+
+The rule for package names is that they are mostly letters or numbers separated by periods (.).
+
+Technically, we're allowed a couple of other characters between the periods (.). We can even use package names of websites we don't own if we want to shuc as com.wiley, although people reading our code might be confused! The rules are the same as for variable names, which we see later in this chapter.
+
+The exam may try to trick we with invalid variable names. Luckily, it doesn't try to trick we by giving invalid package names.
+
+### Wildcards
+Classes in the same package are often imported together. We can use a shortcut to *import* all the classes in a package.
+
+```java
+import java.util.*; // import java.util.Random among other things
+public class NumberPicker {
+	public static void main(String[] args) {
+		Random r = neww Random();
+		System.out.println(r.nextInt(100));
+	}
+}
+```
+
+In this example, we imported *java.util.Random* and a pile (pilha) of other classes. 
+
+The * is a wildcard that matches all classes in the package. Every class in the *java.util* package is available to this program when Java compiles it. The *import* statement doesn't bring in child packages, fields, or methods; it imports only classes directly under the package. Let's say we wanted to us the class *AtomicInteger* (we learn about that one in Chapter 13, *Concurrency*) in the *java.util.concurrent.atomic* package.
+Which import or imports support this?
+
+*import java.util.***
+import java.util.concurrent.*
+import java.util.concurrent.atomic.*
+
+Only the last import allows the class to be recognized because child packages are not included with the first two.
+
+We might think that including so many classes slows down our program execution, but it doesn't.  The compiler *figures* out (descobre) what's actually needed. Which approach we choose is personal preference, or team preference, if we are working with others on a team. Listing the classes used makes the code easier to read, specially for new programmers. Using the wildcard can shorten the import list. We'll se both approaches on the exam.
+
+### Redundant Imports
+Wait a minute! We've been referring to System without an import every time  we printed text, and java found it just fine. There's one special package in the Java world called *java.lang*. This package is special in that it is automatically imported. We can type this package in an *import* statement, but we don't have to. In the following code, how many of the import do we think are redundant?
+
+```java
+import java.lang.System;
+import java.lang.*
+import java.util.Random;
+import java.util.*;
+public class NumberPicker {
+	public static void main(String[] args) {
+		Random r = new Random();
+		System.out.println(r.nextInt(10));
+	}
+}
+```
+The answer is that three of the imports are redundant. Lines 1 and 2 are redundant because everything in *java.lang* is automatically imported. Line 4 is also redundant in this example because *Random* is already imported from *java.util.Random*. If line 3 wasn't present, java.util.* wouldn't be redundant, though, since it would cover importing **Random**.
+
+Another case of redundancy involves importing a class that is in the same package as the class importing it. Java automatically looks in the current package for other classes.
+
+Let's take a look at one more example to make sure we understand the edge cases for imports. 
+
+For this example, *Files* and *Paths* are both in the package *java.nio.file*. The exam may use packages we may never have seen before. The question will let we know which package the class is in if we need to know that in order to answer the question.  
+
+Which *import* statements do we think would work to get this code to compile?
+```java
+public class InputImports {
+	public void read(Files files) {
+		Paths.get("name");
+	}
+}
+```
+There are two possible answers. The sorter one is to use a wildcard to import both at the same time.
+
+```java
+import java.nio.file.* 
+```
+
+The other answer is to import both classes explicitly.
+```java
+import java.nio.file.Files;
+import java.nio.file.Paths;
+```
+Now le'ts consider some import that don't work
+```java
+import java.nio.*; // NO GOOD - a wildcard only matches
+
+import java.nio.*.*; // NO GOOD = we can only have one wildcard
+
+import java.nio.file.Paths.*; // o GOOD we cannot import methods only class names
+
+
+```
+
+## Naming Conflicts
+One of the reasons for using packages is so that class names don't have to be unique across all of Java. 
+
+This means we'll sometimes want to import a class that can be found in multiple places. A common example of this is the **Date** class. Java provides implementations of *java.util.Date* and *java.sql.Date*.
+
+What import statement ca we use if we want the java.util.Data version?
+```java
+public class Conflicts {
+	Date date;
+	// some more code
+}
+```
+The answer should by easy by now. We can write either *import java.util*; or *import java.util.Date*; The tricky cases come about when other imports are present.
+
+When the class name is found in multiple packages, Java gives our a compiler error. In our example, the solution is easy, remove the import java.sql.* what we don't need. But what do we do if we need a whole pile of other classes in the *java.sql* package?
+```java
+import java.util.Date;
+import java.sql.Date;
+```
+
+Java is smart enough to detect that this code is no good. As a programmer, we've claimed to explicity want the default to be both the *java.util.Date* and *java.sql.Date* implementations.
+Because there can't be two defaults, the compiler tells we the import are ambiguous.
+
+## Creating a New Package
+Up to now, all the code we've written in this chapter has been in the *default package*. This is a special unnamed package that we should use only for throwaway code. We can tell the code is in the default package, because there's no package name. On the exam, we'll see the default package used a lot to save space in code listings. In real life, always name our packages to avoid naming conflicts and to allow other to reuse our code. 
+
+Now it's time to create a new package. The directory structure on our computer is related to the package name. In this ection, just read along. We cover how to compile and run the code in the next section.
+
+Suppose we have these two classes in the c:\temp directory:
+package packagea;
+public class ClassA {}
+package packageb;
+import packagea.ClassA;
+public class ClassB {
+	public static void main(String[] args) {
+		ClassA a;
+		System.out.println("Got it");
+	}
+}
+
+When we run a Java program, java knows where to look for those package names. In this case, running from C:\temp works because bot packagea are underneath it.
+
+## Compiling and Running Code With Packages
+We'll learn Java much more easily by using the command line to compile and test our examples. Once we know the Java syntax well, we can witch to an IDE. but for the exam, we goal is to know details about the language and not have the IDE hide them for we.
+
+Follow this example to make sure we know how to use the command line. If we have any problems following this procedure, post a question in the forum *beginning Java* ate CodeRanch. Describes what we tried an what the error said. 
+
+The first step is to create the two files from the previous section.  Table 1.1 shows the expet fully qualified filenames and the command to get into the directiory for the next steps.
+
+If this command does work, two new files will be created:
+Pckagea/ClassA.class and packageb/ClassB.class.
+
+*Compiling with Wildcards*
+We can use an asterisk to specify that you'd like to include all java files in a directory. This is convenient when we have a lot of files in a package. We can rewrite the previous *javac* command like this:
+`javac packagea/*.java packageb/*.java`
+
+However, we cannot use a wildcard to include subdirectories. If we were to write *javac *.java*, the code in the packages would not be picked up.
+
+Now that we code has compiled, we can run it by typing the following command:
+```bash
+java packageb.ClassB
+```
+
+If it works, we'll se Got it printed. You might have noticed that we typed **ClassB.class**. As discussed earlier, we don't pass the extension when running a program. 
+
+**Figure 1.1** shows where the .class files were created in the directory structure.
+
+!![image-202613033192.png](/image-202613033192.png)
+
+## Compiling to Another Directory
+By default, the *javac* command place the compiled classes in the same directory as the source code. It also provide an option to place the class files into a different directory. **The -d option specifies this target directory.**
+
+Java options are case sensitive. This means we cannot pass -D instead of -d.
+
+Notice that the last one requires two dashes (--), while the first two require one dash (-). If we have the wrong number of dashes, the program will not run.
+
+```java
+package structure;
+import java.util.*;
+public Class Meerkat {
+	double weight;
+order 
+	public double getWeight() {
+		return weight; }
+	double height; // another fiield - they don't need to be together
+	}
+}
+```
+
+So far, so good. This is a common pattern that we should be familiar with. How about this one?
+
+ / * header* /
+**package** structure;
+
+// class Meerkat
+public Class Meerkat {}
+
+Still good. We can put comments anywhere, blank lines are ignored, and imports are optional. In  the next example, we have a problem:
+```java
+import java.util.*; // DOES NOT COMPILE
+package structure; // DOES NOT COMPILE
+String name;
+public Class Meerkat { } // DOES NOT COMPILE
+```
+
+There are two problems here. One is that the *package* and *import* statements are reversed. Although both are optional, *package* must come before *import* if present. The other issue is that a fields attempts a declaration outside a class. This is not allowed. Fields and methods must be within a class.
+
+Got all that? Think of the acronym PIC (picture): package, import, and class. Fields and methods are easier to remember because they merely have to be inside a class.
+
+*Throughout this book, if we see two public classes in a code snippet or question, we can assume they are in different files unless it specifically says they are in the same .java file.*
+
+Now we know hot to create and arrange a class. Later chapters show we how to create classes with more powerful operations.
+
+## Creating Objects
 
