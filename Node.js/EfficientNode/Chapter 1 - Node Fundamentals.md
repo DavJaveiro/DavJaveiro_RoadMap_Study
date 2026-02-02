@@ -37,3 +37,11 @@ Depois de considerar linguagens de programação como Python, Lua e Haskell, Rya
 Apesar dos problemas históricos do JavaScript, acredito que hoje ele é uma linguagem decente que pode ser ainda melhor com o uso do *TypeScript* (que discutiremos no Capítulo 10).
 
 Além de simplificar a implementação de operações assíncronas, o fato de o JavaScript ser a linguagem de programação dos navegadores deu ao Node a vantagem de ter **uma única linguagem em toda a stack** (frontend e backend). Isso traz alguns benefícios sutis, mas importantes:
+
+- Uma única linguagem significa melhores integrações entre o código frontend e o de backend. Podemos compartilhar código entre essas duas frentes. Por exemplo, é possível construir uma aplicação frontend com um framework JavaScript como o React e depois usar o Node para renderizar os mesmos componentes dessa aplicação no servidor e gerar as visualizações HTML iniciais para o frontend. Isso é conhecido como **SSR - Server-Side Rendering**, e é algo que muitos frameworks de frontend para Node oferecem de forma nativa.
+
+- Uma única linguagem também significa que as equipes podem compartilhar responsabilidades entre diferentes projetos. Os projetos não precisam de um time dedicado só ao frontend e outro diferente só ao backend. Além disso, algumas dependências entre equipes deixam de existir. Um projeto full stack pode ser atribuído a um único time, *o pessoal do JavaScript*. Podendo desenvolver APIs, servidores web e de rede, criar sites interativos e até mesmo aplicações móveis e desktop. Contratar desenvolvedores JavaScript que conseguem contribuir tanto no frontend quanto no backend é algo muito mais atrativo.
+
+O objeto console.log é um dos muitos objetos de escopo global de nível superior que podemos acessar no Node sem precisar declarar uma dependência. De forma semelhante a como objeto janela global dos navegadores pode ser acessado com a propriedade globalThis, no Node, a propriedade globalThis é o objeto global e o objeto console faz parte dele. Todas as propriedades de globalThis podem ser acessadas diretamente: por exemplo, console.log em vez de globalThis.console.log (que também funciona).
+
+## Using Built-In Modules
