@@ -456,3 +456,233 @@ myList = new int[20];
 
 ## 7.6 Passing Arrays to Methods
 *When passing an array to a method, the reference of the array is passed to the method*
+(**Quando passamos um array para um método, a referência do array também é passada para o método**)
+Just as we can pass primitive type values to methods, we can also pass arrays to methods. 
+
+For example, the following methods displays the elements in an *int* array:
+```java
+public static void printArray(int[] array) {
+	for (int i = 0; i < array.length; i++) {
+		System.out.println(array[i] + " ");
+	}
+}
+```
+
+We can invoke it by passing an array. For example, the following statement invokes the **printArray** method to display 3, 1, 2, 6, 4 and 2.
+
+`printArray(new int[]({3, 1, 2, 6, 4, 2});`
+
+>**Note:** The preceding statement creates an array using the following syntax:
+>new elementType[]{value0, value1, ..., valueK};
+
+Java uses *pass-by-value* to pass arguments to a method. There are important differences between passing the values of variables of primitive data types and passing arrays.
+
+- For an argument of a primitive type, the argument's value is passed.
+- For an argument of an array type, the value of the argument is a reference to an array; this reference value is passed to the method. Semantically, it can be best describe as *pass-by-sharing*, that is, the array in the method is the same as the array being passed. Thus, if we change the array in the method, we will see the change outside the method.
+
+**Explicação resumida**
+- **Primitivos:** quando chamamos *m(x)*, o método recebe uma **cópia** do valor de **x**. Operações sobre esse parâmetro não tocam a variável original. 
+- **Arrays/Objetos:** a variável que passamos contém uma referência (endereço) ao objeto; essa referência é um **valor** e é copiada para o parâmetro do método. Assim, **ambas as referências apontam para o mesmo objeto;** mutações no objeto são compartilhadas. 
+
+Take the following code, for example:
+```java
+public class TestArrayArguments {
+	public static void main(String[] args) {
+		int x = 1; // x represents an int value
+		int[] y = new int[10]; // y represents an array of int values;
+		m(x, y); // invokes m with arguments x and y
+		System.out.println("x is " + x);
+		System.out.println("y[0] is " + y[0]);
+		public static void m(int number, int[] numbers) {
+			number = 1001; // Assign a new value to number
+			numbers[0] = 5555; // Assign a new value to numbers[0];
+		}
+	}
+}
+```
+A saída acima será:
+>x is 1
+>y[0]  is 5555
+
+We may wonder why after *m* is invoked, *x* remais 1, but y[0] becomes 5555.
+
+This is because *y* and *numbers*, although they are independent variables, reference the same array, as illustrated in Figure 7.5. When **m(x, y)** is invoked, the values of x and y are passed to number and *numbers*. Since *y* contains the reference value of the array, *numbers* now contains the same reference value to the same array.
+!![image-2026228520.png](/image-2026228520.png)
+
+Java sempre passa argumentos por valor; para tipos primitivos é a cópia do valor, e parra arrays/objetos é a cópia da referência (ou seja, o endereço). Isso faz com que mutações no conteúdo do array dentro do método sejam visíveis fora, enquanto atribuições ao parâmetro não alteram a variável do chamador. 
+**O que está acontecendo em nosso exemplo:**
+- *x* **é um primitivo:** quando chamamos *m(x,y)*, o valor 1 é copiado para o parâmetro *number*. Alterar *Number = 1001;* muda apenas essa cópia local; x no main permanecerá 1;
+- *y* **é uma variável que contém uma referência ao array:** ao chamar *m(x,y)*, o valor que é copiado para *numbers* é essa referência (um ponteiro/endereçamento para o array). Assim, *numbers* e *y* apontam para o mesmo array no heap. 
+
+Por isso o array é compartilhado (mutação visível), enquanto o primitivo não é.
+
+**Passam por valor**
+Arrays e objetos - passagem por valor da referência (pass-by-value of the reference) ou *pass-by-sharing*.
+
+>**Note:** Arrays are object in Java (objects are introduced in Chapter 9). The JVM stores the objects in an are of memory called the *heap*, which is used for dynamic memory allocation.
+
+Listing 7.3 gives another program that shows the difference between passing a primitive data type value and an array reference variable to a method.
+
+The program contains two methods for swapping elements in an array. The first method, name *swap*, fails to swap two *int* arguments. The second method, name *swapFistTwoInArray*, successfully swaps the first two elements in the array argument.
+
+*Listing 7.3 TestPassArray.java*
+```java
+public class TestPassArray {
+	public static void main(String[] args) {
+		int[] a = {1, 2};
+		
+		// swap element using the swap method
+		System.out.println("Before invoking swap");
+		System.out.println("array is {" + a[0] + ", " + a[1] + "}");
+		swap(a[0])
+		
+		
+		public static void swap(int n1, int n2) {
+			int temp = n1;
+			n1 = n2;
+			n2 = temp;
+		}
+	}
+	
+	public static void swapFirstTwoInArray(int[] array) {
+		int temp = array[0];
+		array[0] = array[1];
+		array[1] = temp;
+	}
+}
+```
+
+As shown in Figure 7.6, the two elements are not swapped using the *swap* method. However, the are swapped using the *swapFirstTwoInArray* method. Since the parameters in the **swap** method are primitive type, the values of **a[0]** are passed to **n1** and **n2** inside the method when invoking **swap(a[0], a[1])**. The memory locations for **n1** and **n2** are independent of the ones for **a[0]** and **a[1]**. The contents of the array are not affected by this call..
+
+When passing an array to a method, the reference of the array is passed to the method. 
+
+The parameter in the **swapFirstTwoInArray** method is an array. 
+
+>**7.6.1 - True or false?** When an array is passed to a method, a new array is created and passed to the method.
+
+Falso, quando passamos um array para um método, estamos passando uma cópia da referência daquele array, ou seja, estamos apontando para o mesmo endereço de memória, na *heap*, do array subjacente, portanto, não criamos uma cópia do array e sim manipulamos o array referenciado. Isso se chama *pass-by-value of the reference.* Logo, o parâmetro do método e a variável do chamador **apontam para o mesmo array no heap, logo mutações no conteúdo do array dentro do método serão visíveis fora daquele método**.
+
+## 7.7 Returning an Array from a Method
+*When a method returns an array, the reference of the array is returned.*
+
+We can pass arrays when invoking a method. A method may also return an array. For example, the following method returns an array that is the reversal of another array.
+```java
+public static int[] reverse(int[] list) {
+	int[] result = new int[list.length];
+	
+	for (int i = 0, j = result.length -1; i < list.length; i++, j--) {
+		result[j] = list[i];
+	}
+	
+	return result;
+}
+```
+Line 2 creates a new array **result**. Lines 4-7 copy elements from array list to array result. Line 9 returns the array. For example, the following statement returns a new array **list2** with elements 6, 5, 4, 3, 2, 1:
+```java
+int[] list1 = {1, 2, 3, 4, 5, 6};
+int[] list2 = reverse(list1);
+```
+
+7.7.1 Suppose the following code is written to reverse the contents in an array, explain why it is wrong. How do you fix it?
+```java
+int[] list = {1, 2, 3, 5, 4};
+for (int i = 0, j = list.length − 1; i < list.length; i++, j−−) {
+// Swap list[i] with list[j]
+int temp = list[i];
+list[i] = list[j];
+list[j] = temp;
+}
+```
+Estamos criando uma variável temporário temp do tipo int. Ela armazenará apenas o valor do int atual com base no índice acessado do array, a cada iteração, e abaixo, list[j] = temp, estamos assumindo outro valor temporário para list[j] = temp. para que pudesse funcionar, temos que criar um array temporário ao invés de um int temp.
+
+## 7.8 Case Study: Counting the Occurrences of Each Letter
+*This section presents a program to count the occurrences of each letter in an array of characters.*
+The program given in Listing 7.4 does the following:
+1. Generates 100 lowercase letters randomly and assigns them to an array of characters, as shown in Figure 7.7a. We can obtain a random letter by using the **getRandomLowerCaseLetter()** method in the **RandomCharacter** class in Listing 6.10.
+2. Count the occurrences of each letter in the array. To do so, create an array, say **counts**, of 26 int values, each of which counts the occurrences of a letter, as show in Figure 7.7b. That is, **counts[0]** counts the number of a's, counts[1] counts the number of b's, and so on.
+!![image-202622547166.png](/image-202622547166.png)
+
+The **createArray** method generates an array of 100 random lowercase letters.
+Line 5 invokes the method and assigns the array to chars. What would be wrong if we rewrote the code as follows?
+char[] chars = new char[100];
+chars = createArray();
+
+You would be creating two arrays. The first line would create an array by using new char[100]. The second line would create an array by invoking **createArray()** and assign the reference of the array to **chars**. The array created in the first line would be garbare because it is no longer referenced, and as mentioned earlier, Java automatically collects garbage behind the scenes. Our program would compile and run correctly, but it would create an array unnecessarily. 
+
+Invoking **getRandomLowerCaseLetter()** (line 28) return a random lowercase letter. This method is defined in the **RandomCharacter** class in Listing 6.10.
+
+The **countLetters** method return an array of 26 int values, each of which stores the number of occurrences of a letter. The method processes each letter in the array and increases its count by one. A brute-force approach to count the occurrences of each letter might be as follows:
+```java
+for (int = 0; i chars.length; i++)
+	if (chars[i] == 'a')
+		counts[0]++;
+	else if (chars[i] == 'b')
+		counts[1]++;
+```
+
+However, a better solution is given in lines 51 and 52
+```java
+for (int i = 0; i < chars.length; i++)
+	counts[chars[i] - 'a']++;
+```
+If the letter (chars[i]) is a, the corresponding count is counts['a' − 'a'] (i.e.,
+counts[0]). If the letter is b, the corresponding count is counts['b' − 'a'] (i.e.,
+counts[1]), since the Unicode of b is one more than that of a. If the letter is z, the
+corresponding
+count is counts['z' − 'a'] (i.e., counts[25]), since the Unicode of z is
+25 more than that of a.
+The code example above is:
+[[CountLettersInArray.java]]
+
+#### 7.8.1 Show the output of the following two programs:
+
+## 7.9 Variable-Length Argument Lists
+*A variable number of arguments of the same type can be passed to a method and treated as an array*
+
+We can pass a variable number of arguments of the same type to a method. The parameter in the method is declared as follows:
+`typeName... parameterName`
+
+In the method declaration, we specify the type followed by an ellipsis (...). <span style="background:#fff88f">Only one variable-length parameter may be specified in a method</span>, and this parameter must be the last parameter. Any regular parameters must precede it.
+
+Java treats a variable-length parameter as an array. We can pass an array or variable number of arguments to a variable-length parameter. When invoking a method with a variable number of arguments, Java creates an array and passes the arguments to it. Listing 7.5 presents a method that prints the maximum value in a list of an unspecified number of values.
+
+```java
+public class VarArgDemo {
+	public static void main(String[] args) {
+		printMax(34, 3, 3, 2, 56.5);
+		printMax(new double[]{1, 2, 3});
+	}
+	
+	public static void printMax(double... numbers) {
+		if (numbers.length == 0) {
+		System.out.println("No argument passed");
+		return;
+		}
+		
+		double result = numbers[0];
+		for(int i = 1; i < numbers.length; i++)
+			if (numbers[i] > result)
+			result = numbers[i];
+		
+		System.out.println("The max value is " + result);
+		
+	}
+}
+```
+
+Portanto, em Java um parâmetro varargs aceita tanto argumentos individuais (valores primitivos) quanto um array do mesmo tipo; internamente o compilador trata varargs como um array. 
+
+7.9.1 What is wrong with each of the following method headers?
+a. public static void print(String... strings, double...numbers)
+Estamos passando dois varargs como argumento para o método print, o que é errado em Java;
+
+
+
+b. public static void print(double...numbers, String name)
+O *varargs* deve ser o último parâmetro passado como argumento
+
+c. public static double... print(double d1, double d2)
+Aqui, o ... está fora, essa sintaxe está incorreta. Não existe, os ... devem vir dentro dos parênteses como tipo ... < nomeref > varargs não pode ser tipo de retorno.
+
+## 7.10 Searching Arrays
+*If an array is sorted, binary search is more efficient than linear search for finding an element in the array*.
