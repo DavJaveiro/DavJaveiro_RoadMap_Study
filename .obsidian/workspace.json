@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
+                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 7 - Single-Dimensional Arrays"
+              "title": "Chapter 5 - Automated Testing"
             }
           }
         ]
@@ -217,8 +217,8 @@
   },
   "active": "a60919a6c59fef69",
   "lastOpenFiles": [
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.java",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.java",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.class",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.class",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.java",
