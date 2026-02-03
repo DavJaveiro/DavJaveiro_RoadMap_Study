@@ -13,12 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
+=======
+                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+>>>>>>> 437794da90692d61850fe65815d578da463e6160
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "Semana 1 Aula 1 - 02-02 a 08-02"
+=======
+              "title": "Chapter 5 - Automated Testing"
+>>>>>>> 437794da90692d61850fe65815d578da463e6160
             }
           }
         ]
@@ -217,6 +225,7 @@
   },
   "active": "c6f69a937f7b187a",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "Aula 01.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
@@ -224,6 +233,9 @@
     "Matemática Cederj",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana",
     "Matemática Cederj/Cederj 2026.1",
+=======
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
+>>>>>>> 437794da90692d61850fe65815d578da463e6160
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.java",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.class",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.class",
