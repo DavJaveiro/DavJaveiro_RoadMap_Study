@@ -214,6 +214,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
+<<<<<<< HEAD
   "active": "d247890b119a6b4f",
   "lastOpenFiles": [
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
@@ -262,4 +263,8 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/rds-postgres/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/static-website/README.md"
   ]
+=======
+  "active": "d4933f69527ab633",
+  "lastOpenFiles": []
+>>>>>>> dbd620ca58bb676adc80806407b5a117f7b2cf69
 }
