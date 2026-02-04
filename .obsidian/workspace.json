@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "11b321792559d421",
+    "id": "4492628815d278a5",
     "type": "split",
     "children": [
       {
-        "id": "10a5b6e445b0c2d6",
+        "id": "a23d186d9b46128e",
         "type": "tabs",
         "children": [
           {
-            "id": "b2d2b789c07221dc",
+            "id": "d247890b119a6b4f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "593877bcdd370f7c",
+    "id": "b6749163adde1262",
     "type": "split",
     "children": [
       {
-        "id": "737a7ae13069cfda",
+        "id": "b252f19a1cf577db",
         "type": "tabs",
         "children": [
           {
-            "id": "d2f74b64ff3231b6",
+            "id": "eb2f45f431938c62",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "43739be40897109f",
+            "id": "8ff341f202025ee2",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "516eb943ec30fb15",
+            "id": "b5c8226e9beb48a7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,7 +75,7 @@
             }
           },
           {
-            "id": "97fe9eb9db3d08bc",
+            "id": "29df36aaf2950c00",
             "type": "leaf",
             "state": {
               "type": "runjs-codelist-view",
@@ -88,24 +88,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 526.0041847229004
   },
   "right": {
-    "id": "ae9ee3e22ff4d3b2",
+    "id": "3db3f49db975a7e2",
     "type": "split",
     "children": [
       {
-        "id": "2629924f3845bb72",
+        "id": "d82906b547d42db6",
         "type": "tabs",
         "children": [
           {
-            "id": "36ab27ddfe998745",
+            "id": "4ac6f78bccaff732",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,25 +113,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Chapter 5 - Automated Testing"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "0fe3f8384000ca50",
+            "id": "d2b83ffea62d5462",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Chapter 5 - Automated Testing"
+              "title": "Links de saída"
             }
           },
           {
-            "id": "0938dcc4c5bfcd27",
+            "id": "3e6f2dfcd80903cc",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -148,7 +145,7 @@
             }
           },
           {
-            "id": "efbf59ffd5b0cb2e",
+            "id": "4fff91b3a6516976",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -162,22 +159,21 @@
             }
           },
           {
-            "id": "f6de2000518d47c0",
+            "id": "0780b5e1720bdee8",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário de Chapter 5 - Automated Testing"
+              "title": "Sumário"
             }
           },
           {
-            "id": "d4933f69527ab633",
+            "id": "5e0f3570fdd5d7e9",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -218,6 +214,52 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "b2d2b789c07221dc",
-  "lastOpenFiles": []
+  "active": "d247890b119a6b4f",
+  "lastOpenFiles": [
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
+    "Aula 01.pdf",
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
+    "Matemática Cederj",
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana",
+    "Matemática Cederj/Cederj 2026.1",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.java",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.class",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.class",
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.java",
+    "image-202622547166.png",
+    "image-2026228520.png",
+    "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
+    "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md",
+    "Node.js/EfficientNode",
+    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+    "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
+    "OCP Java SE21/Chapter 1 - Building Blocks.md",
+    "image-202613033192.png",
+    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
+    "image-20261282345691.png",
+    "image-20261283419384.png",
+    "image-20261273620248.png",
+    "image-2026127293593.png",
+    "image-2026127249331.png",
+    "image-20261271928969.png",
+    "image-20261271145574.png",
+    "OCP Java SE21/Introduction e dicas.md",
+    "Sem título.md",
+    "Sem título 1.md",
+    "Sem título 7.md",
+    "Testes/Mini-Curso JUNIT.md",
+    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
+    "Sem título 6.md",
+    "QuickBookPython/Chapter 3 - The quick Python overview.md",
+    "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
+    "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
+    "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
+    "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
+    "fundamentalsofDevOpsSoftwareDelivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/s3-website/README.md",
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/cloudfront-s3-website/README.md",
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/rds-postgres/README.md",
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/static-website/README.md"
+  ]
 }
