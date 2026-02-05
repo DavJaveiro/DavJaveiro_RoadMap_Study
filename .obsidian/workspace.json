@@ -13,34 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+                "file": "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 5 - Automated Testing"
-            }
-          }
-        ]
-      },
-      {
-        "id": "610d4baf3cc54f74",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "7bf115ffeda79b21",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
-                "page": 102,
-                "left": 61,
-                "top": 336,
-                "zoom": 1.73
-              },
-              "icon": "lucide-file-text",
-              "title": "Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li"
+              "title": "Capítulo 7 - Estrutura e Função da Membrana"
             }
           }
         ]
@@ -239,8 +217,13 @@
   },
   "active": "d247890b119a6b4f",
   "lastOpenFiles": [
-    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
+    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
+    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
+    "Concurso Professor Biologia/Biologia de Campbell",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+    "Concurso Professor Biologia/Biologia Celular",
+    "Concurso Professor Biologia",
+    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
     "image-2026241912195.png",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
     "Aula 01.pdf",
@@ -250,9 +233,6 @@
     "Matemática Cederj/Cederj 2026.1/Geometria Plana",
     "Matemática Cederj/Cederj 2026.1",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.java",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.class",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.class",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/RandomCharacter.java",
     "image-202622547166.png",
     "image-2026228520.png",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
@@ -282,7 +262,6 @@
     "fundamentalsofDevOpsSoftwareDelivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/s3-website/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/cloudfront-s3-website/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/rds-postgres/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/static-website/README.md"
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/rds-postgres/README.md"
   ]
 }
