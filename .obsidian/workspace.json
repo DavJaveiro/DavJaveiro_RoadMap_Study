@@ -22,6 +22,28 @@
             }
           }
         ]
+      },
+      {
+        "id": "610d4baf3cc54f74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7bf115ffeda79b21",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
+                "page": 102,
+                "left": 61,
+                "top": 336,
+                "zoom": 1.73
+              },
+              "icon": "lucide-file-text",
+              "title": "Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -88,7 +110,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 526.0041847229004
+    "width": 526.0041847229004,
+    "collapsed": true
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -214,9 +237,11 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-<<<<<<< HEAD
   "active": "d247890b119a6b4f",
   "lastOpenFiles": [
+    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
+    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+    "image-2026241912195.png",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
     "Aula 01.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
@@ -232,8 +257,6 @@
     "image-2026228520.png",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
     "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md",
-    "Node.js/EfficientNode",
-    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "image-202613033192.png",
@@ -244,7 +267,6 @@
     "image-2026127293593.png",
     "image-2026127249331.png",
     "image-20261271928969.png",
-    "image-20261271145574.png",
     "OCP Java SE21/Introduction e dicas.md",
     "Sem título.md",
     "Sem título 1.md",
@@ -263,8 +285,4 @@
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/rds-postgres/README.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/live/static-website/README.md"
   ]
-=======
-  "active": "d4933f69527ab633",
-  "lastOpenFiles": []
->>>>>>> dbd620ca58bb676adc80806407b5a117f7b2cf69
 }

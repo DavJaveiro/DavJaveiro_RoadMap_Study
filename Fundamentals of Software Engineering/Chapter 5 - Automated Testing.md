@@ -66,4 +66,35 @@ Essa abordagem não apenas melhora a qualidade do código, mas também aumenta a
 A confiança na codificação vem de uma combinação de conhecimento, experiência e ferramentas. Os testes automatizados são um parceiro poderoso na criação e manutenção da confiança em toda a nossa carreira de desenvolvimento.
 
 ## Leads to Consistency and Repeatability
-Antigamente, os desenvolvedores dependiam de inúmeras 
+Antigamente, os desenvolvedores dependiam de inúmeras horas de testes manuais. Criávamos uma lista de etapas para colocar pressão sobre o nosso novo recurso. Embora possamos ter seguido o roteiro na maior parte do tempo, uma abordagem manual é propensa a erros, não é repetível e exige muito trabalho e tempo. Os seres humanos são inerentemente incapazes de executar a mesma tarefa repetidamente sem variação.
+
+Os testes automatizados oferecem resultados consistentes e repetíveis. Ao contrário dos seres humanos, os scripts de teste seguem exatamente as mesmas todas as vezes, sem erros ou omissões. Esses testes são executados rapidamente, com o mínimo de esforço, com o clique de um botão ou durante as complicações. Os testes de regressão verificam especificamente se a funcionalidade existente continua funcionando à medida que o nosso código é alterado.
+
+Com um conjunto abrangente de testes, podemos garantir que eles sejam executados de forma consistente e repetida, independentemente do ambiente. Os testes automatizados podem ser executados com frequência, proporcionando testes de regressão eficazes. Esses testes garantem que os bugs corrigidos anteriormente não retornem misteriosamente; os testes também identificam novos bugs introduzidos por alterações na base de código. Ao testar um novo recurso, inore os caros testes manuais e confie nos testes automatizados. 
+
+## Types of Automated Testing
+Agora que já sabemos por que devemos testar, vamos explorar o que devemos e (nãod evemos) testar. Os testes automatizados são uma categoria ampla que abrange testes de interface do usuário, testes de ponta a ponta e testes de integração, bem como testes de unidade. É comum pensar nesses tipos de teste como uma pirâmide, conforme mostrado na Figura abaixo:
+!![image-2026241912195.png](/image-2026241912195.png)
+
+A pirâmide de testes é um conceito importante em testes de software, mas muitas vezes é mal compreendida ou totalmente ignorada. Criado por Mike Cohn, esse modelo fornece orientação visual para os tipos de testes que devemos ter em nosso aplicativo.
+
+These are the three types of automated testing:
+*Unit tests*
+Designed to cover individual components for functions in isolation from the rest of the system, ensuring that each part works correctly on its own.
+
+*Integration tests*
+Verify how the different components or modules of a system work together as a cohesive unit.
+
+*End-to-end tests*
+Cobre todo o aplicativo, começando pela interface do usuário e indo até o sistema de back-end.
+
+Essa estrutura é baseada em compensações fundamentais nos testes de software. À medida que subimos na pirâmide, os testes se tornam mais lentos de executar, mais caros de manter e mais propensos a quebrar. Um teste de unidade pode ser executado em microssegundos, enquanto um teste de ponta a ponta pode levar vários minutos. 
+
+Quando temos centenas ou milhares de testes, essas diferenças aumentam drasticamente. Vamos dar uma olhada mais de perto em cada uma delas.
+
+## Unit Tests
+Os testes unitários formam a base da pirâmide de testes, representando a maior parte do nosso conjunto de testes. Podemos pensar neles como um contrato que o nosso código deve cumprir. Se o código for alterado de alguma forma funcional, os testes de unidade correspondentes deverão ser interrompidos, alertando-o sobre possíveis problemas. Esses testes examinam componentes ou funções individuais isoladamente, garantindo que cada parte funcione corretamente por si só.
+
+Os testes unitários servem como a nossa primeira linha de defesa contra defeitos, trabalhando em conjunto com a análise estática e as revisões de código. Eles devem ser rápidos de escrever e executar, fornecendo feedback rápido durante o desenvolvimento. Quando um teste de unidade falha, ele normalmente aponta para uma função ou linha de código específica, o que facilita a depuração. Essa velocidade e precisão tornam os testes unitários inestimáveis durante o desenvolvimento de recursos e a integração contínua, dando aos desenvolvedores a confiança para iterar e melhorar o nosso código rapidamente.
+
+## Integration Tests
