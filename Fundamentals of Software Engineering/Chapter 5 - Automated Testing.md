@@ -73,7 +73,7 @@ Os testes automatizados oferecem resultados consistentes e repetíveis. Ao contr
 Com um conjunto abrangente de testes, podemos garantir que eles sejam executados de forma consistente e repetida, independentemente do ambiente. Os testes automatizados podem ser executados com frequência, proporcionando testes de regressão eficazes. Esses testes garantem que os bugs corrigidos anteriormente não retornem misteriosamente; os testes também identificam novos bugs introduzidos por alterações na base de código. Ao testar um novo recurso, inore os caros testes manuais e confie nos testes automatizados. 
 
 ## Types of Automated Testing
-Agora que já sabemos por que devemos testar, vamos explorar o que devemos e (nãod evemos) testar. Os testes automatizados são uma categoria ampla que abrange testes de interface do usuário, testes de ponta a ponta e testes de integração, bem como testes de unidade. É comum pensar nesses tipos de teste como uma pirâmide, conforme mostrado na Figura abaixo:
+Agora que já sabemos por que devemos testar, vamos explorar o que devemos e (não devemos) testar. Os testes automatizados são uma categoria ampla que abrange testes de interface do usuário, testes de ponta a ponta e testes de integração, bem como testes de unidade. É comum pensar nesses tipos de teste como uma pirâmide, conforme mostrado na Figura abaixo:
 !![image-2026241912195.png](/image-2026241912195.png)
 
 A pirâmide de testes é um conceito importante em testes de software, mas muitas vezes é mal compreendida ou totalmente ignorada. Criado por Mike Cohn, esse modelo fornece orientação visual para os tipos de testes que devemos ter em nosso aplicativo.
@@ -98,3 +98,14 @@ Os testes unitários formam a base da pirâmide de testes, representando a maior
 Os testes unitários servem como a nossa primeira linha de defesa contra defeitos, trabalhando em conjunto com a análise estática e as revisões de código. Eles devem ser rápidos de escrever e executar, fornecendo feedback rápido durante o desenvolvimento. Quando um teste de unidade falha, ele normalmente aponta para uma função ou linha de código específica, o que facilita a depuração. Essa velocidade e precisão tornam os testes unitários inestimáveis durante o desenvolvimento de recursos e a integração contínua, dando aos desenvolvedores a confiança para iterar e melhorar o nosso código rapidamente.
 
 ## Integration Tests
+Um teste de integração é um processo detalhado que verifica minuciosamente como diferentes componentes ou módulos de um sistema funcionam juntos como uma unidade coesa. Enquanto os testes de unidade se concentram em partes individuais do código isoladamente, os testes de integração abrangem um escopo mais amplo, examinando as interações entre essas partes.
+
+No entanto, o foco ainda é mais restrito em comparação com os testes completos do sistema, que avaliam o desempenho e a funcionalidade de todo o sistema. Os testes de integração são essenciais porque ajudam a detectar problemas que surgem somente quando os componentes testados individualmente são combinados, garantindo que o sistema integrado funcione de forma correta e eficiente.
+
+Essa etapa é essencial no SDLC para manter a integridade e a confiabilidade do sistema como um todo. Devido ao seu escopo e à sua complexidade, os testes de integração normalmente levam mais tempo para serem executados do que os testes de unidade e, em geral, são executados com menos frequência. Quando os testes de integração falham, geralmente é necessária mais investigação para identificar qual interação entre os módulos causou o problema.
+
+## End-to-End Tests
+Um teste end-to-end (E2E) é um procedimento de teste abrangente que cobra todo o aplicativo, começando pela interface do usuário e se estendendo até os sistemas de back-end. Esses testes são projetados para simular cenários reais de usuários, garantindo que o aplicativo funcione conforme o esperado em um ambiente real.
+
+Devido à sua natureza complexo e minuciosa, esses testes geralmente são de execução lente e exigem recursos e tempo significativos para serem executados. Como resultado, geralmente encontraremos menos testes de ponta a ponta em comparação com outros tipos. Estes são mais frágeis e estão suscetíveis a falsos negativos (é possível que um teste falhe devido a uma alteração trivial em um elemento da interface do usuário, em vez de um problema real com a funcionalidade). A falha nos testes de ponta a ponta pode exigir esforços substanciais de depuração para identificar e corrigir o problema.
+

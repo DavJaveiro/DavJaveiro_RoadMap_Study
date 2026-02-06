@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a23d186d9b46128e",
+        "id": "d21417c58419dbcf",
         "type": "tabs",
         "children": [
           {
-            "id": "d247890b119a6b4f",
+            "id": "9ebaac98792a95be",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
+                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capítulo 7 - Estrutura e Função da Membrana"
+              "title": "Chapter 5 - Automated Testing"
             }
           }
         ]
@@ -215,12 +215,13 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "d247890b119a6b4f",
+  "active": "9ebaac98792a95be",
   "lastOpenFiles": [
-    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
-    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
-    "Concurso Professor Biologia/Biologia de Campbell",
+    "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
+    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
+    "Concurso Professor Biologia/Biologia de Campbell",
     "Concurso Professor Biologia/Biologia Celular",
     "Concurso Professor Biologia",
     "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
@@ -261,7 +262,6 @@
     "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
     "fundamentalsofDevOpsSoftwareDelivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
     "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/s3-website/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/cloudfront-s3-website/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/rds-postgres/README.md"
+    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/cloudfront-s3-website/README.md"
   ]
 }

@@ -137,12 +137,12 @@ Um agente que resolve um jogo de palavras cruzadas sozinho está claramente em u
 Agente único não depende de outros agentes para interagir para cumprir o seu objetivo;
 Enquanto multiagente, exige claramente uma interação bidirecional.
 
-#Determinístico: estado completamente determinado pelo momento/estado atual;
-#Estocástico: estado que não está determinado, aberto a variedades ou novidades;
+<span style="background:#d3f8b6">#Determinístico: estado completamente determinado pelo momento/estado atual;</span>
+<span style="background:#d3f8b6">#Estocástico: estado que não está determinado, aberto a variedades ou novidades;</span>
 
 O nosso agente de Táxi, é claramente estocástico, existem situações imprevisíveis no seu trajeto que tornam quase impossível prever essas variantes em um dado trajeto. 
 
-O ambiente é incerto caso não seja totalmente observável ou determinístico. Se houver possibilidade de uma nova variável surgir, então, ele é incerto. 
+O ambiente é incerto caso não seja <span style="background:#b1ffff">totalmente observável ou determinístico</span>. Se houver possibilidade de uma nova variável surgir, então, ele é incerto. 
 
 **Episódicos**: 
 - Experiência atômica;
@@ -157,3 +157,19 @@ O ambiente é incerto caso não seja totalmente observável ou determinístico. 
 - Estáticos são mais fáceis de manipular;
 - Estático não requer observação constante;
 
+**Episódico versus Sequencial**: em um ambiente de tarefa episódico, a experiência do agente é dividida em episódios atômicos. Em cada episódio, o agente recebe uma percepção e em seguida seguida executa uma única ação. <span style="background:#b1ffff">É crucial que o episódio seguinte não dependa das ações executadas só depende do próprio episódio. </span>Muitas tarefas de classificação são episódicas. Por exemplo, um agente que tem de localizar peças defeituosas em uma linha de montagem baseia cada decisão na peça atual, independentemente das decisões anteriores; além disso, a decisão atual não afeta o fato da próxima peça estar ou não com defeito. Por outro lado, em ambientes sequenciais, a decisão atual poderia afetar todas as decisões futuras. Jogar xadrez e dirigir um táxi são sequencias: em ambos os casos, ações em curto prazo podem ter consequências a longo prazo. Ambientes episódicos são muito mais simples que ambientes sequenciais porque o agente não precisa pensar à frente.
+
+**Estático versus dinâmico:** se o ambiente puder se alterar enquanto um agente está deliberando, dizemos que o ambiente é dinâmico para esse agente; caso contrário, ele é estático. Ambientes estáticos são fáceis de manipular porque o agente não precisa continuar a observar o mundo enquanto está decidindo sobre a realização de uma ação nem precisa se preocupar com a passagem do tempo. Por outro lado, ambientes dinâmicos estão continuamente perguntando ao agente o que ele deseja fazer; se ele ainda não tiver se decidido, isso será considerado a decisão de não fazer nada. Se o próprio ambiente não mudar com a passagem do tempo, mas o nível de desempenho do agente se alterar, diremos que o ambiente é **semidinâmico**. O ambiente em que se dirige um táxi é claramente dinâmico: os outros carros e o próprio táxi continuam a se mover enquanto o algoritmo de direção hesita sobre o que fazer em seguida. O jogo do xadrez, quando jogado com a contagem do tempo, é semidinâmico. O jogo de palavras cruzadas é estático.
+
+Como poderíamos esperar, o caso mais difícil é:
+- Parcialmente observável
+- Multiagente
+- Estocástico
+- Sequencial
+- Dinâmico
+- Contínuo
+- Desconhecido
+
+Dirigir um táxi é difícil em todos esses sentidos, exceto que para a maioria dos motoristas o ambiente é conhecido. Dirigir um carro alugado em um país desconhecido, com a geografia e de leis de trânsito desconhecidas, é muito mais emocionante.
+
+## 2.4 A Estrutura de Agentes
