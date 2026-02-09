@@ -223,7 +223,7 @@
   "blankLineAboveAppendedContent": true,
   "autoCopy": false,
   "autoFocus": false,
-  "autoPaste": false,
+  "autoPaste": true,
   "autoFocusTarget": "last-active-and-open-then-last-paste",
   "autoPasteTarget": "last-active-and-open-then-last-paste",
   "openAutoFocusTargetIfNotOpened": true,

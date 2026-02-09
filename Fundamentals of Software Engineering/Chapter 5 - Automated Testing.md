@@ -109,3 +109,63 @@ Um teste end-to-end (E2E) é um procedimento de teste abrangente que cobra todo 
 
 Devido à sua natureza complexo e minuciosa, esses testes geralmente são de execução lente e exigem recursos e tempo significativos para serem executados. Como resultado, geralmente encontraremos menos testes de ponta a ponta em comparação com outros tipos. Estes são mais frágeis e estão suscetíveis a falsos negativos (é possível que um teste falhe devido a uma alteração trivial em um elemento da interface do usuário, em vez de um problema real com a funcionalidade). A falha nos testes de ponta a ponta pode exigir esforços substanciais de depuração para identificar e corrigir o problema.
 
+Os testes de ponta a ponta são inestimáveis, pois proporcionam um alto grau de confiança na funcionalidade geral do sistema, ajudando a garantir que todos os componentes do aplicativo funcionem juntos sem problemas.
+
+## What Mix of Tests Should We Be Writing?
+O número real de testes varia de projeto para projeto, dependendo da complexidade do aplicativo, da pilha de tecnologia que está sendo usada e a da importância do aplicativo. Além disso, o número de testes pode se basear  nos padrões e nas práticas de nossa organização, que podem incluir diretrizes específicas ou padrões de referência para a cobertura e a qualidade dos testes. É importante adaptarmos a nossa estratégia de teste para atender às necessidades exclusivas do nosso projeto e, ao mesmo tempo, garantir uma abordagem equilibrada que abranja todos os aspectos necessários do aplicativo.
+
+## What We Should Not Test
+Devemos ser estratégicos em relação ao que testamos. Citemos algumas diretrizes sobre o que deve ser evitado em nossa estratégia de teste:
+- O nosso foco deve estar no código, e não devemos testar recursos de linguagem ou código de estrutura;
+- Evitar testar o código gerado, como *getters* e *setters*, métodos construtores e objetos de transferência de dados (DTOs) gerados automaticamente;
+- Evite testar métodos privados diretamente. Em vez disso, devemos nos concentrarmos na interface pública que chama esses métodos privados.
+- Devemos evitar testes que dependam de serviços externos. Em vez disso, usemos *mocks* para testes de *unidade* ou <span style="background:#b1ffff">teste duplo para testes de integração.</span>
+
+Um conjunto de testes bem projetado deve ser abrangente e de fácil manutenção, fornecendo cobertura completa sem se tornar pesado. Ao nos concentrarmos em testes o nosso próprio código e evitar testes desnecessários, podemos criar conjuntos de testes mais eficazes e eficientes. 
+
+## Code Coverage
+A cobertura de código é uma métrica usada para medir a porcentagem do nosso código que é executada quando os testes são executados. Pensemos na cobertura de código como um mapa em um jogo. Quando começamos, todo o mapa está escuro, mas à medida que começamos a nos movimentarmos e a explorar as áreas, elas se tornam visíveis. Os testes que executam partes do nosso código "iluminam" essas seções, mostrando que estivemos lá. Uma cobertura alta significa que exploramos a maior parte do mapa, enquanto uma cobertura baixa significa que há pontos cegos onde os bugs podem estar escondidos.
+
+Como a cobertura de código é importante no mundo dos testes, encontramos uma variedade de IDEs que oferecem suporte à cobertura de código, bem como ferramentas para a linguagem de nossa escolha. Como desenvolvedor, podemos executar a cobertura diretamente em nossa IDE para obter feedback instantâneo sobre a cobertura. Há também ferramentas que se integram ao pipeline de CI/CD para impor um limite mínimo de cobertura de código. Se a cobertura ficar abaixo desse limite, elas podem falhar, o que, por sua vez, impede que um PR seja mesclado. 
+
+As ferramentas de cobertura de código analisam as nossas execuções de teste e geram relatórios que mostram exatamente quais linhas, ramificações e funções foram executadas. Podemos ver porcentagens como *85% line coverage* ou *75% branch coverage*, indicating how much of our code was executed during the testing.
+
+Embora a cobertura de código forneça informações valiosas, é importante entender suas limitações. Um equívoco comum é que uma cobertura de código mais alta significa automaticamente um teste melhor. Algumas organizações chegam e exigir limites mínimos de cobertura de 80% a 90% antes que o código possa ser implantado. 
+
+Como desenvolvedor, podemos escrever testes que executam o código sem realmente verificar o comportamento significativo, essencialmente "manipulando" as métricas de cobertura. Um teste que chama um método, mas não afirma nada de útil, ainda conta para a cobertura, mas não oferece nenhuma proteção real contra bugs.
+
+Ao invés de nos esforçarmos para obtermos 100% de cobertura, que geralmente é uma métrica de vaidade, podemos utilizá-la como um mecanismo de feedback para os testes que estamos escrevendo. A baixa cobertura na lógica comercial de missão crítica pode indicar uma área do código que precisa de mais atenção. A alta cobertura em áreas que estamos simplesmente testando classes de suporte de dados ou configuração pode sugerir que estamos testando um código que não precisa disso.
+
+Devemos nos concentrarmos em escrever testes significativos que verifiquem o comportamento e deixe que a cobertura do código nos guie para as áreas do código que precisam de mais atenção. O objetivo não é atingir um número arbitrário, apenas para atender a um requisito, o objetivo dos testes é criar confiança no código que estamos escrevendo e, por fim, enviar para a produção. 
+
+---
+Leitura do livro:
+1. Leitura preliminar (exploratória):
+Objetivo *construir um mapa mental* do conteúdo
+- Ler título, subtítulos e seções;
+- Ver figuras, tabelas, notas de rodapé;
+- Dar folheada geral;
+
+1. Leitura Seletiva: 
+*Objetivo:* encontrar informações específicas
+- Procurar definições
+- Exemplos, fórmulas, palavras-chave
+- Ler só trechos relevantes
+
+**Quando usar:** 
+- Revisões;
+- Consulta rápida;
+- Resolver exercícios;
+
+**Leitura analítica (profunda)**
+- Ler devagar;
+- Parar e meditar sobre o assunto
+- Relacionar os conceitos (banco de dados postgresql)
+- Anotações à margem (transcrita) 
+
+**Leitura de Revisão** (exercícios)
+- Relendo problemas 
+- Responder algumas perguntas mentalmente
+- Revisar mapa mental
+
+

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d21417c58419dbcf",
+        "id": "75f444eb83d13e6e",
         "type": "tabs",
         "children": [
           {
-            "id": "9ebaac98792a95be",
+            "id": "bd249c62616ce699",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -215,8 +215,16 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "9ebaac98792a95be",
+  "active": "bd249c62616ce699",
   "lastOpenFiles": [
+    "Aula 01.pdf",
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
+    "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_CRONOGRAMA.pdf",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo",
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
@@ -226,14 +234,8 @@
     "Concurso Professor Biologia",
     "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
     "image-2026241912195.png",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
-    "Aula 01.pdf",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Matemática Cederj",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana",
-    "Matemática Cederj/Cederj 2026.1",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/CountLettersInArray.java",
     "image-202622547166.png",
     "image-2026228520.png",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
@@ -259,9 +261,6 @@
     "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
     "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
-    "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md",
-    "fundamentalsofDevOpsSoftwareDelivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/s3-website/README.md",
-    "fundamentalsofDevOpsSoftwareDelivery/devops-book/ch9/tofu/modules/cloudfront-s3-website/README.md"
+    "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md"
   ]
 }
