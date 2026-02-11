@@ -686,3 +686,63 @@ Aqui, o ... está fora, essa sintaxe está incorreta. Não existe, os ... devem 
 
 ## 7.10 Searching Arrays
 *If an array is sorted, binary search is more efficient than linear search for finding an element in the array*.
+
+Searching is the process of looking for a specific element in an array, for example, discovering whether a certain score is included in a list of scores. Searching is a common task in computer programming. Many algorithms and data structures are devoted to searching. Many algorithms and data structures are devoted to searching. This section discusses two commonly used approaches, *linear search* and *binary search*.
+
+### 7.10.1 The Linear Search Approach
+The linear search approach compares the key element *key* sequentially with each element in the array. It continues to do so until the key matches an element in the array, or the array is exhausted without a match being found. 
+
+If a match is made, the linear search returns the index of the element in the array that matches the key. If no match is found, the search returns -1.
+
+The *linearSearch* method in Listing 7.6 gives the solution:
+```java
+public class LinearSearch {
+	// The method for finding a key in the list
+	public static int linearSearch(int[] list, int key) {
+		for (int i = 0; i < list.length; i++) {
+			if (key == list[i])
+				return i;
+		}
+		return -1;
+	}
+}
+```
+
+The better understand this method, trace it with the following statements:
+1. int[] list = {1, 4, 4, 2, -3, 6, 2 };
+2. int i = linearSearch(list, 4); // Returns 1
+3. int j = linearSearch(list, -4); // Returns -1
+4. int k = linearSearch(list, -3); // Returns 5
+
+The linear search method compares the key with each element in the array. The elements can be any order. On average, the algorithm will have to examine half of the elements in an array before finding the key, if it exists. Since the execution time of a linear search increases linearly as the number of array elements increases, linear search is inefficient for a large array. 
+
+### 7.10.2 The Binary Search Approach
+Binary search is the other common search approach for a list of values. <span style="background:#affad1">For binary search to work, the elements in the array must already be ordered. </span> Assume that the array is in ascending order. The binary search first compares the key with the element in the middle of the array. Consider the following three cases:
+1. If the key is less than the middle element, we need to continue to search for the key only in the first half of the array;
+2. If the key is equal to the middle element, the search ends with a match;
+3. If the key is greater than the middle element, we need to continue to search for the key only in the second half of the array.
+
+Clearly, the binary search method eliminates at least half of the array after each comparison. 
+
+Suppose the array has *n* elements. For convenience, let *n* be a power of 2.
+
+After the first comparison, n/2 element are left for further search;
+
+after the second comparison (n/2)/2 element are left. 
+
+After the kth comparsion, n/2<sup>k</sup> element are left for further search. 
+
+**Lógica da Redução**
+Suponhamos que o número de elementos *n* seja uma potência de 2, como 8, 16, 32, 64... apenas para facilitação...
+
+1. **Início:** temos *n* elementos
+2. **Primeira Comparação:** olhamos o elemento central. Se não for ele, já sabemos se o que estamos procurando está na direita ou na esquerda de nossa lista. O lado errado é descartado.
+	- *Sobram:* n/2 elementos.
+3. **Segunda Comparação:** Fazemos o mesmo na metade que restou:
+	- Sobram: n/2/2, elementos que é igual a n/4 ou n/n^2
+
+Essa redução é drástica, é o que chamamos de **complexidade logarítmica O(log2 n)**.
+
+Divide and Conquer. 
+
+When k = log2n, only one element is left in the array, and we need only one more comparison. Therefore, 
