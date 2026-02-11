@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ef98d64f65635255",
+        "id": "cdf06f1770a5d7d0",
         "type": "tabs",
         "children": [
           {
-            "id": "9fdee5a969345f06",
+            "id": "5f2a741c6eb5a040",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
+                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 7 - Single-Dimensional Arrays"
+              "title": "Chapter 5 - Automated Testing"
             }
           }
         ]
@@ -215,8 +215,9 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "9fdee5a969345f06",
+  "active": "5f2a741c6eb5a040",
   "lastOpenFiles": [
+    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Aula 01.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
@@ -234,7 +235,6 @@
     "Concurso Professor Biologia",
     "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
     "image-2026241912195.png",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Matemática Cederj",
     "image-202622547166.png",
     "image-2026228520.png",

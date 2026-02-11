@@ -138,34 +138,21 @@ Ao invés de nos esforçarmos para obtermos 100% de cobertura, que geralmente é
 
 Devemos nos concentrarmos em escrever testes significativos que verifiquem o comportamento e deixe que a cobertura do código nos guie para as áreas do código que precisam de mais atenção. O objetivo não é atingir um número arbitrário, apenas para atender a um requisito, o objetivo dos testes é criar confiança no código que estamos escrevendo e, por fim, enviar para a produção. 
 
----
-Leitura do livro:
-1. Leitura preliminar (exploratória):
-Objetivo *construir um mapa mental* do conteúdo
-- Ler título, subtítulos e seções;
-- Ver figuras, tabelas, notas de rodapé;
-- Dar folheada geral;
+## Writing Tests
+It's time to get down to business and learn the mechanics of writing tests.
 
-1. Leitura Seletiva: 
-*Objetivo:* encontrar informações específicas
-- Procurar definições
-- Exemplos, fórmulas, palavras-chave
-- Ler só trechos relevantes
+## Getting Started
+No matter what programming language, framework, or meta-framework we're using, multiple testing tools are likely available to us. In this section, we are going to use the Java programming language. While the setup and syntax might be different for us, the ideas remain the same.
 
-**Quando usar:** 
-- Revisões;
-- Consulta rápida;
-- Resolver exercícios;
+Após criamos um projeto qualquer, our next decision will be the testing framework to use. There are many great options to choose from, but the most popular testing framework for Java is called #JUnit. To include JUnit, we can declare the appropriate dependencies in our Maven POM file and install them.
 
-**Leitura analítica (profunda)**
-- Ler devagar;
-- Parar e meditar sobre o assunto
-- Relacionar os conceitos (banco de dados postgresql)
-- Anotações à margem (transcrita) 
+Once we have JUnit installed, we can begin writing tests.
 
-**Leitura de Revisão** (exercícios)
-- Relendo problemas 
-- Responder algumas perguntas mentalmente
-- Revisar mapa mental
+There are two main approaches to writing testes, **test first** and **test last**:
+
+- *Test-first methodologies*, such as test-driven development (TDD), follow a "red-green-refactor" cycle. First, we write a failing test ("red"), then implement the minimum code to pass the test ("green"), and finally improve the code without changing its behavior ("refactor").
+- *Test-last approaches* involve writing tests after implementing the functionality.
+
+Both methods have their merits, and deciding between them often depends on project requirements and team preferences. **Regardless** (independente) of the approach, all testing methodologies use assertions to verify expected outcomes.
 
 
