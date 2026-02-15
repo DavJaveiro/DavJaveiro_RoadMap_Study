@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "cdf06f1770a5d7d0",
+        "id": "37e17e306a2973df",
         "type": "tabs",
         "children": [
           {
-            "id": "5f2a741c6eb5a040",
+            "id": "bfc9d7a8118bf110",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Chapter 5 - Automated Testing"
+              "title": "Nova aba"
             }
           }
         ]
@@ -215,8 +211,17 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5f2a741c6eb5a040",
+  "active": "bfc9d7a8118bf110",
   "lastOpenFiles": [
+    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
+    "image-20262134521159.png",
+    "image-20262134433574.png",
+    "Pasted image 20260213104428.png",
+    "image-20262115752945.png",
+    "image-2026211462788.png",
+    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
+    "Concurso de TI/Temas Informática.md",
+    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Aula 01.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
@@ -226,10 +231,7 @@
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_CRONOGRAMA.pdf",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
-    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
-    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
-    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
     "Concurso Professor Biologia/Biologia de Campbell",
     "Concurso Professor Biologia/Biologia Celular",
     "Concurso Professor Biologia",
@@ -245,11 +247,6 @@
     "image-202613033192.png",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "image-20261282345691.png",
-    "image-20261283419384.png",
-    "image-20261273620248.png",
-    "image-2026127293593.png",
-    "image-2026127249331.png",
-    "image-20261271928969.png",
     "OCP Java SE21/Introduction e dicas.md",
     "Sem título.md",
     "Sem título 1.md",
@@ -260,7 +257,6 @@
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
     "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
-    "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md",
-    "🚀 Amazon Web Services In Action/Getting Started/Chapter 1 - What is Amazon Web Services.md"
+    "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md"
   ]
 }
