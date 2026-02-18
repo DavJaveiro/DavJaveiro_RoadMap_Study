@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "37e17e306a2973df",
+        "id": "dfdb83323c68fa6a",
         "type": "tabs",
         "children": [
           {
-            "id": "bfc9d7a8118bf110",
+            "id": "abcda5261c2eef56",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Semana 1 - 02 fevereiro  08 fevereiro"
             }
           }
         ]
@@ -84,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 526.0041847229004,
-    "collapsed": true
+    "width": 526.0041847229004
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -211,8 +214,12 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "bfc9d7a8118bf110",
+  "active": "abcda5261c2eef56",
   "lastOpenFiles": [
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 2 Congruência de Triângulos - Aula 2 - 09-02 a 15-02.md",
+    "Aula 02.pdf",
+    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
+    "Aula 01.pdf",
     "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
     "image-20262134521159.png",
     "image-20262134433574.png",
@@ -223,8 +230,6 @@
     "Concurso de TI/Temas Informática.md",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
-    "Aula 01.pdf",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
@@ -237,7 +242,6 @@
     "Concurso Professor Biologia",
     "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
     "image-2026241912195.png",
-    "Matemática Cederj",
     "image-202622547166.png",
     "image-2026228520.png",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
@@ -256,7 +260,6 @@
     "Sem título 6.md",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
     "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
-    "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md",
-    "DataStructuresAndAlgorithsmJavaScript/Chapter 2 - Functional Programming in JavaScript.md"
+    "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md"
   ]
 }
