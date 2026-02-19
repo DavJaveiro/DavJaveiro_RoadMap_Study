@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "dfdb83323c68fa6a",
+        "id": "859164d8ee5178f4",
         "type": "tabs",
         "children": [
           {
-            "id": "abcda5261c2eef56",
+            "id": "1a68458144c0b5f8",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Semana 1 - 02 fevereiro  08 fevereiro"
+              "title": "Nova aba"
             }
           }
         ]
@@ -88,7 +84,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 526.0041847229004
+    "width": 526.0041847229004,
+    "collapsed": true
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -214,24 +211,32 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "abcda5261c2eef56",
+  "active": "1a68458144c0b5f8",
   "lastOpenFiles": [
+    "Stephan Jay Gould - Time's Arrow Time's Cycle/Chapter One - The Discovery of Deep Time.md",
+    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
+    "Stephan Jay Gould - Time's Arrow Time's Cycle",
+    "image-20262192551129.png",
+    "image-20262192426847.png",
+    "image-20262192424531.png",
+    "image-20262192319125.png",
+    "image-20262192316570.png",
+    "image-20262192138717.png",
+    "image-20262191920107.png",
+    "image-20262191731447.png",
+    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
+    "Biologia de Campbell/Capítulo 37 - Solo e Nutrição Vegetal.md",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 2 Congruência de Triângulos - Aula 2 - 09-02 a 15-02.md",
     "Aula 02.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
     "Aula 01.pdf",
-    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
     "image-20262134521159.png",
     "image-20262134433574.png",
-    "Pasted image 20260213104428.png",
-    "image-20262115752945.png",
-    "image-2026211462788.png",
-    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
     "Concurso de TI/Temas Informática.md",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_CRONOGRAMA.pdf",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo",
@@ -240,17 +245,11 @@
     "Concurso Professor Biologia/Biologia de Campbell",
     "Concurso Professor Biologia/Biologia Celular",
     "Concurso Professor Biologia",
-    "Fundamentals of Software Engineering/Nathaniel Schutta (Author), Dan Vega (Author) - Fundamentals of Software Engineering_ From Coder to Engineer (2025, O'Reilly Media) - libgen.li.pdf",
-    "image-2026241912195.png",
-    "image-202622547166.png",
-    "image-2026228520.png",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
     "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md",
     "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
-    "image-202613033192.png",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-    "image-20261282345691.png",
     "OCP Java SE21/Introduction e dicas.md",
     "Sem título.md",
     "Sem título 1.md",
@@ -259,7 +258,6 @@
     "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
     "Sem título 6.md",
     "QuickBookPython/Chapter 3 - The quick Python overview.md",
-    "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md",
-    "Arquitetura e Organização de Computadores/Capítulo 1 - Computer Abstractions and Technology.md"
+    "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md"
   ]
 }
