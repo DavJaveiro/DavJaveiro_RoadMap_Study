@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "859164d8ee5178f4",
+        "id": "403ddd658009bacb",
         "type": "tabs",
         "children": [
           {
-            "id": "1a68458144c0b5f8",
+            "id": "8109e88da250e2b4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nova aba"
+              "title": "Capítulo 3 - Variáveis e Entrada de Dados"
             }
           }
         ]
@@ -84,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 526.0041847229004,
+    "width": 432.00328826904297,
     "collapsed": true
   },
   "right": {
@@ -211,8 +215,22 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "1a68458144c0b5f8",
+  "active": "8109e88da250e2b4",
   "lastOpenFiles": [
+    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/ex3.4.py",
+    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados",
+    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
+    "Introdução à Programação com Python",
+    "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
+    "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md",
+    "Pós Graduação - Unicamp/Cronograma.md",
+    "Pós Graduação - Unicamp/Brown - Genomes/Sem título",
+    "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA",
+    "Pós Graduação - Unicamp/Brown - Genomes",
+    "Pós Graduação - Unicamp/Conteúdo Programático Bioinformática -Unicamp.md",
+    "Pós Graduação - Unicamp/💻 Análise de Algoritmos.md",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
+    "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
     "Stephan Jay Gould - Time's Arrow Time's Cycle/Chapter One - The Discovery of Deep Time.md",
     "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
     "Stephan Jay Gould - Time's Arrow Time's Cycle",
@@ -226,7 +244,6 @@
     "image-20262191731447.png",
     "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
     "Biologia de Campbell/Capítulo 37 - Solo e Nutrição Vegetal.md",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 2 Congruência de Triângulos - Aula 2 - 09-02 a 15-02.md",
     "Aula 02.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
@@ -237,27 +254,14 @@
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
-    "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_CRONOGRAMA.pdf",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Cronograma_GeomPlana_2026_1.pdf",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
-    "Concurso Professor Biologia/Biologia de Campbell",
-    "Concurso Professor Biologia/Biologia Celular",
-    "Concurso Professor Biologia",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
     "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md",
     "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
     "OCP Java SE21/Chapter 1 - Building Blocks.md",
     "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
     "OCP Java SE21/Introduction e dicas.md",
-    "Sem título.md",
-    "Sem título 1.md",
-    "Sem título 7.md",
-    "Testes/Mini-Curso JUNIT.md",
-    "Fundamentals of Software Engineering/Chapter 3 - Writing Code.md",
-    "Sem título 6.md",
-    "QuickBookPython/Chapter 3 - The quick Python overview.md",
-    "DataStructuresAndAlgorithsmJavaScript/Chapter 1 - Using JavaScript.md"
+    "Sem título.md"
   ]
 }
