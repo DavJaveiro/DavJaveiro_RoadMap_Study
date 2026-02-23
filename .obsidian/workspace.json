@@ -11,14 +11,16 @@
             "id": "8109e88da250e2b4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
-                "mode": "source",
-                "source": false
+                "file": "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
+                "page": 1,
+                "left": -18,
+                "top": 843,
+                "zoom": 0.8466034931364058
               },
-              "icon": "lucide-file",
-              "title": "Capítulo 3 - Variáveis e Entrada de Dados"
+              "icon": "lucide-file-text",
+              "title": "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis"
             }
           }
         ]
@@ -88,7 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 432.00328826904297,
+    "width": 427,
     "collapsed": true
   },
   "right": {
@@ -217,9 +219,11 @@
   },
   "active": "8109e88da250e2b4",
   "lastOpenFiles": [
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
+    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
     "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/ex3.4.py",
     "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados",
-    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
     "Introdução à Programação com Python",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
     "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md",
@@ -229,7 +233,6 @@
     "Pós Graduação - Unicamp/Brown - Genomes",
     "Pós Graduação - Unicamp/Conteúdo Programático Bioinformática -Unicamp.md",
     "Pós Graduação - Unicamp/💻 Análise de Algoritmos.md",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
     "Stephan Jay Gould - Time's Arrow Time's Cycle/Chapter One - The Discovery of Deep Time.md",
     "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
@@ -247,14 +250,12 @@
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 2 Congruência de Triângulos - Aula 2 - 09-02 a 15-02.md",
     "Aula 02.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
-    "Aula 01.pdf",
     "image-20262134521159.png",
     "image-20262134433574.png",
     "Concurso de TI/Temas Informática.md",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_CRONOGRAMA.pdf",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
     "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md",
