@@ -1,0 +1,3 @@
+Se eu pudesse usar apenas uma palavra para descrever a IA pós-2020, ela seria escala. Os modelos de IA por trás de aplicativos como o ChatGPT, o Gemini do Google e o Midjourney estão em tal escala que estão consumindo uma parte não trivial da eletricidade mundial, e corremos o risco de ficar sem dados de Internet disponíveis publicamente para treiná-los. O aumento de escala dos modelos de IA tem duas consequências importantes. 
+Primeiro, os modelos de IA estão se tornando mais avançados e capazes de realizar mais tarefas, permitindo mais aplicativos. Mais pessoas e equipes aproveitam a IA para aumentar a produtividade, criar valor econômico e melhorar a qualidade de vida.
+

@@ -4,23 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "403ddd658009bacb",
+        "id": "cec040b3bb0bced4",
         "type": "tabs",
         "children": [
           {
-            "id": "8109e88da250e2b4",
+            "id": "2d1c435b84723ede",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
-                "page": 1,
-                "left": -18,
-                "top": 843,
-                "zoom": 0.8466034931364058
+                "file": "The JavaScript Technical Interview WorkBook/Chapter 1 - The Basics.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis"
+              "icon": "lucide-file",
+              "title": "Chapter 1 - The Basics"
+            }
+          },
+          {
+            "id": "3395e0fdb0c73df0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "JavaScript Rocketseat/JavaScript Básico.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "JavaScript Básico"
             }
           }
         ]
@@ -217,26 +229,34 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "8109e88da250e2b4",
+  "active": "2d1c435b84723ede",
   "lastOpenFiles": [
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
+    "JavaScript The Definitive Guide/Chapter 4 - Expressions and Operators.md",
+    "The JavaScript Technical Interview WorkBook/Chapter 1 - The Basics.md",
+    "The JavaScript Technical Interview WorkBook",
+    "JavaScript Rocketseat/JavaScript Básico.md",
+    "JavaScript The Definitive Guide/Chapter 3 - Types, Values, and Variables/Types, Values, and Variables.md",
+    "JavaScript Rocketseat",
+    "DataStructuresAndAlgorithsmJavaScript/JavaScript RocketSeat",
+    "AI Engineering/Chapter 1 - Introduction to Building AI Applications with Foundation Models.md",
+    "Estatística Prática para Cientista de Dados/Chapter 1 - Exploratory Data Analysis/Exploratory Data Analysis.md",
+    "AI Engineering/AI Engineering",
+    "AI Engineering",
+    "image-20262241917645.png",
     "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
-    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/ex3.4.py",
-    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados",
-    "Introdução à Programação com Python",
+    "Estatística Prática para Cientista de Dados/Chapter 1 - Exploratory Data Analysis",
+    "Estatística Prática para Cientista de Dados",
+    "JavaScript The Definitive Guide/Chapter 3 - Types, Values, and Variables",
+    "JavaScript The Definitive Guide",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
+    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
     "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md",
     "Pós Graduação - Unicamp/Cronograma.md",
-    "Pós Graduação - Unicamp/Brown - Genomes/Sem título",
-    "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA",
-    "Pós Graduação - Unicamp/Brown - Genomes",
     "Pós Graduação - Unicamp/Conteúdo Programático Bioinformática -Unicamp.md",
     "Pós Graduação - Unicamp/💻 Análise de Algoritmos.md",
-    "PC_2026-1_EP01_Modulo_Potencia_Produtos-Notaveis.pdf",
     "Stephan Jay Gould - Time's Arrow Time's Cycle/Chapter One - The Discovery of Deep Time.md",
     "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
-    "Stephan Jay Gould - Time's Arrow Time's Cycle",
     "image-20262192551129.png",
     "image-20262192426847.png",
     "image-20262192424531.png",
@@ -248,21 +268,14 @@
     "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
     "Biologia de Campbell/Capítulo 37 - Solo e Nutrição Vegetal.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 2 Congruência de Triângulos - Aula 2 - 09-02 a 15-02.md",
-    "Aula 02.pdf",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md",
     "image-20262134521159.png",
-    "image-20262134433574.png",
     "Concurso de TI/Temas Informática.md",
     "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "Matemática Cederj/Cederj 2026.1/Geometria Plana/Python - Retas Distintas.md",
     "🚀Artificial Intelligence - A Modern Approach/Chapter 2 - Intelligent Agents.md",
     "Node.js/EfficientNode/Chapter 1 - Node Fundamentals.md",
-    "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md",
-    "Fundamentals of Software Engineering/Chapter 4 - Modeling.md",
-    "OCP Java SE21/Chapter 1 - Building Blocks.md",
-    "DataStructuresAbstractionandDesign/ChapterTwoListAndCollections/Chapter Two - Lists and the Collections Framework.md",
-    "OCP Java SE21/Introduction e dicas.md",
-    "Sem título.md"
+    "Node.js/RocketSeat/fundamentalsOfNodeJs/Fundamentos do Node.Js.md"
   ]
 }

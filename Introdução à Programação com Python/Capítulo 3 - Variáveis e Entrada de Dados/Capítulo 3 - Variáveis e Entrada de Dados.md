@@ -60,3 +60,4 @@ Em números inteiros, Python utiliza um sistema de precisão ilimitada que permi
 A versão 3.12 do Python, com relação a pontos flutuantes, tem como limites 2.2250738585072014 x 10^-308 e 2.2250738585072014 x 10^308 .
 
 ## 3.3 Variáveis do tipo lógico
+Muitas vezes, queremos armazenar um conteúdo simples: verdadeiro ou falso em uma variável. Neste caso, utilizamos um tipo variável lógico ou booleano.
