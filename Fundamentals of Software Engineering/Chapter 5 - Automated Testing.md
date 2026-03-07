@@ -139,20 +139,47 @@ Ao invés de nos esforçarmos para obtermos 100% de cobertura, que geralmente é
 Devemos nos concentrarmos em escrever testes significativos que verifiquem o comportamento e deixe que a cobertura do código nos guie para as áreas do código que precisam de mais atenção. O objetivo não é atingir um número arbitrário, apenas para atender a um requisito, o objetivo dos testes é criar confiança no código que estamos escrevendo e, por fim, enviar para a produção. 
 
 ## Writing Tests
-It's time to get down to business and learn the mechanics of writing tests.
-
+É hora de ir direto ao ponto e aprender a mecânica de escrever testes.
 ## Getting Started
-No matter what programming language, framework, or meta-framework we're using, multiple testing tools are likely available to us. In this section, we are going to use the Java programming language. While the setup and syntax might be different for us, the ideas remain the same.
+Independente da linguagem de programação, da estrutura ou da meta-estrutura que estivermos usando, é provável que tenhamos várias ferramentas de testes disponíveis. Nesta seção, usaremos a linguagem de programação Java. Embora a configuração e a sintaxe possam ser diferentes para a linguagem de nossa escolha, as ideias permanecem as mesmas. 
 
-Após criamos um projeto qualquer, our next decision will be the testing framework to use. There are many great options to choose from, but the most popular testing framework for Java is called #JUnit. To include JUnit, we can declare the appropriate dependencies in our Maven POM file and install them.
+Depois de criarmos um projeto, a nossa próxima decisão será a estrutura de teste a ser usada. Há muitas opções excelentes para escolher, mas a estrutura de teste mais popular para o Java é chamada de JUnit. Para incluir o JUnit, podemos declarar as dependências apropriadas no arquivo POM do Maven e instalá-las.
 
-Once we have JUnit installed, we can begin writing tests.
+Não abordaremos os detalhes do JUnit aqui, mas se estiver interessado em saber mais sobre ele, consulte a excelente documentação em seu guia de usuário. Depois de instalar o JUnit, poderemos começar a escrever os testes.
 
-There are two main approaches to writing testes, **test first** and **test last**:
-
-- *Test-first methodologies*, such as test-driven development (TDD), follow a "red-green-refactor" cycle. First, we write a failing test ("red"), then implement the minimum code to pass the test ("green"), and finally improve the code without changing its behavior ("refactor").
-- *Test-last approaches* involve writing tests after implementing the functionality.
-
-Both methods have their merits, and deciding between them often depends on project requirements and team preferences. **Regardless** (independente) of the approach, all testing methodologies use assertions to verify expected outcomes.
+Existem duas abordagens principais para escrever testes, testar primeiro e testar por último.
+- *Test-first methodologies*, como o desenvolvimento orientado a testes (TDD), seguem um ciclo "vermelho-verde-refatoração". Primeiro, escrevemos um teste que falhou ("vermelho"), depois implementamos o código mínimo para passar no teste ("verde") e, por fim, melhora o código sem alterar seu comportamento ("refatoração"); 
+- *Test-last approaches* envolvem escrever testes depois de implementar a funcionalidade.
 
 
+Ambos os métodos têm seus méritos, e a decisão entre eles geralmente depende dos requisitos do projeto e das preferências da equipe. Independentemente da abordagem, todas as metodologias de teste usam asserções para verificar os resultados esperados. 
+
+**NOTA DE IA:** escrever testes é um excelente caso de uso para assistência de IA. Podemos fornecer às ferramentas de IA exemplos do nosso conjunto de testes existentes para ajudá-las a entender o estilo de teste preferido da nossa organização, as convenções de nomenclatura e os padrões de codificação. A IA pode ajudar a gerar casos de teste, sugerir casos extremos que podemos ter deixado passar, escrever código de teste padrão e até mesmo ajudar a refatorar os testes existentes para melhorar a legibilidade. Isso pode acelerar significativamente o processo de teste e, ao mesmo tempo, manter a consistência com os padrões estabelecidos pela sua equipe.
+
+## Assertions
+Uma asserção é uma função ou um método que pode ser usado para verificar se determinadas condições são atendidas durante a execução de um programa. Existem um grande número de bibliotecas asserts em Java, todas oferecendo diferentes recursos.
+
+O JUnit 5 vem com várias asserções para realizar uma ampla gama de verificações. Todas as asserções são métodos estáticos na classe *org.junit.jupiter.assertions*. Digamos que queiramos verificar se a soma de uma operação matemática está correta. Há um método assertEquals que recebe dois números inteiros, mostrados no bloco de código a seguir. O primeiro argumento é o valor esperado, e o segundo argumento é o valor real:
+```java
+@Test
+void shouldAdd2Numbers() {
+	int expected = 3;
+	int actual = 2 + 1;
+	assertEquals(expected, actual);
+}
+```
+
+Se os dois números forem iguais, a asserção será aprovada e, portanto, o teste também será aprovado. Se eles não forem iguais, a asserção falhará e fará com que o teste falhe. Para se familiarizar com as asserções disponíveis, leia a documentação da biblioteca de asserções que estiver usando.
+
+## Writing Unit Tests
+Lembre-se de que os testes de unidade são testes isolados que são executados de forma independente e muito rápida. Imagine uma classe que execute operações matemáticas e que necessite de testes para cada uma delas. Aqui está um exemplo de classe chamada Operations:
+```java
+public class Operation {
+	public double add(double a, double b) {
+		return a + b;
+	}
+	public double substract(double a, double b) {
+		return a - b;
+	}
+}
+```
