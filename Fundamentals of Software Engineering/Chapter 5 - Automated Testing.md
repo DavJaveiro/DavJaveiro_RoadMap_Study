@@ -171,6 +171,30 @@ void shouldAdd2Numbers() {
 
 Se os dois números forem iguais, a asserção será aprovada e, portanto, o teste também será aprovado. Se eles não forem iguais, a asserção falhará e fará com que o teste falhe. Para se familiarizar com as asserções disponíveis, leia a documentação da biblioteca de asserções que estiver usando.
 
+
+---
+
+```java
+class PuarchaseTicketTest {
+	@Test
+	void deveComprarUmIngressoParaOEvento() {
+		// given
+		PurchaseTicket purchaseTicket = new PurchaseTicket();
+		
+		InputPurchaseTicket inputPurchaseTicket = new InputPurchaseTicket(
+			"",
+			"john.doe@gmail.com"
+		);
+		
+		// when
+		OutputPurchaseTicket outputPurchaseTicket = purchaseTicket.execute(inputPurchaseTicket);
+		
+		//then
+		assertNotNull(outputPurchaseTicket.getTicketId());
+	}
+}
+```
+
 ## Writing Unit Tests
 Lembre-se de que os testes de unidade são testes isolados que são executados de forma independente e muito rápida. Imagine uma classe que execute operações matemáticas e que necessite de testes para cada uma delas. Aqui está um exemplo de classe chamada Operations:
 ```java
@@ -183,3 +207,4 @@ public class Operation {
 	}
 }
 ```
+

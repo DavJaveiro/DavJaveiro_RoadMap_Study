@@ -20,8 +20,25 @@
               "icon": "lucide-file",
               "title": "Manual de Fluxo de Trabalho"
             }
+          },
+          {
+            "id": "f2808ced0e5dd679",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Trilhante/Agenda.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Agenda"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Meilisearch",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -88,8 +105,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 427,
-    "collapsed": true
+    "width": 427
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -215,15 +231,17 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "84e7f58a5bd571d7",
+  "active": "f2808ced0e5dd679",
   "lastOpenFiles": [
+    "Trilhante/Configuração Banco de Dados WSL.md",
+    "Trilhante/Agenda.md",
+    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Trilhante/Manual de Fluxo de Trabalho.md",
     "Trilhante",
     "Php and MySQL/Capítulo 5 - Programming.md",
     "Software Engineering/Chapter 8 - Software Testing.md",
     "Php and MySQL",
     "image-2026323451697.png",
-    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Software Engineering",
     "Head First Design Patterns/Chapter 7 - The Adapter and Facade Patterns.md",
     "image-20263145360.png",
@@ -260,8 +278,6 @@
     "image-20262192426847.png",
     "image-20262192424531.png",
     "image-20262192319125.png",
-    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md",
-    "Biologia de Campbell/Capítulo 37 - Solo e Nutrição Vegetal.md",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 1 Aula 1 - 02-02 a 08-02.md"
+    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md"
   ]
 }
