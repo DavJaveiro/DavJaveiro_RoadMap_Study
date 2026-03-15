@@ -8,6 +8,22 @@
         "type": "tabs",
         "children": [
           {
+            "id": "d8fdb694a2941a89",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Trilhante/Painel Admin.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Painel Admin"
+            }
+          },
+          {
             "id": "84e7f58a5bd571d7",
             "type": "leaf",
             "state": {
@@ -36,9 +52,23 @@
               "icon": "lucide-file",
               "title": "Agenda"
             }
+          },
+          {
+            "id": "cf3a8e7a5b9d414f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 1 - Introduction to Dynamic Web Content"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -105,7 +135,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 427
+    "width": 427,
+    "collapsed": true
   },
   "right": {
     "id": "3db3f49db975a7e2",
@@ -231,12 +262,23 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "f2808ced0e5dd679",
+  "active": "cf3a8e7a5b9d414f",
   "lastOpenFiles": [
-    "Trilhante/Configuração Banco de Dados WSL.md",
+    "image-20263153517754.png",
     "Trilhante/Agenda.md",
-    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
+    "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md",
+    "Learning PHP, MySQL & JavaScript",
+    "Laravel Up & Running/Chapter 3 - Routing and Controllers.md",
+    "Laravel Up & Running/Chapter 2 - Setting Up a Laravel Development Environment.md",
+    "image-2026315405380.png",
+    "Laravel Up & Running/Chapter 1 -/Chapter 1 - Why Laravel.md",
+    "image-20263141450139.png",
     "Trilhante/Manual de Fluxo de Trabalho.md",
+    "Trilhante/Painel Admin.md",
+    "Laravel Up & Running/Chapter 1 -",
+    "Laravel Up & Running",
+    "Trilhante/Configuração Banco de Dados WSL.md",
+    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
     "Trilhante",
     "Php and MySQL/Capítulo 5 - Programming.md",
     "Software Engineering/Chapter 8 - Software Testing.md",
@@ -259,25 +301,14 @@
     "The JavaScript Technical Interview WorkBook",
     "JavaScript Rocketseat/JavaScript Básico.md",
     "JavaScript The Definitive Guide/Chapter 3 - Types, Values, and Variables/Types, Values, and Variables.md",
-    "JavaScript Rocketseat",
-    "DataStructuresAndAlgorithsmJavaScript/JavaScript RocketSeat",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications with Foundation Models.md",
     "Estatística Prática para Cientista de Dados/Chapter 1 - Exploratory Data Analysis/Exploratory Data Analysis.md",
-    "AI Engineering/AI Engineering",
     "image-20262241917645.png",
     "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
     "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md",
-    "Pós Graduação - Unicamp/Cronograma.md",
-    "Pós Graduação - Unicamp/Conteúdo Programático Bioinformática -Unicamp.md",
-    "Pós Graduação - Unicamp/💻 Análise de Algoritmos.md",
-    "Stephan Jay Gould - Time's Arrow Time's Cycle/Chapter One - The Discovery of Deep Time.md",
-    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
     "image-20262192551129.png",
-    "image-20262192426847.png",
-    "image-20262192424531.png",
-    "image-20262192319125.png",
-    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md"
+    "image-20262192426847.png"
   ]
 }
