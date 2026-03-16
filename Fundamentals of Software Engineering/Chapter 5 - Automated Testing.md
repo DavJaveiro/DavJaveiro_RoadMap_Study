@@ -143,7 +143,7 @@ Devemos nos concentrarmos em escrever testes significativos que verifiquem o com
 ## Getting Started
 Independente da linguagem de programação, da estrutura ou da meta-estrutura que estivermos usando, é provável que tenhamos várias ferramentas de testes disponíveis. Nesta seção, usaremos a linguagem de programação Java. Embora a configuração e a sintaxe possam ser diferentes para a linguagem de nossa escolha, as ideias permanecem as mesmas. 
 
-Depois de criarmos um projeto, a nossa próxima decisão será a estrutura de teste a ser usada. Há muitas opções excelentes para escolher, mas a estrutura de teste mais popular para o Java é chamada de JUnit. Para incluir o JUnit, podemos declarar as dependências apropriadas no arquivo POM do Maven e instalá-las.
+Depois de criarmos um projeto, <span style="background:#affad1">a nossa próxima decisão será a estrutura de teste a ser usada</span>. Há muitas opções excelentes para escolher, mas a estrutura de teste mais popular para o Java é chamada de JUnit. Para incluir o JUnit, podemos declarar as dependências apropriadas no arquivo POM do Maven e instalá-las.
 
 Não abordaremos os detalhes do JUnit aqui, mas se estiver interessado em saber mais sobre ele, consulte a excelente documentação em seu guia de usuário. Depois de instalar o JUnit, poderemos começar a escrever os testes.
 
@@ -152,12 +152,12 @@ Existem duas abordagens principais para escrever testes, testar primeiro e testa
 - *Test-last approaches* envolvem escrever testes depois de implementar a funcionalidade.
 
 
-Ambos os métodos têm seus méritos, e a decisão entre eles geralmente depende dos requisitos do projeto e das preferências da equipe. Independentemente da abordagem, todas as metodologias de teste usam asserções para verificar os resultados esperados. 
+Ambos os métodos têm seus méritos, e a decisão entre eles geralmente depende dos requisitos do projeto e das preferências da equipe. Independentemente da abordagem, todas as metodologias de teste usam <span style="background:#affad1">asserções</span> para verificar os resultados esperados. 
 
-**NOTA DE IA:** escrever testes é um excelente caso de uso para assistência de IA. Podemos fornecer às ferramentas de IA exemplos do nosso conjunto de testes existentes para ajudá-las a entender o estilo de teste preferido da nossa organização, as convenções de nomenclatura e os padrões de codificação. A IA pode ajudar a gerar casos de teste, sugerir casos extremos que podemos ter deixado passar, escrever código de teste padrão e até mesmo ajudar a refatorar os testes existentes para melhorar a legibilidade. Isso pode acelerar significativamente o processo de teste e, ao mesmo tempo, manter a consistência com os padrões estabelecidos pela sua equipe.
+**NOTA DE IA:** escrever testes é um excelente caso de uso para assistência de IA. Podemos fornecer às ferramentas de IA exemplos do nosso conjunto de testes existentes para ajudá-las a entender o estilo de teste preferido da nossa organização, as convenções de nomenclatura e os padrões de codificação. A IA pode ajudar a gerar casos de teste, sugerir casos extremos que podemos ter deixado passar, escrever código de teste padrão e até mesmo ajudar a *refatorar* os testes existentes para melhorar a legibilidade. Isso pode acelerar significativamente o processo de teste e, ao mesmo tempo, manter a consistência com os padrões estabelecidos pela sua equipe.
 
 ## Assertions
-Uma asserção é uma função ou um método que pode ser usado para verificar se determinadas condições são atendidas durante a execução de um programa. Existem um grande número de bibliotecas asserts em Java, todas oferecendo diferentes recursos.
+Uma asserção é uma função ou um método que pode ser usado para verificar se <span style="background:#affad1">determinadas condições são atendidas</span> durante a execução de um programa. Existem um grande número de bibliotecas #asserts em Java, todas oferecendo diferentes recursos.
 
 O JUnit 5 vem com várias asserções para realizar uma ampla gama de verificações. Todas as asserções são métodos estáticos na classe *org.junit.jupiter.assertions*. Digamos que queiramos verificar se a soma de uma operação matemática está correta. Há um método assertEquals que recebe dois números inteiros, mostrados no bloco de código a seguir. O primeiro argumento é o valor esperado, e o segundo argumento é o valor real:
 ```java
@@ -205,6 +205,42 @@ public class Operation {
 	public double substract(double a, double b) {
 		return a - b;
 	}
+}
+```
+
+Before we can create our first test, we need to pay attention to where our source code is located. Code for this class is in the package com.fose. When we create a test class, we will want to place it in /src/test/java and in the same package that we source code is in. In the following example, we have an add and subtract test to cover all of the functionality from the *Operations* class.
+
+Here we are following *test-last* approaches, which involve writing tests **after implementing the functionality**. We can start by adding the method stubs for each of the test we're going to write:
+```java
+package com.fose;
+
+import org.junit.jupiter.api.Tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class OperationTest {
+	@Test
+	void add() {}
+	
+	@Test
+	void subtract() {}
+}
+```
+
+ **Por que criar stubs?** 
+ Quando estamos planejando testes (ou funcionalidades), podemos primeiro **definir quais métodos existirão,** e depois **preencher a lógica**.
+
+Logo, quando criamos os stubs, nós primeiro criamos o "esqueleto" da classe.
+
+**Em nosso caso**
+Com a abordam test-last, a classe de teste já define que existirão dois testes:
+- add()
+- substract()
+
+First, we need an instance of the **Operation** class. We will often hear this referred to as the *system under test (SUT)* because it refers to the specific component, module, or part of our system that we are currently testing. This is a unit test that is focused on testing the Operations class and nothing else:
+```java
+class OperationsTest {
+	private final Operations sut = new Operations();
 }
 ```
 
