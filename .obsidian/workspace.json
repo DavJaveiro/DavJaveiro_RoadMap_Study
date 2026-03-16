@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md",
+                "file": "Design for Developers/Chapter 1 - Color.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 1 - Introduction to Dynamic Web Content"
+              "title": "Chapter 1 - Color"
             }
           }
         ],
@@ -264,16 +264,19 @@
   },
   "active": "cf3a8e7a5b9d414f",
   "lastOpenFiles": [
-    "image-20263153517754.png",
-    "Trilhante/Agenda.md",
     "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md",
+    "Design for Developers/Chapter 1 - Color.md",
+    "Design for Developers",
+    "Trilhante/Manual de Fluxo de Trabalho.md",
+    "Trilhante/Agenda.md",
+    "image-20263153229748.png",
+    "image-20263153517754.png",
     "Learning PHP, MySQL & JavaScript",
     "Laravel Up & Running/Chapter 3 - Routing and Controllers.md",
     "Laravel Up & Running/Chapter 2 - Setting Up a Laravel Development Environment.md",
     "image-2026315405380.png",
     "Laravel Up & Running/Chapter 1 -/Chapter 1 - Why Laravel.md",
     "image-20263141450139.png",
-    "Trilhante/Manual de Fluxo de Trabalho.md",
     "Trilhante/Painel Admin.md",
     "Laravel Up & Running/Chapter 1 -",
     "Laravel Up & Running",
@@ -298,7 +301,6 @@
     "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
     "The JavaScript Technical Interview WorkBook/Chapter 1 - The Basics.md",
     "JavaScript The Definitive Guide/Chapter 4 - Expressions and Operators.md",
-    "The JavaScript Technical Interview WorkBook",
     "JavaScript Rocketseat/JavaScript Básico.md",
     "JavaScript The Definitive Guide/Chapter 3 - Types, Values, and Variables/Types, Values, and Variables.md",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications with Foundation Models.md",
@@ -307,8 +309,6 @@
     "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
     "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
     "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
-    "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md",
-    "image-20262192551129.png",
-    "image-20262192426847.png"
+    "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md"
   ]
 }
