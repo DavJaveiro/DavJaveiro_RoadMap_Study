@@ -1,0 +1,6 @@
+Se você deseja desenvolver aplicativos para a Internet, mas não tem próprio servidor de desenvolvimento, terá que fazer upload de todas as modificações que fizer para um servidor em outro lugar na Web antes de testá-las. Mesmo em uma conexão de banda larga rápida, isso pode representar uma desaceleração significativa no tempo de desenvolvimento. Em um computador local, no entanto, o teste pode ser tão fácil quanto salvar uma atualização (geralmente basta clicar uma vez em um ícone) e, em seguida, pressionar o botão atualizar no navegador.
+
+Outra vantagem de um servidor de desenvolvimento é que não precisamos nos preocupar com erros embaraçosos ou problemas de segurança enquanto estiver escrevendo e testando, ao passo que precisamos estar ciente do que as pessoas podem ver ou fazer com a nossa aplicação quando ele estiver em um site público. É melhor resolver tudo enquanto ainda tivermos em um sistema doméstico ou em um pequeno escritório, presumivelmente protegido por firewalls e outras proteções.
+
+Depois de ter o nosso próprio servidor de desenvolvimento, nos perguntaremos como conseguimos ficar tanto tempo sem um, e é fácil configurar um. Basta seguir as etapas das seções a seguir, usando as instruções apropriadas para um sistema.
+

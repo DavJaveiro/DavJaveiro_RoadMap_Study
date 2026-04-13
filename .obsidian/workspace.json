@@ -4,40 +4,80 @@
     "type": "split",
     "children": [
       {
-        "id": "b7c0237a3132d6e1",
-        "type": "tabs",
+        "id": "e8aef9be8155eebb",
+        "type": "split",
         "children": [
           {
-            "id": "84e7f58a5bd571d7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Chapter 5 - Automated Testing"
-            }
+            "id": "042062b61e40b099",
+            "type": "tabs",
+            "dimension": 52.86935286935287,
+            "children": [
+              {
+                "id": "298fe1bf9318e23f",
+                "type": "leaf",
+                "state": {
+                  "type": "pdf",
+                  "state": {
+                    "file": "Engenharia de Software Ian Sommerville/ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+                    "page": 77,
+                    "left": 59,
+                    "top": 594,
+                    "zoom": 1.5
+                  },
+                  "icon": "lucide-file-text",
+                  "title": "ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk)"
+                }
+              }
+            ]
           },
           {
-            "id": "f2808ced0e5dd679",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Trilhante/Agenda.md",
-                "mode": "source",
-                "source": false
+            "id": "d57d4571315ccb20",
+            "type": "split",
+            "dimension": 47.13064713064713,
+            "children": [
+              {
+                "id": "8bf2055ab8dee42f",
+                "type": "tabs",
+                "children": [
+                  {
+                    "id": "b99ae691a79cda7e",
+                    "type": "leaf",
+                    "state": {
+                      "type": "mindmapview",
+                      "state": {
+                        "file": "Engenharia de Software Ian Sommerville/Capítulo 3 MindMap.md"
+                      },
+                      "icon": "blocks",
+                      "title": "Capítulo 3 MindMap"
+                    }
+                  }
+                ]
               },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Agenda"
-            }
+              {
+                "id": "ed4e45bf23b9a494",
+                "type": "tabs",
+                "children": [
+                  {
+                    "id": "f30b6eda19979094",
+                    "type": "leaf",
+                    "state": {
+                      "type": "markdown",
+                      "state": {
+                        "file": "Engenharia de Software Ian Sommerville/Capítulo 3 - Desenvolvimento ágil de software.md",
+                        "mode": "source",
+                        "source": false
+                      },
+                      "icon": "lucide-file",
+                      "title": "Capítulo 3 - Desenvolvimento ágil de software"
+                    }
+                  }
+                ]
+              }
+            ],
+            "direction": "horizontal"
           }
-        ]
+        ],
+        "direction": "vertical"
       }
     ],
     "direction": "vertical"
@@ -231,53 +271,52 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5e0f3570fdd5d7e9",
+  "active": "f30b6eda19979094",
   "lastOpenFiles": [
-    "Trilhante/Manual de Fluxo de Trabalho.md",
+    "Engenharia de Software Ian Sommerville/ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "Engenharia de Software Ian Sommerville/Capítulo 3 - Desenvolvimento ágil de software.md",
+    "Engenharia de Software Ian Sommerville/Capítulo 3 MindMap.md",
+    "image-2026473229150.png",
+    "Gerenciamento e Qualidade de Software/Aula 4 - Introdução Ao Gerenciamento de Projetos Para Qualidade de Software.md",
+    "Engenharia de Software Ian Sommerville",
+    "Gerenciamento e Qualidade de Software/Gerenciamento da Qualidade de Software.md",
+    "Figura3.png",
+    "Figura2.png",
+    "image-2026432339401.png",
+    "JavaScript Fundamentals/SEMANA 1 — FUNDAMENTOS (BASE FORTE).md",
+    "Gerenciamento e Qualidade de Software/Aula 2 - Qualidade de Software.md",
+    "Pasted image 20260403165221.png",
+    "Gerenciamento e Qualidade de Software/Aula 1 - Gerenciamento de Software.md",
+    "Sem título.md",
+    "Pasted image 20260403104346.png",
+    "PHP Crash Course/Chapter 2 - Data Types.md",
+    "Gerenciamento e Qualidade de Software",
+    "image-20263315858380.png",
+    "Laravel Up & Running/Chapter 3 - Routing and Controllers.md",
+    "PHP Crash Course",
+    "image-20263292114451.png",
+    "Laravel Up & Running/Sem título.md",
+    "Laravel Up & Running/Chapter 2 - Setting Up a Laravel Development Environment.md",
+    "Learning PHP, MySQL & JavaScript/Chapter 4 - Expressions and Control Flow in PHP.md",
+    "Learning PHP, MySQL & JavaScript/Chapter 3 - Introduction to PHP.md",
+    "image-2026324624909.png",
+    "image-20263244046232.png",
+    "Learning PHP, MySQL & JavaScript/Chapter 2 - Setting Up a Development Server.md",
+    "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md",
+    "Laravel Beyond Crud/Views Models.md",
+    "Laravel Beyond Crud/Working With Data.md",
+    "Laravel Beyond Crud",
     "Trilhante/Agenda.md",
-    "Trilhante/Configuração Banco de Dados WSL.md",
-    "Fundamentals of Software Engineering/Chapter 5 - Automated Testing.md",
-    "Trilhante",
-    "Php and MySQL/Capítulo 5 - Programming.md",
-    "Software Engineering/Chapter 8 - Software Testing.md",
-    "Php and MySQL",
-    "image-2026323451697.png",
-    "Software Engineering",
-    "Head First Design Patterns/Chapter 7 - The Adapter and Facade Patterns.md",
-    "image-20263145360.png",
-    "image-2026314310476.png",
-    "Padrões de Projeto/Capítulo 4 - Padrões Estruturais.md",
-    "image-20263126536.png",
-    "image-2026315533381.png",
-    "Head First Design Patterns",
-    "Matemática Cederj/Cederj 2026.1/Geometria Plana/Semana 2 Congruência de Triângulos - Aula 2 - 09-02 a 15-02.md",
-    "Padrões de Projeto",
-    "Aula 02.pdf",
-    "Introduction to Java Programming and Data STRUCTURES/Chapter 7 - Single-Dimensional Arrays/Chapter 7 - Single-Dimensional Arrays.md",
-    "The JavaScript Technical Interview WorkBook/Chapter 1 - The Basics.md",
-    "JavaScript The Definitive Guide/Chapter 4 - Expressions and Operators.md",
-    "The JavaScript Technical Interview WorkBook",
-    "JavaScript Rocketseat/JavaScript Básico.md",
-    "JavaScript The Definitive Guide/Chapter 3 - Types, Values, and Variables/Types, Values, and Variables.md",
-    "JavaScript Rocketseat",
-    "DataStructuresAndAlgorithsmJavaScript/JavaScript RocketSeat",
-    "AI Engineering/Chapter 1 - Introduction to Building AI Applications with Foundation Models.md",
-    "Estatística Prática para Cientista de Dados/Chapter 1 - Exploratory Data Analysis/Exploratory Data Analysis.md",
-    "AI Engineering/AI Engineering",
-    "image-20262241917645.png",
-    "Introdução à Programação com Python/Capítulo 3 - Variáveis e Entrada de Dados/Capítulo 3 - Variáveis e Entrada de Dados.md",
-    "Matemática Cederj/Cederj 2026.1/Pré-Cáculo/Semana 1 - 02 fevereiro  08 fevereiro.md",
-    "AI Engineering/Chapter 1 - Introduction to Building AI Applications With Foundation Models.md",
-    "Pós Graduação - Unicamp/Brown - Genomes/Chapter 2 - Studying DNA/Chapter 2 - Studying DNA.md",
-    "Pós Graduação - Unicamp/Cronograma.md",
-    "Pós Graduação - Unicamp/Conteúdo Programático Bioinformática -Unicamp.md",
-    "Pós Graduação - Unicamp/💻 Análise de Algoritmos.md",
-    "Stephan Jay Gould - Time's Arrow Time's Cycle/Chapter One - The Discovery of Deep Time.md",
-    "Concurso Professor Biologia/Biologia de Campbell/Capítulo 7 - Estrutura e Função da Membrana.md",
-    "image-20262192551129.png",
-    "image-20262192426847.png",
-    "image-20262192424531.png",
-    "image-20262192319125.png",
-    "Concurso Professor Biologia/Biologia Celular/Origem da Vida e Biologia Celular.md"
+    "Learning TypeScript/Chapter 3 - Unions and Literals.md",
+    "Learning TypeScript/Chapter 2 - The Type System.md",
+    "TypeScript Cookbook/Chapter 1 - Project Setup.md",
+    "Learning TypeScript",
+    "TypeScript Cookbook/examples/types/person.d.ts",
+    "TypeScript Cookbook/examples/types",
+    "TypeScript Cookbook/examples/index.d.ts",
+    "TypeScript Cookbook/examples/index.d.ts.map",
+    "TypeScript Cookbook/examples/node_modules/typescript/SECURITY.md",
+    "TypeScript Cookbook/examples/node_modules/typescript/README.md",
+    "Full-Stack RocketSeat/JavaScript Básico/Tipos.md"
   ]
 }

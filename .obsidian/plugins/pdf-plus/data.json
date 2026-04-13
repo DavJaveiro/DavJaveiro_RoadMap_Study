@@ -27,7 +27,7 @@
   "copyCommands": [
     {
       "name": "Quote",
-      "template": "> ({{linkWithDisplay}})\n> {{text}}\n"
+      "template": "{{text}}\n(p.{{page}})"
     },
     {
       "name": "Link",
@@ -39,11 +39,11 @@
     },
     {
       "name": "Callout",
-      "template": "> [!{{calloutType}}|{{color}}] {{linkWithDisplay}}\n> {{text}}\n"
+      "template": "{{text}}\n(p.{{page}})"
     },
     {
       "name": "Quote in callout",
-      "template": "> [!{{calloutType}}|{{color}}] {{linkWithDisplay}}\n> > {{text}}\n> \n> "
+      "template": "<span style=\"background-color: {{color}}; padding:2px; border-radius:4px;\">\n{{text}}\n</span>\n(p.{{page}})"
     }
   ],
   "useAnotherCopyTemplateWhenNoSelection": false,
@@ -112,7 +112,7 @@
   "renderMarkdownInStickyNote": false,
   "enablePDFEdit": true,
   "author": "Davidson Linhares",
-  "writeHighlightToFileOpacity": 0.2,
+  "writeHighlightToFileOpacity": 0.1,
   "defaultWriteFileToggle": false,
   "syncWriteFileToggle": true,
   "syncDefaultWriteFileToggle": false,

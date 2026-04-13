@@ -1,0 +1,189 @@
+---
+mindmap-plugin: basic
+display-mode: outline
+---
+
+# Desenvolvimento Ágil de Software
+
+## 
+- Introdução
+    - Objetivos
+        - entender métodos ágeis
+        - compreender manifesto ágil
+        - diferenciar ágil vs dirigido por plano
+        - conhecer práticas ágeis
+        - entender Scrum
+        - entender escalabilidade
+    - Conteúdo
+        - métodos ágeis (3.1)
+        - técnicas ágeis (3.2)
+        - gerenciamento ágil (3.3)
+        - escalabilidade (3.4)
+    - Contexto
+        - ambiente dinâmico
+        - mudanças rápidas
+        - necessidade de entrega rápida
+        - software essencial para negócios
+    - Problema dos requisitos
+        - difíceis de prever
+        - mudam constantemente
+        - só ficam claros após uso
+        - influenciados por fatores externos
+    - Problema do modelo tradicional
+        - cascata é lento
+        - retrabalho frequente
+        - documentação pesada
+        - entrega tardia
+    - Quando usar modelo tradicional
+        - sistemas críticos
+        - análise completa necessária
+    - Surgimento do ágil
+        - anos 1990
+        - XP
+        - Scrum
+        - DSDM
+    - Características do ágil
+        - desenvolvimento incremental
+        - feedback rápido
+        - pouca documentação
+        - comunicação informal
+    - Estrutura do processo ágil
+        - especificação + design + implementação intercalados
+        - incrementos contínuos
+        - participação do usuário
+        - uso de ferramentas
+    - Diferença ágil vs tradicional
+        - ágil → iteração entre atividades
+        - tradicional → fases separadas
+
+## Métodos Ágeis (3.1)
+- Origem
+    - reação ao modelo pesado
+    - foco em software funcional
+- Objetivo
+    - reduzir burocracia
+    - Entrega incremental
+    - evitar retrabalho
+    - entregar rápido
+- Manifesto Ágil
+    - indivíduos > processos
+    - software funcionando > documentação
+    - colaboração > contrato
+    - adaptação > plano
+- Princípios
+    - envolvimento do cliente
+    - aceitar mudanças
+    - entrega incremental
+    - simplicidade
+    - foco nas pessoas
+- Utilidade
+    - Sistemas pequenos/médios porte
+    - Cliente presente
+    - Poucos stakeholders
+    - Times co-localizados
+    - Poucas normas
+
+## Técnicas Ágeis de Desenvolvimento Ágil(3.2)
+- XP (Extreme Programming)
+    - Níveis extremos
+    - Boas práticas
+    - Várias versões/vários programadores
+    - Testadas em um dia
+    - Requisitos
+        - São expressos em cenários (users stories)
+    - Adotou Práticas Diferentes da Época
+        - Desenvolvimento incremental
+            - Lançcamentos menores
+            - Requisitos com base em histórias simples
+        - Envolvimento do  cliente
+            - Embarcado no cliente
+            - Participa do desenvolvimento
+            - Define os testes de aceitação
+        - Pessoas
+            - Expediente de trabalho curto
+        - Mudanças
+            - Lançamentos regulares
+            - Testes a priori
+            - Refatoração constante
+            - Integração contínua
+
+## 
+- Gerenciamento Ágil (3.3)
+    - Problema
+        - empresas precisam de controle
+        - métodos ágeis são informais
+    - Scrum
+        - framework de gerenciamento ágil
+    - Elementos
+        - backlog do produto
+        - backlog da sprint
+        - sprint (2-4 semanas)
+        - incremento entregável
+    - Papéis
+        - Product Owner
+        - Scrum Master
+        - Time de desenvolvimento
+    - Processo
+        - planejamento da sprint
+        - execução
+        - reuniões diárias (Scrum)
+        - revisão da sprint
+    - Benefícios
+        - visibilidade
+        - feedback rápido
+        - melhoria contínua
+        - confiança entre times
+    - Scrum distribuído
+        - comunicação remota
+        - integração contínua
+        - coordenação entre times
+
+## 
+- Escalabilidade (3.4)
+    - Tipos
+        - scaling up (sistemas grandes)
+        - scaling out (empresa inteira)
+    - Desafios
+        - múltiplos times
+        - sistemas complexos
+        - stakeholders diversos
+        - sistemas legados
+        - restrições regulatórias
+    - Problemas práticos
+        - contratos formais
+        - manutenção difícil
+        - falta de documentação
+        - dificuldade de envolvimento do cliente
+        - perda de conhecimento do time
+    - Ágil + Tradicional
+        - combinação necessária
+        - planejamento + flexibilidade
+    - Fatores de decisão
+        - tamanho do sistema
+        - tipo de sistema
+        - vida útil
+        - regulação
+        - habilidade do time
+        - cultura organizacional
+    - Escala organizacional
+        - resistência cultural
+        - processos rígidos
+        - necessidade de adaptação gradual
+    - Métodos de escala
+        - SAFe
+        - Agile Scaling Model (IBM)
+    - Ajustes necessários
+        - requisitos iniciais mínimos
+        - múltiplos Product Owners
+        - mais arquitetura e documentação
+        - comunicação entre times
+        - integração frequente
+
+## 
+- Pontos-chave
+    - desenvolvimento incremental
+    - foco em software funcional
+    - cliente envolvido
+    - testes automatizados
+    - Scrum como principal framework
+    - mistura de ágil e tradicional em larga escala
