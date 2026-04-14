@@ -10,7 +10,7 @@
           {
             "id": "042062b61e40b099",
             "type": "tabs",
-            "dimension": 52.86935286935287,
+            "dimension": 48.449920508744036,
             "children": [
               {
                 "id": "298fe1bf9318e23f",
@@ -19,10 +19,10 @@
                   "type": "pdf",
                   "state": {
                     "file": "Engenharia de Software Ian Sommerville/ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
-                    "page": 77,
-                    "left": 59,
-                    "top": 594,
-                    "zoom": 1.5
+                    "page": 78,
+                    "left": 21,
+                    "top": 488,
+                    "zoom": 1.516669326578025
                   },
                   "icon": "lucide-file-text",
                   "title": "ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk)"
@@ -31,31 +31,14 @@
             ]
           },
           {
-            "id": "d57d4571315ccb20",
+            "id": "f994caa863bdcae7",
             "type": "split",
-            "dimension": 47.13064713064713,
+            "dimension": 51.550079491255964,
             "children": [
-              {
-                "id": "8bf2055ab8dee42f",
-                "type": "tabs",
-                "children": [
-                  {
-                    "id": "b99ae691a79cda7e",
-                    "type": "leaf",
-                    "state": {
-                      "type": "mindmapview",
-                      "state": {
-                        "file": "Engenharia de Software Ian Sommerville/Capítulo 3 MindMap.md"
-                      },
-                      "icon": "blocks",
-                      "title": "Capítulo 3 MindMap"
-                    }
-                  }
-                ]
-              },
               {
                 "id": "ed4e45bf23b9a494",
                 "type": "tabs",
+                "dimension": 60.30534351145038,
                 "children": [
                   {
                     "id": "f30b6eda19979094",
@@ -69,6 +52,25 @@
                       },
                       "icon": "lucide-file",
                       "title": "Capítulo 3 - Desenvolvimento ágil de software"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "b676a44fe32df2d5",
+                "type": "tabs",
+                "dimension": 39.69465648854962,
+                "children": [
+                  {
+                    "id": "b99ae691a79cda7e",
+                    "type": "leaf",
+                    "state": {
+                      "type": "mindmapview",
+                      "state": {
+                        "file": "Engenharia de Software Ian Sommerville/Capítulo 3 MindMap.md"
+                      },
+                      "icon": "blocks",
+                      "title": "Capítulo 3 MindMap"
                     }
                   }
                 ]
@@ -136,8 +138,8 @@
             "state": {
               "type": "runjs-codelist-view",
               "state": {},
-              "icon": "js-dark-icon",
-              "title": "RunJS Codelist"
+              "icon": "lucide-ghost",
+              "title": "runjs-codelist-view"
             }
           }
         ]
@@ -221,16 +223,27 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Engenharia de Software Ian Sommerville/Capítulo 3 - Desenvolvimento ágil de software.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Sumário"
+              "title": "Sumário de Capítulo 3 - Desenvolvimento ágil de software"
             }
           },
           {
             "id": "5e0f3570fdd5d7e9",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "SpacedRepIcon",
+              "title": "Fila de Notas para Revisar"
+            }
+          },
+          {
+            "id": "13aa956bee2f5217",
             "type": "leaf",
             "state": {
               "type": "review-queue-list-view",
@@ -273,6 +286,7 @@
   },
   "active": "f30b6eda19979094",
   "lastOpenFiles": [
+    "image-20264135910854.png",
     "Engenharia de Software Ian Sommerville/ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
     "Engenharia de Software Ian Sommerville/Capítulo 3 - Desenvolvimento ágil de software.md",
     "Engenharia de Software Ian Sommerville/Capítulo 3 MindMap.md",
