@@ -89,4 +89,139 @@ As <span style="background:#fff88f">histórias do usuário</span> podem ser util
 
 !![image-20264135910854.png](/image-20264135910854.png)
 
-Naturalmente, à medida que os requisitos mudam, as histórias não implementadas também mudam ou são descartadas. Se forem necessárias  
+Naturalmente, à medida que os requisitos mudam, as histórias não implementadas também mudam ou são descartadas. Se forem necessárias alterações em um sistema que já foi entregue, são elaborados novos cartões de história e, mais uma vez, o cliente decide se essas alterações devem ter ou não prioridade sobre novas funcionalidades. 
+
+A ideia de histórias do usuário é poderosa, e as pessoas acham muito mais fácil se identificar com elas do que com o documento convencional de requisitos ou com casos de uso. As histórias podem ser úteis para fazer com que os usuários se envolvam na sugestão de requisitos durante uma atividade de elicitação que anteceda o desenvolvimento. Discutirei isso em mais detalhes no Capítulo 4.
+
+Por outro lado, o problema principal com as histórias do usuários é a completude. É difícil julgar se foram desenvolvidas histórias suficientes para cobrir todos os requisitos essenciais de um sistema. Também é difícil julgar se uma única história proporciona uma imagem completa de uma atividade. Usuários mais experientes estão frequentemente tão familiarizados com seu trabalho que deixam de fora algumas coisas quando o descrevem.
+
+### 3.2.2 Refatoração
+Uma premissa fundamental da engenharia de software tradicional é a de que se deve projetar com vistas à mudança; ou seja, deve-se prever as futuras mudanças no software e projetá-lo para que elas possam ser implementadas com facilidade. No entanto, a Programação Extrema descartou esse princípio, com base na ideia de que projetar já pensando na mudança leva um desperdício de trabalho. Não vale a pena perder tempo acrescentando generalidades a um programa para lidar com a mudança. Frequentemente, as alterações previstas não se materializam ou as solicitações de mudança podem ser completamente diferentes do previsto.
+
+É natural que, na prática, sempre haja modificações no código que está sendo desenvolvido. Para facilitar esse processo, os desenvolvedores da Programação Extrema sugeriram que o código em desenvolvimento seja refatorado constantemente. <span style="background-color: yellow; padding:2px; border-radius:4px;">
+‘Refatorar’ (FOWLER et al., 1999) significa que o time de programação deve buscar possíveis melhorias no software e implementálas imediatamente. 
+</span>
+(p.79). Quando os membros do time se deparam com um código que pode ser melhorado, eles executam essas melhorias, mesmo quando não há necessidade imediata delas. 
+
+Um problema fundamental do desenvolvimento incremental é que as mudanças tendem a degradar a estrutura do software; consequentemente, fica cada vez mais difícil realizar outras alterações. Essencialmente, o desenvolvimento prossegue conforme são encontradas soluções alternativas para os problemas, o que resulta na frequente duplicação de código, no reúso indevido de partes do software e na degradação geral da estrutura à medida que o código é adicionado ao sistema. A refatoração melhora a estrutura do software a sua clareza, evitando, com isso, a deterioração estrutural que ocorre naturalmente quando o software é modificado.
+
+Exemplos de refatoração incluem a reorganização de uma hierarquia de classe para remover código duplicado, a organização e renomeação de atributos e métodos e a substituição de seções de código similares, com chamadas para métodos definidos em uma biblioteca. Os ambientes de desenvolvimento de programas geralmente incluem ferramentas para refatoração. Essas ferramentas tornam mais fácil o processo de encontrar dependências entre as seções e de fazer modificações globais no código. 
+
+A princípio, quando a refatoração faz parte do processo de desenvolvimento, o software sempre deve ser fácil de compreender e mudar quando são propostos novos requisitos. Na prática, nem sempre é o que acontece. Às vezes, a pressão do desenvolvimento significa que a refatoração é postergada em virtude do tempo dedicado à implementação da nova funcionalidade. Algumas características novas e alterações não podem ser prontamente absorvidas pela refatoração de código e requerem que a arquitetura do sistema seja modificada.
+
+### 3.2.3 Desenvolvimento com testes *a priori (test-first)*
+
+Uma das diferenças importantes entre o desenvolvimento incremental e o desenvolvimento dirigido por plano é a maneira como o sistema é testado. Com o desenvolvimento incremental, não há uma especificação do sistema que possa ser utilizada por uma equipe de testes externa para desenvolver testes do sistema. Como consequência, algumas abordagens ao desenvolvimento incremental têm um processo de testes muito informal em comparação com os testes do desenvolvimento dirigido por plano.
+
+A Programação Extrema desenvolveu uma nova abordagem ao teste de programas para contornar as dificuldades de se testar uma especificação. O teste é automatizado e é fundamental para o processo de desenvolvimento, que não consegue avançar até que todos os testes tenham sido executados com sucesso. As características-chave do teste em programação Extrema são:
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+1. desenvolvimento com testes a priori (test-first); 
+2. desenvolvimento de teste incremental a partir de cenários; 
+3. envolvimento do usuário no desenvolvimento e validação dos testes e; 4. o uso de frameworks de teste automatizados.
+</span>
+(p.80)
+
+Hoje, a filosofia de **testes a priori** da programação Extrema evoluiu para técnicas de desenvolvimento dirigido por testes mais gerais. O desenvolvimento dirigido por testes é uma das inovações mais importantes na engenharia de software. Em vez de escrever o código e depois os testes dele, primeiro escrevem os testes e depois o código. Isso significa que é possível executar os testes à medida que o código está sendo escrito e descobrir problemas durante o desenvolvimento. Discutirei o <span style="background:#d3f8b6">desenvolvimento dirigido por testes com mais profundidade no Capítulo 8</span>.
+
+Escrever os testes define implicitamente uma interface e uma especificação do comportamento da funcionalidade que está sendo desenvolvida. Os problemas de requisitos e má compreensão da interface são menores. O desenvolvimento com testes *a priori* exige que haja uma relação clara entre os requisitos do sistema e o código que implementa os requisitos correspondentes. Na programação Extrema, essa relação é clara porque os cartões de história que representam os requisitos são decompostos em tarefas, e essas são a unidade principal de implementação.
+
+No desenvolvimento com testes a priori, as pessoas que implementam as tarefas precisam compreender inteiramente a especificação para que sejam capazes de escrever os testes do sistema. Isso significa que as ambiguidades e omissões na especificação devem ser esclarecidas antes do início da implementação. Além disso, ele também evita o problema de 'defasagem do teste', algo que pode acontecer quando o desenvolvedor do sistema trabalha em um ritmo mais veloz que o do testados. A implementação fica cada vez mais à frente e há uma tendência a ignorar testes para que o cronograma de desenvolvimento possa ser mantido.
+
+A abordagem com testes a priori da Programação Extrema pressupõe que as histórias do usuário foram desenvolvidas e decompostas em um conjunto de cartões de tarefa, conforme a Figura 3.6. Cada tarefa gera um ou mais testes de unidade que conferem na  implementação descrita na tarefa. A Figura 3.7 é uma descrição curta de um caso de teste que foi desenvolvido para conferir se a dose prescrita de um medicamento não está fora dos limites de segurança conhecidos.
+
+!![image-20264143810219.png](/image-20264143810219.png)
+
+O papel do cliente nesse processo é ajudar a desenvolver testes de aceitação para as histórias que devem ser implementadas no próximo lançamento do sistema. Conforme será explicado no Capítulo 8, o teste de aceitação é o processo pelo qual o sistema é testado usando dados do cliente, com o objetivo de conferir se as suas reais necessidades estão sendo satisfeitas.
+
+A automação dos testes é essencial para o desenvolvimento com testes *a priori* (test-first). Os testes são escritos como componentes executáveis antes de a tarefa ser implementada. Esses componentes de teste devem ser *stand-alone*, simular a submissão da entrada a ser testada e conferir se o resultado satisfaz a especificação de saída. Um *framework* de teste automatizado é um sistema que facilita a produção de testes executáveis e os submete á execução. O JUnit é um exemplo de *framework* de teste automatizado amplamente utilizado para programas em Java. 
+
+Como os testes são automatizados, há sempre um conjunto deles que pode ser executado de maneira mais rápida e fácil. Sempre que qualquer funcionalidade for acrescentada ao sistema, os testes podem ser rodados e os problemas que o novo código introduziu podem ser capturados imediatamente.
+
+O desenvolvimento com testes *a priori* e o teste automatizado resultam normalmente em uma grande quantidade de testes sendo produzidos e executados simultaneamente. No entanto, existem problemas ao garantir que a cobertura dos testes seja completa:
+1. Os programadores preferem programar a testar e, às vezes, tomam atalhos quando elaboram os testes. Por exemplo, eles podem escrevê-los incompletos, sem a conferência de todas as possíveis exceções que podem ocorrer.
+2. Alguns testes podem ser muito difíceis de escrever de modo incremental. Por exemplo, em uma interface com o usuário complexa, muitas vezes é difícil escrever testes de unidade par ao código que implementa a lógica de exibição e o fluxo entre as telas.
+
+É difícil julgar se um conjunto de testes é ou não completo. Embora seja possível ter muitos testes do sistema, seu conjunto pode não promover a cobertura completa. Partes cruciais do sistema podem não ser executadas e, assim, permanecerão não testadas. Portanto, embora um grande conjunto de testes executados frequentemente possa dar a impressão de que o sistema está completo e correto, isso pode não ser verdade. Se não for feita uma revisão e outros testes forem produzidos após o desenvolvimento, então os erros não detectados podem seguir junto com o lançamento do sistema. 
+
+### 3.2.4 Programação em pares
+Outra iniciativa prática que foi introduzida na Programação Extrema é que os programadores trabalham em pares no desenvolvimento do software. Cada dupla senta-se diante do mesmo computador para desenvolver software, mas o mesmo par nem sempre programa junto. Em vez disso, os pares são criados dinamicamente para que todos os membros do time trabalhem uns com os outros durante o processo de desenvolvimento. 
+
+A programação em pares tem uma série de vantagens:
+1. Apoia a ideia de propriedade e responsabilidade coletivas pelo sistema. Isso reflete a ideia de Weinberg, de programação sem ego, em que o software é de propriedade de todo o time e os indivíduos não são responsabilizados individualmente pelos problem com o código. Em vez disso, todos são responsáveis pela resolução de problemas.
+2. Ela age como um processo de revisão informal, já que cada linha de código é examinada por ao menos duas pessoas. Essas inspeções e revisões (Capítulo 24) são eficazes na descoberta de um alto percentual de erros de software, mas é preciso muito tempo para organizá-las e normalmente resultam em atrasos no processo de desenvolvimento. A programação em pares é um processo formal, que provavelmente não encontra tantos erros quanto as inspeções de código, mas é mais barata e fácil de organizar do que as inspeções formais.
+3. Incentiva a refatoração para melhorar a estrutura do software. O problema em pedir aos programadores para refatorarem em um ambiente de desenvolvimento normal é que o esforço envolvido é investido para obter benefício no longo prazo. Um desenvolvedor que investe tempo refatorando pode ser considerado menos eficiente do que um que simplesmente desenvolva código. Nas situações em que a programação em pares e a propriedade coletiva são empregas, outras pessoas se beneficiam imediatamente da refatoração, tendendo a apoiarem o processo.
+
+Pode-se pensar que a programação em pares é menos eficiente do que a programação individual. Em um determinado intervalo de tempo, um par de desenvolvedores produziria a metade do código produzido por dois indivíduos trabalhando sozinhos. Muitas empresas que adotaram métodos ágeis suspeitam da programação em pares e não a utilizam. Outras misturam a programação em pares e a individual, com um programador experiente trabalhando com um colega menos experiente quando encontrar problemas.
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+Os motivos sugeridos são que os pares discutem o software antes do desenvolvimento e, portanto, provavelmente têm menos partidas em falso e menos retrabalho. 
+</span>
+(p.82)
+
+<span style="background-color: red; padding:2px; border-radius:4px;">
+Entretanto, estudos com programadores mais experientes não reproduzem esses resultados 
+</span>
+(p.82). Eles constataram que havia uma perda significativa de produtividade se comparado a dois programadores trabalhando isoladamente. Houve alguns beneficios para a qualidade, mas não compensaram totalmente a sobrecarga da programação em pares. Todavia, o compartilhamento de conhecimento que acontece durante a programação em pares é muito importante...
+
+## 3.3 Gerenciamento Ágil de Projetos
+Os gerentes precisam saber o que está acontecendo em qualquer empresa de software, se um projeto tende ou não a cumprir seus objetivos, entregar o software no prazo e dentro do orçamento proposto. As abordagens dirigidas por plano evoluíram para satisfazer essa necessidade. Como discutido no Capítulo 23, os gerentes traçam um plano para o projeto mostrando o que deve ser entregue, quando deve ser entregue e quem vai trabalhar no desenvolvimento dos entregáveis desse projeto. Uma abordagem dirigida por plano exige que um gerente tenha uma visão estável sobre tudo que deve ser desenvolvido e sobre os processos de desenvolvimento.
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+O planejamento informal e o controle de projeto propostos pelos primeiros adeptos dos métodos ágeis conflitaram com essas necessidades de visibilidade impostas pelas empresas. 
+</span>
+(p.83). Os times se auto-organizavam, não produziam documentação e planejavam o desenvolvimento em ciclos muitos curtos. Embora isso possa funcionar (e funcione) nas empresas pequenas que desenvolvem produtos de software, é inadequado para as grandes que precisam saber o que está acontecendo em sua organização.
+
+O desenvolvimento ágil precisa ser gerenciado para que seja feito o melhor uso do tempo e dos recursos disponíveis para o time. Para tratar dessa questão, foi desenvolvimento o <span style="background:#fff88f">método ágil chamado</span> Scrum, montando um arcabouço para organizar os projetos ágeis e, ao menos até certo ponto, dar visibilidade externa do que está acontecendo. Os desenvolvodres do Scrum queriam deixar claro que ele não era um método para gerenciamento de projetos no sentido convencional, então deliberadamente invetaram uma nova terminologia, como *Scrum Master*, que substituía nomes como o do gerente de projeto. 
+
+O #Scrum é um método ágil na medida em que segue os princípios do manifesto ágil. Ele se concentra em proporcionar um arcabouço para a organização ágil do projeto e <span style="background:#d3f8b6">não impõe o uso de práticas de desenvolvimento específicas</span>, como a programação em pares e o desenvolvimento com testes a priori. Isso significa que ele pode ser integrado mais facilmente à prática atual de uma empresa. Consequentemente, à medida que os método ágeis se tornaram a principal abordagem para o desenvolvimento de software, o Scrum emergiu como o método mais utilizado. 
+
+O processo do Scrum ou ciclo da *sprint* é exibido na Figura 3.9. A entrada é o **backlog** do produto e cada iteração do processo gera um incremento do produto que poderia ser entregue para os clientes. 
+
+#Sprint - uma iteração de desenvolvimento. As *sprints* geralmente duram de 2 a 4 semanas. 
+
+- **Backlog do produto:** é uma lista de itens 'a fazer' que o time Scrum deve cumprir. Podem ser definições de características e requisitos do software, histórias do usuário ou descrições de tarefas suplementares que são necessárias, como a definição da arquitetura ou a documentação do usuário. 
+
+- **Scrum Master**: O Scrum Master é responsável por assegurar que o processo Scrum seja seguido e guiar o time no uso eficaz do Scrum. Essa pessoa é responsável pela interação com o resto da empresa e por garantir que o time Scrum não seja desviado por interferências externas. Os desenvolvedores Scrum são inflexíveis quanto ao Scrum Master não ser considerado um gerente de projeto. 
+
+O ponto de partida para o ciclo de *sprint* do Scrum é o backlog do produto, uma lista de itens como características do produto, requisitos e melhorias de engenharia que precisam ser trabalhados pelo time Scrum. A versão inicial desse backlog pode ser derivada de um documento de requisitos, uma lista de histórias do usuário ou uma descrição do software a ser desenvolvido. 
+
+O *backlog* do produto pode ser especificado em vários níveis de detalhe, sendo responsabilidade do *Product Owner*, ou dono do produto, garantir que o nível de detalhe da especificação seja adequado ao trabalho a ser realizado. Por exemplo, um item de **backlog** poderia ser uma história de usuário completa, como mostra a Figura 3.5, ou ser simplesmente uma instrução, como "refotar o código da interface" com o usuário. 
+
+Cada ciclo de *sprint* dura um intervalo de tempo fixo, que normalmente é de 2 a 4 semanas. No início de cada ciclo, o *Product Owner* prioriza os itens do backlog do produto para definir quais são os mais importantes a serem desenvolvidos naquele ciclo. <span style="background:#fff88f">As sprints nunca se estendem para levar em conta trabalhos inacabados.</span> <span style="background:#affad1">Os itens são devolvidos para o backlog do produto se não puderem ser concluídos dentro do tempo alocado para a sprint</span>. 
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+Depois, todo o time se envolve na escolha dos itens de mais alta prioridade que acreditam que devam ser concluídos e estimam o tempo necessário para concluílos.
+</span>
+(p.85)
+
+Durante esse tempo, o time faz reuniões diárias curtas (Scrums) para revisar o progresso e, onde for necessário, alterar as prioridades do trabalho. Durante o Scrum, todos os membros do time compartilham informações, descrevem seu progresso desde a última reunião, trazem os problemas que surgiram e declaram o que foi planejado para o dia seguinte. Desse modo, todos no time sabem o que está acontecendo e, se surgirem problemas, podem planejar novamente o trabalho no curto prazo para lidar com eles. Todos participam desse planejamento e não há uma orientação de cima para baixo partindo do Scrum Master.
+
+As coisas que mais são validadas à respeito do Scrum, são:
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+1. O produto é decomposto em um conjunto de “pedaços” gerenciáveis e com preensíveis aos quais os stakeholders podem se referir.
+</span>
+(p.86)
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+2. Requisitos instáveis não impedem o progresso.
+</span>
+(p.86)
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+3. O time inteiro tem visibilidade de tudo e, consequentemente, a comunicação e disposição de seus membros são melhores.
+</span>
+(p.86)
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+4. Os clientes veem a entrega dos incrementos na hora e obtêm feedback de como o produto funciona. Eles não se deparam com surpresas de última hora como quando um time anuncia que o software não será entregue conforme o esperado.
+</span>
+(p.86)
+
+<span style="background-color: yellow; padding:2px; border-radius:4px;">
+5. A confiança entre clientes e desenvolvedores é estabelecida, criando uma cultura positiva na qual todos esperam que o projeto tenha sucesso.
+</span>
+(p.86)
+
+ Scrum, como foi projetado originalmente, destinavase ao uso por times situados num mesmo local, onde todos os envolvidos pudessem se reunir diariamente. No entanto, hoje, muito do desenvolvimento de software envolve times distribuídos, com membros situados em diferentes lugares no mundo. Isso permite que as empresas tirem proveito de mão de obra mais barata em outros países, possibilita o acesso a habilidades especializadas e permite o desenvolvimento 24 horas por dia, com o trabalho acontecendo em diferentes fusos horários.
+
+## 3.4 Escalabilidade dos métodos ágeis
