@@ -4,51 +4,51 @@
     "type": "split",
     "children": [
       {
-        "id": "ed4e45bf23b9a494",
+        "id": "08c4af61e5c85a93",
         "type": "tabs",
         "children": [
           {
-            "id": "c7f4c92ffc6dd117",
+            "id": "f8675255a043dc4e",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "mindmapview",
+              "state": {
+                "file": "LeetCode Java/mindmap-java-leetcode-3-anos-mindmap.md"
+              },
+              "pinned": true,
+              "icon": "blocks",
+              "title": "mindmap-java-leetcode-3-anos-mindmap"
+            }
+          },
+          {
+            "id": "2033f6fa1a7d32d4",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cronograma-engenharia-ia-aplicada-12-meses-obsidian.md",
+                "file": "LeetCode Java/cronograma-java-leetcode-3-anos-obsidian.md",
                 "mode": "source",
                 "source": false
               },
               "pinned": true,
               "icon": "lucide-file",
-              "title": "cronograma-engenharia-ia-aplicada-12-meses-obsidian"
+              "title": "cronograma-java-leetcode-3-anos-obsidian"
             }
           },
           {
-            "id": "a386446057bdbcb7",
+            "id": "c8d1fca32a443342",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cronograma-system-design-java-spring-2-anos-104-semanas.md",
+                "file": "DataStructuresAbstractionandDesign/A.1 The Java Environment and Classes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cronograma-system-design-java-spring-2-anos-104-semanas"
-            }
-          },
-          {
-            "id": "0d00dbc9f4cfdbb4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Designing Data-Intensive Applications/Chapter 1 - Trade-oofs in Data Systems Architecture.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Chapter 1 - Trade-oofs in Data Systems Architecture"
+              "title": "A.1 The Java Environment and Classes"
             }
           }
         ],
@@ -257,30 +257,36 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "0d00dbc9f4cfdbb4",
+  "active": "c8d1fca32a443342",
   "lastOpenFiles": [
+    "DataStructuresAbstractionandDesign/A.1 The Java Environment and Classes.md",
+    "LeetCode Java/cronograma-java-leetcode-3-anos-obsidian.md",
+    "LeetCode Java/mindmap-java-leetcode-3-anos-mindmap.md",
+    "cronograma-engenharia-ia-aplicada-12-meses-obsidian.md",
+    "LeetCode Java/mindmap-java-leetcode-3-anos.md",
+    "cronograma-dsa-leetcode-java-2-anos.md",
+    "LeetCode Java/mindmap-java-leetcode-3-anos.opml",
+    "LeetCode Java/Não confirmado 502660.crdownload",
+    "LeetCode Java/Não confirmado 682225.crdownload",
+    "LeetCode Java/Não confirmado 296529.crdownload",
+    "LeetCode Java",
+    "cronograma-system-design-java-spring-2-anos-104-semanas.md",
+    "Designing Data-Intensive Applications/Chapter 1 - Trade-oofs in Data Systems Architecture.md",
     "image-2026416223702.png",
     "cronograma-engenharia-ia-aplicada-2-anos-104-semanas.md",
     "Não confirmado 748203.crdownload",
     "image-2026416421318.png",
-    "cronograma-system-design-java-spring-2-anos-104-semanas.md",
-    "cronograma-dsa-leetcode-java-2-anos.md",
     "cronograma-system-design-java-spring-obsidian.md",
     "Não confirmado 872229.crdownload",
-    "Designing Data-Intensive Applications/Chapter 1 - Trade-oofs in Data Systems Architecture.md",
-    "cronograma-engenharia-ia-aplicada-12-meses-obsidian.md",
     "Não confirmado 670700.crdownload",
     "Engenharia de Software Ian Sommerville/Capítulo 3 MindMap.md",
     "Não confirmado 164615.crdownload",
     "Designing Data-Intensive Applications",
     "Engenharia de Software Ian Sommerville/Capítulo 3 - Desenvolvimento ágil de software.md",
-    "Não confirmado 395620.crdownload",
-    "Engenharia de Software Ian Sommerville/ENGENHARIA DE SOFTWARE 10ED (Ian Sommerville) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
     "image-20264143810219.png",
     "image-20264135910854.png",
     "image-2026473229150.png",
     "Gerenciamento e Qualidade de Software/Aula 4 - Introdução Ao Gerenciamento de Projetos Para Qualidade de Software.md",
-    "Engenharia de Software Ian Sommerville",
     "Gerenciamento e Qualidade de Software/Gerenciamento da Qualidade de Software.md",
     "Figura3.png",
     "Figura2.png",
@@ -292,18 +298,12 @@
     "Sem título.md",
     "Pasted image 20260403104346.png",
     "PHP Crash Course/Chapter 2 - Data Types.md",
-    "Gerenciamento e Qualidade de Software",
-    "image-20263315858380.png",
     "Laravel Up & Running/Chapter 3 - Routing and Controllers.md",
-    "PHP Crash Course",
     "Laravel Up & Running/Sem título.md",
     "Laravel Up & Running/Chapter 2 - Setting Up a Laravel Development Environment.md",
     "Learning PHP, MySQL & JavaScript/Chapter 4 - Expressions and Control Flow in PHP.md",
     "Learning PHP, MySQL & JavaScript/Chapter 3 - Introduction to PHP.md",
     "Learning PHP, MySQL & JavaScript/Chapter 2 - Setting Up a Development Server.md",
-    "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md",
-    "Laravel Beyond Crud/Views Models.md",
-    "Laravel Beyond Crud/Working With Data.md",
-    "Trilhante/Agenda.md"
+    "Learning PHP, MySQL & JavaScript/Chapter 1 - Introduction to Dynamic Web Content.md"
   ]
 }

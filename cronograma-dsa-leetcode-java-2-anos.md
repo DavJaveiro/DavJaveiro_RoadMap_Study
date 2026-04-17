@@ -79,7 +79,6 @@ java-dsa-lab/
 ---
 
 ## Estratégia macro dos 24 meses
-
 ## Fase 1 — Fundação técnica (Meses 1–6)
 Foco em Java para DSA, ADTs, complexidade, listas, testes, stacks, queues e recursão.
 
@@ -96,7 +95,6 @@ Foco em dynamic programming, bit manipulation, greedy, hard problems, contests, 
 ## Mapeamento do livro-base
 
 ### Capítulos principais do livro
-
 - **Cap. 1:** Object-Oriented Programming and Class Hierarchies
 - **Cap. 2:** Lists and the Collections Framework
 - **Cap. 3:** Testing and Debugging
@@ -112,7 +110,6 @@ Foco em dynamic programming, bit manipulation, greedy, hard problems, contests, 
 ### Faixas aproximadas de leitura
 
 > As faixas abaixo são aproximadas, pensadas para planejamento.
-
 - Cap. 1: **p. 1–53**
 - Cap. 2: **p. 54–122**
 - Cap. 3: **p. 123–148**
@@ -189,19 +186,14 @@ Construir a base mental correta para estudar algoritmos em Java: ADTs, interface
 ---
 
 ## Mês 2 — OOP aplicado + listas e ArrayList
-
 ### Objetivo
-
 Aprender a modelar estruturas com interfaces e classes Java, e dominar listas baseadas em array.
 
 ### Leitura
-
 - **Cap. 1.5–1.8**
 - **Cap. 2.1–2.3**
 - Faixa sugerida: **p. 26–83**
-
 ### Conteúdos
-
 - casting, `instanceof`, visibilidade
 - exceções e hierarquia de classes
 - packages e encapsulamento
@@ -209,14 +201,12 @@ Aprender a modelar estruturas com interfaces e classes Java, e dominar listas ba
 - aplicações de listas
 
 ### Padrões LeetCode do mês
-
 - two sum / hashing
 - prefix sum básico
 - array traversal
 - string normalization
 
 ### Meta LeetCode
-
 - **22 problemas**
   - 10 easy
   - 12 medium
@@ -228,13 +218,11 @@ Aprender a modelar estruturas com interfaces e classes Java, e dominar listas ba
 - implementar benchmark simples com `System.nanoTime`
 
 ### Exercícios estilo PR
-
 - **PR 004:** `MyArrayList<T>` com resize
 - **PR 005:** testes de borda para índices inválidos
 - **PR 006:** benchmark comparando array fixo e array dinâmico
 
 ### Entrevista
-
 - Qual a diferença entre capacidade e tamanho?
 - Por que `ArrayList` é bom para acesso por índice?
 - Quando remoções no meio ficam caras?
