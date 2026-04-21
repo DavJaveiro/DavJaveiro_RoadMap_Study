@@ -181,10 +181,10 @@ Use sempre este molde:
 **Objetivo da semana:** avançar o `SignalDesk AI` no eixo **história da ia, escopo da trilha e setup do ambiente**.
 
 ### Leitura diária
-- **Dia 1:** AI Engineering — Cap. 1, pp. 1–5
-- **Dia 2:** AI Engineering — Cap. 1, pp. 6–10
-- **Dia 3:** AI Engineering — Cap. 1, pp. 11–15
-- **Dia 4:** AI Engineering — Cap. 1, pp. 16–20
+- [x] **Dia 1:** AI Engineering — Cap. 1, pp. 1–5
+- [x] **Dia 2:** AI Engineering — Cap. 1, pp. 6–10
+- [x] **Dia 3:** AI Engineering — Cap. 1, pp. 11–15
+- [ ] **Dia 4:** AI Engineering — Cap. 1, pp. 16–20
 - **Dia 5:** documentação / revisão guiada — **Spring AI Reference — Introduction e conceitos centrais** *(equivalente a 6–10 páginas)*
 
 ### Prática aplicada (sábado)
