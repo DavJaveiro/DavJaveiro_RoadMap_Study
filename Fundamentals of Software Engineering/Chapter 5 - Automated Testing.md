@@ -141,23 +141,22 @@ Devemos nos concentrarmos em escrever testes significativos que verifiquem o com
 ## Writing Tests
 É hora de ir direto ao ponto e aprender a mecânica de escrever testes.
 ## Getting Started
-Independente da linguagem de programação, da estrutura ou da meta-estrutura que estivermos usando, é provável que tenhamos várias ferramentas de testes disponíveis. Nesta seção, usaremos a linguagem de programação Java. Embora a configuração e a sintaxe possam ser diferentes para a linguagem de nossa escolha, as ideias permanecem as mesmas. 
+Independente da linguagem de programação, da estrutura ou da meta-estrutura que estivermos usando, é provável que tenhamos várias ferramentas de testes disponíveis. Nesta seção, <span style="background:#fff88f">usaremos a linguagem de programação Java</span>. Embora a configuração e a sintaxe possam ser diferentes para a linguagem de nossa escolha, as ideias permanecem as mesmas. 
 
 Depois de criarmos um projeto, <span style="background:#affad1">a nossa próxima decisão será a estrutura de teste a ser usada</span>. Há muitas opções excelentes para escolher, mas a estrutura de teste mais popular para o Java é chamada de JUnit. Para incluir o JUnit, podemos declarar as dependências apropriadas no arquivo POM do Maven e instalá-las.
 
 Não abordaremos os detalhes do JUnit aqui, mas se estiver interessado em saber mais sobre ele, consulte a excelente documentação em seu guia de usuário. Depois de instalar o JUnit, poderemos começar a escrever os testes.
 
-Existem duas abordagens principais para escrever testes, testar primeiro e testar por último.
+Existem <span style="background:#fff88f">duas abordagens</span> principais para escrever testes, <span style="background:#d3f8b6">testar primeiro</span> e <span style="background:#d3f8b6">testar por último</span>.
 - *Test-first methodologies*, como o desenvolvimento orientado a testes (TDD), seguem um ciclo "vermelho-verde-refatoração". Primeiro, escrevemos um teste que falhou ("vermelho"), depois implementamos o código mínimo para passar no teste ("verde") e, por fim, melhora o código sem alterar seu comportamento ("refatoração"); 
 - *Test-last approaches* envolvem escrever testes depois de implementar a funcionalidade.
-
 
 Ambos os métodos têm seus méritos, e a decisão entre eles geralmente depende dos requisitos do projeto e das preferências da equipe. Independentemente da abordagem, todas as metodologias de teste usam <span style="background:#affad1">asserções</span> para verificar os resultados esperados. 
 
 **NOTA DE IA:** escrever testes é um excelente caso de uso para assistência de IA. Podemos fornecer às ferramentas de IA exemplos do nosso conjunto de testes existentes para ajudá-las a entender o estilo de teste preferido da nossa organização, as convenções de nomenclatura e os padrões de codificação. A IA pode ajudar a gerar casos de teste, sugerir casos extremos que podemos ter deixado passar, escrever código de teste padrão e até mesmo ajudar a *refatorar* os testes existentes para melhorar a legibilidade. Isso pode acelerar significativamente o processo de teste e, ao mesmo tempo, manter a consistência com os padrões estabelecidos pela sua equipe.
 
 ## Assertions
-Uma asserção é uma função ou um método que pode ser usado para verificar se <span style="background:#affad1">determinadas condições são atendidas</span> durante a execução de um programa. Existem um grande número de bibliotecas #asserts em Java, todas oferecendo diferentes recursos.
+Uma <span style="background:#fff88f">asserção</span> <span style="background:#d3f8b6">é uma função</span> ou <span style="background:#d3f8b6">um método que pode ser usado</span> para verificar se <span style="background:#affad1">determinadas condições são atendidas</span> durante a execução de um programa. Existem um grande número de bibliotecas #asserts em Java, todas oferecendo diferentes recursos.
 
 O JUnit 5 vem com várias asserções para realizar uma ampla gama de verificações. Todas as asserções são métodos estáticos na classe *org.junit.jupiter.assertions*. Digamos que queiramos verificar se a soma de uma operação matemática está correta. Há um método assertEquals que recebe dois números inteiros, mostrados no bloco de código a seguir. O primeiro argumento é o valor esperado, e o segundo argumento é o valor real:
 ```java
@@ -195,8 +194,60 @@ class PuarchaseTicketTest {
 }
 ```
 
+
+À primeira vista, parece que escrever teste antes só "atrapalha" e atrasa. Mas isso acontece porque a vantagem não está no teste em si, e sim no *efeito que ele causa no design do código.*
+
+**TDD não é sobre testar, é sobre projetar melhor**
+Quando escrevemos o teste primeiro (como o Test-Driven Development), somos forçados a responder antes de codar:
+> "Como eu gostaria de usar esse código?"
+
+Isso muda completamente o jogo.
+Sem TDD:
+- pensamos na implementação primeiro
+- depois tentamos adaptar testes ao que já fizemos
+
+Com TDD:
+- definimos a interface e o comportamento primeiro
+- a implementação vira consequência
+
+**Exemplo Prático (bem direto)**
+Sem TDD (fluxo comum)
+```java
+class PaymentService {
+	public void process(Payment payment) {
+		// Lógica complexa
+		ExternalGateway.call(...);
+		Database.save(...);
+	}
+}
+```
+
+Depois tentamos testar... e descobrimos:
+- difícil mockar
+- muita dependência
+- método faz 10 coisas
+Resultado: teste ruim ou inexistente
+
+**Com TDD**
+Começamos pelo teste:
+```java
+@Test
+void should_process_payment_successfully() {
+	PaymentService service = new PaymentService(mockGateway, mockRepo);
+	
+	boolea result = service.process(payment);
+	
+	assertTrue(result);
+}
+```
+
+Agora, somos obrigados a:
+- injetar dependências
+- reduzir acoplamento
+- separar responsabilidades
+Resultado: design naturalmente melhor
 ## Writing Unit Tests
-Lembre-se de que os testes de unidade são testes isolados que são executados de forma independente e muito rápida. Imagine uma classe que execute operações matemáticas e que necessite de testes para cada uma delas. Aqui está um exemplo de classe chamada Operations:
+Lembre-se de que os testes de unidade são testes isolados que são executados de forma independente e muito rápida. Imagine <span style="background:#fff88f">uma classe</span> que execute operações matemáticas e que necessite de testes para cada uma delas. Aqui está um exemplo de classe chamada Operations:
 ```java
 public class Operation {
 	public double add(double a, double b) {

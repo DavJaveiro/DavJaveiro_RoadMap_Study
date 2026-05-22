@@ -178,7 +178,6 @@ O #Scrum é um método ágil na medida em que segue os princípios do manifesto 
 O processo do Scrum ou ciclo da *sprint* é exibido na Figura 3.9. A entrada é o **backlog** do produto e cada iteração do processo gera um incremento do produto que poderia ser entregue para os clientes. 
 
 #Sprint - uma iteração de desenvolvimento. As *sprints* geralmente duram de 2 a 4 semanas. 
-
 - **Backlog do produto:** é uma lista de itens 'a fazer' que o time Scrum deve cumprir. Podem ser definições de características e requisitos do software, histórias do usuário ou descrições de tarefas suplementares que são necessárias, como a definição da arquitetura ou a documentação do usuário. 
 
 - **Scrum Master**: O Scrum Master é responsável por assegurar que o processo Scrum seja seguido e guiar o time no uso eficaz do Scrum. Essa pessoa é responsável pela interação com o resto da empresa e por garantir que o time Scrum não seja desviado por interferências externas. Os desenvolvedores Scrum são inflexíveis quanto ao Scrum Master não ser considerado um gerente de projeto. 
