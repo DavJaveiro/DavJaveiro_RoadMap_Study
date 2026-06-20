@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3634be2f48bdea4e",
+        "id": "47eb63aebdd84d2c",
         "type": "tabs",
         "children": [
           {
-            "id": "c3c8097a185635eb",
+            "id": "e2442038a1b47d7f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Telemática/WebSockets/Spring Framework - WebSockets.md",
+                "file": "Java Networking Programming/Chapter 2 - Streams.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Spring Framework - WebSockets"
+              "title": "Chapter 2 - Streams"
             }
           }
         ]
@@ -88,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 671,
+    "width": 575.0124015808105,
     "collapsed": true
   },
   "right": {
@@ -190,6 +190,16 @@
             "state": {
               "type": "review-queue-list-view",
               "state": {},
+              "icon": "lucide-ghost",
+              "title": "review-queue-list-view"
+            }
+          },
+          {
+            "id": "08ded88126cd5f8c",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
               "icon": "SpacedRepIcon",
               "title": "Fila de Notas para Revisar"
             }
@@ -226,12 +236,27 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "c3c8097a185635eb",
+  "active": "e2442038a1b47d7f",
   "lastOpenFiles": [
+    "Java Networking Programming/Chapter 1 - Basic Networking Concepts.md",
+    "Java Networking Programming/Chapter 2 - Streams.md",
+    "image-20266143828161.png",
+    "fundamentalsofDevOpsSoftwareDelivery/Chapter 2. How to Manage Your Infrastructure as Code.md",
+    "image-20266141028882.png",
+    "image-20266145125605.png",
+    "image-20266143756904.png",
+    "Java Networking Programming",
+    "Telemática/Facial com Java/Levantamentos.md",
     "Telemática/WebSockets/Spring Framework - WebSockets.md",
+    "Java Performance/Chapter 1 - Introduction.md",
+    "fundamentalsofDevOpsSoftwareDelivery/Chapter 1 - How to Deploy Your App/Chapter 1 - How to Deploy Your App.md",
+    "Java Performance",
+    "Telemática/Sem título",
+    "image-20266544562.png",
+    "Wrapper.md",
+    "Telemática/Facial com Java",
     "Telemática/WebSockets/WebSockets.md",
     "Telemática/WebSockets",
-    "Telemática/Sem título",
     "Telemática/ConexX e Driver/DOCUMENTACAO_PROJETO.md",
     "Inference Engineering/Chapter 1 - Prerequisites.md",
     "Telemática/ConexX e Driver/Sem título.md",
@@ -258,21 +283,6 @@
     "AI Engineering/Engenharia de IA-mindmap.md",
     "Building Applications with AI Agents/Chapter 2 - Designing Agent Systems.md",
     "Building Applications with AI Agents/Chapter 1 - Introduction to Agents-mindmap.md",
-    "Building Applications with AI Agents/Chapter 1 - Introduction to Agents.md",
-    "Building Applications with AI Agents",
-    "cronograma-engenharia-ia-aplicada-2-anos-104-semanas.md",
-    "AI Engineering/Spring AI.md",
-    "image-20264214340183.png",
-    "Sem título 1.md",
-    "AI Engineering/Engenharia de IA.md",
-    "AI Engineering/Chapter 1 - Introduction to Building AI Applications with Foundation Models.md",
-    "Designing Data-Intensive Applications/🗄️ Designing Data-Intensive Applications-mindmap.md",
-    "Designing Data-Intensive Applications/🗄️ Trade-offs em Arquitetura de Sistemas de Dados-mindmap.md",
-    "image-20264205136353.png",
-    "image-20264203632429.png",
-    "LeetCode Java/mindmap-java-leetcode-3-anos.opml",
-    "LeetCode Java/Não confirmado 502660.crdownload",
-    "image-2026416223702.png",
-    "image-2026416421318.png"
+    "Building Applications with AI Agents/Chapter 1 - Introduction to Agents.md"
   ]
 }
